@@ -1,0 +1,68 @@
+crawler:
+  engine: auto
+  concurrency: 50
+  timeout: 15
+  max_pages: 200
+  rate_limit: 0.3
+  user_agent: AntiPiracyBot/1.0
+  scrapling_enabled: true
+  scrapling_headless: true
+  scrapling_stealth: true
+  scrapling_network_idle: true
+  frontier:
+    type: redis
+    redis_host: 127.0.0.1
+    redis_port: 16379
+    redis_namespace: bench_v1_baseline
+    max_retries: 3
+    base_backoff: 5.0
+    max_backoff: 300.0
+    lease_ttl: 90.0
+    recovery_enabled: true
+    recovery_interval: 30.0
+    reclaim_batch_size: 200
+    domain_scan_limit: 250
+    redis_db: 2
+  seed_files:
+  - seeds/baseline_seeds.txt
+  storage:
+    sqlite_path: storage/crawl_state.db
+    media_sqlite_path: storage/media_evidence.db
+    enable_media_evidence: true
+    enqueue_media_jobs: true
+  media_evidence:
+    type: redis
+    redis_host: 127.0.0.1
+    redis_port: 16379
+    redis_namespace: bench_v1_baseline_evidence
+    max_observations_per_asset: 20
+    max_variants_per_asset: 20
+    fingerprint_lease_ttl: 900.0
+    max_retries: 2
+    base_backoff: 5.0
+    max_backoff: 300.0
+    reclaim_batch_size: 200
+    confirmed_match_stream_maxlen: 10000
+    redis_db: 2
+  bridge:
+    priority_high_max: -1
+    priority_low_min: 1000000
+search:
+  enabled_engines:
+  - duckduckgo
+  - bing
+  - brave
+  - yandex
+  - ahmia
+  - torch
+  max_results_per_engine: 20
+  timeout: 15
+  engine_priorities:
+    torch: 0
+    ahmia: 2
+    brave: 4
+    bing: 5
+    duckduckgo: 6
+    yandex: 7
+  onion_priority_boost: 2
+  blocked_engine_cooldown_queries: 999

@@ -1,0 +1,7 @@
+run_id=20260927T193459Z
+v1_commit=2dfb542dd9ecf72f8d31e97589b922076ccf4317
+runtime_minutes=10 concurrency=50 engine=auto
+python=Python 3.12.3
+cpu=11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz cores=12
+mem_total=15Gi kernel=7.0.0-34-generic
+gpu=NVIDIA GeForce RTX 2050, 4096 MiB

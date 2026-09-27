@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-27T19:46:02.431404+00:00",
+    "backend": "redis",
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 16379,
+      "db": 2,
+      "namespace": "bench_v1_baseline"
+    },
+    "sqlite_path": null,
+    "worker_count": 50,
+    "crawl_engine": "auto",
+    "search_engines": null,
+    "query_scope": null,
+    "queries": null,
+    "seed_files": [
+      "seeds/baseline_seeds.txt"
+    ],
+    "crawl_mode": "seeds+query",
+    "max_pages": null,
+    "indefinite_run": false,
+    "runtime_minutes": 10,
+    "runtime_expired": true,
+    "rate_limit": 0.3,
+    "note": "backend reflects the frontier actually constructed for this run, which can differ from config.yaml's crawler.frontier.type if Redis was unreachable at startup and the crawler fell back to SQLite -- see core/crawler_manager.py."
+  },
+  "timing": {
+    "start": "2026-09-27T19:35:02.503659+00:00",
+    "end": "2026-09-27T19:46:02.431390+00:00",
+    "duration_seconds": 659.9277326049996,
+    "source": "process-wall-clock",
+    "note": "Actual wall-clock start (immediately before manager.run()) and end (immediately after it returned) of this process -- not derived from URL timestamps."
+  },
+  "counts": {
+    "discovered_total": 5745,
+    "visited": 644,
+    "queued": 4954,
+    "inflight": 51,
+    "retry_scheduled": 51,
+    "failed_permanent": 0,
+    "skipped": 45,
+    "percentages": {
+      "visited_pct": 11.209747606614448,
+      "failed_pct": 0.0,
+      "skipped_pct": 0.7832898172323759
+    },
+    "invariant_violation": null,
+    "note": "'discovered_total'/'visited'/'failed_permanent'/'skipped' are lifetime-cumulative for this Redis namespace / SQLite db (every URL ever added/resolved, not just this run's -- see 'this_run' for run-scoped counts). 'queued'/'inflight'/'retry_scheduled' are current-state (right now), not cumulative. They are not comparable 1:1 and are never double-counted against each other."
+  },
+  "this_run": {
+    "discovered_unique": 5745,
+    "visited_unique": 644,
+    "failed_permanent_unique": 0,
+    "skipped_unique": 45,
+    "queued_current": 4954,
+    "inflight_current": 51,
+    "retry_scheduled_current": 51,
+    "attempted_unique": 689,
+    "completion_pct": 11.993037423846824,
+    "success_rate_pct": 93.46879535558782,
+    "throughput": {
+      "discovered_unique_per_sec": 8.705498672289735,
+      "visited_unique_per_sec": 0.9758644290608511
+    },
+    "invariant_violation": null,
+    "note": "SHARED namespace/db delta during this process's runtime -- (end-of-run snapshot - start-of-run snapshot) per counter, not the backend's lifetime-cumulative state (see counts.note). If another crawler process shares this namespace/db, its activity is included here too -- this is not this process's own attributed work; see 'local_work' for that. attempted_unique/completion_pct/success_rate_pct are only populated when visited_unique + failed_permanent_unique + skipped_unique <= discovered_unique for this delta -- see 'invariant_violation' otherwise."
+  },
+  "local_work": {
+    "discovered": 5693,
+    "visited": 674,
+    "processed": 691,
+    "failed": 17,
+    "retries": 17,
+    "identity": {
+      "crawler_id": "baseline-20260927T193459Z",
+      "hostname": "Ubuntu-24-04",
+      "pid": 50247
+    },
+    "note": "LOCAL to this process only: every counter above was incremented at the exact call site where this crawler process performed the action (frontier.add_url() returning True, mark_visited()/mark_failed()) -- never derived from or reconstructed out of shared Redis/SQLite state. Aggregates every asyncio worker task within this process. 'discovered' counts only genuinely new URLs this process caused the frontier to accept -- a link this process re-extracted that some other process (or this one) already knew about does not increment it. 'visited' = processed - failed. 'retries' counts failures this process observed that the frontier will retry (claim.attempt below the frontier's own max_retries), not failures some other process will retry."
+  },
+  "throughput": {
+    "discovered_per_sec": 8.705498672289735,
+    "visited_per_sec": 0.9758644290608511,
+    "completed_per_sec": 1.0440537137001964,
+    "avg_completed_per_sec_per_worker": 0.020881074274003927,
+    "note": null,
+    "per_worker_note": "Simple average (completed/sec \u00f7 worker count); does not imply linear scaling across workers."
+  },
+  "failures": {
+    "successful_visits": 644,
+    "permanently_failed": 0,
+    "skipped": 45,
+    "retry_scheduled_current": 51,
+    "extraction_failures": null,
+    "http_failures": null,
+    "fetch_failures": null,
+    "note": "The crawler records aggregate visited/failed/skipped outcomes only; it does not categorize failures by HTTP-status vs. fetch-exception vs. extraction-error, so those subcategory breakdowns are unavailable (reporting fabricated subcategories was ruled out)."
+  },
+  "resources": {
+    "sample_count": 133,
+    "sample_interval_seconds": 5.0,
+    "process_cpu_percent_avg": 8.775939849624061,
+    "process_cpu_percent_peak": 66.2,
+    "process_rss_mb_avg": 214.41006813909775,
+    "process_rss_mb_peak": 222.46875,
+    "note": "process_cpu_percent is instantaneous CPU utilization (%) sampled via psutil, not cumulative CPU time. Single crawler process (asyncio concurrency, not multiprocess) -- see metadata.worker_count for the number of concurrent async fetch tasks within it."
+  },
+  "redis": {
+    "sample_count": 133,
+    "sample_interval_seconds": 5.0,
+    "memory_start_mb": 1.7101211547851562,
+    "memory_end_mb": 4.080047607421875,
+    "memory_delta_mb": 2.3699264526367188,
+    "memory_peak_sampled_mb": 4.099540710449219,
+    "connected_clients_avg": 12.74436090225564,
+    "connected_clients_peak": 15,
+    "cpu_sys_seconds_delta": 0.8210040000000001,
+    "cpu_user_seconds_delta": 2.81583,
+    "note": "memory_peak_sampled_mb is the highest 'used_memory' observed at our sampling interval (not Redis's own lifetime used_memory_peak counter -- see counts.redis_info in a same-run snapshot for that). cpu_sys_seconds_delta/cpu_user_seconds_delta are deltas of Redis INFO's cumulative CPU-TIME counters (seconds consumed), not a CPU percentage -- conflating the two previously mis-attributed a benchmark bottleneck (see docs/benchmarks.md, 'Resource measurements')."
+  },
+  "configuration": {
+    "crawler": {
+      "engine": "auto",
+      "concurrency": 50,
+      "timeout": 15,
+      "max_pages": 200,
+      "rate_limit": 0.3,
+      "user_agent": "AntiPiracyBot/1.0",
+      "scrapling_enabled": true,
+      "scrapling_headless": true,
+      "scrapling_stealth": true,
+      "scrapling_network_idle": true,
+      "seed_files": [
+        "seeds/baseline_seeds.txt"
+      ],
+      "storage": {
+        "sqlite_path": "/tmp/claude-1000/-home-dhanush-anti-piracy-crawler2/98aebcac-4616-4936-8e0a-990e3b7c9957/scratchpad/baseline/v1/storage/crawl_state.db",
+        "media_sqlite_path": "/tmp/claude-1000/-home-dhanush-anti-piracy-crawler2/98aebcac-4616-4936-8e0a-990e3b7c9957/scratchpad/baseline/v1/storage/media_evidence.db",
+        "enable_media_evidence": true,
+        "enqueue_media_jobs": true
+      },
+      "frontier": {
+        "type": "redis",
+        "redis_host": "127.0.0.1",
+        "redis_port": 16379,
+        "redis_db": 2,
+        "redis_namespace": "bench_v1_baseline",
+        "max_retries": 3,
+        "base_backoff": 5.0,
+        "max_backoff": 300.0,
+        "lease_ttl": 90.0,
+        "recovery_enabled": true,
+        "recovery_interval": 30.0,
+        "reclaim_batch_size": 200,
+        "startup_recovery_max_passes": 50,
+        "startup_recovery_max_duration": 30.0,
+        "domain_scan_limit": 250,
+        "heartbeat_interval": null
+      },
+      "media_evidence": {
+        "type": "redis",
+        "redis_host": "127.0.0.1",
+        "redis_port": 16379,
+        "redis_db": 2,
+        "redis_namespace": "bench_v1_baseline_evidence",
+        "max_observations_per_asset": 20,
+        "max_variants_per_asset": 20,
+        "fingerprint_lease_ttl": 900.0,
+        "fingerprint_heartbeat_interval": null,
+        "max_retries": 2,
+        "base_backoff": 5.0,
+        "max_backoff": 300.0,
+        "reclaim_batch_size": 200,
+        "confirmed_match_stream_maxlen": 10000,
+        "target_id": null,
+        "target_version": null
+      },
+      "network_health": {
+        "enabled": true,
+        "trigger_threshold": 10,
+        "probe_timeout_seconds": 5.0,
+        "probe_endpoints": [
+          "https://www.gstatic.com/generate_204",
+          "https://www.msftconnecttest.com/connecttest.txt",
+          "https://captive.apple.com/hotspot-detect.html"
+        ],
+        "confirm_delay_seconds": 5.0,
+        "recovery_probe_interval_seconds": 15.0,
+        "recovery_confirm_rounds": 2,
+        "deferred_requeue_delay_seconds": 10.0
+      },
+      "bridge": {
+        "max_outstanding_jobs": 500,
+        "submission_marker_ttl_s": 86400,
+        "priority_high_max": -1,
+        "priority_low_min": 1000000,
+        "max_attempts": 3,
+        "poll_idle_sleep_seconds": 2.0,
+        "reclaim_interval_seconds": 60.0
+      },
+      "result_consumer": {
+        "consumer_group": "crawler-evidence-consumers",
+        "priorities": [
+          "default"
+        ],
+        "block_ms": 5000,
+        "lease_ms": 30000,
+        "reclaim_batch_size": 10,
+        "reclaim_interval_seconds": 60.0,
+        "idle_sleep_seconds": 2.0
+      }
+    },
+    "search": {
+      "enabled_engines": [
+        "duckduckgo",
+        "bing",
+        "brave",
+        "yandex",
+        "ahmia",
+        "torch"
+      ],
+      "max_results_per_engine": 20,
+      "timeout": 15,
+      "engine_priorities": {
+        "torch": 0,
+        "ahmia": 2,
+        "brave": 4,
+        "bing": 5,
+        "duckduckgo": 6,
+        "yandex": 7
+      },
+      "onion_priority_boost": 2,
+      "blocked_engine_cooldown_queries": 999
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "duration_seconds": 659.9,
+  "workers": 50,
+  "pages_visited": 674,
+  "pages_processed": 691,
+  "pages_per_sec": 1.021,
+  "processed_per_sec": 1.047,
+  "fetch_success_rate_overall": 0.9754,
+  "status_counts": {
+    "visited": 674,
+    "failed": 17
+  },
+  "engine_attempts": {
+    "async": 691,
+    "scrapling": 45,
+    "playwright": 27,
+    "selenium": 26,
+    "http": 17
+  },
+  "engine_successes": {
+    "async": 646,
+    "scrapling": 18,
+    "selenium": 9,
+    "playwright": 1
+  },
+  "engine_success_rate": {
+    "async": 0.9349,
+    "scrapling": 0.4,
+    "playwright": 0.037,
+    "selenium": 0.3462,
+    "http": 0.0
+  },
+  "visited_pages_by_final_engine": {
+    "async": 646,
+    "scrapling": 18,
+    "selenium": 9,
+    "playwright": 1
+  },
+  "browser_share_of_visited_pages": 0.0415,
+  "browser_share_of_fetch_attempts": 0.1216,
+  "bytes_per_page": null,
+  "bytes_per_page_note": "not measurable: V1 fetch() returns only (html, error) and logs no sizes (plan A.2 D1)",
+  "process_wall_seconds": 660.6,
+  "cpu_seconds_total": 243.5,
+  "max_rss_mb_largest_process": 295.5,
+  "cpu_percent_avg_whole_run": 36.9,
+  "v1_monitor_process_cpu_percent_avg": 8.775939849624061,
+  "v1_monitor_process_rss_mb_avg": 214.41006813909775,
+  "v1_monitor_process_rss_mb_peak": 222.46875,
+  "resources_raw": {
+    "sample_count": 133,
+    "sample_interval_seconds": 5.0,
+    "process_cpu_percent_avg": 8.775939849624061,
+    "process_cpu_percent_peak": 66.2,
+    "process_rss_mb_avg": 214.41006813909775,
+    "process_rss_mb_peak": 222.46875,
+    "note": "process_cpu_percent is instantaneous CPU utilization (%) sampled via psutil, not cumulative CPU time. Single crawler process (asyncio concurrency, not multiprocess) -- see metadata.worker_count for the number of concurrent async fetch tasks within it."
+  },
+  "media_assets_discovered": 0,
+  "media_per_1000_pages": 0.0,
+  "discovered_urls": 5745
+}
