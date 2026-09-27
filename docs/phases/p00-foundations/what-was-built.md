@@ -108,7 +108,6 @@ is built as a normal wheel. See ADR-007.
 Usage:
 
 ```bash
-systemctl --user start podman.socket     # this machine: docker = podman shim
 cp .env.example .env && $EDITOR .env
 make up                                  # or: docker compose up -d
 docker compose ps                        # all "healthy"

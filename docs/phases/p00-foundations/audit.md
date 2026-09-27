@@ -34,13 +34,13 @@ Only its dependency manifests (`requirements.txt`, `requirements-dev.txt`,
 
 | Finding | Impact / handling |
 |---|---|
-| `docker` is **Podman 4.9.3 (rootless) behind the `podman-docker` shim**; `docker compose` delegates to `docker-compose` 1.29.2 over the Podman socket. | Works for the whole P0 stack. Compose file uses only features both Docker Compose v2 and 1.29 support. `systemctl --user start podman.socket` is required (enable it to persist). Image `HEALTHCHECK` is ignored in OCI builds, so health checks are declared in compose. |
+| Initially `docker` was **rootless Podman 4.9.3 behind the `podman-docker` shim** with legacy `docker-compose` 1.29.2. The user removed it; **Docker Engine 29.8.1 + Compose v5.5.1** (official apt repo, `docker-ce` + `docker-compose-plugin`) were installed and P0 was re-validated on them. | The stack is Docker-native. Health checks are declared in compose (they also worked under Podman, which ignores image `HEALTHCHECK` in OCI builds). The user must be in the `docker` group (re-login after install). |
 | Official `minio/minio` images are no longer pullable (Docker Hub and Quay deny access). | Using `pgsty/minio` (community rebuild of AGPL MinIO), pinned by release tag. Recorded in ADR-003. |
 | Scylla/Seastar reserves 1.5 GB for non-Seastar memory by default and refuses to start in a 2 GB container. | `--memory 1400M --reserve-memory 512M` in a 2 GB container (design → resource budget). |
 | Scylla's driver discovers the node's container IP; host-side Python clients cannot use the published port (`NoHostAvailable ['10.89.x.x']`). | Integration tests run **inside** app containers (the real topology). The port is kept for `cqlsh` / tooling from the host. |
 | Host Redis (V1) already listens on `127.0.0.1:6379`. | Compose publishes on `16379/19042/19000/19001`, bound to 127.0.0.1. |
 | `fs.aio-max-nr = 65536`. | Enough for a 2-shard dev node; CI raises it to 1048576. |
-| cgroup v2 delegates `cpu memory pids` to the user. | `mem_limit` and `cpus` limits are enforced under rootless Podman. |
+| cgroup v2 host. | `mem_limit` and `cpus` limits are enforced (verified with `docker inspect`). |
 
 ## Reusable V1 components for later phases (not ported in P0)
 
@@ -66,6 +66,6 @@ V2 benchmark harness is written against V2 interfaces in P3/P4.
    compare V2 on the same seed set, same duration and concurrency, close in time.
 2. V1 cannot report bytes/page (D1) → no byte baseline; V2 must measure it
    from P4 onward (`FetchResult`).
-3. Podman/compose-1.29 vs. Docker/compose-v2 differences may appear in
-   later phases (GPU passthrough for the encoder in P9 especially).
+3. GPU passthrough for the encoder (P9) needs the NVIDIA Container
+   Toolkit, which is not installed yet (not needed in P0).
 4. MinIO community image provenance (ADR-003).

@@ -20,8 +20,8 @@ RUN pip install --no-deps .
 FROM docker.io/library/python:3.12.11-slim-bookworm AS runtime
 
 ARG APP_UID=10001
-RUN groupadd --system --gid "${APP_UID}" crawler2 \
- && useradd --system --uid "${APP_UID}" --gid crawler2 --home-dir /app --shell /usr/sbin/nologin crawler2 \
+RUN groupadd --gid "${APP_UID}" crawler2 \
+ && useradd --no-log-init --uid "${APP_UID}" --gid crawler2 --home-dir /app --shell /usr/sbin/nologin crawler2 \
  && install -d -o crawler2 -g crawler2 /app /var/lib/crawler2/scratch
 
 COPY --from=build /opt/venv /opt/venv

@@ -164,7 +164,7 @@ V1's own run report, its per-page `Processed … chain=…` log lines,
 
 | Plan | P0 reality | Why |
 |---|---|---|
-| "Install Docker" | Existing Podman + docker shim used | User instruction: Docker already present; Podman runs the stack fine |
+| "Install Docker" | Docker Engine 29.8.1 + Compose v5.5.1 installed from Docker's apt repo (after first running P0 on a Podman shim that the user then removed) | P0 re-validated on real Docker |
 | Scylla `--memory 2G` | `--memory 1400M --reserve-memory 512M`, 2 GB container | Seastar reserve; keeps the ~2 GB budget |
 | MinIO official image | `pgsty/minio` rebuild | Official images withdrawn (ADR-003) |
 | Baseline file `docs/phases/p00/baseline.md` | `docs/phases/p00-foundations/baseline.md` | Directory naming requested for P0 |
