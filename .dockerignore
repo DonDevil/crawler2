@@ -1,0 +1,15 @@
+*
+!pyproject.toml
+!README.md
+!requirements.txt
+!requirements-dev.txt
+!crawler2/
+!contracts/
+!tests/
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.hypothesis
+**/*.egg-info

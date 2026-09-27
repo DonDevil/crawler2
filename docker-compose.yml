@@ -1,0 +1,172 @@
+# crawler2 local development stack (P0). See docs/phases/p00-foundations/design.md.
+#
+#   cp .env.example .env
+#   docker compose up -d                      # profile "single" (from .env)
+#   COMPOSE_PROFILES=two-host docker compose up -d
+#
+# Backends are shared; app containers are stateless (read-only root fs,
+# per-container scratch volume). Containers reach each other by service
+# name only; the 127.0.0.1 port bindings exist solely for host-side tools.
+# Development only; production deployment is designed in P14.
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: docker/app/Dockerfile
+  image: localhost/crawler2-app:dev
+  init: true
+  read_only: true
+  tmpfs:
+    - /tmp:size=64m
+  restart: unless-stopped
+  mem_limit: 512m
+  cpus: 1.0
+  networks: [backend]
+  healthcheck:
+    test: ["CMD", "crawler2-check"]
+    interval: 30s
+    timeout: 20s
+    retries: 3
+    start_period: 30s
+  depends_on:
+    redis:
+      condition: service_healthy
+    scylla:
+      condition: service_healthy
+    minio:
+      condition: service_healthy
+
+x-app-env: &app-env
+  CRAWLER2_ENVIRONMENT: dev
+  CRAWLER2_REDIS__HOST: redis
+  CRAWLER2_SCYLLA__CONTACT_POINTS: scylla
+  CRAWLER2_MINIO__ENDPOINT: minio:9000
+  CRAWLER2_MINIO__ACCESS_KEY: ${MINIO_ROOT_USER:?set in .env}
+  CRAWLER2_MINIO__SECRET_KEY: ${MINIO_ROOT_PASSWORD:?set in .env}
+  CRAWLER2_LOGGING__FORMAT: json
+
+services:
+  redis:
+    image: docker.io/library/redis:7.4.2-alpine
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --maxmemory
+      - 768mb
+      - --maxmemory-policy
+      - noeviction
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    mem_limit: 1g
+    cpus: 1.0
+    volumes:
+      - redis-data:/data
+    ports:
+      - "127.0.0.1:${REDIS_HOST_PORT:-16379}:6379"
+    networks: [backend]
+
+  scylla:
+    image: docker.io/scylladb/scylla:6.2.3
+    command:
+      - --smp
+      - "2"
+      # Seastar heap + explicit reserve for non-Seastar memory must fit mem_limit;
+      # without --reserve-memory Seastar reserves 1.5G and refuses to start.
+      - --memory
+      - 1400M
+      - --reserve-memory
+      - 512M
+      - --overprovisioned
+      - "1"
+      - --developer-mode
+      - "1"
+    healthcheck:
+      # CQL binds to the container IP (rpc-address), not localhost.
+      test: ["CMD-SHELL", "cqlsh \"$$(hostname -i)\" -e 'SELECT release_version FROM system.local'"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 60s
+    restart: unless-stopped
+    mem_limit: 2g
+    cpus: 2.0
+    volumes:
+      - scylla-data:/var/lib/scylla
+    ports:
+      - "127.0.0.1:${SCYLLA_HOST_PORT:-19042}:9042"
+    networks: [backend]
+
+  minio:
+    image: docker.io/pgsty/minio:RELEASE.2026-08-04T00-00-00Z
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?set in .env}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?set in .env}
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1.0
+    volumes:
+      - minio-data:/data
+    ports:
+      - "127.0.0.1:${MINIO_HOST_PORT:-19000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_HOST_PORT:-19001}:9001"
+    networks: [backend]
+
+  # --- profile "single": one application host --------------------------------
+  app:
+    <<: *app
+    profiles: [single]
+    hostname: dev-1
+    environment:
+      <<: *app-env
+      CRAWLER2_HOST_ID: dev-1
+      CRAWLER2_ROLES: http,browser,intelligence,media_probe,finalizer
+    volumes:
+      - scratch-dev-1:/var/lib/crawler2/scratch
+
+  # --- profile "two-host": two simulated hosts, one shared backend set ---------
+  # Separate writable filesystems and host_ids, so single-host shortcuts
+  # (shared local files, pid-only identity) fail tests (plan B.4 #8).
+  app-host-1:
+    <<: *app
+    profiles: [two-host]
+    hostname: host-1
+    environment:
+      <<: *app-env
+      CRAWLER2_HOST_ID: host-1
+      CRAWLER2_ROLES: http,intelligence,finalizer
+    volumes:
+      - scratch-host-1:/var/lib/crawler2/scratch
+
+  app-host-2:
+    <<: *app
+    profiles: [two-host]
+    hostname: host-2
+    environment:
+      <<: *app-env
+      CRAWLER2_HOST_ID: host-2
+      CRAWLER2_ROLES: http,browser,media_probe
+    volumes:
+      - scratch-host-2:/var/lib/crawler2/scratch
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  redis-data:
+  scylla-data:
+  minio-data:
+  scratch-dev-1:
+  scratch-host-1:
+  scratch-host-2:
