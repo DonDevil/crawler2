@@ -16,7 +16,7 @@ Reproduce: `benchmarks/v1-baseline/run.sh 10 50` (with the compose stack up).
 | Workers | 50 async workers in one process (engine `auto` = hybrid escalation async → http/browser engines) |
 | Duration | 10 min configured; 659.9 s crawl wall time; 660.6 s process wall time |
 | Hardware | Intel i5-11400H (12 threads), 15 GiB RAM, NVIDIA RTX 2050 4 GB (unused), kernel 7.0.0-34, Python 3.12.3 |
-| Network | Live internet, residential connection, 2026-09-27 19:35–19:46 UTC |
+| Network | Live internet from the dev host, 2026-09-27 19:35–19:46 UTC |
 | Concurrent load | Compose stack idle (Redis/Scylla/MinIO); no other benchmark running |
 
 ## Results
@@ -48,11 +48,11 @@ Reproduce: `benchmarks/v1-baseline/run.sh 10 50` (with the compose stack up).
    record bytes from P4 (`FetchResult`), so V2 sets the first value.
 4. **Media per 1k pages = 0** is a real observation for this seed set and
    window (no media-evidence keys were written), not a measurement fault.
-   V1 only records media it detects directly in page HTML; these seeds are
-   listing/landing pages whose video sits behind further navigation, ad
-   gates or JS players. This baseline therefore does not constrain V2's
+   The cause was not investigated in P0 (V1 records only media it
+   detects in fetched HTML; why none was detected on these pages belongs
+   to the P5/P8 audit). This baseline therefore does not constrain V2's
    media discovery; a longer run or a media-rich seed set is needed for
-   that metric (P5/P8 audit).
+   that metric.
 5. **Engine success rates are conditional**: browser engines only see URLs
    the async engine already failed or flagged as needing rendering, so
    their low rates partly reflect hard pages, not only engine quality.
