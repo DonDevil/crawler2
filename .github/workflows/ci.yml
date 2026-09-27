@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+# No step contacts external sites beyond package/image registries: tests use
+# the local fixture web server and the compose stack only.
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    env:
+      UV_PROJECT_ENVIRONMENT: env
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.17"
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: requirements exports match uv.lock
+        run: make requirements && git diff --exit-code requirements.txt requirements-dev.txt
+      - run: make lint
+      - run: make typecheck
+      - run: make test
+
+  compose:
+    runs-on: ubuntu-24.04
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - name: dev .env with throwaway credentials
+        run: |
+          cp .env.example .env
+          sed -i "s/change-me-dev-only/$(openssl rand -hex 16)/" .env
+      - name: validate compose configuration
+        run: |
+          COMPOSE_PROFILES=single docker compose config -q
+          COMPOSE_PROFILES=two-host docker compose config -q
+      - name: raise AIO limit for ScyllaDB
+        run: sudo sysctl -w fs.aio-max-nr=1048576
+      - name: stack validation (both profiles)
+        run: scripts/validate-stack.sh
+      - name: service logs on failure
+        if: failure()
+        run: COMPOSE_PROFILES=single,two-host docker compose logs --no-color --tail=200
+      - name: tear down
+        if: always()
+        run: COMPOSE_PROFILES=single,two-host docker compose down -v
