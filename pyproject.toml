@@ -1,0 +1,63 @@
+[project]
+name = "crawler2"
+version = "0.0.1"
+description = "Anti-piracy crawler V2"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic>=2.11,<3",
+    "pydantic-settings>=2.10,<3",
+    "structlog>=25.4,<26",
+    "prometheus-client>=0.22,<1",
+    "redis>=6.2,<7",
+    "scylla-driver>=3.29,<4",
+    "antipiracy-contracts",
+]
+
+[project.scripts]
+crawler2-check = "crawler2.diagnostics.connectivity:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4,<9",
+    "hypothesis>=6.135,<7",
+    "ruff>=0.12,<1",
+    "mypy>=1.17,<2",
+]
+
+[tool.uv.sources]
+antipiracy-contracts = { path = "contracts", editable = true }
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["crawler2"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]  # plain asserts are the pytest idiom
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["crawler2", "contracts/src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["cassandra.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: needs the docker compose stack (run inside the app container or with CRAWLER2_* pointing at it)",
+]

@@ -1,0 +1,13 @@
+[project]
+name = "antipiracy-contracts"
+version = "0.0.1"
+description = "Versioned cross-service contracts shared by crawler2 and fingerprinter (ADR-007)"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/antipiracy_contracts"]

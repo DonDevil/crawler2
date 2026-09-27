@@ -1,0 +1,37 @@
+./contracts
+    # via crawler2
+annotated-types==0.8.0
+    # via pydantic
+click==8.5.0
+    # via geomet
+geomet==1.1.0
+    # via scylla-driver
+prometheus-client==0.26.0
+    # via crawler2
+pydantic==2.13.5
+    # via
+    #   crawler2
+    #   pydantic-settings
+pydantic-core==2.46.5
+    # via pydantic
+pydantic-settings==2.15.0
+    # via crawler2
+python-dotenv==1.2.3
+    # via pydantic-settings
+pyyaml==6.0.3
+    # via scylla-driver
+redis==6.4.0
+    # via crawler2
+scylla-driver==3.29.12
+    # via crawler2
+structlog==25.5.0
+    # via crawler2
+typing-extensions==4.16.0
+    # via
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+typing-inspection==0.4.4
+    # via
+    #   pydantic
+    #   pydantic-settings

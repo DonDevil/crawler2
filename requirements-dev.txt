@@ -1,0 +1,60 @@
+./contracts
+    # via crawler2
+annotated-types==0.8.0
+    # via pydantic
+click==8.5.0
+    # via geomet
+colorama==0.4.6 ; sys_platform == 'win32'
+    # via pytest
+geomet==1.1.0
+    # via scylla-driver
+hypothesis==6.168.2
+iniconfig==2.3.0
+    # via pytest
+librt==0.15.0 ; platform_python_implementation != 'PyPy'
+    # via mypy
+mypy==1.20.2
+mypy-extensions==1.1.0
+    # via mypy
+packaging==26.3
+    # via pytest
+pathspec==1.1.1
+    # via mypy
+pluggy==1.6.0
+    # via pytest
+prometheus-client==0.26.0
+    # via crawler2
+pydantic==2.13.5
+    # via
+    #   crawler2
+    #   pydantic-settings
+pydantic-core==2.46.5
+    # via pydantic
+pydantic-settings==2.15.0
+    # via crawler2
+pygments==2.21.0
+    # via pytest
+pytest==8.4.2
+python-dotenv==1.2.3
+    # via pydantic-settings
+pyyaml==6.0.3
+    # via scylla-driver
+redis==6.4.0
+    # via crawler2
+ruff==0.16.9
+scylla-driver==3.29.12
+    # via crawler2
+sortedcontainers==2.4.0
+    # via hypothesis
+structlog==25.5.0
+    # via crawler2
+typing-extensions==4.16.0
+    # via
+    #   mypy
+    #   pydantic
+    #   pydantic-core
+    #   typing-inspection
+typing-inspection==0.4.4
+    # via
+    #   pydantic
+    #   pydantic-settings
