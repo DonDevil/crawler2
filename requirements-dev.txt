@@ -2,6 +2,8 @@
     # via crawler2
 annotated-types==0.8.0
     # via pydantic
+ast-serialize==0.11.2
+    # via mypy
 click==8.5.0
     # via geomet
 colorama==0.4.6 ; sys_platform == 'win32'
@@ -13,7 +15,7 @@ iniconfig==2.3.0
     # via pytest
 librt==0.15.0 ; platform_python_implementation != 'PyPy'
     # via mypy
-mypy==1.20.2
+mypy==2.3.1
 mypy-extensions==1.1.0
     # via mypy
 packaging==26.3
@@ -34,19 +36,19 @@ pydantic-settings==2.15.0
     # via crawler2
 pygments==2.21.0
     # via pytest
-pytest==8.4.2
+pytest==9.1.1
 python-dotenv==1.2.3
     # via pydantic-settings
 pyyaml==6.0.3
     # via scylla-driver
-redis==6.4.0
+redis==8.1.0
     # via crawler2
 ruff==0.16.9
 scylla-driver==3.29.12
     # via crawler2
 sortedcontainers==2.4.0
     # via hypothesis
-structlog==25.5.0
+structlog==26.1.0
     # via crawler2
 typing-extensions==4.16.0
     # via

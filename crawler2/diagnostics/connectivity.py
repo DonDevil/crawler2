@@ -16,7 +16,6 @@ import urllib.error
 import urllib.request
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
-from typing import cast
 
 import redis
 from cassandra import DriverException
@@ -48,8 +47,7 @@ def check_redis(settings: Settings) -> str:
     try:
         client.ping()
         # Redis TIME is the shared clock for leases/schedules (ADR-006).
-        # redis-py types sync/async responses as one union; this client is sync.
-        seconds, micros = cast(tuple[int, int], client.time())
+        seconds, micros = client.time()
         return f"redis_time={seconds}.{micros:06d}"
     finally:
         client.close()

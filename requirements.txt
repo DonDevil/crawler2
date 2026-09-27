@@ -20,11 +20,11 @@ python-dotenv==1.2.3
     # via pydantic-settings
 pyyaml==6.0.3
     # via scylla-driver
-redis==6.4.0
+redis==8.1.0
     # via crawler2
 scylla-driver==3.29.12
     # via crawler2
-structlog==25.5.0
+structlog==26.1.0
     # via crawler2
 typing-extensions==4.16.0
     # via
