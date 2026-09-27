@@ -1,0 +1,27 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d570138000000000000013",
+  "event_type": "evidence.finalized",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:09:00Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "evidence_finalizer",
+    "instance": "host-1:evidence_finalizer:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "seal": {
+      "evidence_id": "evd_0192a0b3c4d570058000000000000005",
+      "manifest": {
+        "uri": "s3://crawler2-evidence/fixture/manifest.json",
+        "digest": "sha256:05b3abf2579a5eb66403cd78be557fd860633a1fe2103c7642030defe32c657f",
+        "size_bytes": 8,
+        "media_type": "application/json"
+      },
+      "finalized_at": "2026-09-28T10:09:00Z"
+    }
+  }
+}

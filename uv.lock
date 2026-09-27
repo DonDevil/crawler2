@@ -13,8 +13,14 @@ wheels = [
 
 [[package]]
 name = "antipiracy-contracts"
-version = "0.0.1"
+version = "1.0.0"
 source = { editable = "contracts" }
+dependencies = [
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pydantic", specifier = ">=2.13,<3" }]
 
 [[package]]
 name = "ast-serialize"

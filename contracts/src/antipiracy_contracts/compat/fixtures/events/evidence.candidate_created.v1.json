@@ -1,0 +1,44 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d570128000000000000012",
+  "event_type": "evidence.candidate_created",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:08:00Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "evidence_collector",
+    "instance": "host-1:evidence_collector:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "candidate": {
+      "evidence_id": "evd_0192a0b3c4d570058000000000000005",
+      "match_id": "mat_b9df5f3b51018c1abb0052ad84fbdc35",
+      "target": {
+        "target_id": "tgt_0192a0b3c4d570048000000000000004",
+        "version": 2
+      },
+      "content_id": "cnt_f16415a4738d8b7a8988df029866a86d",
+      "media_ids": [
+        "med_65de71ade2b3859a8188df1bb27c533d"
+      ],
+      "page_observation_ids": [
+        "obs_0192a0b3c4d570038000000000000003"
+      ],
+      "artifacts": [
+        {
+          "role": "page_snapshot",
+          "blob": {
+            "uri": "s3://crawler2-raw/fixture/page.html.gz",
+            "digest": "sha256:010f0f7803116eb19217b7e0942139a8d877cfe3df17a77710b73c90f0475aed",
+            "size_bytes": 25,
+            "media_type": "text/html"
+          }
+        }
+      ],
+      "collected_at": "2026-09-28T10:08:00Z"
+    }
+  }
+}

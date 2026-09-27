@@ -1,0 +1,247 @@
+{
+  "$defs": {
+    "Component": {
+      "description": "Logical producers/consumers of events. Each belongs to exactly one service.",
+      "enum": [
+        "crawl_intelligence",
+        "frontier",
+        "crawler_worker",
+        "extraction",
+        "media_registry",
+        "feedback",
+        "evidence_collector",
+        "evidence_finalizer",
+        "evidence_exporter",
+        "target_manager",
+        "encoder",
+        "matcher"
+      ],
+      "title": "Component",
+      "type": "string"
+    },
+    "DiscoveredLink": {
+      "description": "An outgoing link seen in one page version. Links have no ID of their own:\n\na link is the edge (page version -> URL), identified by that pair.",
+      "properties": {
+        "anchor_text": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Anchor Text"
+        },
+        "nofollow": {
+          "default": false,
+          "title": "Nofollow",
+          "type": "boolean"
+        },
+        "relation": {
+          "$ref": "#/$defs/LinkRelation"
+        },
+        "target": {
+          "$ref": "#/$defs/UrlRef"
+        }
+      },
+      "required": [
+        "target",
+        "relation"
+      ],
+      "title": "DiscoveredLink",
+      "type": "object"
+    },
+    "LinkRelation": {
+      "enum": [
+        "anchor",
+        "iframe",
+        "meta_refresh",
+        "canonical",
+        "script_literal",
+        "other"
+      ],
+      "title": "LinkRelation",
+      "type": "string"
+    },
+    "Producer": {
+      "description": "Who emitted an event: service, component and the concrete process instance.",
+      "properties": {
+        "component": {
+          "$ref": "#/$defs/Component"
+        },
+        "instance": {
+          "pattern": "^[A-Za-z0-9._:-]{1,200}$",
+          "title": "Instance",
+          "type": "string"
+        },
+        "service": {
+          "$ref": "#/$defs/ServiceName"
+        }
+      },
+      "required": [
+        "service",
+        "component",
+        "instance"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "ServiceName": {
+      "description": "Deployable services. Each owns its own keyspace in the shared Scylla cluster.",
+      "enum": [
+        "crawler2",
+        "fingerprinter"
+      ],
+      "title": "ServiceName",
+      "type": "string"
+    },
+    "UrlRef": {
+      "description": "A canonical URL together with its derived IDs.\n\nCarrying the IDs saves every consumer from re-deriving them; validation\nguarantees they match the URL, so a producer cannot send a mismatched pair.",
+      "properties": {
+        "domain_id": {
+          "pattern": "^dom_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "url_id": {
+          "pattern": "^url_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Url Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "url_id",
+        "domain_id"
+      ],
+      "title": "UrlRef",
+      "type": "object"
+    },
+    "UrlsDiscovered": {
+      "description": "Outgoing links extracted from one page observation, as one batch.",
+      "properties": {
+        "links": {
+          "items": {
+            "$ref": "#/$defs/DiscoveredLink"
+          },
+          "maxItems": 10000,
+          "minItems": 1,
+          "title": "Links",
+          "type": "array"
+        },
+        "page": {
+          "$ref": "#/$defs/UrlRef"
+        },
+        "page_observation_id": {
+          "pattern": "^obs_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Page Observation Id",
+          "type": "string"
+        },
+        "page_version_id": {
+          "pattern": "^pgv_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Page Version Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page_observation_id",
+        "page",
+        "page_version_id",
+        "links"
+      ],
+      "title": "UrlsDiscovered",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "causation_id": {
+      "anyOf": [
+        {
+          "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Causation Id"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "pattern": "^cor_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Correlation Id"
+    },
+    "envelope_version": {
+      "const": 1,
+      "title": "Envelope Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z_]*\\.[a-z][a-z_]*$",
+      "title": "Event Type",
+      "type": "string"
+    },
+    "metadata": {
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9_.-]{0,63}$": {
+          "maxLength": 500,
+          "type": "string"
+        }
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/UrlsDiscovered"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "schema_version": {
+      "pattern": "^[1-9][0-9]{0,3}\\.(0|[1-9][0-9]{0,3})$",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "envelope_version",
+    "event_id",
+    "event_type",
+    "schema_version",
+    "occurred_at",
+    "producer",
+    "payload"
+  ],
+  "title": "urls.discovered v1.0",
+  "type": "object"
+}

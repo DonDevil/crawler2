@@ -1,6 +1,7 @@
 # ADR-001 — Repository layout and logical boundaries
 
-Status: Accepted (P0, 2026-09-28)
+Status: Accepted (P0, 2026-09-28); P1 contract location amended by
+[ADR-010](ADR-010-contract-package-scope.md)
 
 ## Context
 

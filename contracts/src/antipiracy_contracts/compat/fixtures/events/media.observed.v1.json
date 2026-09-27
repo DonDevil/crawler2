@@ -1,0 +1,48 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700c800000000000000c",
+  "event_type": "media.observed",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:02:00Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "media_registry",
+    "instance": "host-1:media_registry:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "observation": {
+      "media": {
+        "media_id": "med_65de71ade2b3859a8188df1bb27c533d",
+        "locator": {
+          "url": "https://cdn.example.net/v/bbb_720p.mp4",
+          "url_id": "url_be5c07fd65be82b7a65036f0f1ab176c",
+          "domain_id": "dom_4936eb8a4a5b81c495c47e081def7f2d"
+        },
+        "kind": "video_file"
+      },
+      "page_observation_id": "obs_0192a0b3c4d570038000000000000003",
+      "page": {
+        "url": "https://watch-free.example/movie/big-buck-bunny",
+        "url_id": "url_b416f49a119f874692803d0f01371df9",
+        "domain_id": "dom_c8da4e1353668c298a73cce74c4534a2"
+      },
+      "page_version_id": "pgv_85377cd1b3988963ba3bc38b8a20483f",
+      "observed_at": "2026-09-28T10:02:00Z",
+      "probe_status": "probed",
+      "content": {
+        "scheme": "sampled-bytes/v1",
+        "digest": "sha256:7bdf73ecb3a42ed89463b806f792557630cda3fc0f3cd6f5c710f92c122560ec",
+        "content_id": "cnt_f16415a4738d8b7a8988df029866a86d"
+      },
+      "hints": {
+        "content_length": 73400320,
+        "etag": null,
+        "media_type": "video/mp4",
+        "duration_seconds": null
+      }
+    }
+  }
+}

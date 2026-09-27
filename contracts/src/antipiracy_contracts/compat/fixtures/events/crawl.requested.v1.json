@@ -1,0 +1,29 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d570078000000000000007",
+  "event_type": "crawl.requested",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:00:00Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "crawl_intelligence",
+    "instance": "host-1:crawl_intelligence:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "url": {
+      "url": "https://watch-free.example/movie/big-buck-bunny",
+      "url_id": "url_b416f49a119f874692803d0f01371df9",
+      "domain_id": "dom_c8da4e1353668c298a73cce74c4534a2"
+    },
+    "reason": "target_discovery",
+    "priority": 80,
+    "capability": "http",
+    "not_before": null,
+    "relevant_targets": [
+      "tgt_0192a0b3c4d570048000000000000004"
+    ]
+  }
+}

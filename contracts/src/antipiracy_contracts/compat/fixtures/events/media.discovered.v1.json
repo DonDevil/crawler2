@@ -1,0 +1,36 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700b800000000000000b",
+  "event_type": "media.discovered",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:01:02Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "extraction",
+    "instance": "host-1:extraction:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "page_observation_id": "obs_0192a0b3c4d570038000000000000003",
+    "page": {
+      "url": "https://watch-free.example/movie/big-buck-bunny",
+      "url_id": "url_b416f49a119f874692803d0f01371df9",
+      "domain_id": "dom_c8da4e1353668c298a73cce74c4534a2"
+    },
+    "page_version_id": "pgv_85377cd1b3988963ba3bc38b8a20483f",
+    "references": [
+      {
+        "locator": {
+          "url": "https://cdn.example.net/v/bbb_720p.mp4",
+          "url_id": "url_be5c07fd65be82b7a65036f0f1ab176c",
+          "domain_id": "dom_4936eb8a4a5b81c495c47e081def7f2d"
+        },
+        "kind": "video_file",
+        "method": "source_element",
+        "declared_type": "video/mp4"
+      }
+    ]
+  }
+}

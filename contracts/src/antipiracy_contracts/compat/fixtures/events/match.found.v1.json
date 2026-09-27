@@ -1,0 +1,41 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d570118000000000000011",
+  "event_type": "match.found",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:07:00Z",
+  "producer": {
+    "service": "fingerprinter",
+    "component": "matcher",
+    "instance": "fp-gpu-1:matcher:311:0c1d2e3f40516273849506a7b8c9d0e1"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "match": {
+      "match_id": "mat_b9df5f3b51018c1abb0052ad84fbdc35",
+      "content_id": "cnt_f16415a4738d8b7a8988df029866a86d",
+      "representation_id": "rep_4892961caa1a8bc0a7e78efba7b17b4c",
+      "target": {
+        "target_id": "tgt_0192a0b3c4d570048000000000000004",
+        "version": 2
+      },
+      "target_representation_id": "rep_9d0a1093724f80ad849ace6ed16a57a8",
+      "technique": {
+        "name": "temporal-alignment",
+        "version": "2.1"
+      },
+      "verdict": "confirmed",
+      "confidence": 0.93,
+      "segments": [
+        {
+          "media_offset_seconds": 12.0,
+          "target_offset_seconds": 0.0,
+          "duration_seconds": 120.0
+        }
+      ],
+      "decided_at": "2026-09-28T10:07:00Z"
+    }
+  }
+}

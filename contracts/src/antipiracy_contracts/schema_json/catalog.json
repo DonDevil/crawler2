@@ -1,0 +1,242 @@
+{
+  "envelope_version": 1,
+  "events": [
+    {
+      "consumers": [
+        "frontier"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "crawl.requested",
+      "idempotency_key": [
+        "url.url_id",
+        "reason",
+        "not_before"
+      ],
+      "meaning": "A URL should be crawled (seed, recrawl, discovery or feedback decision).",
+      "ordering": "none: the frontier merges requests per url_id (highest priority wins)",
+      "producer": "crawl_intelligence",
+      "producer_service": "crawler2",
+      "schema": "events/crawl.requested.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "crawl_intelligence"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "fetch.completed",
+      "idempotency_key": [
+        "attempt.fetch_attempt_id"
+      ],
+      "meaning": "A fetch attempt ended; input to fetch-profile and source learning.",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "crawler_worker",
+      "producer_service": "crawler2",
+      "schema": "events/fetch.completed.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "extraction",
+        "crawl_intelligence"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "page.observed",
+      "idempotency_key": [
+        "observation.observation_id"
+      ],
+      "meaning": "A page observation was durably recorded (raw snapshot referenced).",
+      "ordering": "none: compare observed_at, never arrival order, to find the latest",
+      "producer": "crawler_worker",
+      "producer_service": "crawler2",
+      "schema": "events/page.observed.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "crawl_intelligence",
+        "frontier"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "urls.discovered",
+      "idempotency_key": [
+        "page_observation_id"
+      ],
+      "meaning": "Outgoing links of one page observation (frontier applies default admission so crawling works with intelligence stopped, plan B.5 #1).",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "extraction",
+      "producer_service": "crawler2",
+      "schema": "events/urls.discovered.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "media_registry"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "media.discovered",
+      "idempotency_key": [
+        "page_observation_id"
+      ],
+      "meaning": "Media references found on one page observation.",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "extraction",
+      "producer_service": "crawler2",
+      "schema": "events/media.discovered.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "crawl_intelligence",
+        "evidence_collector"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "media.observed",
+      "idempotency_key": [
+        "observation.page_observation_id",
+        "observation.media.media_id"
+      ],
+      "meaning": "A media reference was resolved to a media entity (and possibly probed).",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "media_registry",
+      "producer_service": "crawler2",
+      "schema": "events/media.observed.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "encoder"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "encode.requested",
+      "idempotency_key": [
+        "content.content_id",
+        "required_spec"
+      ],
+      "meaning": "A content identity lacks a required representation.",
+      "ordering": "none: priority orders work inside the encoder's queue, not delivery",
+      "producer": "media_registry",
+      "producer_service": "crawler2",
+      "schema": "events/encode.requested.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "media_registry",
+        "matcher"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "representation.ready",
+      "idempotency_key": [
+        "representation.representation_id"
+      ],
+      "meaning": "A representation of a content identity is stored and usable.",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "encoder",
+      "producer_service": "fingerprinter",
+      "schema": "events/representation.ready.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "media_registry"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "encode.failed",
+      "idempotency_key": [
+        "request_id",
+        "attempt"
+      ],
+      "meaning": "An encode request failed; retryable says whether to try again.",
+      "ordering": "none: a later representation.ready supersedes any failure",
+      "producer": "encoder",
+      "producer_service": "fingerprinter",
+      "schema": "events/encode.failed.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "crawl_intelligence",
+        "matcher"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "target.registered",
+      "idempotency_key": [
+        "target.ref.target_id",
+        "target.ref.version"
+      ],
+      "meaning": "A target (version) is active; triggers discovery and backfill matching.",
+      "ordering": "none: consumers keep the highest version per target_id",
+      "producer": "target_manager",
+      "producer_service": "fingerprinter",
+      "schema": "events/target.registered.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "crawl_intelligence",
+        "matcher"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "target.retired",
+      "idempotency_key": [
+        "target_id"
+      ],
+      "meaning": "A target is no longer searched for.",
+      "ordering": "none: retirement is terminal and wins over any registration",
+      "producer": "target_manager",
+      "producer_service": "fingerprinter",
+      "schema": "events/target.retired.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "feedback",
+        "evidence_collector"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "match.found",
+      "idempotency_key": [
+        "match.match_id"
+      ],
+      "meaning": "Content verified against a target version, with confidence/technique.",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "matcher",
+      "producer_service": "fingerprinter",
+      "schema": "events/match.found.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "evidence_finalizer"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "evidence.candidate_created",
+      "idempotency_key": [
+        "candidate.evidence_id"
+      ],
+      "meaning": "Provenance for a match has been collected and awaits finalization.",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "evidence_collector",
+      "producer_service": "crawler2",
+      "schema": "events/evidence.candidate_created.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
+        "evidence_exporter"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "evidence.finalized",
+      "idempotency_key": [
+        "seal.evidence_id"
+      ],
+      "meaning": "An evidence item is sealed (write-once manifest pinned by digest).",
+      "ordering": "none: consumers must tolerate any order and redelivery",
+      "producer": "evidence_finalizer",
+      "producer_service": "crawler2",
+      "schema": "events/evidence.finalized.v1.json",
+      "schema_version": "1.0"
+    }
+  ]
+}

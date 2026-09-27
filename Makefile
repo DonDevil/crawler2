@@ -2,7 +2,7 @@
 export UV_PROJECT_ENVIRONMENT := env
 COMPOSE ?= docker compose
 
-.PHONY: install requirements lint format typecheck test check up up-two-host down validate-stack
+.PHONY: install requirements schemas lint format typecheck test check up up-two-host down validate-stack
 
 install:            ## create/sync ./env from uv.lock (incl. dev tools)
 	uv sync --frozen
@@ -10,6 +10,9 @@ install:            ## create/sync ./env from uv.lock (incl. dev tools)
 requirements:       ## re-export pinned requirements*.txt from uv.lock
 	uv export -q --format requirements-txt --no-hashes --no-dev --no-emit-project --no-editable --no-header -o requirements.txt
 	uv export -q --format requirements-txt --no-hashes --no-emit-project --no-editable --no-header -o requirements-dev.txt
+
+schemas:            ## regenerate contract JSON Schemas (committed; drift fails tests)
+	env/bin/python -m antipiracy_contracts.schemas
 
 lint:
 	env/bin/ruff check .

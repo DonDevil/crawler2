@@ -1,0 +1,390 @@
+{
+  "$defs": {
+    "BlobRef": {
+      "description": "An immutable stored object, located by an opaque URI and pinned by its digest.\n\nThe key layout behind ``uri`` belongs to the storage layer (P2); consumers\nonly dereference it and verify ``digest``. Because the digest is part of\nthe reference, a reference can never silently point at different bytes.",
+      "properties": {
+        "digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Digest",
+          "type": "string"
+        },
+        "media_type": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Media Type"
+        },
+        "size_bytes": {
+          "minimum": 0,
+          "title": "Size Bytes",
+          "type": "integer"
+        },
+        "uri": {
+          "maxLength": 2048,
+          "pattern": "^[a-z][a-z0-9+.-]*://\\S+$",
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri",
+        "digest",
+        "size_bytes"
+      ],
+      "title": "BlobRef",
+      "type": "object"
+    },
+    "Component": {
+      "description": "Logical producers/consumers of events. Each belongs to exactly one service.",
+      "enum": [
+        "crawl_intelligence",
+        "frontier",
+        "crawler_worker",
+        "extraction",
+        "media_registry",
+        "feedback",
+        "evidence_collector",
+        "evidence_finalizer",
+        "evidence_exporter",
+        "target_manager",
+        "encoder",
+        "matcher"
+      ],
+      "title": "Component",
+      "type": "string"
+    },
+    "FetchCapability": {
+      "description": "What a fetch could do, independent of which library implemented it.",
+      "enum": [
+        "http",
+        "browser",
+        "tor_http",
+        "tor_browser"
+      ],
+      "title": "FetchCapability",
+      "type": "string"
+    },
+    "HttpValidators": {
+      "description": "Conditional-request validators as sent by the server (opaque strings).",
+      "properties": {
+        "etag": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Etag"
+        },
+        "last_modified": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Last Modified"
+        }
+      },
+      "title": "HttpValidators",
+      "type": "object"
+    },
+    "PageObservation": {
+      "description": "What one successful fetch saw at a URL, at one instant. Append-only.\n\nAny HTTP status is an observation (a 404 is knowledge too). The page\nversion is derived from the final URL and the exact body bytes, so an\nunchanged page observed again yields the same ``page_version_id``.",
+      "properties": {
+        "body_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Body Digest",
+          "type": "string"
+        },
+        "body_size": {
+          "minimum": 0,
+          "title": "Body Size",
+          "type": "integer"
+        },
+        "capability": {
+          "$ref": "#/$defs/FetchCapability"
+        },
+        "content_type": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content Type"
+        },
+        "fetch_attempt_id": {
+          "pattern": "^fat_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Fetch Attempt Id",
+          "type": "string"
+        },
+        "final": {
+          "$ref": "#/$defs/UrlRef"
+        },
+        "http_status": {
+          "maximum": 599,
+          "minimum": 100,
+          "title": "Http Status",
+          "type": "integer"
+        },
+        "observation_id": {
+          "pattern": "^obs_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "page_version_id": {
+          "pattern": "^pgv_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Page Version Id",
+          "type": "string"
+        },
+        "redirects": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/RedirectHop"
+          },
+          "title": "Redirects",
+          "type": "array"
+        },
+        "requested": {
+          "$ref": "#/$defs/UrlRef"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BlobRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "validators": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HttpValidators"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "observation_id",
+        "fetch_attempt_id",
+        "requested",
+        "final",
+        "capability",
+        "observed_at",
+        "http_status",
+        "body_digest",
+        "body_size",
+        "page_version_id"
+      ],
+      "title": "PageObservation",
+      "type": "object"
+    },
+    "PageObserved": {
+      "description": "A page observation was durably recorded.",
+      "properties": {
+        "observation": {
+          "$ref": "#/$defs/PageObservation"
+        }
+      },
+      "required": [
+        "observation"
+      ],
+      "title": "PageObserved",
+      "type": "object"
+    },
+    "Producer": {
+      "description": "Who emitted an event: service, component and the concrete process instance.",
+      "properties": {
+        "component": {
+          "$ref": "#/$defs/Component"
+        },
+        "instance": {
+          "pattern": "^[A-Za-z0-9._:-]{1,200}$",
+          "title": "Instance",
+          "type": "string"
+        },
+        "service": {
+          "$ref": "#/$defs/ServiceName"
+        }
+      },
+      "required": [
+        "service",
+        "component",
+        "instance"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "RedirectHop": {
+      "properties": {
+        "location": {
+          "$ref": "#/$defs/UrlRef"
+        },
+        "status": {
+          "maximum": 599,
+          "minimum": 100,
+          "title": "Status",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "location",
+        "status"
+      ],
+      "title": "RedirectHop",
+      "type": "object"
+    },
+    "ServiceName": {
+      "description": "Deployable services. Each owns its own keyspace in the shared Scylla cluster.",
+      "enum": [
+        "crawler2",
+        "fingerprinter"
+      ],
+      "title": "ServiceName",
+      "type": "string"
+    },
+    "UrlRef": {
+      "description": "A canonical URL together with its derived IDs.\n\nCarrying the IDs saves every consumer from re-deriving them; validation\nguarantees they match the URL, so a producer cannot send a mismatched pair.",
+      "properties": {
+        "domain_id": {
+          "pattern": "^dom_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "url_id": {
+          "pattern": "^url_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Url Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "url_id",
+        "domain_id"
+      ],
+      "title": "UrlRef",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "causation_id": {
+      "anyOf": [
+        {
+          "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Causation Id"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "pattern": "^cor_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Correlation Id"
+    },
+    "envelope_version": {
+      "const": 1,
+      "title": "Envelope Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z_]*\\.[a-z][a-z_]*$",
+      "title": "Event Type",
+      "type": "string"
+    },
+    "metadata": {
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9_.-]{0,63}$": {
+          "maxLength": 500,
+          "type": "string"
+        }
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/PageObserved"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "schema_version": {
+      "pattern": "^[1-9][0-9]{0,3}\\.(0|[1-9][0-9]{0,3})$",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "envelope_version",
+    "event_id",
+    "event_type",
+    "schema_version",
+    "occurred_at",
+    "producer",
+    "payload"
+  ],
+  "title": "page.observed v1.0",
+  "type": "object"
+}

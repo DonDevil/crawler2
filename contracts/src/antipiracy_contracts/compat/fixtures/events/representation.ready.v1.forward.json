@@ -1,0 +1,39 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700d800000000000000d",
+  "event_type": "representation.ready",
+  "schema_version": "1.7",
+  "occurred_at": "2026-09-28T10:05:00Z",
+  "producer": {
+    "service": "fingerprinter",
+    "component": "encoder",
+    "instance": "fp-gpu-1:encoder:311:0c1d2e3f40516273849506a7b8c9d0e1",
+    "region": "eu-1"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "representation": {
+      "representation_id": "rep_4892961caa1a8bc0a7e78efba7b17b4c",
+      "content_id": "cnt_f16415a4738d8b7a8988df029866a86d",
+      "spec": {
+        "name": "visual-temporal",
+        "version": "1.0.0",
+        "config_digest": "sha256:b2fa0806b93acc76e9be8daecd8bb93c5552d6421405184ac4f95333b73ca197"
+      },
+      "created_at": "2026-09-28T10:05:00Z",
+      "segment_count": 24,
+      "media_duration_seconds": 596.5,
+      "vector_dim": 768
+    },
+    "future_field": {
+      "nested": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "delivery_hint": "unknown envelope field from a future minor"
+}

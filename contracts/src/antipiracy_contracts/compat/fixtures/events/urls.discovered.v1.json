@@ -1,0 +1,46 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700a800000000000000a",
+  "event_type": "urls.discovered",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:01:02Z",
+  "producer": {
+    "service": "crawler2",
+    "component": "extraction",
+    "instance": "host-1:extraction:4242:9f0c2e7a1b3d4c5e8f90a1b2c3d4e5f6"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "page_observation_id": "obs_0192a0b3c4d570038000000000000003",
+    "page": {
+      "url": "https://watch-free.example/movie/big-buck-bunny",
+      "url_id": "url_b416f49a119f874692803d0f01371df9",
+      "domain_id": "dom_c8da4e1353668c298a73cce74c4534a2"
+    },
+    "page_version_id": "pgv_85377cd1b3988963ba3bc38b8a20483f",
+    "links": [
+      {
+        "target": {
+          "url": "https://watch-free.example/movie/elephants-dream",
+          "url_id": "url_71db1116ac2d845a8d0ece6a7bbb0a66",
+          "domain_id": "dom_c8da4e1353668c298a73cce74c4534a2"
+        },
+        "relation": "anchor",
+        "anchor_text": "Elephants Dream",
+        "nofollow": false
+      },
+      {
+        "target": {
+          "url": "https://player.example.org/embed/77",
+          "url_id": "url_f3d385f33d4289e6a7e078a1f75fef5d",
+          "domain_id": "dom_31b2343087948dc7b27d8394e2c4e200"
+        },
+        "relation": "iframe",
+        "anchor_text": null,
+        "nofollow": false
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 # ADR-007 — Versioned cross-repository contract package
 
-Status: Accepted (P0, 2026-09-28)
+Status: Accepted (P0, 2026-09-28); scope and schema source amended by
+[ADR-010](ADR-010-contract-package-scope.md) (P1)
 
 ## Context
 

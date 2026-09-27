@@ -28,6 +28,7 @@ prometheus-client==0.26.0
     # via crawler2
 pydantic==2.13.5
     # via
+    #   antipiracy-contracts
     #   crawler2
     #   pydantic-settings
 pydantic-core==2.46.5

@@ -599,7 +599,7 @@ consumes `representation.ready` / `match.found`).
   aggregation); expected vector volume (segments × media) at 1 and 3
   years; RAM available for an index on a 15 GB host shared with the crawler.
 - **Design:**
-  - **Index choice (ADR-008) is decided by measurement, not up front.**
+  - **Index choice (next free ADR number; ADR-008…011 were taken by P1) is decided by measurement, not up front.**
     Sequence: estimate vector volume (segments × media at 1 and 3 years)
     → dimensionality (768 for DINOv2-base; evaluate PCA/quantization) →
     RAM/disk estimate → benchmark ANN recall@k + latency on real vectors

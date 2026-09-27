@@ -51,6 +51,13 @@ strict = true
 plugins = ["pydantic.mypy"]
 files = ["crawler2", "contracts/src", "tests"]
 
+# Producers construct contract models in code; unknown keyword arguments must
+# fail type checking even though the models ignore unknown fields at runtime
+# (consumer forward compatibility, ADR-009).
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+
 [[tool.mypy.overrides]]
 module = ["cassandra.*"]
 ignore_missing_imports = true

@@ -1,9 +1,11 @@
 [project]
 name = "antipiracy-contracts"
-version = "0.0.1"
-description = "Versioned cross-service contracts shared by crawler2 and fingerprinter (ADR-007)"
+version = "1.0.0"
+description = "Versioned V2 contracts: IDs, domain models and events (ADR-007, ADR-010)"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic>=2.13,<3",
+]
 
 [build-system]
 requires = ["hatchling>=1.27"]

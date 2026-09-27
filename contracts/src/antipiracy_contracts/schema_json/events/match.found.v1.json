@@ -1,0 +1,293 @@
+{
+  "$defs": {
+    "AlignedSegment": {
+      "description": "Where in the media and in the target the verified overlap lies.",
+      "properties": {
+        "duration_seconds": {
+          "exclusiveMinimum": 0,
+          "title": "Duration Seconds",
+          "type": "number"
+        },
+        "media_offset_seconds": {
+          "minimum": 0,
+          "title": "Media Offset Seconds",
+          "type": "number"
+        },
+        "target_offset_seconds": {
+          "minimum": 0,
+          "title": "Target Offset Seconds",
+          "type": "number"
+        }
+      },
+      "required": [
+        "media_offset_seconds",
+        "target_offset_seconds",
+        "duration_seconds"
+      ],
+      "title": "AlignedSegment",
+      "type": "object"
+    },
+    "Component": {
+      "description": "Logical producers/consumers of events. Each belongs to exactly one service.",
+      "enum": [
+        "crawl_intelligence",
+        "frontier",
+        "crawler_worker",
+        "extraction",
+        "media_registry",
+        "feedback",
+        "evidence_collector",
+        "evidence_finalizer",
+        "evidence_exporter",
+        "target_manager",
+        "encoder",
+        "matcher"
+      ],
+      "title": "Component",
+      "type": "string"
+    },
+    "MatchFound": {
+      "description": "The matcher verified content against a target version.",
+      "properties": {
+        "match": {
+          "$ref": "#/$defs/MatchResult"
+        }
+      },
+      "required": [
+        "match"
+      ],
+      "title": "MatchFound",
+      "type": "object"
+    },
+    "MatchResult": {
+      "description": "A positive comparison of one content identity against one target version.\n\nKeyed by content identity, not by URL: crawler2 maps it back to media,\npages and observations through its own registry. Non-matches are not\nevents — with ANN candidate reduction there is no per-pair job whose\nnegative outcome would be meaningful.",
+      "properties": {
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "content_id": {
+          "pattern": "^cnt_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Content Id",
+          "type": "string"
+        },
+        "decided_at": {
+          "format": "date-time",
+          "title": "Decided At",
+          "type": "string"
+        },
+        "match_id": {
+          "pattern": "^mat_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Match Id",
+          "type": "string"
+        },
+        "representation_id": {
+          "pattern": "^rep_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Representation Id",
+          "type": "string"
+        },
+        "segments": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/AlignedSegment"
+          },
+          "title": "Segments",
+          "type": "array"
+        },
+        "target": {
+          "$ref": "#/$defs/TargetRef"
+        },
+        "target_representation_id": {
+          "pattern": "^rep_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Target Representation Id",
+          "type": "string"
+        },
+        "technique": {
+          "$ref": "#/$defs/Technique"
+        },
+        "verdict": {
+          "$ref": "#/$defs/MatchVerdict"
+        }
+      },
+      "required": [
+        "match_id",
+        "content_id",
+        "representation_id",
+        "target",
+        "target_representation_id",
+        "technique",
+        "verdict",
+        "confidence",
+        "decided_at"
+      ],
+      "title": "MatchResult",
+      "type": "object"
+    },
+    "MatchVerdict": {
+      "enum": [
+        "confirmed",
+        "probable"
+      ],
+      "title": "MatchVerdict",
+      "type": "string"
+    },
+    "Producer": {
+      "description": "Who emitted an event: service, component and the concrete process instance.",
+      "properties": {
+        "component": {
+          "$ref": "#/$defs/Component"
+        },
+        "instance": {
+          "pattern": "^[A-Za-z0-9._:-]{1,200}$",
+          "title": "Instance",
+          "type": "string"
+        },
+        "service": {
+          "$ref": "#/$defs/ServiceName"
+        }
+      },
+      "required": [
+        "service",
+        "component",
+        "instance"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "ServiceName": {
+      "description": "Deployable services. Each owns its own keyspace in the shared Scylla cluster.",
+      "enum": [
+        "crawler2",
+        "fingerprinter"
+      ],
+      "title": "ServiceName",
+      "type": "string"
+    },
+    "TargetRef": {
+      "description": "A specific version of a target. Matches are always against a version.",
+      "properties": {
+        "target_id": {
+          "pattern": "^tgt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Target Id",
+          "type": "string"
+        },
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "target_id",
+        "version"
+      ],
+      "title": "TargetRef",
+      "type": "object"
+    },
+    "Technique": {
+      "description": "The comparison method, versioned so a result can be reproduced or re-evaluated.",
+      "properties": {
+        "name": {
+          "pattern": "^[a-z0-9][a-z0-9_.-]{0,63}$",
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.+-]{0,63}$",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "title": "Technique",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "causation_id": {
+      "anyOf": [
+        {
+          "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Causation Id"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "pattern": "^cor_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Correlation Id"
+    },
+    "envelope_version": {
+      "const": 1,
+      "title": "Envelope Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z_]*\\.[a-z][a-z_]*$",
+      "title": "Event Type",
+      "type": "string"
+    },
+    "metadata": {
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9_.-]{0,63}$": {
+          "maxLength": 500,
+          "type": "string"
+        }
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/MatchFound"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "schema_version": {
+      "pattern": "^[1-9][0-9]{0,3}\\.(0|[1-9][0-9]{0,3})$",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "envelope_version",
+    "event_id",
+    "event_type",
+    "schema_version",
+    "occurred_at",
+    "producer",
+    "payload"
+  ],
+  "title": "match.found v1.0",
+  "type": "object"
+}

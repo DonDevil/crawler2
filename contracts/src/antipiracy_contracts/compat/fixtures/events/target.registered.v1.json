@@ -1,0 +1,30 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700f800000000000000f",
+  "event_type": "target.registered",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-01T09:00:00Z",
+  "producer": {
+    "service": "fingerprinter",
+    "component": "target_manager",
+    "instance": "fp-gpu-1:target_manager:311:0c1d2e3f40516273849506a7b8c9d0e1"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": null,
+  "metadata": {},
+  "payload": {
+    "target": {
+      "ref": {
+        "target_id": "tgt_0192a0b3c4d570048000000000000004",
+        "version": 2
+      },
+      "title": "Big Buck Bunny",
+      "kind": "movie",
+      "aliases": [
+        "BBB"
+      ],
+      "release_year": 2008,
+      "registered_at": "2026-09-01T09:00:00Z"
+    }
+  }
+}

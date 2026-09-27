@@ -1,0 +1,28 @@
+{
+  "envelope_version": 1,
+  "event_id": "evt_0192a0b3c4d5700e800000000000000e",
+  "event_type": "encode.failed",
+  "schema_version": "1.0",
+  "occurred_at": "2026-09-28T10:03:00Z",
+  "producer": {
+    "service": "fingerprinter",
+    "component": "encoder",
+    "instance": "fp-gpu-1:encoder:311:0c1d2e3f40516273849506a7b8c9d0e1"
+  },
+  "correlation_id": "cor_0192a0b3c4d570018000000000000001",
+  "causation_id": "evt_0192a0b3c4d570068000000000000006",
+  "metadata": {},
+  "payload": {
+    "request_id": "evt_0192a0b3c4d570068000000000000006",
+    "content_id": "cnt_f16415a4738d8b7a8988df029866a86d",
+    "failure": "source_forbidden",
+    "retryable": true,
+    "attempt": 1,
+    "spec": {
+      "name": "visual-temporal",
+      "version": "1.0.0",
+      "config_digest": "sha256:b2fa0806b93acc76e9be8daecd8bb93c5552d6421405184ac4f95333b73ca197"
+    },
+    "detail": "HTTP 403 from media host"
+  }
+}

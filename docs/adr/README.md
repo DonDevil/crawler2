@@ -8,7 +8,11 @@
 | [004](ADR-004-redis-streams-events.md) | Redis Streams as event transport, with an outbox | Accepted |
 | [005](ADR-005-legal-compliance.md) | Legal / compliance posture | **Open** |
 | [006](ADR-006-multi-host-topology.md) | Multi-host topology, host identity and time | Accepted |
-| [007](ADR-007-contract-package.md) | Versioned cross-repository contract package | Accepted |
+| [007](ADR-007-contract-package.md) | Versioned cross-repository contract package | Accepted (amended by 010) |
+| [008](ADR-008-identity-scheme.md) | Identity scheme: typed, prefixed UUIDs; derived vs allocated | Accepted |
+| [009](ADR-009-event-envelope-and-evolution.md) | Event envelope, ownership catalog and contract evolution | Accepted |
+| [010](ADR-010-contract-package-scope.md) | Contract package scope and schema source of truth | Accepted |
+| [011](ADR-011-fingerprinter-boundary.md) | crawler2 ↔ fingerprinter boundary and data ownership | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

@@ -1,7 +1,7 @@
-"""Shared crawler2 <-> fingerprinter contracts (ADR-007).
+"""Versioned V2 contracts: identities, domain models and events (ADR-007, ADR-010).
 
-P0 establishes only the package boundary and its version. Schemas and
-generated models are added in P1; consumers pin this version.
+Runtime dependency: pydantic only. Nothing here may import crawler2,
+fingerprinter code or infrastructure clients.
 """
 
-__version__ = "0.0.1"
+__version__ = "1.0.0"
