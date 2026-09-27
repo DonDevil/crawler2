@@ -26,7 +26,8 @@ structlog 26.1.0, prometheus-client 0.26.0, redis 8.1.0, scylla-driver
 
 ```python
 from crawler2.core.configuration import Settings, WorkerRole
-settings = Settings()            # reads CRAWLER2_* from the environment
+
+settings = Settings()  # reads CRAWLER2_* from the environment
 settings.host_id, settings.roles, settings.redis.host, settings.scylla.contact_points
 ```
 
@@ -47,7 +48,7 @@ settings.host_id, settings.roles, settings.redis.host, settings.scylla.contact_p
 
 ```python
 ident = WorkerIdentity.create(settings.host_id, WorkerRole.HTTP)
-str(ident)   # "host-1:http:4242:9f0c…(32 hex)"
+str(ident)  # "host-1:http:4242:9f0c…(32 hex)"
 WorkerIdentity.parse(str(ident)) == ident
 ```
 
@@ -58,7 +59,7 @@ Used by every claim/event/evidence record from P3 on.
 ### `core/observability/` — logging and metrics
 
 ```python
-configure_logging(settings, role="http")        # once per process
+configure_logging(settings, role="http")  # once per process
 log = get_logger("frontier")
 with bind_correlation_id() as cid:
     log.info("url_claimed", url=url)
@@ -69,7 +70,7 @@ with bind_correlation_id() as cid:
 metrics = Metrics(settings)
 metrics.counter("fetches", "Fetch attempts", labels=["outcome"]).labels(outcome="ok").inc()
 metrics.histogram("fetch_seconds", "Fetch latency").observe(0.2)
-metrics.serve()      # /metrics on CRAWLER2_METRICS__PORT (default 9100)
+metrics.serve()  # /metrics on CRAWLER2_METRICS__PORT (default 9100)
 ```
 
 - JSON (default) or console rendering; level filtering from settings.
