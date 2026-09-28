@@ -13,6 +13,9 @@
 | [009](ADR-009-event-envelope-and-evolution.md) | Event envelope, ownership catalog and contract evolution | Accepted |
 | [010](ADR-010-contract-package-scope.md) | Contract package scope and schema source of truth | Accepted |
 | [011](ADR-011-fingerprinter-boundary.md) | crawler2 ↔ fingerprinter boundary and data ownership | Accepted |
+| [012](ADR-012-scylla-storage-model.md) | Scylla storage model: query tables, convergent writes, bounded partitions | Accepted |
+| [013](ADR-013-outbox-and-event-delivery.md) | Outbox, relay and consumer idempotency | Accepted |
+| [014](ADR-014-object-store-layout.md) | Object-store key layout and integrity | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

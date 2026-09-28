@@ -1,0 +1,466 @@
+{
+  "keyspace": "crawler2_bench",
+  "gate_bytes": 100000000,
+  "tables": [
+    {
+      "table": "fetch_attempts",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 770,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "fetch_attempts_by_domain_day",
+      "scenario": "S1a",
+      "what": "1M fetches of one domain in one day",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "shard_rows": {
+        "min": 62053,
+        "max": 62937,
+        "mean": 62500.0,
+        "stdev": 234.5
+      },
+      "max_partition_bytes": 5839588,
+      "exact_partition_bytes": 5410957,
+      "rows_in_largest": 62937,
+      "bytes_per_row": 86,
+      "over_gate": false
+    },
+    {
+      "table": "fetch_attempts_by_url",
+      "scenario": "S4b",
+      "what": "one URL fetched every minute for 31 days (30-day TTL window)",
+      "logical_rows": 44640,
+      "shards": 1,
+      "shard_rows": {
+        "min": 44640,
+        "max": 44640,
+        "mean": 44640.0,
+        "stdev": 0.0
+      },
+      "max_partition_bytes": 2816159,
+      "exact_partition_bytes": 2767711,
+      "rows_in_largest": 44640,
+      "bytes_per_row": 62,
+      "over_gate": false
+    },
+    {
+      "table": "page_observations",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 924,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "page_observations_by_url",
+      "scenario": "S4a",
+      "what": "one URL observed every minute for 31 days, new version each time",
+      "logical_rows": 44640,
+      "shards": 1,
+      "shard_rows": {
+        "min": 44640,
+        "max": 44640,
+        "mean": 44640.0,
+        "stdev": 0.0
+      },
+      "max_partition_bytes": 43388628,
+      "exact_partition_bytes": 36988461,
+      "rows_in_largest": 44640,
+      "bytes_per_row": 829,
+      "over_gate": false
+    },
+    {
+      "table": "latest_observation_by_url",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 215,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "page_versions_by_url",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 10090808,
+      "exact_partition_bytes": 9151240,
+      "rows_in_largest": 44640,
+      "bytes_per_row": 205,
+      "over_gate": false
+    },
+    {
+      "table": "links_by_page_version",
+      "scenario": "S5",
+      "what": "one page version with the maximum 10 000 links",
+      "logical_rows": 10000,
+      "shards": 1,
+      "shard_rows": {
+        "min": 10000,
+        "max": 10000,
+        "mean": 10000.0,
+        "stdev": 0.0
+      },
+      "max_partition_bytes": 1629722,
+      "exact_partition_bytes": 1427810,
+      "rows_in_largest": 10000,
+      "bytes_per_row": 143,
+      "over_gate": false
+    },
+    {
+      "table": "inlinks_by_url",
+      "scenario": "S2",
+      "what": "one hub URL linked from all 1M pages",
+      "logical_rows": 1000000,
+      "shards": 32,
+      "shard_rows": {
+        "min": 30841,
+        "max": 31397,
+        "mean": 31250.0,
+        "stdev": 138.8
+      },
+      "max_partition_bytes": 4055269,
+      "exact_partition_bytes": 3380462,
+      "rows_in_largest": 31397,
+      "bytes_per_row": 108,
+      "over_gate": false
+    },
+    {
+      "table": "urls_by_domain",
+      "scenario": "S1c",
+      "what": "10M known URLs of one domain (10 per crawled page)",
+      "logical_rows": 10000000,
+      "shards": 64,
+      "shard_rows": {
+        "min": 155499,
+        "max": 157223,
+        "mean": 156250.0,
+        "stdev": 369.7
+      },
+      "max_partition_bytes": 14530764,
+      "exact_partition_bytes": 12403177,
+      "rows_in_largest": 157223,
+      "bytes_per_row": 79,
+      "over_gate": false
+    },
+    {
+      "table": "url_state",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 179,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "domains",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 60,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "observations_by_domain_day",
+      "scenario": "S1b",
+      "what": "1M observations of one domain in one day",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "shard_rows": {
+        "min": 62144,
+        "max": 63025,
+        "mean": 62500.0,
+        "stdev": 224.7
+      },
+      "max_partition_bytes": 7007506,
+      "exact_partition_bytes": 6805303,
+      "rows_in_largest": 63025,
+      "bytes_per_row": 108,
+      "over_gate": false
+    },
+    {
+      "table": "media",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 446,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "media_observations",
+      "scenario": "S7",
+      "what": "one page observation with the maximum 1 000 media",
+      "logical_rows": 1000,
+      "shards": 1,
+      "shard_rows": {
+        "min": 1000,
+        "max": 1000,
+        "mean": 1000.0,
+        "stdev": 0.0
+      },
+      "max_partition_bytes": 785939,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "media_observations_by_media",
+      "scenario": "S3a",
+      "what": "one media file on all 1M pages in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "shard_rows": {
+        "min": 62041,
+        "max": 62915,
+        "mean": 62500.0,
+        "stdev": 199.9
+      },
+      "max_partition_bytes": 8409007,
+      "exact_partition_bytes": 8263435,
+      "rows_in_largest": 62915,
+      "bytes_per_row": 131,
+      "over_gate": false
+    },
+    {
+      "table": "media_by_page_version",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 105778,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "media_by_content",
+      "scenario": "S3b",
+      "what": "the same bytes at 1M distinct locators",
+      "logical_rows": 1000000,
+      "shards": 8,
+      "shard_rows": {
+        "min": 124518,
+        "max": 125299,
+        "mean": 125000.0,
+        "stdev": 245.0
+      },
+      "max_partition_bytes": 12108970,
+      "exact_partition_bytes": 10497387,
+      "rows_in_largest": 125299,
+      "bytes_per_row": 84,
+      "over_gate": false
+    },
+    {
+      "table": "media_content_versions",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 215,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "representation_status",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 0,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "targets",
+      "scenario": "S8",
+      "what": "10 000 targets in the listing partition",
+      "logical_rows": 10000,
+      "shards": 1,
+      "shard_rows": {
+        "min": 10000,
+        "max": 10000,
+        "mean": 10000.0,
+        "stdev": 0.0
+      },
+      "max_partition_bytes": 2346799,
+      "exact_partition_bytes": 2278908,
+      "rows_in_largest": 10000,
+      "bytes_per_row": 228,
+      "over_gate": false
+    },
+    {
+      "table": "matches_by_content",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 535,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "matches_by_target",
+      "scenario": "S6a",
+      "what": "1M matches of one target in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "shard_rows": {
+        "min": 62206,
+        "max": 62859,
+        "mean": 62500.0,
+        "stdev": 220.4
+      },
+      "max_partition_bytes": 8409007,
+      "exact_partition_bytes": 7913670,
+      "rows_in_largest": 62859,
+      "bytes_per_row": 126,
+      "over_gate": false
+    },
+    {
+      "table": "matches_by_domain",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 8409007,
+      "exact_partition_bytes": 7787952,
+      "rows_in_largest": 62859,
+      "bytes_per_row": 124,
+      "over_gate": false
+    },
+    {
+      "table": "evidence_by_match",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 72,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "evidence",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 924,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "evidence_by_target",
+      "scenario": "S6b",
+      "what": "1M evidence items of one target in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "shard_rows": {
+        "min": 62131,
+        "max": 62969,
+        "mean": 62500.0,
+        "stdev": 254.9
+      },
+      "max_partition_bytes": 4866323,
+      "exact_partition_bytes": 4385400,
+      "rows_in_largest": 62969,
+      "bytes_per_row": 70,
+      "over_gate": false
+    },
+    {
+      "table": "outbox",
+      "scenario": "S9",
+      "what": "one minute at 10000 events/s cluster-wide",
+      "logical_rows": 600000,
+      "shards": 32,
+      "shard_rows": {
+        "min": 18461,
+        "max": 19055,
+        "mean": 18750.0,
+        "stdev": 129.6
+      },
+      "max_partition_bytes": 25109160,
+      "exact_partition_bytes": 24988996,
+      "rows_in_largest": 19055,
+      "bytes_per_row": 1311,
+      "over_gate": false
+    },
+    {
+      "table": "outbox_relay_checkpoints",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 0,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    },
+    {
+      "table": "processed_events",
+      "scenario": null,
+      "what": null,
+      "logical_rows": null,
+      "shards": null,
+      "shard_rows": null,
+      "max_partition_bytes": 0,
+      "exact_partition_bytes": null,
+      "rows_in_largest": null,
+      "bytes_per_row": null,
+      "over_gate": false
+    }
+  ]
+}

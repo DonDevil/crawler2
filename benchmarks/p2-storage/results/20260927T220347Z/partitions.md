@@ -1,0 +1,32 @@
+| table | scenario | logical rows | shards | rows in largest | largest | B/row |
+|---|---|---|---|---|---|---|
+| page_observations_by_url | S4a | 44640 | 1 | 44640 | 43.39 MB | 829 |
+| outbox | S9 | 600000 | 32 | 19055 | 25.11 MB | 1311 |
+| urls_by_domain | S1c | 10000000 | 64 | 157223 | 14.53 MB | 79 |
+| media_by_content | S3b | 1000000 | 8 | 125299 | 12.11 MB | 84 |
+| page_versions_by_url | - | - | - | 44640 | 10.09 MB | 205 |
+| media_observations_by_media | S3a | 1000000 | 16 | 62915 | 8.41 MB | 131 |
+| matches_by_target | S6a | 1000000 | 16 | 62859 | 8.41 MB | 126 |
+| matches_by_domain | - | - | - | 62859 | 8.41 MB | 124 |
+| observations_by_domain_day | S1b | 1000000 | 16 | 63025 | 7.01 MB | 108 |
+| fetch_attempts_by_domain_day | S1a | 1000000 | 16 | 62937 | 5.84 MB | 86 |
+| evidence_by_target | S6b | 1000000 | 16 | 62969 | 4.87 MB | 70 |
+| inlinks_by_url | S2 | 1000000 | 32 | 31397 | 4.06 MB | 108 |
+| fetch_attempts_by_url | S4b | 44640 | 1 | 44640 | 2.82 MB | 62 |
+| targets | S8 | 10000 | 1 | 10000 | 2.35 MB | 228 |
+| links_by_page_version | S5 | 10000 | 1 | 10000 | 1.63 MB | 143 |
+| media_observations | S7 | 1000 | 1 | - | 0.79 MB | - |
+| media_by_page_version | - | - | - | - | 0.11 MB | - |
+| page_observations | - | - | - | - | 0.00 MB | - |
+| evidence | - | - | - | - | 0.00 MB | - |
+| fetch_attempts | - | - | - | - | 0.00 MB | - |
+| matches_by_content | - | - | - | - | 0.00 MB | - |
+| media | - | - | - | - | 0.00 MB | - |
+| latest_observation_by_url | - | - | - | - | 0.00 MB | - |
+| media_content_versions | - | - | - | - | 0.00 MB | - |
+| url_state | - | - | - | - | 0.00 MB | - |
+| evidence_by_match | - | - | - | - | 0.00 MB | - |
+| domains | - | - | - | - | 0.00 MB | - |
+| representation_status | - | - | - | - | 0.00 MB | - |
+| outbox_relay_checkpoints | - | - | - | - | 0.00 MB | - |
+| processed_events | - | - | - | - | 0.00 MB | - |

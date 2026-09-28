@@ -1,6 +1,6 @@
 # ADR-002 — ScyllaDB as the durable store
 
-Status: Accepted (decided 2026-09-28; recorded in P0)
+Status: Accepted (decided 2026-09-28; recorded in P0; refined by ADR-012)
 
 ## Context
 

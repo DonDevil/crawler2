@@ -6,6 +6,7 @@
 !crawler2/
 !contracts/
 !tests/
+!benchmarks/p2-storage/*.py
 **/__pycache__
 **/*.pyc
 **/.pytest_cache

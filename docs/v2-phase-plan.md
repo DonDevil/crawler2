@@ -681,6 +681,13 @@ consumes `representation.ready` / `match.found`).
 
 ### P14 — Production hardening (L) → Milestone M6
 
+- **Entry criteria carried from P2** (no multi-node environment existed):
+  run the P2 storage suite, `validate-stack.sh` P2 steps and
+  `benchmarks/p2-storage` against a 3-node Scylla cluster at RF=3
+  (NetworkTopologyStrategy, tablets disabled — ADR-012): LOCAL_QUORUM
+  read-after-write, LWT (E1/E2) under node loss, batchlog replay of outbox
+  batches after a coordinator failure, and the latency targets over a real
+  network.
 - Multi-host has been *supported* since P0 (B.4). This phase *proves* it
   on physically separate machines: crawler pools on host A, GPU encoder on
   this RTX 2050 host, 3-node Scylla (RF=3), Redis, and MinIO (distributed

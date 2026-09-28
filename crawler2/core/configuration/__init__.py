@@ -1,5 +1,6 @@
 from crawler2.core.configuration.settings import (
     Environment,
+    EventSettings,
     LogFormat,
     LoggingSettings,
     MetricsSettings,
@@ -14,6 +15,7 @@ from crawler2.core.configuration.settings import (
 
 __all__ = [
     "Environment",
+    "EventSettings",
     "LogFormat",
     "LoggingSettings",
     "MetricsSettings",

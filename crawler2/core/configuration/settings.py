@@ -79,6 +79,7 @@ class ScyllaSettings(BaseModel):
     replication_strategy: ReplicationStrategy = ReplicationStrategy.SIMPLE
     replication_factor: PositiveInt = 1
     connect_timeout_s: float = Field(default=10.0, gt=0)
+    request_timeout_s: float = Field(default=10.0, gt=0)
     username: str | None = None
     password: SecretStr | None = None
 
@@ -88,12 +89,30 @@ class MinioSettings(BaseModel):
     secure: bool = False
     access_key: SecretStr | None = None
     secret_key: SecretStr | None = None
-    bucket_raw: str = "crawler2-raw"
+    bucket_raw: str = Field(default="crawler2-raw", pattern=r"^[a-z0-9][a-z0-9.-]{2,62}$")
     region: str = "us-east-1"
+    request_timeout_s: float = Field(default=30.0, gt=0)
+    max_object_bytes: PositiveInt = 256 * 1024 * 1024
+    """Upper bound for one stored object; larger writes are refused, never truncated."""
+    spool_memory_bytes: PositiveInt = 8 * 1024 * 1024
+    """Writes up to this size are hashed in memory; larger ones spool to scratch_dir."""
 
     @property
     def base_url(self) -> str:
         return f"{'https' if self.secure else 'http'}://{self.endpoint}"
+
+
+class EventSettings(BaseModel):
+    """Event transport (Redis Streams, ADR-004) and outbox relay (ADR-013)."""
+
+    stream_prefix: str = Field(default="events:", pattern=r"^[a-z0-9:._-]{0,32}$")
+    """Stream key = prefix + ``<event_type>.v<major>``; shared with the fingerprinter."""
+    stream_maxlen: PositiveInt = 100_000
+    """Approximate per-stream cap (Redis is transport, not the system of record)."""
+    relay_batch_size: PositiveInt = 500
+    relay_settle_s: float = Field(default=600.0, gt=0)
+    """A bucket older than this is assumed complete; the relay may move past it."""
+    relay_poll_interval_s: float = Field(default=1.0, gt=0)
 
 
 class LoggingSettings(BaseModel):
@@ -134,6 +153,7 @@ class Settings(BaseSettings):
     redis: RedisSettings = Field(default_factory=RedisSettings)
     scylla: ScyllaSettings = Field(default_factory=ScyllaSettings)
     minio: MinioSettings = Field(default_factory=MinioSettings)
+    events: EventSettings = Field(default_factory=EventSettings)
     logging: LoggingSettings = Field(default_factory=LoggingSettings)
     metrics: MetricsSettings = Field(default_factory=MetricsSettings)
     limits: ResourceLimits = Field(default_factory=ResourceLimits)

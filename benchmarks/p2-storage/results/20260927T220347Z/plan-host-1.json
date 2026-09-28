@@ -1,0 +1,132 @@
+{
+  "scale": 1.0,
+  "pages": 1000000,
+  "scenarios": [
+    {
+      "code": "S1a",
+      "table": "fetch_attempts_by_domain_day",
+      "what": "1M fetches of one domain in one day",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "heaviest_shard": 5,
+      "rows_written": 62937,
+      "shard_rows": {
+        "min": 62053,
+        "max": 62937,
+        "mean": 62500.0,
+        "stdev": 234.5
+      },
+      "plan_s": 5.8,
+      "write_s": 54.1,
+      "write_rows_per_s": 1164
+    },
+    {
+      "code": "S1b",
+      "table": "observations_by_domain_day",
+      "what": "1M observations of one domain in one day",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "heaviest_shard": 0,
+      "rows_written": 63025,
+      "shard_rows": {
+        "min": 62144,
+        "max": 63025,
+        "mean": 62500.0,
+        "stdev": 224.7
+      },
+      "plan_s": 30.3,
+      "write_s": 110.3,
+      "write_rows_per_s": 572
+    },
+    {
+      "code": "S1c",
+      "table": "urls_by_domain",
+      "what": "10M known URLs of one domain (10 per crawled page)",
+      "logical_rows": 10000000,
+      "shards": 64,
+      "heaviest_shard": 31,
+      "rows_written": 157223,
+      "shard_rows": {
+        "min": 155499,
+        "max": 157223,
+        "mean": 156250.0,
+        "stdev": 369.7
+      },
+      "plan_s": 303.5,
+      "write_s": 68.4,
+      "write_rows_per_s": 2298
+    },
+    {
+      "code": "S2",
+      "table": "inlinks_by_url",
+      "what": "one hub URL linked from all 1M pages",
+      "logical_rows": 1000000,
+      "shards": 32,
+      "heaviest_shard": 31,
+      "rows_written": 31397,
+      "shard_rows": {
+        "min": 30841,
+        "max": 31397,
+        "mean": 31250.0,
+        "stdev": 138.8
+      },
+      "plan_s": 28.3,
+      "write_s": 229.2,
+      "write_rows_per_s": 137
+    },
+    {
+      "code": "S3a",
+      "table": "media_observations_by_media",
+      "what": "one media file on all 1M pages in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "heaviest_shard": 1,
+      "rows_written": 62915,
+      "shard_rows": {
+        "min": 62041,
+        "max": 62915,
+        "mean": 62500.0,
+        "stdev": 199.9
+      },
+      "plan_s": 5.5,
+      "write_s": 935.5,
+      "write_rows_per_s": 67
+    },
+    {
+      "code": "S5",
+      "table": "links_by_page_version",
+      "what": "one page version with the maximum 10 000 links",
+      "logical_rows": 10000,
+      "shards": 1,
+      "heaviest_shard": 0,
+      "rows_written": 10000,
+      "shard_rows": {
+        "min": 10000,
+        "max": 10000,
+        "mean": 10000.0,
+        "stdev": 0.0
+      },
+      "plan_s": 0.0,
+      "write_s": 11.3,
+      "write_rows_per_s": 887
+    },
+    {
+      "code": "S7",
+      "table": "media_observations",
+      "what": "one page observation with the maximum 1 000 media",
+      "logical_rows": 1000,
+      "shards": 1,
+      "heaviest_shard": 0,
+      "rows_written": 1000,
+      "shard_rows": {
+        "min": 1000,
+        "max": 1000,
+        "mean": 1000.0,
+        "stdev": 0.0
+      },
+      "plan_s": 0.0,
+      "write_s": 14.4,
+      "write_rows_per_s": 69
+    }
+  ]
+}

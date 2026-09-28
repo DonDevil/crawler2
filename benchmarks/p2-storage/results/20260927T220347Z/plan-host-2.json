@@ -1,0 +1,132 @@
+{
+  "scale": 1.0,
+  "pages": 1000000,
+  "scenarios": [
+    {
+      "code": "S3b",
+      "table": "media_by_content",
+      "what": "the same bytes at 1M distinct locators",
+      "logical_rows": 1000000,
+      "shards": 8,
+      "heaviest_shard": 1,
+      "rows_written": 125299,
+      "shard_rows": {
+        "min": 124518,
+        "max": 125299,
+        "mean": 125000.0,
+        "stdev": 245.0
+      },
+      "plan_s": 110.7,
+      "write_s": 217.7,
+      "write_rows_per_s": 576
+    },
+    {
+      "code": "S4a",
+      "table": "page_observations_by_url",
+      "what": "one URL observed every minute for 31 days, new version each time",
+      "logical_rows": 44640,
+      "shards": 1,
+      "heaviest_shard": 0,
+      "rows_written": 44640,
+      "shard_rows": {
+        "min": 44640,
+        "max": 44640,
+        "mean": 44640.0,
+        "stdev": 0.0
+      },
+      "plan_s": 0.0,
+      "write_s": 71.1,
+      "write_rows_per_s": 628
+    },
+    {
+      "code": "S4b",
+      "table": "fetch_attempts_by_url",
+      "what": "one URL fetched every minute for 31 days (30-day TTL window)",
+      "logical_rows": 44640,
+      "shards": 1,
+      "heaviest_shard": 0,
+      "rows_written": 44640,
+      "shard_rows": {
+        "min": 44640,
+        "max": 44640,
+        "mean": 44640.0,
+        "stdev": 0.0
+      },
+      "plan_s": 0.0,
+      "write_s": 33.7,
+      "write_rows_per_s": 1326
+    },
+    {
+      "code": "S6a",
+      "table": "matches_by_target",
+      "what": "1M matches of one target in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "heaviest_shard": 15,
+      "rows_written": 62859,
+      "shard_rows": {
+        "min": 62206,
+        "max": 62859,
+        "mean": 62500.0,
+        "stdev": 220.4
+      },
+      "plan_s": 61.3,
+      "write_s": 54.7,
+      "write_rows_per_s": 1149
+    },
+    {
+      "code": "S6b",
+      "table": "evidence_by_target",
+      "what": "1M evidence items of one target in one month",
+      "logical_rows": 1000000,
+      "shards": 16,
+      "heaviest_shard": 5,
+      "rows_written": 62969,
+      "shard_rows": {
+        "min": 62131,
+        "max": 62969,
+        "mean": 62500.0,
+        "stdev": 254.9
+      },
+      "plan_s": 6.6,
+      "write_s": 2782.8,
+      "write_rows_per_s": 23
+    },
+    {
+      "code": "S8",
+      "table": "targets",
+      "what": "10 000 targets in the listing partition",
+      "logical_rows": 10000,
+      "shards": 1,
+      "heaviest_shard": 0,
+      "rows_written": 10000,
+      "shard_rows": {
+        "min": 10000,
+        "max": 10000,
+        "mean": 10000.0,
+        "stdev": 0.0
+      },
+      "plan_s": 0.0,
+      "write_s": 2.3,
+      "write_rows_per_s": 4315
+    },
+    {
+      "code": "S9",
+      "table": "outbox",
+      "what": "one minute at 10000 events/s cluster-wide",
+      "logical_rows": 600000,
+      "shards": 32,
+      "heaviest_shard": 11,
+      "rows_written": 19055,
+      "shard_rows": {
+        "min": 18461,
+        "max": 19055,
+        "mean": 18750.0,
+        "stdev": 129.6
+      },
+      "plan_s": 3.3,
+      "write_s": 9.4,
+      "write_rows_per_s": 2037
+    }
+  ]
+}

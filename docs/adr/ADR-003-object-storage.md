@@ -1,6 +1,6 @@
 # ADR-003 — S3-compatible object storage (MinIO)
 
-Status: Accepted (P0, 2026-09-28)
+Status: Accepted (P0, 2026-09-28; key layout refined by ADR-014)
 
 ## Context
 

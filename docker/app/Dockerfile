@@ -27,6 +27,7 @@ RUN groupadd --gid "${APP_UID}" crawler2 \
 COPY --from=build /opt/venv /opt/venv
 COPY --chown=crawler2:crawler2 pyproject.toml /app/
 COPY --chown=crawler2:crawler2 tests/ /app/tests/
+COPY --chown=crawler2:crawler2 benchmarks/p2-storage/*.py /app/benchmarks/p2-storage/
 
 ENV PATH=/opt/venv/bin:$PATH \
     PYTHONDONTWRITEBYTECODE=1 \

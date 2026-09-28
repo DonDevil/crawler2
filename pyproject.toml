@@ -16,6 +16,7 @@ dependencies = [
 
 [project.scripts]
 crawler2-check = "crawler2.diagnostics.connectivity:main"
+crawler2-storage = "crawler2.storage.cli:main"
 
 [dependency-groups]
 dev = [
@@ -43,13 +44,17 @@ target-version = "py312"
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]  # plain asserts are the pytest idiom
+"tests/**" = ["S101", "S608"]  # plain asserts; test-built CQL/DDL on test keyspaces
+# CQL is built only from module constants; every value is a bind marker.
+"crawler2/storage/scylla/**" = ["S608"]
+# dev benchmark tooling: fixed docker/cqlsh invocations on our own keyspace names
+"benchmarks/p2-storage/**" = ["S603", "S607", "S608"]
 
 [tool.mypy]
 python_version = "3.12"
 strict = true
 plugins = ["pydantic.mypy"]
-files = ["crawler2", "contracts/src", "tests"]
+files = ["crawler2", "contracts/src", "tests", "benchmarks/p2-storage"]
 
 # Producers construct contract models in code; unknown keyword arguments must
 # fail type checking even though the models ignore unknown fields at runtime

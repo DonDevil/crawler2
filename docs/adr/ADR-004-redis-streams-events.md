@@ -1,6 +1,6 @@
 # ADR-004 — Redis Streams as event transport, with an outbox
 
-Status: Accepted (P0, 2026-09-28)
+Status: Accepted (P0, 2026-09-28; outbox implemented by ADR-013)
 
 ## Context
 
