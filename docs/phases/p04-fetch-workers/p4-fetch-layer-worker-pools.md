@@ -1,9 +1,16 @@
 # P4 — Fetch layer & worker pools
 
-Status: **IMPLEMENTED — exit gate NOT met** (success rate, §31); every
-other gate and all functional tests pass. After the P3 in-flight
-correction (ADR-019) the gap fell from −7.4 pp to −1.3 pp; it is now
-entirely V1 Selenium's status-blind "successes" (§30a). Design approved 2026-09-29
+Status: **IMPLEMENTED — P4 success gate OPEN.**
+
+| Formal status (2026-09-29) | |
+|---|---|
+| P4 success gate | **OPEN** — V2 **95.51 %** vs frozen V1 baseline **96.82 %** (§31) |
+| other exit gates (bytes/page, browser share, media) | met |
+| functional tests | pass |
+| P3 per-domain in-flight limit | **frozen at 2** (ADR-019) |
+| success-metric methodology | **decision pending** (§33a) |
+
+Design approved 2026-09-29
 (review decisions at the end). Audit: [audit.md](audit.md). Decisions:
 [ADR-017](../../adr/ADR-017-fetch-runtime-boundary.md),
 [ADR-018](../../adr/ADR-018-fetch-engine-retention.md). Current-state
@@ -661,11 +668,8 @@ re-check) — plus 3 via aiohttp and 2 via Playwright on unstable hosts
 the three aiohttp ones also fail for `curl`, one has a certificate that
 fails verification). No page needed Selenium or Scrapling.
 
-**Status-corrected analysis (not the gate, kept from §30):** excluding
-the 10 URLs that returned 404/400/403 and that V1 counted as content,
-V1 reaches 659/691 = 95.37 % against V2's 95.51 %. The gate as defined
-counts V1's own "visited" status and is therefore still unmet; changing
-that definition is a decision for review, not taken here.
+The status-aware view of these numbers is kept separate from the gate,
+in §31b.
 
 ## 31. Exit-gate status
 
@@ -677,10 +681,58 @@ that definition is a decision for review, not taken here.
 | zero media body downloads | ✅ | ✅ |
 | functional tests (contract, leak, chaos, B.5 #1) | ✅ | ✅ (rerun below) |
 
-**P4 is not complete.** The success-rate gate, with its definition
-unchanged, is unmet by 9 pages. The measured difference is V1 counting
-10 error pages (404/400/403) as successes; whether the gate should
-compare status-aware success is a review decision (§33a).
+**P4 is not complete.** The success gate is evaluated with the frozen
+§28 definition (V1: its own `visited` status) and is **open**: V2 95.51 %
+vs V1 96.82 %, short by 9 pages. It is not re-evaluated with any other
+definition in this record.
+
+### 31a. Measurement validity: V1 false successes (discovered in P4)
+
+V1's historical `visited` status — the success definition of the P0
+baseline and of this gate — **includes pages that were not fetched
+successfully.** V1's Selenium engine cannot see HTTP status codes (D1):
+`driver.page_source` of an error page is returned as HTML, and V1 marks
+the URL `visited`. In the rerun, V1 counted exactly 10 such URLs as
+successes via Selenium; V2 recorded their status in the same session:
+
+| Status seen by V2 | URLs |
+|---:|---:|
+| 404 | 7 |
+| 400 | 2 |
+| 403 | 1 |
+
+The same 10 URLs appeared in the first gate run (§30), so the effect is
+systematic, not session noise. Consequence: `visited` is semantically
+imperfect as a measure of actual page-fetch success, and the V1 baseline
+(97.5 % in P0, 97.25 % / 96.82 % here) is inflated by it. This is a
+finding about the metric, recorded as such; it does not change the gate
+result above and is not evidence for Selenium (ADR-018 stands: none of
+the 10 is a 2xx page, and no page needed Selenium).
+
+### 31b. Status-aware analysis (informational — NOT a gate result)
+
+If success means "the final response was 2xx/304 (or a probed media
+response)" — V2's own definition — for both systems:
+
+| | status-aware success |
+|---|---:|
+| V1 (corrected: 669 − 10 non-2xx) | **95.37 %** (659/691) |
+| V2 | **95.51 %** (660/691) |
+
+This analysis **does not show that the gate passed** and must not be
+used as a substitute for one:
+
+- V1 records no status codes, so its correction borrows the status V2
+  observed for the same URL in the same session; V1's own responses were
+  not measured with the corrected definition.
+- Only the Selenium false successes are corrected. By V1's code, its
+  other engines are status-aware (aiohttp, httpx and Scrapling fail any
+  non-200; Playwright fails ≥ 400; only Selenium has no status check),
+  but this was read from the code, not measured per URL.
+- The definition would change after the measurement; §28 froze it
+  before.
+
+A valid status-aware comparison needs the procedure of §33a, Option B.
 
 ## 32. Known limitations
 
@@ -711,15 +763,41 @@ compare status-aware success is a review decision (§33a).
 | Tor browser capability; live Tor validation | later phase / environment |
 | Promoting `outcome=<code>` from `detail` to a typed P1 field | P5/P7 if needed (ADR-009 minor) |
 
-### 33a. Open decision: the success gate
+### 33a. Pending methodology decision: the P4 success metric
 
 Taken (2026-09-29): a global per-domain in-flight limit in the frontier
-(ADR-019), chosen by measurement — closed the load-induced part of the gap.
+(ADR-019), chosen by measurement and **frozen at 2**; it removed the
+load-induced part of the gap (−7.4 pp → −1.3 pp).
 
-Open: V1's success count includes pages whose HTTP status is 404/400/403
-(Selenium cannot see status). Options for review: keep the gate as
-defined (P4 stays open), or adopt a status-aware success definition for
-both systems in a documented gate revision.
+Pending — one of:
+
+**Option A — keep the historical V1 gate permanently.** Success stays
+V1's `visited` status, with the known false successes (§31a). P4 remains
+open until V2 reaches ≥ the V1 figure of a same-session run (96.82 % in
+the latest run) through legitimate fetch improvements — no stealth, no
+bypass, no engine re-added without evidence (ADR-018).
+
+**Option B — replace the success metric with a status-aware
+definition.** Allowed only as a documented methodology change, in this
+order:
+
+1. Write the new definition down before any measurement (e.g. "final
+   response 2xx/304, or a probed media response"), including how V1's
+   status is obtained for *every* engine, and record the change and its
+   reason (§31a) in this document and `docs/benchmarks.md`.
+2. Make V1's harness status-aware without modifying V1: an observation
+   layer in `benchmarks/p4-fetch/v1_hybrid.py` (e.g. the counting proxy
+   or engine-level response hooks) that records the final status V1
+   actually received per URL.
+3. Rerun **both** V1 and V2 on the same W691 workload, same session,
+   with the new definition applied identically to both.
+4. Report the result against the new gate, alongside (never instead of)
+   the historical `visited` numbers.
+
+The existing §31b analysis is not a substitute for step 3.
+
+Not in scope while the decision is pending: additional fetch engines,
+Selenium, and P7 intelligence.
 
 ## Review decisions (2026-09-29)
 
@@ -733,3 +811,13 @@ both systems in a documented gate revision.
 6. P4 records `FetchAttempt` + `PageObservation` + raw snapshot through the
    P2 repositories (plan B.5 #1 "persist"; P5 needs the body).
 7. Tor validated against the SOCKS5 fixture only in P4.
+
+Follow-up decisions (2026-09-29, after the gate reruns):
+
+8. The global per-domain in-flight limit is added to P3 (not
+   worker-local, not P7) and frozen at 2 (ADR-019).
+9. The original P4 success gate stays unchanged for this validation
+   record; formal status OPEN at 95.51 % vs 96.82 %.
+10. Selenium stays out (ADR-018); its 10 false successes are a metric
+    finding (§31a), not evidence for the engine.
+11. The success-metric methodology (§33a, Option A vs B) is pending.
