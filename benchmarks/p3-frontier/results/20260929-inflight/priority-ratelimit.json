@@ -1,0 +1,79 @@
+{
+  "tool": "p3 priority/rate-limit",
+  "summary": {
+    "rate_limit_s": 2.0,
+    "single_queue": {
+      "order": [
+        {
+          "domain": "urgent",
+          "queue": "http",
+          "priority": 90,
+          "t_s": 0.0
+        },
+        {
+          "domain": "normal",
+          "queue": "http",
+          "priority": 50,
+          "t_s": 0.0
+        },
+        {
+          "domain": "bulk",
+          "queue": "http",
+          "priority": 10,
+          "t_s": 0.0
+        },
+        {
+          "domain": "urgent",
+          "queue": "http",
+          "priority": 90,
+          "t_s": 2.01
+        },
+        {
+          "domain": "normal",
+          "queue": "http",
+          "priority": 50,
+          "t_s": 2.011
+        }
+      ],
+      "min_same_domain_gap_s": 2.0104,
+      "all_claimed": true
+    },
+    "two_queues_shared_gate": {
+      "order": [
+        {
+          "domain": "urgent",
+          "queue": "http",
+          "priority": 90,
+          "t_s": 0.0
+        },
+        {
+          "domain": "normal",
+          "queue": "browser",
+          "priority": 50,
+          "t_s": 0.0
+        },
+        {
+          "domain": "bulk",
+          "queue": "http",
+          "priority": 10,
+          "t_s": 0.001
+        },
+        {
+          "domain": "normal",
+          "queue": "http",
+          "priority": 50,
+          "t_s": 2.009
+        },
+        {
+          "domain": "urgent",
+          "queue": "browser",
+          "priority": 90,
+          "t_s": 2.01
+        }
+      ],
+      "min_same_domain_gap_s": 2.0085,
+      "all_claimed": true
+    },
+    "passed": true
+  }
+}

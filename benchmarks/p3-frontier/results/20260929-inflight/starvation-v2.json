@@ -1,0 +1,120 @@
+{
+  "tool": "p3 starvation",
+  "summary": {
+    "finite": {
+      "order": [
+        "high",
+        "high",
+        "high",
+        "high",
+        "high",
+        "low",
+        "low",
+        "low"
+      ],
+      "all_claimed": true,
+      "passed": true
+    },
+    "rate-limit-skip": {
+      "order": [
+        "hot",
+        "cold"
+      ],
+      "skipped_not_blocked": true,
+      "passed": true
+    },
+    "replenish": {
+      "interval_0.0": {
+        "claims": 300,
+        "a": {
+          "claims": 300,
+          "first_t": 0.0001289844512939453,
+          "max_wait_s": 0.002
+        },
+        "b": {
+          "claims": 0
+        }
+      },
+      "interval_0.05": {
+        "claims": 60,
+        "a": {
+          "claims": 50,
+          "first_t": 0.00014829635620117188,
+          "max_wait_s": 0.065
+        },
+        "b": {
+          "claims": 10,
+          "first_t": 0.0011892318725585938,
+          "max_wait_s": 0.065
+        }
+      },
+      "b_starved_at_interval_0": true,
+      "b_drained_at_interval_0.05": true,
+      "note": "interval 0 + infinite higher-priority work starving B is the strict-priority policy",
+      "passed": true
+    },
+    "scan-window": {
+      "fillers": 260,
+      "v1_domain_scan_limit_for_reference": 250,
+      "interval_s": 1.0,
+      "claims": 525,
+      "victim": {
+        "claims": 5,
+        "first_t": 0.05588388442993164,
+        "max_wait_s": 1.01
+      },
+      "victim_starved": false,
+      "passed": true
+    },
+    "retries": {
+      "rows": {
+        "a": {
+          "claims": 15,
+          "first_t": 0.00013828277587890625,
+          "max_wait_s": 0.207
+        },
+        "b": {
+          "claims": 10,
+          "first_t": 0.0012979507446289062,
+          "max_wait_s": 0.0
+        }
+      },
+      "passed": true
+    },
+    "multi-worker": {
+      "workers_1": {
+        "claims": 220,
+        "duplicates": 0
+      },
+      "workers_2": {
+        "claims": 220,
+        "duplicates": 0
+      },
+      "workers_4": {
+        "claims": 220,
+        "duplicates": 0
+      },
+      "workers_8": {
+        "claims": 220,
+        "duplicates": 0
+      },
+      "passed": true
+    },
+    "recovery": {
+      "claims": {
+        "a": 5,
+        "b": 5
+      },
+      "passed": true
+    },
+    "cross-queue": {
+      "interval_s": 0.1,
+      "http_claims_before_browser": 1,
+      "browser_wait_s": 0.115,
+      "gate_openings_before_browser": 1,
+      "note": "work-conserving: whichever queue claims first after the gate opens wins",
+      "passed": true
+    },
+    "passed": true
+  }
+}

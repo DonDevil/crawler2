@@ -1,0 +1,71 @@
+{
+  "tool": "v1 domain_scan_limit probe",
+  "summary": [
+    {
+      "gated_better_domains": 50,
+      "domain_scan_limit": 250,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 321.3,
+        "p99_us": 439.8,
+        "max_us": 646.1
+      },
+      "server_us_per_claim": 202.0
+    },
+    {
+      "gated_better_domains": 250,
+      "domain_scan_limit": 250,
+      "victim_found": "0/500",
+      "claim_latency": {
+        "p50_us": 893.1,
+        "p99_us": 1269.5,
+        "max_us": 1475.5
+      },
+      "server_us_per_claim": 804.7
+    },
+    {
+      "gated_better_domains": 260,
+      "domain_scan_limit": 250,
+      "victim_found": "0/500",
+      "claim_latency": {
+        "p50_us": 833.4,
+        "p99_us": 1053.1,
+        "max_us": 1150.2
+      },
+      "server_us_per_claim": 768.7
+    },
+    {
+      "gated_better_domains": 1000,
+      "domain_scan_limit": 250,
+      "victim_found": "0/500",
+      "claim_latency": {
+        "p50_us": 1088.6,
+        "p99_us": 2003.4,
+        "max_us": 2328.7
+      },
+      "server_us_per_claim": 1018.1
+    },
+    {
+      "gated_better_domains": 5000,
+      "domain_scan_limit": 250,
+      "victim_found": "0/500",
+      "claim_latency": {
+        "p50_us": 862.4,
+        "p99_us": 1119.4,
+        "max_us": 1211.2
+      },
+      "server_us_per_claim": 805.9
+    },
+    {
+      "gated_better_domains": 20000,
+      "domain_scan_limit": 250,
+      "victim_found": "0/500",
+      "claim_latency": {
+        "p50_us": 846.9,
+        "p99_us": 1168.1,
+        "max_us": 1575.7
+      },
+      "server_us_per_claim": 784.4
+    }
+  ]
+}

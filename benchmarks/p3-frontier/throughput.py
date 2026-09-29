@@ -130,6 +130,7 @@ def main() -> None:
         "urls": args.urls,
         "domains": args.domains,
         "rate_limit": "none (default_interval_s=0)",
+        "max_inflight_per_domain": f.settings.max_inflight_per_domain,
         "claims": claims,
         "claims_per_sec": round(claims / elapsed),
         "steady_claims_per_sec": round(claims / (last - first)) if last > first else None,

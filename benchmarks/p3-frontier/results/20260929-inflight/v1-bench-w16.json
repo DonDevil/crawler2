@@ -1,0 +1,182 @@
+{
+  "run": {
+    "tool": "distributed_benchmark",
+    "timestamp": "2026-09-29T15:20:30"
+  },
+  "config": {
+    "workers": 16,
+    "urls": 200000,
+    "duration_s": 30.0,
+    "retry_rate": 0.0,
+    "domains": 40,
+    "priority_distribution": "fixed:10",
+    "rate_limit": 0.0,
+    "lease_ttl": 90.0,
+    "namespace": "bench_v1ref_9851",
+    "redis_db": 2
+  },
+  "insert": {
+    "attempted": 200000,
+    "inserted": 200000,
+    "elapsed_s": 40.952531814575195,
+    "urls_per_sec": 4883.7029394314295
+  },
+  "workers": {
+    "requested": 16,
+    "missing_results": [],
+    "per_worker": [
+      {
+        "worker_id": 0,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12533,
+        "failed_attempts": 0,
+        "success_urls_count": 12533
+      },
+      {
+        "worker_id": 1,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12526,
+        "failed_attempts": 0,
+        "success_urls_count": 12526
+      },
+      {
+        "worker_id": 2,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12530,
+        "failed_attempts": 0,
+        "success_urls_count": 12530
+      },
+      {
+        "worker_id": 3,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12518,
+        "failed_attempts": 0,
+        "success_urls_count": 12518
+      },
+      {
+        "worker_id": 4,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12511,
+        "failed_attempts": 0,
+        "success_urls_count": 12511
+      },
+      {
+        "worker_id": 5,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12505,
+        "failed_attempts": 0,
+        "success_urls_count": 12505
+      },
+      {
+        "worker_id": 6,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12508,
+        "failed_attempts": 0,
+        "success_urls_count": 12508
+      },
+      {
+        "worker_id": 7,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12499,
+        "failed_attempts": 0,
+        "success_urls_count": 12499
+      },
+      {
+        "worker_id": 8,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12488,
+        "failed_attempts": 0,
+        "success_urls_count": 12488
+      },
+      {
+        "worker_id": 9,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12494,
+        "failed_attempts": 0,
+        "success_urls_count": 12494
+      },
+      {
+        "worker_id": 10,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12485,
+        "failed_attempts": 0,
+        "success_urls_count": 12485
+      },
+      {
+        "worker_id": 11,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12486,
+        "failed_attempts": 0,
+        "success_urls_count": 12486
+      },
+      {
+        "worker_id": 12,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12483,
+        "failed_attempts": 0,
+        "success_urls_count": 12483
+      },
+      {
+        "worker_id": 13,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12470,
+        "failed_attempts": 0,
+        "success_urls_count": 12470
+      },
+      {
+        "worker_id": 14,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12484,
+        "failed_attempts": 0,
+        "success_urls_count": 12484
+      },
+      {
+        "worker_id": 15,
+        "pid_reported_by_worker": true,
+        "claims_issued": 12480,
+        "failed_attempts": 0,
+        "success_urls_count": 12480
+      }
+    ]
+  },
+  "aggregate": {
+    "elapsed_s": 17.894888639450073,
+    "total_claims_issued": 200000,
+    "total_unique_urls_completed": 200000,
+    "duplicate_successful_claims": 0,
+    "total_failed_attempts": 0,
+    "claims_per_sec": 11176.375781355306,
+    "completions_per_sec": 11176.375781355306
+  },
+  "final_status_counts": {
+    "queued": 0,
+    "inflight": 0,
+    "retry_scheduled": 0,
+    "visited": 200000,
+    "skipped": 0,
+    "failed_permanent": 0
+  },
+  "resource_usage": {
+    "redis_connected_clients": {
+      "min": 1,
+      "max": 17,
+      "avg": 16.135135135135137
+    },
+    "redis_used_cpu_sys": {
+      "min": 34.767805,
+      "max": 37.962343,
+      "avg": 36.39656416216216
+    },
+    "redis_used_cpu_user": {
+      "min": 158.014953,
+      "max": 172.669838,
+      "avg": 165.38340981081083
+    },
+    "redis_used_memory_mb": {
+      "min": 217.5941619873047,
+      "max": 279.1493225097656,
+      "avg": 249.74942862020956
+    }
+  },
+  "total_runtime_s": 58.84742045402527
+}

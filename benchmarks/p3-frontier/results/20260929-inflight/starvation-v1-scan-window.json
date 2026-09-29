@@ -1,0 +1,1873 @@
+{
+  "run": {
+    "tool": "domain_starvation",
+    "timestamp": "2026-09-29T15:28:07",
+    "frontier": "redis"
+  },
+  "args": {
+    "scenario": "scan-limit-window",
+    "frontier": "redis",
+    "high_priority": 1,
+    "low_priority": 10,
+    "high_count": 100,
+    "low_count": 10,
+    "num_claims": 800,
+    "replenish_batch": 1,
+    "domain_count": 260,
+    "domain_scan_limit": 250,
+    "worker_counts": "1,2,4,8",
+    "recovery_cycles": 3,
+    "max_idle_polls": 500,
+    "poll_interval": 0.02,
+    "output": "/home/dhanush/anti_piracy/crawler2/benchmarks/p3-frontier/results/20260929-inflight/starvation-v1-scan-window.json",
+    "format": "json",
+    "redis_host": "localhost",
+    "redis_port": 16380,
+    "redis_db": 2,
+    "namespace": "bench_starvation",
+    "rate_limit": 1.0,
+    "max_retries": 3,
+    "base_backoff": 0.1,
+    "max_backoff": 1.0,
+    "lease_ttl": 90.0
+  },
+  "result": {
+    "scenario": "scan_limit_window",
+    "domain_scan_limit": 250,
+    "domain_count_seeded": 260,
+    "domain_meta": {
+      "scanfill0-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill1-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill2-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill3-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill4-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill5-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill6-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill7-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill8-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill9-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill10-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill11-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill12-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill13-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill14-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill15-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill16-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill17-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill18-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill19-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill20-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill21-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill22-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill23-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill24-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill25-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill26-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill27-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill28-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill29-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill30-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill31-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill32-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill33-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill34-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill35-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill36-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill37-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill38-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill39-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill40-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill41-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill42-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill43-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill44-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill45-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill46-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill47-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill48-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill49-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill50-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill51-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill52-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill53-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill54-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill55-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill56-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill57-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill58-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill59-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill60-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill61-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill62-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill63-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill64-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill65-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill66-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill67-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill68-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill69-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill70-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill71-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill72-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill73-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill74-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill75-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill76-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill77-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill78-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill79-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill80-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill81-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill82-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill83-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill84-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill85-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill86-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill87-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill88-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill89-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill90-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill91-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill92-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill93-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill94-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill95-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill96-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill97-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill98-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill99-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill100-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill101-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill102-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill103-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill104-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill105-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill106-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill107-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill108-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill109-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill110-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill111-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill112-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill113-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill114-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill115-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill116-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill117-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill118-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill119-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill120-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill121-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill122-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill123-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill124-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill125-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill126-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill127-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill128-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill129-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill130-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill131-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill132-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill133-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill134-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill135-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill136-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill137-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill138-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill139-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill140-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill141-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill142-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill143-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill144-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill145-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill146-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill147-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill148-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill149-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill150-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill151-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill152-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill153-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill154-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill155-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill156-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill157-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill158-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill159-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill160-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill161-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill162-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill163-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill164-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill165-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill166-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill167-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill168-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill169-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill170-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill171-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill172-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill173-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill174-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill175-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill176-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill177-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill178-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill179-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill180-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill181-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill182-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill183-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill184-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill185-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill186-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill187-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill188-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill189-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill190-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill191-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill192-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill193-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill194-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill195-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill196-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill197-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill198-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill199-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill200-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill201-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill202-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill203-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill204-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill205-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill206-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill207-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill208-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill209-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill210-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill211-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill212-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill213-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill214-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill215-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill216-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill217-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill218-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill219-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill220-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill221-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill222-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill223-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill224-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill225-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill226-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill227-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill228-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill229-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill230-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill231-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill232-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill233-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill234-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill235-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill236-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill237-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill238-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill239-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill240-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill241-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill242-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill243-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill244-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill245-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill246-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill247-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill248-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill249-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill250-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill251-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill252-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill253-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill254-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill255-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill256-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill257-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill258-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "scanfill259-ds1790675842.example.test": {
+        "priority": 1,
+        "seeded": null
+      },
+      "victim-ds1790675842.example.test": {
+        "priority": 100,
+        "seeded": 5
+      }
+    },
+    "total_claims_made": 800,
+    "victim_claims": 0,
+    "victim_starved": true,
+    "fairness_summary": {
+      "scanfill0-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill1-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill2-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill3-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill4-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill5-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill6-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill7-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill8-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill9-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill10-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill11-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill12-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill13-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill14-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill15-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill16-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill17-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill18-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill19-ds1790675842.example.test": {
+        "claims": 4
+      },
+      "scanfill20-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill21-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill22-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill23-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill24-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill25-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill26-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill27-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill28-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill29-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill30-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill31-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill32-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill33-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill34-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill35-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill36-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill37-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill38-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill39-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill40-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill41-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill42-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill43-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill44-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill45-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill46-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill47-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill48-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill49-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill50-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill51-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill52-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill53-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill54-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill55-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill56-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill57-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill58-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill59-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill60-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill61-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill62-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill63-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill64-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill65-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill66-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill67-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill68-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill69-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill70-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill71-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill72-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill73-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill74-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill75-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill76-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill77-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill78-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill79-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill80-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill81-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill82-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill83-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill84-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill85-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill86-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill87-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill88-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill89-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill90-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill91-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill92-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill93-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill94-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill95-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill96-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill97-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill98-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill99-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill100-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill101-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill102-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill103-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill104-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill105-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill106-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill107-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill108-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill109-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill110-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill111-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill112-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill113-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill114-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill115-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill116-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill117-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill118-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill119-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill120-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill121-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill122-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill123-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill124-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill125-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill126-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill127-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill128-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill129-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill130-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill131-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill132-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill133-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill134-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill135-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill136-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill137-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill138-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill139-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill140-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill141-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill142-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill143-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill144-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill145-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill146-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill147-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill148-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill149-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill150-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill151-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill152-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill153-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill154-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill155-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill156-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill157-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill158-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill159-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill160-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill161-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill162-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill163-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill164-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill165-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill166-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill167-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill168-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill169-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill170-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill171-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill172-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill173-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill174-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill175-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill176-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill177-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill178-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill179-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill180-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill181-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill182-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill183-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill184-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill185-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill186-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill187-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill188-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill189-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill190-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill191-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill192-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill193-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill194-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill195-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill196-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill197-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill198-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill199-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill200-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill201-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill202-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill203-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill204-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill205-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill206-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill207-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill208-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill209-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill210-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill211-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill212-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill213-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill214-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill215-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill216-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill217-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill218-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill219-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill220-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill221-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill222-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill223-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill224-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill225-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill226-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill227-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill228-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill229-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill230-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill231-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill232-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill233-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill234-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill235-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill236-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill237-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill238-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill239-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill240-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill241-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill242-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill243-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill244-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill245-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill246-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill247-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill248-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill249-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill250-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill251-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill252-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill253-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill254-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill255-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill256-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill257-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill258-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "scanfill259-ds1790675842.example.test": {
+        "claims": 3
+      },
+      "victim-ds1790675842.example.test": {
+        "claims": 0
+      }
+    }
+  }
+}

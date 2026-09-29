@@ -36,6 +36,12 @@ def add_redis_args(p: argparse.ArgumentParser, *, port: int = 16380) -> None:
     p.add_argument("--redis-db", type=int, default=2)
     p.add_argument("--label", default="", help="free text stored with the result")
     p.add_argument("--output", default=None, help="JSON result path (default: results/<ts>/)")
+    p.add_argument(
+        "--max-inflight-per-domain",
+        type=int,
+        default=None,
+        help="frontier in-flight limit per domain (default: the FrontierSettings default)",
+    )
 
 
 def redis_settings(args: argparse.Namespace) -> RedisSettings:
@@ -49,6 +55,9 @@ def client(args: argparse.Namespace) -> redis.Redis:
 
 
 def frontier(args: argparse.Namespace, namespace: str, **settings: Any) -> RedisFrontier:
+    limit = getattr(args, "max_inflight_per_domain", None)
+    if limit is not None:
+        settings.setdefault("max_inflight_per_domain", limit)
     return RedisFrontier(client(args), FrontierSettings(**settings), namespace=namespace)
 
 

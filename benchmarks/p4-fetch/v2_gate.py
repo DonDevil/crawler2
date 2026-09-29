@@ -65,6 +65,12 @@ async def main() -> None:
     parser.add_argument("urls", type=Path)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--redis-db", type=int, default=9)
+    parser.add_argument(
+        "--inflight",
+        type=int,
+        default=None,
+        help="override frontier.max_inflight_per_domain (limit experiment only)",
+    )
     args = parser.parse_args()
     urls = [u.strip() for u in args.urls.read_text().splitlines() if u.strip()]
 
@@ -75,7 +81,12 @@ async def main() -> None:
     browser_settings = base.workers.browser_engine.model_copy(update={"proxy": proxy.url})
     frontier = RedisFrontier(
         connect_redis(base.redis.model_copy(update={"db": args.redis_db})),
-        base.frontier.model_copy(update={"default_interval_s": RATE_LIMIT_S}),
+        base.frontier.model_copy(
+            update={
+                "default_interval_s": RATE_LIMIT_S,
+                **({"max_inflight_per_domain": args.inflight} if args.inflight is not None else {}),
+            }
+        ),
         namespace=f"p4gate-{uuid.uuid4().hex[:10]}",
     )
     admitted = [u for u in urls if frontier.admit(Admission(UrlRef.of(u))).accepted]
@@ -153,6 +164,7 @@ async def main() -> None:
         "frontier_counters": stats.counters,
         "browser_pool": vars(browser_fetcher.pool.stats) | {"rss_samples": None},
         "wall_s": round(wall, 1),
+        "max_inflight_per_domain": frontier.settings.max_inflight_per_domain,
     }
     print(json.dumps(summary), flush=True)
     args.out.write_text(json.dumps({"summary": summary, "rows": rows}, indent=1))

@@ -1,0 +1,65 @@
+{
+  "tool": "p3 distributed 1M",
+  "label": "bench-redis",
+  "settings": {
+    "default_interval_s": 0.0,
+    "lease_ttl_s": 2.0,
+    "max_attempts": 25,
+    "base_backoff_s": 0.05,
+    "max_backoff_s": 0.5,
+    "recover_batch": 2000,
+    "promote_batch": 2000
+  },
+  "admit_seconds": 112.9,
+  "summary": {
+    "tasks_admitted": 1000000,
+    "workers": 8,
+    "elapsed_s": 191.3,
+    "claims_total": 1005169,
+    "claims_per_sec": 5256,
+    "redis_cpu_pct": 43.4,
+    "chaos": {
+      "worker_kills": 69,
+      "worker_pauses": 14,
+      "sweeper_kills": 12
+    },
+    "completed": 1000000,
+    "exhausted": 0,
+    "dead": 0,
+    "retried": 5090,
+    "recovered_leases": 79,
+    "stale_rejected": 7,
+    "anomalies": 0,
+    "active_at_end": 0,
+    "lost_tasks": 0,
+    "duplicate_completions": 0,
+    "audit_problems": 0,
+    "logged_claims": 1005165,
+    "tasks_claimed": 1000000,
+    "simultaneous_ownership": 0,
+    "legitimate_reclaims": 75,
+    "retry_reclaims": 5090,
+    "stale_reports_rejected": 7,
+    "logged_duplicate_completions": 0,
+    "accepted_completion_by_superseded_token": 0,
+    "tasks_with_logged_completion": 999998,
+    "tasks_never_claimed": 0,
+    "gate_passed": true
+  },
+  "environment": {
+    "host": "Ubuntu-24-04",
+    "cpu_model": "11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz",
+    "cpu_count": 12,
+    "python": "3.12.3",
+    "redis_version": "7.4.2",
+    "redis_config": {
+      "appendfsync": "everysec",
+      "maxmemory": "0",
+      "io-threads": "1",
+      "save": "3600 1 300 100 60 10000",
+      "maxmemory-policy": "noeviction",
+      "appendonly": "no"
+    },
+    "aof_enabled": 0
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "run": {
+    "tool": "distributed_benchmark",
+    "timestamp": "2026-09-29T15:18:51"
+  },
+  "config": {
+    "workers": 8,
+    "urls": 200000,
+    "duration_s": 30.0,
+    "retry_rate": 0.0,
+    "domains": 40,
+    "priority_distribution": "fixed:10",
+    "rate_limit": 0.0,
+    "lease_ttl": 90.0,
+    "namespace": "bench_v1ref_1804",
+    "redis_db": 2
+  },
+  "insert": {
+    "attempted": 200000,
+    "inserted": 200000,
+    "elapsed_s": 42.75630331039429,
+    "urls_per_sec": 4677.672869613565
+  },
+  "workers": {
+    "requested": 8,
+    "missing_results": [],
+    "per_worker": [
+      {
+        "worker_id": 0,
+        "pid_reported_by_worker": true,
+        "claims_issued": 25077,
+        "failed_attempts": 0,
+        "success_urls_count": 25077
+      },
+      {
+        "worker_id": 1,
+        "pid_reported_by_worker": true,
+        "claims_issued": 25000,
+        "failed_attempts": 0,
+        "success_urls_count": 25000
+      },
+      {
+        "worker_id": 2,
+        "pid_reported_by_worker": true,
+        "claims_issued": 25145,
+        "failed_attempts": 0,
+        "success_urls_count": 25145
+      },
+      {
+        "worker_id": 3,
+        "pid_reported_by_worker": true,
+        "claims_issued": 24821,
+        "failed_attempts": 0,
+        "success_urls_count": 24821
+      },
+      {
+        "worker_id": 4,
+        "pid_reported_by_worker": true,
+        "claims_issued": 24973,
+        "failed_attempts": 0,
+        "success_urls_count": 24973
+      },
+      {
+        "worker_id": 5,
+        "pid_reported_by_worker": true,
+        "claims_issued": 25119,
+        "failed_attempts": 0,
+        "success_urls_count": 25119
+      },
+      {
+        "worker_id": 6,
+        "pid_reported_by_worker": true,
+        "claims_issued": 25023,
+        "failed_attempts": 0,
+        "success_urls_count": 25023
+      },
+      {
+        "worker_id": 7,
+        "pid_reported_by_worker": true,
+        "claims_issued": 24842,
+        "failed_attempts": 0,
+        "success_urls_count": 24842
+      }
+    ]
+  },
+  "aggregate": {
+    "elapsed_s": 17.84083867073059,
+    "total_claims_issued": 200000,
+    "total_unique_urls_completed": 200000,
+    "duplicate_successful_claims": 0,
+    "total_failed_attempts": 0,
+    "claims_per_sec": 11210.235330927406,
+    "completions_per_sec": 11210.235330927406
+  },
+  "final_status_counts": {
+    "queued": 0,
+    "inflight": 0,
+    "retry_scheduled": 0,
+    "visited": 200000,
+    "skipped": 0,
+    "failed_permanent": 0
+  },
+  "resource_usage": {
+    "redis_connected_clients": {
+      "min": 1,
+      "max": 9,
+      "avg": 8.567567567567568
+    },
+    "redis_used_cpu_sys": {
+      "min": 26.751359,
+      "max": 30.082328,
+      "avg": 28.418759081081078
+    },
+    "redis_used_cpu_user": {
+      "min": 120.138895,
+      "max": 134.126753,
+      "avg": 127.23000005405406
+    },
+    "redis_used_memory_mb": {
+      "min": 180.20276641845703,
+      "max": 241.73634338378906,
+      "avg": 211.72687468657622
+    }
+  },
+  "total_runtime_s": 60.59714198112488
+}

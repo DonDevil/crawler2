@@ -1,0 +1,98 @@
+{
+  "run": {
+    "tool": "distributed_benchmark",
+    "timestamp": "2026-09-29T15:17:11"
+  },
+  "config": {
+    "workers": 4,
+    "urls": 200000,
+    "duration_s": 30.0,
+    "retry_rate": 0.0,
+    "domains": 40,
+    "priority_distribution": "fixed:10",
+    "rate_limit": 0.0,
+    "lease_ttl": 90.0,
+    "namespace": "bench_v1ref_27429",
+    "redis_db": 2
+  },
+  "insert": {
+    "attempted": 200000,
+    "inserted": 200000,
+    "elapsed_s": 42.356287240982056,
+    "urls_per_sec": 4721.849175828823
+  },
+  "workers": {
+    "requested": 4,
+    "missing_results": [],
+    "per_worker": [
+      {
+        "worker_id": 0,
+        "pid_reported_by_worker": true,
+        "claims_issued": 50253,
+        "failed_attempts": 0,
+        "success_urls_count": 50253
+      },
+      {
+        "worker_id": 1,
+        "pid_reported_by_worker": true,
+        "claims_issued": 49803,
+        "failed_attempts": 0,
+        "success_urls_count": 49803
+      },
+      {
+        "worker_id": 2,
+        "pid_reported_by_worker": true,
+        "claims_issued": 49500,
+        "failed_attempts": 0,
+        "success_urls_count": 49500
+      },
+      {
+        "worker_id": 3,
+        "pid_reported_by_worker": true,
+        "claims_issued": 50444,
+        "failed_attempts": 0,
+        "success_urls_count": 50444
+      }
+    ]
+  },
+  "aggregate": {
+    "elapsed_s": 17.83748698234558,
+    "total_claims_issued": 200000,
+    "total_unique_urls_completed": 200000,
+    "duplicate_successful_claims": 0,
+    "total_failed_attempts": 0,
+    "claims_per_sec": 11212.341749594401,
+    "completions_per_sec": 11212.341749594401
+  },
+  "final_status_counts": {
+    "queued": 0,
+    "inflight": 0,
+    "retry_scheduled": 0,
+    "visited": 200000,
+    "skipped": 0,
+    "failed_permanent": 0
+  },
+  "resource_usage": {
+    "redis_connected_clients": {
+      "min": 1,
+      "max": 5,
+      "avg": 4.783783783783784
+    },
+    "redis_used_cpu_sys": {
+      "min": 19.032054,
+      "max": 21.944869,
+      "avg": 20.505740486486488
+    },
+    "redis_used_cpu_user": {
+      "min": 84.380794,
+      "max": 96.220354,
+      "avg": 90.36323245945945
+    },
+    "redis_used_memory_mb": {
+      "min": 142.75279235839844,
+      "max": 205.71581268310547,
+      "avg": 175.3181226575697
+    }
+  },
+  "total_runtime_s": 60.19377422332764
+}
