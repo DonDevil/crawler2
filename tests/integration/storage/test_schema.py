@@ -39,13 +39,14 @@ def test_fresh_init_is_complete_and_rerun_is_a_noop(
     session, migrator = fresh
     before = migrator.status()
     assert not before.keyspace_exists
-    assert [m.version for m in before.pending] == [1]
+    shipped = tuple(m.version for m in migrator.migrations)  # V001 (P2), V002 (P5)
+    assert tuple(m.version for m in before.pending) == shipped
 
-    assert migrator.migrate() == (1,)
+    assert migrator.migrate() == shipped
     status = migrator.status()
     assert status.up_to_date
-    assert status.current_version == 1
-    assert status.applied[0].checksum == migrator.migrations[0].checksum
+    assert status.current_version == shipped[-1]
+    assert [a.checksum for a in status.applied] == [m.checksum for m in migrator.migrations]
 
     assert migrator.migrate() == ()  # idempotent
     assert migrator.status().applied == status.applied  # history not rewritten
@@ -111,4 +112,4 @@ def test_concurrent_migrators_are_serialized(fresh: tuple[ScyllaSession, Migrato
     with pytest.raises(SchemaError, match="in progress by host-a"):
         second.migrate(lock_wait_s=1)
     first._release_lock()
-    assert second.migrate(lock_wait_s=1) == (1,)
+    assert second.migrate(lock_wait_s=1) == tuple(m.version for m in second.migrations)

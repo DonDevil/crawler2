@@ -37,6 +37,10 @@ EXPECTED_TABLES = {
     "outbox": "X1/X2",
     "outbox_relay_checkpoints": "X2",
     "processed_events": "X3",
+    # V002 (P5, ADR-020): extraction facts, page revisions, snapshot archival decisions.
+    "page_extracts": "P5",
+    "page_revisions_by_url": "P5/W8",
+    "snapshot_retention": "P5",
 }
 
 

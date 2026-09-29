@@ -24,9 +24,14 @@ from antipiracy_contracts.digests import ContentDigest
 from antipiracy_contracts.events import EventEnvelope
 from antipiracy_contracts.events.evidence import EvidenceCandidateCreated, EvidenceFinalized
 from antipiracy_contracts.events.fingerprinting import EncodeFailed, EncodeRequested
-from antipiracy_contracts.events.media import MediaObserved
+from antipiracy_contracts.events.media import MediaDiscovered, MediaObserved
 from antipiracy_contracts.events.targets import TargetRetired
-from antipiracy_contracts.events.web import FetchCompleted, PageObserved, UrlsDiscovered
+from antipiracy_contracts.events.web import (
+    FetchCompleted,
+    PageChanged,
+    PageObserved,
+    UrlsDiscovered,
+)
 from antipiracy_contracts.ids import (
     ContentId,
     DomainId,
@@ -36,6 +41,7 @@ from antipiracy_contracts.ids import (
     MatchId,
     MediaId,
     ObservationId,
+    PageRevisionId,
     PageVersionId,
     TargetId,
     UrlId,
@@ -278,6 +284,65 @@ class EvidenceProvenance:
     missing_observations: tuple[ObservationId, ...]
 
 
+@dataclass(frozen=True, slots=True)
+class ExtractRecord:
+    """P5: the extraction facts of one raw page version; ``doc`` is opaque to storage."""
+
+    page_version_id: PageVersionId
+    url_id: UrlId
+    extractor: str
+    normalization: str
+    revision_id: PageRevisionId
+    normalized_digest: ContentDigest
+    observed_at: datetime
+    """Time of the observation that was extracted first (not a wall-clock time)."""
+    doc: str
+
+
+@dataclass(frozen=True, slots=True)
+class RevisionSighting:
+    """P5 write: one observation of a page revision (ADR-020)."""
+
+    url_id: UrlId
+    revision_id: PageRevisionId
+    normalization: str
+    normalized_digest: ContentDigest
+    observation_id: ObservationId
+    page_version_id: PageVersionId
+    observed_at: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class PageRevision:
+    """P5 read model: a revision of a URL with first/last sighting."""
+
+    revision_id: PageRevisionId
+    normalization: str
+    normalized_digest: ContentDigest
+    first_seen: datetime
+    first_observation_id: ObservationId
+    first_page_version_id: PageVersionId
+    last_seen: datetime
+    last_observation_id: ObservationId
+    last_page_version_id: PageVersionId
+
+
+class SnapshotDecision(StrEnum):
+    RETAIN = "retain"
+    SAMPLED_OUT = "sampled_out"
+
+
+@dataclass(frozen=True, slots=True)
+class RetentionDecision:
+    """P5 archival decision for one snapshot blob as seen by one observation."""
+
+    digest: ContentDigest
+    observation_id: ObservationId
+    decision: SnapshotDecision
+    reason: str
+    decided_at: datetime
+
+
 # --- repositories -----------------------------------------------------------
 
 
@@ -363,6 +428,39 @@ class UrlRepository(Protocol):
         ...
 
     def domain(self, domain_id: DomainId) -> DomainRecord | None: ...
+
+
+class PageIntelligenceRepository(Protocol):
+    """P5: extracts per raw page version, revisions per URL, archival decisions."""
+
+    def record_extract(self, record: ExtractRecord) -> None:
+        """Idempotent upsert keyed by ``page_version_id``."""
+        ...
+
+    def extract(self, page_version_id: PageVersionId) -> ExtractRecord | None: ...
+
+    def record_sighting(
+        self,
+        sighting: RevisionSighting,
+        *,
+        changed: EventEnvelope[PageChanged] | None = None,
+        media: EventEnvelope[MediaDiscovered] | None = None,
+    ) -> None:
+        """first_* earliest-wins, last_* latest-wins; the events go to the outbox in the
+        same logged batch and must describe this sighting."""
+        ...
+
+    def revision(self, url_id: UrlId, revision_id: PageRevisionId) -> PageRevision | None:
+        """EC. A stale miss only causes a duplicate ``page.changed`` (same key)."""
+        ...
+
+    def revisions(self, url_id: UrlId) -> list[PageRevision]:
+        """EC. Newest first_seen first."""
+        ...
+
+    def record_retention(self, decision: RetentionDecision) -> None: ...
+
+    def retention(self, digest: ContentDigest) -> list[RetentionDecision]: ...
 
 
 class MediaRepository(Protocol):
@@ -476,6 +574,7 @@ __all__ = [
     "EvidenceRepository",
     "EvidenceState",
     "EvidenceSummary",
+    "ExtractRecord",
     "FetchAttemptRepository",
     "FetchAttemptSummary",
     "Inlink",
@@ -489,11 +588,16 @@ __all__ = [
     "MediaSighting",
     "MediaWithContent",
     "ObservationSummary",
+    "PageIntelligenceRepository",
     "PageObservationRepository",
+    "PageRevision",
     "PageVersionSighting",
     "ProjectionRepository",
     "RepresentationState",
     "RepresentationStatus",
+    "RetentionDecision",
+    "RevisionSighting",
+    "SnapshotDecision",
     "TargetState",
     "UrlRepository",
 ]
