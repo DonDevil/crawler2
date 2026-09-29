@@ -2,7 +2,8 @@
 
 Status: **implemented and validated** — all exit-gate items met; see
 §25 for the one environment caveat on absolute throughput. **Corrected
-after P4** with a global per-domain in-flight limit (§26, ADR-019).
+after P4** with a global per-domain in-flight limit, frozen at 2 (§26,
+ADR-019).
 Audit: [audit.md](audit.md). Decisions: [ADR-015](../../adr/ADR-015-frontier-execution-model.md),
 [ADR-016](../../adr/ADR-016-frontier-task-lifecycle.md),
 [ADR-019](../../adr/ADR-019-frontier-domain-inflight-limit.md) (P4 correction).
@@ -655,6 +656,13 @@ within this batch.) Limits 1 and 2 remove the same overload (timeouts
 ÷ 9); 1 costs 39 % more wall time than 2; 4 lets timeouts return.
 **Default: 2** — the smallest value with the full effect that does not
 serialise a domain.
+
+**Frozen (2026-09-29).** The default is fixed at 2: it removes the
+same-domain timeout problem (§26 experiment; P4 rerun: V2 timeout
+attempts 216 → 8), keeps distributed correctness (1M run: 0 lost, 0
+duplicates, 0 simultaneous ownership) and costs ~2 % of frontier
+throughput. Changing it requires a new ADR with equivalent evidence;
+per-domain overrides (`set_domain_inflight_limit`) stay available.
 
 ### Effect on P3 benchmarks (limit 2 as default, `results/20260929-inflight/`)
 

@@ -1,7 +1,7 @@
 # ADR-019 — Frontier per-domain in-flight limit, global across queues and hosts
 
 Status: Accepted (P3 correction found by P4, 2026-09-29). Extends ADR-015;
-does not supersede it.
+does not supersede it. **Default frozen at 2** (2026-09-29).
 
 ## Context
 
@@ -51,5 +51,8 @@ host at once — which only the shared frontier can see.
   8 workers: 11.9k vs 11.6k claims/s, within run spread; P3 §26).
 - A limit lowered at run time applies as leases end; a raised one at the
   next claim or release.
+- The default of 2 is frozen: changing it needs a new ADR with the same
+  evidence as this one (W691 limit experiment, P3 distributed/crash/
+  starvation/throughput reruns). Per-domain overrides remain available.
 - P7 may later set per-domain limits (`set_domain_inflight_limit`) from
   observed response times; the frontier enforces whatever value is set.
