@@ -49,12 +49,14 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 "crawler2/storage/scylla/**" = ["S608"]
 # dev benchmark tooling: fixed docker/cqlsh invocations on our own keyspace names
 "benchmarks/p2-storage/**" = ["S603", "S607", "S608"]
+# dev benchmark tooling: seeded pseudo-random workloads, fixed lscpu call
+"benchmarks/p3-frontier/**" = ["S311", "S603", "S607"]
 
 [tool.mypy]
 python_version = "3.12"
 strict = true
 plugins = ["pydantic.mypy"]
-files = ["crawler2", "contracts/src", "tests", "benchmarks/p2-storage"]
+files = ["crawler2", "contracts/src", "tests", "benchmarks/p2-storage", "benchmarks/p3-frontier"]
 
 # Producers construct contract models in code; unknown keyword arguments must
 # fail type checking even though the models ignore unknown fields at runtime

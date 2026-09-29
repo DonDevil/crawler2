@@ -1,0 +1,26 @@
+{
+  "tool": "p3 crash recovery",
+  "summary": {
+    "single": {
+      "lease_ttl_s": 2.0,
+      "base_backoff_s": 0.5,
+      "claim_a_attempt": 1,
+      "claim_b_attempt": 2,
+      "same_task": true,
+      "lease_expiry_after_claim_s": 2.0,
+      "recovered_after_claim_s": 2.028,
+      "reclaimed_after_claim_s": 2.529,
+      "stale_a_heartbeat": true,
+      "stale_a_complete": "stale",
+      "b_complete": "completed"
+    },
+    "bulk": {
+      "killed_holders": 50,
+      "reclaimed_and_completed": 50,
+      "all_recovered_within_s": 2.48,
+      "old_tokens_rejected": 50,
+      "active_at_end": 0
+    },
+    "passed": true
+  }
+}

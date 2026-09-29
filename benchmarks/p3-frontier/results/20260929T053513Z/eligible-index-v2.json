@@ -1,0 +1,89 @@
+{
+  "tool": "p3 eligible-domain index",
+  "summary": [
+    {
+      "gated_better_domains": 50,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 100.0,
+        "p95_us": 173.8,
+        "p99_us": 257.5,
+        "max_us": 325.6
+      },
+      "server_us_per_claim": 35.3,
+      "empty_claim_mean_us": 87.2,
+      "burst_first_claim_us": 1189.1,
+      "burst_max_claim_us": 1189.1
+    },
+    {
+      "gated_better_domains": 250,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 99.4,
+        "p95_us": 129.6,
+        "p99_us": 192.0,
+        "max_us": 415.8
+      },
+      "server_us_per_claim": 31.8,
+      "empty_claim_mean_us": 64.8,
+      "burst_first_claim_us": 3320.7,
+      "burst_max_claim_us": 3320.7
+    },
+    {
+      "gated_better_domains": 260,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 99.5,
+        "p95_us": 108.0,
+        "p99_us": 172.1,
+        "max_us": 235.6
+      },
+      "server_us_per_claim": 31.2,
+      "empty_claim_mean_us": 67.2,
+      "burst_first_claim_us": 3338.2,
+      "burst_max_claim_us": 3338.2
+    },
+    {
+      "gated_better_domains": 1000,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 100.3,
+        "p95_us": 112.0,
+        "p99_us": 178.3,
+        "max_us": 393.4
+      },
+      "server_us_per_claim": 31.9,
+      "empty_claim_mean_us": 73.0,
+      "burst_first_claim_us": 3500.8,
+      "burst_max_claim_us": 3500.8
+    },
+    {
+      "gated_better_domains": 5000,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 99.4,
+        "p95_us": 106.8,
+        "p99_us": 172.2,
+        "max_us": 196.9
+      },
+      "server_us_per_claim": 31.2,
+      "empty_claim_mean_us": 66.5,
+      "burst_first_claim_us": 3628.4,
+      "burst_max_claim_us": 3628.4
+    },
+    {
+      "gated_better_domains": 20000,
+      "victim_found": "500/500",
+      "claim_latency": {
+        "p50_us": 98.9,
+        "p95_us": 111.0,
+        "p99_us": 177.2,
+        "max_us": 380.5
+      },
+      "server_us_per_claim": 31.8,
+      "empty_claim_mean_us": 65.0,
+      "burst_first_claim_us": 3422.7,
+      "burst_max_claim_us": 3422.7
+    }
+  ]
+}

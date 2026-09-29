@@ -1,0 +1,53 @@
+{
+  "tool": "p3 throughput",
+  "label": "compose-redis",
+  "admit": {
+    "admitted": 200000,
+    "seconds": 23.26
+  },
+  "summary": {
+    "workers": 8,
+    "urls": 200000,
+    "domains": 40,
+    "rate_limit": "none (default_interval_s=0)",
+    "claims": 200000,
+    "claims_per_sec": 9292,
+    "steady_claims_per_sec": 9327,
+    "elapsed_s": 21.52,
+    "redis_cpu_pct": 91.7,
+    "evalsha_calls": 400008,
+    "evalsha_us_per_call": 33.53,
+    "claim_latency": {
+      "p50_us": 414.4,
+      "p95_us": 551.0,
+      "p99_us": 652.8,
+      "max_us": 321996.4
+    },
+    "complete_latency": {
+      "p50_us": 354.2,
+      "p95_us": 485.4,
+      "p99_us": 578.0,
+      "max_us": 321930.5
+    },
+    "duplicate_completions": 0,
+    "lost_tasks": 0,
+    "remaining_active": 0,
+    "audit_problems": 0
+  },
+  "environment": {
+    "host": "Ubuntu-24-04",
+    "cpu_model": "11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz",
+    "cpu_count": 12,
+    "python": "3.12.3",
+    "redis_version": "7.4.2",
+    "redis_config": {
+      "appendfsync": "everysec",
+      "maxmemory": "805306368",
+      "maxmemory-policy": "noeviction",
+      "io-threads": "1",
+      "save": "3600 1 300 100 60 10000",
+      "appendonly": "yes"
+    },
+    "aof_enabled": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "tool": "p3 heartbeat endurance",
+  "summary": {
+    "enabled": {
+      "claims": 200,
+      "work_s": 30.0,
+      "lease_ttl_s": 3.0,
+      "work_to_lease_ratio": 10.0,
+      "recovered_by_sweep": 0,
+      "completed": 200,
+      "stale": 0,
+      "claim_lost": 0,
+      "elapsed_s": 30.0,
+      "audit_problems": 0,
+      "stale_counter": 0
+    },
+    "disabled": {
+      "claims": 200,
+      "work_s": 30.0,
+      "lease_ttl_s": 3.0,
+      "work_to_lease_ratio": 10.0,
+      "recovered_by_sweep": 200,
+      "completed": 0,
+      "stale": 200,
+      "claim_lost": 0,
+      "elapsed_s": 30.6,
+      "audit_problems": 0,
+      "stale_counter": 200
+    },
+    "passed": true
+  }
+}
