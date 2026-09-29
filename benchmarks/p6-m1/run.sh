@@ -29,6 +29,9 @@ export CRAWLER2_LOGGING__LEVEL=INFO
 export CRAWLER2_WORKERS__HTTP__CONCURRENCY=${M1_HTTP_CONCURRENCY:-16}
 export CRAWLER2_WORKERS__BROWSER__CONCURRENCY=${M1_BROWSER_CONCURRENCY:-2}
 export CRAWLER2_LIMITS__MAX_MEMORY_MB=${M1_MAX_MEMORY_MB:-1024}
+# Stream retention: urls.discovered entries are ~17 KB; 100k entries would exceed the
+# compose Redis maxmemory (768 MB, noeviction). Consumer lag stays far below 10k.
+export CRAWLER2_EVENTS__STREAM_MAXLEN=${M1_STREAM_MAXLEN:-10000}
 
 SEEDS=$ROOT/benchmarks/v1-baseline/seeds.txt
 BIN=$ROOT/env/bin
@@ -86,6 +89,13 @@ start-search)  # add the search process to a running M1: start-search QUERIES
     echo "$(date -u +%FT%TZ) add search queries=$(sha256sum "$VAR/queries.txt" | cut -c1-16)" >> "$VAR/restarts.log"
     supervise search env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-discover" search \
         --queries "$VAR/queries.txt" --every 86400
+    ;;
+restart-relay)  # apply a new M1_STREAM_MAXLEN (the relay trims streams on publish)
+    kill "$(cat "$VAR/pids/relay.pid")" 2>/dev/null || true
+    kill "$(cat "$VAR/pids/relay.child")" 2>/dev/null || true
+    echo "$(date -u +%FT%TZ) reconfigure relay stream_maxlen=$CRAWLER2_EVENTS__STREAM_MAXLEN" >> "$VAR/restarts.log"
+    supervise relay env CRAWLER2_METRICS__PORT=9301 "$BIN/crawler2-storage" relay
+    env | grep '^CRAWLER2_' | grep -v -i 'secret\|access_key\|password' | sort > "$VAR/config.env"
     ;;
 restart-http)  # apply a new M1_HTTP_CONCURRENCY to the http pool only
     kill "$(cat "$VAR/pids/http.pid")" 2>/dev/null || true
