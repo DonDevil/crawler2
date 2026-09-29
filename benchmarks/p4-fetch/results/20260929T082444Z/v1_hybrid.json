@@ -1,0 +1,7080 @@
+{
+ "summary": {
+  "system": "v1",
+  "urls": 691,
+  "successes": 672,
+  "success_rate": 0.9725,
+  "upstream_bytes": 117788516,
+  "bytes_per_success": 175281,
+  "browser_successes": 50,
+  "browser_share": 0.0744,
+  "attempts": 838,
+  "browser_attempts": 128,
+  "engine_of_success": {
+   "scrapling": 39,
+   "selenium": 10,
+   "playwright": 1,
+   "async": 622
+  },
+  "wall_s": 783.2
+ },
+ "rows": [
+  {
+   "url": "https://www.moviesda.info/?m=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.5,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.201,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.498,
+   "error": null
+  },
+  {
+   "url": "https://tamilprinttv.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.501,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.672,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/?m=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.676,
+   "error": null
+  },
+  {
+   "url": "https://diuwin.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.87,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.889,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/12/akhanda-2-thaandavam-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.61,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.629,
+   "error": null
+  },
+  {
+   "url": "https://bdggame.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.953,
+   "error": null
+  },
+  {
+   "url": "https://jaiclub.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.988,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/family/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.694,
+   "error": null
+  },
+  {
+   "url": "https://xn--mlc3avm5adt5g.net/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.007,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/privacy.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.724,
+   "error": null
+  },
+  {
+   "url": "https://tirangagame.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.019,
+   "error": null
+  },
+  {
+   "url": "https://okwin.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.021,
+   "error": null
+  },
+  {
+   "url": "https://sikkimgame.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.031,
+   "error": null
+  },
+  {
+   "url": "https://rajaluck.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.055,
+   "error": null
+  },
+  {
+   "url": "https://82lottery.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.053,
+   "error": null
+  },
+  {
+   "url": "https://damangame.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.054,
+   "error": null
+  },
+  {
+   "url": "https://bdgwin.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.086,
+   "error": null
+  },
+  {
+   "url": "https://goagames.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.089,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.092,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.136,
+   "error": null
+  },
+  {
+   "url": "https://in999.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.173,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.179,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.193,
+   "error": null
+  },
+  {
+   "url": "https://mantrimalgame.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.221,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.info/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.938,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.336,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.766,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.365,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/category/tamil-dubbed-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.295,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.841,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/02/kuttymovies-2025-tamil-movies.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.425,
+   "error": null
+  },
+  {
+   "url": "https://91club.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.457,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/habeebi-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.877,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.493,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.535,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/back-in-action-2025-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.268,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/Hindi%20Movies?max-results=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.677,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/movies/action/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.306,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/documentary/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.263,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/spider-man-brand-new-day-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.461,
+   "error": null
+  },
+  {
+   "url": "https://yaarwin.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.676,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.212,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.167,
+   "error": null
+  },
+  {
+   "url": "http://www.tamilrockers2024.com/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.096,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/hollywood/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.184,
+   "error": null
+  },
+  {
+   "url": "https://www.1tamilmv.army/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.807,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/contact-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.188,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/mookuthi-amman-2020-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.502,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/bollywood-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.656,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.053,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/alangu-2024-tamil-movie-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.797,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/good-luck-have-fun-dont-die-2025-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.052,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/release-year/2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.415,
+   "error": null
+  },
+  {
+   "url": "https://55club.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.031,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/photographer-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.64,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/search/label/Tamil",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.433,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/movies/documentary/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.025,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/games/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.299,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.288,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=171",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.718,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies?max-results=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.725,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/dc-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.449,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=4",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.082,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/mission-extreme-2024-tamil-movie-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.811,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/movies/romance/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.03,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.farm/?m=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.468,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2015-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.964,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2016-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.33,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/gdn-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.462,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/sci-fi/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.936,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/tamil/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.352,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/search/label/Malayalam",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.86,
+   "error": null
+  },
+  {
+   "url": "https://jalwagame.tamilprint.co.in/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.807,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/12/dhurandhar-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.615,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/sitemap_index.xml",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.611,
+   "error": null
+  },
+  {
+   "url": "https://moviesrace.xyz/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.897,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/07/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.613,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/contact-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.369,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/release-year/2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.073,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/a-legend-2025-a-legend-2025-tamil-dubbed-download/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.986,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.spot/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.098,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/02/chhaava-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.411,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/p/about-us.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.747,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.66,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/wp-includes/js/wp-emoji-release.min.js?ver=7.1.2",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 2.425,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/bollywood/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.551,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/06/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.617,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/privacy-policy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.506,
+   "error": null
+  },
+  {
+   "url": "https://jaiclub.tamilprint.co.in/jai-club-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 2.764,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/09/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.578,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2014-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.33,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/03/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.59,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/ondu-sarala-prema-kathe/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.53,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/English%20Movies?max-results=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.536,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-movies-collection/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.965,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2012-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.338,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/identity-2025-tamil-dubbed-download/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.926,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/feeds/posts/default",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.615,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/yellow-2025-full-movie-review-storyline-cast/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.35,
+   "error": null
+  },
+  {
+   "url": "https://rajaluck.tamilprint.co.in/raja-luck-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 3.181,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.783,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/feeds/posts/default",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.525,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/kerala-lottery-result-today-a-step-by-step-guide/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.24,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.481,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/release-year/2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.492,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/Malayalam%20Movie?max-results=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.565,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/08/khalifa-ruler-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.61,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/why-dream-books-remain-popular/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.239,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/08/vishwanath-sons-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.415,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2016-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.675,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/09/hi-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.446,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/daman-game-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.514,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/hi-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.293,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2025/12/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.496,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/09/im-game-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.563,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/dual-audio/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.547,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/write-for-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.882,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/release-year/2021/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.517,
+   "error": null
+  },
+  {
+   "url": "https://diuwin.tamilprint.co.in/diuwin-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 4.663,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/about-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.343,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/09/the-paradise-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.519,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/merku-thodarchi-malai-2018-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.29,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/02/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.582,
+   "error": null
+  },
+  {
+   "url": "https://www.stripemovies.com/release-year/2017/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.389,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/08/toxic-fairy-tale-for-grown-ups-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.464,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/contact.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.236,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/dc-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.461,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2021-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.75,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/punjabi/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.481,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2023-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.677,
+   "error": null
+  },
+  {
+   "url": "https://goagames.tamilprint.co.in/goa-games-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 5.351,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/?page=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.289,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/ok-win-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.491,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2025/11/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.569,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-07-23T09%3A06%3A00%2B05%3A30&max-results=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.609,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/01/tamilrockers-2025-tamil-movies.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.494,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/mandaadi-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.291,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.537,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/tiranga-game-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.548,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/theeyavar-kulaigal-nadunga/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.355,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/about.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.239,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/09/im-game-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.457,
+   "error": null
+  },
+  {
+   "url": "https://bdgwin.tamilprint.co.in/bdg-win-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 5.881,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/07/jana-nayagan-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.52,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2022-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.157,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/?page=3",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.288,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/p/contect-us.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.533,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.614,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2024-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.902,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/02/sabdham-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.448,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/creating-a-future-ready-digital-presence-for-business-growth/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.751,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/dark-syndicate-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.287,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/05/hit-third-case-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.411,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/search_suggest.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.236,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/01/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.771,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-daily-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.826,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/05/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.571,
+   "error": null
+  },
+  {
+   "url": "https://okwin.tamilprint.co.in/ok-win-login.webp",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 7.135,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/p/privacy-policy.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.507,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/category/tamil-web-series",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.287,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2017-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.277,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/contact-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.893,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/ACTION%0A%20MOVIES?max-results=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.658,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/12/angammal-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.509,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search?updated-max=2026-08-01T00%3A10%3A00-07%3A00&max-results=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.583,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/02/nilavuku-en-mel-ennadi-kobam-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.432,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/index.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.523,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/explore-the-hidden-fun-behind-todays-most-popular-online-game/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.513,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/08/vishwanath-and-sons-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.479,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/dmca.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.301,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/check-the-latest-lottery-draw-results-view-outcomes-for-all-types-of-government-lottery-tickets/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.828,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/the-paradise-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.241,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/comedy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.27,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2026/08/dc-2026.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.588,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/disclaimer/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.704,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/thriller/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.242,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2024/09/lubber-pandhu-movie.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.517,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/ramba-oorvasi-menaka-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.29,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/search/label/Telugu",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.451,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/mango-pachcha-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.243,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/action/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.267,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/modha-rathri-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.31,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/search",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.659,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.229,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2018-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.735,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/irumudi-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.282,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/presiden-slot-online/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.744,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/release-year/2025/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.259,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/varavu-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.293,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/action",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.397,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/?page=38",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.243,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/horror/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.244,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=3",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.997,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2018-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.626,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2013-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.687,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/category/tamil-hd-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.31,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/write-for-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.01,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-movies-collection/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.395,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/bethlehem-kudumba-unit-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.241,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_awakening_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.965,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/dmca/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.247,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.845,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2019-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.769,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/moviesda-dubbed-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.708,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/ram-and-leela-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.329,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/animation//",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.25,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/privacy-policy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.716,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2017-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.338,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.baby/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 10.443,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/karmakhya-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.276,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/privacy-policy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.201,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.124,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/animation/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.239,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2020-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.605,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/dont-be-shy-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.307,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/sifang-payment/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.554,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/drama/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.25,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/safer-cash-out-practices-for-online-gaming-accounts/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.621,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/how-to-complete-the-yaar-win-login-process/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.316,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/unabomber_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.619,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2015-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.993,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/category/kuku-fm-tv-audio-books",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.238,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/terms-and-conditions/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.766,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/shooting-at-nohu90com-casino/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.532,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/movies/romance/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.237,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/best_of_the_best_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.059,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/tamil-2020-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.497,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_love_hypothesis_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.443,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/author/kabir-bhatia/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.62,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/?page=2",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.292,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/disclaimer/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.673,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/release-year/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.368,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/mension-house-mallesh-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.244,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/release-year/2024/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.24,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/about-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.204,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/contact/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.241,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/toy_story_5_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.655,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/happy-new-year-friends-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.479,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2013-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.514,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/im-game-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.3,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/online-sicbo-the-most-premium-betting-experience-today/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.125,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.057,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/konjam-pesu-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.187,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/daman-game-app-login-complete-mobile-access-tutorial/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.518,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/agadha-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.288,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/about-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.261,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/ghost_rider_spirit_of_vengeance_2011_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.937,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/category/tamil-new-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.243,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2019-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.524,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_get_out_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.21,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/dmca/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.693,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/wp-admin/admin-ajax.php",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 12.863,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/sitemap_index.xml",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.375,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2018-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.911,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/salt_2010_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.067,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/sarpatta-parambarai-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.184,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/immortal-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.304,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/resident_evil_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.667,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/contact.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.455,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/sardar-2-2026-tamil-movie",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.239,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2012-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.483,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/terms-and-conditions/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.81,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/nerkonda-paarvai/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.18,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/terms.php",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.29,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/browse/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.428,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-hd-mobile-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.58,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/mgr-magan-2022-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.199,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2023-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.52,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=5",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.604,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=2",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.046,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/slot-games-a-practical-look-at-gameplay-and-online-features/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.407,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2021-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.581,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/elite-force-2026-web-dl-hindi-org-dual-audio-s01-download-480p-720p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.885,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/daman-game-login-on-iphone-what-users-should-know/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.459,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/aruginil-tholaivai-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.187,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-movies-collection/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.205,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2014-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.532,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/gun-2010-bluray-hindi-org-dual-audio-movie-480p-720p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.574,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/lift-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.189,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_bodyguard_2024_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.149,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2015-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.969,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/contact-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.956,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/bloodshot_2020_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.02,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/23-000-lives-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.265,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/cocktail-2020-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.186,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2024-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.794,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/desire-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.673,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/author/movies1/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.551,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/criminal-crush-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.19,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/the-east-palace-2026-web-dl-hindi-org-dual-audio-s01-download-480p-720p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.282,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/author/admin/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.621,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/sultana_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.353,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/ward-126-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.189,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-2022-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.511,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.spot/tamil-dubbed-movies/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 15.677,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/privacy-policy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.182,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/punjabi-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.264,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.uk/?m=1",
+   "ok": true,
+   "engine": "playwright",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright"
+   ],
+   "latency_s": 17.912,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/18/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.638,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/ghost_rider_2007_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.571,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/vannakkamda-mappilei-2021-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.184,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/trending/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.264,
+   "error": null
+  },
+  {
+   "url": "https://isaiminimix.com/marijuana-2020-tamil-songs-download-isaimini/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.181,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/web-series/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.26,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/indias-got-latent-2026-web-dl-hindi-s01-download-720p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.267,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/wp-includes/js/tinymce",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.959,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/dual-audio-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.261,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/hb88-casino-promotions/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.681,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.spot/tamilrockers/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 17.757,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/the-odyssey-2026-hdcam-hindi-dubbed-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.423,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/double-occupancy-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.725,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/om-bheem-bush-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.528,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/south-dual-audio-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.413,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/why-khelosuper-account-verification-keeps-users-safe/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 19.616,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/12/avatar-fire-and-ash-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.47,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/blood-surf-2000-web-dl-hindi-org-dual-audio-movie-480p-720p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.545,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/hybrid-2007-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.428,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/south-hindi-dubbed/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.345,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/page/108/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.736,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/2025/05/tourist-family-2025.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.447,
+   "error": null
+  },
+  {
+   "url": "https://www.1tamilmv.army/cdn-cgi/l/email-protection",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 18.057,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/how-to-download/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.409,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/hollywood-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.344,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/kara-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.617,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/author/admin/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.728,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/half-stories-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.046,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/scary-movie-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.695,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=4",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.061,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/disclosure-day-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.57,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/page/3/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.522,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/breakfast-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.687,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/pepe-2024-pepe-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.536,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/elize-shadows-of-a-woman-2026-web-dl-hindi-org-dual-audio-movie-download-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.668,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/masters-of-the-universe-2026-web-dl-hindi-org-dual-audio-movie-480p-720p-1080p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.41,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/michael-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.66,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/page/2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.543,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/kara-tamil-movie-download-kuttymovies.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.513,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/mension_house_mallesh_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.064,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini-2024-movies/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 21.905,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/hi-tamil-movie-download1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.936,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/kara-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.624,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.138,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search?updated-max=2026-05-07T21%3A22%3A00-07%3A00&max-results=7&reverse-paginate=true",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.42,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/moviesda-dubbed-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 11.145,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/battle-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.576,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the-paradise-(2026)-tamil-dub-movie-download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.071,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=5",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.061,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/theeyor-koodam-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.766,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/jana-nayagan-movie-download-moviesda.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.627,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/shaque_trust_no_one_2026_tamil_audio_series_hd_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.159,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/about-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 10.943,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/patriot-movie-download-moviesda.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.641,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/leader-tamil-movie-download-isaimini_26.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.622,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/hunkkaar_the_roar_2026_tamil_audio_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.065,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.farm/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.964,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/commando-vin-love-story-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.569,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=45",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.061,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/ramba_oorvasi_menaka_2026_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.17,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/patriot-tamil-movie-download-moviesda.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.567,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/mango_pachcha_2026_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.953,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search?updated-max=2026-04-20T17%3A59%3A00-07%3A00&max-results=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.225,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/wp-admin/admin-ajax.php",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 25.097,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/patriot-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.571,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.farm/search",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.959,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/heart_beat_2026_tamil_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.628,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=3",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.062,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.909,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2026&get-page=2",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.057,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/habeebi-(2026)-tamill-movie-download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.819,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/top-hindi-blockbusters-everyone-should-watch/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.567,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/agadha_2026_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.065,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2017-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 14.59,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/author/movies1/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 27.136,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/bring-her-back-2025-a-gripping-mystery-thriller-packed-with-emotion/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.584,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=3",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.665,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=6",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.682,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/amala_2023_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.663,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/too_close_2021_tamil_dubbed_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.216,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=19",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.707,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/happy-birthday-luci-2024-full-movie-review-cast-plot/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.592,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=4",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.981,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/maxton-hall-2025/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.619,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/sarpatta_parambarai_hd_2021_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.931,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/the-menendez-brothers-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.567,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/it-ends-with-us-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.362,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/lupin_2021_tamil_dubbed_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.81,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/corporator_2025_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.616,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/juni-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 11.021,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=7",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.398,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/dracula-a-love-tale/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.26,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/wallace-n-gromit-vengeance-most-fowl-2025-tamil-dubbed/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.564,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/best-online-presidenslot-games/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 16.675,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/soorakottai_2024_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.06,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/aay-2024-tamil-dubbed-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 10.077,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=5",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.52,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/despicable-me-4/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.631,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/udumbu_2024_tamil_dubbed_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.952,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/search/label/Hindi%20Movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.579,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/inside-out-2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.448,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/gajaana-2025-an-intense-action-thriller-filled-with-secrets/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.352,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/doctor_hd_2021_tamil_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.019,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/jananayagan-tamil-movie-download-isaimini_01538731993.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.627,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/82-lottery-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.57,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/hollywood/page/2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.23,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=2",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.798,
+   "error": null
+  },
+  {
+   "url": "https://www.blogger.com/share-post.g?blogID=1677217137986810020&postID=7202290369869813053&target=blog",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 32.691,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/lik-tamil-movie-download-moviesda.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.647,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/101_jillavin_azhagan_2022_tamil_dubbed_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.536,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/bdg-win-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.512,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/04/jananayagan-tamil-movie-download-isaimini.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.59,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/contact-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 17.49,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/la_brea_2025_tamil_aud_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.93,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/crazy_fist_2021_tamil_dubbed_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.249,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/2026/07/jananayagan-tamil-full-movie-download-moviesda.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.589,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/it-ends-with-us/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.781,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.business/feeds/5364285869211507883/comments/default",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.448,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/emily_in_paris_2021_s02_tamil_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.948,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_holiday_s01_tamil_dubbed_series_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.698,
+   "error": null
+  },
+  {
+   "url": "https://moviesda16.best/habeebi-2026-tamil-movie-online-free",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.701,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/category/games/page/2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.913,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/91-club-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.75,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/goa-games-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.492,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/diuwin-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.484,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/55-club-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.365,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/anirudh-2018-2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.241,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/bdg-game-login/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.553,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilrockers2024.com/favicon.ico",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 32.845,
+   "error": "Unsupported content type: image/x-icon"
+  },
+  {
+   "url": "https://tamilprint.com.in/sevappi-2024/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.485,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=full-movies-with-trailers",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.841,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2021-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 17.942,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2024-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 17.36,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/ivan-thanthiran-2017/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.397,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/4-2024/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.437,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/basic-tennis-guide-for-bettors/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.23,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/theethum-nandrum-2021/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.551,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=full-movies-with-trailers",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.866,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/beiimaan-love-2016/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.507,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=full-movies-with-trailers&PageID=227132",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.712,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/discover-fc88-and-its-popular-platform-features/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.624,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/pokkiri-manan-2015-dvdscr/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.525,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.farm/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 37.478,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/mersal-2017/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.894,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/petromax-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.596,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=watch-and-download-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.846,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=8",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.69,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/rajavukku-check-2020/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.539,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=see-full-movies-on-gofullmovies-com&PageID=227135",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.026,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/beast_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.783,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/in_gods_hands_1998_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.576,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/mithai-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.873,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/vaandu-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.52,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=watch-and-download-movies&PageID=227131",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.237,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=watch-new-hollywood-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.828,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/vanakkam-salaam-2024/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.28,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/79king-online-games-for-players-who-enjoy-interactive-challenges/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.302,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/the-evolution-of-digital-lifestyles/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.321,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/dr-56-2023/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.839,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/games-at-online-casinos/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.311,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/athomugam-2024/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.667,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/depositing-funds-at-twin68-casino/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.507,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/discover-lu88-and-its-popular-platform-features/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.484,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/hitclub-guide-for-new-users-and-platform-navigation/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.438,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/champion-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.694,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/sita-ramam-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.595,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/ammani-2016/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.373,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/oru-nalla-naal-paathu-solren-2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.007,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/aaruthra-2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.346,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/simba-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.573,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/vada-chennai-2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.539,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/kanchana-2-2015/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.508,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/ward-126-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.232,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/yennanga-sir-unga-sattam-2021/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.483,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/1920-horrors-of-the-heart-2023/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.435,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/parampara-2021/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.278,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/vj88-complete-guide/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.584,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2022-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.3,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/run-run-run-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.644,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/thalli-pogathey-2021/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.541,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/anel-meley-panithuli-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 8.53,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/xoc-dia-tu-linh/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.51,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/terms-and-conditions/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 33.966,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=watch-new-hollywood-movies&PageID=227133",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.996,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2020-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.753,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-daily-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.524,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=see-full-movies-on-gofullmovies-com",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.875,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/9-hours-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.556,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=download-new-movies-for-free&PageID=227134",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.818,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/official-login-access-and-alternative-links/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 33.723,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/savarikkadu-2017/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 8.078,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=1",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.246,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/rubin_and_ed_1991_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.962,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/ghost_train_2024_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.14,
+   "error": null
+  },
+  {
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=download-new-movies-for-free",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.018,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/jackson-durai-2016/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.89,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/son_of_sara_volume_1_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.075,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/the-great-indian-murder-2022-season-1/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.832,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/dewalive-login-a-complete-guide-to-accessing/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.223,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/the-elephant-whisperers-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.676,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/yo88-an-online-gaming/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 7.463,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_devils_mouth_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.658,
+   "error": null
+  },
+  {
+   "url": "http://www.tamilrockers2024.com/search",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.305,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/demon_slayer_kimetsu_no_yaiba_infinity_castle_i_2025_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.941,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/big_chicken_a_fast_food_conspiracy_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.567,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/thiruchitrambalam-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 6.554,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/disclaimer/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 33.99,
+   "error": null
+  },
+  {
+   "url": "http://www.tamilrockers2024.com/p/about-us.html",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.093,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/movies?genre=eng&get-page=9",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.794,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/73/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.518,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2014-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.66,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/chum_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.303,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/28/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.55,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_shallows_2016_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.654,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/72_hours_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.964,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/privacy-policy/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 35.587,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2012-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.308,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/keo-nha-cai-your-football-betting-advantage-explained/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.74,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/supergirl-(2026)-tamil-dub-movie-download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.7,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint67.art/the_truthers_2026_tamil_dubbed_movie_download",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.021,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/63/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.508,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/91-club-bonus-offers-and-promotions-explained/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 6.7,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/13/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.503,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/pandrikku-nandri-solli-2022/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 6.51,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/77/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.564,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/author/alfa-team/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.073,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/29/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.169,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprinthd.art/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.228,
+   "error": null
+  },
+  {
+   "url": "https://moviesda.com.in/category/post/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.062,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/70/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.48,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/88/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.454,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/veer-game-app-login-complete-account-access-instructions/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 6.316,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/6/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.979,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/4/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.947,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/48/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.507,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.512,
+   "error": null
+  },
+  {
+   "url": "https://www.blogger.com/share-post.g?blogID=1677217137986810020&postID=3513661093734899533&target=twitter",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 51.341,
+   "error": "HTTP 404"
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/89/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.643,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/95/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.764,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/23/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.508,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/43/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.471,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/69/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 5.41,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/odds-and-avoid-misleading-lines/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.792,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/how-fresh-concepts-are-giving-online-slots-new-appeal/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.505,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/36/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.512,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/54/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.765,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/39/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.674,
+   "error": null
+  },
+  {
+   "url": "https://www.mp4moviez.diet/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 60.005,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/exploring-the-modern-world-of-online-gaming/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.51,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/51/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.025,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/19/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.829,
+   "error": null
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini/",
+   "ok": true,
+   "engine": "selenium",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium"
+   ],
+   "latency_s": 49.757,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/12/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.387,
+   "error": null
+  },
+  {
+   "url": "https://xn--3-lve1d0cya6hb2e.com/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 44.885,
+   "error": null
+  },
+  {
+   "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 60.801,
+   "error": "502 Bad Gateway"
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/61/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 2.953,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/33/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.959,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/97/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.484,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/adanga-maru-2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 16.981,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/9/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 16.667,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/14/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.727,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/07/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.678,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/57/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.167,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/15/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.782,
+   "error": null
+  },
+  {
+   "url": "https://shbet.stream/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 63.481,
+   "error": "502 Bad Gateway"
+  },
+  {
+   "url": "https://movflix.my/coolie-2025-pre-hd-hindi-org-movie-1080p-720p-480p/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.95,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/47/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.918,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/83/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.882,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/90/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.124,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/tv-shows/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.898,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/04/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.759,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/37/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.805,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/8/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.123,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2026/01/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.717,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/93/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.241,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/80/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.636,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/7/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.07,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/92/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.929,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/mirai-2025-web-dl-hindi-cleaned-movie/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.705,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/52/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.278,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/16/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.294,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/gujarati-movies/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.453,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/86/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.156,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/25/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.236,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/49/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.029,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/solomon-kane-2009-bluray-hindi-org-dual-audio-movie/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.692,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/30/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.229,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2026/07/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.735,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/22/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.17,
+   "error": null
+  },
+  {
+   "url": "https://moviedrivebd.com/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 57.305,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/11/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.164,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/26/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.973,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/66/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.969,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/56/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.315,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/68/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.058,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/k-g-f-chapter-1-2018/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.793,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/96/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 4.528,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/42/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.092,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/24/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.99,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/2/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.893,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/60/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.588,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/9/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.523,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/87/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.495,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/18/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.292,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/4/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 34.444,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/67/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.523,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/everyday-digital-asset-strategies-for-new-crypto-users-on-coinyatra/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.613,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/17/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.567,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/kuthoosi-2019/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 35.491,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/08/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.525,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/category/dual-audio-movies",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.036,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/3/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.538,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/10/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.335,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/64/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.999,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/27/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.475,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/fruit-slots-at-topbet-casino/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.245,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/32/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.503,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/99/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.6,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/82/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.581,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/100/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.59,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/03/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.078,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/45/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.507,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/5/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.545,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/91/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.032,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/09/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.52,
+   "error": null
+  },
+  {
+   "url": "https://mp4moviezz.xyz/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 54.662,
+   "error": "502 Bad Gateway"
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/98/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.529,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/74/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.645,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.co.in/rocket-driver-2024-tamil-movie-download-tamilprint/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.571,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/10/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.534,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/20/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.491,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2026/04/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.519,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/78/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.559,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2026/02/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 1.596,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/85/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.618,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/72/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.575,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/81/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.478,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/59/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.274,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/84/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.492,
+   "error": null
+  },
+  {
+   "url": "https://movflix.my/2025/06/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.528,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/53/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.496,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/games-with-a-simple-approach/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.516,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/34/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.547,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/46/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.376,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/21/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 0.501,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/71/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.255,
+   "error": null
+  },
+  {
+   "url": "https://tamilprint.com.in/tamil-daily-movies/94/",
+   "ok": true,
+   "engine": "async",
+   "chain": [
+    "async"
+   ],
+   "latency_s": 3.279,
+   "error": null
+  },
+  {
+   "url": "https://tamilrockers.website/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 72.896,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.net.in/?m=1",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 91.273,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda.red/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 93.621,
+   "error": null
+  },
+  {
+   "url": "https://www.blogger.com/share-post.g?blogID=1677217137986810020&postID=3513661093734899533&target=pinterest",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 97.017,
+   "error": "Suspicious redirect to https://www.pinterest.com/pin/create/button/?url=https://www.moviesda.business/2026/09/hi-tamil-movie-download-isaimini.html?spref%3Dpi&description=Moviesda.com+%7C+Moviesda+Tam"
+  },
+  {
+   "url": "https://www.isaimini.vu/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 95.852,
+   "error": null
+  },
+  {
+   "url": "https://www.blogger.com/share-post.g?blogID=1677217137986810020&postID=7202290369869813053&target=pinterest",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 114.662,
+   "error": "Suspicious redirect to https://www.pinterest.com/pin/create/button/?url=https://www.moviesda.business/2026/09/im-game-tamil-movie-download-isaimini.html?spref%3Dpi&description=Moviesda.com+%7C+Moviesd"
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2016-movies/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 129.256,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2023-movies/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 129.678,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2013-movies/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 134.188,
+   "error": null
+  },
+  {
+   "url": "https://www.moviesda28.com/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 142.544,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 215.869,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://moviepie.xyz/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 249.804,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://www.moviesda.video/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 280.808,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://isaimini.com.in/write-for-us/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 329.942,
+   "error": null
+  },
+  {
+   "url": "https://movies-fd.shop/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 358.56,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://isaimini.com.in/manam-2014/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 351.943,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/11/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 357.092,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/karthikeyanum-kaanamal-pona-kadhaliyum-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 361.973,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/kalavu-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 366.76,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/7/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 376.382,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/5/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 383.021,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/8/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 393.463,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/silukkuvarupatti-singam-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 401.216,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/maari-2-2018/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 407.378,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/ivanukku-engeyo-macham-irukku-2018/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 415.138,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/sarkar-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 422.741,
+   "error": null
+  },
+  {
+   "url": "https://www.tamilprint7.art/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 469.824,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://isaimini.com.in/seethakaathi-2018/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 434.41,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/sigai-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 440.864,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/6/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 446.93,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/10/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 452.395,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/tamil-2019-movies/3/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 462.604,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/marshal-2019/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 467.616,
+   "error": null
+  },
+  {
+   "url": "https://moviesda17.com/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 518.558,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://isaimini.com.in/an-ultimate-guide-on-finding-your-perfect-lavender-perfume/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 475.495,
+   "error": null
+  },
+  {
+   "url": "https://isaimini.com.in/thuppakki-munai-2018/",
+   "ok": true,
+   "engine": "scrapling",
+   "chain": [
+    "async",
+    "scrapling"
+   ],
+   "latency_s": 484.182,
+   "error": null
+  },
+  {
+   "url": "https://newhdmovie2.org/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 553.011,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://www.moviesdaott.com/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 611.095,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://1tamilyogi.show/tamilmv/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 650.758,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://movier.xyz/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 698.691,
+   "error": "unknown fetch error"
+  },
+  {
+   "url": "https://www.coolmoviez.forum/",
+   "ok": false,
+   "engine": "http",
+   "chain": [
+    "async",
+    "scrapling",
+    "playwright",
+    "selenium",
+    "http"
+   ],
+   "latency_s": 693.37,
+   "error": "unknown fetch error"
+  }
+ ]
+}

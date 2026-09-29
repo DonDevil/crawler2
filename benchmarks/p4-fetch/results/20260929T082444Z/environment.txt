@@ -1,0 +1,5 @@
+run_id=20260929T082444Z
+v1_commit=2dfb542dd9ecf72f8d31e97589b922076ccf4317
+crawler2_commit=55077e7315c768db7b16ee2d19a75175f0028ed9
+cpu=11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz cores=12
+mem_total=15Gi kernel=7.0.0-34-generic

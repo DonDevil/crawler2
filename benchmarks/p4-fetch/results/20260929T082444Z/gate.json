@@ -1,0 +1,208 @@
+{
+ "gates": {
+  "success_rate": {
+   "v1": 0.9725,
+   "v2": 0.8987,
+   "pass": false
+  },
+  "bytes_per_success": {
+   "v1": 175281,
+   "v2": 41920,
+   "pass": true
+  },
+  "browser_share": {
+   "v1": 0.0744,
+   "v2": 0.0032,
+   "pass": true
+  },
+  "media_body_downloads": {
+   "v2": 0,
+   "pass": true
+  }
+ },
+ "all_pass": false,
+ "overlap": {
+  "both": 618,
+  "v1_only": 54,
+  "v2_only": 3,
+  "neither": 16
+ },
+ "v1_only_examples": [
+  "https://isaimini.com.in/adanga-maru-2018/",
+  "https://isaimini.com.in/an-ultimate-guide-on-finding-your-perfect-lavender-perfume/",
+  "https://isaimini.com.in/dewalive-login-a-complete-guide-to-accessing/",
+  "https://isaimini.com.in/disclaimer/",
+  "https://isaimini.com.in/ivanukku-engeyo-macham-irukku-2018/",
+  "https://isaimini.com.in/k-g-f-chapter-1-2018/",
+  "https://isaimini.com.in/kalavu-2019/",
+  "https://isaimini.com.in/karthikeyanum-kaanamal-pona-kadhaliyum-2019/",
+  "https://isaimini.com.in/kuthoosi-2019/",
+  "https://isaimini.com.in/maari-2-2018/",
+  "https://isaimini.com.in/manam-2014/",
+  "https://isaimini.com.in/marshal-2019/",
+  "https://isaimini.com.in/official-login-access-and-alternative-links/",
+  "https://isaimini.com.in/privacy-policy/",
+  "https://isaimini.com.in/sarkar-2019/",
+  "https://isaimini.com.in/seethakaathi-2018/",
+  "https://isaimini.com.in/sigai-2019/",
+  "https://isaimini.com.in/silukkuvarupatti-singam-2019/",
+  "https://isaimini.com.in/tamil-2012-movies/",
+  "https://isaimini.com.in/tamil-2013-movies/",
+  "https://isaimini.com.in/tamil-2014-movies/",
+  "https://isaimini.com.in/tamil-2016-movies/",
+  "https://isaimini.com.in/tamil-2019-movies/10/",
+  "https://isaimini.com.in/tamil-2019-movies/11/",
+  "https://isaimini.com.in/tamil-2019-movies/2/",
+  "https://isaimini.com.in/tamil-2019-movies/3/",
+  "https://isaimini.com.in/tamil-2019-movies/4/",
+  "https://isaimini.com.in/tamil-2019-movies/6/",
+  "https://isaimini.com.in/tamil-2019-movies/7/",
+  "https://isaimini.com.in/tamil-2019-movies/8/",
+  "https://isaimini.com.in/tamil-2019-movies/9/",
+  "https://isaimini.com.in/tamil-2021-movies/",
+  "https://isaimini.com.in/tamil-2023-movies/",
+  "https://isaimini.com.in/tamil-2024-movies/",
+  "https://isaimini.com.in/thuppakki-munai-2018/",
+  "https://isaimini.com.in/write-for-us/",
+  "https://moviedrivebd.com/",
+  "https://moviesda.baby/",
+  "https://moviesda.com.in/why-khelosuper-account-verification-keeps-users-safe/",
+  "https://moviesda.com.in/wp-admin/admin-ajax.php"
+ ],
+ "selenium_recheck": [
+  {
+   "url": "https://moviesda.baby/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://tamilprint.co.in/wp-admin/admin-ajax.php",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 400
+  },
+  {
+   "url": "https://www.isaimini.spot/tamil-dubbed-movies/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.isaimini.spot/tamilrockers/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://moviesda.com.in/why-khelosuper-account-verification-keeps-users-safe/",
+   "v2_chain": [
+    "http:timeout",
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.1tamilmv.army/cdn-cgi/l/email-protection",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini-2024-movies/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://moviesda.com.in/wp-admin/admin-ajax.php",
+   "v2_chain": [
+    "http:timeout",
+    "http:http_error"
+   ],
+   "v2_status": 400
+  },
+  {
+   "url": "https://www.moviesda.farm/",
+   "v2_chain": [
+    "http:tls_error",
+    "http:blocked"
+   ],
+   "v2_status": 403
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  }
+ ],
+ "v1": {
+  "system": "v1",
+  "urls": 691,
+  "successes": 672,
+  "success_rate": 0.9725,
+  "upstream_bytes": 117788516,
+  "bytes_per_success": 175281,
+  "browser_successes": 50,
+  "browser_share": 0.0744,
+  "attempts": 838,
+  "browser_attempts": 128,
+  "engine_of_success": {
+   "scrapling": 39,
+   "selenium": 10,
+   "playwright": 1,
+   "async": 622
+  },
+  "wall_s": 783.2
+ },
+ "v2": {
+  "system": "v2",
+  "urls": 691,
+  "successes": 621,
+  "success_rate": 0.8987,
+  "upstream_bytes": 26032100,
+  "bytes_per_success": 41920,
+  "browser_successes": 2,
+  "browser_share": 0.0032,
+  "attempts": 862,
+  "browser_attempts": 2,
+  "outcomes": {
+   "ok": 621,
+   "needs_js": 2,
+   "http_error": 10,
+   "network_error": 6,
+   "tls_error": 6,
+   "timeout": 216,
+   "blocked": 1
+  },
+  "media_responses": 0,
+  "media_body_downloads": 0,
+  "frontier_counters": {
+   "admitted": 691,
+   "claimed": 862,
+   "retried": 171,
+   "completed": 632,
+   "exhausted": 59
+  },
+  "browser_pool": {
+   "browser_launches": 1,
+   "browser_restarts": 0,
+   "browser_recycles": 0,
+   "contexts_created": 2,
+   "contexts_closed": 2,
+   "pages_opened": 2,
+   "pages_closed": 2,
+   "last_rss_mb": 0.0,
+   "rss_samples": null
+  },
+  "wall_s": 106.6
+ }
+}

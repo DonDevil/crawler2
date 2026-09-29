@@ -14,3 +14,18 @@ build/
 .env
 # local scratch (never authoritative — see docs/adr/ADR-006)
 /var/
+# runtime data never belongs in git (databases, dumps, browser state, crawl output)
+*.db
+*.sqlite
+*.sqlite3
+*.rdb
+*.aof
+appendonly*
+dump.rdb
+ms-playwright/
+.cache/
+*.har
+*.warc
+*.warc.gz
+cookies*.json
+storage_state*.json
