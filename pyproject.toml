@@ -25,6 +25,7 @@ crawler2-storage = "crawler2.storage.cli:main"
 crawler2-worker = "crawler2.crawlers.cli:main"
 crawler2-extract = "crawler2.extraction.cli:main"
 crawler2-filter = "crawler2.filtering.cli:main"
+crawler2-discover = "crawler2.discovery.cli:main"
 
 [dependency-groups]
 dev = [
