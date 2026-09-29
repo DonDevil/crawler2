@@ -1,7 +1,9 @@
 # P4 — Fetch layer & worker pools
 
 Status: **IMPLEMENTED — exit gate NOT met** (success rate, §31); every
-other gate and all functional tests pass. Design approved 2026-09-29
+other gate and all functional tests pass. After the P3 in-flight
+correction (ADR-019) the gap fell from −7.4 pp to −1.3 pp; it is now
+entirely V1 Selenium's status-blind "successes" (§30a). Design approved 2026-09-29
 (review decisions at the end). Audit: [audit.md](audit.md). Decisions:
 [ADR-017](../../adr/ADR-017-fetch-runtime-boundary.md),
 [ADR-018](../../adr/ADR-018-fetch-engine-retention.md). Current-state
@@ -615,25 +617,70 @@ them out.
 | **browser leak** (1 000 pages, contexts 2, recycle 50 / 500) | passed: 1 000/1 000 OK in ~25 s; 20 contexts created and closed; 1 browser recycle, 0 restarts; browser-tree RSS 601→646 MB over pages 50–450, 192 MB right after the recycle, 643→714 MB over pages 550–950 (second browser ≤ 1.10× the first; bound 1.25×; limit 1 200 MB) |
 | media body test | 1 GiB fixture: ≤ 64 KiB read, server wrote ≤ 192 KiB; mutation check (cap lifted) makes the server write ~944 MB, which the 4 MiB guard fails |
 
-Final full run (2026-09-29): `make check` 317 passed / 90 skipped (the
-stack tiers); `scripts/test-crawlers.sh` (contract + integration +
-browser, from the host) **85 passed, 22 skipped** (skips = cases marked
-not applicable to a fetcher kind); P3 frontier integration 40 passed.
+Final full run after the P3 correction (2026-09-29): `make check` 317
+passed / 103 skipped (the stack tiers); `scripts/test-crawlers.sh`
+(contract + integration + browser, from the host) **85 passed, 22
+skipped** (cases not applicable to a fetcher kind); P3 frontier
+integration 53 passed. Two P4 tests had to be adapted to the new
+default limit of 2, without changing what they assert: the outage test
+spreads its six unreachable URLs over six loopback hosts (six domains, so
+attempts are in flight when the outage is confirmed), and the browser
+chaos test admits its "later work" after the crash is reported (before,
+a page could start on the dying browser — then correctly `fetcher_crash`
+and retried, but racing the test's expectation).
+
+### 30a. Root cause of the 89.9 % run and the rerun after the P3 correction
+
+**Root cause.** The first gate run (89.87 %) lost 36 pages to timeouts on
+one slow host (`isaimini.com.in`) that V2 fetches in ~3 s when unloaded.
+P3's shared gate limited that domain to one *claim* per 0.3 s but not the
+number of requests *in flight*, so V2 held dozens open against a host
+answering in 3–15 s. That is a frontier politeness defect, corrected in
+P3 by a global per-domain in-flight limit shared by every queue, worker
+and host (ADR-019, P3 §26; default 2, chosen by a bounded experiment on
+this workload: timeout attempts 71 → 8).
+
+**Rerun (2026-09-29 10:10–10:32 UTC), same W691 workload, same
+definitions, same harness, only the frontier default changed**
+(`results/20260929T101042Z/`):
+
+| Metric (§28 definition) | V1 | V2 | Gate |
+|---|---:|---:|---|
+| success rate | **96.82 %** (669/691) | **95.51 %** (660/691) | ≥ V1 → ❌ (−1.3 pp, 9 pages) |
+| bytes per success | 204 132 B | **40 181 B** | ✅ (−80 %) |
+| browser share of successes | 8.07 % (54/669) | **0.30 %** (2/660) | ✅ |
+| media body downloads | — | **0** | ✅ |
+| timeout attempts (V2) | — | 8 (was 216) | — |
+| wall time | 1 006 s | 309 s | — |
+
+Overlap: both 654, V1-only 15, V2-only 6, neither 16. The 15 V1-only
+pages: **10 are V1 Selenium status-blind false successes** — V2 recorded
+404 ×7, 400 ×2, 403 ×1 for exactly these URLs (same 10 as the first run's
+re-check) — plus 3 via aiohttp and 2 via Playwright on unstable hosts
+(V2 saw TLS/connect failures there; re-fetched the same afternoon, two of
+the three aiohttp ones also fail for `curl`, one has a certificate that
+fails verification). No page needed Selenium or Scrapling.
+
+**Status-corrected analysis (not the gate, kept from §30):** excluding
+the 10 URLs that returned 404/400/403 and that V1 counted as content,
+V1 reaches 659/691 = 95.37 % against V2's 95.51 %. The gate as defined
+counts V1's own "visited" status and is therefore still unmet; changing
+that definition is a decision for review, not taken here.
 
 ## 31. Exit-gate status
 
-| Gate | Status |
-|---|---|
-| success rate ≥ V1 on the P0 workload | ❌ **not met**: 89.87 % vs 97.25 % (−7.4 pp); cause analysed in §30 |
-| bytes per page ≤ V1 | ✅ 41.9 KB vs 175.3 KB |
-| browser share < V1 | ✅ 0.32 % vs 7.44 % |
-| zero media body downloads | ✅ 0 (fixture-proven; none in W691) |
-| functional tests (contract, leak, chaos, B.5 #1) | ✅ |
+| Gate | First run (P3 unchanged) | Rerun (P3 in-flight limit) |
+|---|---|---|
+| success rate ≥ V1 on the P0 workload | ❌ 89.87 % vs 97.25 % | ❌ **95.51 % vs 96.82 %** (−1.3 pp; gap = V1's 10 non-2xx "successes") |
+| bytes per page ≤ V1 | ✅ 41.9 vs 175.3 KB | ✅ 40.2 vs 204.1 KB |
+| browser share < V1 | ✅ 0.32 % vs 7.44 % | ✅ 0.30 % vs 8.07 % |
+| zero media body downloads | ✅ | ✅ |
+| functional tests (contract, leak, chaos, B.5 #1) | ✅ | ✅ (rerun below) |
 
-**P4 is not complete**: the success-rate gate is unmet. The gate and its
-definition are unchanged. The measured cause is not a missing engine but
-per-domain in-flight load on slow hosts; closing it needs a design
-decision (§33a), not a re-run.
+**P4 is not complete.** The success-rate gate, with its definition
+unchanged, is unmet by 9 pages. The measured difference is V1 counting
+10 error pages (404/400/403) as successes; whether the gate should
+compare status-aware success is a review decision (§33a).
 
 ## 32. Known limitations
 
@@ -664,16 +711,15 @@ decision (§33a), not a re-run.
 | Tor browser capability; live Tor validation | later phase / environment |
 | Promoting `outcome=<code>` from `detail` to a typed P1 field | P5/P7 if needed (ADR-009 minor) |
 
-### 33a. Open decision: closing the success gate
+### 33a. Open decision: the success gate
 
-Options (none taken without review):
+Taken (2026-09-29): a global per-domain in-flight limit in the frontier
+(ADR-019), chosen by measurement — closed the load-induced part of the gap.
 
-1. **Per-domain in-flight limit in the frontier** (P3 mechanism change,
-   new ADR): a domain is claimable only while its in-flight count is
-   below a limit (default 1–2), shared across queues and hosts.
-2. **Worker-local per-host concurrency cap** in the runtime (P4):
-   cheaper, but local to one process, so not a multi-host guarantee.
-3. Accept the gap and move per-domain pacing to P7.
+Open: V1's success count includes pages whose HTTP status is 404/400/403
+(Selenium cannot see status). Options for review: keep the gate as
+defined (P4 stays open), or adopt a status-aware success definition for
+both systems in a documented gate revision.
 
 ## Review decisions (2026-09-29)
 
