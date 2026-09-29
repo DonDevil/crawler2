@@ -1,0 +1,68 @@
+{
+ "extractor": "p5-extract/v1",
+ "page": {
+  "url": "https://news.example/news/beispielserie-s02e05?from=feed",
+  "url_id": "url_3dd12bbef6b28ef199e691f593f39ed2",
+  "domain_id": "dom_3f049378d5ac8bf98765143fa25dae68"
+ },
+ "page_version_id": "pgv_eb8877db7c48850ca55843b74ac30387",
+ "normalization": "html-normalized/v1",
+ "revision_id": "pgr_9392cb69987383ea94c1a01fc3ee3069",
+ "hashes": {
+  "raw": "sha256:d3dfa8f312e5ff29c4ca483ca92593554900dafac7e86c277b040efd144a94ed",
+  "normalized": "sha256:1bbd9701467c832ef346e27e1a589564b56470700c77f703da51ed7d64780d42",
+  "visible_text": "sha256:aec8616c06908841fd29129bc5d3cae8bb49682b408082dbf2746831efb3e691",
+  "link_set": "sha256:faea204b4e25c6f46c79a0a57033a39d1862721267f8f7a431d6f91ab951dc11",
+  "media_set": "sha256:1bb4fd126a5e16f5e059887686aafc39e8693ac77289f6c57328cf47618380b8",
+  "structural": "sha256:41d6ad11278aaeade560cf6441fa6d8a3e5e6339fa39265d83a38d905cfa2a37"
+ },
+ "links": [
+  {
+   "target": {
+    "url": "https://news.example/news/beispielserie-s02e04",
+    "url_id": "url_a1f67e809aa6860b99f05ec3f00720ff",
+    "domain_id": "dom_3f049378d5ac8bf98765143fa25dae68"
+   },
+   "relation": "anchor",
+   "anchor_text": "S02E04",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://news.example/news/beispielserie-s02e05",
+    "url_id": "url_0d59ad6286758b6bbacc4e6a2292e75f",
+    "domain_id": "dom_3f049378d5ac8bf98765143fa25dae68"
+   },
+   "relation": "canonical",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://news.example/news/beispielserie-s02e06",
+    "url_id": "url_9ec820b3b43e894fb2b3dc00b0417ab7",
+    "domain_id": "dom_3f049378d5ac8bf98765143fa25dae68"
+   },
+   "relation": "anchor",
+   "anchor_text": "S02E06",
+   "nofollow": false
+  }
+ ],
+ "media": [],
+ "metadata": {
+  "title": "Neue Folge: Beispielserie S02E05 verfügbar",
+  "lang": "de",
+  "canonical": "https://news.example/news/beispielserie-s02e05",
+  "og_title": "Beispielserie S02E05",
+  "og_type": "article",
+  "published_at": "2026-09-20T16:30:00Z",
+  "modified_at": "2026-09-21T07:15:00Z",
+  "robots": "noindex,nofollow"
+ },
+ "stats": {
+  "elements": 19,
+  "text_chars": 205,
+  "dropped": {},
+  "truncated": []
+ }
+}

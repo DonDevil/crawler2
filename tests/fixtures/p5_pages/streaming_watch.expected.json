@@ -1,0 +1,182 @@
+{
+ "extractor": "p5-extract/v1",
+ "page": {
+  "url": "https://stream.example/watch/sample-movie-2026",
+  "url_id": "url_3c37869ee50e8af396fa5b7497a96c11",
+  "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+ },
+ "page_version_id": "pgv_4dd08e9d2fcc8154a115424f2445af9f",
+ "normalization": "html-normalized/v1",
+ "revision_id": "pgr_d39e162f98148136a81c810f9a4c242c",
+ "hashes": {
+  "raw": "sha256:d6b0e4e774c6fa1b2203c628e0527059f318172a4b0584d6f4ce70a9481cd033",
+  "normalized": "sha256:2ffb469c42d6904cbb3a52f0113c92fe2ef4be40f88fb21bcc73fba21d2c9fc3",
+  "visible_text": "sha256:7c09691654dac6ede83190351c15b0ffbb4fa00d2e48aec494f1af4b1680072b",
+  "link_set": "sha256:32b45b529797a2d5fcf8881548170ac3eb9a84a64efd61fd8372782c3d417cfa",
+  "media_set": "sha256:8ad56cb435288bd4b1a2d29eb31181041ee4e132e01fdd1f419a1b3faea2aed0",
+  "structural": "sha256:493e449efbd8cd6166715056d340577bb184efe322974ba840af485e0914370d"
+ },
+ "links": [
+  {
+   "target": {
+    "url": "https://ads.example/click?id=991&r=https%3A%2F%2Fcasino.example",
+    "url_id": "url_6cf53723f16b89d68998f6678a86a76f",
+    "domain_id": "dom_b76a9865f54681af8b749c889088fe9a"
+   },
+   "relation": "anchor",
+   "anchor_text": "Casino bonus",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://embed.player.example/e/abc123?autoplay=1",
+    "url_id": "url_916a310b4b5a8a628f7de1f8f64107cd",
+    "domain_id": "dom_53516c6f048c8930b9ea2a08fcf124da"
+   },
+   "relation": "iframe",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/",
+    "url_id": "url_2a4f027a63478403954ab3c8231ff361",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "Home",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/movies",
+    "url_id": "url_3204b4b158228cffbb1ff1d982c389a8",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "Movies",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/trending?day=today",
+    "url_id": "url_8a26334611678c56bf97d546e9277669",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "Trending",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/tv",
+    "url_id": "url_f2f44e07092480ed918a5703ced9478f",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "TV Shows",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/watch/sample-movie-2-2027",
+    "url_id": "url_ab6ee04fb0548fdd95018fbbf5a260d6",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "script_literal",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/watch/sample-movie-2026",
+    "url_id": "url_3c37869ee50e8af396fa5b7497a96c11",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "canonical",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://stream.example/watch/sample-movie-2026?server=2",
+    "url_id": "url_5bade71c23b5867bbeb9e3753ddd7641",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "Server 2",
+   "nofollow": true
+  },
+  {
+   "target": {
+    "url": "https://stream.example/watch/sample-movie-2026?server=3",
+    "url_id": "url_97067941564f806589712c874190f537",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "relation": "anchor",
+   "anchor_text": "Server 3",
+   "nofollow": true
+  }
+ ],
+ "media": [
+  {
+   "locator": {
+    "url": "https://cdn.stream.example/hls/sample/master.m3u8",
+    "url_id": "url_4956046fcba281998b32fd247b435e28",
+    "domain_id": "dom_7a925490fe9d80b0ac9355bb0acb4d48"
+   },
+   "kind": "hls_manifest",
+   "method": "player_config",
+   "declared_type": null
+  },
+  {
+   "locator": {
+    "url": "https://cdn.stream.example/media/sample-480p.webm",
+    "url_id": "url_b6c378e439b48d40ba7e2a9671586448",
+    "domain_id": "dom_7a925490fe9d80b0ac9355bb0acb4d48"
+   },
+   "kind": "video_file",
+   "method": "source_element",
+   "declared_type": null
+  },
+  {
+   "locator": {
+    "url": "https://cdn.stream.example/og/sample-trailer.mp4",
+    "url_id": "url_7c2a3bd9447782e8b48ac85ef1d930a5",
+    "domain_id": "dom_7a925490fe9d80b0ac9355bb0acb4d48"
+   },
+   "kind": "video_file",
+   "method": "meta_tag",
+   "declared_type": null
+  },
+  {
+   "locator": {
+    "url": "https://stream.example/media/sample-720p.mp4",
+    "url_id": "url_f4bf71e798d580a2854783fdd16730b0",
+    "domain_id": "dom_1520a5ea145b88bfa63ba0cfecde13f3"
+   },
+   "kind": "video_file",
+   "method": "source_element",
+   "declared_type": "video/mp4"
+  }
+ ],
+ "metadata": {
+  "title": "Watch Sample Movie (2026) Online - StreamSite",
+  "lang": "en",
+  "canonical": "https://stream.example/watch/sample-movie-2026",
+  "og_title": "Sample Movie (2026)",
+  "og_type": "video.movie",
+  "published_at": null,
+  "modified_at": null,
+  "robots": "index, follow"
+ },
+ "stats": {
+  "elements": 36,
+  "text_chars": 180,
+  "dropped": {
+   "asset": 1,
+   "scheme": 2
+  },
+  "truncated": []
+ }
+}

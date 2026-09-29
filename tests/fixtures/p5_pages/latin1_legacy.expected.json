@@ -1,0 +1,79 @@
+{
+ "extractor": "p5-extract/v1",
+ "page": {
+  "url": "http://legacy.example/legacy/cafe.htm",
+  "url_id": "url_5fa6bdc4e79484d7b29499043560b561",
+  "domain_id": "dom_cdcb46096bff80088a4966dc6b3c63a5"
+ },
+ "page_version_id": "pgv_44fa42b0197887538d6ac5ea838aa72e",
+ "normalization": "html-normalized/v1",
+ "revision_id": "pgr_9a0cfed3fe4587da96cedc09d5a70def",
+ "hashes": {
+  "raw": "sha256:abd635be22871411cec78512ffa545368e14751c7025df151320446df547b50d",
+  "normalized": "sha256:4a86cc91fa3ffd4a315e8dc52c114a5ce924554b8207e23d4f263a6d13029ef7",
+  "visible_text": "sha256:49a3b86beb98750bc67171211153cd03971d8c77cf024e430e99dcc7f7bb9b2f",
+  "link_set": "sha256:f90c400ffa92fddf66ca4fdcfb199bcc1b46dbeede30a769cdfd650ffdf77492",
+  "media_set": "sha256:46d2914317c7f7aa0e288ec4bad0f6a5778691a7e539712fc28a209cdd3c7299",
+  "structural": "sha256:6f7b4394c83e572918b1c04dfdfe16895b5eab27fcde92495489492e6a2667c5"
+ },
+ "links": [
+  {
+   "target": {
+    "url": "http://legacy.example/legacy/films.htm",
+    "url_id": "url_baa74983ff0a88208d7a7d9344442c7b",
+    "domain_id": "dom_cdcb46096bff80088a4966dc6b3c63a5"
+   },
+   "relation": "anchor",
+   "anchor_text": "Films",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "http://legacy.example/legacy/index.htm",
+    "url_id": "url_1f4549c001cc86bbb3a973c9e99c1427",
+    "domain_id": "dom_cdcb46096bff80088a4966dc6b3c63a5"
+   },
+   "relation": "meta_refresh",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "http://legacy.example/legacy/s%E9ries.htm",
+    "url_id": "url_43d7bbd43be1845caecb3c90b6574ab6",
+    "domain_id": "dom_cdcb46096bff80088a4966dc6b3c63a5"
+   },
+   "relation": "anchor",
+   "anchor_text": "Séries",
+   "nofollow": false
+  }
+ ],
+ "media": [
+  {
+   "locator": {
+    "url": "http://legacy.example/clips/intro.mp4",
+    "url_id": "url_8ab7868aad0d87c1aa2b0b8a89de14f3",
+    "domain_id": "dom_cdcb46096bff80088a4966dc6b3c63a5"
+   },
+   "kind": "video_file",
+   "method": "video_element",
+   "declared_type": "video/mp4"
+  }
+ ],
+ "metadata": {
+  "title": "Legacy Café Portal – Films",
+  "lang": null,
+  "canonical": null,
+  "og_title": null,
+  "og_type": null,
+  "published_at": null,
+  "modified_at": null,
+  "robots": null
+ },
+ "stats": {
+  "elements": 16,
+  "text_chars": 34,
+  "dropped": {},
+  "truncated": []
+ }
+}

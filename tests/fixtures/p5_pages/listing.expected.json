@@ -1,0 +1,153 @@
+{
+ "extractor": "p5-extract/v1",
+ "page": {
+  "url": "https://catalog.example/movies/page/2",
+  "url_id": "url_14ebe687fe39834f99460c31163c6419",
+  "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+ },
+ "page_version_id": "pgv_0f110994fd288c41875003722a3ca465",
+ "normalization": "html-normalized/v1",
+ "revision_id": "pgr_9705e3c1e3ea8ed595e66507a32c6f22",
+ "hashes": {
+  "raw": "sha256:0247829080dab66ef74842bbdc0e68a8e69d8c0ac375b768a4f9ac31b1f2af41",
+  "normalized": "sha256:977fb0a513f43375626bc8a138ed3692ed96508d80a9ac12d79d2997551c121e",
+  "visible_text": "sha256:b863258a4dc691db479242ad3f9f4544407a0da7b0b13fb09b4bf180826bf7c2",
+  "link_set": "sha256:4ea27d7b0117f8c867f41cd55009b494af6c402941846809bf146239feb21586",
+  "media_set": "sha256:5d843faba70c39f599d92f089153164a397ec5e8d0dbda2f93d3f10ae277d57b",
+  "structural": "sha256:4bbad3ddf771cc550e4b03700ad12ed2cd877259ec867f4d8989ddcf0bb21250"
+ },
+ "links": [
+  {
+   "target": {
+    "url": "https://catalog.example/",
+    "url_id": "url_c4cb252fac9b88d9b738f6b841044c02",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/?page=1",
+    "url_id": "url_388bacf7e6f985c3bbdb1d8b2421ad2c",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "1",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/?page=3",
+    "url_id": "url_3202780b2c4d8e999f28b66c177f899c",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "3",
+   "nofollow": true
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/alpha-2026/",
+    "url_id": "url_7b7d3cc2029583ffbad28dbced414e28",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "Alpha",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/beta-2025/?ref=grid&utm_source=home",
+    "url_id": "url_3ab3032a13a78621982ac7d7c9887917",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "Beta",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/epsilon-2023/",
+    "url_id": "url_d93ff698fa418f29b316de9fd87bde65",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "Epsilon",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/movies/gamma-2024/",
+    "url_id": "url_6d884a392b5d867387d89855517d4855",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "Gamma",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://catalog.example/tv/delta/season-1/",
+    "url_id": "url_cefd98659c3a8fdda9b7876334f18218",
+    "domain_id": "dom_6e1217e4b36d823689a1254349c045fd"
+   },
+   "relation": "anchor",
+   "anchor_text": "Delta S1",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://mirror.catalog.example/movies/zeta/",
+    "url_id": "url_81771fe7510a8b11afe2a5e068aae3eb",
+    "domain_id": "dom_8ee9036811f987d1a34403c1c63c90b6"
+   },
+   "relation": "anchor",
+   "anchor_text": "Zeta (mirror)",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://mirror2.catalog.example/movies/latest",
+    "url_id": "url_13d4ce1167418a3aaaa05221c3894388",
+    "domain_id": "dom_f7854cf84d6789a9bf0d22c15a3fc13a"
+   },
+   "relation": "other",
+   "anchor_text": null,
+   "nofollow": false
+  }
+ ],
+ "media": [
+  {
+   "locator": {
+    "url": "https://download.example/files/omega.mkv",
+    "url_id": "url_624a2d792e4e8b6dab710ea37567939c",
+    "domain_id": "dom_8b47fa3db3d4817fb88b46867f6b2e9d"
+   },
+   "kind": "video_file",
+   "method": "link",
+   "declared_type": null
+  }
+ ],
+ "metadata": {
+  "title": "Latest Movies - Page 2",
+  "lang": "en-US",
+  "canonical": null,
+  "og_title": "Latest Movies",
+  "og_type": "website",
+  "published_at": null,
+  "modified_at": null,
+  "robots": null
+ },
+ "stats": {
+  "elements": 39,
+  "text_chars": 200,
+  "dropped": {
+   "empty": 1,
+   "scheme": 1,
+   "self": 1
+  },
+  "truncated": []
+ }
+}

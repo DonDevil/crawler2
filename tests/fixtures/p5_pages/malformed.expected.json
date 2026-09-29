@@ -1,0 +1,78 @@
+{
+ "extractor": "p5-extract/v1",
+ "page": {
+  "url": "https://broken.example/x",
+  "url_id": "url_37c7b16072a88eb58a3305e9027b374c",
+  "domain_id": "dom_38d43c414d1a89a7a004e1f921a6d338"
+ },
+ "page_version_id": "pgv_483119501aba8fc4b49a4880dd919cfc",
+ "normalization": "html-normalized/v1",
+ "revision_id": "pgr_08ef336b96178e8f87a0fcbf3b0c4cbd",
+ "hashes": {
+  "raw": "sha256:2f1e5a2667f7742bb2268c2e52948425e8e3adb8cdb93f35dc5872c54b9457e1",
+  "normalized": "sha256:a4b012a024fe26dd3b7e67e07551e5b23629b7e5dcc1be03fdc748888f044edb",
+  "visible_text": "sha256:285392c1fd2254a71b62c3829c5315eb0ef7358af3152ad5039ebba36ba7ff71",
+  "link_set": "sha256:3cf051012a267bc07405cd3a892c6a1266adca119d1b71d3238d9be33c5ca5c4",
+  "media_set": "sha256:1bb4fd126a5e16f5e059887686aafc39e8693ac77289f6c57328cf47618380b8",
+  "structural": "sha256:2c1469bdd50144ee6ebd4541842f1908231078ed6eda546bc48465561214767d"
+ },
+ "links": [
+  {
+   "target": {
+    "url": "https://api.example/v1/items",
+    "url_id": "url_04fb6ae6eb97853aba0be69d946e63de",
+    "domain_id": "dom_9b37aa741da68374958c6601d5e82ebc"
+   },
+   "relation": "script_literal",
+   "anchor_text": null,
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://broken.example/after-invalid",
+    "url_id": "url_23ddd2cebcc08a57960a202b2f0681e1",
+    "domain_id": "dom_38d43c414d1a89a7a004e1f921a6d338"
+   },
+   "relation": "anchor",
+   "anchor_text": "after",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://broken.example/next",
+    "url_id": "url_c711b7360c2988ea94dd1f21eba68d63",
+    "domain_id": "dom_38d43c414d1a89a7a004e1f921a6d338"
+   },
+   "relation": "anchor",
+   "anchor_text": "next",
+   "nofollow": false
+  },
+  {
+   "target": {
+    "url": "https://broken.example/ok",
+    "url_id": "url_fa148f0d7d3d8377bc032ae1324766f4",
+    "domain_id": "dom_38d43c414d1a89a7a004e1f921a6d338"
+   },
+   "relation": "anchor",
+   "anchor_text": "ok link",
+   "nofollow": false
+  }
+ ],
+ "media": [],
+ "metadata": {
+  "title": null,
+  "lang": null,
+  "canonical": null,
+  "og_title": null,
+  "og_type": null,
+  "published_at": null,
+  "modified_at": null,
+  "robots": null
+ },
+ "stats": {
+  "elements": 20,
+  "text_chars": 107,
+  "dropped": {},
+  "truncated": []
+ }
+}
