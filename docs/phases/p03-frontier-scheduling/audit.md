@@ -25,7 +25,7 @@ ADR-001/-006/-013, the compose Redis configuration.
 | Renewal/heartbeat at `lease_ttl/3`; `None` = claim lost, error = Redis unavailable | `claim_heartbeat.py` | decouples crash detection from fetch duration |
 | Rate-gated domain is skipped, never blocks a lower-priority eligible domain | `claim_next` | measured (starvation audit §4.2) |
 | Strict global `(priority, seq)` order across domains | `domain_heads` | the documented policy (starvation audit §6) |
-| Redis errors raise `FrontierUnavailable`; never "empty"/"None" | failure-semantics step | fail closed |
+| Redis errors raise `FrontierUnavailableError`; never "empty"/"None" | failure-semantics step | fail closed |
 
 ## A. "visited = forever" (D10)
 

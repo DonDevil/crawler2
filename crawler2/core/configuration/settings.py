@@ -115,6 +115,58 @@ class EventSettings(BaseModel):
     relay_poll_interval_s: float = Field(default=1.0, gt=0)
 
 
+class ExecutionQueue(StrEnum):
+    """Frontier execution classes (ADR-015): which worker pool runs a task.
+
+    Distinct from the P1 ``FetchCapability`` (what a fetch can do); the
+    frontier maps one onto the other. Adding a member adds a queue.
+    """
+
+    HTTP = "http"
+    BROWSER = "browser"
+    TOR = "tor"
+    SELENIUM = "selenium"
+
+
+_DEFAULT_MAX_DEPTH = {
+    ExecutionQueue.HTTP: 200_000,
+    ExecutionQueue.BROWSER: 50_000,
+    ExecutionQueue.TOR: 50_000,
+    ExecutionQueue.SELENIUM: 10_000,
+}
+
+
+class FrontierSettings(BaseModel):
+    """Redis frontier mechanics (P3). Policy (what/when to crawl) is P6/P7."""
+
+    default_interval_s: float = Field(default=1.0, ge=0)
+    """Minimum time between two claims on one domain, across all queues."""
+    lease_ttl_s: float = Field(default=90.0, gt=0)
+    max_attempts: PositiveInt = 3
+    """Attempts (claims) per task before it is exhausted; lease expiry counts."""
+    base_backoff_s: float = Field(default=5.0, ge=0)
+    max_backoff_s: float = Field(default=300.0, ge=0)
+    defer_delay_s: float = Field(default=10.0, ge=0)
+    promote_batch: PositiveInt = 256
+    """Upper bound of scheduled tasks and of domain gates promoted per call."""
+    recover_batch: PositiveInt = 200
+    recovery_interval_s: float = Field(default=30.0, gt=0)
+    dead_ttl_s: PositiveInt = 7 * 24 * 3600
+    dead_max: PositiveInt = 100_000
+    max_depth: dict[ExecutionQueue, PositiveInt] = Field(
+        default_factory=lambda: dict(_DEFAULT_MAX_DEPTH)
+    )
+    """Admission limit per queue: scheduled + ready + leased tasks (ADR-016)."""
+
+    @model_validator(mode="after")
+    def _complete_depths(self) -> Self:
+        for queue, limit in _DEFAULT_MAX_DEPTH.items():
+            self.max_depth.setdefault(queue, limit)
+        if self.max_backoff_s < self.base_backoff_s:
+            raise ValueError("max_backoff_s must be >= base_backoff_s")
+        return self
+
+
 class LoggingSettings(BaseModel):
     level: str = Field(default="INFO", pattern=r"^(DEBUG|INFO|WARNING|ERROR|CRITICAL)$")
     format: LogFormat = LogFormat.JSON
@@ -154,6 +206,7 @@ class Settings(BaseSettings):
     scylla: ScyllaSettings = Field(default_factory=ScyllaSettings)
     minio: MinioSettings = Field(default_factory=MinioSettings)
     events: EventSettings = Field(default_factory=EventSettings)
+    frontier: FrontierSettings = Field(default_factory=FrontierSettings)
     logging: LoggingSettings = Field(default_factory=LoggingSettings)
     metrics: MetricsSettings = Field(default_factory=MetricsSettings)
     limits: ResourceLimits = Field(default_factory=ResourceLimits)

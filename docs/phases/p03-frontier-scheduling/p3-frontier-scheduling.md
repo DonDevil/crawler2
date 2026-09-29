@@ -164,9 +164,10 @@ The dedup unit is the **active task** `task:{url_id}`:
 | Situation | `admit` result |
 |---|---|
 | no task | `ready` or `scheduled` (or `rejected_full`) |
-| task `ready`/`scheduled`, request raises priority or (scheduled) moves due time earlier | `merged` |
+| task `ready`/`scheduled`, request raises priority, or moves a never-attempted scheduled task earlier | `merged` |
 | task `ready`/`scheduled`, nothing to improve | `duplicate` |
 | task `leased` | `duplicate` (the running attempt is not disturbed) |
+| task waiting for a retry backoff, request is earlier | `duplicate` (backoff is the frontier's decision, D4; priority may still be raised) |
 | task `dead` | the dead letter is dropped; admitted as new |
 
 A URL becomes admittable again the instant its task is completed,
@@ -213,7 +214,7 @@ time.
 `heartbeat` returns the renewed `Claim`, or `None` when the token is no
 longer current (lease recovered, task completed) — the worker must stop
 and must not report an outcome. A Redis error raises
-`FrontierUnavailable`, never `None`, so an outage is not mistaken for a
+`FrontierUnavailableError`, never `None`, so an outage is not mistaken for a
 lost claim (V1 semantics). `crawler2.frontier.heartbeat.run_with_heartbeat`
 (port of V1 `claim_heartbeat.py`) runs a coroutine while renewing every
 `lease_ttl / 3` and raises `ClaimLostError` when renewal returns `None`.
@@ -316,7 +317,7 @@ not ported. Evidence and the measured comparison with V1's K-scan are in
 
 ## 19. Redis failure semantics
 
-Every operation raises `FrontierUnavailable` on a connection or timeout
+Every operation raises `FrontierUnavailableError` on a connection or timeout
 error and never returns a result it did not receive from Redis:
 
 | Call during outage | Behaviour | After Redis returns |
