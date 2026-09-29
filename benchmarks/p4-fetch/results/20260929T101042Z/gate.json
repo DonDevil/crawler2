@@ -1,0 +1,182 @@
+{
+ "gates": {
+  "success_rate": {
+   "v1": 0.9682,
+   "v2": 0.9551,
+   "pass": false
+  },
+  "bytes_per_success": {
+   "v1": 204132,
+   "v2": 40181,
+   "pass": true
+  },
+  "browser_share": {
+   "v1": 0.0807,
+   "v2": 0.003,
+   "pass": true
+  },
+  "media_body_downloads": {
+   "v2": 0,
+   "pass": true
+  }
+ },
+ "all_pass": false,
+ "overlap": {
+  "both": 654,
+  "v1_only": 15,
+  "v2_only": 6,
+  "neither": 16
+ },
+ "v1_only_examples": [
+  "https://moviedrivebd.com/",
+  "https://moviesda.baby/",
+  "https://moviesda.com.in/why-khelosuper-account-verification-keeps-users-safe/",
+  "https://moviesda.com.in/wp-admin/admin-ajax.php",
+  "https://tamilprint.co.in/wp-admin/admin-ajax.php",
+  "https://tamilrockers.website/",
+  "https://www.1tamilmv.army/",
+  "https://www.1tamilmv.army/cdn-cgi/l/email-protection",
+  "https://www.isaimini.spot/isaimini-2024-movies/",
+  "https://www.isaimini.spot/isaimini/",
+  "https://www.isaimini.spot/tamil-dubbed-movies/",
+  "https://www.isaimini.spot/tamilrockers/",
+  "https://www.moviesda.farm/",
+  "https://www.moviesda.uk/?m=1",
+  "https://www.mp4moviez.diet/"
+ ],
+ "selenium_recheck": [
+  {
+   "url": "https://moviesda.baby/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://tamilprint.co.in/wp-admin/admin-ajax.php",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 400
+  },
+  {
+   "url": "https://www.isaimini.spot/tamil-dubbed-movies/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini-2024-movies/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.1tamilmv.army/cdn-cgi/l/email-protection",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.isaimini.spot/tamilrockers/",
+   "v2_chain": [
+    "http:tls_error",
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://www.moviesda.farm/",
+   "v2_chain": [
+    "http:blocked"
+   ],
+   "v2_status": 403
+  },
+  {
+   "url": "https://www.isaimini.spot/isaimini/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  },
+  {
+   "url": "https://moviesda.com.in/wp-admin/admin-ajax.php",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 400
+  },
+  {
+   "url": "https://moviesda.com.in/why-khelosuper-account-verification-keeps-users-safe/",
+   "v2_chain": [
+    "http:http_error"
+   ],
+   "v2_status": 404
+  }
+ ],
+ "v1": {
+  "system": "v1",
+  "urls": 691,
+  "successes": 669,
+  "success_rate": 0.9682,
+  "upstream_bytes": 136564378,
+  "bytes_per_success": 204132,
+  "browser_successes": 54,
+  "browser_share": 0.0807,
+  "attempts": 855,
+  "browser_attempts": 142,
+  "engine_of_success": {
+   "selenium": 10,
+   "async": 615,
+   "scrapling": 42,
+   "playwright": 2
+  },
+  "wall_s": 1006.5
+ },
+ "v2": {
+  "system": "v2",
+  "urls": 691,
+  "successes": 660,
+  "success_rate": 0.9551,
+  "upstream_bytes": 26519740,
+  "bytes_per_success": 40181,
+  "browser_successes": 2,
+  "browser_share": 0.003,
+  "attempts": 740,
+  "browser_attempts": 2,
+  "outcomes": {
+   "blocked": 1,
+   "ok": 660,
+   "tls_error": 28,
+   "network_error": 31,
+   "http_error": 10,
+   "timeout": 8,
+   "needs_js": 2
+  },
+  "media_responses": 0,
+  "media_body_downloads": 0,
+  "frontier_counters": {
+   "admitted": 691,
+   "claimed": 740,
+   "completed": 671,
+   "retried": 49,
+   "exhausted": 20
+  },
+  "browser_pool": {
+   "browser_launches": 1,
+   "browser_restarts": 0,
+   "browser_recycles": 0,
+   "contexts_created": 2,
+   "contexts_closed": 2,
+   "pages_opened": 2,
+   "pages_closed": 2,
+   "last_rss_mb": 0.0,
+   "rss_samples": null
+  },
+  "wall_s": 308.6,
+  "max_inflight_per_domain": 2
+ }
+}
