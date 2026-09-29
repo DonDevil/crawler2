@@ -156,6 +156,8 @@ class FrontierStats:
     gated_domains: int
     dead_letters: int
     counters: dict[str, int] = field(default_factory=dict)
+    saturated_domains: int = 0
+    """Domains at their in-flight limit (not claimable until a lease ends)."""
 
     @property
     def active_tasks(self) -> int:

@@ -1,9 +1,11 @@
 -- recover: ARGV[4] lease batch, [5] max_attempts, [6] base backoff,
--- [7] max backoff, [8] dead-letter ttl, [9] dead-letter cap, [10] promote batch.
+-- [7] max backoff, [8] dead-letter ttl, [9] dead-letter cap, [10] promote batch,
+-- [11] default in-flight limit.
 -- Expired lease = failed attempt (V1 semantics). Returns {recovered, dead, promoted}.
 local batch, max_att = tonumber(ARGV[4]), tonumber(ARGV[5])
 local base, cap = tonumber(ARGV[6]), tonumber(ARGV[7])
 local dead_ttl, dead_max, promote_batch = tonumber(ARGV[8]), tonumber(ARGV[9]), tonumber(ARGV[10])
+local default_limit = tonumber(ARGV[11])
 
 local promoted = promote_scheduled(promote_batch)
 
@@ -13,12 +15,14 @@ for i = 1, #expired do
   local id = expired[i]
   local tk = task_key(id)
   redis.call('ZREM', P .. 'leases', id)
-  local t = redis.call('HMGET', tk, 'st', 'att', 'q')
+  local t = redis.call('HMGET', tk, 'st', 'att', 'q', 'dom')
   if t[1] ~= 'leased' then
     count('anomaly')
   else
     -- Clearing the token makes every later call of the old owner 'stale'.
     redis.call('HDEL', tk, 'tok', 'lex', 'cat')
+    -- A crashed worker's domain slot comes back with its lease (ADR-019).
+    release(t[4], default_limit)
     redis.call('HSET', tk, 'err', 'lease expired')
     local att = tonumber(t[2])
     if att < max_att then

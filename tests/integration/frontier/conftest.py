@@ -73,7 +73,12 @@ def make_frontier(redis_conn: redis.Redis, clock: Clock) -> Iterator[FrontierFac
     created: list[RedisFrontier] = []
 
     def factory(*, real_clock: bool = False, **overrides: Any) -> RedisFrontier:
-        settings = FrontierSettings(**{"default_interval_s": 0.0, **overrides})
+        # P3 behaviour tests isolate one mechanism each: the start-rate gate
+        # is tested with concurrency unbounded; in-flight tests (and the state
+        # machine) set max_inflight_per_domain explicitly (ADR-019).
+        settings = FrontierSettings(
+            **{"default_interval_s": 0.0, "max_inflight_per_domain": 0, **overrides}
+        )
         frontier = RedisFrontier(
             redis_conn, settings, namespace=namespace, clock=None if real_clock else clock
         )

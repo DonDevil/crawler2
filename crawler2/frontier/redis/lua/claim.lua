@@ -1,9 +1,10 @@
 -- claim: ARGV[4] queue, [5] token, [6] lease_ttl, [7] default interval,
--- [8] promote batch.
+-- [8] promote batch, [9] default per-domain in-flight limit (0 = unlimited).
 -- Returns {url_id, url, domain_id, priority, attempt, lease_expiry,
 -- claimed_at, reason} or nil when the queue has no eligible work now.
 local q, token = ARGV[4], ARGV[5]
 local ttl, default_interval, batch = tonumber(ARGV[6]), tonumber(ARGV[7]), tonumber(ARGV[8])
+local default_limit = tonumber(ARGV[9])
 
 promote_scheduled(batch)
 promote_gates(batch, default_interval)
@@ -18,7 +19,11 @@ for _ = 1, 16 do
   local dom = best[1]
   local qk = queue_key(q, dom)
   local head = redis.call('ZRANGE', qk, 0, 0)
-  if #head == 0 then
+  if full(dom) then
+    -- Never expected: a saturated domain is removed from every index.
+    redis.call('ZREM', rk, dom)
+    count('anomaly')
+  elseif #head == 0 then
     redis.call('ZREM', rk, dom)
     count('anomaly')
   else
@@ -30,6 +35,7 @@ for _ = 1, 16 do
     else
       sync_ready(q, dom)
     end
+    occupy(dom, domain_limit(dom, default_limit))
     local tk = task_key(id)
     local att = redis.call('HINCRBY', tk, 'att', 1)
     local lex = now + ttl

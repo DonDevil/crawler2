@@ -147,6 +147,9 @@ class FrontierSettings(BaseModel):
     base_backoff_s: float = Field(default=5.0, ge=0)
     max_backoff_s: float = Field(default=300.0, ge=0)
     defer_delay_s: float = Field(default=10.0, ge=0)
+    max_inflight_per_domain: int = Field(default=2, ge=0)
+    """Leased tasks allowed per domain at once, across all queues and hosts; 0 = unlimited
+    (ADR-019). Bounds concurrency where ``default_interval_s`` only bounds the start rate."""
     promote_batch: PositiveInt = 256
     """Upper bound of scheduled tasks and of domain gates promoted per call."""
     recover_batch: PositiveInt = 200

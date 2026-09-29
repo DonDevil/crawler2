@@ -157,6 +157,22 @@ class RedisFrontier:
         except redis.RedisError as exc:
             raise FrontierUnavailableError(f"set_domain_interval: {exc}") from exc
 
+    def set_domain_inflight_limit(self, domain_id: DomainId, limit: int | None) -> None:
+        """Override (or with ``None`` reset) one domain's in-flight limit; 0 = unlimited.
+
+        Takes effect at the domain's next claim or release (ADR-019).
+        """
+        key = self._prefix + "ilimit"
+        try:
+            if limit is None:
+                self._r.hdel(key, domain_id)
+            else:
+                if limit < 0:
+                    raise ValueError("limit must be >= 0")
+                self._r.hset(key, domain_id, limit)
+        except redis.RedisError as exc:
+            raise FrontierUnavailableError(f"set_domain_inflight_limit: {exc}") from exc
+
     # -- worker API --------------------------------------------------------
 
     def claim(self, queue: ExecutionQueue, *, lease_ttl_s: float | None = None) -> Claim | None:
@@ -169,6 +185,7 @@ class RedisFrontier:
             lease_ttl_s if lease_ttl_s is not None else self._cfg.lease_ttl_s,
             self._cfg.default_interval_s,
             self._cfg.promote_batch,
+            self._cfg.max_inflight_per_domain,
         )
         if not reply:
             return None
@@ -206,7 +223,9 @@ class RedisFrontier:
         )
 
     def complete(self, claim: Claim) -> CompleteOutcome:
-        return CompleteOutcome(self._run("complete", claim.url_id, claim.token))
+        return CompleteOutcome(
+            self._run("complete", claim.url_id, claim.token, self._cfg.max_inflight_per_domain)
+        )
 
     def fail(
         self, claim: Claim, reason: str, *, next_queue: ExecutionQueue | None = None
@@ -221,12 +240,15 @@ class RedisFrontier:
             cfg.max_attempts,
             cfg.base_backoff_s,
             cfg.max_backoff_s,
+            cfg.max_inflight_per_domain,
         )
         return FailResult(FailOutcome(outcome), float(retry_at) if retry_at else None)
 
     def defer(self, claim: Claim, *, delay_s: float | None = None) -> DeferResult:
         delay = delay_s if delay_s is not None else self._cfg.defer_delay_s
-        outcome, retry_at = self._run("defer", claim.url_id, claim.token, delay)
+        outcome, retry_at = self._run(
+            "defer", claim.url_id, claim.token, delay, self._cfg.max_inflight_per_domain
+        )
         return DeferResult(DeferOutcome(outcome), float(retry_at) if retry_at else None)
 
     # -- maintenance -------------------------------------------------------
@@ -243,6 +265,7 @@ class RedisFrontier:
             cfg.dead_ttl_s,
             cfg.dead_max,
             cfg.promote_batch,
+            cfg.max_inflight_per_domain,
         )
         return RecoveryResult(int(recovered), int(dead), int(promoted))
 
@@ -255,10 +278,11 @@ class RedisFrontier:
         pipe.zcard(p + "gate")
         pipe.zcard(p + "dead")
         pipe.hgetall(p + "stats")
+        pipe.scard(p + "full")
         for q in self._queues:
             pipe.zcard(p + f"ready:{q.value}")
         try:
-            depth, scheduled, leased, gated, dead, counters, *eligible = pipe.execute()
+            depth, scheduled, leased, gated, dead, counters, full, *eligible = pipe.execute()
         except redis.RedisError as exc:
             raise FrontierUnavailableError(f"stats: {exc}") from exc
         return FrontierStats(
@@ -269,6 +293,7 @@ class RedisFrontier:
             gated_domains=gated,
             dead_letters=dead,
             counters={k: int(v) for k, v in counters.items()},
+            saturated_domains=int(full),
         )
 
     def dead_letters(self, limit: int = 100) -> list[dict[str, str]]:
@@ -293,13 +318,18 @@ class RedisFrontier:
 
         O(total state) with SCAN: an operations/test tool, never on a hot path.
         """
-        return _Auditor(self._r, self._prefix, self._queues).run()
+        return _Auditor(
+            self._r, self._prefix, self._queues, self._cfg.max_inflight_per_domain
+        ).run()
 
 
 class _Auditor:
-    def __init__(self, r: redis.Redis, prefix: str, queues: Sequence[ExecutionQueue]) -> None:
+    def __init__(
+        self, r: redis.Redis, prefix: str, queues: Sequence[ExecutionQueue], default_limit: int
+    ) -> None:
         self.r: Any = r  # decode_responses=True: every reply is str
         self.p, self.queues = prefix, [q.value for q in queues]
+        self.default_limit = default_limit
         self.problems: list[str] = []
 
     def _zset(self, key: str) -> dict[str, float]:
@@ -319,6 +349,7 @@ class _Auditor:
             queues[(q, dom)] = self._zset(key[len(p) :])
         member_of = {i: (q, d) for (q, d), members in queues.items() for i in members}
         depth = {q: 0 for q in self.queues}
+        leased_by_domain: dict[str, int] = {}
 
         for i, t in tasks.items():
             st, q, dom = t.get("st"), t.get("q", ""), t.get("dom", "")
@@ -327,6 +358,8 @@ class _Auditor:
                 continue
             if st in _ACTIVE_STATES:
                 depth[q] += 1
+            if st == "leased":
+                leased_by_domain[dom] = leased_by_domain.get(dom, 0) + 1
             where = {
                 "scheduled": i in scheduled,
                 "leased": i in leases,
@@ -352,6 +385,7 @@ class _Auditor:
         for q in self.queues:
             if stored.get(q, 0) != depth[q]:
                 bad(f"depth[{q}] = {stored.get(q, 0)}, counted {depth[q]}")
+        full = self._audit_inflight(leased_by_domain)
         for q in self.queues:
             ready = self._zset(f"ready:{q}")
             for dom, score in ready.items():
@@ -360,12 +394,34 @@ class _Auditor:
                     bad(f"ready:{q} holds gated domain {dom}")
                 if f"{q}|{dom}" in yields:
                     bad(f"ready:{q} holds domain {dom} that is yielding")
+                if dom in full:
+                    bad(f"ready:{q} holds saturated domain {dom}")
                 if not members:
                     bad(f"ready:{q} holds domain {dom} without work")
                 elif min(members.values()) != score:
                     bad(f"ready:{q} score of {dom} is not its head rank")
             for (qq, dom), members in queues.items():
-                held = f"{q}|{dom}" in yields
+                held = f"{q}|{dom}" in yields or dom in full
                 if qq == q and members and dom not in ready and dom not in gate and not held:
                     bad(f"stranded: {q}:{dom} has work but is neither eligible nor gated")
         return self.problems
+
+    def _audit_inflight(self, leased: dict[str, int]) -> set[str]:
+        """``inflight`` equals leased tasks per domain; ``full`` = domains at their limit."""
+        p, bad = self.p, self.problems.append
+        stored = {k: int(v) for k, v in self.r.hgetall(p + "inflight").items()}
+        if stored != leased:
+            bad(f"inflight {stored} != leased per domain {leased}")
+        full = set(self.r.smembers(p + "full"))
+        overrides = {k: int(v) for k, v in self.r.hgetall(p + "ilimit").items()}
+        for dom in full | set(leased):
+            limit = overrides.get(dom, self.default_limit)
+            count = leased.get(dom, 0)
+            # Safety: at/over its limit, a domain must not be claimable. A limit
+            # changed at run time applies at the next claim/release, so a full
+            # domain may sit below a raised limit until then, but never idle.
+            if limit > 0 and count >= limit and dom not in full:
+                bad(f"domain {dom}: {count} leased at limit {limit} but claimable")
+            if dom in full and count == 0:
+                bad(f"domain {dom} is saturated with nothing in flight")
+        return full

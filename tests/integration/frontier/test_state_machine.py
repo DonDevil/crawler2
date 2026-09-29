@@ -2,7 +2,10 @@
 
 A reference model tracks which URLs are active, their queue, attempt count,
 and the one token allowed to own each; after every step the real Redis
-frontier must agree with the model and pass ``audit()``.
+frontier must agree with the model and pass ``audit()``. Both queues share
+one per-domain in-flight limit (ADR-019): no claim may take a domain past
+it, and every lease end (complete, fail, defer, recovery) frees exactly one
+slot while stale reports free none.
 """
 
 from __future__ import annotations
@@ -40,6 +43,7 @@ QUEUES = (Q.HTTP, Q.BROWSER)
 URLS = [url(f"d{i % 3}", i) for i in range(7)]
 INTERVAL = 1.0
 MAX_ATTEMPTS = 3
+INFLIGHT = 2
 MAX_DEPTH = {Q.HTTP: 4, Q.BROWSER: 3}
 SETTINGS = FrontierSettings(
     default_interval_s=INTERVAL,
@@ -48,6 +52,7 @@ SETTINGS = FrontierSettings(
     base_backoff_s=2.0,
     max_backoff_s=4.0,
     defer_delay_s=1.0,
+    max_inflight_per_domain=INFLIGHT,
     max_depth=dict(MAX_DEPTH),
 )
 CLIENT = redis_client()
@@ -115,6 +120,8 @@ class FrontierMachine(RuleBasedStateMachine):
         assert not task.dead
         assert task.queue is queue
         assert claim.url_id not in self.owner, "two simultaneous owners"
+        same_domain = sum(c.domain_id == claim.domain_id for c in self.owner.values())
+        assert same_domain < INFLIGHT, "domain in-flight limit exceeded"
         last = self.last_claim.get(claim.domain_id)
         assert last is None or claim.claimed_at - last >= INTERVAL - 1e-6, "politeness"
         self.last_claim[claim.domain_id] = claim.claimed_at
@@ -209,6 +216,10 @@ class FrontierMachine(RuleBasedStateMachine):
         for queue in QUEUES:
             assert stats.depth[queue] == len(self.active(queue))
         assert stats.leased == len(self.owner)
+        per_domain: dict[str, int] = {}
+        for claim in self.owner.values():
+            per_domain[claim.domain_id] = per_domain.get(claim.domain_id, 0) + 1
+        assert stats.saturated_domains == sum(n >= INFLIGHT for n in per_domain.values())
         assert stats.dead_letters == sum(t.dead for t in self.tasks.values())
 
     def teardown(self) -> None:

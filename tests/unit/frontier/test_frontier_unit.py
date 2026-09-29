@@ -76,6 +76,7 @@ def test_settings_defaults_cover_every_queue() -> None:
     assert set(cfg.max_depth) == set(Q)
     assert cfg.max_attempts == 3
     assert cfg.lease_ttl_s == 90.0
+    assert cfg.max_inflight_per_domain == 2  # chosen by measurement, ADR-019
 
 
 def test_settings_env_override_is_partial(clean_env: pytest.MonkeyPatch) -> None:

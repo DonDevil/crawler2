@@ -38,12 +38,21 @@ local function gated(dom) return redis.call('ZSCORE', P .. 'gate', dom) ~= false
 -- yields for one interval to other queues with work on the domain
 -- (yield ZSET member 'queue|domain', score = end of the yield).
 local function held(q, dom) return redis.call('ZSCORE', P .. 'yield', q .. '|' .. dom) ~= false end
-local function eligible(q, dom) return not gated(dom) and not held(q, dom) end
+-- A domain at its in-flight limit (member of 'full') is in no ready index.
+local function full(dom) return redis.call('SISMEMBER', P .. 'full', dom) == 1 end
+local function eligible(q, dom) return not gated(dom) and not held(q, dom) and not full(dom) end
 
 local function domain_interval(dom, default_interval)
   local iv = redis.call('HGET', P .. 'interval', dom)
   if iv then return tonumber(iv) end
   return default_interval
+end
+
+-- Per-domain in-flight limit (0 = unlimited): operator override or default.
+local function domain_limit(dom, default_limit)
+  local l = redis.call('HGET', P .. 'ilimit', dom)
+  if l then return tonumber(l) end
+  return default_limit
 end
 
 -- Resync dom's entry in ready:q to the current head of q:q:dom (dom not gated).
@@ -103,6 +112,8 @@ local function promote_gates(limit, default_interval)
     redis.call('ZREM', P .. 'gate', dom)
     local last = redis.call('HGET', P .. 'gateq', dom)
     redis.call('HDEL', P .. 'gateq', dom)
+    -- A saturated domain stays out of every index; release() re-indexes it.
+    local saturated = full(dom)
     local heads, others = {}, false
     for j = 1, #QUEUES do
       local head = redis.call('ZRANGE', queue_key(QUEUES[j], dom), 0, 0, 'WITHSCORES')
@@ -112,7 +123,7 @@ local function promote_gates(limit, default_interval)
       end
     end
     for j = 1, #QUEUES do
-      if heads[j] then
+      if heads[j] and not saturated then
         if QUEUES[j] == last and others then
           redis.call('ZADD', P .. 'yield', now + domain_interval(dom, default_interval),
             last .. '|' .. dom)
@@ -131,7 +142,7 @@ local function promote_yields(limit)
     redis.call('ZREM', P .. 'yield', due[i])
     local sep = string.find(due[i], '|', 1, true)
     local q, dom = string.sub(due[i], 1, sep - 1), string.sub(due[i], sep + 1)
-    if not gated(dom) then sync_ready(q, dom) end
+    if not gated(dom) and not full(dom) then sync_ready(q, dom) end
   end
 end
 
@@ -142,6 +153,36 @@ local function close_gate(dom, until_t, q)
   for j = 1, #QUEUES do
     redis.call('ZREM', ready_key(QUEUES[j]), dom)
     redis.call('ZREM', P .. 'yield', QUEUES[j] .. '|' .. dom)
+  end
+end
+
+-- In-flight accounting (ADR-019). 'inflight' counts leased tasks per domain
+-- across every queue; it is exact at all times, whatever the limit.
+-- occupy() runs in claim; release() runs exactly once per lease, in the
+-- token-checked complete/fail/defer paths or in lease recovery.
+local function occupy(dom, limit)
+  local n = redis.call('HINCRBY', P .. 'inflight', dom, 1)
+  if limit > 0 and n >= limit then
+    redis.call('SADD', P .. 'full', dom)
+    for j = 1, #QUEUES do redis.call('ZREM', ready_key(QUEUES[j]), dom) end
+  end
+end
+
+local function release(dom, default_limit)
+  local n = redis.call('HINCRBY', P .. 'inflight', dom, -1)
+  if n <= 0 then
+    if n < 0 then count('anomaly') end
+    redis.call('HDEL', P .. 'inflight', dom)
+    n = 0
+  end
+  if full(dom) then
+    local limit = domain_limit(dom, default_limit)
+    if limit == 0 or n < limit then
+      redis.call('SREM', P .. 'full', dom)
+      for j = 1, #QUEUES do
+        if eligible(QUEUES[j], dom) then sync_ready(QUEUES[j], dom) end
+      end
+    end
   end
 end
 
