@@ -1,11 +1,11 @@
-# P4 design — fetch layer & worker pools
+# P4 — Fetch layer & worker pools
 
-Status: **APPROVED 2026-09-29** (all §33 decisions as recommended:
-W691 gate workload, blocked/captcha recorded not escalated, Selenium and
-Scrapling not retained, Tor validated against a SOCKS5 fixture). Audit: [audit.md](audit.md). After implementation this becomes
-the P4 phase document (`p4-fetch-layer-worker-pools.md`) with validation
-results; ADR-017 (fetch runtime boundary and outcome mapping) and ADR-018
-(engine retention, D14) are written with the first implementation commit.
+Status: **IMPLEMENTED — exit gate NOT met** (success rate, §31); every
+other gate and all functional tests pass. Design approved 2026-09-29
+(review decisions at the end). Audit: [audit.md](audit.md). Decisions:
+[ADR-017](../../adr/ADR-017-fetch-runtime-boundary.md),
+[ADR-018](../../adr/ADR-018-fetch-engine-retention.md). Current-state
+summary: [architecture/fetch-workers.md](../../architecture/fetch-workers.md).
 
 ## 1. Goal
 
@@ -535,30 +535,155 @@ evidence, with one re-check in the `W691` gate run (status-aware: a page
 counts for Selenium only if Playwright failed it *and* its status was
 2xx), since V1's hybrid chain exercises Selenium there.
 
-## 29–31. Methodology, results, exit-gate status
+## 29. Benchmark methodology
 
-Validation stage.
+- **Harness**: `benchmarks/p4-fetch/run.sh` (`v1-engines`, `gate`). V1
+  runs read-only from a `git archive` of `2dfb542` with V1's own venv;
+  V2 runs the real `WorkerRuntime` pools against the real P3 frontier
+  (compose Redis, db 9, fresh namespace).
+- **Bytes**: every engine of both systems goes through `countproxy.py`
+  (CONNECT tunnels piped, plain HTTP forwarded one exchange per
+  connection); the count is upstream→client bytes on the wire, including
+  browser subresources and TLS overhead. Rootless per-process network
+  accounting was not available (user namespaces blocked by AppArmor).
+- **Gate run (2026-09-29 08:24–08:40 UTC)**: V1 first (783 s), then V2
+  (107 s), back to back, same host and network. V1: `HybridCrawler`'s
+  own `_run_engine_plan` per URL, 50 workers, timeout 15 s,
+  `max_retries` 3 (inside engines), Scrapling on, UA `AntiPiracyBot/1.0`,
+  0.3 s per-domain gate. V2: http pool 50 slots + browser pool 2 pages,
+  frontier `default_interval_s` 0.3, `max_attempts` 3, default fetch
+  settings (connect 10 s, read 15 s, total 30 s), same UA, attempts kept
+  in memory (the gate compares fetching, not storage).
+- **Definitions** are §28's, fixed before the run; results are in
+  `benchmarks/p4-fetch/results/20260929T082444Z/` (`gate.json`,
+  per-URL rows of both systems, gzipped logs, `gap_diagnostic.txt`).
 
-## 32. Known risks
+## 30. Results
 
-- **Success gate risk:** V1 rescued 27 of 691 pages with Scrapling (18)
-  and Selenium (9). Dropping Scrapling (not negotiable: stealth) and not
-  escalating `blocked`/`captcha` may lower V2's success rate below V1's
-  97.5 %. It will be measured and reported, not redefined.
-- Live-web results drift day to day; the gate compares same-session runs.
-- httpx + brotli add dependencies; Playwright adds a large browser
-  download (already cached on the dev host).
+### Exit-gate run on W691
 
-## 33. Decisions requested at review
+| Metric (§28 definition) | V1 | V2 | Gate |
+|---|---:|---:|---|
+| success rate | **97.25 %** (672/691) | **89.87 %** (621/691) | ≥ V1 → ❌ |
+| bytes per success (proxy) | 175 281 B (117.8 MB total) | **41 920 B** (26.0 MB) | ≤ V1 → ✅ (−76 %) |
+| browser share of successes | 7.44 % (50/672) | **0.32 %** (2/621) | < V1 → ✅ |
+| browser attempts / all attempts | 128 / 838 | 2 / 862 | — |
+| media body downloads | not measurable | **0** (no media URL in W691; fixture-proven §24) | = 0 → ✅ |
+| wall time | 783 s | 107 s | — |
+
+V1 successes by engine: async 622, scrapling 39, selenium 10,
+playwright 1. V2 attempts: ok 621, timeout 216, http_error 10,
+network_error 6, tls_error 6, needs_js 2 (both rendered by the browser
+pool), blocked 1; frontier: 862 claims, 171 retries, 632 completed, 59
+exhausted, 0 lost.
+
+**Where the 54 V1-only successes come from** (V2-only: 3; neither: 16):
+
+| V1 engine | URLs | Explanation |
+|---|---:|---|
+| selenium | 10 | **false successes**: V2 recorded 404 ×6, 400 ×2, 403 ×1 (+1 404 after a timeout) for all 10 — V1 Selenium cannot see status codes (D1) and returns error pages as content (the D14 re-check: no 2xx page only Selenium reached) |
+| scrapling | 29 | after V1 aiohttp failed |
+| async | 15 | succeeded only after ~34 s (V1's hidden internal retry, D4) |
+
+A same-day diagnostic re-fetched the 44 non-Selenium URLs sequentially
+with V2's plain HTTP fetcher and V2's (non-stealth) browser
+(`gap_diagnostic.txt`): **36 succeed with both** (22 of Scrapling's, 14
+of aiohttp's; ~3 s each), 8 are unreachable for every engine now. No page
+needed stealth. 36 of the gap URLs are on one slow host
+(`isaimini.com.in`, 3–15 s per response): the P3 gate limits a domain to
+one *claim* per 0.3 s but not the number of *in-flight* requests, so
+V2's fast pipeline had many slow requests open to that host at once and
+they hit the 15 s read timeout on all three frontier attempts; V1's
+slower chain (browser escalations, in-engine retries) happened to space
+them out.
+
+### Per-engine V1 evaluation (S51)
+
+§28 table; decisions in ADR-018.
+
+### Functional tests
+
+| Suite | Result |
+|---|---|
+| unit (`tests/unit/crawlers`) | 57 passed |
+| fetcher contract suite, HTTP + Tor (default `make check`) | all passed; skips only for non-applicable cases |
+| fetcher contract suite, browser + browser-pool tests (`RUN_BROWSER_TESTS=1`) | all passed |
+| runtime ↔ frontier (real Redis) | 5 passed: outcome mapping incl. escalation to `browser` in one attempt budget, 304 via validators, confirmed-offline defer with claims paused, storage outage defer, shutdown defer |
+| recorder on real Scylla/MinIO | passed: W1 + W4 + snapshot + W5 validators → 304 with no new observation |
+| **B.5 #1 end-to-end** | passed: two real `crawler2-worker` processes (http, browser) + a replacement http worker after SIGKILL, no P6/P7, 41 fixture URLs → frontier empty, audit clean, ≥ 1 lease recovered, 0 dead, JS page escalated http→browser and rendered, redirects recorded, media ≤ probe bound |
+| **browser chaos** (SIGKILL Chromium mid-page, through the frontier) | passed: `fetcher_crash` → `fail` → retry → exhausted; 5 later pages OK in the same process; 1 browser restart; nothing lost |
+| **browser leak** (1 000 pages, contexts 2, recycle 50 / 500) | passed: 1 000/1 000 OK in ~25 s; 20 contexts created and closed; 1 browser recycle, 0 restarts; browser-tree RSS 601→646 MB over pages 50–450, 192 MB right after the recycle, 643→714 MB over pages 550–950 (second browser ≤ 1.10× the first; bound 1.25×; limit 1 200 MB) |
+| media body test | 1 GiB fixture: ≤ 64 KiB read, server wrote ≤ 192 KiB; mutation check (cap lifted) makes the server write ~944 MB, which the 4 MiB guard fails |
+
+Final full run (2026-09-29): `make check` 317 passed / 90 skipped (the
+stack tiers); `scripts/test-crawlers.sh` (contract + integration +
+browser, from the host) **85 passed, 22 skipped** (skips = cases marked
+not applicable to a fetcher kind); P3 frontier integration 40 passed.
+
+## 31. Exit-gate status
+
+| Gate | Status |
+|---|---|
+| success rate ≥ V1 on the P0 workload | ❌ **not met**: 89.87 % vs 97.25 % (−7.4 pp); cause analysed in §30 |
+| bytes per page ≤ V1 | ✅ 41.9 KB vs 175.3 KB |
+| browser share < V1 | ✅ 0.32 % vs 7.44 % |
+| zero media body downloads | ✅ 0 (fixture-proven; none in W691) |
+| functional tests (contract, leak, chaos, B.5 #1) | ✅ |
+
+**P4 is not complete**: the success-rate gate is unmet. The gate and its
+definition are unchanged. The measured cause is not a missing engine but
+per-domain in-flight load on slow hosts; closing it needs a design
+decision (§33a), not a re-run.
+
+## 32. Known limitations
+
+- **Success gate unmet** (§31).
+- Politeness is claim-rate only (P3): no per-domain in-flight cap.
+- Media probe metadata is not persisted (no P1/P2 home before P8); W691
+  contained no media URL, so the zero-download gate is proven on the
+  fixture only.
+- Tor is validated against a SOCKS5 fixture; no live `.onion` check (no
+  Tor daemon on the dev host).
+- The Playwright cold start measured 13 s on the USB-HDD dev host (V1
+  harness); warm relaunches in the tests take < 1 s.
+- `needs_js` framework markers count only on anchor-poor pages (a
+  deviation from V1's marker-anywhere rule, to keep SSR pages on HTTP).
+- Live-web numbers drift (the P0 seeds fell from 97.5 % to ~50 %
+  reachable in two days); only same-session comparisons are valid.
+- Browser workers need Chromium on the host; the app image has none.
+
+## 33. Deferred decisions
+
+| Decision | Owner |
+|---|---|
+| Escalation policy beyond `needs_js` → browser; learned fetch profiles | P7 |
+| Per-domain interval/concurrency from observed response times | P7 (mechanism: see §33a) |
+| Persisting media probe metadata; media identity | P8 |
+| Request filtering rules behind the interception hook | P6 |
+| Raw snapshot archival policy (P4 stores every page body) | P5 |
+| Tor browser capability; live Tor validation | later phase / environment |
+| Promoting `outcome=<code>` from `detail` to a typed P1 field | P5/P7 if needed (ADR-009 minor) |
+
+### 33a. Open decision: closing the success gate
+
+Options (none taken without review):
+
+1. **Per-domain in-flight limit in the frontier** (P3 mechanism change,
+   new ADR): a domain is claimable only while its in-flight count is
+   below a limit (default 1–2), shared across queues and hosts.
+2. **Worker-local per-host concurrency cap** in the runtime (P4):
+   cheaper, but local to one process, so not a multi-host guarantee.
+3. Accept the gap and move per-domain pacing to P7.
+
+## Review decisions (2026-09-29)
 
 1. Seed evaluation workload `W691` and the gate definitions in §28.
 2. Scrapling not retained (stealth); Selenium retained only if §28 shows
-   Playwright-unreachable pages.
+   Playwright-unreachable pages — the re-check found none.
 3. `blocked`/`captcha` are recorded, not escalated to a browser.
 4. httpx as the single HTTP stack.
 5. No P1 change: fine-grained outcome in `FetchAttempt.detail`; media
    probe metadata stays in `FetchResult` until P8 defines its persistence.
 6. P4 records `FetchAttempt` + `PageObservation` + raw snapshot through the
    P2 repositories (plan B.5 #1 "persist"; P5 needs the body).
-7. Live Tor: install a Tor daemon on the host (sudo, by you) or run a Tor
-   container — or keep Tor validated against the SOCKS5 fixture only in P4.
+7. Tor validated against the SOCKS5 fixture only in P4.

@@ -14,6 +14,9 @@ are in the linked phase documents. How to run them:
 | 1M-claim distributed run with kills/pauses | P3 | 0 lost, 0 duplicate completions, 0 simultaneous ownership; 69 legitimate reclaims | ✅ | same |
 | Eligible-domain index vs `domain_scan_limit` | P3 | V2 finds the eligible domain behind up to 20 000 gated ones at a flat ~32 µs; V1 (K=250) finds none beyond 250 at ~800 µs | decision: index | same |
 | Starvation (7 V1 scenarios + cross-queue) | P3 | all pass; cross-queue starvation found and fixed (turn-taking) | ✅ | same |
+| V1 engines on the 51 P0 seeds (per engine) | P4 | httpx 50 %, aiohttp 42 %, Playwright 56 % (276 KB/page), Selenium 65 % → 62 % status-corrected (467 KB, 1 process/page), Scrapling 50 % (797 KB, 3.8 GB RSS) | decision: httpx + Playwright (ADR-018) | [p4 §28](phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md#28-seed-set-evaluation-exit-gates), `benchmarks/p4-fetch/` |
+| **P4 exit gate**, 691 P0-run URLs, V1 hybrid vs V2, same session | P4 | success 89.9 % vs V1 97.3 % ❌; bytes/page 41.9 KB vs 175.3 KB ✅; browser share 0.3 % vs 7.4 % ✅; media body downloads 0 ✅ | ❌ **success gate open** | [p4 §30–31](phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md#30-results) |
+| Browser pool leak, 1 000 pages | P4 | RSS 601–714 MB, recycle every 50 pages/context and 500/browser, second browser ≤ 1.10× first | ✅ | same |
 | Crash recovery / heartbeat endurance / priority × rate limit | P3 | reclaim 2.5 s after kill (2 s lease); 0/200 heartbeated claims lost; per-domain gaps ≥ interval across queues | ✅ | same |
 
 ## Rules that keep numbers comparable
@@ -26,6 +29,9 @@ are in the linked phase documents. How to run them:
   V1 numbers are quoted only as context.
 - Redis CPU is a time-normalised delta of `used_cpu_sys + used_cpu_user`,
   never a raw cumulative counter (V1 audit lesson).
+- Fetch benchmarks count bytes on the wire through one counting proxy for
+  every engine of both systems (`benchmarks/p4-fetch/countproxy.py`); live-web
+  results are compared only within one session.
 - Benchmark definitions are not changed to make a result pass. Where a V1
   benchmark was flawed (V1's `scan-limit-window` ran without politeness
   and so could not isolate the K window), the correction and its reason

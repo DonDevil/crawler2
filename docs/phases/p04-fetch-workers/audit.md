@@ -1,6 +1,6 @@
 # P4 audit — V1 fetch engines, network-failure handling, seed set
 
-Status: **audit** (no code). Design: [design.md](design.md).
+Status: **audit** (no code). Design and results: [p4-fetch-layer-worker-pools.md](p4-fetch-layer-worker-pools.md).
 V1 is read at `~/anti_piracy/crawler` @ `2dfb542` (the P0 baseline commit)
 and is not modified.
 
@@ -111,8 +111,8 @@ P3 already provides the frontier half (`defer` refunds the attempt,
 | Playwright `goto` + `networkidle` double timeout | **CHANGE** → one navigation deadline shared by both waits | V1 audit P2 finding |
 | Playwright route handler with ad/blacklist logic | **CHANGE** → interception *hook* with a no-op default | ad logic is P6 |
 | Playwright aborting image/font/media requests | **KEEP** as the default resource policy (not a filter decision: it is cost control) | bytes/page |
-| Selenium new process per fetch, silent `quit()` | **decided by measurement** (design §14); if kept: pooled driver, logged cleanup | D14 |
-| Scrapling `StealthyFetcher` | **DROP from the runtime** (design §14): its purpose is anti-detection stealth, which P4 must not implement; it is still *measured* for the record | safety requirement; ADR |
+| Selenium new process per fetch, silent `quit()` | **decided by measurement** (P4 doc §14); if kept: pooled driver, logged cleanup | D14 |
+| Scrapling `StealthyFetcher` | **DROP from the runtime** (P4 doc §14): its purpose is anti-detection stealth, which P4 must not implement; it is still *measured* for the record | safety requirement; ADR |
 | `tor/proxy_config.py` resolution order | **KEEP**, but "no proxy found" becomes an explicit `tor unavailable` health state instead of a silent default | V1 audit §4 |
 | `tor_manager.py`, `onion_router.py` | **DROP** (dead) | D15 |
 | N1–N7 classifier + health controller | **KEEP** (port); classify from exception types first, never from `str(exc)` alone | fixes V1's stringification limitation |
@@ -131,10 +131,10 @@ P3 already provides the frontier half (`defer` refunds the attempt,
   `http.server`, route table of canned responses, ephemeral port); used by
   `tests/unit/test_fixture_site.py`. It cannot yet express redirects with
   state, 304, compression, slow/stalled bodies, streaming large bodies or
-  malformed responses; P4 extends it (design §23).
+  malformed responses; P4 extends it (P4 doc §23).
 - **Conflict**: P4 has no link extraction (P5), so V2 cannot reproduce
   V1's "crawl 10 minutes from 51 seeds" workload. The design proposes a
-  fixed-URL workload taken from that run (design §28) — needs approval.
+  fixed-URL workload taken from that run (P4 doc §28) — needs approval.
 
 ## 6. Environment facts found
 
@@ -170,8 +170,8 @@ whether `selenium` stays a queue (D14).
 |---|---|---|
 | 1 | Brief says implement; plan B.1 requires design approval first | stop after this audit + design for approval |
 | 2 | Brief names `docs/phase/p4-…`; convention is `docs/phases/pNN-name/` | `docs/phases/p04-fetch-workers/` |
-| 3 | Brief outcome names (`needs_js`, `captcha`, `redirect_error`, …) vs P1 `FetchOutcome` (9 values) | runtime-internal outcome enum mapped onto P1; fine-grained code in `FetchAttempt.detail`; no P1 change (design §9) |
-| 4 | Gate "bytes/page ≤ V1": V1 has no value (P0 limitation 3) | measure both V1 and V2 through the same counting proxy (design §28) |
-| 5 | Gate workload: V2 cannot crawl from seeds without P5 | fixed URL list from the P0 run (design §28) |
+| 3 | Brief outcome names (`needs_js`, `captcha`, `redirect_error`, …) vs P1 `FetchOutcome` (9 values) | runtime-internal outcome enum mapped onto P1; fine-grained code in `FetchAttempt.detail`; no P1 change (P4 doc §9) |
+| 4 | Gate "bytes/page ≤ V1": V1 has no value (P0 limitation 3) | measure both V1 and V2 through the same counting proxy (P4 doc §28) |
+| 5 | Gate workload: V2 cannot crawl from seeds without P5 | fixed URL list from the P0 run (P4 doc §28) |
 | 6 | Plan's `fetch.outcome` event vs P1's `fetch.completed` | P1 already folded it into `fetch.completed` (`FetchAttempt`); use it |
-| 7 | Scrapling "keep if it beats Playwright" (plan A.3) vs brief's ban on stealth to defeat controls | measure, but do not retain (design §14) |
+| 7 | Scrapling "keep if it beats Playwright" (plan A.3) vs brief's ban on stealth to defeat controls | measure, but do not retain (P4 doc §14) |

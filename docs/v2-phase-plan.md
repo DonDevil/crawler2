@@ -16,6 +16,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-28 | **Single machine and multi-machine supported from day one** | Multi-host safety is a P0 invariant, not a P14 add-on (see B.4). |
 | 2026-09-28 | GPU: **NVIDIA RTX 2050, 4 GB VRAM** (driver 610.57) on a 12-core / 15 GB RAM host | Encoder must be VRAM-budgeted (P9); one GPU-owning encoder process per host; local dev stack must fit in ~15 GB alongside browsers. |
 | 2026-09-29 | **P3 frontier**: execution queues with one shared domain gate, eligible-domain index instead of `domain_scan_limit` (benchmarked), active-task dedup, per-queue admission limits | ADR-015/016; D10 and D13 closed in P3; `selenium` queue has no P1 capability until P4 decides D14 |
+| 2026-09-29 | **P4 fetch layer**: one runtime, httpx + Playwright pool; Scrapling (stealth) and Selenium dropped on measurement; `blocked`/`captcha` recorded, not escalated; gate workload = the 691 URLs of the P0 run | ADR-017/018; D1–D4, D14 closed in P4; `selenium` queue stays unused |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the

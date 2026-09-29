@@ -3,9 +3,9 @@
 V2 is a fresh architecture; V1 (`../crawler`) is a reference and benchmark
 baseline only. The authoritative plan is [`docs/v2-phase-plan.md`](docs/v2-phase-plan.md).
 
-**Current phase: P3 — Frontier & scheduling.** What exists and why:
-[`docs/phases/p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md);
-earlier phases: [`p02-storage/`](docs/phases/p02-storage/) (start with
+**Current phase: P4 — Fetch layer & worker pools.** What exists and why:
+[`docs/phases/p04-fetch-workers/`](docs/phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md);
+earlier phases: [`p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md), [`p02-storage/`](docs/phases/p02-storage/) (start with
 `what-was-built.md`), [`p01-contracts/`](docs/phases/p01-contracts/),
 [`p00-foundations/`](docs/phases/p00-foundations/).
 Architecture: [`docs/architecture/`](docs/architecture/); decisions:
@@ -24,6 +24,7 @@ make schemas                    # regenerate contract JSON Schemas after a contr
 make up                         # Redis, ScyllaDB, MinIO + app container
 docker compose exec app crawler2-storage migrate   # crawler2 keyspace + raw bucket (idempotent)
 make validate-stack             # both compose profiles, end-to-end
+scripts/test-crawlers.sh        # P4 fetch tier from the host (browsers, fixture web)
 make down
 ```
 
@@ -40,9 +41,11 @@ every field is overridable via `CRAWLER2_<FIELD>` / `CRAWLER2_<SECTION>__<FIELD>
 | `crawler2/diagnostics` | `crawler2-check`: backend connectivity (health check) |
 | `crawler2/storage` | repositories (Scylla), object store (MinIO), outbox relay, consumer idempotency, `crawler2-storage` CLI (ADR-012…014) |
 | `crawler2/frontier` | Redis frontier: execution queues, shared politeness gate, leases, scheduling, retries, admission limits (ADR-015, ADR-016) |
+| `crawler2/crawlers` | worker runtime, http/tor/browser fetchers, outcome mapping, recorder, `crawler2-worker` CLI (ADR-017, ADR-018) |
 | `contracts/` | `antipiracy-contracts` 1.0.0: IDs, domain models, events, catalog, JSON Schemas, compat fixtures (ADR-007…011) |
 | `docker/`, `docker-compose.yml` | dev stack, profiles `single` / `two-host` |
 | `tests/unit`, `tests/contract`, `tests/integration`, `tests/fixtures` | tests; contract suite; local fixture web server |
 | `benchmarks/v1-baseline/` | V1 baseline seed set, run script and raw results |
 | `benchmarks/p2-storage/` | partition-size (1M pages) and latency benchmarks, results |
+| `benchmarks/p4-fetch/` | V1 per-engine evaluation, exit-gate run (V1 hybrid vs V2 on 691 URLs), counting proxy, results |
 | `benchmarks/p3-frontier/` | frontier throughput, 1M-claim chaos run, starvation, eligible-index, crash/heartbeat benchmarks, results |

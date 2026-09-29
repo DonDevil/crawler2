@@ -27,6 +27,27 @@ controllable clock (no sleeping on lease/backoff timers) and assert
 `audit()` on teardown. The property-based state machine
 (`test_state_machine.py`) runs 60 examples × 40 steps (~35 s).
 
+### P4 fetch layer (host)
+
+Fetcher contract, runtime, browser and end-to-end tests run **from the
+host**: browsers live on the host (the app image has none), and the host
+reaches Scylla directly at its container IP (the published port does not
+work for the driver, the container IP does).
+
+```bash
+make up
+env/bin/python -m playwright install chromium   # once; cached in ~/.cache/ms-playwright
+scripts/test-crawlers.sh                          # contract + integration + browser tiers
+RUN_BROWSER_TESTS=0 scripts/test-crawlers.sh      # without Chromium
+scripts/test-crawlers.sh -k leak -s               # 1 000-page leak test with its report
+```
+
+The script reads `.env`, points Redis/MinIO at the published ports and
+Scylla at the container IP, and uses the throwaway keyspace
+`crawler2_p4_it` and bucket `crawler2-p4-it`. Without the stack,
+`make check` still runs the fetcher contract suite (HTTP and Tor against
+the fixture web and a SOCKS5 fixture) and the unit tests.
+
 Scylla-backed tests must run inside the app containers (the Scylla driver
 cannot use the published port from the host); the image bakes in `tests/`,
 so run `make up` after changing tests. In containers add
@@ -44,6 +65,12 @@ headline numbers is [benchmarks.md](benchmarks.md).
   scripts are run from `$V1_ROOT` with its own venv and
   `PYTHONDONTWRITEBYTECODE=1`, so V1 is only read.
 - P2 storage: `benchmarks/p2-storage/run.sh` (needs `make up-two-host`).
+- P4 fetch: `benchmarks/p4-fetch/run.sh v1-engines` measures each V1 engine
+  on the P0 seeds; `run.sh gate` runs the exit gate (V1 hybrid chain vs V2
+  workers on the fixed 691-URL workload `w691.txt`, same session). Both
+  use the **live web** and route every engine through a byte-counting
+  proxy (`countproxy.py`); V1 runs read-only from a `git archive`
+  snapshot with its own venv.
 
 ## V1 is read-only
 
