@@ -48,7 +48,10 @@ def test_killing_the_browser_mid_page_loses_no_task(
         pid = fetcher.pool.browser_pid()
         assert pid is not None
         os.kill(pid, signal.SIGKILL)
-        # later work must still be processed by the same worker process
+        # later work (admitted once the crash was detected and reported) must
+        # still be processed by the same worker process
+        while not recorder.outcomes_for(site.url("/slow-page")):
+            await asyncio.sleep(0.05)
         for i in range(5):
             admit(frontier, site.url(f"/page/{i}"), BROWSER)
         for _ in range(300):
@@ -64,7 +67,8 @@ def test_killing_the_browser_mid_page_loses_no_task(
     assert slow[1:] == [Outcome.TIMEOUT.value]  # retried by the frontier, then exhausted
     assert rt.stats.reports["fail:retry_scheduled"] >= 1
     assert rt.stats.reports["fail:exhausted"] == 1
-    assert all(recorder.outcomes_for(site.url(f"/page/{i}")) == ["ok"] for i in range(5))
+    pages = [recorder.outcomes_for(site.url(f"/page/{i}")) for i in range(5)]
+    assert all(p == ["ok"] for p in pages), pages
     assert fetcher.pool.stats.browser_restarts == 1
     assert frontier.stats().depth[BROWSER] == 0  # nothing lost, nothing stuck
 

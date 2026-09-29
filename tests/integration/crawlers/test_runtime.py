@@ -112,8 +112,10 @@ def test_confirmed_local_outage_defers_without_spending_attempts(
     refused = socket.socket()
     refused.bind(("127.0.0.1", 0))
     port = refused.getsockname()[1]
+    # six loopback hosts = six domains, so the per-domain in-flight limit
+    # (ADR-019) leaves attempts in flight when the outage is confirmed
     for i in range(6):
-        admit(frontier, f"http://127.0.0.1:{port}/down/{i}")
+        admit(frontier, f"http://127.0.0.{i + 1}:{port}/down/{i}")
 
     async def offline() -> bool:
         return False
