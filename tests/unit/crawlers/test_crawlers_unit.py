@@ -148,9 +148,7 @@ def test_classify_chromium_codes() -> None:
     assert classify_exception(Exception("net::ERR_NAME_NOT_RESOLVED at x")) is Outcome.DNS_ERROR
     assert classify_exception(Exception("net::ERR_CERT_DATE_INVALID")) is Outcome.TLS_ERROR
     assert classify_exception(Exception("net::ERR_CONNECTION_REFUSED")) is Outcome.NETWORK_ERROR
-    assert classify_exception(Exception("net::ERR_TOO_MANY_REDIRECTS")) is (
-        Outcome.REDIRECT_ERROR
-    )
+    assert classify_exception(Exception("net::ERR_TOO_MANY_REDIRECTS")) is (Outcome.REDIRECT_ERROR)
 
 
 # --- network health --------------------------------------------------------------
