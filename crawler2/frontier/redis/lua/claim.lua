@@ -6,7 +6,8 @@ local q, token = ARGV[4], ARGV[5]
 local ttl, default_interval, batch = tonumber(ARGV[6]), tonumber(ARGV[7]), tonumber(ARGV[8])
 
 promote_scheduled(batch)
-promote_gates(batch)
+promote_gates(batch, default_interval)
+promote_yields(batch)
 
 local rk = ready_key(q)
 -- Bounded self-heal: an index entry whose queue is empty is dropped (never
@@ -23,10 +24,9 @@ for _ = 1, 16 do
   else
     local id = head[1]
     redis.call('ZREM', qk, id)
-    local interval = redis.call('HGET', P .. 'interval', dom)
-    if interval then interval = tonumber(interval) else interval = default_interval end
+    local interval = domain_interval(dom, default_interval)
     if interval > 0 then
-      close_gate(dom, now + interval)
+      close_gate(dom, now + interval, q)
     else
       sync_ready(q, dom)
     end

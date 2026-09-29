@@ -102,6 +102,8 @@ default).
 | `q:{queue}:{domain_id}` | ZSET | url_id → rank | ready tasks |
 | `ready:{queue}` | ZSET | domain_id → rank of that domain's head in `queue` | domains with ready work and an open gate |
 | `gate` | ZSET | domain_id → next allowed claim time | domains claimed within their interval (+ one sweep of lag) |
+| `gateq` | HASH | domain_id → queue that closed the gate | gated domains |
+| `yield` | ZSET | `queue\|domain_id` → end of that queue's turn-yield | domains whose gate just reopened |
 | `interval` | HASH | domain_id → minimum interval override (s) | operator/P7 overrides |
 | `scheduled` | ZSET | url_id → due time | scheduled tasks |
 | `leases` | ZSET | url_id → lease expiry | leased tasks |
@@ -152,10 +154,17 @@ check, pop and gate update happen in one script, so no interleaving of
 workers can observe an open gate twice. With interval 0 the gate is not
 written at all (identical to V1's `rate_limit = 0`).
 
-Work-conserving across queues: when the gate reopens, `d` re-enters every
-queue that has work for it; whichever queue claims first wins. A queue
-with no running workers never blocks the others. The consequence — no
-FIFO order *between queues* on one domain — is measured in §21.
+**Turn-taking across queues.** When the gate reopens, `d` re-enters
+every queue that has work for it, except that the queue which claimed
+last (`gateq[d]`) is held back for one more interval (`yield` entry) if
+another queue has work on `d`. Without this the first measurement showed
+real starvation: the gate is reopened lazily *inside* whichever claim
+arrives first, so four busy-polling `http` workers won all 300 gate
+openings on a shared domain and a `browser` task waited forever (§21).
+With it, queues alternate on a contended domain; a queue with no running
+workers delays the others by at most one interval and never blocks them
+(the hold expires into a normal claimable state). Politeness is
+unaffected: every path into a ready index still checks the gate.
 
 ## 9. Temporary deduplication
 
@@ -281,8 +290,9 @@ not ported. Evidence and the measured comparison with V1's K-scan are in
 §21–§22; the ADR is ADR-015.
 
 - Key structure: `ready:{queue}` (domain → head rank), `gate`
-  (domain → next allowed time). A domain is in at most one of
-  {gate} ∪ {ready:*}: gated domains are in no ready index.
+  (domain → next allowed time), `yield` (per-queue turn hold, §8). A
+  gated domain is in no ready index; a held `queue|domain` is not in
+  `ready:{queue}`.
 - Atomic update rules: admit/promote add a domain to `ready:{queue}` only
   if it has no gate entry; claim removes it from every index and gates it
   (interval > 0) or resyncs its head in the claimed queue (interval 0);
@@ -337,7 +347,45 @@ re-derived from Scylla by P6/P7 admission, never from Redis).
 
 ## 20. Tests
 
-_Filled in during validation._
+Integration tests run against the compose Redis (db 9, a namespace per
+test, injected clock, `audit()` asserted on teardown); unit tests need
+nothing. Commands: [development.md](../../development.md#test-tiers).
+
+| # | Required coverage | Where |
+|---|---|---|
+| 1 | enqueue/claim/complete; admitted → ready → claimed → heartbeat → completed | `test_frontier.py::test_admitted_ready_claimed_heartbeat_completed` |
+| 2 | priority (P1 direction, FIFO within priority, across domains) | `test_higher_priority_first_fifo_within_priority`, `test_priority_across_domains_added_later` |
+| 3 | deduplication (active only, merge, concurrency, no tombstone) | `test_duplicate_admission_while_active`, `test_completed_url_is_admittable_again`, `test_exhausted_url_is_admittable_again`, `test_merge_*`, `test_concurrent_admissions_store_one_task` |
+| 4 | per-domain politeness, skip-not-block, per-domain override | `test_domain_interval_gates_second_claim`, `test_gated_domain_does_not_block_lower_priority_domain`, `test_per_domain_interval_override` |
+| 5 | cross-queue politeness (deterministic and 8 threads on Redis TIME) | `test_domain_gate_is_shared_by_all_queues`, `test_concurrent_claimers_respect_domain_interval` |
+| 6 | lease ownership, stale owner rejected | `test_stale_owner_rejected_after_lease_recovery`, `test_no_duplicate_claims_under_concurrency` |
+| 7 | heartbeat (keeps lease through sweeps; helper renews, cancels, survives outage) | `test_heartbeat_keeps_lease_through_recovery`, `unit/.../test_heartbeat_*`, `test_lost_claim_cancels_work`, `test_outage_during_heartbeat_is_not_a_lost_claim` |
+| 8–9 | lease expiry, crash → recovery → requeue; exhaustion → dead letter | `test_expired_lease_is_recovered_and_reclaimable`, `test_recovery_exhaustion_dead_letters`, `test_dead_letters_are_bounded` |
+| 10 | claimed → failure → retry → scheduled → ready → claim; backoff; escalation; defer | `test_fail_retries_with_growing_backoff_then_exhausts`, `test_scheduled_retry_joins_ready_queue_by_priority`, `test_failure_can_escalate_to_another_queue`, `test_defer_keeps_attempt_budget` |
+| 11–12 | scheduled ZSET: not early, due, duplicate promotion, concurrent promoters | `test_future_task_not_claimable_early`, `test_past_not_before_is_ready_immediately`, `test_duplicate_promotion_is_harmless`, `test_concurrent_promoters_move_each_task_once`; promoter crash: 1M run (§21, sweeper SIGKILLed 12×) |
+| 13–14 | queue depth limits, admission control, saturation | `test_full_queue_rejects_new_work_explicitly`, `test_saturation_never_loses_admitted_tasks` |
+| 15 | distributed concurrent claims | `test_no_duplicate_claims_under_concurrency` (8 clients), `test_concurrent_promoters_*`; 1M run with 8 processes (§21) |
+| 16 | Redis down: claim/admit/heartbeat/complete/fail/defer/recover/stats, recovery after return, lease lapse during outage | `test_redis_failure.py` (TCP proxy that is cut and restored) |
+| 17 | starvation | `test_eligible_domain_is_found_behind_many_gated_domains`; benchmark `starvation.py` (§21) |
+| 18 | priority × rate limit | `test_gated_domain_does_not_block_lower_priority_domain`; benchmark `priority_ratelimit.py` |
+| — | contract mapping, settings, admission validation | `tests/unit/frontier/test_frontier_unit.py` |
+
+**Property-based state machine** (`test_state_machine.py`, Hypothesis,
+60 examples × 40 steps, ~35 s): rules admit / claim / heartbeat /
+complete / fail (optionally to another queue) / defer / advance clock /
+recover, over 7 URLs on 3 domains and two queues with tiny depth limits.
+A reference model predicts every outcome; after every step it checks
+`audit()` (no stranded or lost task, depth counters exact, no gated
+domain eligible, lease records consistent), per-queue depth and lease
+counts against the model, dead-letter count, one owner per task,
+politeness on Redis-side claim times, attempt numbers, that a finished
+URL is admittable again, and that a second recovery sweep is a no-op. At
+teardown, time is advanced until every active task has been claimed and
+completed (liveness). A mutation check (shared gate reduced to the
+claiming queue) is caught by the machine.
+
+Results: 15 unit + 38 integration frontier tests pass; the full default
+suite (`make check`) passes.
 
 ## 21. Benchmarks
 

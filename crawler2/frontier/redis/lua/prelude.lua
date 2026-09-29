@@ -34,6 +34,18 @@ local function count(field) redis.call('HINCRBY', P .. 'stats', field, 1) end
 -- A domain with any gate entry (open or not yet promoted) is in no ready index.
 local function gated(dom) return redis.call('ZSCORE', P .. 'gate', dom) ~= false end
 
+-- Cross-queue turn-taking: after a gate reopens, the queue that claimed last
+-- yields for one interval to other queues with work on the domain
+-- (yield ZSET member 'queue|domain', score = end of the yield).
+local function held(q, dom) return redis.call('ZSCORE', P .. 'yield', q .. '|' .. dom) ~= false end
+local function eligible(q, dom) return not gated(dom) and not held(q, dom) end
+
+local function domain_interval(dom, default_interval)
+  local iv = redis.call('HGET', P .. 'interval', dom)
+  if iv then return tonumber(iv) end
+  return default_interval
+end
+
 -- Resync dom's entry in ready:q to the current head of q:q:dom (dom not gated).
 local function sync_ready(q, dom)
   local head = redis.call('ZRANGE', queue_key(q, dom), 0, 0, 'WITHSCORES')
@@ -50,7 +62,7 @@ local function enqueue(id, q, dom, pri)
   local rank = (100 - pri) * BAND + seq
   redis.call('ZADD', queue_key(q, dom), rank, id)
   redis.call('HSET', task_key(id), 'st', 'ready', 'seq', seq)
-  if not gated(dom) then
+  if eligible(q, dom) then
     local cur = redis.call('ZSCORE', ready_key(q), dom)
     if (not cur) or rank < tonumber(cur) then
       redis.call('ZADD', ready_key(q), rank, dom)
@@ -82,23 +94,55 @@ local function promote_scheduled(limit)
 end
 
 -- Expired domain gates -> the domain re-enters every queue it has work in,
--- at that queue's current head.
-local function promote_gates(limit)
+-- at that queue's current head; the queue that claimed last is held back for
+-- one interval if another queue has work there (bounded, work-conserving).
+local function promote_gates(limit, default_interval)
   local due = redis.call('ZRANGEBYSCORE', P .. 'gate', '-inf', now, 'LIMIT', 0, limit)
   for i = 1, #due do
     local dom = due[i]
     redis.call('ZREM', P .. 'gate', dom)
+    local last = redis.call('HGET', P .. 'gateq', dom)
+    redis.call('HDEL', P .. 'gateq', dom)
+    local heads, others = {}, false
     for j = 1, #QUEUES do
       local head = redis.call('ZRANGE', queue_key(QUEUES[j], dom), 0, 0, 'WITHSCORES')
-      if #head > 0 then redis.call('ZADD', ready_key(QUEUES[j]), head[2], dom) end
+      if #head > 0 then
+        heads[j] = head[2]
+        if QUEUES[j] ~= last then others = true end
+      end
+    end
+    for j = 1, #QUEUES do
+      if heads[j] then
+        if QUEUES[j] == last and others then
+          redis.call('ZADD', P .. 'yield', now + domain_interval(dom, default_interval),
+            last .. '|' .. dom)
+        else
+          redis.call('ZADD', ready_key(QUEUES[j]), heads[j], dom)
+        end
+      end
     end
   end
 end
 
--- Shared politeness gate: closes dom for every queue.
-local function close_gate(dom, until_t)
+-- Expired yields -> the held queue becomes eligible again (unless re-gated).
+local function promote_yields(limit)
+  local due = redis.call('ZRANGEBYSCORE', P .. 'yield', '-inf', now, 'LIMIT', 0, limit)
+  for i = 1, #due do
+    redis.call('ZREM', P .. 'yield', due[i])
+    local sep = string.find(due[i], '|', 1, true)
+    local q, dom = string.sub(due[i], 1, sep - 1), string.sub(due[i], sep + 1)
+    if not gated(dom) then sync_ready(q, dom) end
+  end
+end
+
+-- Shared politeness gate: closes dom for every queue; remembers who claimed.
+local function close_gate(dom, until_t, q)
   redis.call('ZADD', P .. 'gate', until_t, dom)
-  for j = 1, #QUEUES do redis.call('ZREM', ready_key(QUEUES[j]), dom) end
+  redis.call('HSET', P .. 'gateq', dom, q)
+  for j = 1, #QUEUES do
+    redis.call('ZREM', ready_key(QUEUES[j]), dom)
+    redis.call('ZREM', P .. 'yield', QUEUES[j] .. '|' .. dom)
+  end
 end
 
 local function backoff(att, base, cap)

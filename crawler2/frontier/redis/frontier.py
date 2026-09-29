@@ -310,8 +310,8 @@ class _Auditor:
         tasks: dict[str, dict[str, str]] = {}
         for key in self.r.scan_iter(match=p + "task:*", count=1000):
             tasks[key[len(p) + 5 :]] = self.r.hgetall(key)
-        scheduled, leases, dead, gate = (
-            self._zset(k) for k in ("scheduled", "leases", "dead", "gate")
+        scheduled, leases, dead, gate, yields = (
+            self._zset(k) for k in ("scheduled", "leases", "dead", "gate", "yield")
         )
         queues: dict[tuple[str, str], dict[str, float]] = {}
         for key in self.r.scan_iter(match=p + "q:*", count=1000):
@@ -358,11 +358,14 @@ class _Auditor:
                 members = queues.get((q, dom))
                 if dom in gate:
                     bad(f"ready:{q} holds gated domain {dom}")
+                if f"{q}|{dom}" in yields:
+                    bad(f"ready:{q} holds domain {dom} that is yielding")
                 if not members:
                     bad(f"ready:{q} holds domain {dom} without work")
                 elif min(members.values()) != score:
                     bad(f"ready:{q} score of {dom} is not its head rank")
             for (qq, dom), members in queues.items():
-                if qq == q and members and dom not in ready and dom not in gate:
+                held = f"{q}|{dom}" in yields
+                if qq == q and members and dom not in ready and dom not in gate and not held:
                     bad(f"stranded: {q}:{dom} has work but is neither eligible nor gated")
         return self.problems

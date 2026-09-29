@@ -236,6 +236,7 @@ FrontierMachine.TestCase.settings = settings(
     max_examples=60,
     stateful_step_count=40,
     deadline=None,
+    database=None,  # app containers have a read-only root filesystem
     suppress_health_check=[HealthCheck.too_slow],
 )
 test_frontier_state_machine = FrontierMachine.TestCase

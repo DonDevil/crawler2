@@ -46,9 +46,11 @@ several independent crawler systems sharing one frontier.
 - No visibility window: a claim returns work whenever any eligible domain
   has work in that queue (D13 closed). Measured against V1's K-scan in
   the P3 phase document §21–§22.
-- Cross-queue order on one domain is work-conserving, not FIFO: when a
-  gate opens, the first queue to claim wins. A queue with no workers never
-  blocks other queues on a shared domain.
+- Queues take turns on a contended domain: when its gate reopens, the
+  queue that claimed last yields for one interval if another queue has
+  work there (added after the P3 starvation benchmark showed a busy queue
+  winning every reopening). A queue with no workers delays the others by
+  at most one interval and never blocks them.
 - Promotion lag: a gate that expires is noticed by the next claim; if more
   than `promote_batch` gates expire at once the rest wait one more claim.
 - Scripts touch keys computed at run time: one Redis primary only

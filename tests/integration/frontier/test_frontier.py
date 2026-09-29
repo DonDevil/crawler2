@@ -273,6 +273,42 @@ def test_concurrent_claimers_respect_domain_interval(make_frontier: FrontierFact
     assert min(gaps) >= 0.05 - 1e-6
 
 
+def test_queues_take_turns_on_a_shared_domain(make_frontier: FrontierFactory, clock: Clock) -> None:
+    """A busy queue cannot keep winning a shared domain's gate (starvation fix)."""
+    frontier = make_frontier(default_interval_s=1.0)
+    for i in range(5):
+        frontier.admit(admission("s", f"h{i}"))
+    frontier.admit(admission("s", "b0", queue=Q.BROWSER))
+    first = frontier.claim(Q.HTTP)
+    assert first is not None
+    clock.advance(1.0)
+    # The gate reopened, but http claimed last and browser has work: http yields.
+    assert frontier.claim(Q.HTTP) is None
+    browser = frontier.claim(Q.BROWSER)
+    assert browser is not None
+    assert browser.claimed_at - first.claimed_at >= 1.0
+    clock.advance(1.0)
+    again = frontier.claim(Q.HTTP)
+    assert again is not None
+    assert again.claimed_at - browser.claimed_at >= 1.0
+
+
+def test_yield_is_bounded_when_other_queue_has_no_workers(
+    make_frontier: FrontierFactory, clock: Clock
+) -> None:
+    frontier = make_frontier(default_interval_s=1.0)
+    for i in range(3):
+        frontier.admit(admission("s", f"h{i}"))
+    frontier.admit(admission("s", "sel", queue=Q.SELENIUM))  # nobody serves selenium
+    claims = []
+    for _ in range(3):
+        while (c := frontier.claim(Q.HTTP)) is None:
+            clock.advance(0.5)
+        claims.append(c.claimed_at)
+    gaps = [b - a for a, b in pairwise(claims)]
+    assert all(1.0 <= g <= 2.0 + 1e-6 for g in gaps), gaps
+
+
 # -- 6.-9. ownership, heartbeat, expiry, crash recovery ----------------------------------
 
 

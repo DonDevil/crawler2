@@ -22,7 +22,7 @@ if st then
     if pri > tonumber(t[2]) then
       redis.call('ZADD', queue_key(t[3], t[4]), 'XX', (100 - pri) * BAND + tonumber(t[6]), id)
       redis.call('HSET', tk, 'pri', pri)
-      if not gated(t[4]) then sync_ready(t[3], t[4]) end
+      if eligible(t[3], t[4]) then sync_ready(t[3], t[4]) end
       changed = true
     end
   elseif st == 'scheduled' then
