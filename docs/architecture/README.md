@@ -25,10 +25,14 @@ Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 | Storage: repositories, object store, outbox/relay | `crawler2/storage` | [P2](../phases/p02-storage/what-was-built.md) |
 | Frontier & scheduling | `crawler2/frontier` | [frontier.md](frontier.md), [P3](../phases/p03-frontier-scheduling/p3-frontier-scheduling.md) |
 | Fetch layer & worker pools | `crawler2/crawlers` | [fetch-workers.md](fetch-workers.md), [P4](../phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md) |
-| **Extraction & page intelligence** | `crawler2/extraction` | [extraction.md](extraction.md), [P5](../phases/p05-extraction-page-intelligence/) |
+| Extraction & page intelligence | `crawler2/extraction` | [extraction.md](extraction.md), [P5](../phases/p05-extraction-page-intelligence/) |
+| **Filter engine & discovery** | `crawler2/filtering`, `crawler2/discovery` | [filter-discovery.md](filter-discovery.md), [P6](../phases/p06-filter-discovery/) |
 
 Workers (P4) claim from the frontier through its public API only, write
 attempts, observations and raw snapshots through the P2 repositories and
 object store, and never touch Redis structures directly. Extraction (P5)
 consumes `page.observed`, reads the snapshot once, parses it once and
 writes links, revisions and archival decisions through the P2 repositories.
+Discovery (P6) consumes `urls.discovered`, applies the filter and the static
+M1 scope/revisit rules and admits through the frontier API; browser pools
+consult the same filter through the P4 interception hook.

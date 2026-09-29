@@ -30,9 +30,8 @@ The plan cites **1,463 lines**. That figure comes from V1's
 `docs/architecture/history/optimization_blacklist.md` (2026-08). The file is
 git-ignored in V1 (`.gitignore: /datasets`), has no history, and was
 rewritten on **2026-09-06 06:28** (mtime). The file that exists today has
-**100 lines: 2 comment lines + 98 entries, 0 duplicates** (`wc -l` reports
-99 because the last line has no newline; the comment header appears twice,
-once per re-creation). The 1,463-line version is lost; P6 imports what
+**99 lines: 1 comment line + 98 entries, 0 duplicates**. The 1,463-line
+version is lost; P6 imports what
 exists and records this.
 
 Classification of the 98 entries. The categories are an **operator review**
@@ -47,11 +46,11 @@ defaults to *quarantine*.
 | Same family, added at runtime | 13 | facebook.net, cdninstagram.com, redditstatic.com, youtube-nocookie.com, telegram.me, tumblr.com, indiatimes.com, netflix.com, primevideo.com | migrate → `CONTENT`, BLOCK `out_of_scope` |
 | Unrelated education/health sites | 8 | nih.gov, cornell.edu, microbenotes.com, celiac.com | migrate → `CONTENT` `out_of_scope`, confidence 0.6 (below the block threshold → CLASSIFY only) |
 | Piracy / download sites (**crawl targets**) | 21 | hdhub4u.af, isaidub.love, kuttymovies1.fit, isaimini.com.in, stripemovies.com, moviedrivebd.com, mp4moviez.diet, moviesda32.com, new1–3.movcloud.click, dl1/2/5/6/7/10.hotshare.click | **quarantine** (`content_source`) — 6 are **M1 seed hosts** |
-| Video downloaders (hint-substring artefacts) | 4 | sstiktok.co, youtubestorm.com | quarantine (`possible_media_source`) |
+| Video downloaders and user-file hosting | 5 | sstiktok.co, youtubestorm.com, googleusercontent.com | quarantine (`possible_media_source`) |
 | `.click`/`.adult` artefacts (F-3/F-4) | 5 | linkurl.click, data527.click, keonhacai.adult | quarantine (`heuristic_artefact`) |
 | Cloud/infra hostnames | 3 | redirect.prod.experiment.routing.cloudfront.aws.a2z.com, mt-file-tracking-temp.s3.eu-west-1.amazonaws.com | quarantine (`infra_ambiguous`) |
 | Raw IPv4 addresses | 2 | 174.138.23.31 | quarantine (`ip_address`: shared hosting) |
-| Google / reserved | 3 | google.com, googleusercontent.com, example.com | quarantine (`search_origin`, `possible_media_source`, `reserved_name`) |
+| Google search / reserved | 2 | google.com, example.com | quarantine (`search_origin`, `reserved_name`) |
 | Invalid | 0 | — | — |
 
 Result: **60 migrated** (52 BLOCK, 8 CLASSIFY), **38 quarantined** (stored,

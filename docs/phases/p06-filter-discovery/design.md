@@ -1,7 +1,9 @@
 # P6 Design — filter engine and discovery port
 
-Status: **PROPOSED 2026-09-29 — awaiting design review (Gate B).** Open
-decisions are listed in §22; nothing below them is implemented yet.
+Status: **APPROVED 2026-09-29** (§22: Q1 admission-time filtering, Q2
+rooted sites + leaves, Q3 static 6 h seed / 24 h link revisits, Q4
+operator-supplied query file). Deviations found while implementing are
+recorded in [decisions.md](decisions.md).
 Audit: [audit.md](audit.md).
 
 ## 1. Responsibilities and boundaries

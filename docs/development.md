@@ -90,6 +90,24 @@ headline numbers is [benchmarks.md](benchmarks.md).
   `run.sh parse <dir> [rounds]` times V1 `extract_content` (V1 venv,
   read-only, blacklist copied to scratch) and V2 `extract` on the same
   bytes; `pairs.py review|score` drives the change-detection evaluation.
+- P6 filter: `benchmarks/p6-filter/throughput.py` (Gate D) and
+  `fp_eval.py` (Gate E) read EasyList/EasyPrivacy from git-ignored
+  `var/filter-lists/` and the P5 capture; `corpus_build.py` regenerates
+  the labelled corpus fixture (deterministic).
+- P6 M1: `benchmarks/p6-m1/run.sh setup|start [queries]|start-search FILE|restart-http|status|stop`
+  runs the live closed loop on its own dataset (keyspace `crawler2_m1`,
+  Redis namespace `m1`, streams `m1:events:*`, bucket `crawler2-m1`);
+  `monitor.py` samples every 60 s into `var/p6-m1/samples.jsonl`,
+  `report.py` summarises a window into `benchmarks/p6-m1/results/`.
+
+### P6 filter + discovery (host)
+
+```bash
+make up
+scripts/test-filter-discovery.sh    # unit + Scylla rule store + M1 fixture loop + Chromium interception
+```
+
+Throwaway keyspace `crawler2_it_p6_host`, bucket `crawler2-it-p6-host`.
 
 ## V1 is read-only
 

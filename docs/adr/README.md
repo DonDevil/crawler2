@@ -22,6 +22,7 @@
 | [018](ADR-018-fetch-engine-retention.md) | Fetch engines retained: httpx + Playwright; Scrapling and Selenium dropped (D14) | Accepted |
 | [019](ADR-019-frontier-domain-inflight-limit.md) | Frontier per-domain in-flight limit, global across queues and hosts | Accepted |
 | [020](ADR-020-page-revisions.md) | Page revisions: meaningful change as an additive identity beside page versions (contract 1.1, `page.changed`) | Accepted |
+| [021](ADR-021-filter-rules-and-admission.md) | Filter rules as durable, versioned data; filtering at admission | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

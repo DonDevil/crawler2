@@ -20,6 +20,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-29 | **P3 correction**: global per-domain in-flight limit in the frontier, frozen at 2 | ADR-019; found by P4's gate run |
 | 2026-09-29 | **P4 success gate kept unchanged** (V1 `visited`); status OPEN at 95.51 % vs 96.82 %; V1 `visited` shown to include Selenium 400/403/404 false successes | success-metric methodology (keep historical gate vs documented status-aware redefinition with a V1+V2 rerun) pending — P4 doc §33a |
 | 2026-09-29 | **P5 extraction**: page *revisions* (`PageRevisionId`, normalized content) added beside raw page versions, `page.changed` in contract 1.1; W691 HTML captured twice as the benchmark/precision corpus (not in git) | ADR-020; D8, D9 closed in P5; CPU gate passed (17.9 % of V1); change-detection precision checked: 1/23 on real pairs, root cause = in-content template widgets → P6 rules / P7 |
+| 2026-09-29 | **P6 filter + discovery**: rules as durable versioned data with hot reload, filtering at admission (P5 facts unchanged), rooted-site scope with external leaves, static 6 h/24 h revisits, operator-supplied search queries; V1 blacklist (98 entries, not 1,463) imported through a reviewed manifest | ADR-021; D6, D7 closed in P6; Gates A–F, H passed; Gate G (24 h M1) in progress; M1 continues as P7 history collection |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -459,6 +460,13 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   After the gate passes, M1 **keeps running** as the history-collection
   run that feeds P7 (see P7's data-sufficiency gate). P7 design work can
   proceed in parallel with that run.
+- **Status (2026-09-29):** implemented. Filter gate **passed** (128k
+  decisions/s); false-positive guard **passed** (after restoring ABP
+  document semantics); M1 closed loop **running** on the live seed set
+  since 2026-09-29 17:26 UTC (24 h window from 18:30 UTC) — see
+  `docs/phases/p06-filter-discovery/validation.md`. "Seeds + search" is
+  realised as admissions through the P3 API (there is no separate
+  CrawlTask type); the V1 blacklist had 98 entries, not 1,463.
 
 ### P7 — Crawl intelligence (XL) → Milestone M2
 
