@@ -1,0 +1,541 @@
+{
+  "by_source": {
+    "built_in": {
+      "ad": {
+        "blocked": 19,
+        "confusion": {
+          "ad": 19,
+          "unknown": 16
+        },
+        "meaningful": true,
+        "precision": 0.905,
+        "predicted": 21,
+        "recall": 0.543,
+        "support": 35
+      },
+      "content": {
+        "blocked": 10,
+        "confusion": {
+          "content": 10,
+          "unknown": 186
+        },
+        "meaningful": true,
+        "precision": 1.0,
+        "predicted": 10,
+        "recall": 0.051,
+        "support": 196
+      },
+      "media": {
+        "blocked": 0,
+        "confusion": {
+          "ad": 2,
+          "unknown": 28
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 30
+      },
+      "navigation": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 19
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 19
+      },
+      "player": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 24
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 24
+      },
+      "tracker": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 27
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 27
+      },
+      "unknown": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 15
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 15
+      }
+    },
+    "easylist": {
+      "ad": {
+        "blocked": 32,
+        "confusion": {
+          "ad": 32,
+          "unknown": 3
+        },
+        "meaningful": true,
+        "precision": 0.97,
+        "predicted": 33,
+        "recall": 0.914,
+        "support": 35
+      },
+      "content": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 196
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 196
+      },
+      "media": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 30
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 30
+      },
+      "navigation": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 19
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 19
+      },
+      "player": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 24
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 24
+      },
+      "tracker": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 27
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 27
+      },
+      "unknown": {
+        "blocked": 1,
+        "confusion": {
+          "ad": 1,
+          "unknown": 14
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 15
+      }
+    },
+    "easyprivacy": {
+      "ad": {
+        "blocked": 5,
+        "confusion": {
+          "tracker": 5,
+          "unknown": 30
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 35
+      },
+      "content": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 196
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 196
+      },
+      "media": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 30
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 30
+      },
+      "navigation": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 19
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 19
+      },
+      "player": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 24
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 24
+      },
+      "tracker": {
+        "blocked": 26,
+        "confusion": {
+          "tracker": 26,
+          "unknown": 1
+        },
+        "meaningful": true,
+        "precision": 0.839,
+        "predicted": 31,
+        "recall": 0.963,
+        "support": 27
+      },
+      "unknown": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 15
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 15
+      }
+    },
+    "v1_blacklist": {
+      "ad": {
+        "blocked": 19,
+        "confusion": {
+          "ad": 19,
+          "unknown": 16
+        },
+        "meaningful": true,
+        "precision": 1.0,
+        "predicted": 19,
+        "recall": 0.543,
+        "support": 35
+      },
+      "content": {
+        "blocked": 10,
+        "confusion": {
+          "content": 10,
+          "unknown": 186
+        },
+        "meaningful": true,
+        "precision": 1.0,
+        "predicted": 10,
+        "recall": 0.051,
+        "support": 196
+      },
+      "media": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 30
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 30
+      },
+      "navigation": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 19
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 19
+      },
+      "player": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 24
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 24
+      },
+      "tracker": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 27
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 27
+      },
+      "unknown": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 15
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 15
+      }
+    }
+  },
+  "corpus": {
+    "file": "tests/fixtures/filtering/labeled_corpus.json",
+    "items": 346,
+    "labels": {
+      "ad": 35,
+      "content": 196,
+      "media": 30,
+      "navigation": 19,
+      "player": 24,
+      "tracker": 27,
+      "unknown": 15
+    },
+    "synthetic": 160
+  },
+  "full": {
+    "explicit_policy_blocks": [
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "facebook.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/9b8dbd66f75f24e4",
+        "source": "built_in",
+        "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fserpinsight.com"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "twitter.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/a3e895002ffa1e09",
+        "source": "built_in",
+        "url": "https://twitter.com/share?url=http://www.tamilprint67.art/movies"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "t.me",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/3d07c3c7b3df867d",
+        "source": "built_in",
+        "url": "https://t.me/moviesdacloud"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "linkedin.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/5f0dd716417cb62c",
+        "source": "built_in",
+        "url": "https://www.linkedin.com/sharing/share-offsite/?url=x"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "wikipedia.org",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/884a0333a92f98ef",
+        "source": "built_in",
+        "url": "https://en.wikipedia.org/wiki/Leo_(2023_film)"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "imdb.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/34aec45a98ca318d",
+        "source": "built_in",
+        "url": "https://www.imdb.com/title/tt15654328/"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "youtube.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/edda7a48178d361d",
+        "source": "built_in",
+        "url": "https://www.youtube.com/watch?v=qQlr9-rF32A"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "reddit.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/2572de9a39fe30d8",
+        "source": "built_in",
+        "url": "https://www.reddit.com/r/movies/"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "instagram.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/4dc6d365982e59aa",
+        "source": "built_in",
+        "url": "https://www.instagram.com/p/abc/"
+      },
+      {
+        "context": "link",
+        "label": "content",
+        "pattern": "pinterest.com",
+        "reason": "out_of_scope",
+        "rule_id": "built_in/host/a1fa5b9ee77c2f17",
+        "source": "built_in",
+        "url": "https://www.pinterest.com/pin/create/button/?url=x"
+      }
+    ],
+    "guard_violations": [],
+    "items": 346,
+    "per_class": {
+      "ad": {
+        "blocked": 35,
+        "confusion": {
+          "ad": 31,
+          "tracker": 4
+        },
+        "meaningful": true,
+        "precision": 0.912,
+        "predicted": 34,
+        "recall": 0.886,
+        "support": 35
+      },
+      "content": {
+        "blocked": 10,
+        "confusion": {
+          "content": 10,
+          "unknown": 186
+        },
+        "meaningful": true,
+        "precision": 1.0,
+        "predicted": 10,
+        "recall": 0.051,
+        "support": 196
+      },
+      "media": {
+        "blocked": 0,
+        "confusion": {
+          "ad": 2,
+          "unknown": 28
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 30
+      },
+      "navigation": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 19
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 19
+      },
+      "player": {
+        "blocked": 0,
+        "confusion": {
+          "unknown": 24
+        },
+        "meaningful": true,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 24
+      },
+      "tracker": {
+        "blocked": 26,
+        "confusion": {
+          "tracker": 26,
+          "unknown": 1
+        },
+        "meaningful": true,
+        "precision": 0.867,
+        "predicted": 30,
+        "recall": 0.963,
+        "support": 27
+      },
+      "unknown": {
+        "blocked": 1,
+        "confusion": {
+          "ad": 1,
+          "unknown": 14
+        },
+        "meaningful": false,
+        "precision": null,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 15
+      }
+    },
+    "rules": 106098,
+    "ruleset": "rs-e3da53bfe0a8940f7f93168e9855fda9"
+  },
+  "guard_passed": true,
+  "operator_rules": null,
+  "sources": {
+    "built_in": 48,
+    "easylist": {
+      "rules": 49850,
+      "unsupported": 27784,
+      "version": "202609291623"
+    },
+    "easyprivacy": {
+      "rules": 56140,
+      "unsupported": 80,
+      "version": "202609291635"
+    },
+    "v1_blacklist": 98
+  }
+}

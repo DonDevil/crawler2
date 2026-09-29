@@ -1,0 +1,61 @@
+{
+  "cold_first_pass_per_s": 71629,
+  "decisions": {
+    "ad:block": 307,
+    "content:block": 765,
+    "tracker:block": 694,
+    "unknown:allow": 58320
+  },
+  "gate": ">= 100000 decisions/s in-process (warm, no decision cache)",
+  "gate_metric": "warm_decisions_per_s",
+  "latency_us": {
+    "max": 162.9,
+    "p50": 7.13,
+    "p99": 31.27
+  },
+  "load": {
+    "compile_s": 3.91,
+    "parse_lists_s": 2.98,
+    "rss_after_compile_mb": 298.1,
+    "rss_before_mb": 35.9
+  },
+  "machine": "x86_64",
+  "passed": true,
+  "psl": "1.0.2.20260925",
+  "python": "3.12.3",
+  "rss_peak_mb": 364.0,
+  "ruleset": {
+    "compiled_rules": 106098,
+    "id": "rs-e3da53bfe0a8940f7f93168e9855fda9",
+    "kinds": {
+      "host": 93651,
+      "host_label": 9,
+      "url_pattern": 12438
+    },
+    "sources": {
+      "built_in": 48,
+      "easylist": {
+        "rules": 49850,
+        "unsupported": 27784,
+        "version": "202609291623"
+      },
+      "easyprivacy": {
+        "rules": 56140,
+        "unsupported": 80,
+        "version": "202609291635"
+      },
+      "v1_blacklist": 98
+    },
+    "untokenized_patterns": 2
+  },
+  "warm_decisions_counted": 1321892,
+  "warm_decisions_per_s": 127985,
+  "warm_url_to_decision_per_s": 81659,
+  "workload": {
+    "distinct_urls": 9585,
+    "inputs": 60086,
+    "link": 50680,
+    "pages": 639,
+    "request": 9406
+  }
+}
