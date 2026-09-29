@@ -168,3 +168,21 @@ def test_index_tokens_are_bounded() -> None:
 def test_unusable_patterns_are_refused(pattern: str) -> None:
     with pytest.raises(PatternError):
         compile_pattern(pattern)
+
+
+def test_untyped_url_patterns_never_block_page_links() -> None:
+    """ABP semantics: no type option means every type except documents and popups."""
+    rules, _ = parse_list("/ad/*\n||ads.test^\n/banner/*$document\n", RuleSource.EASYLIST)
+    engine = FilterEngine.compile(rules, Policy())
+    page = link_input("https://content.test/ad/leo-2023/")
+    script = request_input("https://content.test/ad/x.js", "script", "https://content.test/")
+    host = link_input("https://ads.test/landing")
+    explicit = link_input("https://content.test/banner/x")
+    assert page is not None
+    assert script is not None
+    assert host is not None
+    assert explicit is not None
+    assert engine.decide(page).action is Action.ALLOW
+    assert engine.decide(script).action is Action.BLOCK
+    assert engine.decide(host).action is Action.BLOCK  # hostname filters still block documents
+    assert engine.decide(explicit).action is Action.BLOCK

@@ -21,7 +21,7 @@ from crawler2.filtering.model import (
 )
 from crawler2.filtering.patterns import PatternError, compile_pattern, host_only
 
-IMPORTER_VERSION: Final = "p6-abp/v1"
+IMPORTER_VERSION: Final = "p6-abp/v2"
 DEFAULT_CONFIDENCE: Final = 0.95
 DEFAULT_CLASS: Final = {
     RuleSource.EASYLIST: Classification.AD,
@@ -59,6 +59,8 @@ _PARTY_OPTIONS: Final = {
     "first-party": Party.FIRST,
     "1p": Party.FIRST,
 }
+NON_DOCUMENT_DEFAULT: Final = frozenset({"document", "popup"})
+"""Types a URL-pattern filter without type options does not apply to."""
 _HEADER_RE: Final = re.compile(r"^!\s*([A-Za-z][A-Za-z \-]*?)\s*:\s*(.+?)\s*$")
 _HEADER_KEYS: Final = {
     "title",
@@ -221,6 +223,11 @@ def _parse_line(
             category = "match_all" if "every URL" in str(exc) else "invalid_pattern"
             raise _UnsupportedError(category) from exc
         kind, pattern = RuleKind.URL_PATTERN, body.lower()
+        if not types:
+            # ABP: a filter without type options never applies to top-level documents
+            # (or popups); uBO strict-blocks documents only for hostname filters. A
+            # generic URL pattern therefore never blocks a page link (Gate E finding).
+            excluded |= NON_DOCUMENT_DEFAULT
     return Rule(
         source=source,
         kind=kind,
