@@ -17,6 +17,7 @@ from antipiracy_contracts.models.web import UrlRef
 from antipiracy_contracts.ownership import Component
 
 from crawler2.core.configuration import EventSettings, Settings
+from crawler2.extraction.archival import ArchivalProfile
 from crawler2.extraction.cli import ExtractionLoop
 from crawler2.extraction.service import PageIntelligenceService
 from crawler2.storage.events.consumer import IdempotentConsumer, RedisStreamReader
@@ -54,6 +55,7 @@ def _service(storage: ScyllaStorage, objects: S3ObjectStore) -> PageIntelligence
         urls=storage.urls,
         pages=storage.page_intel,
         instance=INSTANCE,
+        profile=ArchivalProfile(sample_rate=0.0),  # deterministic: no random retention
     )
 
 
@@ -74,7 +76,7 @@ def _stream(
     """Events of one page only: the relay also publishes other tests' outbox rows."""
     entries: Any = client.xrange(stream_name(settings, event_type, 1))
     events = [decode_event(fields[b"envelope"]) for _, fields in entries]
-    return [e for e in events if e.payload.page.url_id == page.url_id]
+    return [e for e in events if getattr(e.payload, "page", None) == page]
 
 
 def _drain(loop: ExtractionLoop) -> int:
