@@ -2,9 +2,10 @@
 
 Samples every M1 process (RSS, open file descriptors, threads, CPU time,
 and for the browser pool its whole Chromium process tree), restarts from
-the supervisor log, Redis memory/clients, the frontier (P3 stats and, every
-hour, ``audit()``), every M1 stream's length and per-group pending/lag,
-Prometheus counters of the relay and the admission service, and every ten
+the supervisor log, Redis memory/clients, the frontier's P3 stats (``audit()`` is
+offline-only in P3, so it is never run against the live frontier), every M1
+stream's length and per-group pending/lag, Prometheus counters of the relay
+and the admission service, and every ten
 minutes the on-disk size of the Scylla keyspace and the MinIO bucket.
 
 Writes ``var/p6-m1/samples.jsonl`` (git-ignored). Environment as run.sh.
@@ -111,7 +112,7 @@ def main() -> None:
     redis = connect_redis(settings.redis)
     frontier = RedisFrontier(redis, settings.frontier, namespace=settings.redis.namespace)
     prefix = settings.events.stream_prefix
-    last_disk = last_audit = 0.0
+    last_disk = 0.0
     while True:
         started = time.monotonic()
         sample: dict[str, Any] = {"at": datetime.now(UTC).isoformat()}
@@ -142,9 +143,6 @@ def main() -> None:
             "saturated_domains": stats.saturated_domains,
             "counters": stats.counters,
         }
-        if time.monotonic() - last_audit > 3600:
-            sample["frontier"]["audit_problems"] = len(frontier.audit())
-            last_audit = time.monotonic()
         streams = {}
         for key in sorted(redis.scan_iter(match=f"{prefix}*")):
             groups = {

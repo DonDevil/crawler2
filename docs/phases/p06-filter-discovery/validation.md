@@ -71,11 +71,12 @@ processes = relay, extract, admit, http pool (concurrency 8), browser pool
 | 17:26:15 | M1 start (all processes) |
 | 17:59:58 | http pool reconfigured 16 → 8 (disk budget: ~110 GB/day of snapshots at 16) |
 | 18:06:45 | search added (query file supplied) |
-| 18:28 | relay reconfigured `events.stream_maxlen` 100,000 → 10,000 (Redis memory, X-8) |
+| 18:25:12 | relay reconfigured `events.stream_maxlen` 100,000 → 10,000 (Redis memory, X-8) |
+| 18:25–18:27 | the **monitor** crash-looped: it ran P3 `audit()` (documented offline-only) against the live frontier, which races with claims (`KeyError`); live audit removed, monitor restarted 18:27:32. Crawl processes unaffected; 2-minute sampling gap |
 | 18:30 | **Gate G window starts** (final configuration) |
 
 At 18:22 (0.93 h): 21,650 claims, 20,184 completed, 1,391 retries, 67
-exhausted, 0 dead letters, frontier `audit()` 0 problems; 20,340
+exhausted, 0 dead letters, frontier `audit()` 0 problems (the one hourly audit that ran before the monitor fix); 20,340
 `page.observed`, 15,110 `urls.discovered`, 15,235 `page.changed`, 252
 `media.discovered`; extraction lag ≤ 613, admission lag ≤ 5; 0 process
 crashes. Filter decisions on links: 207,965 allow, 5,942 + 995 out-of-scope
