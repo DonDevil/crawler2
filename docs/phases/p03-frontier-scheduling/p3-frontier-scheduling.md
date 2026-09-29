@@ -1,9 +1,11 @@
 # P3 — Frontier & scheduling
 
 Status: **implemented and validated** — all exit-gate items met; see
-§25 for the one environment caveat on absolute throughput.
+§25 for the one environment caveat on absolute throughput. **Corrected
+after P4** with a global per-domain in-flight limit (§26, ADR-019).
 Audit: [audit.md](audit.md). Decisions: [ADR-015](../../adr/ADR-015-frontier-execution-model.md),
-[ADR-016](../../adr/ADR-016-frontier-task-lifecycle.md).
+[ADR-016](../../adr/ADR-016-frontier-task-lifecycle.md),
+[ADR-019](../../adr/ADR-019-frontier-domain-inflight-limit.md) (P4 correction).
 
 ## 1. Goal
 
@@ -105,6 +107,9 @@ default).
 | `gateq` | HASH | domain_id → queue that closed the gate | gated domains |
 | `yield` | ZSET | `queue\|domain_id` → end of that queue's turn-yield | domains whose gate just reopened |
 | `interval` | HASH | domain_id → minimum interval override (s) | operator/P7 overrides |
+| `inflight` | HASH | domain_id → leased tasks of that domain, all queues (ADR-019, §26) | domains with work in flight |
+| `full` | SET | domains at their in-flight limit (in no ready index) | saturated domains |
+| `ilimit` | HASH | domain_id → in-flight limit override | operator/P7 overrides |
 | `scheduled` | ZSET | url_id → due time | scheduled tasks |
 | `leases` | ZSET | url_id → lease expiry | leased tasks |
 | `dead` | ZSET | url_id → time of death | `dead_ttl_s`, `dead_max` |
@@ -165,6 +170,14 @@ With it, queues alternate on a contended domain; a queue with no running
 workers delays the others by at most one interval and never blocks them
 (the hold expires into a normal claimable state). Politeness is
 unaffected: every path into a ready index still checks the gate.
+
+**Concurrency bound (added after P4, §26).** The gate bounds the *start
+rate* only. A second invariant bounds concurrency: for every domain, the
+number of leased tasks — from any queue, worker or host — never exceeds
+its in-flight limit (`ilimit[domain]` if set, else
+`max_inflight_per_domain`, default 2; 0 = unlimited). A domain at its
+limit is in no ready index, like a gated one; a domain is claimable only
+when it is neither gated, yielding nor saturated.
 
 ## 9. Temporary deduplication
 
@@ -368,6 +381,7 @@ nothing. Commands: [development.md](../../development.md#test-tiers).
 | 16 | Redis down: claim/admit/heartbeat/complete/fail/defer/recover/stats, recovery after return, lease lapse during outage | `test_redis_failure.py` (TCP proxy that is cut and restored) |
 | 17 | starvation | `test_eligible_domain_is_found_behind_many_gated_domains`; benchmark `starvation.py` (§21) |
 | 18 | priority × rate limit | `test_gated_domain_does_not_block_lower_priority_domain`; benchmark `priority_ratelimit.py` |
+| 19 | per-domain in-flight limit (§26): cap, shared across all queues, other domains unaffected, every report releases exactly one slot, stale/zombie reports release none, lease expiry and dead letters release, gate × limit, override, 0 = unlimited, 8 concurrent claimers on one domain | `test_inflight.py` (13 tests); state machine with limit 2 over two queues |
 | — | contract mapping, settings, admission validation | `tests/unit/frontier/test_frontier_unit.py` |
 
 **Property-based state machine** (`test_state_machine.py`, Hypothesis,
@@ -566,3 +580,107 @@ order as V1's K = 1000 worst case, paid only on bursts.
 **P3 is complete.** The one qualification: the absolute ≥13k figure is
 met on a Redis configured like V1's measurement setup, not on the
 compose Redis (AOF on, 1-CPU cap), where V1 is slower as well.
+
+## 26. Correction after P4: per-domain in-flight limit (ADR-019)
+
+### How it was found
+
+P4's exit-gate run (P4 phase document §30) measured V2 at 89.9 % success
+against V1's 97.3 %. 36 of the pages only V1 fetched were fetched in
+~3 s by V2's plain HTTP fetcher when retried alone; in the gate run they
+had timed out on all three attempts. They sit on one slow host
+(`isaimini.com.in`, 3–15 s per response). The §8 gate allowed one claim of
+that domain every 0.3 s but said nothing about how many of its requests
+were open at once, so V2's fast pipeline kept dozens in flight and the
+host stopped answering within the read timeout. P3 bounded the **start
+rate** of a domain, never its **concurrency**. That is a politeness
+defect of the frontier, not a fetch or intelligence question: only the
+frontier sees every queue, worker and host at once.
+
+### Semantics (exact)
+
+| Key | Content |
+|---|---|
+| `inflight` HASH | domain_id → number of that domain's tasks in state `leased`, over **all** queues (no per-capability counters) |
+| `full` SET | domains whose count has reached their limit |
+| `ilimit` HASH | optional per-domain limit (operator/P7); else `max_inflight_per_domain` |
+
+- `claim` (one script): after popping the domain's head and handling the
+  gate, `HINCRBY inflight dom 1`; if the limit is > 0 and the count
+  reaches it, `SADD full dom` and `ZREM` the domain from **every**
+  `ready:{queue}`. The count moves with the lease, atomically.
+- `complete`, `fail` (retry, queue move or exhausted), `defer`, and
+  `recover` for each expired lease (retry **or** dead letter) call
+  `release(dom)` once, after the same token/state check that makes a
+  stale report a no-op: `HINCRBY inflight dom -1` (the field is deleted at
+  0); if the domain is in `full` and now below its limit, `SREM full dom`
+  and re-sync its head into every queue where it is not gated or
+  yielding. A stale or zombie report returns `stale` before reaching
+  `release`, so a slot is never released twice.
+- A domain is claimable only if it is not gated, not yielding for that
+  queue, and not saturated. Gate promotion leaves a saturated domain out
+  of every index (the release re-indexes it); yield promotion likewise.
+- Limit `0` = unlimited (P3's original behaviour). A limit changed at run
+  time applies at the domain's next claim or release.
+- `audit()`: `inflight` equals the leased tasks per domain; no domain at
+  or over its limit is claimable; no saturated domain is idle or in a
+  ready index; the "stranded" check treats saturated like gated.
+
+### Crash and recovery
+
+A worker that dies holds its slot only until its lease expires and a
+`recover()` sweep runs — the same `lease_ttl + sweep` bound that returns
+the task itself; the task's retry or dead letter and the slot's release
+happen in one script. A sweep run by several processes at once releases
+each slot once (the lease is removed from `leases` in the same script).
+The counter is derivable from the task hashes, so `audit()` detects any
+drift; none was observed in the tests, the state machine or the 1M run.
+
+### Choosing the limit (bounded experiment)
+
+V2 side of the unchanged P4 W691 workload (691 live URLs, 0.3 s gate, 50
+http slots + 2 browser pages), run back to back on 2026-09-29
+(`benchmarks/p4-fetch/results/limit-experiment/`):
+
+| Limit | Success | Timeout attempts | Retries | Exhausted | Wall |
+|---|---:|---:|---:|---:|---:|
+| unlimited | 95.2 % | 71 (42 on `isaimini.com.in`) | 95 | 22 | 67 s |
+| 1 | 96.2 % | 8 | 38 | 15 | 111 s |
+| **2** | 95.9 % | 8 (0 on `isaimini.com.in`) | 46 | 17 | 80 s |
+| 4 | 95.8 % | 21 | 50 | 19 | 64 s |
+
+(The unlimited run reached 95.2 % this time against 89.9 % in the gate
+run two hours earlier: the slow host's load varies. The comparison is
+within this batch.) Limits 1 and 2 remove the same overload (timeouts
+÷ 9); 1 costs 39 % more wall time than 2; 4 lets timeouts return.
+**Default: 2** — the smallest value with the full effect that does not
+serialise a domain.
+
+### Effect on P3 benchmarks (limit 2 as default, `results/20260929-inflight/`)
+
+| Benchmark | Result |
+|---|---|
+| 1M-claim distributed run (limit 2; 69 worker SIGKILLs, 14 SIGSTOP pauses, 12 sweeper kills) | **0 lost, 0 duplicate completions, 0 simultaneous ownership**, audit clean; 79 lease recoveries, 7 stale reports rejected ✅ |
+| starvation (7 V1 scenarios + cross-queue) | all pass ✅ |
+| crash recovery / heartbeat endurance / priority × rate limit | pass (reclaim 2.5 s; 0/200 heartbeated claims lost; same-domain gap ≥ 2.01 s) ✅ |
+| eligible-domain index | limit 0: victim found 500/500 behind 50–20 000 gated domains at 35–42 µs/claim ✅. With limit 2 the benchmark (which never completes its claims) finds the victim 2/500 — the limit working as designed |
+| throughput, 8 workers, no rate limit, 40 domains | V2 11.9k / 12.4k / 12.2k claims/s vs **V1 11.2k** on the same Redis in the same session (+6–10 %) ✅ relative; compose Redis V2 8.2k vs V1 8.2k |
+| interleaved A/B, 8 workers, 3 reps each | limit 0: 11.8k / 11.7k / 12.2k; limit 2: 11.4k / 12.1k / 11.4k → **−2.4 % mean**, server time 32.2 → 32.9 µs per script; within the run-to-run spread |
+
+**Throughput caveat, stated plainly:** the §22 absolute figure (13.2–13.7k
+at 8 workers) was **not re-attained in this session even with the limit
+disabled** (limit 0: 11.7–12.2k); V1 also measured lower (11.2k vs
+11.3–11.5k). The host (desktop session, compose Scylla/Redis running) was
+slower than in the P3 session; the limit's own cost is ~2 % of script
+time. The relative gate (V2 ≥ V1 on identical infrastructure) holds.
+
+### Tests
+
+`tests/integration/frontier/test_inflight.py` (13) plus the state machine
+now running with limit 2 over two queues (claim, complete, fail with and
+without queue move, defer, lease expiry, recovery, dead letters, stale
+reports of superseded tokens, politeness, liveness). A mutation check
+(no release in lease recovery) is caught by the state machine
+(`inflight` ≠ leased). The P3 behaviour tests keep testing one mechanism
+each and pin the limit to 0 in their factory. Totals: 53 frontier
+integration + 15 unit tests pass.
