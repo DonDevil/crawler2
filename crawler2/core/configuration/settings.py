@@ -34,6 +34,7 @@ class WorkerRole(StrEnum):
     BROWSER = "browser"
     TOR = "tor"
     EXTRACTION = "extraction"
+    DISCOVERY = "discovery"
     INTELLIGENCE = "intelligence"
     MEDIA_PROBE = "media_probe"
     FINALIZER = "finalizer"
@@ -312,6 +313,53 @@ class ExtractionSettings(BaseModel):
     """Default ``ArchivalProfile.sample_rate`` until P7/P12 supply profiles."""
 
 
+class FilterSettings(BaseModel):
+    """P6 filter runtime (docs/phases/p06-filter-discovery/design.md §14, §17).
+
+    The decision policy (block threshold, blockable classes) is part of each
+    published ruleset, not of process configuration, so decisions are
+    reproducible from the ruleset id.
+    """
+
+    ruleset_name: str = Field(default="default", pattern=r"^[a-z0-9._-]{1,64}$")
+    reload_interval_s: float = Field(default=15.0, gt=0)
+    browser_interception: bool = True
+    """Browser pools consult the active ruleset (an empty/absent ruleset allows everything)."""
+    decision_ttl_s: PositiveInt = 90 * 24 * 3600
+    """F6 decision-history rows expire after this."""
+
+
+class DiscoverySettings(BaseModel):
+    """P6 discovery admission, seeds and the static M1 policy (design §10, §16, §22)."""
+
+    consumer_group: str = Field(default="discovery-admission", pattern=r"^[a-z0-9._-]{1,64}$")
+    batch_size: PositiveInt = 50
+    block_ms: PositiveInt = 2000
+    claim_idle_ms: PositiveInt = 60_000
+    revisit_after_s: float = Field(default=24 * 3600.0, ge=0)
+    """A rediscovered URL is admitted again once its last admission is this old (Q3)."""
+    seed_revisit_s: float = Field(default=6 * 3600.0, gt=0)
+    """``crawler2-discover seeds --every`` default (Q3)."""
+    scope_refresh_s: float = Field(default=60.0, gt=0)
+    """How often an admission process re-reads the rooted-site list (F11)."""
+    priority_seed: int = Field(default=70, ge=0, le=100)
+    priority_search: int = Field(default=60, ge=0, le=100)
+    priority_link: int = Field(default=50, ge=0, le=100)
+    priority_leaf: int = Field(default=40, ge=0, le=100)
+
+
+class SearchSettings(BaseModel):
+    """P6 search discovery adapters (design §15)."""
+
+    engines: CsvList = Field(default_factory=lambda: ["duckduckgo", "bing", "brave", "ahmia"])
+    max_results: PositiveInt = 20
+    timeout_s: float = Field(default=15.0, gt=0)
+    blocked_cooldown_queries: PositiveInt = 999
+    """V1 default: after a captcha/verification page the engine sits out this many queries."""
+    pause_s: float = Field(default=2.0, ge=0)
+    """Pause between two requests to the same engine."""
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="CRAWLER2_",
@@ -337,6 +385,9 @@ class Settings(BaseSettings):
     limits: ResourceLimits = Field(default_factory=ResourceLimits)
     workers: WorkersSettings = Field(default_factory=WorkersSettings)
     extraction: ExtractionSettings = Field(default_factory=ExtractionSettings)
+    filter: FilterSettings = Field(default_factory=FilterSettings)
+    discovery: DiscoverySettings = Field(default_factory=DiscoverySettings)
+    search: SearchSettings = Field(default_factory=SearchSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

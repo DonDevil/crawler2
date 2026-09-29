@@ -1,0 +1,114 @@
+# Operator review of V1 datasets/domain_blacklist.txt (P6 audit §2).
+#
+# This file is data with provenance, not code: the V1 importer applies each
+# category's verdict to the hosts listed under it. A host that appears in the
+# V1 file but not here is quarantined as "unreviewed". Quarantined rules are
+# stored with enabled = false and are never compiled into a ruleset.
+
+[review]
+reviewed_at = "2026-09-29"
+reviewer = "operator, P6 audit (docs/phases/p06-filter-discovery/audit.md §2)"
+input = "V1 datasets/domain_blacklist.txt, 98 entries, mtime 2026-09-06 06:28 +0530"
+
+[categories.ad_network]
+verdict = "migrate"
+classification = "ad"
+confidence = 0.9
+reason = "ad_network"
+hosts = [
+    "adnxs.com", "doubleclick.net", "exoclick.com", "googleadservices.com",
+    "googlesyndication.com", "mgid.com", "outbrain.com", "popads.net",
+    "propellerads.com", "taboola.com",
+]
+
+[categories.out_of_scope]
+# Reference, news and social sites: real content, but not crawl targets.
+verdict = "migrate"
+classification = "content"
+action = "block"
+contexts = ["link"]
+confidence = 0.9
+reason = "out_of_scope"
+hosts = [
+    # V1 AUTO_BLACKLIST_DEFAULTS
+    "bookmyshow.com", "facebook.com", "hindustantimes.com", "imdb.com",
+    "indianexpress.com", "indiatoday.in", "instagram.com", "justwatch.com",
+    "letterboxd.com", "linkedin.com", "metacritic.com", "msn.com", "ndtv.com",
+    "news18.com", "pinterest.com", "quora.com", "reddit.com",
+    "rottentomatoes.com", "t.me", "telegram.org", "thehindu.com", "tiktok.com",
+    "twitter.com", "wikidata.org", "wikimedia.org", "wikipedia.org", "x.com",
+    "youtu.be", "youtube.com",
+    # added at runtime by V1, same family
+    "cdninstagram.com", "facebook.net", "indiatimes.com", "ndtvimg.com",
+    "netflix.com", "primevideo.com", "redditstatic.com", "telegram-ios.com",
+    "telegram.me", "tumblr.com", "windomnews.com", "youtube-nocookie.com",
+    "youtubekids.com",
+]
+
+[categories.unrelated_site]
+# Unrelated education/health sites; no evidence they harm a crawl, so they
+# are labelled but not blocked (confidence below the block threshold and
+# content is not a blockable class).
+verdict = "migrate"
+classification = "content"
+contexts = ["link"]
+confidence = 0.6
+reason = "out_of_scope_unverified"
+hosts = [
+    "agriindiatoday.in", "biologynotesonline.com", "celiac.com", "cncb.ac.cn",
+    "cornell.edu", "coursehero.com", "microbenotes.com", "nih.gov",
+]
+
+[categories.content_source]
+# Piracy/download sites condemned by V1 heuristics (audit F-3, F-4): crawl targets.
+verdict = "quarantine"
+reason = "content_source"
+hosts = [
+    "dl1.hotshare.click", "dl10.hotshare.click", "dl2.hotshare.click",
+    "dl5.hotshare.click", "dl6.hotshare.click", "dl7.hotshare.click",
+    "hdhub4u.af", "isaidub.love", "isaimini.com.in", "isaiminimo.com",
+    "kuttymovies1.fit", "moviedrivebd.com", "moviesda32.com", "moviesdadi.com",
+    "mp4moviez.diet", "naijaprey.tv", "new1.movcloud.click",
+    "new2.movcloud.click", "new3.movcloud.click", "stripemovies.com",
+    "tamilprint66.art",
+]
+
+[categories.possible_media_source]
+verdict = "quarantine"
+reason = "possible_media_source"
+hosts = [
+    "googleusercontent.com", "sstiktiktok.com", "sstiktok.co", "tiktokstorm.com",
+    "youtubestorm.com",
+]
+
+[categories.heuristic_artefact]
+verdict = "quarantine"
+reason = "heuristic_artefact"
+hosts = [
+    "data527.click", "keonhacai.adult", "linkurl.click", "nowgoal.click",
+    "sunwin.adult",
+]
+
+[categories.infra_ambiguous]
+verdict = "quarantine"
+reason = "infra_ambiguous"
+hosts = [
+    "mt-file-tracking-temp.s3.eu-west-1.amazonaws.com",
+    "redirect.prod.experiment.routing.cloudfront.aws.a2z.com",
+    "uberproxy-pen-redirect.corp.google.com",
+]
+
+[categories.ip_address]
+verdict = "quarantine"
+reason = "ip_address"
+hosts = ["128.199.175.251", "174.138.23.31"]
+
+[categories.search_origin]
+verdict = "quarantine"
+reason = "search_origin"
+hosts = ["google.com"]
+
+[categories.reserved_name]
+verdict = "quarantine"
+reason = "reserved_name"
+hosts = ["example.com"]

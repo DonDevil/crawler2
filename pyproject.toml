@@ -16,6 +16,7 @@ dependencies = [
     "playwright==1.62.0",
     "psutil>=7.1,<8",
     "selectolax>=0.3.34,<1",
+    "publicsuffixlist>=1.0,<2",
 ]
 
 [project.scripts]
@@ -23,6 +24,7 @@ crawler2-check = "crawler2.diagnostics.connectivity:main"
 crawler2-storage = "crawler2.storage.cli:main"
 crawler2-worker = "crawler2.crawlers.cli:main"
 crawler2-extract = "crawler2.extraction.cli:main"
+crawler2-filter = "crawler2.filtering.cli:main"
 
 [dependency-groups]
 dev = [
@@ -75,7 +77,7 @@ init_forbid_extra = true
 init_typed = true
 
 [[tool.mypy.overrides]]
-module = ["cassandra.*", "brotli"]
+module = ["cassandra.*", "brotli", "publicsuffixlist"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

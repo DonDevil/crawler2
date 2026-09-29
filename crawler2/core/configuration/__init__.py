@@ -1,7 +1,9 @@
 from crawler2.core.configuration.settings import (
+    DiscoverySettings,
     Environment,
     EventSettings,
     ExecutionQueue,
+    FilterSettings,
     FrontierSettings,
     LogFormat,
     LoggingSettings,
@@ -11,14 +13,17 @@ from crawler2.core.configuration.settings import (
     ReplicationStrategy,
     ResourceLimits,
     ScyllaSettings,
+    SearchSettings,
     Settings,
     WorkerRole,
 )
 
 __all__ = [
+    "DiscoverySettings",
     "Environment",
     "EventSettings",
     "ExecutionQueue",
+    "FilterSettings",
     "FrontierSettings",
     "LogFormat",
     "LoggingSettings",
@@ -28,6 +33,7 @@ __all__ = [
     "ReplicationStrategy",
     "ResourceLimits",
     "ScyllaSettings",
+    "SearchSettings",
     "Settings",
     "WorkerRole",
 ]
