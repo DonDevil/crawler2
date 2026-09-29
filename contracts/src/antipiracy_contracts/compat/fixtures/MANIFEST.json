@@ -11,6 +11,7 @@
   "events/media.discovered.v1.forward.json": "2281b1e1caa435d7103ce0783b156c8f5bd52b9b7747586311258aff626bf22f",
   "events/media.discovered.v1.json": "35ac2cc2a6178c8bf172695455a4ccc4c96e5f7825de62432e839d711e7521a7",
   "events/media.observed.v1.json": "70a5d2d08893f5cf683b1daf115e19c2da61e56cc94940394299f96c3606006b",
+  "events/page.changed.v1.json": "08ebb4a9ed596c6bf1024e5d4d3fcfc7b1ce6027682cf18513734197234721bf",
   "events/page.observed.v1.json": "7e93733a16e9b9d415663bee668593b20a3087f7d1a7478b53b22e1462576ce3",
   "events/representation.ready.v1.forward.json": "942aefb72989b864a33fcf859fdd0410bd6580a6debefc272bf67e5683201552",
   "events/representation.ready.v1.json": "78838850b835065f97085359de71d44076856a101e3f31cf0de72484bae5fad5",

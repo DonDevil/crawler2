@@ -21,6 +21,7 @@
 | [017](ADR-017-fetch-runtime-boundary.md) | Fetch runtime boundary: one attempt per fetcher, outcomes as facts, frontier as the only retry | Accepted |
 | [018](ADR-018-fetch-engine-retention.md) | Fetch engines retained: httpx + Playwright; Scrapling and Selenium dropped (D14) | Accepted |
 | [019](ADR-019-frontier-domain-inflight-limit.md) | Frontier per-domain in-flight limit, global across queues and hosts | Accepted |
+| [020](ADR-020-page-revisions.md) | Page revisions: meaningful change as an additive identity beside page versions (contract 1.1, `page.changed`) | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

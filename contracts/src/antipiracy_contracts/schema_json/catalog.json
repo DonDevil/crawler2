@@ -71,6 +71,22 @@
     },
     {
       "consumers": [
+        "crawl_intelligence"
+      ],
+      "delivery": "at-least-once; duplicates allowed",
+      "event_type": "page.changed",
+      "idempotency_key": [
+        "revision_id"
+      ],
+      "meaning": "First sighting of a normalized content state (page revision) at a URL (P5 meaningful change; added in contract 1.1).",
+      "ordering": "none: compare observed_at; a revert to a known revision emits nothing",
+      "producer": "extraction",
+      "producer_service": "crawler2",
+      "schema": "events/page.changed.v1.json",
+      "schema_version": "1.0"
+    },
+    {
+      "consumers": [
         "media_registry"
       ],
       "delivery": "at-least-once; duplicates allowed",

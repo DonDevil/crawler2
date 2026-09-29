@@ -10,7 +10,7 @@ exactly one producing component (enforced by `new_event`/`decode_event`);
 **at-least-once delivery, duplicates allowed**, no ordering across events;
 consumers deduplicate on the idempotency key and ignore unknown fields.
 Evolution: additive minors, new major for breaking changes.
-All current schemas are `1.0`.
+All current schemas are `1.0`. Contract package 1.1 added `page.changed` (P5).
 
 "Required" lists the payload fields without defaults; everything else is
 optional.
@@ -60,6 +60,20 @@ optional.
   (`DiscoveredLink`: target `UrlRef`, `relation`, optional `anchor_text`,
   `nofollow`).
 - **Idempotency:** `page_observation_id`. **Ordering:** none.
+
+### `page.changed` — extraction → crawl_intelligence *(contract 1.1, ADR-020)*
+
+- **Meaning:** an observation showed a normalized content state (page
+  revision) never seen before at its final URL: the P5 definition of a
+  meaningful change.
+- **Required:** `page_observation_id`, `page` (final `UrlRef`),
+  `page_version_id` (raw), `revision_id` (`PageRevisionId`), `normalization`
+  (scheme, e.g. `html-normalized/v1`), `hashes` (`PageHashes`: raw, normalized,
+  visible_text, link_set, media_set, structural), `observed_at`.
+- **Invariants:** `page_version_id` = f(page, hashes.raw); `revision_id` =
+  f(page, normalization, hashes.normalized).
+- **Idempotency:** `revision_id`. **Ordering:** none; re-sightings, reverts
+  to a known revision, raw-only changes and non-HTML bodies emit nothing.
 
 ### `media.discovered` — extraction → media_registry
 
@@ -161,10 +175,10 @@ optional.
 
 | Component | Service | Produces | Consumes |
 |---|---|---|---|
-| crawl_intelligence | crawler2 | crawl.requested | fetch.completed, page.observed, urls.discovered, media.observed, target.registered, target.retired |
+| crawl_intelligence | crawler2 | crawl.requested | fetch.completed, page.observed, page.changed, urls.discovered, media.observed, target.registered, target.retired |
 | frontier | crawler2 | — | crawl.requested, urls.discovered |
 | crawler_worker | crawler2 | fetch.completed, page.observed | — (claims work from the frontier, P3) |
-| extraction | crawler2 | urls.discovered, media.discovered | page.observed |
+| extraction | crawler2 | urls.discovered, media.discovered, page.changed | page.observed |
 | media_registry | crawler2 | media.observed, encode.requested | media.discovered, representation.ready, encode.failed |
 | feedback | crawler2 | — (P11 writes intelligence state) | match.found |
 | evidence_collector | crawler2 | evidence.candidate_created | media.observed, match.found |

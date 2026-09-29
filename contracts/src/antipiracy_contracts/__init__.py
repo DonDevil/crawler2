@@ -4,4 +4,4 @@ Runtime dependency: pydantic only. Nothing here may import crawler2,
 fingerprinter code or infrastructure clients.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"

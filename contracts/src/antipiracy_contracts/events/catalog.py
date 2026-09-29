@@ -32,6 +32,7 @@ from antipiracy_contracts.events.targets import TargetRegistered, TargetRetired
 from antipiracy_contracts.events.web import (
     CrawlRequested,
     FetchCompleted,
+    PageChanged,
     PageObserved,
     UrlsDiscovered,
 )
@@ -183,6 +184,16 @@ CATALOG = EventCatalog(
             "admission so crawling works with intelligence stopped, plan B.5 #1).",
             idempotency_key=("page_observation_id",),
             ordering=_ANY_ORDER,
+        ),
+        EventSpec(
+            payload=PageChanged,
+            minor=0,
+            producer=Component.EXTRACTION,
+            consumers=(Component.CRAWL_INTELLIGENCE,),
+            meaning="First sighting of a normalized content state (page revision) at a URL "
+            "(P5 meaningful change; added in contract 1.1).",
+            idempotency_key=("revision_id",),
+            ordering="none: compare observed_at; a revert to a known revision emits nothing",
         ),
         EventSpec(
             payload=MediaDiscovered,

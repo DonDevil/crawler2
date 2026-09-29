@@ -13,13 +13,15 @@ from antipiracy_contracts.events import (
 from antipiracy_contracts.events.web import CrawlRequested
 from antipiracy_contracts.ownership import Component, ServiceName
 
-# The ownership table agreed in P1 (docs/phases/p01-contracts/events.md).
+# The ownership table agreed in P1 (docs/phases/p01-contracts/events.md);
+# page.changed added in contract 1.1 (P5, ADR-020).
 EXPECTED_OWNERS = {
     "crawl.requested": Component.CRAWL_INTELLIGENCE,
     "fetch.completed": Component.CRAWLER_WORKER,
     "page.observed": Component.CRAWLER_WORKER,
     "urls.discovered": Component.EXTRACTION,
     "media.discovered": Component.EXTRACTION,
+    "page.changed": Component.EXTRACTION,
     "media.observed": Component.MEDIA_REGISTRY,
     "encode.requested": Component.MEDIA_REGISTRY,
     "representation.ready": Component.ENCODER,

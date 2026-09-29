@@ -210,3 +210,25 @@ class DiscoveredLink(ContractModel):
     relation: LinkRelation
     anchor_text: Annotated[str, Field(max_length=300)] | None = None
     nofollow: bool = False
+
+
+NormalizationScheme = Annotated[str, Field(pattern=r"^[a-z0-9][a-z0-9-]{0,62}/v[1-9][0-9]*$")]
+"""Versioned name of a page normalization, e.g. ``html-normalized/v1`` (contract 1.1)."""
+
+
+class PageHashes(ContractModel):
+    """The P5 hash set of one page version (contract 1.1, ADR-020).
+
+    ``raw`` is the exact body digest; ``normalized`` decides revisions
+    (meaningful change); the others are diagnostic signals. Each digest's
+    canonical form is defined by the producing normalization scheme.
+    """
+
+    KIND: ClassVar[ContractKind] = ContractKind.VALUE
+
+    raw: ContentDigest
+    normalized: ContentDigest
+    visible_text: ContentDigest
+    link_set: ContentDigest
+    media_set: ContentDigest
+    structural: ContentDigest

@@ -1,0 +1,257 @@
+{
+  "$defs": {
+    "Component": {
+      "description": "Logical producers/consumers of events. Each belongs to exactly one service.",
+      "enum": [
+        "crawl_intelligence",
+        "frontier",
+        "crawler_worker",
+        "extraction",
+        "media_registry",
+        "feedback",
+        "evidence_collector",
+        "evidence_finalizer",
+        "evidence_exporter",
+        "target_manager",
+        "encoder",
+        "matcher"
+      ],
+      "title": "Component",
+      "type": "string"
+    },
+    "PageChanged": {
+      "description": "A page observation showed a normalized content state never seen before at its URL.\n\nAdded in contract 1.1 (P5, ADR-020). Re-sightings of a known revision,\nraw-only changes (ad rotation, volatile markup) and non-HTML bodies emit\nnothing. A concurrent first sighting may be emitted twice with the same\n``revision_id``; consumers deduplicate on it.",
+      "properties": {
+        "hashes": {
+          "$ref": "#/$defs/PageHashes"
+        },
+        "normalization": {
+          "pattern": "^[a-z0-9][a-z0-9-]{0,62}/v[1-9][0-9]*$",
+          "title": "Normalization",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "page": {
+          "$ref": "#/$defs/UrlRef"
+        },
+        "page_observation_id": {
+          "pattern": "^obs_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Page Observation Id",
+          "type": "string"
+        },
+        "page_version_id": {
+          "pattern": "^pgv_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Page Version Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "pattern": "^pgr_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page_observation_id",
+        "page",
+        "page_version_id",
+        "revision_id",
+        "normalization",
+        "hashes",
+        "observed_at"
+      ],
+      "title": "PageChanged",
+      "type": "object"
+    },
+    "PageHashes": {
+      "description": "The P5 hash set of one page version (contract 1.1, ADR-020).\n\n``raw`` is the exact body digest; ``normalized`` decides revisions\n(meaningful change); the others are diagnostic signals. Each digest's\ncanonical form is defined by the producing normalization scheme.",
+      "properties": {
+        "link_set": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Link Set",
+          "type": "string"
+        },
+        "media_set": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Media Set",
+          "type": "string"
+        },
+        "normalized": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Normalized",
+          "type": "string"
+        },
+        "raw": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Raw",
+          "type": "string"
+        },
+        "structural": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Structural",
+          "type": "string"
+        },
+        "visible_text": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Visible Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "raw",
+        "normalized",
+        "visible_text",
+        "link_set",
+        "media_set",
+        "structural"
+      ],
+      "title": "PageHashes",
+      "type": "object"
+    },
+    "Producer": {
+      "description": "Who emitted an event: service, component and the concrete process instance.",
+      "properties": {
+        "component": {
+          "$ref": "#/$defs/Component"
+        },
+        "instance": {
+          "pattern": "^[A-Za-z0-9._:-]{1,200}$",
+          "title": "Instance",
+          "type": "string"
+        },
+        "service": {
+          "$ref": "#/$defs/ServiceName"
+        }
+      },
+      "required": [
+        "service",
+        "component",
+        "instance"
+      ],
+      "title": "Producer",
+      "type": "object"
+    },
+    "ServiceName": {
+      "description": "Deployable services. Each owns its own keyspace in the shared Scylla cluster.",
+      "enum": [
+        "crawler2",
+        "fingerprinter"
+      ],
+      "title": "ServiceName",
+      "type": "string"
+    },
+    "UrlRef": {
+      "description": "A canonical URL together with its derived IDs.\n\nCarrying the IDs saves every consumer from re-deriving them; validation\nguarantees they match the URL, so a producer cannot send a mismatched pair.",
+      "properties": {
+        "domain_id": {
+          "pattern": "^dom_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "url_id": {
+          "pattern": "^url_[0-9a-f]{12}8[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "title": "Url Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "url_id",
+        "domain_id"
+      ],
+      "title": "UrlRef",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "causation_id": {
+      "anyOf": [
+        {
+          "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Causation Id"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "pattern": "^cor_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Correlation Id"
+    },
+    "envelope_version": {
+      "const": 1,
+      "title": "Envelope Version",
+      "type": "integer"
+    },
+    "event_id": {
+      "pattern": "^evt_[0-9a-f]{12}7[0-9a-f]{3}[89ab][0-9a-f]{15}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z_]*\\.[a-z][a-z_]*$",
+      "title": "Event Type",
+      "type": "string"
+    },
+    "metadata": {
+      "maxProperties": 32,
+      "patternProperties": {
+        "^[a-z][a-z0-9_.-]{0,63}$": {
+          "maxLength": 500,
+          "type": "string"
+        }
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "payload": {
+      "$ref": "#/$defs/PageChanged"
+    },
+    "producer": {
+      "$ref": "#/$defs/Producer"
+    },
+    "schema_version": {
+      "pattern": "^[1-9][0-9]{0,3}\\.(0|[1-9][0-9]{0,3})$",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "envelope_version",
+    "event_id",
+    "event_type",
+    "schema_version",
+    "occurred_at",
+    "producer",
+    "payload"
+  ],
+  "title": "page.changed v1.0",
+  "type": "object"
+}

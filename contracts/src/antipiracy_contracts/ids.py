@@ -173,6 +173,24 @@ class PageVersionId(DerivedId):
         return cls._derive(url_id, body_digest)
 
 
+class PageRevisionId(DerivedId):
+    """One meaningful content state of a page: (final URL, normalization, normalized digest).
+
+    Added in contract 1.1 (P5, ADR-020). ``PageVersionId`` keeps its meaning
+    (exact bytes); a revision groups every exact-bytes version whose
+    normalized content is equal, so ad rotation or volatile markup does not
+    create a new revision. Two hosts seeing the same normalized content derive
+    the same revision ID.
+    """
+
+    PREFIX = "pgr"
+    DERIVATION_TAG = "antipiracy/page-revision/v1"
+
+    @classmethod
+    def of(cls, url_id: UrlId, normalization: str, normalized_digest: ContentDigest) -> Self:
+        return cls._derive(url_id, normalization, normalized_digest)
+
+
 class MediaId(DerivedId):
     """A media resource as addressed by its locator (identity level 1: "same address").
 
