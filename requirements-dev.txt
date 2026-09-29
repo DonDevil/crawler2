@@ -79,6 +79,8 @@ redis==8.1.0
 ruff==0.16.9
 scylla-driver==3.29.12
     # via crawler2
+selectolax==0.4.13
+    # via crawler2
 socksio==1.0.0
     # via httpx
 sortedcontainers==2.4.0

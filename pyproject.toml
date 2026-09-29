@@ -15,12 +15,14 @@ dependencies = [
     "httpx[brotli,socks]>=0.28.1,<0.29",
     "playwright==1.62.0",
     "psutil>=7.1,<8",
+    "selectolax>=0.3.34,<1",
 ]
 
 [project.scripts]
 crawler2-check = "crawler2.diagnostics.connectivity:main"
 crawler2-storage = "crawler2.storage.cli:main"
 crawler2-worker = "crawler2.crawlers.cli:main"
+crawler2-extract = "crawler2.extraction.cli:main"
 
 [dependency-groups]
 dev = [

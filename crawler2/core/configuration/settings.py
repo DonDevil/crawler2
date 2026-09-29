@@ -33,6 +33,7 @@ class WorkerRole(StrEnum):
     HTTP = "http"
     BROWSER = "browser"
     TOR = "tor"
+    EXTRACTION = "extraction"
     INTELLIGENCE = "intelligence"
     MEDIA_PROBE = "media_probe"
     FINALIZER = "finalizer"
@@ -299,6 +300,18 @@ class ResourceLimits(BaseModel):
     gpu_vram_mb: int = Field(default=0, ge=0)
 
 
+class ExtractionSettings(BaseModel):
+    """P5 extraction consumer (docs/phases/p05-extraction-page-intelligence/design.md)."""
+
+    consumer_group: str = Field(default="extraction", pattern=r"^[a-z0-9._-]{1,64}$")
+    batch_size: PositiveInt = 50
+    block_ms: PositiveInt = 2000
+    claim_idle_ms: PositiveInt = 60_000
+    """Pending entries idle this long (a dead consumer's) are reclaimed."""
+    archival_sample_rate: float = Field(default=0.05, ge=0.0, le=1.0)
+    """Default ``ArchivalProfile.sample_rate`` until P7/P12 supply profiles."""
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="CRAWLER2_",
@@ -323,6 +336,7 @@ class Settings(BaseSettings):
     metrics: MetricsSettings = Field(default_factory=MetricsSettings)
     limits: ResourceLimits = Field(default_factory=ResourceLimits)
     workers: WorkersSettings = Field(default_factory=WorkersSettings)
+    extraction: ExtractionSettings = Field(default_factory=ExtractionSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:
