@@ -27,6 +27,10 @@ class InterceptedRequest:
     is_navigation: bool
     frame_url: str
     method: str
+    page_url: str = ""
+    """The page being rendered (first party): the latest main-frame navigation URL."""
+    is_main_frame: bool = False
+    """A navigation of the page itself, not of an iframe."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -34,6 +38,9 @@ class InterceptDecision:
     action: InterceptAction
     rule_id: str | None = None
     reason: str | None = None
+    classification: str | None = None
+    """P6 classification, aggregated per page into the render metrics."""
+    ruleset: str | None = None
 
 
 ALLOW = InterceptDecision(InterceptAction.ALLOW)

@@ -129,6 +129,15 @@ class RenderMetrics:
     """Pages this context had served, including this one."""
     browser_pages: int = 0
     browser_restarts: int = 0
+    interceptions: tuple[tuple[str, int], ...] = ()
+    """Interceptor decisions of this page: ``("{classification}:{action}", count)``, sorted."""
+    blocked: tuple[tuple[str, str], ...] = ()
+    """Up to ``MAX_BLOCKED_DETAIL`` distinct ``(host, rule_id)`` blocked by the interceptor."""
+    ruleset: str | None = None
+    """Interceptor ruleset of the last decision on this page."""
+
+
+MAX_BLOCKED_DETAIL = 50
 
 
 @dataclass(frozen=True, slots=True)

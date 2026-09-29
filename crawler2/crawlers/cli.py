@@ -13,6 +13,7 @@ import asyncio
 import multiprocessing
 import signal
 import sys
+from typing import TYPE_CHECKING
 
 from antipiracy_contracts.ids import UrlId
 from antipiracy_contracts.models.web import FetchAttempt, HttpValidators, UrlRef
@@ -23,11 +24,17 @@ from crawler2.core.observability import Metrics, configure_logging, get_logger
 from crawler2.crawlers.browser import BrowserFetcher
 from crawler2.crawlers.health import NetworkHealth
 from crawler2.crawlers.http import HttpFetcher
+from crawler2.crawlers.interception import RequestInterceptor
 from crawler2.crawlers.model import Fetcher, FetchResult
 from crawler2.crawlers.recorder import Recorder, StorageRecorder
 from crawler2.crawlers.runtime import WorkerRuntime
 from crawler2.crawlers.tor import TorFetcher
+from crawler2.filtering.intercept import FilterInterceptor
+from crawler2.filtering.store import RulesetHolder
 from crawler2.frontier.redis.frontier import RedisFrontier, connect_redis
+
+if TYPE_CHECKING:
+    from crawler2.storage.scylla import ScyllaStorage
 
 _log = get_logger("crawlers.cli")
 POOLS = {
@@ -47,22 +54,35 @@ class NullRecorder:
         return None
 
 
-def build_fetcher(pool: str, settings: Settings) -> Fetcher:
+def build_fetcher(
+    pool: str, settings: Settings, interceptor: RequestInterceptor | None = None
+) -> Fetcher:
     w = settings.workers
     if pool == "http":
         return HttpFetcher(w.fetch, max_connections=w.http.concurrency * 2)
     if pool == "browser":
-        return BrowserFetcher(w.browser_engine, w.fetch)
+        return BrowserFetcher(w.browser_engine, w.fetch, interceptor=interceptor)
     return TorFetcher(w.fetch, w.tor_network, max_connections=w.tor.concurrency * 2)
 
 
-def build_recorder(settings: Settings, worker: str) -> Recorder:
+def build_recorder(settings: Settings, worker: str, storage: ScyllaStorage) -> Recorder:
     from crawler2.storage.objectstore.s3 import S3ObjectStore
-    from crawler2.storage.scylla import ScyllaStorage
 
-    storage = ScyllaStorage.open(settings.scylla, instance=worker)
     objects = S3ObjectStore(settings.minio, scratch_dir=settings.scratch_dir)
-    return StorageRecorder(storage.fetch_attempts, storage.pages, objects, worker=worker)
+    return StorageRecorder(
+        storage.fetch_attempts,
+        storage.pages,
+        objects,
+        worker=worker,
+        interceptions=storage.discovery,
+    )
+
+
+async def _refresh_rules(holder: RulesetHolder, interval_s: float) -> None:
+    """P6 hot reload for a browser pool: poll the active ruleset off the event loop."""
+    while True:
+        await asyncio.sleep(interval_s)
+        await asyncio.to_thread(holder.refresh)
 
 
 async def run_pool(
@@ -74,12 +94,28 @@ async def run_pool(
     frontier = RedisFrontier(
         connect_redis(settings.redis), settings.frontier, namespace=settings.redis.namespace
     )
-    recorder = build_recorder(settings, identity) if record else NullRecorder()
+    storage = None
+    if record:
+        from crawler2.storage.scylla import ScyllaStorage
+
+        storage = ScyllaStorage.open(settings.scylla, instance=identity)
+    recorder = build_recorder(settings, identity, storage) if storage else NullRecorder()
+    holder: RulesetHolder | None = None
+    interceptor: RequestInterceptor | None = None
+    if pool == "browser" and storage is not None and settings.filter.browser_interception:
+        holder = RulesetHolder(
+            storage.filter_rules,
+            name=settings.filter.ruleset_name,
+            interval_s=settings.filter.reload_interval_s,
+            metrics=metrics,
+        )
+        await asyncio.to_thread(holder.refresh)
+        interceptor = FilterInterceptor(holder)
     pool_settings = getattr(settings.workers, pool)
     runtime = WorkerRuntime(
         frontier=frontier,
         queue=queue,
-        fetcher=build_fetcher(pool, settings),
+        fetcher=build_fetcher(pool, settings, interceptor),
         recorder=recorder,
         settings=pool_settings,
         health=NetworkHealth(settings.workers.network_health),
@@ -91,7 +127,16 @@ async def run_pool(
     for sig in (signal.SIGTERM, signal.SIGINT):
         loop.add_signal_handler(sig, runtime.stop)
     _log.info("worker_start", pool=pool, worker=identity, concurrency=pool_settings.concurrency)
-    await runtime.run(max_claims=max_claims)
+    refresher = (
+        asyncio.create_task(_refresh_rules(holder, settings.filter.reload_interval_s))
+        if holder is not None
+        else None
+    )
+    try:
+        await runtime.run(max_claims=max_claims)
+    finally:
+        if refresher is not None:
+            refresher.cancel()
     _log.info("worker_stop", pool=pool, stats=vars(runtime.stats))
     return runtime
 

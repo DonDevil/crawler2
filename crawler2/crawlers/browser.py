@@ -14,8 +14,10 @@ from __future__ import annotations
 import asyncio
 import contextlib
 import time
+from collections import Counter
 from collections.abc import AsyncIterator, Callable
 from dataclasses import dataclass, field, replace
+from urllib.parse import urlsplit
 
 import psutil
 from antipiracy_contracts.models.web import FetchCapability, HttpValidators
@@ -40,10 +42,12 @@ from crawler2.crawlers.http import HttpFetcher
 from crawler2.crawlers.interception import (
     AllowAll,
     InterceptAction,
+    InterceptDecision,
     InterceptedRequest,
     RequestInterceptor,
 )
 from crawler2.crawlers.model import (
+    MAX_BLOCKED_DETAIL,
     BodyKind,
     Expectation,
     FetcherHealth,
@@ -299,14 +303,20 @@ class BrowserPool:
 class _PageObserver:
     """Per-page request accounting and interception."""
 
-    def __init__(self, settings: BrowserSettings, interceptor: RequestInterceptor) -> None:
+    def __init__(
+        self, settings: BrowserSettings, interceptor: RequestInterceptor, page_url: str = ""
+    ) -> None:
         self._blocked_types = frozenset(settings.blocked_resource_types)
         self._interceptor = interceptor
+        self.page_url = page_url
         self.requests = 0
         self.aborted = 0
         self.media = 0
         self.transferred = 0
         self.crashed = False
+        self.decisions: Counter[str] = Counter()
+        self.blocked: dict[tuple[str, str], None] = {}
+        self.ruleset: str | None = None
         self._sizes: list[asyncio.Task[None]] = []
 
     async def route(self, route: Route) -> None:
@@ -320,20 +330,44 @@ class _PageObserver:
             self.aborted += 1
             await route.abort()
             return
+        main_frame = False
+        frame_url = ""
+        with contextlib.suppress(PlaywrightError):
+            frame = request.frame
+            main_frame = navigation and frame.parent_frame is None
+            frame_url = frame.url if not navigation else ""
+        if main_frame:
+            self.page_url = request.url
         decision = self._interceptor.decide(
             InterceptedRequest(
                 url=request.url,
                 resource_type=kind,
                 is_navigation=navigation,
-                frame_url=request.frame.url if not navigation else "",
+                frame_url=frame_url,
                 method=request.method,
+                page_url=self.page_url,
+                is_main_frame=main_frame,
             )
         )
+        self._count(request.url, decision)
         if decision.action is InterceptAction.BLOCK:
             self.aborted += 1
             await route.abort()
             return
         await route.continue_()
+
+    def _count(self, url: str, decision: InterceptDecision) -> None:
+        if decision.classification is None:
+            return
+        self.decisions[f"{decision.classification}:{decision.action.value}"] += 1
+        self.ruleset = decision.ruleset
+        if (
+            decision.action is InterceptAction.BLOCK
+            and decision.rule_id
+            and len(self.blocked) < MAX_BLOCKED_DETAIL
+        ):
+            host = urlsplit(url).hostname or ""
+            self.blocked[(host, decision.rule_id)] = None
 
     def on_finished(self, request: Request) -> None:
         self._sizes.append(asyncio.ensure_future(self._size(request)))
@@ -405,7 +439,7 @@ class BrowserFetcher:
         if request.expect is Expectation.MEDIA_PROBE or signals.has_media_extension(request.url):
             return await self._prober.fetch(request)
         started = time.monotonic()
-        observer = _PageObserver(self._s, self._interceptor)
+        observer = _PageObserver(self._s, self._interceptor, request.url)
         lease: PageLease | None = None
         try:
             async with self.pool.page() as lease:
@@ -423,6 +457,9 @@ class BrowserFetcher:
             context_pages=lease.context_pages if lease else 0,
             browser_pages=lease.browser_pages if lease else 0,
             browser_restarts=self.pool.stats.browser_restarts,
+            interceptions=tuple(sorted(observer.decisions.items())),
+            blocked=tuple(observer.blocked),
+            ruleset=observer.ruleset,
         )
         timings = Timings(
             total_s=round(time.monotonic() - started, 4),

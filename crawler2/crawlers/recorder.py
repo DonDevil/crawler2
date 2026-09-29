@@ -11,6 +11,7 @@ nothing was tried against the target.
 from __future__ import annotations
 
 import contextlib
+import json
 from datetime import UTC, datetime
 from typing import Protocol
 
@@ -28,10 +29,18 @@ from antipiracy_contracts.models.web import (
 )
 from antipiracy_contracts.ownership import Component, Producer
 
+from crawler2.core.observability import get_logger
 from crawler2.crawlers.model import FetchResult, Outcome
 from crawler2.storage.errors import StorageError
 from crawler2.storage.objectstore.base import ObjectStore
-from crawler2.storage.repositories import FetchAttemptRepository, PageObservationRepository
+from crawler2.storage.repositories import (
+    DiscoveryRepository,
+    FetchAttemptRepository,
+    InterceptionSummary,
+    PageObservationRepository,
+)
+
+_log = get_logger("crawlers.recorder")
 
 _P1_OUTCOME = {
     Outcome.OK: FetchOutcome.RESPONSE,
@@ -123,11 +132,13 @@ class StorageRecorder:
         objects: ObjectStore,
         *,
         worker: str,
+        interceptions: DiscoveryRepository | None = None,
     ) -> None:
         self._attempts = attempts
         self._pages = pages
         self._objects = objects
         self._worker = worker
+        self._interceptions = interceptions
         self._producer = Producer(
             service=Component.CRAWLER_WORKER.service,
             component=Component.CRAWLER_WORKER,
@@ -161,7 +172,8 @@ class StorageRecorder:
             and attempt.http_status is not None
             and result.outcome is not Outcome.NOT_MODIFIED
         ):
-            self._observe(attempt, result)
+            observation_id = self._observe(attempt, result)
+            self._record_interceptions(observation_id, result, finished_at)
         self._attempts.record(
             attempt,
             event=new_event(
@@ -170,7 +182,26 @@ class StorageRecorder:
         )
         return attempt
 
-    def _observe(self, attempt: FetchAttempt, result: FetchResult) -> None:
+    def _record_interceptions(
+        self, observation_id: ObservationId, result: FetchResult, at: datetime
+    ) -> None:
+        """P6 F8 summary: derived debugging data, so a storage failure is logged, not raised."""
+        render = result.render
+        if self._interceptions is None or render is None or not render.interceptions:
+            return
+        summary = InterceptionSummary(
+            observation_id=observation_id,
+            counts=dict(render.interceptions),
+            blocked=json.dumps([{"host": h, "rule_id": r} for h, r in render.blocked]),
+            ruleset=render.ruleset or "none",
+            recorded_at=at,
+        )
+        try:
+            self._interceptions.record_interceptions(summary)
+        except StorageError:
+            _log.warning("interception_summary_not_recorded", observation=str(observation_id))
+
+    def _observe(self, attempt: FetchAttempt, result: FetchResult) -> ObservationId:
         assert result.body is not None  # noqa: S101 -- guarded by record()
         assert result.status is not None  # noqa: S101
         final = attempt.final or _ref(result.final_url) or attempt.requested
@@ -201,6 +232,7 @@ class StorageRecorder:
                 occurred_at=attempt.finished_at,
             ),
         )
+        return observation.observation_id
 
 
 def utcnow() -> datetime:
