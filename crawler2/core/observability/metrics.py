@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
-from prometheus_client import CollectorRegistry, Counter, Histogram, Info, generate_latest
+from prometheus_client import CollectorRegistry, Counter, Gauge, Histogram, Info, generate_latest
 from prometheus_client import start_http_server as _start_http_server
 
 from crawler2.core.configuration.settings import Settings
@@ -38,6 +38,7 @@ class Metrics:
         self.registry = CollectorRegistry(auto_describe=True)
         self._counters: dict[str, Counter] = {}
         self._histograms: dict[str, Histogram] = {}
+        self._gauges: dict[str, Gauge] = {}
         Info(
             "process",
             "Identity of the process exporting these metrics",
@@ -62,6 +63,17 @@ class Metrics:
                 registry=self.registry,
             )
         return self._counters[name]
+
+    def gauge(self, name: str, documentation: str, labels: Sequence[str] = ()) -> Gauge:
+        if name not in self._gauges:
+            self._gauges[name] = Gauge(
+                name,
+                documentation,
+                labelnames=tuple(labels),
+                namespace=self._settings.namespace,
+                registry=self.registry,
+            )
+        return self._gauges[name]
 
     def histogram(
         self,

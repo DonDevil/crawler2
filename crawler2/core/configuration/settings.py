@@ -167,6 +167,115 @@ class FrontierSettings(BaseModel):
         return self
 
 
+_KIB = 1024
+_MIB = 1024 * 1024
+
+
+class HttpFetchSettings(BaseModel):
+    """One HTTP attempt (P4 design §11, §15, §18). Also used by the Tor pool."""
+
+    user_agent: str = Field(default="crawler2/0.1", min_length=1, max_length=200)
+    connect_timeout_s: float = Field(default=10.0, gt=0)
+    """TCP connect and TLS handshake together (httpx has no separate TLS budget)."""
+    read_timeout_s: float = Field(default=15.0, gt=0)
+    """Inactivity between two received chunks."""
+    total_timeout_s: float = Field(default=30.0, gt=0)
+    """Whole attempt incl. redirects and body; defeats slowloris trickling."""
+    max_redirects: int = Field(default=10, ge=0, le=30)
+    max_body_bytes: PositiveInt = 5 * _MIB
+    """Decoded page body limit; above it the attempt is ``too_large`` (nothing stored)."""
+    max_manifest_bytes: PositiveInt = 1 * _MIB
+    media_probe_bytes: PositiveInt = 64 * _KIB
+    """Hard upper bound of body bytes read from a media response (D2)."""
+    sniff_bytes: PositiveInt = 256 * _KIB
+    """Prefix of an HTML body inspected for needs_js / captcha / block markers."""
+    proxy: str | None = None
+    """Outbound proxy URL (benchmarks' counting proxy); the Tor pool sets its own."""
+
+
+class BrowserSettings(BaseModel):
+    """Playwright/Chromium pool (P4 design §12)."""
+
+    contexts: PositiveInt = 2
+    pages_per_context: PositiveInt = 1
+    recycle_pages: PositiveInt = 50
+    """Pages served by one context before it is replaced."""
+    browser_recycle_pages: PositiveInt = 500
+    """Pages served by one browser process before it is relaunched."""
+    browser_rss_limit_mb: PositiveInt = 1200
+    """Browser process-tree RSS that triggers a drain-and-relaunch."""
+    navigation_timeout_s: float = Field(default=30.0, gt=0)
+    """One deadline for goto + settle (V1 applied it twice)."""
+    settle_s: float = Field(default=3.0, ge=0)
+    """Max wait for network idle after DOMContentLoaded, inside the navigation deadline."""
+    operation_timeout_s: float = Field(default=10.0, gt=0)
+    launch_timeout_s: float = Field(default=30.0, gt=0)
+    acquire_timeout_s: float = Field(default=30.0, gt=0)
+    relaunch_attempts: PositiveInt = 3
+    max_body_bytes: PositiveInt = 5 * _MIB
+    blocked_resource_types: CsvList = Field(default_factory=lambda: ["image", "font", "media"])
+    """Cost control, not filtering (P6 attaches through the interception hook)."""
+    headless: bool = True
+    proxy: str | None = None
+
+
+class TorSettings(BaseModel):
+    socks_proxy: str | None = None
+    """Explicit ``socks5h://host:port``; else ``TOR_SOCKS_PROXY``/``TOR_SOCKS_PORT``/probe."""
+    probe_ports: list[int] = Field(default_factory=lambda: [9050, 9150])
+    health_interval_s: float = Field(default=30.0, gt=0)
+
+
+class NetworkHealthSettings(BaseModel):
+    """Per-process local-outage detection (V1 N1-N7, P4 design §16)."""
+
+    enabled: bool = True
+    trigger_threshold: PositiveInt = 10
+    probe_timeout_s: float = Field(default=5.0, gt=0)
+    probe_endpoints: CsvList = Field(
+        default_factory=lambda: [
+            "https://www.gstatic.com/generate_204",
+            "https://www.msftconnecttest.com/connecttest.txt",
+            "https://captive.apple.com/hotspot-detect.html",
+        ]
+    )
+    confirm_delay_s: float = Field(default=5.0, ge=0)
+    recovery_probe_interval_s: float = Field(default=15.0, gt=0)
+    recovery_confirm_rounds: PositiveInt = 2
+
+    @model_validator(mode="after")
+    def _two_endpoints(self) -> Self:
+        if self.enabled and len(self.probe_endpoints) < 2:
+            raise ValueError("network health needs at least two independent probe_endpoints")
+        return self
+
+
+class PoolSettings(BaseModel):
+    """Local capacity of one worker pool. Domain politeness is P3's, not this."""
+
+    processes: PositiveInt = 1
+    concurrency: PositiveInt = 8
+    idle_poll_min_s: float = Field(default=0.2, gt=0)
+    idle_poll_max_s: float = Field(default=2.0, gt=0)
+    attempt_grace_s: float = Field(default=5.0, ge=0)
+    """Added to the fetcher's own total deadline for the runtime's hard cap."""
+    shutdown_grace_s: float = Field(default=20.0, ge=0)
+    report_retry_s: float = Field(default=0.5, gt=0)
+    """Pause between retries of an outcome report while the frontier is unavailable."""
+
+
+class WorkersSettings(BaseModel):
+    http: PoolSettings = Field(default_factory=lambda: PoolSettings(concurrency=32))
+    browser: PoolSettings = Field(default_factory=lambda: PoolSettings(concurrency=2))
+    tor: PoolSettings = Field(default_factory=lambda: PoolSettings(concurrency=8))
+    fetch: HttpFetchSettings = Field(default_factory=HttpFetchSettings)
+    browser_engine: BrowserSettings = Field(default_factory=BrowserSettings)
+    tor_network: TorSettings = Field(default_factory=TorSettings)
+    network_health: NetworkHealthSettings = Field(default_factory=NetworkHealthSettings)
+    recover_every_s: float = Field(default=30.0, gt=0)
+    """How often each worker process runs ``frontier.recover()`` (safe concurrently)."""
+
+
 class LoggingSettings(BaseModel):
     level: str = Field(default="INFO", pattern=r"^(DEBUG|INFO|WARNING|ERROR|CRITICAL)$")
     format: LogFormat = LogFormat.JSON
@@ -210,6 +319,7 @@ class Settings(BaseSettings):
     logging: LoggingSettings = Field(default_factory=LoggingSettings)
     metrics: MetricsSettings = Field(default_factory=MetricsSettings)
     limits: ResourceLimits = Field(default_factory=ResourceLimits)
+    workers: WorkersSettings = Field(default_factory=WorkersSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

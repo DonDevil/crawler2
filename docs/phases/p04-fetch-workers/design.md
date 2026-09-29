@@ -1,7 +1,8 @@
 # P4 design — fetch layer & worker pools
 
-Status: **DESIGN — awaiting review** (plan B.1: no implementation before
-approval). Audit: [audit.md](audit.md). After implementation this becomes
+Status: **APPROVED 2026-09-29** (all §33 decisions as recommended:
+W691 gate workload, blocked/captcha recorded not escalated, Selenium and
+Scrapling not retained, Tor validated against a SOCKS5 fixture). Audit: [audit.md](audit.md). After implementation this becomes
 the P4 phase document (`p4-fetch-layer-worker-pools.md`) with validation
 results; ADR-017 (fetch runtime boundary and outcome mapping) and ADR-018
 (engine retention, D14) are written with the first implementation commit.

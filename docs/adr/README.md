@@ -18,6 +18,8 @@
 | [014](ADR-014-object-store-layout.md) | Object-store key layout and integrity | Accepted |
 | [015](ADR-015-frontier-execution-model.md) | Frontier execution model: execution queues, shared domain gate, eligible-domain index | Accepted |
 | [016](ADR-016-frontier-task-lifecycle.md) | Frontier task lifecycle: temporary dedup, scheduling, retry authority, admission limits | Accepted |
+| [017](ADR-017-fetch-runtime-boundary.md) | Fetch runtime boundary: one attempt per fetcher, outcomes as facts, frontier as the only retry | Accepted |
+| [018](ADR-018-fetch-engine-retention.md) | Fetch engines retained: httpx + Playwright; Scrapling and Selenium dropped (D14) | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

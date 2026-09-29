@@ -12,11 +12,15 @@ dependencies = [
     "redis>=8.1,<9",
     "scylla-driver>=3.29.12,<4",
     "antipiracy-contracts",
+    "httpx[brotli,socks]>=0.28.1,<0.29",
+    "playwright==1.62.0",
+    "psutil>=7.1,<8",
 ]
 
 [project.scripts]
 crawler2-check = "crawler2.diagnostics.connectivity:main"
 crawler2-storage = "crawler2.storage.cli:main"
+crawler2-worker = "crawler2.crawlers.cli:main"
 
 [dependency-groups]
 dev = [
@@ -24,6 +28,7 @@ dev = [
     "hypothesis>=6.168,<7",
     "ruff>=0.16,<1",
     "mypy>=2.3,<3",
+    "types-psutil>=7.0,<8",
 ]
 
 [tool.uv.sources]
@@ -66,7 +71,7 @@ init_forbid_extra = true
 init_typed = true
 
 [[tool.mypy.overrides]]
-module = ["cassandra.*"]
+module = ["cassandra.*", "brotli"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
