@@ -16,6 +16,8 @@
 | [012](ADR-012-scylla-storage-model.md) | Scylla storage model: query tables, convergent writes, bounded partitions | Accepted |
 | [013](ADR-013-outbox-and-event-delivery.md) | Outbox, relay and consumer idempotency | Accepted |
 | [014](ADR-014-object-store-layout.md) | Object-store key layout and integrity | Accepted |
+| [015](ADR-015-frontier-execution-model.md) | Frontier execution model: execution queues, shared domain gate, eligible-domain index | Accepted |
+| [016](ADR-016-frontier-task-lifecycle.md) | Frontier task lifecycle: temporary dedup, scheduling, retry authority, admission limits | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.
