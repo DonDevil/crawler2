@@ -35,6 +35,7 @@ v1_dist() {  # workers port db label
     --urls 200000 --domains 40 --duration 30 --rate-limit 0 --redis-port "$2" \
     --redis-db "$3" --namespace "bench_v1ref_$RANDOM" --output "$OLDPWD/$out/v1-$4-w$1.json" \
     >/dev/null 2>&1)
+  $PY $B/compact_v1.py "$out/v1-$4-w$1.json"
 }
 
 throughput() {
