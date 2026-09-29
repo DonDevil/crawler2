@@ -58,6 +58,8 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 "benchmarks/p2-storage/**" = ["S603", "S607", "S608"]
 # dev benchmark tooling: seeded pseudo-random workloads, fixed lscpu call
 "benchmarks/p3-frontier/**" = ["S311", "S603", "S607"]
+# dev benchmark tooling: seeded sampling of evaluation pairs
+"benchmarks/p5-extraction/**" = ["S311"]
 
 [tool.mypy]
 python_version = "3.12"
