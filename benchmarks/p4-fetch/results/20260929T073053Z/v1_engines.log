@@ -1,0 +1,957 @@
+[v1-engines] async: 52 urls
+2026-09-29 13:00:53.967 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.tamilprinthd.art/: Cannot connect to host www.tamilprinthd.art:443 ssl:default [None]
+2026-09-29 13:00:54.029 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.isaimini.farm/?m=1: Cannot connect to host www.isaimini.farm:443 ssl:default [None]
+2026-09-29 13:00:54.127 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.isaimini.spot/: Cannot connect to host www.isaimini.spot:443 ssl:default [None]
+2026-09-29 13:00:54.130 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.isaimini.vu/: Cannot connect to host www.isaimini.vu:443 ssl:default [None]
+2026-09-29 13:00:54.140 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.moviesda.video/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.165 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://moviezz.xyz/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.182 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://movier.xyz/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.199 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://mp4moviezz.xyz/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.259 | WARNING  | crawler.async_crawler:fetch:108 - Fetch failed for https://moviesda.baby/: HTTP 404
+2026-09-29 13:00:54.291 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://movies-fd.shop/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.328 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.moviesda28.com/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.348 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.ngmovies.com.ng/netnaija/tag/indian: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.451 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.533 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.moviesda.uk/?m=1: Cannot connect to host www.moviesda.uk:443 ssl:default [None]
+2026-09-29 13:00:54.602 | WARNING  | crawler.async_crawler:fetch:108 - Fetch failed for https://www.moviesda.farm/: HTTP 403
+2026-09-29 13:00:54.622 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://xn--3-lve1d0cya6hb2e.com/: Cannot connect to host xn--3-lve1d0cya6hb2e.com:443 ssl:default [None]
+2026-09-29 13:00:54.698 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://mp4moviz.xyz/: Cannot connect to host mp4moviz.xyz:443 ssl:default [None]
+2026-09-29 13:00:54.722 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.tamilprint7.art/: Cannot connect to host www.tamilprint58.art:443 ssl:default [None]
+2026-09-29 13:00:54.770 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.coolmoviez.forum/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.815 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://newhdmovie2.org/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:54.850 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://moviesda17.com/: Cannot connect to host moviesda17.com:443 ssl:default [None]
+2026-09-29 13:00:54.914 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://moviedrivebd.com/: Cannot connect to host moviedrivebd.com:443 ssl:default [None]
+2026-09-29 13:00:54.968 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.tamilprinthd.art/
+2026-09-29 13:00:54.987 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://tamilrockers.website/: Cannot connect to host tamilrockerss.cfd:443 ssl:default [None]
+2026-09-29 13:00:54.994 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://5movieg.com/: 502, message='Bad Gateway', url='http://127.0.0.1:45665'
+2026-09-29 13:00:55.013 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://kuttymovies1.fit/: Cannot connect to host kuttymovies1.free:443 ssl:default [None]
+2026-09-29 13:00:55.029 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.isaimini.farm/?m=1
+2026-09-29 13:00:55.129 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.isaimini.spot/
+2026-09-29 13:00:55.130 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.isaimini.vu/
+2026-09-29 13:00:55.140 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.moviesda.video/
+2026-09-29 13:00:55.166 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://moviezz.xyz/
+2026-09-29 13:00:55.183 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://movier.xyz/
+2026-09-29 13:00:55.190 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.moviesda.red/: Cannot connect to host www.moviesda.talk:443 ssl:default [None]
+2026-09-29 13:00:55.200 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://mp4moviezz.xyz/
+2026-09-29 13:00:55.292 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://movies-fd.shop/
+2026-09-29 13:00:55.329 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.moviesda28.com/
+2026-09-29 13:00:55.349 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.ngmovies.com.ng/netnaija/tag/indian
+2026-09-29 13:00:55.451 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html
+2026-09-29 13:00:55.534 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.moviesda.uk/?m=1
+2026-09-29 13:00:55.623 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://xn--3-lve1d0cya6hb2e.com/
+2026-09-29 13:00:55.699 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://mp4moviz.xyz/
+2026-09-29 13:00:55.722 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.tamilprint7.art/
+2026-09-29 13:00:55.771 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.coolmoviez.forum/
+2026-09-29 13:00:55.816 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://newhdmovie2.org/
+2026-09-29 13:00:55.851 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://moviesda17.com/
+2026-09-29 13:00:55.915 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://moviedrivebd.com/
+2026-09-29 13:00:55.988 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://tamilrockers.website/
+2026-09-29 13:00:55.995 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://5movieg.com/
+2026-09-29 13:00:56.014 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://kuttymovies1.fit/
+2026-09-29 13:00:56.191 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.moviesda.red/
+2026-09-29 13:00:58.342 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://moviepie.xyz/: Cannot connect to host theflixmovie.com:443 ssl:default [None]
+2026-09-29 13:00:59.343 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://moviepie.xyz/
+2026-09-29 13:01:09.549 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://kollymovies.city/: 
+2026-09-29 13:01:09.549 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://www.moviesdaott.com/: 
+2026-09-29 13:01:09.549 | WARNING  | crawler.async_crawler:fetch:156 - Fetch failed (1/1) https://1tamilyogi.show/tamilmv/: 
+2026-09-29 13:01:10.551 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://kollymovies.city/
+2026-09-29 13:01:10.551 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://www.moviesdaott.com/
+2026-09-29 13:01:10.551 | ERROR    | crawler.async_crawler:fetch:159 - Giving up on https://1tamilyogi.show/tamilmv/
+{"engine": "async", "concurrency": 50, "urls": 52, "successes": 22, "success_rate": 0.4231, "v1_needs_browser_on_success": 0, "latency_s_median": 1.51, "latency_s_p95": 3.028, "latency_s_mean": 1.849, "timeouts": 0, "failure_categories": {"HTTP_RESPONSE": 2, "TARGET_CONNECTION": 14, "UNKNOWN": 14}, "wall_s": 16.8, "upstream_bytes": 671544, "bytes_per_success": 30525, "proxy_connections": 71, "rss_mb_peak_tree": 107.5, "rss_mb_mean_tree": 106.0, "max_child_processes": 0}
+[v1-engines] http: 52 urls
+2026-09-29 13:01:11.304 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.1tamilmv.army/: 
+2026-09-29 13:01:11.468 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://kuttymovies1.fit/: 
+2026-09-29 13:01:11.730 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.moviesda.red/: 
+2026-09-29 13:01:12.897 | WARNING  | crawler.http_crawler:fetch:83 - Fetch failed for https://www.moviesda.farm/: HTTP 403
+2026-09-29 13:01:13.656 | WARNING  | crawler.http_crawler:fetch:83 - Fetch failed for https://moviesda.baby/: HTTP 404
+2026-09-29 13:01:13.863 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.moviesda.uk/?m=1: 
+2026-09-29 13:01:13.992 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.moviesda.video/: 502 Bad Gateway
+2026-09-29 13:01:14.737 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.moviesda28.com/: 502 Bad Gateway
+2026-09-29 13:01:15.075 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://tamilrockers.website/: 
+2026-09-29 13:01:15.568 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://moviesda17.com/: 
+2026-09-29 13:01:15.678 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://mp4moviezz.xyz/: 502 Bad Gateway
+2026-09-29 13:01:15.748 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://moviezz.xyz/: 502 Bad Gateway
+2026-09-29 13:01:15.815 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://movier.xyz/: 502 Bad Gateway
+2026-09-29 13:01:16.675 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://movies-fd.shop/: 502 Bad Gateway
+2026-09-29 13:01:16.996 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://moviedrivebd.com/: 
+2026-09-29 13:01:17.570 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.ngmovies.com.ng/netnaija/tag/indian: 502 Bad Gateway
+2026-09-29 13:01:17.727 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://mp4moviz.xyz/: 
+2026-09-29 13:01:18.113 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.coolmoviez.forum/: 502 Bad Gateway
+2026-09-29 13:01:18.120 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://moviepie.xyz/: 502 Bad Gateway
+2026-09-29 13:01:18.175 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://5movieg.com/: 502 Bad Gateway
+2026-09-29 13:01:18.663 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html: 502 Bad Gateway
+2026-09-29 13:01:18.755 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://newhdmovie2.org/: 502 Bad Gateway
+2026-09-29 13:01:19.019 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.mp4moviez.diet/: 
+2026-09-29 13:01:25.862 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://1tamilyogi.show/tamilmv/: 
+2026-09-29 13:01:27.244 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://www.moviesdaott.com/: 
+2026-09-29 13:01:30.175 | WARNING  | crawler.http_crawler:fetch:125 - Fetch failed (1/1) https://kollymovies.city/: 
+{"engine": "http", "concurrency": 10, "urls": 52, "successes": 26, "success_rate": 0.5, "v1_needs_browser_on_success": 0, "latency_s_median": 1.13, "latency_s_p95": 2.152, "latency_s_mean": 1.295, "timeouts": 0, "failure_categories": {"UNKNOWN": 24, "HTTP_RESPONSE": 2}, "wall_s": 20.5, "upstream_bytes": 751045, "bytes_per_success": 28886, "proxy_connections": 76, "rss_mb_peak_tree": 111.3, "rss_mb_mean_tree": 111.2, "max_child_processes": 0}
+[v1-engines] playwright: 52 urls
+2026-09-29 13:01:56.119 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.1tamilmv.army/: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.1tamilmv.army/
+Call log:
+  - navigating to "https://www.1tamilmv.army/", waiting until "domcontentloaded"
+
+2026-09-29 13:01:58.175 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://kuttymovies1.fit/: Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/
+Call log:
+  - navigating to "https://kuttymovies1.fit/", waiting until "domcontentloaded"
+
+2026-09-29 13:01:59.732 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.tamilprinthd.art/: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.tamilprinthd.art/
+Call log:
+  - navigating to "https://www.tamilprinthd.art/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:04.067 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.tamilprint7.art/: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.tamilprint7.art/
+Call log:
+  - navigating to "https://www.tamilprint7.art/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:10.841 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.moviesda.red/: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.moviesda.red/
+Call log:
+  - navigating to "https://www.moviesda.red/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:12.142 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://1tamilyogi.show/tamilmv/: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://1tamilyogi.show/tamilmv/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:26.864 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.moviesdaott.com/: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://www.moviesdaott.com/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:38.867 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.moviesda.video/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda.video/
+Call log:
+  - navigating to "https://www.moviesda.video/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:39.836 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.moviesda28.com/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda28.com/
+Call log:
+  - navigating to "https://www.moviesda28.com/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:49.236 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://mp4moviezz.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviezz.xyz/
+Call log:
+  - navigating to "https://mp4moviezz.xyz/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:53.796 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://moviezz.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviezz.xyz/
+Call log:
+  - navigating to "https://moviezz.xyz/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:54.936 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://movier.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movier.xyz/
+Call log:
+  - navigating to "https://movier.xyz/", waiting until "domcontentloaded"
+
+2026-09-29 13:02:57.607 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://kollymovies.city/: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://kollymovies.city/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:00.401 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://moviepie.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviepie.xyz/
+Call log:
+  - navigating to "https://moviepie.xyz/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:01.379 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://movies-fd.shop/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movies-fd.shop/
+Call log:
+  - navigating to "https://movies-fd.shop/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:04.765 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.ngmovies.com.ng/netnaija/tag/indian: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.ngmovies.com.ng/netnaija/tag/indian
+Call log:
+  - navigating to "https://www.ngmovies.com.ng/netnaija/tag/indian", waiting until "domcontentloaded"
+
+2026-09-29 13:03:06.734 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://5movieg.com/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://5movieg.com/
+Call log:
+  - navigating to "https://5movieg.com/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:13.521 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.coolmoviez.forum/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.coolmoviez.forum/
+Call log:
+  - navigating to "https://www.coolmoviez.forum/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:14.660 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html
+Call log:
+  - navigating to "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html", waiting until "domcontentloaded"
+
+2026-09-29 13:03:15.811 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://newhdmovie2.org/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://newhdmovie2.org/
+Call log:
+  - navigating to "https://newhdmovie2.org/", waiting until "domcontentloaded"
+
+2026-09-29 13:03:16.320 | WARNING  | crawler.playwright_crawler:fetch:193 - Playwright fetch failed (1/1) https://mp4moviz.xyz/: Page.goto: net::ERR_CONNECTION_CLOSED at https://mp4moviz.xyz/
+Call log:
+  - navigating to "https://mp4moviz.xyz/", waiting until "domcontentloaded"
+
+{"engine": "playwright", "concurrency": 2, "urls": 52, "successes": 29, "success_rate": 0.5577, "v1_needs_browser_on_success": 0, "latency_s_median": 2.423, "latency_s_p95": 7.859, "latency_s_mean": 3.135, "timeouts": 3, "failure_categories": {"TARGET_CONNECTION": 6, "TIMEOUT": 3, "HTTP_RESPONSE": 2, "UNKNOWN": 12}, "wall_s": 93.1, "upstream_bytes": 8011171, "bytes_per_success": 276247, "proxy_connections": 218, "rss_mb_peak_tree": 1037.4, "rss_mb_mean_tree": 811.8, "max_child_processes": 9, "browser_startup_s": 13.071}
+[v1-engines] selenium: 52 urls
+2026-09-29 13:04:16.347 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://1tamilyogi.show/tamilmv/: WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5f99cc243e3a <unknown>
+#1 0x5f99cbb6de69 <unknown>
+#2 0x5f99cbb55860 <unknown>
+#3 0x5f99cbb554d6 <unknown>
+#4 0x5f99cbb530f6 <unknown>
+#5 0x5f99cbb53a5f <unknown>
+#6 0x5f99cbb62c50 <unknown>
+#7 0x5f99cbb7cbb6 <unknown>
+#8 0x5f99cbb846db <unknown>
+#9 0x5f99cbb541b9 <unknown>
+#10 0x5f99cbb7c91d <unknown>
+#11 0x5f99cbc0e672 <unknown>
+#12 0x5f99cbbb7748 <unknown>
+#13 0x5f99cbbb8511 <unknown>
+#14 0x5f99cc2063c5 <unknown>
+#15 0x5f99cc204bd5 <unknown>
+#16 0x5f99cc1efc55 <unknown>
+#17 0x5f99cc20582a <unknown>
+#18 0x5f99cc1d8329 <unknown>
+#19 0x5f99cc22e248 <unknown>
+#20 0x5f99cc22e3e5 <unknown>
+#21 0x5f99cc242783 <unknown>
+#22 0x7e286649cb84 <unknown>
+#23 0x7e2866529ecc <unknown>
+
+2026-09-29 13:04:36.682 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.tamilprint7.art/: WebDriver error: Message: timeout: Timed out receiving message from renderer: 12.183
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x6062e0a57e3a <unknown>
+#1 0x6062e0381e69 <unknown>
+#2 0x6062e0369860 <unknown>
+#3 0x6062e03694d6 <unknown>
+#4 0x6062e03670f6 <unknown>
+#5 0x6062e0367a5f <unknown>
+#6 0x6062e0376c50 <unknown>
+#7 0x6062e0390bb6 <unknown>
+#8 0x6062e03986db <unknown>
+#9 0x6062e03681b9 <unknown>
+#10 0x6062e039091d <unknown>
+#11 0x6062e0422ad2 <unknown>
+#12 0x6062e03cb748 <unknown>
+#13 0x6062e03cc511 <unknown>
+#14 0x6062e0a1a3c5 <unknown>
+#15 0x6062e0a18bd5 <unknown>
+#16 0x6062e0a03c55 <unknown>
+#17 0x6062e0a1982a <unknown>
+#18 0x6062e09ec329 <unknown>
+#19 0x6062e0a42248 <unknown>
+#20 0x6062e0a423e5 <unknown>
+#21 0x6062e0a56783 <unknown>
+#22 0x7b212849cb84 <unknown>
+#23 0x7b2128529ecc <unknown>
+
+2026-09-29 13:05:01.297 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.moviesdaott.com/: WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x55df40e23e3a <unknown>
+#1 0x55df4074de69 <unknown>
+#2 0x55df40735860 <unknown>
+#3 0x55df407354d6 <unknown>
+#4 0x55df407330f6 <unknown>
+#5 0x55df40733a5f <unknown>
+#6 0x55df40742c50 <unknown>
+#7 0x55df4075cbb6 <unknown>
+#8 0x55df407646db <unknown>
+#9 0x55df407341b9 <unknown>
+#10 0x55df4075c91d <unknown>
+#11 0x55df407ee672 <unknown>
+#12 0x55df40797748 <unknown>
+#13 0x55df40798511 <unknown>
+#14 0x55df40de63c5 <unknown>
+#15 0x55df40de4bd5 <unknown>
+#16 0x55df40dcfc55 <unknown>
+#17 0x55df40de582a <unknown>
+#18 0x55df40db8329 <unknown>
+#19 0x55df40e0e248 <unknown>
+#20 0x55df40e0e3e5 <unknown>
+#21 0x55df40e22783 <unknown>
+#22 0x7b2deda9cb84 <unknown>
+#23 0x7b2dedb29ecc <unknown>
+
+2026-09-29 13:05:37.819 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://tamilprint.co.in/: WebDriver error: Message: timeout: Timed out receiving message from renderer: 13.405
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5df286c91e3a <unknown>
+#1 0x5df2865bbe69 <unknown>
+#2 0x5df2865a3860 <unknown>
+#3 0x5df2865a34d6 <unknown>
+#4 0x5df2865a10f6 <unknown>
+#5 0x5df2865a1a5f <unknown>
+#6 0x5df2865b0c50 <unknown>
+#7 0x5df2865cabb6 <unknown>
+#8 0x5df2865d26db <unknown>
+#9 0x5df2865a21b9 <unknown>
+#10 0x5df2865ca91d <unknown>
+#11 0x5df28665cad2 <unknown>
+#12 0x5df286605748 <unknown>
+#13 0x5df286606511 <unknown>
+#14 0x5df286c543c5 <unknown>
+#15 0x5df286c52bd5 <unknown>
+#16 0x5df286c3dc55 <unknown>
+#17 0x5df286c5382a <unknown>
+#18 0x5df286c26329 <unknown>
+#19 0x5df286c7c248 <unknown>
+#20 0x5df286c7c3e5 <unknown>
+#21 0x5df286c90783 <unknown>
+#22 0x7a5ec0a9cb84 <unknown>
+#23 0x7a5ec0b29ecc <unknown>
+
+2026-09-29 13:05:52.451 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.moviesda.video/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x6086b5aafe3a <unknown>
+#1 0x6086b53d9e69 <unknown>
+#2 0x6086b53d0cf6 <unknown>
+#3 0x6086b53c1d31 <unknown>
+#4 0x6086b53c3a70 <unknown>
+#5 0x6086b53c221a <unknown>
+#6 0x6086b53c18be <unknown>
+#7 0x6086b53c14d6 <unknown>
+#8 0x6086b53bf0f6 <unknown>
+#9 0x6086b53bf920 <unknown>
+#10 0x6086b53dd8f1 <unknown>
+#11 0x6086b547b49b <unknown>
+#12 0x6086b547a7af <unknown>
+#13 0x6086b5423748 <unknown>
+#14 0x6086b5424511 <unknown>
+#15 0x6086b5a723c5 <unknown>
+#16 0x6086b5a70bd5 <unknown>
+#17 0x6086b5a5bc55 <unknown>
+#18 0x6086b5a7182a <unknown>
+#19 0x6086b5a44329 <unknown>
+#20 0x6086b5a9a248 <unknown>
+#21 0x6086b5a9a3e5 <unknown>
+#22 0x6086b5aae783 <unknown>
+#23 0x7b1f6ee9cb84 <unknown>
+#24 0x7b1f6ef29ecc <unknown>
+
+2026-09-29 13:05:55.177 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.moviesda28.com/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5a18e8038e3a <unknown>
+#1 0x5a18e7962e69 <unknown>
+#2 0x5a18e7959cf6 <unknown>
+#3 0x5a18e794ad31 <unknown>
+#4 0x5a18e794ca70 <unknown>
+#5 0x5a18e794b21a <unknown>
+#6 0x5a18e794a8be <unknown>
+#7 0x5a18e794a4d6 <unknown>
+#8 0x5a18e79480f6 <unknown>
+#9 0x5a18e7948920 <unknown>
+#10 0x5a18e79668f1 <unknown>
+#11 0x5a18e7a0449b <unknown>
+#12 0x5a18e7a037af <unknown>
+#13 0x5a18e79ac748 <unknown>
+#14 0x5a18e79ad511 <unknown>
+#15 0x5a18e7ffb3c5 <unknown>
+#16 0x5a18e7ff9bd5 <unknown>
+#17 0x5a18e7fe4c55 <unknown>
+#18 0x5a18e7ffa82a <unknown>
+#19 0x5a18e7fcd329 <unknown>
+#20 0x5a18e8023248 <unknown>
+#21 0x5a18e80233e5 <unknown>
+#22 0x5a18e8037783 <unknown>
+#23 0x7ae05e89cb84 <unknown>
+#24 0x7ae05e929ecc <unknown>
+
+2026-09-29 13:06:20.177 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://kollymovies.city/: WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5fc16397fe3a <unknown>
+#1 0x5fc1632a9e69 <unknown>
+#2 0x5fc163291860 <unknown>
+#3 0x5fc1632914d6 <unknown>
+#4 0x5fc16328f0f6 <unknown>
+#5 0x5fc16328fa5f <unknown>
+#6 0x5fc16329ec50 <unknown>
+#7 0x5fc1632b8bb6 <unknown>
+#8 0x5fc1632c06db <unknown>
+#9 0x5fc1632901b9 <unknown>
+#10 0x5fc1632b891d <unknown>
+#11 0x5fc16334a672 <unknown>
+#12 0x5fc1632f3748 <unknown>
+#13 0x5fc1632f4511 <unknown>
+#14 0x5fc1639423c5 <unknown>
+#15 0x5fc163940bd5 <unknown>
+#16 0x5fc16392bc55 <unknown>
+#17 0x5fc16394182a <unknown>
+#18 0x5fc163914329 <unknown>
+#19 0x5fc16396a248 <unknown>
+#20 0x5fc16396a3e5 <unknown>
+#21 0x5fc16397e783 <unknown>
+#22 0x7a518029cb84 <unknown>
+#23 0x7a5180329ecc <unknown>
+
+2026-09-29 13:06:26.032 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://mp4moviezz.xyz/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x60a81f799e3a <unknown>
+#1 0x60a81f0c3e69 <unknown>
+#2 0x60a81f0bacf6 <unknown>
+#3 0x60a81f0abd31 <unknown>
+#4 0x60a81f0ada70 <unknown>
+#5 0x60a81f0ac21a <unknown>
+#6 0x60a81f0ab8be <unknown>
+#7 0x60a81f0ab4d6 <unknown>
+#8 0x60a81f0a90f6 <unknown>
+#9 0x60a81f0a9920 <unknown>
+#10 0x60a81f0c78f1 <unknown>
+#11 0x60a81f16549b <unknown>
+#12 0x60a81f1647af <unknown>
+#13 0x60a81f10d748 <unknown>
+#14 0x60a81f10e511 <unknown>
+#15 0x60a81f75c3c5 <unknown>
+#16 0x60a81f75abd5 <unknown>
+#17 0x60a81f745c55 <unknown>
+#18 0x60a81f75b82a <unknown>
+#19 0x60a81f72e329 <unknown>
+#20 0x60a81f784248 <unknown>
+#21 0x60a81f7843e5 <unknown>
+#22 0x60a81f798783 <unknown>
+#23 0x7a6409a9cb84 <unknown>
+#24 0x7a6409b29ecc <unknown>
+
+2026-09-29 13:06:31.607 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://moviezz.xyz/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x650a9bbc7e3a <unknown>
+#1 0x650a9b4f1e69 <unknown>
+#2 0x650a9b4e8cf6 <unknown>
+#3 0x650a9b4d9d31 <unknown>
+#4 0x650a9b4dba70 <unknown>
+#5 0x650a9b4da21a <unknown>
+#6 0x650a9b4d98be <unknown>
+#7 0x650a9b4d94d6 <unknown>
+#8 0x650a9b4d70f6 <unknown>
+#9 0x650a9b4d7920 <unknown>
+#10 0x650a9b4f58f1 <unknown>
+#11 0x650a9b59349b <unknown>
+#12 0x650a9b5927af <unknown>
+#13 0x650a9b53b748 <unknown>
+#14 0x650a9b53c511 <unknown>
+#15 0x650a9bb8a3c5 <unknown>
+#16 0x650a9bb88bd5 <unknown>
+#17 0x650a9bb73c55 <unknown>
+#18 0x650a9bb8982a <unknown>
+#19 0x650a9bb5c329 <unknown>
+#20 0x650a9bbb2248 <unknown>
+#21 0x650a9bbb23e5 <unknown>
+#22 0x650a9bbc6783 <unknown>
+#23 0x744c3d69cb84 <unknown>
+#24 0x744c3d729ecc <unknown>
+
+2026-09-29 13:06:33.470 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://movier.xyz/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x64ab46be1e3a <unknown>
+#1 0x64ab4650be69 <unknown>
+#2 0x64ab46502cf6 <unknown>
+#3 0x64ab464f3d31 <unknown>
+#4 0x64ab464f5a70 <unknown>
+#5 0x64ab464f421a <unknown>
+#6 0x64ab464f38be <unknown>
+#7 0x64ab464f34d6 <unknown>
+#8 0x64ab464f10f6 <unknown>
+#9 0x64ab464f1920 <unknown>
+#10 0x64ab4650f8f1 <unknown>
+#11 0x64ab465ad49b <unknown>
+#12 0x64ab465ac7af <unknown>
+#13 0x64ab46555748 <unknown>
+#14 0x64ab46556511 <unknown>
+#15 0x64ab46ba43c5 <unknown>
+#16 0x64ab46ba2bd5 <unknown>
+#17 0x64ab46b8dc55 <unknown>
+#18 0x64ab46ba382a <unknown>
+#19 0x64ab46b76329 <unknown>
+#20 0x64ab46bcc248 <unknown>
+#21 0x64ab46bcc3e5 <unknown>
+#22 0x64ab46be0783 <unknown>
+#23 0x771ac4c9cb84 <unknown>
+#24 0x771ac4d29ecc <unknown>
+
+2026-09-29 13:06:40.269 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://moviepie.xyz/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5c3844401e3a <unknown>
+#1 0x5c3843d2be69 <unknown>
+#2 0x5c3843d22cf6 <unknown>
+#3 0x5c3843d13d31 <unknown>
+#4 0x5c3843d15a70 <unknown>
+#5 0x5c3843d1421a <unknown>
+#6 0x5c3843d138be <unknown>
+#7 0x5c3843d134d6 <unknown>
+#8 0x5c3843d110f6 <unknown>
+#9 0x5c3843d11920 <unknown>
+#10 0x5c3843d2f8f1 <unknown>
+#11 0x5c3843dcd49b <unknown>
+#12 0x5c3843dcc7af <unknown>
+#13 0x5c3843d75748 <unknown>
+#14 0x5c3843d76511 <unknown>
+#15 0x5c38443c43c5 <unknown>
+#16 0x5c38443c2bd5 <unknown>
+#17 0x5c38443adc55 <unknown>
+#18 0x5c38443c382a <unknown>
+#19 0x5c3844396329 <unknown>
+#20 0x5c38443ec248 <unknown>
+#21 0x5c38443ec3e5 <unknown>
+#22 0x5c3844400783 <unknown>
+#23 0x7fce3449cb84 <unknown>
+#24 0x7fce34529ecc <unknown>
+
+2026-09-29 13:06:42.562 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://movies-fd.shop/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x63091be50e3a <unknown>
+#1 0x63091b77ae69 <unknown>
+#2 0x63091b771cf6 <unknown>
+#3 0x63091b762d31 <unknown>
+#4 0x63091b764a70 <unknown>
+#5 0x63091b76321a <unknown>
+#6 0x63091b7628be <unknown>
+#7 0x63091b7624d6 <unknown>
+#8 0x63091b7600f6 <unknown>
+#9 0x63091b760920 <unknown>
+#10 0x63091b77e8f1 <unknown>
+#11 0x63091b81c49b <unknown>
+#12 0x63091b81b7af <unknown>
+#13 0x63091b7c4748 <unknown>
+#14 0x63091b7c5511 <unknown>
+#15 0x63091be133c5 <unknown>
+#16 0x63091be11bd5 <unknown>
+#17 0x63091bdfcc55 <unknown>
+#18 0x63091be1282a <unknown>
+#19 0x63091bde5329 <unknown>
+#20 0x63091be3b248 <unknown>
+#21 0x63091be3b3e5 <unknown>
+#22 0x63091be4f783 <unknown>
+#23 0x7a560ca9cb84 <unknown>
+#24 0x7a560cb29ecc <unknown>
+
+2026-09-29 13:06:48.982 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.ngmovies.com.ng/netnaija/tag/indian: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5b984c5fae3a <unknown>
+#1 0x5b984bf24e69 <unknown>
+#2 0x5b984bf1bcf6 <unknown>
+#3 0x5b984bf0cd31 <unknown>
+#4 0x5b984bf0ea70 <unknown>
+#5 0x5b984bf0d21a <unknown>
+#6 0x5b984bf0c8be <unknown>
+#7 0x5b984bf0c4d6 <unknown>
+#8 0x5b984bf0a0f6 <unknown>
+#9 0x5b984bf0a920 <unknown>
+#10 0x5b984bf288f1 <unknown>
+#11 0x5b984bfc649b <unknown>
+#12 0x5b984bfc57af <unknown>
+#13 0x5b984bf6e748 <unknown>
+#14 0x5b984bf6f511 <unknown>
+#15 0x5b984c5bd3c5 <unknown>
+#16 0x5b984c5bbbd5 <unknown>
+#17 0x5b984c5a6c55 <unknown>
+#18 0x5b984c5bc82a <unknown>
+#19 0x5b984c58f329 <unknown>
+#20 0x5b984c5e5248 <unknown>
+#21 0x5b984c5e53e5 <unknown>
+#22 0x5b984c5f9783 <unknown>
+#23 0x7841bde9cb84 <unknown>
+#24 0x7841bdf29ecc <unknown>
+
+2026-09-29 13:07:07.841 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://mp4moviz.xyz/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5c5dada97e3a <unknown>
+#1 0x5c5dad3c1e69 <unknown>
+#2 0x5c5dad3b8cf6 <unknown>
+#3 0x5c5dad3a9d31 <unknown>
+#4 0x5c5dad3aba70 <unknown>
+#5 0x5c5dad3aa21a <unknown>
+#6 0x5c5dad3a98be <unknown>
+#7 0x5c5dad3a94d6 <unknown>
+#8 0x5c5dad3a70f6 <unknown>
+#9 0x5c5dad3a7920 <unknown>
+#10 0x5c5dad3c58f1 <unknown>
+#11 0x5c5dad46349b <unknown>
+#12 0x5c5dad4627af <unknown>
+#13 0x5c5dad40b748 <unknown>
+#14 0x5c5dad40c511 <unknown>
+#15 0x5c5dada5a3c5 <unknown>
+#16 0x5c5dada58bd5 <unknown>
+#17 0x5c5dada43c55 <unknown>
+#18 0x5c5dada5982a <unknown>
+#19 0x5c5dada2c329 <unknown>
+#20 0x5c5dada82248 <unknown>
+#21 0x5c5dada823e5 <unknown>
+#22 0x5c5dada96783 <unknown>
+#23 0x716dcf89cb84 <unknown>
+#24 0x716dcf929ecc <unknown>
+
+2026-09-29 13:07:10.007 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://5movieg.com/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5d49db61ee3a <unknown>
+#1 0x5d49daf48e69 <unknown>
+#2 0x5d49daf3fcf6 <unknown>
+#3 0x5d49daf30d31 <unknown>
+#4 0x5d49daf32a70 <unknown>
+#5 0x5d49daf3121a <unknown>
+#6 0x5d49daf308be <unknown>
+#7 0x5d49daf304d6 <unknown>
+#8 0x5d49daf2e0f6 <unknown>
+#9 0x5d49daf2e920 <unknown>
+#10 0x5d49daf4c8f1 <unknown>
+#11 0x5d49dafea49b <unknown>
+#12 0x5d49dafe97af <unknown>
+#13 0x5d49daf92748 <unknown>
+#14 0x5d49daf93511 <unknown>
+#15 0x5d49db5e13c5 <unknown>
+#16 0x5d49db5dfbd5 <unknown>
+#17 0x5d49db5cac55 <unknown>
+#18 0x5d49db5e082a <unknown>
+#19 0x5d49db5b3329 <unknown>
+#20 0x5d49db609248 <unknown>
+#21 0x5d49db6093e5 <unknown>
+#22 0x5d49db61d783 <unknown>
+#23 0x77f37f89cb84 <unknown>
+#24 0x77f37f929ecc <unknown>
+
+2026-09-29 13:07:18.185 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.coolmoviez.forum/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x5f2132c42e3a <unknown>
+#1 0x5f213256ce69 <unknown>
+#2 0x5f2132563cf6 <unknown>
+#3 0x5f2132554d31 <unknown>
+#4 0x5f2132556a70 <unknown>
+#5 0x5f213255521a <unknown>
+#6 0x5f21325548be <unknown>
+#7 0x5f21325544d6 <unknown>
+#8 0x5f21325520f6 <unknown>
+#9 0x5f2132552920 <unknown>
+#10 0x5f21325708f1 <unknown>
+#11 0x5f213260e49b <unknown>
+#12 0x5f213260d7af <unknown>
+#13 0x5f21325b6748 <unknown>
+#14 0x5f21325b7511 <unknown>
+#15 0x5f2132c053c5 <unknown>
+#16 0x5f2132c03bd5 <unknown>
+#17 0x5f2132beec55 <unknown>
+#18 0x5f2132c0482a <unknown>
+#19 0x5f2132bd7329 <unknown>
+#20 0x5f2132c2d248 <unknown>
+#21 0x5f2132c2d3e5 <unknown>
+#22 0x5f2132c41783 <unknown>
+#23 0x714126a9cb84 <unknown>
+#24 0x714126b29ecc <unknown>
+
+2026-09-29 13:07:20.597 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x56d771bb4e3a <unknown>
+#1 0x56d7714dee69 <unknown>
+#2 0x56d7714d5cf6 <unknown>
+#3 0x56d7714c6d31 <unknown>
+#4 0x56d7714c8a70 <unknown>
+#5 0x56d7714c721a <unknown>
+#6 0x56d7714c68be <unknown>
+#7 0x56d7714c64d6 <unknown>
+#8 0x56d7714c40f6 <unknown>
+#9 0x56d7714c4920 <unknown>
+#10 0x56d7714e28f1 <unknown>
+#11 0x56d77158049b <unknown>
+#12 0x56d77157f7af <unknown>
+#13 0x56d771528748 <unknown>
+#14 0x56d771529511 <unknown>
+#15 0x56d771b773c5 <unknown>
+#16 0x56d771b75bd5 <unknown>
+#17 0x56d771b60c55 <unknown>
+#18 0x56d771b7682a <unknown>
+#19 0x56d771b49329 <unknown>
+#20 0x56d771b9f248 <unknown>
+#21 0x56d771b9f3e5 <unknown>
+#22 0x56d771bb3783 <unknown>
+#23 0x72e4ac09cb84 <unknown>
+#24 0x72e4ac129ecc <unknown>
+
+2026-09-29 13:07:22.398 | WARNING  | crawler.selenium_crawler:fetch:148 - Selenium fetch failed (1/1) https://newhdmovie2.org/: WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED
+  (Session info: chrome=154.0.8037.57)
+Stacktrace:
+#0 0x571f0fe7be3a <unknown>
+#1 0x571f0f7a5e69 <unknown>
+#2 0x571f0f79ccf6 <unknown>
+#3 0x571f0f78dd31 <unknown>
+#4 0x571f0f78fa70 <unknown>
+#5 0x571f0f78e21a <unknown>
+#6 0x571f0f78d8be <unknown>
+#7 0x571f0f78d4d6 <unknown>
+#8 0x571f0f78b0f6 <unknown>
+#9 0x571f0f78b920 <unknown>
+#10 0x571f0f7a98f1 <unknown>
+#11 0x571f0f84749b <unknown>
+#12 0x571f0f8467af <unknown>
+#13 0x571f0f7ef748 <unknown>
+#14 0x571f0f7f0511 <unknown>
+#15 0x571f0fe3e3c5 <unknown>
+#16 0x571f0fe3cbd5 <unknown>
+#17 0x571f0fe27c55 <unknown>
+#18 0x571f0fe3d82a <unknown>
+#19 0x571f0fe10329 <unknown>
+#20 0x571f0fe66248 <unknown>
+#21 0x571f0fe663e5 <unknown>
+#22 0x571f0fe7a783 <unknown>
+#23 0x7f9eab09cb84 <unknown>
+#24 0x7f9eab129ecc <unknown>
+
+{"engine": "selenium", "concurrency": 1, "urls": 52, "successes": 34, "success_rate": 0.6538, "v1_needs_browser_on_success": 0, "latency_s_median": 2.349, "latency_s_p95": 6.107, "latency_s_mean": 2.993, "timeouts": 5, "failure_categories": {"TIMEOUT": 5, "ENGINE_FAILURE": 13}, "wall_s": 223.9, "upstream_bytes": 15893525, "bytes_per_success": 467457, "proxy_connections": 1084, "rss_mb_peak_tree": 1557.6, "rss_mb_mean_tree": 1075.3, "max_child_processes": 14, "browser_startup_s": 0.266, "pages_per_browser_process": 1}
+[v1-engines] scrapling: 52 urls
+[2026-09-29 13:07:52] INFO: Fetched (200) <GET https://www.isaimini.spot/> (referer: https://www.google.com/)
+[2026-09-29 13:07:54] WARNING: Attempt 1 failed: Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/
+Call log:
+  - navigating to "https://kuttymovies1.fit/", waiting until "load"
+. Retrying in 1s...
+[2026-09-29 13:07:57] WARNING: Attempt 2 failed: Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/
+Call log:
+  - navigating to "https://kuttymovies1.fit/", waiting until "load"
+. Retrying in 1s...
+[2026-09-29 13:07:59] ERROR: Failed after 3 attempts: Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/
+Call log:
+  - navigating to "https://kuttymovies1.fit/", waiting until "load"
+
+2026-09-29 13:08:02.095 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://kuttymovies1.fit/: Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/
+Call log:
+  - navigating to "https://kuttymovies1.fit/", waiting until "load"
+
+[2026-09-29 13:08:09] INFO: Fetched (301) <GET https://www.1tamilmv.army/> (referer: https://www.google.com/)
+[2026-09-29 13:08:09] INFO: Fetched (200) <GET https://www.1tamilmv.lease/> (referer: https://www.google.com/)
+[2026-09-29 13:08:19] WARNING: Attempt 1 failed: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://isaidub.love/", waiting until "load"
+. Retrying in 1s...
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidubtamil.me/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidubtamil.com/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidubweb.me/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidubweb.net/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidubweb.com/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (301) <GET https://isaidub.love/> (referer: https://www.google.com/)
+[2026-09-29 13:08:27] INFO: Fetched (200) <GET https://isaiidub.com/> (referer: https://www.google.com/)
+[2026-09-29 13:08:28] INFO: Fetched (522) <GET https://1tamilyogi.show/tamilmv/> (referer: https://www.google.com/)
+[2026-09-29 13:08:30] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:08:32] INFO: Fetched (200) <GET https://tamilprint.com.in/> (referer: https://www.google.com/)
+[2026-09-29 13:08:41] INFO: Fetched (200) <GET https://tamilprint.com.in/tamilprint-dubbed-movies/> (referer: https://www.google.com/)
+[2026-09-29 13:08:48] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:08:51] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:09:02] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:09:09] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:09:22] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.tamilprinthd.art/", waiting until "load"
+
+2026-09-29 13:09:22.534 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.tamilprinthd.art/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.tamilprinthd.art/", waiting until "load"
+
+[2026-09-29 13:09:23] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:09:40] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.tamilprint7.art/", waiting until "load"
+
+2026-09-29 13:09:40.966 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.tamilprint7.art/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.tamilprint7.art/", waiting until "load"
+
+[2026-09-29 13:09:45] INFO: Fetched (522) <GET https://www.moviesdaott.com/> (referer: https://www.google.com/)
+[2026-09-29 13:09:46] INFO: Fetched (200) <GET https://moviesda.com.in/> (referer: https://www.google.com/)
+[2026-09-29 13:09:50] INFO: Fetched (301) <GET https://www.moviesda.farm/> (referer: https://www.google.com/)
+[2026-09-29 13:09:50] INFO: Fetched (307) <GET https://www.isaimini.win/> (referer: https://www.google.com/)
+[2026-09-29 13:09:50] INFO: Fetched (301) <GET https://www.moviesda.farm/> (referer: https://www.google.com/)
+[2026-09-29 13:09:50] INFO: Fetched (403) <GET https://www.isaimini.win/> (referer: https://www.google.com/)
+[2026-09-29 13:09:51] INFO: Fetched (200) <GET https://www.moviesda.business/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:09:54] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.moviesda.red/", waiting until "load"
+
+2026-09-29 13:09:54.392 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.moviesda.red/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.moviesda.red/", waiting until "load"
+
+[2026-09-29 13:09:54] INFO: Fetched (200) <GET https://mantrimalgame.com/cgi-sys/defaultwebpage.cgi> (referer: https://www.google.com/)
+[2026-09-29 13:09:56] WARNING: Attempt 1 failed: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.isaimini.farm/?m=1
+Call log:
+  - navigating to "https://www.isaimini.farm/?m=1", waiting until "load"
+. Retrying in 1s...
+[2026-09-29 13:09:58] INFO: Fetched (200) <GET https://moviesda16.best/> (referer: https://www.google.com/)
+[2026-09-29 13:09:58] WARNING: Attempt 2 failed: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.isaimini.farm/?m=1
+Call log:
+  - navigating to "https://www.isaimini.farm/?m=1", waiting until "load"
+. Retrying in 1s...
+[2026-09-29 13:09:58] INFO: Fetched (200) <GET https://isaimini.com.in/> (referer: https://www.google.com/)
+[2026-09-29 13:10:01] INFO: Fetched (200) <GET https://isaiminimix.com/> (referer: https://www.google.com/)
+[2026-09-29 13:10:01] INFO: Fetched (200) <GET https://tamilprint.co.in/> (referer: https://www.google.com/)
+[2026-09-29 13:10:04] INFO: Fetched (404) <GET https://moviesda.baby/> (referer: https://www.google.com/)
+[2026-09-29 13:10:04] INFO: Fetched (301) <GET https://www.isaimini.site/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:10:04] INFO: Fetched (301) <GET https://www.isaimini.farm/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:10:04] INFO: Fetched (200) <GET https://www.isaimini.dog/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:10:09] ERROR: Error getting page content: Response.body: Protocol error (Network.getResponseBody): No resource with given identifier found
+Response body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.
+[2026-09-29 13:10:09] INFO: Fetched (204) <GET https://qyvir.com/go/2951264?m=1&ref=www.google.com&subid1=www.google.com&subid2=moviesda.uk> (referer: https://www.google.com/)
+[2026-09-29 13:10:12] INFO: Fetched (200) <GET https://www.moviesda.info/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:10:14] INFO: Fetched (200) <GET https://tamilprinttv.com/> (referer: https://www.google.com/)
+[2026-09-29 13:10:22] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:10:25] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:10:35] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:10:43] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:10:46] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:10:56] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:14] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.isaimini.vu/", waiting until "load"
+
+2026-09-29 13:11:14.362 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.isaimini.vu/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.isaimini.vu/", waiting until "load"
+
+[2026-09-29 13:11:17] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://xn--3-lve1d0cya6hb2e.com/", waiting until "load"
+
+2026-09-29 13:11:17.281 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://xn--3-lve1d0cya6hb2e.com/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://xn--3-lve1d0cya6hb2e.com/", waiting until "load"
+
+[2026-09-29 13:11:21] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:22] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:23] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda28.com/
+Call log:
+  - navigating to "https://www.moviesda28.com/", waiting until "load"
+
+2026-09-29 13:11:24.066 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.moviesda28.com/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda28.com/
+Call log:
+  - navigating to "https://www.moviesda28.com/", waiting until "load"
+
+[2026-09-29 13:11:27] ERROR: Failed after 3 attempts: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.moviesda.video/", waiting until "load"
+
+2026-09-29 13:11:27.228 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.moviesda.video/: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.moviesda.video/", waiting until "load"
+
+[2026-09-29 13:11:27] INFO: Fetched (200) <GET https://www.moviesda.net.in/?m=1> (referer: https://www.google.com/)
+[2026-09-29 13:11:35] INFO: Fetched (301) <GET https://www.isaimini.vu/6/category/tamil-movies/default.html> (referer: https://www.google.com/)
+[2026-09-29 13:11:35] INFO: Fetched (200) <GET https://www.isaimini.doctor/6/category/tamil-movies/default.html> (referer: https://www.google.com/)
+[2026-09-29 13:11:38] INFO: Fetched (200) <GET https://xn--mlc3avm5adt5g.net/> (referer: https://www.google.com/)
+[2026-09-29 13:11:39] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:42] INFO: Fetched (502) <GET https://qyvir.com/go/3115817?ref=www.google.com&subid1=www.google.com&subid2=moviesda17.com&fid=1454296178> (referer: https://www.google.com/)
+[2026-09-29 13:11:43] INFO: Fetched (301) <GET https://tamilrockers.cfd/> (referer: https://www.google.com/)
+[2026-09-29 13:11:43] INFO: Fetched (301) <GET https://tamilrockers.website/> (referer: https://www.google.com/)
+[2026-09-29 13:11:43] INFO: Fetched (200) <GET https://tamilrockerss.cfd/> (referer: https://www.google.com/)
+[2026-09-29 13:11:43] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:44] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:45] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviezz.xyz/
+Call log:
+  - navigating to "https://mp4moviezz.xyz/", waiting until "load"
+
+2026-09-29 13:11:45.867 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://mp4moviezz.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviezz.xyz/
+Call log:
+  - navigating to "https://mp4moviezz.xyz/", waiting until "load"
+
+[2026-09-29 13:11:47] INFO: Fetched (301) <GET https://moviesrace.xyz/> (referer: https://www.google.com/)
+[2026-09-29 13:11:47] INFO: Fetched (200) <GET https://expireddomains.com/domain/moviesrace.xyz?utm_source=redi> (referer: https://www.google.com/)
+[2026-09-29 13:11:47] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:47] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:48] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:48] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:49] INFO: Fetched (522) <GET https://kollymovies.city/> (referer: https://www.google.com/)
+[2026-09-29 13:11:49] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviezz.xyz/
+Call log:
+  - navigating to "https://moviezz.xyz/", waiting until "load"
+
+2026-09-29 13:11:50.095 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://moviezz.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviezz.xyz/
+Call log:
+  - navigating to "https://moviezz.xyz/", waiting until "load"
+
+[2026-09-29 13:11:50] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movier.xyz/
+Call log:
+  - navigating to "https://movier.xyz/", waiting until "load"
+
+2026-09-29 13:11:50.237 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://movier.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movier.xyz/
+Call log:
+  - navigating to "https://movier.xyz/", waiting until "load"
+
+[2026-09-29 13:11:52] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:53] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:53] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:11:54] INFO: Fetched (200) <GET https://www.stripemovies.com/> (referer: https://www.google.com/)
+[2026-09-29 13:11:54] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movies-fd.shop/
+Call log:
+  - navigating to "https://movies-fd.shop/", waiting until "load"
+
+2026-09-29 13:11:54.669 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://movies-fd.shop/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movies-fd.shop/
+Call log:
+  - navigating to "https://movies-fd.shop/", waiting until "load"
+
+[2026-09-29 13:11:56] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:11:58] INFO: Fetched (200) <GET https://moviedrivebd.com/> (referer: https://www.google.com/)
+[2026-09-29 13:11:58] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviepie.xyz/
+Call log:
+  - navigating to "https://moviepie.xyz/", waiting until "load"
+
+2026-09-29 13:11:58.314 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://moviepie.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviepie.xyz/
+Call log:
+  - navigating to "https://moviepie.xyz/", waiting until "load"
+
+[2026-09-29 13:11:58] INFO: Fetched (200) <GET https://movflix.my/> (referer: https://www.google.com/)
+[2026-09-29 13:11:59] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:00] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:01] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.ngmovies.com.ng/netnaija/tag/indian
+Call log:
+  - navigating to "https://www.ngmovies.com.ng/netnaija/tag/indian", waiting until "load"
+
+2026-09-29 13:12:01.446 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.ngmovies.com.ng/netnaija/tag/indian: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.ngmovies.com.ng/netnaija/tag/indian
+Call log:
+  - navigating to "https://www.ngmovies.com.ng/netnaija/tag/indian", waiting until "load"
+
+[2026-09-29 13:12:01] INFO: Fetched (200) <GET https://www.gofullmovies.com/> (referer: https://www.google.com/)
+[2026-09-29 13:12:03] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:04] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:05] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://5movieg.com/
+Call log:
+  - navigating to "https://5movieg.com/", waiting until "load"
+
+2026-09-29 13:12:06.110 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://5movieg.com/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://5movieg.com/
+Call log:
+  - navigating to "https://5movieg.com/", waiting until "load"
+
+[2026-09-29 13:12:06] INFO: Fetched (301) <GET https://www.mp4moviez4.com/> (referer: https://www.google.com/)
+[2026-09-29 13:12:06] INFO: Fetched (301) <GET https://www.mp4moviez.diet/> (referer: https://www.google.com/)
+[2026-09-29 13:12:06] INFO: Fetched (200) <GET https://www.mp4moviez5.com/> (referer: https://www.google.com/)
+[2026-09-29 13:12:07] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:09] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:09] INFO: Fetched (200) <GET https://www.tamilrockers2024.com/> (referer: https://www.google.com/)
+[2026-09-29 13:12:09] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:10] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.coolmoviez.forum/
+Call log:
+  - navigating to "https://www.coolmoviez.forum/", waiting until "load"
+
+2026-09-29 13:12:10.314 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.coolmoviez.forum/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.coolmoviez.forum/
+Call log:
+  - navigating to "https://www.coolmoviez.forum/", waiting until "load"
+
+[2026-09-29 13:12:10] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:12] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html
+Call log:
+  - navigating to "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html", waiting until "load"
+
+2026-09-29 13:12:12.316 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html
+Call log:
+  - navigating to "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html", waiting until "load"
+
+[2026-09-29 13:12:12] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:13] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:14] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://newhdmovie2.org/
+Call log:
+  - navigating to "https://newhdmovie2.org/", waiting until "load"
+
+2026-09-29 13:12:14.899 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://newhdmovie2.org/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://newhdmovie2.org/
+Call log:
+  - navigating to "https://newhdmovie2.org/", waiting until "load"
+
+[2026-09-29 13:12:16] WARNING: Proxy 'None' failed (attempt 1) | Retrying in 1s...
+[2026-09-29 13:12:21] WARNING: Proxy 'None' failed (attempt 2) | Retrying in 1s...
+[2026-09-29 13:12:25] ERROR: Failed after 3 attempts: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviz.xyz/
+Call log:
+  - navigating to "https://mp4moviz.xyz/", waiting until "load"
+
+2026-09-29 13:12:25.452 | WARNING  | crawler.scrapling_crawler:fetch:132 - Scrapling fetch failed (1/1) https://mp4moviz.xyz/: Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviz.xyz/
+Call log:
+  - navigating to "https://mp4moviz.xyz/", waiting until "load"
+
+{"engine": "scrapling", "concurrency": 3, "urls": 52, "successes": 26, "success_rate": 0.5, "v1_needs_browser_on_success": 0, "latency_s_median": 3.987, "latency_s_p95": 29.66, "latency_s_mean": 9.065, "timeouts": 6, "failure_categories": {"TARGET_CONNECTION": 1, "HTTP_RESPONSE": 7, "TIMEOUT": 6, "UNKNOWN": 12}, "wall_s": 303.1, "upstream_bytes": 20719798, "bytes_per_success": 796915, "proxy_connections": 720, "rss_mb_peak_tree": 3839.6, "rss_mb_mean_tree": 2940.4, "max_child_processes": 32}

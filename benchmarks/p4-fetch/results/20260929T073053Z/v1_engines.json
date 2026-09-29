@@ -1,0 +1,1995 @@
+{
+ "workload": "/home/dhanush/anti_piracy/crawler2/benchmarks/p4-fetch/../v1-baseline/seeds.txt",
+ "timeout_s": 15,
+ "user_agent": "AntiPiracyBot/1.0",
+ "proxy_errors": 372,
+ "engines": [
+  {
+   "engine": "async",
+   "concurrency": 50,
+   "urls": 52,
+   "successes": 22,
+   "success_rate": 0.4231,
+   "v1_needs_browser_on_success": 0,
+   "latency_s_median": 1.51,
+   "latency_s_p95": 3.028,
+   "latency_s_mean": 1.849,
+   "timeouts": 0,
+   "failure_categories": {
+    "HTTP_RESPONSE": 2,
+    "TARGET_CONNECTION": 14,
+    "UNKNOWN": 14
+   },
+   "wall_s": 16.8,
+   "upstream_bytes": 671544,
+   "bytes_per_success": 30525,
+   "proxy_connections": 71,
+   "rss_mb_peak_tree": 107.5,
+   "rss_mb_mean_tree": 106.0,
+   "max_child_processes": 0,
+   "rows": [
+    {
+     "url": "https://1tamilyogi.show/tamilmv/",
+     "ok": false,
+     "latency_s": 16.806,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://5movieg.com/",
+     "ok": false,
+     "latency_s": 2.243,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://isaidub.love/",
+     "ok": true,
+     "latency_s": 7.468,
+     "html_chars": 9910,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://isaimini.com.in/",
+     "ok": true,
+     "latency_s": 1.227,
+     "html_chars": 176793,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://isaiminimix.com/",
+     "ok": true,
+     "latency_s": 1.115,
+     "html_chars": 62250,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://kollymovies.city/",
+     "ok": false,
+     "latency_s": 16.801,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://kuttymovies1.fit/",
+     "ok": false,
+     "latency_s": 2.27,
+     "html_chars": 0,
+     "error": "Cannot connect to host kuttymovies1.free:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://mantrimalgame.com/",
+     "ok": true,
+     "latency_s": 1.563,
+     "html_chars": 163,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://movflix.my/",
+     "ok": true,
+     "latency_s": 1.841,
+     "html_chars": 150056,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviedrivebd.com/",
+     "ok": false,
+     "latency_s": 2.163,
+     "html_chars": 0,
+     "error": "Cannot connect to host moviedrivebd.com:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://moviepie.xyz/",
+     "ok": false,
+     "latency_s": 5.592,
+     "html_chars": 0,
+     "error": "Cannot connect to host theflixmovie.com:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://movier.xyz/",
+     "ok": false,
+     "latency_s": 1.432,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movies-fd.shop/",
+     "ok": false,
+     "latency_s": 1.541,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviesda.baby/",
+     "ok": false,
+     "latency_s": 0.511,
+     "html_chars": 0,
+     "error": "HTTP 404",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://moviesda.com.in/",
+     "ok": true,
+     "latency_s": 1.539,
+     "html_chars": 221987,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviesda16.best/",
+     "ok": true,
+     "latency_s": 1.06,
+     "html_chars": 19209,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviesda17.com/",
+     "ok": false,
+     "latency_s": 2.101,
+     "html_chars": 0,
+     "error": "Cannot connect to host moviesda17.com:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://moviesrace.xyz/",
+     "ok": true,
+     "latency_s": 3.028,
+     "html_chars": 41080,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.416,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.449,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviz.xyz/",
+     "ok": false,
+     "latency_s": 1.947,
+     "html_chars": 0,
+     "error": "Cannot connect to host mp4moviz.xyz:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://newhdmovie2.org/",
+     "ok": false,
+     "latency_s": 1.272,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://tamilprint.co.in/",
+     "ok": true,
+     "latency_s": 1.398,
+     "html_chars": 102186,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprint.com.in/",
+     "ok": true,
+     "latency_s": 1.76,
+     "html_chars": 177534,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "ok": true,
+     "latency_s": 1.51,
+     "html_chars": 265212,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprinttv.com/",
+     "ok": true,
+     "latency_s": 1.033,
+     "html_chars": 4651,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilrockers.website/",
+     "ok": false,
+     "latency_s": 2.238,
+     "html_chars": 0,
+     "error": "Cannot connect to host tamilrockerss.cfd:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.1tamilmv.army/",
+     "ok": true,
+     "latency_s": 1.505,
+     "html_chars": 426884,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.coolmoviez.forum/",
+     "ok": false,
+     "latency_s": 2.018,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+     "ok": false,
+     "latency_s": 1.192,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.gofullmovies.com/",
+     "ok": true,
+     "latency_s": 2.613,
+     "html_chars": 70409,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.isaimini.farm/?m=1",
+     "ok": false,
+     "latency_s": 1.282,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.isaimini.farm:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.isaimini.spot/",
+     "ok": false,
+     "latency_s": 1.385,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.isaimini.spot:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.isaimini.vu/",
+     "ok": false,
+     "latency_s": 1.383,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.isaimini.vu:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.isaimini.vu/6/category/tamil-movies/default.html",
+     "ok": true,
+     "latency_s": 1.556,
+     "html_chars": 14759,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "ok": true,
+     "latency_s": 0.795,
+     "html_chars": 336176,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.farm/",
+     "ok": false,
+     "latency_s": 0.856,
+     "html_chars": 0,
+     "error": "HTTP 403",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.moviesda.info/?m=1",
+     "ok": true,
+     "latency_s": 1.064,
+     "html_chars": 23410,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.net.in/?m=1",
+     "ok": true,
+     "latency_s": 1.202,
+     "html_chars": 23418,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.red/",
+     "ok": false,
+     "latency_s": 2.445,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.moviesda.talk:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.moviesda.uk/?m=1",
+     "ok": false,
+     "latency_s": 1.785,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.moviesda.uk:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.moviesda.video/",
+     "ok": false,
+     "latency_s": 1.391,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesda28.com/",
+     "ok": false,
+     "latency_s": 1.58,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesdaott.com/",
+     "ok": false,
+     "latency_s": 16.805,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.mp4moviez.diet/",
+     "ok": true,
+     "latency_s": 2.72,
+     "html_chars": 35627,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+     "ok": false,
+     "latency_s": 1.597,
+     "html_chars": 0,
+     "error": "502, message='Bad Gateway', url='http://127.0.0.1:45665'",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.stripemovies.com/",
+     "ok": true,
+     "latency_s": 2.204,
+     "html_chars": 74819,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.tamilprint7.art/",
+     "ok": false,
+     "latency_s": 1.977,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.tamilprint58.art:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.tamilprinthd.art/",
+     "ok": false,
+     "latency_s": 1.223,
+     "html_chars": 0,
+     "error": "Cannot connect to host www.tamilprinthd.art:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "ok": true,
+     "latency_s": 1.518,
+     "html_chars": 174481,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://xn--3-lve1d0cya6hb2e.com/",
+     "ok": false,
+     "latency_s": 1.875,
+     "html_chars": 0,
+     "error": "Cannot connect to host xn--3-lve1d0cya6hb2e.com:443 ssl:default [None]",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://xn--mlc3avm5adt5g.net/",
+     "ok": true,
+     "latency_s": 0.948,
+     "html_chars": 5577,
+     "v1_needs_browser": false
+    }
+   ]
+  },
+  {
+   "engine": "http",
+   "concurrency": 10,
+   "urls": 52,
+   "successes": 26,
+   "success_rate": 0.5,
+   "v1_needs_browser_on_success": 0,
+   "latency_s_median": 1.13,
+   "latency_s_p95": 2.152,
+   "latency_s_mean": 1.295,
+   "timeouts": 0,
+   "failure_categories": {
+    "UNKNOWN": 24,
+    "HTTP_RESPONSE": 2
+   },
+   "wall_s": 20.5,
+   "upstream_bytes": 751045,
+   "bytes_per_success": 28886,
+   "proxy_connections": 76,
+   "rss_mb_peak_tree": 111.3,
+   "rss_mb_mean_tree": 111.2,
+   "max_child_processes": 0,
+   "rows": [
+    {
+     "url": "https://1tamilyogi.show/tamilmv/",
+     "ok": false,
+     "latency_s": 16.186,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://5movieg.com/",
+     "ok": false,
+     "latency_s": 1.499,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://isaidub.love/",
+     "ok": true,
+     "latency_s": 4.953,
+     "html_chars": 9910,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://isaimini.com.in/",
+     "ok": true,
+     "latency_s": 0.83,
+     "html_chars": 176793,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://isaiminimix.com/",
+     "ok": true,
+     "latency_s": 0.563,
+     "html_chars": 62250,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://kollymovies.city/",
+     "ok": false,
+     "latency_s": 16.183,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://kuttymovies1.fit/",
+     "ok": false,
+     "latency_s": 1.791,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mantrimalgame.com/",
+     "ok": true,
+     "latency_s": 1.176,
+     "html_chars": 163,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://movflix.my/",
+     "ok": true,
+     "latency_s": 1.11,
+     "html_chars": 150056,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviedrivebd.com/",
+     "ok": false,
+     "latency_s": 1.317,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviepie.xyz/",
+     "ok": false,
+     "latency_s": 3.045,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movier.xyz/",
+     "ok": false,
+     "latency_s": 1.12,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movies-fd.shop/",
+     "ok": false,
+     "latency_s": 1.107,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviesda.baby/",
+     "ok": false,
+     "latency_s": 0.196,
+     "html_chars": 0,
+     "error": "HTTP 404",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://moviesda.com.in/",
+     "ok": true,
+     "latency_s": 1.798,
+     "html_chars": 221987,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviesda16.best/",
+     "ok": true,
+     "latency_s": 1.148,
+     "html_chars": 19209,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviesda17.com/",
+     "ok": false,
+     "latency_s": 1.255,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviesrace.xyz/",
+     "ok": true,
+     "latency_s": 1.671,
+     "html_chars": 41080,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.115,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.112,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviz.xyz/",
+     "ok": false,
+     "latency_s": 1.427,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://newhdmovie2.org/",
+     "ok": false,
+     "latency_s": 1.185,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://tamilprint.co.in/",
+     "ok": true,
+     "latency_s": 1.107,
+     "html_chars": 102186,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprint.com.in/",
+     "ok": true,
+     "latency_s": 1.453,
+     "html_chars": 177519,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "ok": true,
+     "latency_s": 1.312,
+     "html_chars": 265212,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilprinttv.com/",
+     "ok": true,
+     "latency_s": 0.483,
+     "html_chars": 4651,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://tamilrockers.website/",
+     "ok": false,
+     "latency_s": 1.76,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.1tamilmv.army/",
+     "ok": false,
+     "latency_s": 1.628,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.coolmoviez.forum/",
+     "ok": false,
+     "latency_s": 1.117,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+     "ok": false,
+     "latency_s": 1.142,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.gofullmovies.com/",
+     "ok": true,
+     "latency_s": 0.985,
+     "html_chars": 70409,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.isaimini.farm/?m=1",
+     "ok": true,
+     "latency_s": 1.742,
+     "html_chars": 352108,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.isaimini.spot/",
+     "ok": true,
+     "latency_s": 1.023,
+     "html_chars": 5974,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.isaimini.vu/",
+     "ok": true,
+     "latency_s": 1.446,
+     "html_chars": 18551,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.isaimini.vu/6/category/tamil-movies/default.html",
+     "ok": true,
+     "latency_s": 0.703,
+     "html_chars": 14759,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "ok": true,
+     "latency_s": 0.587,
+     "html_chars": 336176,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.farm/",
+     "ok": false,
+     "latency_s": 0.765,
+     "html_chars": 0,
+     "error": "HTTP 403",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.moviesda.info/?m=1",
+     "ok": true,
+     "latency_s": 1.377,
+     "html_chars": 23410,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.net.in/?m=1",
+     "ok": true,
+     "latency_s": 0.568,
+     "html_chars": 23418,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.moviesda.red/",
+     "ok": false,
+     "latency_s": 2.053,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesda.uk/?m=1",
+     "ok": false,
+     "latency_s": 1.256,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesda.video/",
+     "ok": false,
+     "latency_s": 1.154,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesda28.com/",
+     "ok": false,
+     "latency_s": 1.524,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesdaott.com/",
+     "ok": false,
+     "latency_s": 16.548,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.mp4moviez.diet/",
+     "ok": false,
+     "latency_s": 2.16,
+     "html_chars": 0,
+     "error": "unknown fetch error",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+     "ok": false,
+     "latency_s": 1.755,
+     "html_chars": 0,
+     "error": "502 Bad Gateway",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.stripemovies.com/",
+     "ok": true,
+     "latency_s": 1.269,
+     "html_chars": 74819,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.tamilprint7.art/",
+     "ok": true,
+     "latency_s": 1.892,
+     "html_chars": 14177,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.tamilprinthd.art/",
+     "ok": true,
+     "latency_s": 1.13,
+     "html_chars": 5075,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "ok": true,
+     "latency_s": 0.527,
+     "html_chars": 174481,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://xn--3-lve1d0cya6hb2e.com/",
+     "ok": true,
+     "latency_s": 2.152,
+     "html_chars": 7675,
+     "v1_needs_browser": false
+    },
+    {
+     "url": "https://xn--mlc3avm5adt5g.net/",
+     "ok": true,
+     "latency_s": 0.662,
+     "html_chars": 5577,
+     "v1_needs_browser": false
+    }
+   ]
+  },
+  {
+   "engine": "playwright",
+   "concurrency": 2,
+   "urls": 52,
+   "successes": 29,
+   "success_rate": 0.5577,
+   "v1_needs_browser_on_success": 0,
+   "latency_s_median": 2.423,
+   "latency_s_p95": 7.859,
+   "latency_s_mean": 3.135,
+   "timeouts": 3,
+   "failure_categories": {
+    "TARGET_CONNECTION": 6,
+    "TIMEOUT": 3,
+    "HTTP_RESPONSE": 2,
+    "UNKNOWN": 12
+   },
+   "wall_s": 93.1,
+   "upstream_bytes": 8011171,
+   "bytes_per_success": 276247,
+   "proxy_connections": 218,
+   "rss_mb_peak_tree": 1037.4,
+   "rss_mb_mean_tree": 811.8,
+   "max_child_processes": 9,
+   "rows": [
+    {
+     "url": "https://1tamilyogi.show/tamilmv/",
+     "ok": false,
+     "latency_s": 16.026,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 15000ms exceeded.\nCall log:\n  - navigating to \"https://1tamilyogi.show/tamilmv/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://5movieg.com/",
+     "ok": false,
+     "latency_s": 1.571,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://5movieg.com/\nCall log:\n  - navigating to \"https://5movieg.com/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://isaidub.love/",
+     "ok": true,
+     "latency_s": 10.643,
+     "html_chars": 9969
+    },
+    {
+     "url": "https://isaimini.com.in/",
+     "ok": true,
+     "latency_s": 2.03,
+     "html_chars": 176455
+    },
+    {
+     "url": "https://isaiminimix.com/",
+     "ok": true,
+     "latency_s": 2.107,
+     "html_chars": 62153
+    },
+    {
+     "url": "https://kollymovies.city/",
+     "ok": false,
+     "latency_s": 16.023,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 15000ms exceeded.\nCall log:\n  - navigating to \"https://kollymovies.city/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://kuttymovies1.fit/",
+     "ok": false,
+     "latency_s": 7.074,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/\nCall log:\n  - navigating to \"https://kuttymovies1.fit/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://mantrimalgame.com/",
+     "ok": true,
+     "latency_s": 2.009,
+     "html_chars": 6952
+    },
+    {
+     "url": "https://movflix.my/",
+     "ok": true,
+     "latency_s": 2.246,
+     "html_chars": 166050
+    },
+    {
+     "url": "https://moviedrivebd.com/",
+     "ok": true,
+     "latency_s": 3.228,
+     "html_chars": 134266
+    },
+    {
+     "url": "https://moviepie.xyz/",
+     "ok": false,
+     "latency_s": 2.793,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviepie.xyz/\nCall log:\n  - navigating to \"https://moviepie.xyz/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movier.xyz/",
+     "ok": false,
+     "latency_s": 1.139,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movier.xyz/\nCall log:\n  - navigating to \"https://movier.xyz/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movies-fd.shop/",
+     "ok": false,
+     "latency_s": 1.51,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movies-fd.shop/\nCall log:\n  - navigating to \"https://movies-fd.shop/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviesda.baby/",
+     "ok": false,
+     "latency_s": 0.726,
+     "html_chars": 0,
+     "error": "HTTP 404",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://moviesda.com.in/",
+     "ok": true,
+     "latency_s": 3.61,
+     "html_chars": 212094
+    },
+    {
+     "url": "https://moviesda16.best/",
+     "ok": true,
+     "latency_s": 2.589,
+     "html_chars": 19154
+    },
+    {
+     "url": "https://moviesda17.com/",
+     "ok": true,
+     "latency_s": 1.486,
+     "html_chars": 6884
+    },
+    {
+     "url": "https://moviesrace.xyz/",
+     "ok": true,
+     "latency_s": 3.423,
+     "html_chars": 41426
+    },
+    {
+     "url": "https://moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.137,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviezz.xyz/\nCall log:\n  - navigating to \"https://moviezz.xyz/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.143,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviezz.xyz/\nCall log:\n  - navigating to \"https://mp4moviezz.xyz/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviz.xyz/",
+     "ok": false,
+     "latency_s": 11.555,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://mp4moviz.xyz/\nCall log:\n  - navigating to \"https://mp4moviz.xyz/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://newhdmovie2.org/",
+     "ok": false,
+     "latency_s": 1.152,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://newhdmovie2.org/\nCall log:\n  - navigating to \"https://newhdmovie2.org/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://tamilprint.co.in/",
+     "ok": true,
+     "latency_s": 2.021,
+     "html_chars": 102329
+    },
+    {
+     "url": "https://tamilprint.com.in/",
+     "ok": true,
+     "latency_s": 2.858,
+     "html_chars": 177057
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "ok": true,
+     "latency_s": 3.309,
+     "html_chars": 259697
+    },
+    {
+     "url": "https://tamilprinttv.com/",
+     "ok": true,
+     "latency_s": 1.061,
+     "html_chars": 4681
+    },
+    {
+     "url": "https://tamilrockers.website/",
+     "ok": true,
+     "latency_s": 2.663,
+     "html_chars": 45069
+    },
+    {
+     "url": "https://www.1tamilmv.army/",
+     "ok": false,
+     "latency_s": 2.086,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://www.1tamilmv.army/\nCall log:\n  - navigating to \"https://www.1tamilmv.army/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.coolmoviez.forum/",
+     "ok": false,
+     "latency_s": 1.165,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.coolmoviez.forum/\nCall log:\n  - navigating to \"https://www.coolmoviez.forum/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+     "ok": false,
+     "latency_s": 1.139,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html\nCall log:\n  - navigating to \"https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html\", waiting until \"",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.gofullmovies.com/",
+     "ok": true,
+     "latency_s": 1.533,
+     "html_chars": 72617
+    },
+    {
+     "url": "https://www.isaimini.farm/?m=1",
+     "ok": true,
+     "latency_s": 5.5,
+     "html_chars": 411650
+    },
+    {
+     "url": "https://www.isaimini.spot/",
+     "ok": true,
+     "latency_s": 7.859,
+     "html_chars": 5997
+    },
+    {
+     "url": "https://www.isaimini.vu/",
+     "ok": true,
+     "latency_s": 2.263,
+     "html_chars": 18579
+    },
+    {
+     "url": "https://www.isaimini.vu/6/category/tamil-movies/default.html",
+     "ok": true,
+     "latency_s": 3.673,
+     "html_chars": 14772
+    },
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "ok": true,
+     "latency_s": 4.354,
+     "html_chars": 387653
+    },
+    {
+     "url": "https://www.moviesda.farm/",
+     "ok": false,
+     "latency_s": 1.764,
+     "html_chars": 0,
+     "error": "HTTP 403",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.moviesda.info/?m=1",
+     "ok": true,
+     "latency_s": 2.011,
+     "html_chars": 23400
+    },
+    {
+     "url": "https://www.moviesda.net.in/?m=1",
+     "ok": true,
+     "latency_s": 1.75,
+     "html_chars": 23408
+    },
+    {
+     "url": "https://www.moviesda.red/",
+     "ok": false,
+     "latency_s": 3.465,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://www.moviesda.red/\nCall log:\n  - navigating to \"https://www.moviesda.red/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.moviesda.uk/?m=1",
+     "ok": true,
+     "latency_s": 2.423,
+     "html_chars": 6884
+    },
+    {
+     "url": "https://www.moviesda.video/",
+     "ok": false,
+     "latency_s": 1.139,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda.video/\nCall log:\n  - navigating to \"https://www.moviesda.video/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesda28.com/",
+     "ok": false,
+     "latency_s": 1.792,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda28.com/\nCall log:\n  - navigating to \"https://www.moviesda28.com/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesdaott.com/",
+     "ok": false,
+     "latency_s": 16.023,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 15000ms exceeded.\nCall log:\n  - navigating to \"https://www.moviesdaott.com/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.mp4moviez.diet/",
+     "ok": true,
+     "latency_s": 3.694,
+     "html_chars": 35921
+    },
+    {
+     "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+     "ok": false,
+     "latency_s": 1.139,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.ngmovies.com.ng/netnaija/tag/indian\nCall log:\n  - navigating to \"https://www.ngmovies.com.ng/netnaija/tag/indian\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.stripemovies.com/",
+     "ok": true,
+     "latency_s": 4.933,
+     "html_chars": 77502
+    },
+    {
+     "url": "https://www.tamilprint7.art/",
+     "ok": false,
+     "latency_s": 1.477,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://www.tamilprint7.art/\nCall log:\n  - navigating to \"https://www.tamilprint7.art/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.tamilprinthd.art/",
+     "ok": false,
+     "latency_s": 1.555,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://www.tamilprinthd.art/\nCall log:\n  - navigating to \"https://www.tamilprinthd.art/\", waiting until \"domcontentloaded\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "ok": true,
+     "latency_s": 1.928,
+     "html_chars": 178374
+    },
+    {
+     "url": "https://xn--3-lve1d0cya6hb2e.com/",
+     "ok": true,
+     "latency_s": 2.295,
+     "html_chars": 7931
+    },
+    {
+     "url": "https://xn--mlc3avm5adt5g.net/",
+     "ok": true,
+     "latency_s": 1.404,
+     "html_chars": 5837
+    }
+   ],
+   "browser_startup_s": 13.071
+  },
+  {
+   "engine": "selenium",
+   "concurrency": 1,
+   "urls": 52,
+   "successes": 34,
+   "success_rate": 0.6538,
+   "v1_needs_browser_on_success": 0,
+   "latency_s_median": 2.349,
+   "latency_s_p95": 6.107,
+   "latency_s_mean": 2.993,
+   "timeouts": 5,
+   "failure_categories": {
+    "TIMEOUT": 5,
+    "ENGINE_FAILURE": 13
+   },
+   "wall_s": 223.9,
+   "upstream_bytes": 15893525,
+   "bytes_per_success": 467457,
+   "proxy_connections": 1084,
+   "rss_mb_peak_tree": 1557.6,
+   "rss_mb_mean_tree": 1075.3,
+   "max_child_processes": 14,
+   "rows": [
+    {
+     "url": "https://1tamilyogi.show/tamilmv/",
+     "ok": false,
+     "latency_s": 16.364,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5f99cc243e3a <unknown>\n#1 0x5f99cbb6de69 <unknown>\n#2 0x5f99cbb55860 <unknown>\n#3 0x5f99cbb554d6 <unknown>\n#4 0x5f99cbb530f6 <unknown>\n#5 0x5f99cbb53a5f <unkno",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://5movieg.com/",
+     "ok": false,
+     "latency_s": 2.166,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5d49db61ee3a <unknown>\n#1 0x5d49daf48e69 <unknown>\n#2 0x5d49daf3fcf6 <unknown>\n#3 0x5d49daf30d31 <unknown>\n#4 0x5d49daf32a70 <unknown>\n#5 0x5d49daf3121a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://isaidub.love/",
+     "ok": true,
+     "latency_s": 6.416,
+     "html_chars": 9954
+    },
+    {
+     "url": "https://isaimini.com.in/",
+     "ok": true,
+     "latency_s": 1.797,
+     "html_chars": 176440
+    },
+    {
+     "url": "https://isaiminimix.com/",
+     "ok": true,
+     "latency_s": 2.179,
+     "html_chars": 62135
+    },
+    {
+     "url": "https://kollymovies.city/",
+     "ok": false,
+     "latency_s": 16.307,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5fc16397fe3a <unknown>\n#1 0x5fc1632a9e69 <unknown>\n#2 0x5fc163291860 <unknown>\n#3 0x5fc1632914d6 <unknown>\n#4 0x5fc16328f0f6 <unknown>\n#5 0x5fc16328fa5f <unkno",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://kuttymovies1.fit/",
+     "ok": true,
+     "latency_s": 8.651,
+     "html_chars": 9043
+    },
+    {
+     "url": "https://mantrimalgame.com/",
+     "ok": true,
+     "latency_s": 2.349,
+     "html_chars": 7194
+    },
+    {
+     "url": "https://movflix.my/",
+     "ok": true,
+     "latency_s": 1.808,
+     "html_chars": 166035
+    },
+    {
+     "url": "https://moviedrivebd.com/",
+     "ok": true,
+     "latency_s": 2.802,
+     "html_chars": 134251
+    },
+    {
+     "url": "https://moviepie.xyz/",
+     "ok": false,
+     "latency_s": 4.133,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5c3844401e3a <unknown>\n#1 0x5c3843d2be69 <unknown>\n#2 0x5c3843d22cf6 <unknown>\n#3 0x5c3843d13d31 <unknown>\n#4 0x5c3843d15a70 <unknown>\n#5 0x5c3843d1421a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://movier.xyz/",
+     "ok": false,
+     "latency_s": 1.862,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x64ab46be1e3a <unknown>\n#1 0x64ab4650be69 <unknown>\n#2 0x64ab46502cf6 <unknown>\n#3 0x64ab464f3d31 <unknown>\n#4 0x64ab464f5a70 <unknown>\n#5 0x64ab464f421a <unknown>\n#6 0x6",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://movies-fd.shop/",
+     "ok": false,
+     "latency_s": 2.293,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x63091be50e3a <unknown>\n#1 0x63091b77ae69 <unknown>\n#2 0x63091b771cf6 <unknown>\n#3 0x63091b762d31 <unknown>\n#4 0x63091b764a70 <unknown>\n#5 0x63091b76321a <unknown>\n#6 0x6",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://moviesda.baby/",
+     "ok": true,
+     "latency_s": 1.141,
+     "html_chars": 1657
+    },
+    {
+     "url": "https://moviesda.com.in/",
+     "ok": true,
+     "latency_s": 3.595,
+     "html_chars": 221876
+    },
+    {
+     "url": "https://moviesda16.best/",
+     "ok": true,
+     "latency_s": 2.044,
+     "html_chars": 19139
+    },
+    {
+     "url": "https://moviesda17.com/",
+     "ok": true,
+     "latency_s": 1.577,
+     "html_chars": 6869
+    },
+    {
+     "url": "https://moviesrace.xyz/",
+     "ok": true,
+     "latency_s": 3.469,
+     "html_chars": 41411
+    },
+    {
+     "url": "https://moviezz.xyz/",
+     "ok": false,
+     "latency_s": 2.106,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x650a9bbc7e3a <unknown>\n#1 0x650a9b4f1e69 <unknown>\n#2 0x650a9b4e8cf6 <unknown>\n#3 0x650a9b4d9d31 <unknown>\n#4 0x650a9b4dba70 <unknown>\n#5 0x650a9b4da21a <unknown>\n#6 0x6",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://mp4moviezz.xyz/",
+     "ok": false,
+     "latency_s": 1.806,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x60a81f799e3a <unknown>\n#1 0x60a81f0c3e69 <unknown>\n#2 0x60a81f0bacf6 <unknown>\n#3 0x60a81f0abd31 <unknown>\n#4 0x60a81f0ada70 <unknown>\n#5 0x60a81f0ac21a <unknown>\n#6 0x6",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://mp4moviz.xyz/",
+     "ok": false,
+     "latency_s": 14.093,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5c5dada97e3a <unknown>\n#1 0x5c5dad3c1e69 <unknown>\n#2 0x5c5dad3b8cf6 <unknown>\n#3 0x5c5dad3a9d31 <unknown>\n#4 0x5c5dad3aba70 <unknown>\n#5 0x5c5dad3aa21a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://newhdmovie2.org/",
+     "ok": false,
+     "latency_s": 1.8,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x571f0fe7be3a <unknown>\n#1 0x571f0f7a5e69 <unknown>\n#2 0x571f0f79ccf6 <unknown>\n#3 0x571f0f78dd31 <unknown>\n#4 0x571f0f78fa70 <unknown>\n#5 0x571f0f78e21a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://tamilprint.co.in/",
+     "ok": false,
+     "latency_s": 16.308,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: timeout: Timed out receiving message from renderer: 13.405\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5df286c91e3a <unknown>\n#1 0x5df2865bbe69 <unknown>\n#2 0x5df2865a3860 <unknown>\n#3 0x5df2865a34d6 <unknown>\n#4 0x5df2865a10f6 <unknown>\n#5 0x5df2865a1a5f <unkno",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://tamilprint.com.in/",
+     "ok": true,
+     "latency_s": 2.226,
+     "html_chars": 177042
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "ok": true,
+     "latency_s": 2.157,
+     "html_chars": 265059
+    },
+    {
+     "url": "https://tamilprinttv.com/",
+     "ok": true,
+     "latency_s": 1.203,
+     "html_chars": 4666
+    },
+    {
+     "url": "https://tamilrockers.website/",
+     "ok": true,
+     "latency_s": 3.768,
+     "html_chars": 45054
+    },
+    {
+     "url": "https://www.1tamilmv.army/",
+     "ok": true,
+     "latency_s": 3.857,
+     "html_chars": 436471
+    },
+    {
+     "url": "https://www.coolmoviez.forum/",
+     "ok": false,
+     "latency_s": 1.747,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5f2132c42e3a <unknown>\n#1 0x5f213256ce69 <unknown>\n#2 0x5f2132563cf6 <unknown>\n#3 0x5f2132554d31 <unknown>\n#4 0x5f2132556a70 <unknown>\n#5 0x5f213255521a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+     "ok": false,
+     "latency_s": 2.412,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x56d771bb4e3a <unknown>\n#1 0x56d7714dee69 <unknown>\n#2 0x56d7714d5cf6 <unknown>\n#3 0x56d7714c6d31 <unknown>\n#4 0x56d7714c8a70 <unknown>\n#5 0x56d7714c721a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://www.gofullmovies.com/",
+     "ok": true,
+     "latency_s": 4.766,
+     "html_chars": 72602
+    },
+    {
+     "url": "https://www.isaimini.farm/?m=1",
+     "ok": true,
+     "latency_s": 4.82,
+     "html_chars": 409660
+    },
+    {
+     "url": "https://www.isaimini.spot/",
+     "ok": true,
+     "latency_s": 2.575,
+     "html_chars": 5982
+    },
+    {
+     "url": "https://www.isaimini.vu/",
+     "ok": true,
+     "latency_s": 2.949,
+     "html_chars": 18564
+    },
+    {
+     "url": "https://www.isaimini.vu/6/category/tamil-movies/default.html",
+     "ok": true,
+     "latency_s": 2.006,
+     "html_chars": 14757
+    },
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "ok": true,
+     "latency_s": 3.336,
+     "html_chars": 386347
+    },
+    {
+     "url": "https://www.moviesda.farm/",
+     "ok": true,
+     "latency_s": 2.271,
+     "html_chars": 28025
+    },
+    {
+     "url": "https://www.moviesda.info/?m=1",
+     "ok": true,
+     "latency_s": 2.065,
+     "html_chars": 23385
+    },
+    {
+     "url": "https://www.moviesda.net.in/?m=1",
+     "ok": true,
+     "latency_s": 2.919,
+     "html_chars": 23393
+    },
+    {
+     "url": "https://www.moviesda.red/",
+     "ok": true,
+     "latency_s": 6.107,
+     "html_chars": 4941
+    },
+    {
+     "url": "https://www.moviesda.uk/?m=1",
+     "ok": true,
+     "latency_s": 1.376,
+     "html_chars": 6869
+    },
+    {
+     "url": "https://www.moviesda.video/",
+     "ok": false,
+     "latency_s": 1.565,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x6086b5aafe3a <unknown>\n#1 0x6086b53d9e69 <unknown>\n#2 0x6086b53d0cf6 <unknown>\n#3 0x6086b53c1d31 <unknown>\n#4 0x6086b53c3a70 <unknown>\n#5 0x6086b53c221a <unknown>\n#6 0x6",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://www.moviesda28.com/",
+     "ok": false,
+     "latency_s": 2.726,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5a18e8038e3a <unknown>\n#1 0x5a18e7962e69 <unknown>\n#2 0x5a18e7959cf6 <unknown>\n#3 0x5a18e794ad31 <unknown>\n#4 0x5a18e794ca70 <unknown>\n#5 0x5a18e794b21a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://www.moviesdaott.com/",
+     "ok": false,
+     "latency_s": 16.351,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: timeout: Timed out receiving message from renderer: -0.001\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x55df40e23e3a <unknown>\n#1 0x55df4074de69 <unknown>\n#2 0x55df40735860 <unknown>\n#3 0x55df407354d6 <unknown>\n#4 0x55df407330f6 <unknown>\n#5 0x55df40733a5f <unkno",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.mp4moviez.diet/",
+     "ok": true,
+     "latency_s": 4.423,
+     "html_chars": 35906
+    },
+    {
+     "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+     "ok": false,
+     "latency_s": 1.81,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: unknown error: net::ERR_TUNNEL_CONNECTION_FAILED\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x5b984c5fae3a <unknown>\n#1 0x5b984bf24e69 <unknown>\n#2 0x5b984bf1bcf6 <unknown>\n#3 0x5b984bf0cd31 <unknown>\n#4 0x5b984bf0ea70 <unknown>\n#5 0x5b984bf0d21a <unknown>\n#6 0x5",
+     "v1_category": "ENGINE_FAILURE"
+    },
+    {
+     "url": "https://www.stripemovies.com/",
+     "ok": true,
+     "latency_s": 2.667,
+     "html_chars": 77575
+    },
+    {
+     "url": "https://www.tamilprint7.art/",
+     "ok": false,
+     "latency_s": 16.313,
+     "html_chars": 0,
+     "error": "WebDriver error: Message: timeout: Timed out receiving message from renderer: 12.183\n  (Session info: chrome=154.0.8037.57)\nStacktrace:\n#0 0x6062e0a57e3a <unknown>\n#1 0x6062e0381e69 <unknown>\n#2 0x6062e0369860 <unknown>\n#3 0x6062e03694d6 <unknown>\n#4 0x6062e03670f6 <unknown>\n#5 0x6062e0367a5f <unkno",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.tamilprinthd.art/",
+     "ok": true,
+     "latency_s": 1.796,
+     "html_chars": 5142
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "ok": true,
+     "latency_s": 2.007,
+     "html_chars": 178359
+    },
+    {
+     "url": "https://xn--3-lve1d0cya6hb2e.com/",
+     "ok": true,
+     "latency_s": 2.154,
+     "html_chars": 7916
+    },
+    {
+     "url": "https://xn--mlc3avm5adt5g.net/",
+     "ok": true,
+     "latency_s": 2.471,
+     "html_chars": 5822
+    }
+   ],
+   "browser_startup_s": 0.266,
+   "pages_per_browser_process": 1
+  },
+  {
+   "engine": "scrapling",
+   "concurrency": 3,
+   "urls": 52,
+   "successes": 26,
+   "success_rate": 0.5,
+   "v1_needs_browser_on_success": 0,
+   "latency_s_median": 3.987,
+   "latency_s_p95": 29.66,
+   "latency_s_mean": 9.065,
+   "timeouts": 6,
+   "failure_categories": {
+    "TARGET_CONNECTION": 1,
+    "HTTP_RESPONSE": 7,
+    "TIMEOUT": 6,
+    "UNKNOWN": 12
+   },
+   "wall_s": 303.1,
+   "upstream_bytes": 20719798,
+   "bytes_per_success": 796915,
+   "proxy_connections": 720,
+   "rss_mb_peak_tree": 3839.6,
+   "rss_mb_mean_tree": 2940.4,
+   "max_child_processes": 32,
+   "rows": [
+    {
+     "url": "https://1tamilyogi.show/tamilmv/",
+     "ok": false,
+     "latency_s": 25.168,
+     "html_chars": 0,
+     "error": "HTTP 522",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://5movieg.com/",
+     "ok": false,
+     "latency_s": 5.396,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://5movieg.com/\nCall log:\n  - navigating to \"https://5movieg.com/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://isaidub.love/",
+     "ok": true,
+     "latency_s": 63.877,
+     "html_chars": 9850
+    },
+    {
+     "url": "https://isaimini.com.in/",
+     "ok": true,
+     "latency_s": 6.649,
+     "html_chars": 178071
+    },
+    {
+     "url": "https://isaiminimix.com/",
+     "ok": true,
+     "latency_s": 2.721,
+     "html_chars": 60670
+    },
+    {
+     "url": "https://kollymovies.city/",
+     "ok": false,
+     "latency_s": 21.183,
+     "html_chars": 0,
+     "error": "HTTP 522",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://kuttymovies1.fit/",
+     "ok": false,
+     "latency_s": 39.697,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_CONNECTION_CLOSED at https://kuttymovies1.fit/\nCall log:\n  - navigating to \"https://kuttymovies1.fit/\", waiting until \"load\"\n",
+     "v1_category": "TARGET_CONNECTION"
+    },
+    {
+     "url": "https://mantrimalgame.com/",
+     "ok": true,
+     "latency_s": 4.049,
+     "html_chars": 6686
+    },
+    {
+     "url": "https://movflix.my/",
+     "ok": true,
+     "latency_s": 2.942,
+     "html_chars": 163375
+    },
+    {
+     "url": "https://moviedrivebd.com/",
+     "ok": true,
+     "latency_s": 3.93,
+     "html_chars": 133948
+    },
+    {
+     "url": "https://moviepie.xyz/",
+     "ok": false,
+     "latency_s": 8.219,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviepie.xyz/\nCall log:\n  - navigating to \"https://moviepie.xyz/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movier.xyz/",
+     "ok": false,
+     "latency_s": 4.03,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movier.xyz/\nCall log:\n  - navigating to \"https://movier.xyz/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://movies-fd.shop/",
+     "ok": false,
+     "latency_s": 4.432,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://movies-fd.shop/\nCall log:\n  - navigating to \"https://movies-fd.shop/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://moviesda.baby/",
+     "ok": false,
+     "latency_s": 2.114,
+     "html_chars": 0,
+     "error": "HTTP 404",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://moviesda.com.in/",
+     "ok": true,
+     "latency_s": 5.151,
+     "html_chars": 225293
+    },
+    {
+     "url": "https://moviesda16.best/",
+     "ok": true,
+     "latency_s": 2.843,
+     "html_chars": 18570
+    },
+    {
+     "url": "https://moviesda17.com/",
+     "ok": false,
+     "latency_s": 4.327,
+     "html_chars": 0,
+     "error": "HTTP 502",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://moviesrace.xyz/",
+     "ok": true,
+     "latency_s": 3.784,
+     "html_chars": 41100
+    },
+    {
+     "url": "https://moviezz.xyz/",
+     "ok": false,
+     "latency_s": 4.227,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://moviezz.xyz/\nCall log:\n  - navigating to \"https://moviezz.xyz/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviezz.xyz/",
+     "ok": false,
+     "latency_s": 4.101,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviezz.xyz/\nCall log:\n  - navigating to \"https://mp4moviezz.xyz/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://mp4moviz.xyz/",
+     "ok": false,
+     "latency_s": 27.138,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://mp4moviz.xyz/\nCall log:\n  - navigating to \"https://mp4moviz.xyz/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://newhdmovie2.org/",
+     "ok": false,
+     "latency_s": 4.584,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://newhdmovie2.org/\nCall log:\n  - navigating to \"https://newhdmovie2.org/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://tamilprint.co.in/",
+     "ok": true,
+     "latency_s": 3.924,
+     "html_chars": 99744
+    },
+    {
+     "url": "https://tamilprint.com.in/",
+     "ok": true,
+     "latency_s": 5.686,
+     "html_chars": 181048
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "ok": true,
+     "latency_s": 8.689,
+     "html_chars": 275374
+    },
+    {
+     "url": "https://tamilprinttv.com/",
+     "ok": true,
+     "latency_s": 2.141,
+     "html_chars": 4527
+    },
+    {
+     "url": "https://tamilrockers.website/",
+     "ok": true,
+     "latency_s": 25.142,
+     "html_chars": 43583
+    },
+    {
+     "url": "https://www.1tamilmv.army/",
+     "ok": true,
+     "latency_s": 16.684,
+     "html_chars": 442755
+    },
+    {
+     "url": "https://www.coolmoviez.forum/",
+     "ok": false,
+     "latency_s": 4.205,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.coolmoviez.forum/\nCall log:\n  - navigating to \"https://www.coolmoviez.forum/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html",
+     "ok": false,
+     "latency_s": 4.114,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html\nCall log:\n  - navigating to \"https://www.filmyzilla34.mobi/category/715/2026-latest-south-indian-hindi-dubbed-movies/default/1.html\", waiting until \"",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.gofullmovies.com/",
+     "ok": true,
+     "latency_s": 3.101,
+     "html_chars": 73800
+    },
+    {
+     "url": "https://www.isaimini.farm/?m=1",
+     "ok": true,
+     "latency_s": 10.128,
+     "html_chars": 411663
+    },
+    {
+     "url": "https://www.isaimini.spot/",
+     "ok": true,
+     "latency_s": 29.66,
+     "html_chars": 5892
+    },
+    {
+     "url": "https://www.isaimini.vu/",
+     "ok": false,
+     "latency_s": 73.752,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.isaimini.vu/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.isaimini.vu/6/category/tamil-movies/default.html",
+     "ok": true,
+     "latency_s": 7.739,
+     "html_chars": 14546
+    },
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "ok": true,
+     "latency_s": 7.028,
+     "html_chars": 387896
+    },
+    {
+     "url": "https://www.moviesda.farm/",
+     "ok": false,
+     "latency_s": 3.83,
+     "html_chars": 0,
+     "error": "HTTP 403",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.moviesda.info/?m=1",
+     "ok": true,
+     "latency_s": 2.478,
+     "html_chars": 23126
+    },
+    {
+     "url": "https://www.moviesda.net.in/?m=1",
+     "ok": true,
+     "latency_s": 2.939,
+     "html_chars": 23134
+    },
+    {
+     "url": "https://www.moviesda.red/",
+     "ok": false,
+     "latency_s": 73.741,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.moviesda.red/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.moviesda.uk/?m=1",
+     "ok": false,
+     "latency_s": 4.716,
+     "html_chars": 0,
+     "error": "HTTP 204",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.moviesda.video/",
+     "ok": false,
+     "latency_s": 73.767,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.moviesda.video/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.moviesda28.com/",
+     "ok": false,
+     "latency_s": 9.705,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.moviesda28.com/\nCall log:\n  - navigating to \"https://www.moviesda28.com/\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.moviesdaott.com/",
+     "ok": false,
+     "latency_s": 21.679,
+     "html_chars": 0,
+     "error": "HTTP 522",
+     "v1_category": "HTTP_RESPONSE"
+    },
+    {
+     "url": "https://www.mp4moviez.diet/",
+     "ok": true,
+     "latency_s": 3.987,
+     "html_chars": 35288
+    },
+    {
+     "url": "https://www.ngmovies.com.ng/netnaija/tag/indian",
+     "ok": false,
+     "latency_s": 4.139,
+     "html_chars": 0,
+     "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.ngmovies.com.ng/netnaija/tag/indian\nCall log:\n  - navigating to \"https://www.ngmovies.com.ng/netnaija/tag/indian\", waiting until \"load\"\n",
+     "v1_category": "UNKNOWN"
+    },
+    {
+     "url": "https://www.stripemovies.com/",
+     "ok": true,
+     "latency_s": 4.967,
+     "html_chars": 79787
+    },
+    {
+     "url": "https://www.tamilprint7.art/",
+     "ok": false,
+     "latency_s": 73.703,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.tamilprint7.art/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.tamilprinthd.art/",
+     "ok": false,
+     "latency_s": 73.792,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.tamilprinthd.art/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "ok": true,
+     "latency_s": 2.769,
+     "html_chars": 177689
+    },
+    {
+     "url": "https://xn--3-lve1d0cya6hb2e.com/",
+     "ok": false,
+     "latency_s": 74.008,
+     "html_chars": 0,
+     "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://xn--3-lve1d0cya6hb2e.com/\", waiting until \"load\"\n",
+     "v1_category": "TIMEOUT"
+    },
+    {
+     "url": "https://xn--mlc3avm5adt5g.net/",
+     "ok": true,
+     "latency_s": 2.694,
+     "html_chars": 5735
+    }
+   ]
+  }
+ ]
+}
