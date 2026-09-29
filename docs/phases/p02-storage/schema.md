@@ -48,10 +48,24 @@ Timestamp rules: `LW` latest_wins, `EW` earliest_wins, `VW` version_wins.
 | `outbox_relay_checkpoints` | X2 | operational | `shard` | — | 1 | single row |
 | `processed_events` | X3 | operational | `(consumer, idempotency_key)` | — | 1 | single row, TTL |
 
+### Added by P5 (V002, ADR-020)
+
+| Table | Pattern | A/D | Partition key | Clustering | Rows per partition | Bound by |
+|---|---|---|---|---|---|---|
+| `page_extracts` | P5 facts per raw version | A | `page_version_id` | — | 1 | single row |
+| `page_revisions_by_url` | W8 at revision level | A (with `page.changed`) | `url_id` | `revision_id` | one per normalized state of one URL (≈ 300k at 100 MB) | distinct normalized states |
+| `snapshot_retention` | archival decisions | A | `digest` | `observation_id` | one per observation of identical bytes | observations of one body |
+
+Writes: `page_extracts` INSERT (idempotent, LOCAL_QUORUM); revisions
+UPDATE first_* `EW` / last_* `LW` in one batch with the `page.changed` /
+`media.discovered` outbox rows when present (logged, pattern A), else a
+one-partition batch; `snapshot_retention` INSERT. Reads LOCAL_ONE. No TTL
+(authoritative, ADR-005 open); STCS.
+
 Measured sizes of the worst partitions: [benchmarks.md](benchmarks.md).
 
 W15 (domain/path-pattern change history) has **no table** in P2: it is
-derived from `page.changed` (P5) over path patterns learned in P7; the
+derived from `page.changed` (P5, now emitted) over path patterns learned in P7; the
 table is added additively when those exist. Orderings not expressible as
 clustering (W8 by first_seen, P4/P5/E4 by time) are sorted by the reader
 over a bounded partition.

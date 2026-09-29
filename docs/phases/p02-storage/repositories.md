@@ -13,6 +13,7 @@ bundles them over one session and refuses an outdated schema).
 | `UrlRepository` | W11–W13 | `record_discovered(urls, seen_at=)` | `get`, `urls_of_domain` (streams), `domain` |
 | `MediaRepository` | M1–M6 | `record_observation(obs, event=MediaObserved?)`; `rebuild_media` | `get`, `observation`, `observations_on`, `sightings`, `on_page_version`, `by_content`, `content_versions` |
 | `ProjectionRepository` | P1–P5 | `mark_encode_requested`, `apply_representation_ready`, `apply_encode_failed`, `apply_target_registered`, `apply_target_retired`, `record_match(match, media_ids=, source_domains=)` | `representation_status`, `target`, `targets`, `matches_for_content/target/domain` |
+| `PageIntelligenceRepository` (P5, V002) | revisions (W8 at revision level), extracts, archival decisions | `record_extract`, `record_sighting(sighting, changed=PageChanged?, media=MediaDiscovered?)`, `record_retention` | `extract`, `revision`, `revisions`, `retention` |
 | `EvidenceRepository` | E1–E4 | `open_candidate` (E1 LWT), `create_candidate` (write-once), `seal` (CAS) | `get` (LOCAL_SERIAL), `for_target`, `provenance` (E3) |
 
 Infrastructure (not domain repositories): `ScyllaOutbox` (outbox rows,
@@ -40,6 +41,6 @@ relay store), `ScyllaProcessedEventStore` (consumer markers),
 ## Not in P2
 
 Frontier admission, scheduling, `next_due` (P3/P7); source-intelligence
-columns of `domains` (P7); W15 (P5/P7); media probing and encode-request
+columns of `domains` (P7); W15 (P7, from `page.changed`); media probing and encode-request
 policy (P8); evidence completeness/sealing policy (P12). They are added as
 new columns/tables through migrations, not by changing these semantics.

@@ -1,8 +1,9 @@
 # P5 Design — extraction & page intelligence
 
-Status: **PROPOSED — awaiting design review (plan B.1).** Two decisions
-need the reviewer: **D-1** (page-version identity) and **D-2** (real-page
-corpus). Audit: [audit.md](audit.md).
+Status: **APPROVED 2026-09-29** (D-1: additive `PageRevisionId`, ADR-020;
+D-2: capture W691 HTML twice). Implemented; deviations found while
+implementing are listed in §21. Audit: [audit.md](audit.md).
+Implementation: [implementation.md](implementation.md).
 
 ## 1. Pipeline and boundaries
 
@@ -241,8 +242,8 @@ Until P7/P12 exist, the profile is the configured default.
 | links + `urls.discovered` | existing `LinkRepository.record` (pattern B) + `UrlRepository.record_discovered` |
 
 Write order (first extraction of a raw version): links (+`urls.discovered`)
-→ url_state → extract row (+`media.discovered`) → sighting (+`page.changed`)
-→ retention. The extract row is the commit marker: redelivery after a
+→ url_state → extract row → sighting (+`page.changed` if new,
++`media.discovered`) → retention (§21 #1). The extract row is the commit marker: redelivery after a
 crash redoes everything before it idempotently and skips it afterwards.
 Re-sighting of known bytes: sighting (+`media.discovered` for P8's
 per-observation sightings, attached to the sighting batch) → retention;
@@ -330,3 +331,16 @@ existing methods unchanged. P3: untouched (frontier keeps admitting
 `ArchivalProfile`; P8 consumes `media.discovered` (and may port the
 manifest parser). Target-independent throughout: no target id is read,
 stored or keyed.
+
+## 21. Review outcome and implementation deviations
+
+| # | Design text | As built | Why |
+|---|---|---|---|
+| 1 | §14: `media.discovered` attached to the extract row | attached to the **sighting** batch of every eligible observation | one write path for every observation (P8 wants one sighting per observation); the extract row stays a plain commit marker |
+| 2 | §7 syntax list | values of JSON-LD `@context`/`@vocab`/`@type` are skipped | 529 of 639 captured pages carry JSON-LD; `https://schema.org` would otherwise be a "link" on most pages and be crawled |
+| 3 | §18 (a): bodies land in MinIO | captures are written to git-ignored local scratch (`var/p5-corpus/`) by `benchmarks/p5-extraction/capture.py` using the real P4 runtime | benchmark input only; no observation rows needed; still never in git |
+| 4 | §12: event emitted for "the first sighting" | carries the first **processed** sighting. Delivery is unordered (the relay publishes in outbox-shard order), so this may not be the earliest observation; the revision row's `first_seen` is order-independent (earliest-wins). The same holds for the `new_revision` archival reason | found by the stack test; consumers must take `first_seen` from the revision, not from the event |
+| 5 | §5 `frame[src]` | only inside a `<frameset>`: the HTML5 parser drops `<frame>` elsewhere | correct HTML parsing |
+| 6 | §6 media elements | `<audio>` uses `DiscoveryMethod.VIDEO_ELEMENT` ("media element") | P1 has no audio-element method; adding one is a consumer-first enum change not needed by P8 yet |
+| 7 | §8 dates | ISO-8601 without an offset is taken as UTC | deterministic; documented limitation |
+| 8 | §14 bound | `page_revisions_by_url` is partitioned by `url_id` only (no month bucket) | the revision check is a point read `(url_id, revision_id)`; a month bucket would re-emit `page.changed` across months. Bound: one row per normalized state (≈ 300k rows at 100 MB) |

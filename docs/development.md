@@ -53,6 +53,20 @@ cannot use the published port from the host); the image bakes in `tests/`,
 so run `make up` after changing tests. In containers add
 `-p no:cacheprovider` (read-only root filesystem).
 
+### P5 extraction (host)
+
+```bash
+make up
+scripts/test-extraction.sh        # unit + storage integration incl. the page.observed → page.changed loop
+```
+
+Same approach as P4 (Scylla at its container IP). The storage suite uses the
+throwaway keyspace `crawler2_it_p5_host` (dropped and recreated per run)
+and bucket `crawler2-it-p5-host`. Golden extraction results are regenerated
+with `UPDATE_GOLDEN=1 env/bin/pytest tests/unit/extraction/test_golden.py`
+(only for an intended change, together with an `EXTRACTOR_VERSION` or hash
+tag bump).
+
 ## Benchmarks
 
 Benchmarks are manual tools, not CI. Each phase keeps its scripts and
@@ -71,6 +85,11 @@ headline numbers is [benchmarks.md](benchmarks.md).
   use the **live web** and route every engine through a byte-counting
   proxy (`countproxy.py`); V1 runs read-only from a `git archive`
   snapshot with its own venv.
+- P5 extraction: `benchmarks/p5-extraction/run.sh capture <urls> <dir>`
+  captures HTML with the real P4 runtime into git-ignored `var/`;
+  `run.sh parse <dir> [rounds]` times V1 `extract_content` (V1 venv,
+  read-only, blacklist copied to scratch) and V2 `extract` on the same
+  bytes; `pairs.py review|score` drives the change-detection evaluation.
 
 ## V1 is read-only
 

@@ -19,6 +19,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-29 | **P4 fetch layer**: one runtime, httpx + Playwright pool; Scrapling (stealth) and Selenium dropped on measurement; `blocked`/`captcha` recorded, not escalated; gate workload = the 691 URLs of the P0 run | ADR-017/018; D1–D4, D14 closed in P4; `selenium` queue stays unused |
 | 2026-09-29 | **P3 correction**: global per-domain in-flight limit in the frontier, frozen at 2 | ADR-019; found by P4's gate run |
 | 2026-09-29 | **P4 success gate kept unchanged** (V1 `visited`); status OPEN at 95.51 % vs 96.82 %; V1 `visited` shown to include Selenium 400/403/404 false successes | success-metric methodology (keep historical gate vs documented status-aware redefinition with a V1+V2 rerun) pending — P4 doc §33a |
+| 2026-09-29 | **P5 extraction**: page *revisions* (`PageRevisionId`, normalized content) added beside raw page versions, `page.changed` in contract 1.1; W691 HTML captured twice as the benchmark/precision corpus (not in git) | ADR-020; D8, D9 closed in P5; CPU gate passed (17.9 % of V1); change-detection precision checked: 1/23 on real pairs, root cause = in-content template widgets → P6 rules / P7 |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -423,6 +424,11 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   normalized hash); benchmark parse time vs V1.
 - **Exit gate:** parse CPU/page ≤ 50% of V1; change-detection precision
   checked on a hand-labeled set of page pairs.
+- **Status (2026-09-29):** implemented; CPU gate **passed** (17.9 % of V1);
+  precision **checked** (1/23 on 53 real pairs, one site's in-content
+  widget) — see `docs/phases/p05-extraction-page-intelligence/validation.md`.
+  "page version" in this section is realised as the page *revision*
+  (ADR-020); the planned `page.fetched` is `page.observed` (P1).
 
 ### P6 — Filter engine + discovery port (M)
 
