@@ -23,6 +23,7 @@ import redis
 from antipiracy_contracts.events import EventEnvelope, EventPayload, decode_event_as
 from prometheus_client import Counter
 
+from crawler2.core.configuration import RedisSettings
 from crawler2.core.observability import Metrics
 from crawler2.storage.errors import StorageUnavailableError
 from crawler2.storage.events.idempotency import idempotency_key
@@ -88,6 +89,21 @@ class IdempotentConsumer[P: EventPayload]:
 class StreamEntry:
     entry_id: str
     envelope: bytes
+
+
+def connect_stream_client(settings: RedisSettings) -> redis.Redis:
+    """A client for stream consumers: byte replies (``StreamEntry.envelope`` is bytes).
+
+    The frontier's client decodes replies to ``str``; a stream reader must not use it.
+    """
+    return redis.Redis(
+        host=settings.host,
+        port=settings.port,
+        db=settings.db,
+        password=settings.password.get_secret_value() if settings.password else None,
+        socket_timeout=settings.socket_timeout_s,
+        socket_connect_timeout=settings.socket_timeout_s,
+    )
 
 
 class RedisStreamReader:

@@ -33,7 +33,12 @@ from crawler2.discovery.seeds import load_seeds
 from crawler2.filtering.store import RulesetHolder
 from crawler2.frontier.errors import FrontierUnavailableError
 from crawler2.storage.errors import StorageError
-from crawler2.storage.events.consumer import IdempotentConsumer, RedisStreamReader, StreamEntry
+from crawler2.storage.events.consumer import (
+    IdempotentConsumer,
+    RedisStreamReader,
+    StreamEntry,
+    connect_stream_client,
+)
 from crawler2.storage.events.publisher import stream_name
 
 _log = get_logger("discovery.cli")
@@ -144,7 +149,7 @@ def build_admission_loop(ctx: Context) -> AdmissionLoop:
         metrics=ctx.metrics,
     )
     reader = RedisStreamReader(
-        ctx.redis,
+        connect_stream_client(s.redis),
         stream_name(s.events, UrlsDiscovered.EVENT_TYPE, UrlsDiscovered.SCHEMA_MAJOR),
         s.discovery.consumer_group,
         ctx.identity,

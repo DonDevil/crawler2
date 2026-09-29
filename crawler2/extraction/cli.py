@@ -24,7 +24,12 @@ from crawler2.core.observability import Metrics, configure_logging, get_logger
 from crawler2.extraction.archival import ArchivalProfile
 from crawler2.extraction.service import PageIntelligenceService
 from crawler2.storage.errors import StorageError
-from crawler2.storage.events.consumer import IdempotentConsumer, RedisStreamReader, StreamEntry
+from crawler2.storage.events.consumer import (
+    IdempotentConsumer,
+    RedisStreamReader,
+    StreamEntry,
+    connect_stream_client,
+)
 from crawler2.storage.events.publisher import stream_name
 
 _log = get_logger("extraction.cli")
@@ -80,7 +85,6 @@ class ExtractionLoop:
 
 
 def build(settings: Settings) -> ExtractionLoop:
-    from crawler2.frontier.redis import connect_redis
     from crawler2.storage.objectstore.s3 import S3ObjectStore
     from crawler2.storage.scylla import ScyllaStorage
 
@@ -97,7 +101,7 @@ def build(settings: Settings) -> ExtractionLoop:
         metrics=metrics,
     )
     reader = RedisStreamReader(
-        connect_redis(settings.redis),
+        connect_stream_client(settings.redis),
         stream_name(settings.events, PageObserved.EVENT_TYPE, PageObserved.SCHEMA_MAJOR),
         settings.extraction.consumer_group,
         identity,
