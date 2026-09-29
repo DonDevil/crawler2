@@ -1,0 +1,3128 @@
+{
+ "description": "P6 labelled corpus (design §21, Gate E). Labels assigned by hand before evaluation.",
+ "labels": [
+  "ad",
+  "content",
+  "media",
+  "navigation",
+  "player",
+  "tracker",
+  "unknown"
+ ],
+ "items": [
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.gofullmovies.com/wonder-white-bird/",
+   "resource_type": "document",
+   "first_party": "https://www.gofullmovies.com/movies/drama/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/hit-club-casino/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/15/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.moviesda.business/search?updated-max=2026-08-01T00%3A10%3A00-07%3A00&max-results=7",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/search?updated-max=2026-08-01T00%3A10%3A00-07%3A00&max-results=7",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/kadamaiyai-sei-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/77/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/viswasam-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/2/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/24",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/la_brea_2025_tamil_aud_series_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2019-movies/7/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2019-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/10",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/la_brea_2025_tamil_aud_series_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.gofullmovies.com/movies/comedy/",
+   "resource_type": "document",
+   "first_party": "https://www.gofullmovies.com/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2023-movies/14/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2023-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda16.best/untold-the-shooting-at-hawthorne-hill-2026-tamil-dubbed",
+   "resource_type": "document",
+   "first_party": "https://moviesda16.best/category/tamil-dubbed-movies",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/2685",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/soorakottai_2024_tamil_dubbed_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/repeat-shoe-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/80/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-daily-movies/41/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/resident_evil_2026_hd_dvd_dubbed_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/resident_evil_2026_tamil_dubbed_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/feeds/1266712008772478486/comments/default",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2026/04/commando-vin-love-story-movie-download-isaimini.html",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/what-are-the-best-direct-web-slots-to-play-today/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/27/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2016-movies/5/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2016-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/rasavathi-2024/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/42/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/koorman-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/70/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/boomika-2021/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/90/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2022-movies/18/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2022-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/discover-hbet-and-its-popular-platform-features/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/3/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/write-for-us/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/veerapuram-2021/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/chaitra-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/33/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/naan-mirugamaai-maara-2022/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2023-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/bundesliga-football-results-on-bongdalu-the-fastest/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/27/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/oomai-sennaai-2021/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/95/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-2023-movies/12/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2023-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/umbarro-2025-web-dl-gujarati-org-movie/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/category/gujarati-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/asura-vettai-oxygen-2020/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/100/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/72_hours_2026_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng&get-page=6",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-2023-movies/10/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2023-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/2026/05/kattalan-full-movie-download-moviesda.html",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2026/05/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/nandhi-varman-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/63/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/baji-login-bangladesh/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/11/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/sattur-railway-station-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/48/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda16.best/toxic-2026-tamil-movie",
+   "resource_type": "document",
+   "first_party": "https://moviesda16.best/category/tamil-new-movies",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-daily-movies/22/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-daily-movies/50/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-movies-collection/19/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/kadamban-2017/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2017-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2019-movies/11/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2019-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/28/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/the_sheep_detectives_2026_tamil_dubbed_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng&get-page=9",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2022-movies/22/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2022-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/puli-murugan-2017-2/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2018-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-hd-mobile-movies/8/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-hd-mobile-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/dha-dha-87-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/10/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/skanda-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/59/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/movies?year=2021&get-page=5",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?year=2021",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/72_hours_2026_hd_dvd_dubbed_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/72_hours_2026_tamil_dubbed_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilrockers2024.com/2025/12/akhanda-2-thaandavam-2025.html",
+   "resource_type": "document",
+   "first_party": "https://www.tamilrockers2024.com/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/2025/11/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.co.in/ok-win-login/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.co.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.stripemovies.com/inherit-the-viper/",
+   "resource_type": "document",
+   "first_party": "https://www.stripemovies.com/release-year/2019/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/what-is-a-slot-jackpot-game/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-hd-mobile-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/sarakku-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/63/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/supergirl_2026_hd_dvd_dubbed_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/supergirl-(2026)-tamil-dub-movie-download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://movflix.my/category/south-dual-audio-movies/page/3/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/category/south-dual-audio-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-daily-movies/73/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/364",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/ramba_oorvasi_menaka_2026_tamil_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/devadas-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/8/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://movflix.my/2025/07/page/3/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/2025/07/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/blockbuster-online-gaming/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/9/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/saba-nayagan-2023-2/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/34/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/dsp-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/84/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/bheeshma-2020/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2021-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-movies-collection/85/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/wolf-2024/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/34/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/the_super_mario_galaxy_movie_2026_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng&get-page=5",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/2026/06/ananthan-kaadu-tamil-movie-download-isaimini.html",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2026/06/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2016-movies/2/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2016-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/ayogya-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/4/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/razakar-2024/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/36/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/slot-online-slot-resmi-panduan/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/25/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/24/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/2025/12/retta-thala-tamil-movie-download-isaimini_01095339545.html",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2025/12/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/super-duper-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/8/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/6-athiyayam-2018/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda16.best/varavu-2026-tamil-movie-online-free",
+   "resource_type": "document",
+   "first_party": "https://moviesda16.best/varavu-2026-tamil-movie",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/rr88-and-khuyen-mai-rr88-a-guide-to-online-promotions/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/4/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/kaappaan-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/9/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/advanced-first-aid-techniques-for-workplace-emergencies/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/malayappa-2022/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2022-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/unlock-your-creativity-with-washi-tape-simple-ideas-for-everyday-use/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/30/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2022-movies/16/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2022-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/poiyattam-2020/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2020-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/doctor_hd_2021_tamil_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?year=2021",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/top-advantages-of-using-fly88-for-daily-activities/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/30/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.stripemovies.com/release-year/2019/",
+   "resource_type": "document",
+   "first_party": "https://www.stripemovies.com/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/evanukku-engeyo-matcham-irukku-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/10/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/decoupled-2021-season-01/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/93/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/mr-and-mrs-ramachari-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/67/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/316",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/the_get_out_2026_tamil_dubbed_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/takkar-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/52/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/bethlehem_kudumba_unit_2026_tamil_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?year=2026&get-page=4",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-hd-mobile-movies/31/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-hd-mobile-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/feeds/4341559492821349295/comments/default",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2026/04/jananayagan-tamil-movie-download-isaimini_01538731993.html",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/ananthan-kaadu-(2026)-tamil-movie-download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/resident_evil_2026_tamil_dubbed_movie_download",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.stripemovies.com/release-year/2022/page/3/",
+   "resource_type": "document",
+   "first_party": "https://www.stripemovies.com/release-year/2022/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/alluri-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/54/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/kavan-2017/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2017-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/paper-boy-2018/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2020-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaiminimix.com/sweet-kaaram-coffee-2023-tamil-songs-download-isaimini/",
+   "resource_type": "document",
+   "first_party": "https://isaiminimix.com/mgr-magan-2022-tamil-songs-download-isaimini/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.stripemovies.com/movies/documentary/page/6/",
+   "resource_type": "document",
+   "first_party": "https://www.stripemovies.com/movies/documentary/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-movies-collection/46/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/vaaitha-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/72/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/2026/09/26/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/explore-the-hidden-fun-behind-todays-most-popular-online-game/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2019-movies/4/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2019-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/power-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/74/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/unblocked-keo-nha-cai-access-links-latest-market-update-2026/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/metro-2016/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2016-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/how-fifa-data-serves-2-5-million-users-every-month/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/29/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/thugs-of-hindostan-2018/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/moviesda-dubbed-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/dangal-2016/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2016-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/rubin_and_ed_1991_tamil_dubbed_movie_download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng&get-page=6",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.gofullmovies.com/despicable-me-4/",
+   "resource_type": "document",
+   "first_party": "https://www.gofullmovies.com/movies/family/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/yaar-win-game-apk-download-latest-version/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/11/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2018-movies/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-movies-collection/50/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/veerapandiyapuram-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/67/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/raththam-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/59/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/guns-up-2025-web-dl-hindi-org-dual-audio-movie-1080p-720p-480p/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/trending/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/seethakaathi-2018/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2019-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/miral-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/82/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/andala-rakshasi-2012/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/99/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/live-sports-streaming/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/10/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://movflix.my/2025/09/page/5/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/2025/09/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2017-movies/6/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2017-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/drive-movie-tamil-dub-download",
+   "resource_type": "document",
+   "first_party": "https://www.tamilprint67.art/movies?year=2026&get-page=45",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-2018-movies/2/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-2018-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/new88-vs-other-online-casinos-what-makes-it-different/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/enai-noki-paayum-thota-2019/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-2019-movies/11/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.co.in/blog/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.co.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/holy-ghost-2025-web-dl-hindi-org-dual-audio-movie/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/2025/09/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/the-electric-state-2025-web-dl-hindi-org-dual-audio-movie/",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/2025/03/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilrockers2024.com/2025/05/raid-2-2025.html",
+   "resource_type": "document",
+   "first_party": "https://www.tamilrockers2024.com/search/label/Telugu",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/todays-bookmaker-odds/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/12/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/tamil-movies-collection/5/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/66/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/banaras-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/81/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/tamil-daily-movies/55/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/vimanam-2023/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/52/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://tamilprint.com.in",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/93/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.co.in/daman-game-login/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.co.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaimini.com.in/megaplay777-kesalahan-fatal-yang-bikin-cepat-habis-modal-di-slot-zeus/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/moviesda-dubbed-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/b52-casino-withdrawal-guide-a-complete-and-secure-way-to-cash-out-your-funds-easily/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/22/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/the-new-golden-generation-outstanding-young-players-of-vietnamese-football/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/18/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/tamil-2023-movies/22/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-2023-movies/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.stripemovies.com/talk-to-me-3/",
+   "resource_type": "document",
+   "first_party": "https://www.stripemovies.com/movies/documentary/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda.com.in/sethupathi-2016/",
+   "resource_type": "document",
+   "first_party": "https://moviesda.com.in/tamil-movies-collection/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/ellaam-mela-irukuravan-paathuppan-2022/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/46/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://in999.tamilprint.co.in/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.co.in/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilrockers2024.com/2026/03/youth-2026.html",
+   "resource_type": "document",
+   "first_party": "https://www.tamilrockers2024.com/search/label/Tamil",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/aaruthra-2018/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/aaruthra-2018/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.business/2026/06/andharan-tamil-movie-download-isaimini.html",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.business/2026/06/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://tamilprint.com.in/important-safety-techniques/",
+   "resource_type": "document",
+   "first_party": "https://tamilprint.com.in/tamil-daily-movies/27/",
+   "synthetic": false,
+   "note": "same-site link on a W691 page"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://4.bp.blogspot.com/-uCjYgVFIh70/VuOLn-mL7PI/AAAAAAAADUs/Kcu9wJbv790hIo83rI_s7lLW3zkLY01EA/s100/avatar.png",
+   "resource_type": "image",
+   "first_party": "https://www.tamilrockers2024.com/",
+   "synthetic": false,
+   "note": "observed third-party request (bp.blogspot.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+   "resource_type": "script",
+   "first_party": "https://tamilprinttv.com/",
+   "synthetic": false,
+   "note": "observed third-party request (ajax.googleapis.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://blogger.googleusercontent.com/img/a/AVvXsEggjGYrISXAu8G4qTDdGNDisS4WvZuT_I1HSr7PDUDm5rdr9I1BhIdwtQBjr4n_5FUfCH6obWmHjMI7alEYrBfLuz1rE-6YIrd_HaQytrhY2gEt-mpQXtEiQsqQZfSsPfFpJ0ChpCpd_ej0vPY8H6A75L0oDRoTZ7XNaikEAk0arW4OH_jB-AZ2VBJq-4k=s283",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (googleusercontent.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://catimages.org/images/2023/01/28/MV5BOWQxNjdlYmItY2YyZC00N.jpg",
+   "resource_type": "image",
+   "first_party": "https://movflix.my/browse/",
+   "synthetic": false,
+   "note": "observed third-party request (catimages.org)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css",
+   "resource_type": "stylesheet",
+   "first_party": "https://www.gofullmovies.com/gofullmovies.php?Action=1",
+   "synthetic": false,
+   "note": "observed third-party request (jsdelivr.net)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.gofullmovies.com/gofullmovies.php?Action=1",
+   "synthetic": false,
+   "note": "observed third-party request (jsdelivr.net)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.tamilrockers2024.com/",
+   "synthetic": false,
+   "note": "observed third-party request (cloudflare.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css",
+   "resource_type": "stylesheet",
+   "first_party": "https://tamilprinttv.com/",
+   "synthetic": false,
+   "note": "observed third-party request (cloudflare.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js",
+   "resource_type": "script",
+   "first_party": "https://tamilprinttv.com/",
+   "synthetic": false,
+   "note": "observed third-party request (jquery.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap",
+   "resource_type": "stylesheet",
+   "first_party": "https://www.tamilrockers2024.com/",
+   "synthetic": false,
+   "note": "observed third-party request (fonts.googleapis.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://i.imgur.com/bHonzIT.png",
+   "resource_type": "image",
+   "first_party": "https://movflix.my/trending/",
+   "synthetic": false,
+   "note": "observed third-party request (imgur.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://imagehosting.space/feed/pageimage.php?domain=gofullmovies.com",
+   "resource_type": "image",
+   "first_party": "https://www.gofullmovies.com/gofullmovies.php?Action=2",
+   "synthetic": false,
+   "note": "observed third-party request (imagehosting.space)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://imgs.tamilprinttv.com/images/47221.jpg?v=7",
+   "resource_type": "image",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng",
+   "synthetic": false,
+   "note": "observed third-party request (tamilprinttv.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://imgshare.info/images/2026/02/26/Sabik-2025.jpg",
+   "resource_type": "image",
+   "first_party": "https://movflix.my/category/18/",
+   "synthetic": false,
+   "note": "observed third-party request (imgshare.info)"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://js.wpadmngr.com/static/adManager.js",
+   "resource_type": "script",
+   "first_party": "https://www.tamilprint67.art/movies?genre=eng",
+   "synthetic": false,
+   "note": "observed third-party request (wpadmngr.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://myimg.click/images/2026/07/20/Scary-Movie-2026.jpg",
+   "resource_type": "image",
+   "first_party": "https://movflix.my/",
+   "synthetic": false,
+   "note": "observed third-party request (myimg.click)"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://pl29482794.effectivecpmnetwork.com/e6/88/62/e688629794dd8a492ce75f89b3bf87c8.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (effectivecpmnetwork.com)"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://public.imagehosting.space/external_files/premiumstyles.css",
+   "resource_type": "stylesheet",
+   "first_party": "https://www.gofullmovies.com/gofullmovies.php?Action=2",
+   "synthetic": false,
+   "note": "observed third-party request (imagehosting.space)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://resources.blogblog.com/img/icon18_edit_allbkg.gif",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (blogblog.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://secure.gravatar.com/avatar/404b36da66e60bd4c6ada09b952008415da038a115692d24588e8f15a0277bc4?s=140&d=mm&r=g",
+   "resource_type": "image",
+   "first_party": "https://isaiminimix.com/mookuthi-amman-2020-tamil-songs-download-isaimini/",
+   "synthetic": false,
+   "note": "observed third-party request (gravatar.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+   "resource_type": "stylesheet",
+   "first_party": "https://tamilprinttv.com/",
+   "synthetic": false,
+   "note": "observed third-party request (bootstrapcdn.com)"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+   "resource_type": "script",
+   "first_party": "https://tamilprinttv.com/",
+   "synthetic": false,
+   "note": "observed third-party request (cloudflareinsights.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://www.blogger.com/static/v1/widgets/2872013778-css_bundle_v2.css",
+   "resource_type": "stylesheet",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (blogger.com)"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://www.blogger.com/static/v1/widgets/851759228-widgets.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.business/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (blogger.com)"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.googletagmanager.com/gtag/js?id=G-8RLHXWV1FL",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.info/?m=1",
+   "synthetic": false,
+   "note": "observed third-party request (googletagmanager.com)"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://www.youtube.com/embed/qQlr9-rF32A?feature=oembed",
+   "resource_type": "document",
+   "first_party": "https://www.gofullmovies.com/despicable-me-4/",
+   "synthetic": false,
+   "note": "observed third-party request (youtube.com)"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://dl1.hotshare.click/file/Leo-2023-Tamil-HD.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://dl6.hotshare.click/d/8f2a/Jailer.mkv",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://new1.movcloud.click/v/abc123/master.m3u8",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://new3.movcloud.click/v/abc123/720p/seg-00012.ts",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://photojin.baby/download/YE-Hqg5APHW",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://cdn.moviesda.farm/uploads/2026/trailer.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://media.tamilprint67.art/stream/1080/index.m3u8",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://files.isaidub.love/dash/manifest.mpd",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://video.twimg.com/ext_tw_video/1/pu/vid/720x1280/x.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://vz-1a2b.b-cdn.net/5f1e/playlist.m3u8",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://s3.amazonaws.com/some-bucket/movie.part1.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://drive.usercontent.google.com/download?id=1AbC&export=download",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://pixeldrain.com/api/file/AbCdEf",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://gofile.io/d/AbC123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://www.mediafire.com/file/abc/Movie.mkv/file",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://mega.nz/file/AbC#key",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://1fichier.com/?abc123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://ddownload.com/abc123/Movie.mkv",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://cdn.discordapp.com/attachments/1/2/movie.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://videos.files.wordpress.com/abc/movie.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media file, manifest or download host"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://new2.movcloud.click/v/abc/1080p/seg-1.ts",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media sub-request of a player"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://vz-1a2b.b-cdn.net/5f1e/1080p/video.m3u8",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media sub-request of a player"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://cdn.moviesda.farm/hls/leo/index.m3u8",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media sub-request of a player"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://stream.tamilprint67.art/hls/seg-003.ts",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media sub-request of a player"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://files.isaidub.love/v/track-02.m4s",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "media sub-request of a player"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://www.youtube.com/embed/qQlr9-rF32A",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://streamtape.com/e/AbCdEf123/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://dood.watch/e/abc123def",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://filemoon.sx/e/abc123def",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://mixdrop.ag/e/abc123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://voe.sx/e/abc123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://streamwish.to/e/abc123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://vidhidepro.com/v/abc123",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://player.vimeo.com/video/123456",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://ok.ru/videoembed/123456",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://cdn.jwplayer.com/libraries/AbC123.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://ssl.p.jwpcdn.com/player/v/8.36.0/jwplayer.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://vjs.zencdn.net/8.10.0/video.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://cdn.plyr.io/3.7.8/plyr.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://cdn.jsdelivr.net/npm/hls.js@1.5.0/dist/hls.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://cdnjs.cloudflare.com/ajax/libs/video.js/8.10.0/video.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://content.jwplatform.com/players/AbC-123.html",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://www.dailymotion.com/embed/video/x8abc",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://embed.twitch.tv/?channel=x",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://player.twitch.tv/?video=1",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "player / embed resource"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://securepubads.g.doubleclick.net/tag/js/gpt.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://ad.doubleclick.net/ddm/trackclk/N1.2/B3",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://www.googleadservices.com/pagead/conversion.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://c.adsco.re/",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://a.exoclick.com/tag_gen.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://syndication.exoclick.com/splash.php?idzone=1",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://c1.popads.net/pop.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://cdn.popcash.net/show.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://ad.a-ads.com/123456?size=728x90",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://s.pubmine.com/head.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://cdn.taboola.com/libtrc/site/loader.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://widgets.outbrain.com/outbrain.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://jsc.mgid.com/site/123.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://acdn.adnxs.com/ast/ast.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://ib.adnxs.com/ut/v3/prebid",
+   "resource_type": "xhr",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://js.wpadmngr.com/static/adManager.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://pl29482794.effectivecpmnetwork.com/e6/88/62/e688.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://www.highperformanceformat.com/abc/invoke.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://thubanoa.com/1?z=123",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://a.magsrv.com/ad-provider.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://static.surfe.pro/js/net.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://cdn.adpushup.com/123/adpushup.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://ads.pubmatic.com/AdServer/js/pwt/1/pwt.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "request",
+   "url": "https://c.amazon-adsystem.com/aax2/apstag.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "ad network endpoint"
+  },
+  {
+   "label": "ad",
+   "context": "link",
+   "url": "https://www.popads.net/users/refer/1",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "link to an ad network"
+  },
+  {
+   "label": "ad",
+   "context": "link",
+   "url": "https://propellerads.com/publishers/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "link to an ad network"
+  },
+  {
+   "label": "ad",
+   "context": "link",
+   "url": "https://www.exoclick.com/?login",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "link to an ad network"
+  },
+  {
+   "label": "ad",
+   "context": "link",
+   "url": "https://ad.doubleclick.net/ddm/clk/1;2;3",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "link to an ad network"
+  },
+  {
+   "label": "ad",
+   "context": "link",
+   "url": "https://www.googleadservices.com/pagead/aclk?sa=L",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "link to an ad network"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.googletagmanager.com/gtag/js?id=G-8RLHXWV1FL",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.google-analytics.com/analytics.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-1",
+   "resource_type": "ping",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://static.cloudflareinsights.com/beacon.min.js/v31e",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://connect.facebook.net/en_US/fbevents.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.facebook.com/tr?id=1&ev=PageView",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://s10.histats.com/js15_as.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://sstatic1.histats.com/0.gif?1&101",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.statcounter.com/counter/counter.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://c.statcounter.com/123/0/abc/1/",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://mc.yandex.ru/metrika/tag.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://mc.yandex.ru/watch/123",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://www.clarity.ms/tag/abc123",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://static.hotjar.com/c/hotjar-1.js?sv=6",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://script.hotjar.com/modules.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://cdn.segment.com/analytics.js/v1/abc/analytics.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://api.mixpanel.com/track/?data=abc",
+   "resource_type": "xhr",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://bat.bing.com/bat.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://sb.scorecardresearch.com/beacon.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://pixel.quantserve.com/pixel/p-abc.gif",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://analytics.tiktok.com/i18n/pixel/events.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://snap.licdn.com/li.lms-analytics/insight.min.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://stats.wp.com/e-202640.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://pixel.wp.com/g.gif?v=ext",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "tracker",
+   "context": "request",
+   "url": "https://cdn.matomo.cloud/site.matomo.cloud/matomo.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "analytics / tracking endpoint"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.moviesda.farm/tamil-2026-movies/page/2/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.moviesda.farm/category/tamil-dubbed-movies/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/movies?genre=eng",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://movflix.my/category/18/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://movflix.my/browse/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.isaimini.farm/tamil-movies/a-z/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://isaidub.love/movie/tamil-dubbed-movies-download/?page=3",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.1tamilmv.army/index.php?/forums/forum/11-web-hd-itunes-hd-bluray/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://www.moviesda.info/?m=1",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://moviesda17.com/search/leo/",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "listing / pagination / search page"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://www.moviesda.red/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://www.isaimini.farm/",
+   "resource_type": "document",
+   "first_party": "https://isaimini.com.in/",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://kuttymovies1.net/",
+   "resource_type": "document",
+   "first_party": "https://kuttymovies1.fit/",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://www.tamilrockers2024.com/",
+   "resource_type": "document",
+   "first_party": "https://tamilrockers.website/",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://www.1tamilmv.lc/",
+   "resource_type": "document",
+   "first_party": "https://www.1tamilmv.army/",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "media",
+   "context": "redirect",
+   "url": "https://dl6.hotshare.click/f/1",
+   "resource_type": "document",
+   "first_party": "https://dl1.hotshare.click/f/1",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "redirect",
+   "url": "https://www.moviesda.farm/",
+   "resource_type": "document",
+   "first_party": "https://linkurl.click/moviesda2026",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "ad",
+   "context": "redirect",
+   "url": "https://c1.popads.net/pop.php?z=1",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/go/1",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "ad",
+   "context": "redirect",
+   "url": "https://www.popcash.net/go/1",
+   "resource_type": "document",
+   "first_party": "https://movflix.my/out",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "ad",
+   "context": "redirect",
+   "url": "https://syndication.exoclick.com/splash.php?idzone=2",
+   "resource_type": "document",
+   "first_party": "https://moviepie.xyz/go",
+   "synthetic": true,
+   "note": "redirect final URL"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fserpinsight.com",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://twitter.com/share?url=http://www.tamilprint67.art/movies",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://t.me/moviesdacloud",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.linkedin.com/sharing/share-offsite/?url=x",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://en.wikipedia.org/wiki/Leo_(2023_film)",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.imdb.com/title/tt15654328/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.youtube.com/watch?v=qQlr9-rF32A",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.reddit.com/r/movies/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.instagram.com/p/abc/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.pinterest.com/pin/create/button/?url=x",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "out_of_scope social/reference (explicit policy)"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.farm/ads-free-movie-2026/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.farm/banner-movie-2025-tamil/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.tamilprint67.art/movie/track-list-songs",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaidub.love/movie/the-advert-2024-tamil-dubbed/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://isaidub.love/movie/popup-2023-tamil/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.farm/sponsored-2026-tamil-movie/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/movie/tracker-2024/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/movie/the-ad-man/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://movflix.my/movie/analytics-2025/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.moviesda.farm/pixel-perfect-2026/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://kuttymovies1.fit/click-2006-hindi-dubbed/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://www.isaimini.farm/beacon-2025/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda17.com/ad/leo-2023/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda17.com/ads/leo-2023/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "link",
+   "url": "https://moviesda17.com/banner/leo-2023/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "navigation",
+   "context": "link",
+   "url": "https://linkurl.click/moviesda2026",
+   "resource_type": "document",
+   "first_party": null,
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "unknown",
+   "context": "link",
+   "url": "https://nowgoal.click/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "unknown",
+   "context": "link",
+   "url": "https://data527.click/",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://adserver.hotshare.click/file/x.mp4",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "media",
+   "context": "link",
+   "url": "https://popup.movcloud.click/v/x/master.m3u8",
+   "resource_type": "document",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://www.moviesda.farm/wp-content/uploads/2026/ads/poster.jpg",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://www.moviesda.farm/wp-content/uploads/banner/leo-poster.jpg",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://myimg.click/images/2026/07/20/Advert-2026.jpg",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "content",
+   "context": "request",
+   "url": "https://imgshare.info/images/2026/02/26/Popup-2025.jpg",
+   "resource_type": "image",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "unknown",
+   "context": "request",
+   "url": "https://www.moviesda.farm/wp-content/themes/x/js/track.js",
+   "resource_type": "script",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://new1.movcloud.click/v/tracking/master.m3u8",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "media",
+   "context": "request",
+   "url": "https://streamtape.com/get_video?id=abc&expires=1&ip=x&token=y",
+   "resource_type": "media",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://dood.watch/pass_md5/abc/def",
+   "resource_type": "xhr",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://filemoon.sx/dl?op=view&file_code=abc&hash=x",
+   "resource_type": "xhr",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  },
+  {
+   "label": "player",
+   "context": "request",
+   "url": "https://cdn.jwplayer.com/v2/media/AbC123",
+   "resource_type": "xhr",
+   "first_party": "https://www.moviesda.farm/tamil-2026-movies/",
+   "synthetic": true,
+   "note": "adversarial: ad/tracker-like words on a content source"
+  }
+ ]
+}
