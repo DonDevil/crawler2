@@ -15,6 +15,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-28 | Review correction pass (10 points) | B.5 invariants added; event ownership table (P1); contracts = stable semantics + additive schemas; P7 data sufficiency gate; P8 identity hierarchy; P10 ANN-mandatory + rebuildable index; P6 filter wording; 3-node Scylla tests moved off the 15 GB dev host. |
 | 2026-09-28 | **Single machine and multi-machine supported from day one** | Multi-host safety is a P0 invariant, not a P14 add-on (see B.4). |
 | 2026-09-28 | GPU: **NVIDIA RTX 2050, 4 GB VRAM** (driver 610.57) on a 12-core / 15 GB RAM host | Encoder must be VRAM-budgeted (P9); one GPU-owning encoder process per host; local dev stack must fit in ~15 GB alongside browsers. |
+| 2026-09-29 | **P3 frontier**: execution queues with one shared domain gate, eligible-domain index instead of `domain_scan_limit` (benchmarked), active-task dedup, per-queue admission limits | ADR-015/016; D10 and D13 closed in P3; `selenium` queue has no P1 capability until P4 decides D14 |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the

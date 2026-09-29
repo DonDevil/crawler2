@@ -137,16 +137,18 @@ result directory.
 **Cause (measured, not assumed):** Docker's data root is on `sda`, a
 5 400-rpm WD laptop HDD attached over USB (`lsblk`: ROTA=1, TRAN=usb),
 ≈ 150–180 IOPS. Scylla is designed for SSD/NVMe (the dev node runs in
-developer mode without an I/O profile). The machine also has an NVMe
-drive that Docker does not use.
+developer mode without an I/O profile). This HDD hosts the whole Ubuntu
+development environment. The machine's internal NVMe holds Windows and is
+intentionally not modified; development data is not moved to it.
 
 **Consequence for the exit gate:** the "p99 at 10× expected per-host
 load" criterion is **unmet on the current dev host** and remains open.
 It is an environment limitation, not a data-model or code limit (CPU idle,
 partition sizes small, 1× medians sub-ms), but that claim is only proven
-once re-run on SSD/NVMe storage: move Docker's data root (or the
-`scylla-data`/`minio-data` volumes) to the NVMe and re-run
-`benchmarks/p2-storage/run.sh latency`, or run it on the P14 cluster.
+once re-run on high-IOPS storage: the benchmark will be re-run later
+under WSL on the NVMe, or on another suitable SSD/NVMe environment (or the
+P14 cluster), with `benchmarks/p2-storage/run.sh latency`. The P2 design
+is not changed because of this result.
 
 
 ## 3. What these benchmarks do not show

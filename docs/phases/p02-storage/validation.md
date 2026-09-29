@@ -53,16 +53,18 @@ Scylla 6.2.3 (1 node, RF=1), MinIO `RELEASE.2026-08-04T00-00-00Z`, Redis 7.4.2.
 | consumer dedupe, bounded idempotency state, event-specific keys | ✅ |
 | 1M-page partition benchmark, no partition > 100 MB | ✅ |
 | 10× per-host load defined, p99 measured | ✅ defined and measured |
-| **p99 targets met at 10× on the dev node** | ❌ **not met** — disk-bound (USB 5 400-rpm HDD at 99–100 % util); open until re-run on SSD/NVMe |
+| **p99 targets met at 10× on the dev node** | ❌ **not met** — disk-bound (USB 5 400-rpm HDD at 99–100 % util); development-environment limitation, open until re-run under WSL/NVMe or another high-IOPS environment |
 | no fake RF=3 result | ✅ RF=3 not validated; P14 entry criterion added to the plan |
 | two-host profile, concurrent writes, shared state, scratch isolation | ✅ |
 | quality gates, P0/P1 tests green, drift clean, V1 untouched | ✅ (nothing under `../crawler` written) |
 
 ## Known limitations
 
-- **Latency gate open** (above). Remedy: put Docker's data root or the
-  `scylla-data`/`minio-data` volumes on the NVMe drive, re-run
-  `run.sh latency`.
+- **Latency gate open** (above) — a development-environment limitation:
+  the Ubuntu environment runs from an external 5 400-rpm USB HDD. The
+  Windows NVMe is intentionally not modified and nothing is moved to it.
+  `run.sh latency` will be re-run under WSL on the NVMe or in another
+  high-IOPS environment; the P2 design is not changed because of it.
 - RF=3, node loss, batchlog replay after coordinator loss: not validated
   (no multi-node environment) — P14 entry criterion.
 - LWT under contention on this disk needs retries (implemented, bounded:

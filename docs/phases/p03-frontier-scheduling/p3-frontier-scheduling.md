@@ -1,7 +1,7 @@
 # P3 — Frontier & scheduling
 
-Status: **design** (implementation, tests and results follow in later
-sections of this document as they land).
+Status: **implemented and validated** — all exit-gate items met; see
+§25 for the one environment caveat on absolute throughput.
 Audit: [audit.md](audit.md). Decisions: [ADR-015](../../adr/ADR-015-frontier-execution-model.md),
 [ADR-016](../../adr/ADR-016-frontier-task-lifecycle.md).
 
@@ -357,7 +357,7 @@ nothing. Commands: [development.md](../../development.md#test-tiers).
 | 2 | priority (P1 direction, FIFO within priority, across domains) | `test_higher_priority_first_fifo_within_priority`, `test_priority_across_domains_added_later` |
 | 3 | deduplication (active only, merge, concurrency, no tombstone) | `test_duplicate_admission_while_active`, `test_completed_url_is_admittable_again`, `test_exhausted_url_is_admittable_again`, `test_merge_*`, `test_concurrent_admissions_store_one_task` |
 | 4 | per-domain politeness, skip-not-block, per-domain override | `test_domain_interval_gates_second_claim`, `test_gated_domain_does_not_block_lower_priority_domain`, `test_per_domain_interval_override` |
-| 5 | cross-queue politeness (deterministic and 8 threads on Redis TIME) | `test_domain_gate_is_shared_by_all_queues`, `test_concurrent_claimers_respect_domain_interval` |
+| 5 | cross-queue politeness (deterministic and 8 threads on Redis TIME), turn-taking | `test_domain_gate_is_shared_by_all_queues`, `test_concurrent_claimers_respect_domain_interval`, `test_queues_take_turns_on_a_shared_domain`, `test_yield_is_bounded_when_other_queue_has_no_workers` |
 | 6 | lease ownership, stale owner rejected | `test_stale_owner_rejected_after_lease_recovery`, `test_no_duplicate_claims_under_concurrency` |
 | 7 | heartbeat (keeps lease through sweeps; helper renews, cancels, survives outage) | `test_heartbeat_keeps_lease_through_recovery`, `unit/.../test_heartbeat_*`, `test_lost_claim_cancels_work`, `test_outage_during_heartbeat_is_not_a_lost_claim` |
 | 8–9 | lease expiry, crash → recovery → requeue; exhaustion → dead letter | `test_expired_lease_is_recovered_and_reclaimable`, `test_recovery_exhaustion_dead_letters`, `test_dead_letters_are_bounded` |
@@ -384,25 +384,185 @@ teardown, time is advanced until every active task has been claimed and
 completed (liveness). A mutation check (shared gate reduced to the
 claiming queue) is caught by the machine.
 
-Results: 15 unit + 38 integration frontier tests pass; the full default
+Results: 15 unit + 40 integration frontier tests pass (also inside the
+rebuilt app container, i.e. the compose environment); the full default
 suite (`make check`) passes.
 
 ## 21. Benchmarks
 
-_Filled in during validation._
+Scripts and raw JSON: `benchmarks/p3-frontier/` (`run.sh all` reproduces
+everything; results of the final code in
+`results/20260929T053513Z/`). V1 numbers come from **V1's own scripts,
+run read-only against the same Redis in the same session**, so V1 and V2
+are compared on identical infrastructure.
+
+**Environment.** Intel i5-11400H (6 cores / 12 threads), 15 GB RAM,
+Ubuntu 24.04, Python 3.12, Redis 7.4.2 (`redis:7.4.2-alpine`). Two Redis
+configurations:
+
+- *benchmark Redis* — host network, AOF off, default `save`, no CPU cap:
+  the setup V1's ~13.7k ceiling was measured on (V1: host Redis 7.0,
+  localhost TCP). All benchmarks below use it unless stated.
+- *compose Redis* — the P0 stack as is: AOF `everysec`, `cpus: 1.0`,
+  reached through Docker's port proxy.
+
+| Benchmark | V1 origin | What it checks |
+|---|---|---|
+| `throughput.py` | `distributed_benchmark.py` | claims/s at 1–16 worker **processes**, 200 000 URLs / 40 domains, no rate limit, no retries, 30 s cap; claim operation = one `claim` + one `complete` script; metric = claims / wall time from spawn to exit (V1's definition); Redis CPU as time-normalised delta |
+| `distributed_1m.py` | new (plan exit gate) | 1M tasks, 8 processes, random SIGKILL / SIGSTOP / sweeper kills; lost, duplicated, simultaneous ownership |
+| `crash_recovery.py` | `crash_recovery.py` | kill -9 of a real holder process → lease expiry → recovery → reclaim; bulk (50 holders) |
+| `heartbeat_endurance.py` | `heartbeat_endurance.py` | 200 claims working 10× the lease with/without `run_with_heartbeat` under a 0.5 s recovery sweep |
+| `starvation.py` | `domain_starvation.py` | 7 V1 scenarios + cross-queue; fairness definition from V1's audit §2 |
+| `priority_ratelimit.py` | `priority_ratelimit.py` | claim order under priority × 2 s interval, one queue and two queues |
+| `eligible_index.py` + `v1_scan_probe.py` | Step 8A/8B probes | victim visibility and claim cost behind N gated domains, V2 index vs V1 K-scan (K = 250) |
+
+**Definitions used by the 1M run.** *Lost*: admitted but neither
+completed, exhausted, dead-lettered nor still active. *Duplicate
+completion*: two accepted completions of one task (each URL is admitted
+once, so `completed` must equal `admitted`). *Simultaneous ownership*: a
+claim of task X issued (Redis TIME) before an earlier claim of X stopped
+being valid — its last lease expiry (claim or heartbeat) or its explicit
+fail/defer. *Legitimate reclaim*: a later claim after the earlier owner's
+lease lapsed without an outcome (killed or paused worker); counted, not an
+error. *Stale report*: a resumed zombie's outcome rejected as `stale`;
+counted, not an error — an **accepted** outcome from a superseded token
+would be an error. Workers log each claim/heartbeat/outcome with an
+unbuffered write before their next Redis call, so a SIGKILL loses at most
+the reply of the in-flight call.
 
 ## 22. Results
 
-_Filled in during validation._
+### Throughput (gate: ≥ V1 ceiling, ~13k claims/s at 8 workers, no rate limit)
+
+| Workers | V2 claims/s | V1 claims/s (same Redis) | V2 Redis CPU |
+|---:|---:|---:|---:|
+| 1 | 5 742 | 3 964 | 39 % |
+| 2 | 10 339 | 7 490 | 73 % |
+| 4 | 13 924 | 11 212 | 95 % |
+| **8** | **13 224 / 13 525 / 13 659** (3 runs) | 11 509 / 11 325 / 11 455 | 99.5 % |
+| 16 | 12 214 | 10 958 | 99 % |
+| 8, compose Redis | 9 292 | 8 394 | 92 % |
+
+At 8 workers V2 is **+18 %** over V1 on identical infrastructure and
+**13.2–13.7k claims/s** absolute, 0 duplicate completions, 0 lost tasks,
+audit clean after every run. Like V1, the ceiling is Redis's single
+thread (99.5 % CPU; ~28 µs server time per script); the client fleet is
+far from saturated. V2 latency at 8 workers: claim p50/p95/p99 =
+321/456/528 µs, complete p50/p99 = 265/464 µs (queueing at Redis, as
+V1's audit showed). V1 measures 11.5k on this host today versus its
+historical 13.7k (Redis 7.0 host service); both frontiers lose ~30 % on
+the compose Redis (AOF + 1-CPU cap + Docker proxy), where neither reaches
+13k.
+
+### 1M-claim distributed run with chaos
+
+| | |
+|---|---|
+| tasks / claims | 1 000 000 / 1 005 167 (8 workers, 1 000 domains, random priorities, 0.5 % failures, 0.1 % slow work with heartbeat) |
+| chaos | 68 worker SIGKILLs, 14 SIGSTOP pauses of 3.5 s (> 2 s lease), 12 sweeper SIGKILLs |
+| **lost tasks** | **0** (completed = admitted = 1 000 000; active at end 0; audit clean) |
+| **duplicate completions** | **0** (counters and logs) |
+| **simultaneous ownership** | **0** |
+| legitimate lease-expiry reclaims | 69 logged (76 recoveries; 7 claims whose reply died with the worker) |
+| retries through the frontier | 5 091 |
+| zombie reports rejected as stale | 9; accepted outcomes by superseded tokens: 0 |
+| elapsed | 189 s (5.3k claims/s under chaos, logging and pauses) |
+
+### Eligible-domain index vs `domain_scan_limit` (decision evidence)
+
+N better-ranked domains, all gated, each still holding work; the correct
+answer is a low-priority victim with an open gate. 500 claims per N.
+
+| N gated | V2 victim found | V2 server µs/claim | V1 (K=250) victim found | V1 server µs/claim |
+|---:|---:|---:|---:|---:|
+| 50 | 500/500 | 35 | 500/500 | 205 |
+| 250 | 500/500 | 32 | **0/500** | 783 |
+| 260 | 500/500 | 31 | **0/500** | 799 |
+| 1 000 | 500/500 | 32 | **0/500** | 812 |
+| 5 000 | 500/500 | 31 | **0/500** | 828 |
+| 20 000 | 500/500 | 32 | **0/500** | 787 |
+
+V2's claim cost is flat in N; V1 pays its linear worst case and still
+returns nothing once N ≥ K. V2's own worst case is the promotion burst
+(N gates expiring in the same instant): 1.2 ms (N = 50) to 3.6 ms per
+claim, bounded by `promote_batch` = 256, independent of N — the same
+order as V1's K = 1000 worst case, paid only on bursts.
+
+### Starvation, priority, crash, heartbeat
+
+| Benchmark | Result |
+|---|---|
+| finite priority | high ×5 then low ×3, all claimed ✅ |
+| rate-limit skip | gated `hot` skipped, `cold` claimed ✅ |
+| replenish | interval 0: B 0/300 (strict priority, by design, identical to V1); interval 0.05 s: B 10/10 ✅ |
+| scan window (corrected, 260 replenished fillers, 1 s interval) | **V2 victim 5/5 claimed, max wait 1.02 s; V1 victim 0/800 (starved)** ✅ |
+| retries | A 15 attempts (3 × 5), B 10/10 ✅ |
+| multi-worker 1/2/4/8 | 220 claims, 0 duplicates each ✅ |
+| recovery (repeatedly abandoned A) | B 5/5 ✅ |
+| cross-queue (4 busy http workers + 1 browser task, one domain, 0.1 s) | first run, before the fix: browser never claimed in 300 gate openings ❌ → turn-taking (§8) → claimed after 1 opening (0.11 s) ✅ |
+| priority × 2 s interval | urgent, normal, bulk at t=0; urgent, normal at t=2.0 s; min same-domain gap 2.005 s on one queue and across http+browser ✅ |
+| crash recovery | attempt 2 reclaimed 2.53 s after claim (lease 2 s + sweep + 0.5 s backoff); dead worker's heartbeat → None, complete → stale; bulk: 50/50 killed holders reclaimed and completed within 2.5 s ✅ |
+| heartbeat endurance | enabled: 0/200 recovered, 200/200 completed; disabled: 200/200 recovered, 200 stale ✅ |
 
 ## 23. Known limitations
 
-_Filled in during validation._
+- **Absolute throughput depends on the Redis deployment.** ≥ 13k claims/s
+  holds on a V1-equivalent Redis; the compose Redis (AOF, 1 CPU, Docker
+  proxy) gives 9.3k for V2 (V1: 8.4k). Real crawling needs far less (V1
+  audit: 10 ms of work per claim drops Redis to ~6 % CPU).
+- **Redis is the only frontier durability.** AOF `everysec` can lose ~1 s
+  of transitions on a Redis crash; lost tasks are re-admitted from Scylla
+  by P6/P7, which P3 does not implement.
+- **One Redis primary** (ADR-006): scripts compute keys at run time and are
+  not Redis Cluster compatible; HA is P14.
+- **Promotion lag**: due gates/scheduled tasks are promoted lazily by
+  claims (≤ `promote_batch` per call) and by `recover()`; a burst larger
+  than the batch waits one more call.
+- **Strict priority** can starve lower priorities when higher-priority
+  work is unbounded *and* no politeness interval applies (V1 mechanism J,
+  kept by design; any interval > 0 resolves it, measured).
+- **Turn-taking** can delay the claiming queue by one interval on a
+  domain that also has work in a queue with no running workers.
+- **Scheduled work counts against `max_depth`**; long-horizon recrawl
+  calendars must live in Scylla (P7).
+- `audit()` is O(state) with SCAN — offline/test use only.
+- P2's 10× storage-latency gate remains **open for a development
+  environment reason, not a P3 one**: the Ubuntu environment runs from an
+  external 5 400-rpm USB HDD; the Windows NVMe is intentionally not
+  modified; the P2 benchmark will be re-run under WSL/NVMe or another
+  high-IOPS environment.
 
 ## 24. Deferred decisions
 
-_Filled in during validation._
+| Decision | Owner |
+|---|---|
+| Admission policy: what to admit/recrawl and when, re-admission after `rejected_full`, rebuilding the frontier from Scylla after Redis loss | P6/P7 |
+| Retry policy per domain/fetch profile (`max_attempts`, backoff, escalation queue), re-admitting dead letters | P7 (mechanism exists in P3) |
+| Per-domain politeness values beyond the default and overrides | P7 source intelligence |
+| Whether `selenium` stays an execution queue and whether P1 requests may name it (P1 minor change) | P4 (D14) |
+| Worker runtime: where `recover()` runs, heartbeat cadence, transport-level retry budget inside one attempt | P4 |
+| Redis HA / failover preserving Lua atomicity | P14 |
+| Absolute throughput on production Redis hardware | P14 |
 
 ## 25. Exit-gate status
 
-_Filled in during validation._
+| Gate | Status | Evidence |
+|---|---|---|
+| execution queues work | ✅ | §20 rows 1, 13–14; `test_queues_are_independent` |
+| shared cross-queue politeness | ✅ | §20 row 5; priority × rate limit on two queues (§22) |
+| temporary dedup | ✅ | §20 row 3; state machine |
+| scheduled ZSET | ✅ | §20 rows 11–12; sweeper kills in 1M run |
+| lease / heartbeat / recovery | ✅ | §20 rows 6–9; crash + heartbeat benchmarks |
+| retry authority centralised | ✅ | §14, §20 row 10; 5 091 retries in 1M run |
+| backpressure / admission control | ✅ | §20 rows 13–14 |
+| Redis failure semantics defined and tested | ✅ | §19; `test_redis_failure.py` |
+| eligible-domain design benchmarked and decided | ✅ | §17, §22 (index kept; `domain_scan_limit` not ported) |
+| starvation benchmark | ✅ | §22 (after the turn-taking fix) |
+| 1M distributed run, random kills, 0 lost, 0 simultaneous ownership, reclaims distinguished | ✅ | §22 |
+| ≥ V1 ceiling (~13k claims/s, 8 workers, no rate limit) | ✅ on V1's measurement setup (13.2–13.7k; V1 11.3–11.5k on the same Redis); on the compose Redis 9.3k (V1 8.4k) | §22 |
+| crash recovery, heartbeat endurance, state machine, priority/rate-limit | ✅ | §20, §22 |
+| documentation, ADRs, limitations, P2 environment note | ✅ | this document, ADR-015/016, architecture/, development.md, benchmarks.md |
+
+**P3 is complete.** The one qualification: the absolute ≥13k figure is
+met on a Redis configured like V1's measurement setup, not on the
+compose Redis (AOF on, 1-CPU cap), where V1 is slower as well.
