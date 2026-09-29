@@ -26,7 +26,9 @@ export CRAWLER2_MINIO__ACCESS_KEY=$MINIO_ROOT_USER CRAWLER2_MINIO__SECRET_KEY=$M
 export CRAWLER2_HOST_ID=m1-host CRAWLER2_SCRATCH_DIR=$VAR/scratch
 export CRAWLER2_LOGGING__LEVEL=INFO
 # M1 worker configuration (recorded in the results): P4 defaults except these.
-export CRAWLER2_WORKERS__HTTP__CONCURRENCY=${M1_HTTP_CONCURRENCY:-16}
+# http 4: the rate the dev host's HDD-backed Scylla can extract and admit (16 and 8
+# outran extraction; see validation.md §4.1).
+export CRAWLER2_WORKERS__HTTP__CONCURRENCY=${M1_HTTP_CONCURRENCY:-4}
 export CRAWLER2_WORKERS__BROWSER__CONCURRENCY=${M1_BROWSER_CONCURRENCY:-2}
 export CRAWLER2_LIMITS__MAX_MEMORY_MB=${M1_MAX_MEMORY_MB:-1024}
 # Stream retention: urls.discovered entries are ~17 KB; 100k entries would exceed the
@@ -71,6 +73,7 @@ start)
     env | grep '^CRAWLER2_' | grep -v -i 'secret\|access_key\|password' | sort > "$VAR/config.env"
     supervise relay env CRAWLER2_METRICS__PORT=9301 "$BIN/crawler2-storage" relay
     supervise extract env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-extract"
+    supervise extract2 env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-extract"
     supervise admit env CRAWLER2_METRICS__PORT=9302 "$BIN/crawler2-discover" admit
     supervise http env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-worker" --pool http
     supervise browser env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-worker" --pool browser
@@ -89,6 +92,11 @@ start-search)  # add the search process to a running M1: start-search QUERIES
     echo "$(date -u +%FT%TZ) add search queries=$(sha256sum "$VAR/queries.txt" | cut -c1-16)" >> "$VAR/restarts.log"
     supervise search env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-discover" search \
         --queries "$VAR/queries.txt" --every 86400
+    ;;
+add-extract)  # another page.observed consumer in the same group: add-extract NAME
+    name=${2:?name, e.g. extract2}
+    echo "$(date -u +%FT%TZ) add $name" >> "$VAR/restarts.log"
+    supervise "$name" env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-extract"
     ;;
 restart-relay)  # apply a new M1_STREAM_MAXLEN (the relay trims streams on publish)
     kill "$(cat "$VAR/pids/relay.pid")" 2>/dev/null || true

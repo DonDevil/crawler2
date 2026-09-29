@@ -13,7 +13,7 @@ Benchmarks: [benchmarks.md](benchmarks.md) · Decisions: [decisions.md](decision
 | D — ≥ 100k decisions/s | **PASS** | 127,985 warm decisions/s, no cache ([benchmarks.md](benchmarks.md) §1) |
 | E — false-positive safety | **PASS** (after fix X-3) | 0 generic-rule blocks of protected items; per-class P/R in benchmarks §2 |
 | F — M1 closed loop | **PASS** | fixture loop test + live run §4.1 |
-| G — 24 h run | **IN PROGRESS** | window 2026-09-29 18:30 UTC → 2026-09-30 18:30 UTC, §4.2 |
+| G — 24 h run | **IN PROGRESS** | window 2026-09-29 21:20 UTC → 2026-09-30 21:20 UTC (restarted after the last configuration change), §4.2 |
 | H — P1–P6 regression | **PASS** (host tiers) | §3; the in-container `validate-stack` tier was not run while M1 occupies the stack |
 
 ## 2. Tests
@@ -62,7 +62,7 @@ bucket `crawler2-m1`; ruleset `rs-df6cc49a8786196590ecedd5133d3786`
 2026-09-29); seeds = the 52-line P0 seed file (`w52-v1-seeds`, every 6 h);
 search = operator file `~/Desktop/query.txt` (4 queries, sha256
 `338ffb33…`, every 24 h; engines duckduckgo, bing, brave, ahmia);
-processes = relay, extract, admit, http pool (concurrency 8), browser pool
+processes = relay, 2 × extract, admit, http pool (concurrency 4), browser pool
 (2 pages), seeds, search, monitor, each supervised. Timeline (UTC):
 
 | Time | Event |
@@ -73,7 +73,10 @@ processes = relay, extract, admit, http pool (concurrency 8), browser pool
 | 18:06:45 | search added (query file supplied) |
 | 18:25:12 | relay reconfigured `events.stream_maxlen` 100,000 → 10,000 (Redis memory, X-8) |
 | 18:25–18:27 | the **monitor** crash-looped: it ran P3 `audit()` (documented offline-only) against the live frontier, which races with claims (`KeyError`); live audit removed, monitor restarted 18:27:32. Crawl processes unaffected; 2-minute sampling gap |
-| 18:30 | **Gate G window starts** (final configuration) |
+| 20:56:59 | relay exited on a Scylla `ReadTimeout` (outbox read, HDD; P2 raises `StorageUnavailableError` by design); supervisor restarted it 5 s later, resuming from its checkpoint |
+| 21:01:07 | `page.observed` lag reached 9,792 of the 10,000-entry stream cap (extraction ~1.2 pages/s vs ~1.6 fetched; Scylla timeouts); second extraction consumer added — no gain (Scylla-bound) |
+| 21:16:38 | http pool 8 → 4; extraction (2 consumers, ~2 pages/s) now outpaces fetching; the group never fell behind the stream's first entry (entries read + length ≥ entries added throughout), so no event was trimmed unread |
+| 21:20 | **Gate G window starts** (final configuration; the earlier 18:30 window was abandoned) |
 
 At 18:22 (0.93 h): 21,650 claims, 20,184 completed, 1,391 retries, 67
 exhausted, 0 dead letters, frontier `audit()` 0 problems (the one hourly audit that ran before the monitor fix); 20,340
@@ -93,6 +96,10 @@ licensed platforms (ncbi.nlm.nih.gov, hotstar, jiotv); under the approved
 scope rule these became roots. Relevance of search results is P7 work.
 
 ### 4.2 24-hour run (Gate G)
+
+Frontier http depth reached its `max_depth` (200,000) at ~21:06; further
+new admissions are refused explicitly (`rejected_full`, not recorded as
+admitted, retried on rediscovery). Redis plateaued at ~684 MB of 768 MB.
 
 Measured on the window above with `benchmarks/p6-m1/report.py`; results in
 `benchmarks/p6-m1/results/m1-24h.json`. *(Filled in at the end of the window.)*
