@@ -6,6 +6,10 @@ from dataclasses import dataclass
 
 from crawler2.core.configuration import ScyllaSettings
 from crawler2.storage.scylla.evidence import ScyllaEvidenceRepository
+from crawler2.storage.scylla.filtering import (
+    ScyllaDiscoveryRepository,
+    ScyllaFilterRuleRepository,
+)
 from crawler2.storage.scylla.media import ScyllaMediaRepository
 from crawler2.storage.scylla.migrations import Migrator
 from crawler2.storage.scylla.outbox import ScyllaOutbox, ScyllaProcessedEventStore
@@ -35,6 +39,8 @@ class ScyllaStorage:
     projections: ScyllaProjectionRepository
     evidence: ScyllaEvidenceRepository
     page_intel: ScyllaPageIntelligenceRepository
+    filter_rules: ScyllaFilterRuleRepository
+    discovery: ScyllaDiscoveryRepository
 
     @classmethod
     def open(
@@ -64,6 +70,8 @@ class ScyllaStorage:
             projections=ScyllaProjectionRepository(session),
             evidence=ScyllaEvidenceRepository(session, outbox, pages),
             page_intel=ScyllaPageIntelligenceRepository(session, outbox),
+            filter_rules=ScyllaFilterRuleRepository(session),
+            discovery=ScyllaDiscoveryRepository(session),
         )
 
     def close(self) -> None:

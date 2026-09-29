@@ -6,7 +6,8 @@ Rules (docs/phases/p02-storage/repositories.md):
   below; no driver type, CQL or bucket arithmetic leaks to callers.
 - Every write is an idempotent upsert keyed by contract IDs: replaying it
   (at-least-once delivery) converges to the same state. The only
-  compare-and-set operations are E1/E2 (``EvidenceRepository``).
+  compare-and-set operations are E1/E2 (``EvidenceRepository``) and the P6
+  active-ruleset pointer F4 (``FilterRuleRepository.activate``).
 - ``event=`` on a write method appends that envelope to the outbox with the
   authoritative rows (ADR-013). The payload must describe the same write.
 - Reads marked "EC" may lag concurrent writes (P1 catalog "EC ok").
@@ -566,8 +567,244 @@ class EvidenceRepository(Protocol):
     def provenance(self, evidence_id: EvidenceId) -> EvidenceProvenance | None: ...
 
 
+# --- P6 filter rules and discovery (docs/phases/p06-filter-discovery/design.md §13) ---
+
+
+@dataclass(frozen=True, slots=True)
+class FilterSourceRevision:
+    """F1: one immutable import of one rule source, with its provenance."""
+
+    source: str
+    revision: str
+    revision_at: datetime
+    origin: str
+    """URL or file path the input came from."""
+    input_sha256: str
+    importer: str
+    rule_count: int
+    enabled_count: int
+    report: str
+    """Importer report (JSON)."""
+    created_by: str
+    license: str | None = None
+    title: str | None = None
+    list_version: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class StoredRule:
+    """F2: one rule of a source revision; ``doc`` is ``Rule.to_doc()`` as JSON."""
+
+    rule_id: str
+    enabled: bool
+    doc: str
+
+
+@dataclass(frozen=True, slots=True)
+class FilterRulesetRecord:
+    """F3: an immutable composition of source revisions plus the decision policy."""
+
+    ruleset_id: str
+    sources: tuple[tuple[str, str], ...]
+    """(source, revision) pairs."""
+    rule_count: int
+    """Enabled rules compiled into the ruleset (verified on load)."""
+    policy: str
+    semantics: str
+    psl: str
+    created_at: datetime
+    created_by: str
+    note: str = ""
+
+
+@dataclass(frozen=True, slots=True)
+class ActiveRulesetPointer:
+    """F4: which ruleset processes should run."""
+
+    name: str
+    ruleset_id: str
+    previous_ruleset_id: str | None
+    activated_at: datetime
+    activated_by: str
+
+
+class FilterRuleRepository(Protocol):
+    """F1-F4. Revisions and rulesets are immutable; only the active pointer moves (LWT)."""
+
+    def put_source(self, revision: FilterSourceRevision, rules: Sequence[StoredRule]) -> None:
+        """Rules first, the F1 row last: a reader that finds the row finds every rule."""
+        ...
+
+    def source(self, source: str, revision: str) -> FilterSourceRevision | None: ...
+
+    def sources(self, source: str) -> list[FilterSourceRevision]:
+        """Newest first."""
+        ...
+
+    def rules(self, source: str, revision: str) -> list[StoredRule]: ...
+
+    def put_ruleset(self, record: FilterRulesetRecord) -> None: ...
+
+    def ruleset(self, ruleset_id: str) -> FilterRulesetRecord | None: ...
+
+    def active(self, name: str = "default") -> ActiveRulesetPointer | None: ...
+
+    def activate(
+        self, ruleset_id: str, *, expected: str | None, by: str, at: datetime, name: str = "default"
+    ) -> bool:
+        """Compare-and-set the pointer; False when the current id is not ``expected``."""
+        ...
+
+
+@dataclass(frozen=True, slots=True)
+class UrlAdmissionState:
+    """F5: the revisit gate and the latest filter decision of one URL."""
+
+    url_id: UrlId
+    last_admitted_at: datetime | None
+    last_origin: str | None
+    last_action: str | None
+    last_rule_id: str | None
+    last_ruleset: str | None
+
+
+@dataclass(frozen=True, slots=True)
+class AdmittedUrl:
+    url: UrlRef
+    at: datetime
+    origin: str
+    """seed | search | link | leaf"""
+    priority: int
+    queue: str
+
+
+@dataclass(frozen=True, slots=True)
+class FilterDecisionRow:
+    """F6: one recorded filter decision (design §17)."""
+
+    url_id: UrlId
+    url: str
+    decided_at: datetime
+    context: str
+    outcome: str
+    """admitted | blocked | out_of_scope | recent | rejected_full | redirect_blocked | invalid"""
+    decision: str
+    """``Decision.to_doc()`` as JSON."""
+    action: str
+    rule_id: str
+    ruleset: str
+    source_observation_id: ObservationId | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class RedirectDecisionRow:
+    """F7: the redirect-chain decision of one observation."""
+
+    observation_id: ObservationId
+    action: str
+    decisions: str
+    """JSON list of per-hop ``Decision.to_doc()``."""
+    ruleset: str
+    decided_at: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class InterceptionSummary:
+    """F8: aggregated browser interception decisions of one observation."""
+
+    observation_id: ObservationId
+    counts: dict[str, int]
+    """``"{classification}:{action}"`` → requests."""
+    blocked: str
+    """JSON list of up to 50 ``{"host", "rule_id"}``."""
+    ruleset: str
+    recorded_at: datetime
+
+
+@dataclass(frozen=True, slots=True)
+class SeedRecord:
+    """F9: seed provenance."""
+
+    seed_source: str
+    url: UrlRef
+    original: str
+    file_path: str
+    file_sha256: str
+    line: int
+    imported_at: datetime
+    metadata: dict[str, str]
+
+
+@dataclass(frozen=True, slots=True)
+class SearchResultRecord:
+    """F10: one search result with its provenance."""
+
+    query: str
+    engine: str
+    adapter_version: str
+    rank: int
+    returned_url: str
+    url: str | None
+    """Canonical URL, or None when the result could not be canonicalized."""
+    title: str | None
+    snippet: str | None
+    retrieved_at: datetime
+    outcome: str
+
+
+@dataclass(frozen=True, slots=True)
+class ScopeSite:
+    """F11: a registrable domain whose in-site links are followed (design §10)."""
+
+    domain: str
+    origin: str
+    added_at: datetime
+    detail: str = ""
+
+
+class DiscoveryRepository(Protocol):
+    """F5-F11. Idempotent upserts; F6 rows expire after the configured TTL."""
+
+    def admission_states(self, url_ids: Collection[UrlId]) -> dict[UrlId, UrlAdmissionState]: ...
+
+    def mark_admitted(self, rows: Sequence[AdmittedUrl]) -> None: ...
+
+    def record_decisions(self, rows: Sequence[FilterDecisionRow], *, ttl_s: int) -> None:
+        """F6 history rows plus the F5 latest-decision columns."""
+        ...
+
+    def decisions(self, url_id: UrlId) -> list[FilterDecisionRow]:
+        """Newest first."""
+        ...
+
+    def record_redirect(self, row: RedirectDecisionRow) -> None: ...
+
+    def redirect(self, observation_id: ObservationId) -> RedirectDecisionRow | None: ...
+
+    def record_interceptions(self, row: InterceptionSummary) -> None: ...
+
+    def interceptions(self, observation_id: ObservationId) -> InterceptionSummary | None: ...
+
+    def record_seeds(self, rows: Sequence[SeedRecord]) -> None: ...
+
+    def seeds(self, seed_source: str) -> list[SeedRecord]: ...
+
+    def record_search_results(self, rows: Sequence[SearchResultRecord]) -> None: ...
+
+    def search_results(self, query: str, day: datetime) -> list[SearchResultRecord]: ...
+
+    def add_scope_sites(self, sites: Sequence[ScopeSite]) -> None:
+        """First origin wins; re-adding a known domain changes nothing."""
+        ...
+
+    def scope_sites(self) -> list[ScopeSite]: ...
+
+
 __all__ = [
+    "ActiveRulesetPointer",
+    "AdmittedUrl",
     "ContentVersion",
+    "DiscoveryRepository",
     "DomainRecord",
     "EvidenceProvenance",
     "EvidenceRecord",
@@ -577,7 +814,12 @@ __all__ = [
     "ExtractRecord",
     "FetchAttemptRepository",
     "FetchAttemptSummary",
+    "FilterDecisionRow",
+    "FilterRuleRepository",
+    "FilterRulesetRecord",
+    "FilterSourceRevision",
     "Inlink",
+    "InterceptionSummary",
     "KnownUrl",
     "LatestObservation",
     "LinkRepository",
@@ -593,11 +835,17 @@ __all__ = [
     "PageRevision",
     "PageVersionSighting",
     "ProjectionRepository",
+    "RedirectDecisionRow",
     "RepresentationState",
     "RepresentationStatus",
     "RetentionDecision",
     "RevisionSighting",
+    "ScopeSite",
+    "SearchResultRecord",
+    "SeedRecord",
     "SnapshotDecision",
+    "StoredRule",
     "TargetState",
+    "UrlAdmissionState",
     "UrlRepository",
 ]

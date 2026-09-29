@@ -41,6 +41,18 @@ EXPECTED_TABLES = {
     "page_extracts": "P5",
     "page_revisions_by_url": "P5/W8",
     "snapshot_retention": "P5",
+    # V003 (P6): filter rules, rulesets, active pointer, discovery state and provenance.
+    "filter_sources": "P6/F1",
+    "filter_rules": "P6/F2",
+    "filter_rulesets": "P6/F3",
+    "filter_active": "P6/F4",
+    "url_admission": "P6/F5",
+    "filter_decisions_by_url": "P6/F6",
+    "redirect_decisions_by_observation": "P6/F7",
+    "interceptions_by_observation": "P6/F8",
+    "seeds_by_source": "P6/F9",
+    "search_results_by_query_day": "P6/F10",
+    "scope_sites": "P6/F11",
 }
 
 
