@@ -105,7 +105,10 @@ class FilterEngine:
         self._paths: dict[str, list[_Compiled]] = {}
         self._tokens: dict[str, _Bucket] = {}
         self._generic: _Bucket | None = None
+        self._token_keys: frozenset[str] = frozenset()
         self._rules: dict[str, Rule] = {}
+        self._defaults: dict[str, Decision] = {}
+        """One immutable ALLOW/UNKNOWN decision per observed field (most decisions)."""
 
     # --- construction -----------------------------------------------------------
 
@@ -170,6 +173,7 @@ class FilterEngine:
         self._labels = {k: sorted(v, key=_by_key) for k, v in labels.items()}
         self._paths = {k: sorted(v, key=_by_key) for k, v in paths.items()}
         self._tokens = {k: _Bucket.of(v) for k, v in tokens.items()}
+        self._token_keys = frozenset(self._tokens)
         self._generic = _Bucket.of(generic) if generic else None
         self.untokenized = len(generic)
         self.rule_count = len(rules)
@@ -200,18 +204,22 @@ class FilterEngine:
         found: list[_Compiled] = []
         host = inp.host
         labels = host.split(".")
+        hosts, paths = self._hosts, self._paths
         # Host suffixes: "a.b.c" → "a.b.c", "b.c", "c".
         for i in range(len(labels)):
             suffix = ".".join(labels[i:]) if i else host
-            entries = self._hosts.get(suffix)
+            entries = hosts.get(suffix)
             if entries:
                 found.extend(e for e in entries if self._applies(e.rule, inp))
-            entries = self._paths.get(suffix)
-            if entries:
-                path = _path_of(inp.url)
-                found.extend(
-                    e for e in entries if path.startswith(e.prefix) and self._applies(e.rule, inp)
-                )
+            if paths:
+                entries = paths.get(suffix)
+                if entries:
+                    path = _path_of(inp.url)
+                    found.extend(
+                        e
+                        for e in entries
+                        if path.startswith(e.prefix) and self._applies(e.rule, inp)
+                    )
         if self._labels:
             for label in dict.fromkeys(labels[:-1]):
                 entries = self._labels.get(label)
@@ -219,10 +227,14 @@ class FilterEngine:
                     found.extend(e for e in entries if self._applies(e.rule, inp))
         if self._tokens or self._generic:
             url = inp.url.lower()
-            buckets = [self._tokens.get(t) for t in dict.fromkeys(TOKEN_RE.findall(url))]
-            buckets.append(self._generic)
+            # Only tokens that index a bucket; the intersection runs in C.
+            buckets = [
+                self._tokens[t] for t in self._token_keys.intersection(TOKEN_RE.findall(url))
+            ]
+            if self._generic is not None:
+                buckets.append(self._generic)
             for bucket in buckets:
-                if bucket is not None and bucket.prefilter.search(url):
+                if bucket.prefilter.search(url):
                     found.extend(
                         e for e in bucket.entries if self._applies(e.rule, inp) and _search(e, url)
                     )
@@ -289,19 +301,23 @@ class FilterEngine:
         return Action.CLASSIFY
 
     def _default(self, inp: FilterInput) -> Decision:
-        return Decision(
-            classification=Classification.UNKNOWN,
-            action=Action.ALLOW,
-            confidence=1.0,
-            rule_id="default",
-            rule_source="default",
-            matched_field=inp.field,
-            matched_pattern="",
-            reason=None,
-            override_of=None,
-            ruleset=self.ruleset_id,
-            candidates=0,
-        )
+        decision = self._defaults.get(inp.field)
+        if decision is None:
+            decision = Decision(
+                classification=Classification.UNKNOWN,
+                action=Action.ALLOW,
+                confidence=1.0,
+                rule_id="default",
+                rule_source="default",
+                matched_field=inp.field,
+                matched_pattern="",
+                reason=None,
+                override_of=None,
+                ruleset=self.ruleset_id,
+                candidates=0,
+            )
+            self._defaults[inp.field] = decision
+        return decision
 
     @staticmethod
     def _applies(rule: Rule, inp: FilterInput) -> bool:
