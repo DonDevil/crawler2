@@ -1,0 +1,58 @@
+{
+ "gate": "V2 parse CPU/page <= 50% of V1",
+ "ratio_aggregate_median_of_rounds": 0.1786,
+ "passed": true,
+ "rounds": [
+  {
+   "round": "round1",
+   "pages": 639,
+   "v1": {
+    "aggregate_ms_per_page": 53.173,
+    "median_ms": 41.713,
+    "p95_ms": 108.735
+   },
+   "v2": {
+    "aggregate_ms_per_page": 9.719,
+    "median_ms": 7.753,
+    "p95_ms": 19.229
+   },
+   "ratio_aggregate": 0.1828,
+   "ratio_per_page_median": 0.1973,
+   "ratio_per_page_max": 0.686
+  },
+  {
+   "round": "round2",
+   "pages": 639,
+   "v1": {
+    "aggregate_ms_per_page": 53.311,
+    "median_ms": 42.098,
+    "p95_ms": 109.485
+   },
+   "v2": {
+    "aggregate_ms_per_page": 9.517,
+    "median_ms": 7.613,
+    "p95_ms": 18.944
+   },
+   "ratio_aggregate": 0.1785,
+   "ratio_per_page_median": 0.193,
+   "ratio_per_page_max": 0.6756
+  },
+  {
+   "round": "round3",
+   "pages": 639,
+   "v1": {
+    "aggregate_ms_per_page": 53.026,
+    "median_ms": 41.449,
+    "p95_ms": 110.297
+   },
+   "v2": {
+    "aggregate_ms_per_page": 9.473,
+    "median_ms": 7.607,
+    "p95_ms": 18.691
+   },
+   "ratio_aggregate": 0.1786,
+   "ratio_per_page_median": 0.1925,
+   "ratio_per_page_max": 0.6763
+  }
+ ]
+}

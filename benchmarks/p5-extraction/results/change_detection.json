@@ -1,0 +1,382 @@
+{
+ "tp": 1,
+ "fp": 22,
+ "tn": 30,
+ "fn": 0,
+ "pairs": 53,
+ "precision": 0.0435,
+ "recall_in_sample": 1.0,
+ "rows": [
+  {
+   "pair": "03b6d6ae7982-6fc9397624c0",
+   "url": "https://www.moviesda.business/search/label/English%20Movies?max-results=6",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "12a715f9546c-7672e2d8b8ea",
+   "url": "https://isaimini.com.in/",
+   "label": "meaningful",
+   "rule_changed": true,
+   "cell": "tp"
+  },
+  {
+   "pair": "1f0906952be8-2f9ddf0b9c5e",
+   "url": "https://isaimini.com.in/kerala-lottery-result-today-a-step-by-step-guide/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "1f51c192bc9e-b25f44c4e613",
+   "url": "https://www.moviesda.business/2026/04/kara-movie-download-isaimini.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "26c30c8e40dd-ba8b1d8978a2",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/9/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "2b53c9e1df26-67d14264fc35",
+   "url": "https://www.moviesda.business/2026/04/leader-tamil-movie-download-isaimini_26.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "2ec72ef796ae-576ef521cd3c",
+   "url": "https://isaimini.com.in/silukkuvarupatti-singam-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "2f5b34d12076-653cabb3d8c6",
+   "url": "https://moviesda.com.in/tamil-2023-movies/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "2fe323c94585-c09c3e37957c",
+   "url": "https://www.tamilrockers2024.com/2026/09/im-game-2026.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "30e78db109cd-1d3bc2e206c0",
+   "url": "https://www.tamilprint67.art/toy_story_5_2026_tamil_dubbed_movie_download",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "322c4e92bdb2-0e889cd23995",
+   "url": "https://isaimini.com.in/thuppakki-munai-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "3db4b4884fb0-aaff6d71f6d9",
+   "url": "https://tamilprint.co.in/pepe-2024-pepe-2024-tamil-dubbed-download-tamilprint/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "43c06e768691-399fe5b3b06c",
+   "url": "https://moviesda.com.in/author/alfa-team/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "444ac30740ef-d468755e8218",
+   "url": "https://www.tamilprint67.art/hi-tamil-movie-download1",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "45b35cb8d3fd-11dbe0221a21",
+   "url": "https://isaimini.com.in/tamil-movies-collection/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "47781b5ac602-fff1f9060934",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/51/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "4987cd489f68-8a66d1eb9c56",
+   "url": "https://isaimini.com.in/kalavu-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "5371e824e68e-0bd9b719375a",
+   "url": "https://tamilprint.com.in/pokkiri-manan-2015-dvdscr/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "5ae565bf9c4c-fb86660efdc9",
+   "url": "https://isaimini.com.in/ivanukku-engeyo-macham-irukku-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "60f0a0e8c73a-a4c7b251d587",
+   "url": "https://tamilprint.com.in/yennanga-sir-unga-sattam-2021/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "680d092c2724-e1f719c43cc3",
+   "url": "https://moviesda.com.in/moviesda-dubbed-movies/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "70c03bf7e353-ba402fc6b689",
+   "url": "https://isaimini.com.in/k-g-f-chapter-1-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "8b04a907a378-fc4fe4b4c8e4",
+   "url": "https://www.tamilprint67.art/supergirl-(2026)-tamil-dub-movie-download",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "8bb4da369114-affcf7aaf0a1",
+   "url": "https://www.tamilprint67.art/corporator_2025_tamil_movie_download",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "92f2f4a6ebd7-a4baba0b52ba",
+   "url": "https://tamilprint.co.in/the-menendez-brothers-2024-tamil-dubbed-download-tamilprint/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "9b7ec4acc030-72723c31fcbf",
+   "url": "https://isaimini.com.in/tamil-daily-movies/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "a9451856021b-4447a8635f9a",
+   "url": "https://isaimini.com.in/official-login-access-and-alternative-links/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "ab22b9eeec75-5569e5baa137",
+   "url": "https://isaimini.com.in/karthikeyanum-kaanamal-pona-kadhaliyum-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "ade1515f1d4b-7b1b8943a835",
+   "url": "https://isaimini.com.in/sarkar-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "b11aa530ae32-4d8822ea861b",
+   "url": "https://tamilprint.com.in/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "b1e4926f3b74-86ebe5019e72",
+   "url": "https://isaimini.com.in/seethakaathi-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "b25588d8bb60-ffb447f84c4a",
+   "url": "https://isaimini.com.in/maari-2-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "ba0c346f24b1-6547758b7039",
+   "url": "https://www.moviesda.business/2026/04/breakfast-tamil-movie-download-isaimini.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "bc6e5d87fc5c-fa255f7fe070",
+   "url": "https://isaimini.com.in/best-online-presidenslot-games/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "bf77d8e1e64a-65b1435a5d14",
+   "url": "https://www.tamilrockers2024.com/2026/09/the-paradise-2026.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "c04af45e1329-2e458af1d380",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/27/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "c0622d5fa05e-c2aeb925e3d1",
+   "url": "https://yaarwin.tamilprint.co.in/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "c151f215684c-db6197fd645c",
+   "url": "https://www.moviesda.business/2026/09/hi-tamil-movie-download-isaimini.html",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "c38958b668d1-58d9aa70fa2c",
+   "url": "https://isaimini.com.in/adanga-maru-2018/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "c39da939d494-0110090185d3",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/87/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "c75d0b0d96df-a060d6652a1f",
+   "url": "https://tamilprint.com.in/sifang-payment/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "d08d66aad02a-dcf76920054b",
+   "url": "https://tamilprint.co.in/top-hindi-blockbusters-everyone-should-watch/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "d15ea8440fe5-43b55c045d4e",
+   "url": "https://isaimini.com.in/kuthoosi-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "d69929951c89-771fb817c77e",
+   "url": "https://isaimini.com.in/manam-2014/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "d8cc11ad7c58-a2d4fefb0ef8",
+   "url": "https://isaimini.com.in/sigai-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "de0d66219c1e-e6b52b05a663",
+   "url": "https://isaimini.com.in/an-ultimate-guide-on-finding-your-perfect-lavender-perfume/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "e502ad6ab412-3b6f0241ba11",
+   "url": "https://tamilprint.co.in/ondu-sarala-prema-kathe/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "f8d788bb79ff-872596e1295c",
+   "url": "https://www.tamilprint67.art/72_hours_2026_tamil_dubbed_movie_download",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "f926744d1410-6f0e0ca7aac8",
+   "url": "https://isaimini.com.in/moviesda-dubbed-movies/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "f9f14c7651ea-dcd032a84565",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/13/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "fa5ee4fd6ea5-260da6dd24a1",
+   "url": "https://isaimini.com.in/marshal-2019/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  },
+  {
+   "pair": "fc1a9304a2e4-80c1c0834be4",
+   "url": "https://isaiminimix.com/sarpatta-parambarai-2021-tamil-songs-download-isaimini/",
+   "label": "non_meaningful",
+   "rule_changed": false,
+   "cell": "tn"
+  },
+  {
+   "pair": "fe3b9e9184e8-11afa0d00fc7",
+   "url": "https://isaimini.com.in/dewalive-login-a-complete-guide-to-accessing/",
+   "label": "non_meaningful",
+   "rule_changed": true,
+   "cell": "fp"
+  }
+ ]
+}

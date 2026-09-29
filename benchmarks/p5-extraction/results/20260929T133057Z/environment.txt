@@ -1,0 +1,8 @@
+Linux Ubuntu-24-04 7.0.0-34-generic #34~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 15:38:29 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+CPU(s):                                  12
+Model name:                              11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz
+CPU(s) scaling MHz:                      54%
+CPU max MHz:                             4500.0000
+CPU min MHz:                             800.0000
+               total        used        free      shared  buff/cache   available
+Mem:           15725        6666        2388        1117        7782        9059
