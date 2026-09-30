@@ -69,4 +69,8 @@ optimistic: the hand-written endpoints are well-known ones.
 
 ## 3. Gate F/G — M1
 
-See [validation.md](validation.md) §4 and `benchmarks/p6-m1/results/`.
+Run 1 (2026-09-29 17:26 → 2026-09-30 13:59 UTC): Gate F passed; the
+Gate G window reached 16.7 of 24 h before a terminal crash stopped M1.
+Full numbers, resource slopes and the incident timeline:
+[validation.md](validation.md) §4.1–§4.2;
+raw: `benchmarks/p6-m1/results/m1-run1.json`.

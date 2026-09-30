@@ -13,7 +13,7 @@ Benchmarks: [benchmarks.md](benchmarks.md) · Decisions: [decisions.md](decision
 | D — ≥ 100k decisions/s | **PASS** | 127,985 warm decisions/s, no cache ([benchmarks.md](benchmarks.md) §1) |
 | E — false-positive safety | **PASS** (after fix X-3) | 0 generic-rule blocks of protected items; per-class P/R in benchmarks §2 |
 | F — M1 closed loop | **PASS** | fixture loop test + live run §4.1 |
-| G — 24 h run | **IN PROGRESS** | window 2026-09-29 21:20 UTC → 2026-09-30 21:20 UTC (restarted after the last configuration change), §4.2 |
+| G — 24 h run | **OPEN** | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; resource and reliability findings in §4.2. Next: rerun detached (`setsid`) for a full 24 h |
 | H — P1–P6 regression | **PASS** (host tiers) | §3; the in-container `validate-stack` tier was not run while M1 occupies the stack |
 
 ## 2. Tests
@@ -95,11 +95,85 @@ of the operator queries and returned bioinformatics "BLAST" tools and
 licensed platforms (ncbi.nlm.nih.gov, hotstar, jiotv); under the approved
 scope rule these became roots. Relevance of search results is P7 work.
 
-### 4.2 24-hour run (Gate G)
+### 4.2 24-hour run (Gate G) — run 1, incomplete
 
-Frontier http depth reached its `max_depth` (200,000) at ~21:06; further
-new admissions are refused explicitly (`rejected_full`, not recorded as
-admitted, retried on rediscovery). Redis plateaued at ~684 MB of 768 MB.
+**Outcome: OPEN.** The window ran 2026-09-29 21:20 → 2026-09-30 13:59:58 UTC
+(16.7 h, 913 samples). At 13:59 the operator's terminal crashed and every
+M1 process died with it: `run.sh` had started the supervisors with `&`
+from that terminal's session, so they shared its process group (X-10).
+The window is incomplete and is not counted. Results:
+`benchmarks/p6-m1/results/m1-run1.json` (sample-based; `report.py --no-scylla`).
 
-Measured on the window above with `benchmarks/p6-m1/report.py`; results in
-`benchmarks/p6-m1/results/m1-24h.json`. *(Filled in at the end of the window.)*
+**Data safety at the stop.** Both consumer groups were still inside their
+streams (entries read + stream length ≥ entries added), so no event was
+trimmed unread; 154 unacknowledged `page.observed` and 4 `urls.discovered`
+entries are reclaimed by `claim_stale` on restart; leased frontier tasks
+return when their leases expire; the Scylla outbox stays authoritative.
+
+**Volume (window).**
+
+| Measure | Value |
+|---|---|
+| frontier claims / completions | 39,209 / 26,845 (1,611 completions/h) |
+| retries / exhausted / deferred | 9,951 / 117 / 2,296 |
+| dead letters | 0 |
+| new admissions accepted | 26,963 |
+| admissions refused, frontier full (`max_depth` 200,000 since ~21:06) | 510,029 (268,623 leaf + 241,406 link) |
+| rediscoveries skipped by the 24 h revisit gate | 793,739 |
+| `urls.discovered` events handled | 21,857 (18,000 rooted pages admitted, 3,857 leaf pages not expanded) |
+| link filter decisions | 594,511 allow · 38,437 out-of-scope block (built_in) · 72 out-of-scope block (V1) · 681 tracker block · 4 ad block |
+| completions per 2 h | 3,290 · 2,943 · 5,301 · 4,557 · 4,269 · 2,300 · 2,553 |
+
+Whole run (17:26 → 13:59, 20.5 h): ~69,100 completions; the first hour at
+http concurrency 16 completed ~20,000 pages (~8/s).
+
+**Throughput is disk-bound.** From ~08:00 UTC the host spent ~77 % of CPU
+time in I/O wait while Scylla compacted `crawler2_m1` (2.6 GB) on the USB
+HDD; completions fell from 4.3–5.3k to 2.3–2.5k per 2 h and the
+extraction lag rose from 8 to 3,933 (max in window 9,694 at the start,
+before the http 8 → 4 change drained it). The filter costs microseconds
+per decision and is not the bottleneck.
+
+**Resources (window; least-squares slope per hour).**
+
+| Process | RSS first → last (max) | slope | FDs | threads | children |
+|---|---|---:|---|---|---|
+| admit | 408 → 542 (736) MB | +8.6 MB/h | 10 flat | 7 flat | — |
+| browser (tree) | 1,296 → 1,279 (1,632) MB | −3.3 MB/h | 19 → 24 | 10 → 14 | 8 (max 11) |
+| extract / extract2 | 178 → 229 / 177 → 245 MB | +2.5 / +1.9 MB/h | 9 flat | 6 flat | — |
+| http | 102 → 199 MB | +5.1 MB/h | 29–39 | 19 → 22 | — |
+| relay | 77 → 67 MB (restarted 399×) | — | — | — | — |
+| search | 352 MB flat | 0 | 10 | 6 | — |
+| Redis used memory | 681 → 625 MB (max 686) | −3.7 MB/h | clients bounded | | |
+
+Reading: no file-descriptor, thread or process growth anywhere; the
+Chromium tree is bounded by recycling; Redis is flat (frontier and streams
+both capped). **Not conclusive:** the http worker's RSS rose steadily
+(~5 MB/h) and admit's is not monotonic (peak 736 MB, then 542 MB, i.e.
+likely caches). 16.7 h cannot separate a slow leak from warm-up, so the
+"no leaks" criterion is **not yet demonstrated**.
+
+**Reliability.** Exits in the window: relay 399, seeds 4 — every one a
+Scylla `ReadTimeout` / `WriteTimeout` / `OperationTimedOut` or "cannot
+connect" (connect timeout 2 s) during the I/O saturation. The supervisor
+restarted each within 5 s and the relay resumed from its checkpoint, so
+nothing was lost, but a publisher that exits on every storage timeout is a
+P14 hardening item (X-11). No other process exited.
+
+**Storage.** Host free space 380.4 → 369.6 GB over the whole run; Scylla
+keyspace 2.6 GB (+ 1.3 GB commitlog). The MinIO bucket size sample failed
+(the `du` timed out under the same I/O load).
+
+**Search.** Only Bing returned results from this host (DuckDuckGo 202,
+Brave 429 → recorded blocked, cooled down); Bing ignored the piracy terms
+of the operator queries. A P7 relevance issue.
+
+**Not measured.** The V1-comparable fetch metrics (response / 2xx rate,
+browser share, per-outcome counts) need a scan of the M1 keyspace; it
+timed out at 10 s and 60 s even with 200-row pages while Scylla was still
+compacting after the stop. Re-run `report.py` when the disk is quiet.
+
+**Next run (Gate G).** `benchmarks/p6-m1/run.sh start` now starts every
+supervisor with `setsid` in its own session (survives terminal crashes).
+Restart it with the same configuration and search file, record the new
+window start, and evaluate after 24 h with `report.py --window-h 24`.

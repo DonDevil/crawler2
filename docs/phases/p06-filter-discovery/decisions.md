@@ -33,6 +33,9 @@
 | X-6 | The V1 blacklist has 98 entries, not 1,463 (the larger file no longer exists) | audit §2 | imported what exists; recorded |
 | X-8 | `events.stream_maxlen` (100,000, count-based) does not bound Redis memory at M1 volume: `urls.discovered` entries average ~17 KB, so the stream alone would exceed the compose Redis `maxmemory` (768 MB, `noeviction`) and block frontier and relay writes | M1 monitor at 0.9 h (546 MB, +400 MB/h) | M1 runs with `stream_maxlen=10000` (config only; lag ≤ 613 observed; the Scylla outbox stays authoritative for replay). A byte-based retention policy is a P14 item |
 | X-9 | On the dev host (Scylla on a 5,400-rpm USB HDD, P2) the loop's Scylla writes limit M1 to ~0.7 extracted pages/s; at http concurrency 16 and 8 fetching outran extraction and the `page.observed` lag approached the stream cap | M1 monitor, 21:00 | M1 runs at http concurrency 4 with two extraction consumers. Not a P6 design change; the P2 disk caveat applies (docs/benchmarks.md) |
+| X-10 | M1 was started by `run.sh` with `&` supervisors inside the operator's terminal session; the terminal crash at 2026-09-30 13:59:58 UTC killed all of them (I had stated earlier that they would survive — wrong) | M1 run 1 | `run.sh` starts each supervisor with `setsid` (own session); Gate G rerun |
+| X-11 | `crawler2-storage relay` exits on any Scylla timeout (P2 raises `StorageUnavailableError` from `run_forever`); under I/O saturation it exited 399 times in 16.7 h (supervisor restarts, no loss) | M1 run 1 | recorded; in-process retry/backoff for the relay is a P14 hardening item |
+| X-12 | The report's full scan of `url_admission` (to list fetched domains) times out while Scylla compacts on the HDD | M1 run 1 | fetch metrics deferred to a quiet disk; smaller scan pages (200 rows) |
 | X-7 | Worker and extraction CLIs expose no Prometheus endpoint; M1 monitoring uses process statistics, Redis/stream state, relay and admission metrics, and Scylla at report time | M1 tooling | left unchanged (P4/P5 scope) |
 
 ## 3. Known limitations
@@ -73,4 +76,7 @@
 | Media identity, probing, manifests from discovered media | P8 |
 | Tor search (Torch) — no Tor daemon on this host | ops |
 | Prometheus endpoints for worker/extraction processes | P14 |
+| Relay (and other long-running consumers) retry storage timeouts in-process instead of exiting (X-11) | P14 |
+| Byte-based event-stream retention (X-8) | P14 |
+| Gate G: a full 24 h M1 window (run 1 reached 16.7 h), the leak question for the http worker and admit, and the V1-comparable fetch metrics | P6 (open) |
 | Rebuilding F5/F6 by replaying `urls.discovered` from Scylla facts | P14 (procedure documented, not automated) |
