@@ -40,8 +40,11 @@ BIN=$ROOT/env/bin
 
 supervise() {  # name, command...: restart on exit, one log line per (re)start
     local name=$1; shift
-    (
-        trap 'kill "$child" 2>/dev/null; exit 0' TERM INT
+    # setsid: every supervisor in its own session, so a crashed or closed
+    # terminal cannot take M1 down (run 1 died with its terminal, X-10).
+    setsid bash -c '
+        name=$1; VAR=$2; shift 2
+        trap '"'"'kill "$child" 2>/dev/null; exit 0'"'"' TERM INT
         while true; do
             echo "$(date -u +%FT%TZ) start $name" >> "$VAR/restarts.log"
             "$@" >> "$VAR/logs/$name.log" 2>&1 &
@@ -51,7 +54,7 @@ supervise() {  # name, command...: restart on exit, one log line per (re)start
             echo "$(date -u +%FT%TZ) exit $name code=$code" >> "$VAR/restarts.log"
             sleep 5
         done
-    ) &
+    ' supervise "$name" "$VAR" "$@" < /dev/null > /dev/null 2>&1 &
     echo $! > "$VAR/pids/$name.pid"
 }
 

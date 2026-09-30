@@ -81,7 +81,7 @@ def fetch_metrics(settings: Settings, start: datetime, end: datetime) -> dict[st
     storage = ScyllaStorage.open(settings.scylla, instance="m1-report")
     domains: set[DomainId] = set()
     scan = storage.session.bind("SELECT url FROM {ks}.url_admission", Consistency.EVENTUAL_READ, ())
-    for row in storage.session.stream(scan):
+    for row in storage.session.stream(scan, fetch_size=200):
         if row.url:
             domains.add(UrlRef.of(row.url).domain_id)
     outcomes: Counter[str] = Counter()
