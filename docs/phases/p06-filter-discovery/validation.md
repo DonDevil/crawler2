@@ -257,17 +257,21 @@ restart-relay` (all streams retain 3,000 entries from then on). The relay
 resumed publishing at 17:04:57 after one more X-11 outbox read timeout
 and replayed the 80-minute outbox backlog within about two minutes.
 **That replay lost events for extraction:** it outran the extraction
-group under the new 3,000-entry cap, so ~1,550 `page.observed` entries
-(1,505–1,585 by entries-added − length − entries-read, 17:06–17:08) were
-trimmed before extraction read them. Those pages are stored (W2/W3 rows
+group under the new 3,000-entry cap, so ~1,850 `page.observed` entries
+were trimmed before extraction read them: the group's lag settled at
+1,858 once extraction had caught up (17:40; last-delivered ID = newest
+entry), against 8 before the stall. Redis counts trimmed entries as never
+read, so that lag stays as a constant offset. (A first estimate of
+~1,550, taken at 17:06–17:08 while the replay was still running, was
+low.) Those pages are stored (W2/W3 rows
 and snapshots) but were not extracted, so their links were not
 discovered; they are fetched again at their 24 h revisit, and re-publishing
 them from the outbox is the unautomated F5/F6 replay procedure (P14).
 `urls.discovered` lost nothing (0 trimmed unread). The monitor's
 `fetch.completed` tally missed 1,234 entries of the same burst
 (`fetch.missed`), so run 2's fetch metrics undercount the stall period.
-The loss stopped once the backlog was drained (17:07; no further
-growth). Lowering retention while an outbox backlog exists was the cause:
+The loss stopped once the backlog was drained (lag constant at
+1,858 from 17:40 on). Lowering retention while an outbox backlog exists was the cause:
 the lag check before the trim covered `urls.discovered` only. **This changes the
 M1 configuration inside the Gate G window and stalls the closed loop for
 80 min; both are reported with the gate verdict.** The watcher now also
