@@ -4,6 +4,7 @@
 #   benchmarks/p6-m1/run.sh setup           # keyspace crawler2_m1 (V001-V003), bucket, rules
 #   benchmarks/p6-m1/run.sh start [QUERIES] # all processes, supervised; QUERIES = operator query file
 #   benchmarks/p6-m1/run.sh status          # processes, restarts
+#   benchmarks/p6-m1/run.sh check           # window progress and last-hour health (exit 1 = problem)
 #   benchmarks/p6-m1/run.sh stop
 #
 # Everything M1 writes is its own dataset: Scylla keyspace crawler2_m1, Redis
@@ -72,7 +73,25 @@ setup)
     ;;
 start)
     queries=${2:-}
+    for pid in "$VAR"/pids/*.pid; do
+        if [[ -e $pid ]] && kill -0 "$(cat "$pid")" 2>/dev/null; then
+            echo "M1 is running ($(basename "$pid" .pid) up); run.sh stop first" >&2; exit 1
+        fi
+    done
+    # Archive the previous run's state, so every run's samples, logs and
+    # restarts start empty (the Scylla/Redis/MinIO dataset is kept: M1 continues).
+    if [[ -e $VAR/started_at ]]; then
+        old=$VAR/runs/$(tr -d ':' < "$VAR/started_at")
+        mkdir -p "$old"
+        for f in samples.jsonl restarts.log started_at window_start config.env fetch.cursor logs pids; do
+            [[ -e $VAR/$f ]] && mv "$VAR/$f" "$old/"
+        done
+        mkdir -p "$VAR/logs" "$VAR/pids"
+        echo "previous run archived to $old"
+    fi
     date -u +%FT%TZ > "$VAR/started_at"
+    # Gate G window: the configuration is final from the start (run 1 settled it).
+    cp "$VAR/started_at" "$VAR/window_start"
     env | grep '^CRAWLER2_' | grep -v -i 'secret\|access_key\|password' | sort > "$VAR/config.env"
     supervise relay env CRAWLER2_METRICS__PORT=9301 "$BIN/crawler2-storage" relay
     supervise extract env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-extract"
@@ -121,6 +140,9 @@ status)
         if kill -0 "$(cat "$pid")" 2>/dev/null; then echo "$name up"; else echo "$name DOWN"; fi
     done
     echo "restarts: $(grep -c ' start ' "$VAR/restarts.log" 2>/dev/null || echo 0) starts"
+    ;;
+check)
+    "$BIN/python" "$ROOT/benchmarks/p6-m1/check.py"
     ;;
 stop)
     for pid in "$VAR"/pids/*.pid; do kill "$(cat "$pid")" 2>/dev/null || true; done
