@@ -13,7 +13,7 @@ Benchmarks: [benchmarks.md](benchmarks.md) · Decisions: [decisions.md](decision
 | D — ≥ 100k decisions/s | **PASS** | 127,985 warm decisions/s, no cache ([benchmarks.md](benchmarks.md) §1) |
 | E — false-positive safety | **PASS** (after fix X-3) | 0 generic-rule blocks of protected items; per-class P/R in benchmarks §2 |
 | F — M1 closed loop | **PASS** | fixture loop test + live run §4.1 |
-| G — 24 h run | **OPEN** | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; resource and reliability findings in §4.2. Next: rerun detached (`setsid`) for a full 24 h |
+| G — 24 h run | **OPEN** (run 2 in progress, clean at 5 h) | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; findings in §4.2. Run 2 started detached 2026-10-04 07:39:53 UTC (window ends 2026-10-05 07:39:53 UTC), §4.3 |
 | H — P1–P6 regression | **PASS** (host tiers) | §3; the in-container `validate-stack` tier was not run while M1 occupies the stack |
 
 ## 2. Tests
@@ -177,3 +177,68 @@ compacting after the stop. Re-run `report.py` when the disk is quiet.
 supervisor with `setsid` in its own session (survives terminal crashes).
 Restart it with the same configuration and search file, record the new
 window start, and evaluate after 24 h with `report.py --window-h 24`.
+
+### 4.3 24-hour run (Gate G) — run 2, in progress
+
+Started 2026-10-04 07:39:53 UTC with `run.sh start ~/Desktop/query.txt`
+(same query file, sha256 `338ffb33…`; configuration unchanged from run 1:
+http 4, browser 2, 2 × extract, `stream_maxlen` 10,000). Every supervisor
+has its own session (verified: SID = PID). The configuration is final from
+the start, so the window starts with the run (`var/p6-m1/window_start`) and
+ends 2026-10-05 07:39:53 UTC. The Scylla/Redis/MinIO dataset is run 1's,
+continued (frontier full at 200,000; keyspace 2.6 GB; bucket 57,052
+objects, 7.0 GB); run 1's samples, logs and restarts were archived to
+`var/p6-m1/runs/2026-09-29T172615Z/`.
+
+Tooling changes before run 2 (X-13): the monitor tallies every
+`fetch.completed` entry per sample (outcome, capability, status, detail;
+cursor persisted, trimmed-unread entries counted as `missed`), so the
+V1-comparable fetch metrics no longer need the Scylla scan (X-12; the scan
+is now `report.py --scylla`); it records host iowait/load/disk I/O; disk
+sizes are measured in a background thread, MinIO's from its own bucket
+usage metrics (`du` over the bucket took > 7 min on the HDD); Prometheus
+`*_created` timestamps are no longer recorded as counters; a failing probe
+is recorded in `errors` instead of stopping the monitor. `report.py`
+evaluates from `window_start` and reports sampling gaps, exits per process,
+completions per hour and the fetch metrics. `run.sh check` prints window
+progress and last-hour health (exit 1 = a process down or the monitor
+stale); `run.sh start` refuses to start over a running M1 and archives the
+previous run's state.
+
+First 2 minutes: all 9 processes up; one relay exit (Scylla `WriteTimeout`
+on the checkpoint, X-11) and extraction `WriteTimeout`s retried in-process
+while the extraction backlog (3.4k) drained at 46 % host iowait.
+**Progress at 5.0 h (12:37 UTC, from the half-hourly `run.sh check`).**
+No process has exited since the first two minutes (relay 10, X-11);
+0 dead letters; both consumer groups within single digits of the stream
+head; host iowait fell from 46 % to 9 %. Tree RSS: http 102 → 207 MB
+(flat at 201–207 MB since 3 h), admit 370 → 418 MB, extract ~190 MB,
+browser 1.0–1.5 GB (recycling). Free disk 370.7 → 363.8 GB; bucket
+7.0 → 10.9 GB.
+
+| Hour of window (UTC) | completions | fetches | 2xx of fetches |
+|---|---:|---:|---:|
+| 08:40 (1 h) | 5,993 | 7,923 | 78.1 % |
+| 09:40 (2 h) | 8,065 | 11,213 | 72.6 % |
+| 10:40 (3 h) | 7,014 | 9,555 | 66.7 % |
+| 11:40 (4 h) | 4,585 | 6,382 | 68.3 % |
+| 12:37 (5 h) | 3,231 | — | — |
+
+**Throughput falls although nothing is saturated** (all 4 http slots
+leased, 5,541 eligible domains, iowait 9 %): the mean fetch time doubled
+(1.43 s for fetches finished 10:12–10:26 → 2.8 s for 11:16–11:39)
+because the crawl concentrated on two hosts, which took ~85 % of fetch
+time in the later sample: `www.ncbi.nlm.nih.gov` (slow responses,
+timeouts) and `ftp.ncbi.nlm.nih.gov` (bulk files read until the size
+limit aborts them: `too_large`, ~6 s per attempt, 16 % of fetch time in
+an earlier sample). Both descend from the Bing results for the operator
+queries (§4.1, P7 relevance). Separately, `scholar.google.com` answered
+429 to every request (737 of 3,000 consecutive fetches at 2.5 h, 25 %) and
+was claimed again and again: a 429 is recorded `blocked` and retried
+without slowing the domain (X-14). These shape run 2's throughput and
+fetch-rate numbers; they are not M1 stability failures. The operator
+decided (2026-10-04) to keep run 2 running unchanged for the full window;
+the report will state fetch rates with and without these hosts.
+
+Evaluation after the window: `report.py --window-h 24 --out
+benchmarks/p6-m1/results/m1-run2.json`.

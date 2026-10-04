@@ -35,7 +35,10 @@
 | X-9 | On the dev host (Scylla on a 5,400-rpm USB HDD, P2) the loop's Scylla writes limit M1 to ~0.7 extracted pages/s; at http concurrency 16 and 8 fetching outran extraction and the `page.observed` lag approached the stream cap | M1 monitor, 21:00 | M1 runs at http concurrency 4 with two extraction consumers. Not a P6 design change; the P2 disk caveat applies (docs/benchmarks.md) |
 | X-10 | M1 was started by `run.sh` with `&` supervisors inside the operator's terminal session; the terminal crash at 2026-09-30 13:59:58 UTC killed all of them (I had stated earlier that they would survive — wrong) | M1 run 1 | `run.sh` starts each supervisor with `setsid` (own session); Gate G rerun |
 | X-11 | `crawler2-storage relay` exits on any Scylla timeout (P2 raises `StorageUnavailableError` from `run_forever`); under I/O saturation it exited 399 times in 16.7 h (supervisor restarts, no loss) | M1 run 1 | recorded; in-process retry/backoff for the relay is a P14 hardening item |
-| X-12 | The report's full scan of `url_admission` (to list fetched domains) times out while Scylla compacts on the HDD | M1 run 1 | fetch metrics deferred to a quiet disk; smaller scan pages (200 rows) |
+| X-12 | The report's full scan of `url_admission` (to list fetched domains) times out while Scylla compacts on the HDD | M1 run 1 | fetch metrics now come from the monitor's `fetch.completed` tallies (X-13); the scan is opt-in (`report.py --scylla`) |
+| X-13 | The M1 monitor recorded Prometheus `*_created` timestamps as counters, blocked sampling up to 2 × 120 s on `du` under I/O load, could not size the MinIO bucket, and had no fetch-outcome data | M1 run 1 review | monitor tallies `fetch.completed` from the stream, sizes disks in a background thread (MinIO via its bucket usage metrics), records host iowait, survives failing probes; `run.sh check`; applied before run 2 |
+| X-14 | A domain that answers 429 to every request (`scholar.google.com`, M1 run 2) is recorded `blocked`, retried and re-claimed at full rate: 25 % of fetches at 2.5 h; no per-domain back-off on 429/`Retry-After` | M1 run 2 | recorded; run 2 left unchanged (operator decision); domain back-off on 429 → P7 (fetch-profile learning) / P14 |
+| X-15 | Crawl concentration: two NCBI hosts took ~85 % of fetch time by 4 h (slow pages, timeouts, `ftp.` bulk files fetched until the size limit aborts them), halving throughput with nothing saturated; reached through Bing results for the operator queries | M1 run 2 | recorded; run 2 left unchanged; per-domain share of fetch time and skipping non-HTML bulk downloads (size/type known from headers) → P7 |
 | X-7 | Worker and extraction CLIs expose no Prometheus endpoint; M1 monitoring uses process statistics, Redis/stream state, relay and admission metrics, and Scylla at report time | M1 tooling | left unchanged (P4/P5 scope) |
 
 ## 3. Known limitations
@@ -78,5 +81,7 @@
 | Prometheus endpoints for worker/extraction processes | P14 |
 | Relay (and other long-running consumers) retry storage timeouts in-process instead of exiting (X-11) | P14 |
 | Byte-based event-stream retention (X-8) | P14 |
-| Gate G: a full 24 h M1 window (run 1 reached 16.7 h), the leak question for the http worker and admit, and the V1-comparable fetch metrics | P6 (open) |
+| Per-domain back-off on persistent 429 / `Retry-After` (X-14) | P7 / P14 |
+| Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | P7 |
+| Gate G: a full 24 h M1 window (run 1 reached 16.7 h; run 2 started 2026-10-04 07:39:53 UTC), the leak question for the http worker and admit, and the V1-comparable fetch metrics | P6 (open) |
 | Rebuilding F5/F6 by replaying `urls.discovered` from Scylla facts | P14 (procedure documented, not automated) |

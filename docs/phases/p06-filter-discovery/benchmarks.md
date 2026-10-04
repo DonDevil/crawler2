@@ -2,7 +2,7 @@
 
 Raw results: `benchmarks/p6-filter/results/`, `benchmarks/p6-m1/results/`.
 Scripts: `benchmarks/p6-filter/{throughput,fp_eval,corpus_build}.py`,
-`benchmarks/p6-m1/{run.sh,monitor.py,report.py}`.
+`benchmarks/p6-m1/{run.sh,monitor.py,report.py,check.py}`.
 
 ## 1. Gate D — filter throughput (≥ 100,000 decisions/s in-process)
 
@@ -74,3 +74,9 @@ Gate G window reached 16.7 of 24 h before a terminal crash stopped M1.
 Full numbers, resource slopes and the incident timeline:
 [validation.md](validation.md) §4.1–§4.2;
 raw: `benchmarks/p6-m1/results/m1-run1.json`.
+
+Run 2 (started 2026-10-04 07:39:53 UTC, detached, same configuration):
+in progress; at 5 h no process exit after the first two minutes, 0 dead
+letters, http RSS flat at ~205 MB since 3 h; throughput fell from 8.1k to
+3.2k completions/h as two NCBI hosts took most fetch time (X-15) and
+Scholar 429s were retried (X-14). [validation.md](validation.md) §4.3.
