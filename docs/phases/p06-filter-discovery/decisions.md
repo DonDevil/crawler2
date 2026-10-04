@@ -39,6 +39,7 @@
 | X-13 | The M1 monitor recorded Prometheus `*_created` timestamps as counters, blocked sampling up to 2 × 120 s on `du` under I/O load, could not size the MinIO bucket, and had no fetch-outcome data | M1 run 1 review | monitor tallies `fetch.completed` from the stream, sizes disks in a background thread (MinIO via its bucket usage metrics), records host iowait, survives failing probes; `run.sh check`; applied before run 2 |
 | X-14 | A domain that answers 429 to every request (`scholar.google.com`, M1 run 2) is recorded `blocked`, retried and re-claimed at full rate: 25 % of fetches at 2.5 h; no per-domain back-off on 429/`Retry-After` | M1 run 2 | recorded; run 2 left unchanged (operator decision); domain back-off on 429 → P7 (fetch-profile learning) / P14 |
 | X-15 | Crawl concentration: two NCBI hosts took ~85 % of fetch time by 4 h (slow pages, timeouts, `ftp.` bulk files fetched until the size limit aborts them), halving throughput with nothing saturated; reached through Bing results for the operator queries | M1 run 2 | recorded; run 2 left unchanged; per-domain share of fetch time and skipping non-HTML bulk downloads (size/type known from headers) → P7 |
+| X-16 | Count-based stream retention overflowed Redis: 10,000 `urls.discovered` entries of ~40 KB (NCBI pages) = 406 MB; Redis hit `maxmemory` 768 MB (`noeviction`), refused `XADD`, and the relay crash-looped 80 min (780 exits), stalling extraction/admission; the backlog replay after the fix then outran extraction under the lowered cap and ~1,550 `page.observed` entries were trimmed unread (pages stored, not extracted) | M1 run 2, 15:44–17:08 UTC | lossless `XTRIM` to 2,000 (group fully acknowledged) and `stream_maxlen` 10,000 → 3,000 via `restart-relay` (operator decision, inside the window); watcher alerts at > 700 MB; byte-based retention remains X-8 (P14) |
 | X-7 | Worker and extraction CLIs expose no Prometheus endpoint; M1 monitoring uses process statistics, Redis/stream state, relay and admission metrics, and Scylla at report time | M1 tooling | left unchanged (P4/P5 scope) |
 
 ## 3. Known limitations
@@ -80,7 +81,7 @@
 | Tor search (Torch) — no Tor daemon on this host | ops |
 | Prometheus endpoints for worker/extraction processes | P14 |
 | Relay (and other long-running consumers) retry storage timeouts in-process instead of exiting (X-11) | P14 |
-| Byte-based event-stream retention (X-8) | P14 |
+| Byte-based event-stream retention (X-8; it overflowed Redis in M1 run 2, X-16) | P14 |
 | Per-domain back-off on persistent 429 / `Retry-After` (X-14) | P7 / P14 |
 | Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | P7 |
 | Gate G: a full 24 h M1 window (run 1 reached 16.7 h; run 2 started 2026-10-04 07:39:53 UTC), the leak question for the http worker and admit, and the V1-comparable fetch metrics | P6 (open) |

@@ -13,7 +13,7 @@ Benchmarks: [benchmarks.md](benchmarks.md) · Decisions: [decisions.md](decision
 | D — ≥ 100k decisions/s | **PASS** | 127,985 warm decisions/s, no cache ([benchmarks.md](benchmarks.md) §1) |
 | E — false-positive safety | **PASS** (after fix X-3) | 0 generic-rule blocks of protected items; per-class P/R in benchmarks §2 |
 | F — M1 closed loop | **PASS** | fixture loop test + live run §4.1 |
-| G — 24 h run | **OPEN** (run 2 in progress, clean at 5 h) | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; findings in §4.2. Run 2 started detached 2026-10-04 07:39:53 UTC (window ends 2026-10-05 07:39:53 UTC), §4.3 |
+| G — 24 h run | **OPEN** (run 2 in progress; event loop stalled 80 min at 8.1 h on a full Redis, X-16) | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; findings in §4.2. Run 2 started detached 2026-10-04 07:39:53 UTC (window ends 2026-10-05 07:39:53 UTC), §4.3 |
 | H — P1–P6 regression | **PASS** (host tiers) | §3; the in-container `validate-stack` tier was not run while M1 occupies the stack |
 
 ## 2. Tests
@@ -239,6 +239,39 @@ without slowing the domain (X-14). These shape run 2's throughput and
 fetch-rate numbers; they are not M1 stability failures. The operator
 decided (2026-10-04) to keep run 2 running unchanged for the full window;
 the report will state fetch rates with and without these hosts.
+
+**Incident at 8.1 h: Redis full, event loop stalled 80 min (X-16).**
+Redis used memory rose from 681 MB (15:20) to the 768 MB `maxmemory`
+(`noeviction`) by 15:44 UTC: the `urls.discovered` stream held 406 MB in
+its 10,000 retained entries (~40 KB each, NCBI pages carry thousands of
+links; run 1's were ~17 KB). Redis then refused the relay's `XADD`, and the
+relay exited on every attempt: 780 exits 15:44:14 → 17:04:52. Fetching
+continued (completions kept rising), but no event was published, so
+extraction and admission idled; nothing was lost (unpublished events
+stayed in the Scylla outbox; no other process hit the limit). The
+watcher reported the exit storm at ~15:46; the operator chose the fix at
+17:04. Actions, 17:04:26–27 UTC: `XTRIM urls.discovered.v1 MAXLEN 2000`
+(lossless: group `discovery-admission` had delivered the stream's last ID,
+0 pending) → Redis 757 → 575 MB; `M1_STREAM_MAXLEN=3000 run.sh
+restart-relay` (all streams retain 3,000 entries from then on). The relay
+resumed publishing at 17:04:57 after one more X-11 outbox read timeout
+and replayed the 80-minute outbox backlog within about two minutes.
+**That replay lost events for extraction:** it outran the extraction
+group under the new 3,000-entry cap, so ~1,550 `page.observed` entries
+(1,505–1,585 by entries-added − length − entries-read, 17:06–17:08) were
+trimmed before extraction read them. Those pages are stored (W2/W3 rows
+and snapshots) but were not extracted, so their links were not
+discovered; they are fetched again at their 24 h revisit, and re-publishing
+them from the outbox is the unautomated F5/F6 replay procedure (P14).
+`urls.discovered` lost nothing (0 trimmed unread). The monitor's
+`fetch.completed` tally missed 1,234 entries of the same burst
+(`fetch.missed`), so run 2's fetch metrics undercount the stall period.
+The loss stopped once the backlog was drained (17:07; no further
+growth). Lowering retention while an outbox backlog exists was the cause:
+the lag check before the trim covered `urls.discovered` only. **This changes the
+M1 configuration inside the Gate G window and stalls the closed loop for
+80 min; both are reported with the gate verdict.** The watcher now also
+alerts at Redis > 700 MB.
 
 Evaluation after the window: `report.py --window-h 24 --out
 benchmarks/p6-m1/results/m1-run2.json`.

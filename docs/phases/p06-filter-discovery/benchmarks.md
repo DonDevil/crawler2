@@ -79,4 +79,7 @@ Run 2 (started 2026-10-04 07:39:53 UTC, detached, same configuration):
 in progress; at 5 h no process exit after the first two minutes, 0 dead
 letters, http RSS flat at ~205 MB since 3 h; throughput fell from 8.1k to
 3.2k completions/h as two NCBI hosts took most fetch time (X-15) and
-Scholar 429s were retried (X-14). [validation.md](validation.md) §4.3.
+Scholar 429s were retried (X-14). At 8.1 h a full Redis (count-based
+stream retention, ~40 KB `urls.discovered` entries) stalled the event loop
+for 80 min until the stream was trimmed and `stream_maxlen` lowered to
+3,000 (X-16). [validation.md](validation.md) §4.3.
