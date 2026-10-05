@@ -13,7 +13,7 @@ Benchmarks: [benchmarks.md](benchmarks.md) · Decisions: [decisions.md](decision
 | D — ≥ 100k decisions/s | **PASS** | 127,985 warm decisions/s, no cache ([benchmarks.md](benchmarks.md) §1) |
 | E — false-positive safety | **PASS** (after fix X-3) | 0 generic-rule blocks of protected items; per-class P/R in benchmarks §2 |
 | F — M1 closed loop | **PASS** | fixture loop test + live run §4.1 |
-| G — 24 h run | **OPEN** (run 2 in progress; event loop stalled 80 min at 8.1 h on a full Redis, X-16) | run 1 reached 16.7 h of its 24 h window (2026-09-29 21:20 → 2026-09-30 13:59:58 UTC) and was then killed with the operator terminal (X-10); no data lost; findings in §4.2. Run 2 started detached 2026-10-04 07:39:53 UTC (window ends 2026-10-05 07:39:53 UTC), §4.3 |
+| G — 24 h run | **NOT PASSED** (run 2; run 3 needed) | run 1: 16.7 h, killed with the operator terminal (X-10), §4.2. Run 2: full 24 h window 2026-10-04 07:39:53 → 10-05 07:39:53 UTC, detached, 1,440 samples, no sampling gap; stability and leak criteria met (no crash, FDs/threads/processes flat, http/admit/extract RSS flat over the last 12 h, browser tree inconclusive); **lost-events criterion not met**: an 80-min event-loop stall on a full Redis and ~1,850 `page.observed` entries trimmed unread, plus a configuration change inside the window (X-16), §4.3 |
 | H — P1–P6 regression | **PASS** (host tiers) | §3; the in-container `validate-stack` tier was not run while M1 occupies the stack |
 
 ## 2. Tests
@@ -178,7 +178,7 @@ supervisor with `setsid` in its own session (survives terminal crashes).
 Restart it with the same configuration and search file, record the new
 window start, and evaluate after 24 h with `report.py --window-h 24`.
 
-### 4.3 24-hour run (Gate G) — run 2, in progress
+### 4.3 24-hour run (Gate G) — run 2, complete: not passed
 
 Started 2026-10-04 07:39:53 UTC with `run.sh start ~/Desktop/query.txt`
 (same query file, sha256 `338ffb33…`; configuration unchanged from run 1:
@@ -286,5 +286,73 @@ or the 768 MB limit, and no process exited. A lossless trim was prepared
 (operator-approved) but was not needed. Count-based retention cannot bound
 memory when one entry can be 4 MB (X-8, X-16).
 
-Evaluation after the window: `report.py --window-h 24 --out
-benchmarks/p6-m1/results/m1-run2.json`.
+**Final results (window 2026-10-04 07:39:53 → 2026-10-05 07:39:53 UTC).**
+`report.py --window-h 24 --since 2026-10-04T07:39:53Z --until
+2026-10-05T07:39:53Z`, raw `benchmarks/p6-m1/results/m1-run2.json`;
+1,440 samples over 23.98 h, no sampling gap over 5 min, no monitor probe
+error. M1 was not stopped and continues as P7 history.
+
+| Measure | Value |
+|---|---|
+| process exits | relay 790 (10 at start-up, 780 in the Redis stall, X-11/X-16); **no other process exited**; none after 17:04:52 UTC (14.6 h) |
+| frontier completions / claims | 108,669 / 149,067 (4,528/h; run 1: 1,611/h) |
+| completions per hour | 6,083 · 8,221 · 7,094 · 4,639 · 3,194 · 2,311 · 3,361 · 3,624 · 4,239 · 3,170 · 3,117 · 2,295 · 5,258 · 6,770 · 2,515 · 3,768 · 5,349 · 6,473 · 5,701 · 5,490 · 4,634 · 3,254 · 4,740 |
+| completions during the 80-min stall | 5,967 (fetching continued; events waited in the outbox) |
+| retried / exhausted / dead letters | 40,046 / 258 / **0** |
+| admissions accepted / refused (frontier at its 200,000 cap) | 108,922 / 2,668,533 |
+| fetch attempts (monitor tally) | 148,433 (1.72/s), of which browser 2.2 %; 1,234 not tallied (X-16 burst) |
+| fetch outcomes | response 93,620 · blocked 34,882 · too_large 16,421 · timeout 2,061 · tls 737 · dns 377 · connection 335 |
+| 2xx of attempts | **60.3 %** (response of any status 63.1 %; V1-comparable "success" = response + blocked 86.6 %) |
+| 2xx excluding 429 and `too_large` attempts | **90.6 %** (89,472 / 98,756) — approximates "excluding Scholar and NCBI FTP": every sampled 429 came from `scholar.google.com` and 97 % of sampled `too_large` from `ftp.ncbi.nlm.nih.gov`, but the tallies carry no host, so this is by outcome, not by host |
+| HTTP 429 | 33,256 (22 % of attempts, X-14) |
+| Redis used memory | min 354 · mean 544 · **max 772 MB** (16:32 UTC, during the stall) · last 385 |
+| host iowait | mean 11.9 %, max 65.6 % (start-up backlog) |
+| Scylla keyspace / MinIO bucket / host free | 2.59 → 7.13 GB / 7.0 → 16.8 GB (57,052 → 165,257 objects) / 370.7 → 355.4 GB |
+
+The relay's Prometheus counters restart with the process, so per-event
+publication totals are not usable from this run; the monitor's fetch
+tally is.
+
+**Resources** (RSS, MB; least-squares slope; hour 0 excluded as start-up).
+
+| Process | h 1–24 | last 12 h | last 6 h |
+|---|---|---|---|
+| http | 163 → 216, +0.99/h | 210 → 216, +0.51/h | 216 → 216, +0.16/h |
+| admit | 392 → 432 (max 515), +1.05/h | 428 → 432, −0.19/h | 437 → 432, −0.44/h |
+| extract / extract2 | 206 → 222 / 200 → 202, ~+1/h | +0.24 / −0.43/h | +0.65 / −1.07/h |
+| relay | 94 → 82, −0.35/h | +0.12/h | −0.83/h |
+| browser (Chromium tree) | 1,378 → 1,397 (max 1,903), +8.2/h | +18.4/h | +16.6/h |
+
+FDs (http 38, others ≤ 19), threads and process counts were flat for every
+process. http, admit, extract and relay plateau: the slow climb of http
+in run 1 (+5 MB/h over 16.7 h) ends at ~210–216 MB after ~4 h of this run,
+so it was warm-up, not a leak. The Chromium tree is a sawtooth (recycling)
+whose 4-hour medians rose 1,266 → 1,305 → 1,378 → 1,330 → 1,340 → 1,462 MB
+and minima 1,026 → 1,190 MB with peaks bounded at 1.68–1.90 GB: a small
+upward drift that 24 h cannot separate from the changing page mix —
+**inconclusive**, followed up in the continuing M1 run.
+
+**Gate G verdict: not passed by run 2.**
+
+- *Runs 24 h unattended without crashing:* **met.** A full detached
+  window; no process other than the relay exited, and the relay's exits
+  were supervisor-restarted.
+- *No leaks:* **met for http, admit, extract, relay** (flat over the last
+  12 h); **inconclusive for the Chromium tree** (bounded peaks, small
+  median drift).
+- *No lost events:* **not met.** The event loop stalled for 80 min when
+  count-based retention filled Redis, and the backlog replay after the fix
+  trimmed ~1,850 `page.observed` entries before extraction read them
+  (pages stored, not extracted). In addition, `stream_maxlen` was changed
+  inside the window (10,000 → 3,000, an operator decision).
+
+**Run 3 needs**, before it starts: (1) Redis memory bounded by bytes, not
+entries: byte-based retention (X-8) or, at minimum, a `stream_maxlen`
+chosen for the largest entries (~4 MB, X-16 near-miss) together with
+consumer-aware trimming, so a backlog replay cannot trim unread entries;
+(2) the relay retrying storage and Redis errors in-process instead of
+exiting (X-11); (3) per-domain back-off on persistent 429 (X-14) and no
+bulk non-HTML downloads to the size limit (X-15), so that throughput and
+fetch-rate numbers describe the crawl rather than two hosts. Items (1) and
+(2) are P14 hardening in the plan; Gate G stays open until run 3, or until
+the plan moves the gate to after that hardening.

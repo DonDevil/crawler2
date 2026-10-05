@@ -20,7 +20,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-29 | **P3 correction**: global per-domain in-flight limit in the frontier, frozen at 2 | ADR-019; found by P4's gate run |
 | 2026-09-29 | **P4 success gate kept unchanged** (V1 `visited`); status OPEN at 95.51 % vs 96.82 %; V1 `visited` shown to include Selenium 400/403/404 false successes | success-metric methodology (keep historical gate vs documented status-aware redefinition with a V1+V2 rerun) pending — P4 doc §33a |
 | 2026-09-29 | **P5 extraction**: page *revisions* (`PageRevisionId`, normalized content) added beside raw page versions, `page.changed` in contract 1.1; W691 HTML captured twice as the benchmark/precision corpus (not in git) | ADR-020; D8, D9 closed in P5; CPU gate passed (17.9 % of V1); change-detection precision checked: 1/23 on real pairs, root cause = in-content template widgets → P6 rules / P7 |
-| 2026-09-29 | **P6 filter + discovery**: rules as durable versioned data with hot reload, filtering at admission (P5 facts unchanged), rooted-site scope with external leaves, static 6 h/24 h revisits, operator-supplied search queries; V1 blacklist (98 entries, not 1,463) imported through a reviewed manifest | ADR-021; D6, D7 closed in P6; Gates A–F, H passed; Gate G (24 h M1) open — run 1 reached 16.7 h; run 2 running detached since 2026-10-04 07:39:53 UTC, continued afterwards as P7 history collection |
+| 2026-09-29 | **P6 filter + discovery**: rules as durable versioned data with hot reload, filtering at admission (P5 facts unchanged), rooted-site scope with external leaves, static 6 h/24 h revisits, operator-supplied search queries; V1 blacklist (98 entries, not 1,463) imported through a reviewed manifest | ADR-021; D6, D7 closed in P6; Gates A–F, H passed; Gate G (24 h M1) open — run 1 reached 16.7 h; run 2 completed 24 h (2026-10-04/05) but lost events in a Redis-full stall (X-16), not passed; run 3 after X-8/X-11; M1 continues as P7 history collection |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -464,8 +464,12 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   decisions/s); false-positive guard **passed** (after restoring ABP
   document semantics); M1 closed loop **demonstrated** live (Gate F) and
   ran 20.5 h (2026-09-29 17:26 → 09-30 13:59 UTC) until a terminal crash
-  stopped it; Gate G (24 h) **open** at 16.7 h of its window — run 2
-  started detached 2026-10-04 07:39:53 UTC (window ends 10-05 07:39:53); throughput
+  stopped it; Gate G (24 h) **open**: run 2 (2026-10-04 07:39:53 →
+  10-05 07:39:53 UTC) completed the window without a crash and settled
+  the leak question for http/admit/extract, but an 80-min Redis-full
+  stall lost ~1,850 extraction events (X-16), so the gate is not passed;
+  run 3 follows byte-bounded retention and relay retry (X-8, X-11); M1
+  keeps running as P7 history; throughput
   on the dev host is bound by Scylla on the USB HDD — see
   `docs/phases/p06-filter-discovery/validation.md`. "Seeds + search" is
   realised as admissions through the P3 API (there is no separate

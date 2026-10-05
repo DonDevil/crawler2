@@ -84,5 +84,5 @@
 | Byte-based event-stream retention (X-8; it overflowed Redis in M1 run 2, X-16) | P14 |
 | Per-domain back-off on persistent 429 / `Retry-After` (X-14) | P7 / P14 |
 | Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | P7 |
-| Gate G: a full 24 h M1 window (run 1 reached 16.7 h; run 2 started 2026-10-04 07:39:53 UTC), the leak question for the http worker and admit, and the V1-comparable fetch metrics | P6 (open) |
+| Gate G: run 3, a 24 h M1 window without event loss — needs bounded-by-bytes stream retention with consumer-aware trimming (X-8, X-16) and in-process relay retry (X-11); X-14/X-15 for meaningful throughput. Run 2 settled the http/admit leak question (plateau) and measured the fetch metrics; the Chromium-tree drift is to be followed in the continuing M1 | P6 (open), depends on P14 items |
 | Rebuilding F5/F6 by replaying `urls.discovered` from Scylla facts | P14 (procedure documented, not automated) |

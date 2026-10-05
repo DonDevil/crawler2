@@ -75,11 +75,12 @@ Full numbers, resource slopes and the incident timeline:
 [validation.md](validation.md) §4.1–§4.2;
 raw: `benchmarks/p6-m1/results/m1-run1.json`.
 
-Run 2 (started 2026-10-04 07:39:53 UTC, detached, same configuration):
-in progress; at 5 h no process exit after the first two minutes, 0 dead
-letters, http RSS flat at ~205 MB since 3 h; throughput fell from 8.1k to
-3.2k completions/h as two NCBI hosts took most fetch time (X-15) and
-Scholar 429s were retried (X-14). At 8.1 h a full Redis (count-based
-stream retention, ~40 KB `urls.discovered` entries) stalled the event loop
-for 80 min until the stream was trimmed and `stream_maxlen` lowered to
-3,000 (X-16). [validation.md](validation.md) §4.3.
+Run 2 (2026-10-04 07:39:53 → 10-05 07:39:53 UTC, detached, full 24 h
+window): 108,669 completions (4,528/h); 148,433 fetch attempts, 60.3 %
+2xx (90.6 % excluding 429 and `too_large`, i.e. roughly without Scholar
+X-14 and NCBI FTP X-15); 0 dead letters; only the relay exited (790, of
+which 780 in an 80-min Redis-full stall, X-16); http/admit/extract RSS
+flat over the last 12 h; Chromium tree inconclusive. Gate G **not passed**:
+the stall and ~1,850 `page.observed` entries trimmed unread break "no lost
+events". [validation.md](validation.md) §4.3;
+raw: `benchmarks/p6-m1/results/m1-run2.json`.
