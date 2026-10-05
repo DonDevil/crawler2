@@ -193,6 +193,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--window-h", type=float, default=12.0)
     parser.add_argument("--since", help="window start (ISO); default var/p6-m1/window_start")
+    parser.add_argument("--until", help="window end (ISO); default: the last sample")
     parser.add_argument("--scylla", action="store_true", help="also scan W2 fetch rows")
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
@@ -202,10 +203,17 @@ def main() -> None:
     if since:
         cut = datetime.fromisoformat(since.replace("Z", "+00:00"))
         samples = [s for s in samples if datetime.fromisoformat(s["at"]) >= cut]
+    if args.until:
+        stop = datetime.fromisoformat(args.until.replace("Z", "+00:00"))
+        samples = [s for s in samples if datetime.fromisoformat(s["at"]) <= stop]
     start = datetime.fromisoformat(samples[0]["at"])
     end = datetime.fromisoformat(samples[-1]["at"])
     restarts = (VAR / "restarts.log").read_text().splitlines()
-    exits = [r for r in restarts if " exit " in r and r.split()[0] >= samples[0]["at"][:19]]
+    exits = [
+        r
+        for r in restarts
+        if " exit " in r and samples[0]["at"][:19] <= r.split()[0][:19] <= samples[-1]["at"][:19]
+    ]
     processes = sorted({p for s in samples for p in s["processes"]})
     resources = {
         p: {m: trend(samples, ["processes", p, m], args.window_h) for m in TRACKED}
