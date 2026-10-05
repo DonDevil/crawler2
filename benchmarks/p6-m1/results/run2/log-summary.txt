@@ -1,0 +1,74 @@
+== admit  (2026-10-04 13:10:13 .. 2026-10-04 22:16:09, local time)
+   levels: error 10, info 2
+        10  error dependency_unavailable
+   exceptions (each traceback counts its chained causes):
+         3  StorageUnavailableError: crawler2_m1.url_admission
+         3  WriteTimeout: crawler2_m1.processed_events
+         3  StorageUnavailableError: crawler2_m1.processed_events
+         3  WriteTimeout: crawler2_m1.filter_decisions_by_url
+         3  StorageUnavailableError: crawler2_m1.filter_decisions_by_url
+         2  WriteTimeout: crawler2_m1.url_admission
+         1  ReadTimeout: crawler2_m1.url_admission
+         1  OutOfMemoryError: Command # 1 (EVALSHA bc8dda89adb9aeb1c06596330859ec10edefe618 0 m1:fr:
+         1  FrontierUnavailableError: admit_many: Command # 1 (EVALSHA bc8dda89adb9aeb1c06596330859ec10edefe
+== browser  (2026-10-04 13:10:15 .. 2026-10-05 14:50:17, local time)
+   levels: info 3427, warning 11
+        11  warning record_failed
+== extract  (2026-10-04 13:09:54 .. 2026-10-05 14:42:49, local time)
+   levels: error 41, info 1
+        41  error storage_unavailable
+   exceptions (each traceback counts its chained causes):
+        14  WriteTimeout: crawler2_m1.links_by_page_version
+        14  StorageUnavailableError: crawler2_m1.links_by_page_version
+        10  WriteTimeout: crawler2_m1.outbox
+        10  StorageUnavailableError: crawler2_m1.outbox
+         8  StorageUnavailableError: crawler2_m1.processed_events
+         6  WriteTimeout: crawler2_m1.processed_events
+         4  WriteTimeout: crawler2_m1.inlinks_by_url
+         4  StorageUnavailableError: crawler2_m1.inlinks_by_url
+         2  WriteTimeout: Error from server: code=1100 [Coordinator node timed out waiting for r
+         2  StorageUnavailableError: WriteTimeout: Error from server: code=1100 [Coordinator node timed out
+         2  ReadTimeout: crawler2_m1.processed_events
+         1  WriteTimeout: crawler2_m1.url_state
+== extract2  (2026-10-04 13:09:54 .. 2026-10-04 15:08:38, local time)
+   levels: error 43, info 1
+        43  error storage_unavailable
+   exceptions (each traceback counts its chained causes):
+        16  WriteTimeout: crawler2_m1.links_by_page_version
+        16  StorageUnavailableError: crawler2_m1.links_by_page_version
+         7  WriteTimeout: crawler2_m1.outbox
+         7  StorageUnavailableError: crawler2_m1.outbox
+         6  StorageUnavailableError: crawler2_m1.processed_events
+         5  WriteTimeout: crawler2_m1.processed_events
+         4  WriteTimeout: crawler2_m1.page_extracts
+         4  StorageUnavailableError: crawler2_m1.page_extracts
+         4  WriteTimeout: crawler2_m1.inlinks_by_url
+         4  StorageUnavailableError: crawler2_m1.inlinks_by_url
+         2  WriteTimeout: crawler2_m1.urls_by_domain
+         2  StorageUnavailableError: crawler2_m1.urls_by_domain
+== http  (2026-10-04 13:10:00 .. 2026-10-05 14:57:14, local time)
+   levels: info 155484, warning 83, error 4
+        75  warning record_failed
+         8  warning network_state
+         4  error attempt_crashed
+== monitor  ( .. , local time)
+   levels: 
+== relay  ( .. , local time)
+   levels: 
+   exceptions (each traceback counts its chained causes):
+       653  OutOfMemoryError: Command # 2 (XADD m1:events:urls.discovered.v1 MAXLEN ~ 10000 * event_
+       653  StorageUnavailableError: event publication failed: Command # 2 (XADD m1:events:urls.discovered.
+       125  OutOfMemoryError: Command # 1 (XADD m1:events:urls.discovered.v1 MAXLEN ~ 10000 * event_
+       125  StorageUnavailableError: event publication failed: Command # 1 (XADD m1:events:urls.discovered.
+        10  StorageUnavailableError: crawler2_m1.outbox
+         9  WriteTimeout: crawler2_m1.outbox
+         1  WriteTimeout: crawler2_m1.outbox_relay_checkpoints
+         1  StorageUnavailableError: crawler2_m1.outbox_relay_checkpoints
+         1  OutOfMemoryError: Command # 3 (XADD m1:events:page.observed.v1 MAXLEN ~ 10000 * event_id
+         1  StorageUnavailableError: event publication failed: Command # 3 (XADD m1:events:page.observed.v1
+         1  ReadTimeout: crawler2_m1.outbox
+== search  (2026-10-04 13:10:15 .. 2026-10-04 13:10:23, local time)
+   levels: warning 2, info 1
+         2  warning search_engine_blocked
+== seeds  (2026-10-04 13:10:15 .. 2026-10-04 13:10:15, local time)
+   levels: info 1

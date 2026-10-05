@@ -1,0 +1,92 @@
+== admit  (2026-09-29 22:56:23 .. 2026-09-30 19:29:45, local time)
+   levels: error 433, warning 17, info 2
+       433  error dependency_unavailable
+        17  warning filter_pointer_unavailable
+   exceptions (each traceback counts its chained causes):
+       339  StorageUnavailableError: crawler2_m1.url_admission
+       324  ReadTimeout: crawler2_m1.url_admission
+        43  OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout. See Session.execut
+        43  StorageUnavailableError: OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout.
+        29  StorageUnavailableError: crawler2_m1.processed_events
+        23  ReadTimeout: crawler2_m1.processed_events
+        15  ReadTimeout: crawler2_m1.page_observations
+        15  StorageUnavailableError: crawler2_m1.page_observations
+        15  WriteTimeout: crawler2_m1.url_admission
+         6  WriteTimeout: crawler2_m1.filter_decisions_by_url
+         6  StorageUnavailableError: crawler2_m1.filter_decisions_by_url
+         6  WriteTimeout: crawler2_m1.processed_events
+== browser  (2026-09-29 22:56:23 .. 2026-09-30 19:25:18, local time)
+   levels: info 1876, warning 115
+        63  warning record_failed
+        50  warning filter_pointer_unavailable
+         2  warning interception_summary_not_recorded
+== extract  (2026-09-29 22:56:15 .. 2026-09-30 19:31:02, local time)
+   levels: error 955, info 1
+       955  error storage_unavailable
+   exceptions (each traceback counts its chained causes):
+       645  WriteTimeout: crawler2_m1.links_by_page_version
+       645  StorageUnavailableError: crawler2_m1.links_by_page_version
+       119  OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout. See Session.execut
+       119  StorageUnavailableError: OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout.
+        67  WriteTimeout: crawler2_m1.outbox
+        67  StorageUnavailableError: crawler2_m1.outbox
+        40  WriteTimeout: crawler2_m1.inlinks_by_url
+        40  StorageUnavailableError: crawler2_m1.inlinks_by_url
+        27  StorageUnavailableError: crawler2_m1.processed_events
+        26  ReadTimeout: crawler2_m1.processed_events
+        21  WriteTimeout: crawler2_m1.url_state
+        21  StorageUnavailableError: crawler2_m1.url_state
+== extract2  (2026-09-30 02:31:07 .. 2026-09-30 19:31:02, local time)
+   levels: error 876, info 1
+       876  error storage_unavailable
+   exceptions (each traceback counts its chained causes):
+       575  WriteTimeout: crawler2_m1.links_by_page_version
+       575  StorageUnavailableError: crawler2_m1.links_by_page_version
+       114  OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout. See Session.execut
+       114  StorageUnavailableError: OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout.
+        59  WriteTimeout: crawler2_m1.inlinks_by_url
+        59  StorageUnavailableError: crawler2_m1.inlinks_by_url
+        41  WriteTimeout: crawler2_m1.outbox
+        41  StorageUnavailableError: crawler2_m1.outbox
+        26  StorageUnavailableError: crawler2_m1.processed_events
+        23  ReadTimeout: crawler2_m1.processed_events
+        22  WriteTimeout: crawler2_m1.urls_by_domain
+        22  StorageUnavailableError: crawler2_m1.urls_by_domain
+== http  (2026-09-29 22:56:16 .. 2026-09-30 19:31:11, local time)
+   levels: info 87812, warning 2265
+      2265  warning record_failed
+== monitor  ( .. , local time)
+   levels: 
+   exceptions (each traceback counts its chained causes):
+         1  KeyError: 'url_761f02d70f7a8fb79d2810ddd402605c'
+         1  KeyError: 'url_1ff0bf1dd9cd8ca4ae988f8340b22005'
+         1  KeyError: 'url_bad4791e75948db0b1e9385e3ff14bb6'
+         1  KeyError: 'url_b881c77401f28873909394be2707cf9a'
+         1  KeyError: 'url_dcb80df276d580afaf467c9eadb40c0b'
+         1  KeyError: 'url_dba14f7415db80c2a2a11a07265d260e'
+         1  KeyError: 'url_a83daf453d418b22a158c7daf861b16a'
+== relay  ( .. , local time)
+   levels: 
+   exceptions (each traceback counts its chained causes):
+       185  OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout. See Session.execut
+       185  StorageUnavailableError: OperationTimedOut: errors={'172.18.0.4:9042': 'Client request timeout.
+       106  StorageUnavailableError: cannot connect to Scylla: ('Unable to connect to any servers', {'172.1
+        93  StorageUnavailableError: crawler2_m1.outbox
+        78  ReadTimeout: crawler2_m1.outbox
+        15  WriteTimeout: crawler2_m1.outbox
+        14  StorageUnavailableError: crawler2_m1.outbox_relay_checkpoints
+        10  WriteTimeout: crawler2_m1.outbox_relay_checkpoints
+         4  ReadTimeout: crawler2_m1.outbox_relay_checkpoints
+         2  OSError: [Errno 98] Address already in use
+         2  ReadTimeout: Error from server: code=1200 [Coordinator node timed out waiting for r
+         2  StorageUnavailableError: ReadTimeout: Error from server: code=1200 [Coordinator node timed out 
+== search  (2026-09-29 23:36:58 .. 2026-09-29 23:37:06, local time)
+   levels: warning 2, info 1
+         2  warning search_engine_blocked
+== seeds  (2026-09-29 22:56:23 .. 2026-09-30 16:59:01, local time)
+   levels: error 5, info 1
+         5  error filter_reload_failed
+   exceptions (each traceback counts its chained causes):
+         3  ReadTimeout: crawler2_m1.url_admission
+         3  StorageUnavailableError: crawler2_m1.url_admission
+         1  StorageUnavailableError: cannot connect to Scylla: ('Unable to connect to any servers', {'172.1

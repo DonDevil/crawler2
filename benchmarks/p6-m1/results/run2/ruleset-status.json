@@ -1,0 +1,46 @@
+{
+  "active": "ActiveRulesetPointer(name='default', ruleset_id='rs-df6cc49a8786196590ecedd5133d3786', previous_ruleset_id=None, activated_at=datetime.datetime(2026, 9, 29, 17, 24, 15, 645000, tzinfo=datetime.timezone.utc), activated_by='m1-setup')",
+  "ruleset": "FilterRulesetRecord(ruleset_id='rs-df6cc49a8786196590ecedd5133d3786', sources=(('built_in', 'de4724195f1bc53a'), ('easylist', '6ca934d0e15f26ee'), ('easyprivacy', '878fec2e5d97b094'), ('v1_blacklist', 'ca99ea0ed5abb955')), rule_count=106110, policy='{\"block_classes\": {\"link\": [\"ad\", \"tracker\"], \"redirect\": [\"ad\", \"tracker\"], \"request\": [\"ad\", \"tracker\"]}, \"block_threshold\": 0.9}', semantics='p6-filter/v1', psl='1.0.2.20260925', created_at=datetime.datetime(2026, 9, 29, 17, 23, 56, 566000, tzinfo=datetime.timezone.utc), created_by='m1-setup', note='M1 ruleset')",
+  "sources": [
+    {
+      "enabled": 48,
+      "imported_at": "2026-09-29 17:23:09.960000+00:00",
+      "license": null,
+      "origin": "crawler2/filtering/builtin.py",
+      "revision": "de4724195f1bc53a",
+      "rules": 48,
+      "source": "built_in",
+      "version": null
+    },
+    {
+      "enabled": 49862,
+      "imported_at": "2026-09-29 17:23:23.696000+00:00",
+      "license": "https://easylist.to/pages/licence.html",
+      "origin": "https://easylist.to/easylist/easylist.txt",
+      "revision": "6ca934d0e15f26ee",
+      "rules": 49862,
+      "source": "easylist",
+      "version": "202609291707"
+    },
+    {
+      "enabled": 56140,
+      "imported_at": "2026-09-29 17:23:41.561000+00:00",
+      "license": "https://easylist.to/pages/licence.html",
+      "origin": "https://easylist.to/easylist/easyprivacy.txt",
+      "revision": "878fec2e5d97b094",
+      "rules": 56140,
+      "source": "easyprivacy",
+      "version": "202609291715"
+    },
+    {
+      "enabled": 60,
+      "imported_at": "2026-09-29 17:23:15.379000+00:00",
+      "license": null,
+      "origin": "/home/dhanush/anti_piracy/crawler2/tests/fixtures/filtering/v1_domain_blacklist.txt",
+      "revision": "ca99ea0ed5abb955",
+      "rules": 98,
+      "source": "v1_blacklist",
+      "version": null
+    }
+  ]
+}
