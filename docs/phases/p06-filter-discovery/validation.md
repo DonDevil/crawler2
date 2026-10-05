@@ -248,7 +248,12 @@ links; run 1's were ~17 KB). Redis then refused the relay's `XADD`, and the
 relay exited on every attempt: 780 exits 15:44:14 → 17:04:52. Fetching
 continued (completions kept rising), but no event was published, so
 extraction and admission idled; nothing was lost (unpublished events
-stayed in the Scylla outbox; no other process hit the limit). The
+stayed in the Scylla outbox). Two other processes hit the limit without
+exiting (found later in the log summaries): the http worker's frontier
+heartbeat was refused 4 times (16:48–17:01 UTC, `attempt_crashed`; the
+leases expired and the frontier recovered the tasks: `recovered` +8 in the
+window), and admission's `admit_many` once (the batch stayed pending and
+was redelivered; the group ended with 0 pending). The
 watcher reported the exit storm at ~15:46; the operator chose the fix at
 17:04. Actions, 17:04:26–27 UTC: `XTRIM urls.discovered.v1 MAXLEN 2000`
 (lossless: group `discovery-admission` had delivered the stream's last ID,
@@ -290,11 +295,14 @@ memory when one entry can be 4 MB (X-8, X-16).
 `report.py --window-h 24 --since 2026-10-04T07:39:53Z --until
 2026-10-05T07:39:53Z`, raw `benchmarks/p6-m1/results/m1-run2.json`;
 1,440 samples over 23.98 h, no sampling gap over 5 min, no monitor probe
-error. M1 was not stopped and continues as P7 history.
+error. M1 was not stopped and continues as P7 history. Raw samples, restart
+log, configuration, ruleset and log summaries of both runs:
+`benchmarks/p6-m1/results/run1/`, `run2/` (README there).
 
 | Measure | Value |
 |---|---|
 | process exits | relay 790 (10 at start-up, 780 in the Redis stall, X-11/X-16); **no other process exited**; none after 17:04:52 UTC (14.6 h) |
+| logged errors, other processes | http: 86 `record_failed` (Scylla write timeouts, 75 of them in the first 10 min; attempt deferred, not charged — by design), 4 `attempt_crashed` (heartbeat refused by full Redis; tasks recovered by lease expiry); extract/extract2: 41/43 `storage_unavailable` (Scylla timeouts, retried in-process); admit: 10 `dependency_unavailable` (9 Scylla, 1 Redis OOM; redelivered); browser: 11 `record_failed` |
 | frontier completions / claims | 108,669 / 149,067 (4,528/h; run 1: 1,611/h) |
 | completions per hour | 6,083 · 8,221 · 7,094 · 4,639 · 3,194 · 2,311 · 3,361 · 3,624 · 4,239 · 3,170 · 3,117 · 2,295 · 5,258 · 6,770 · 2,515 · 3,768 · 5,349 · 6,473 · 5,701 · 5,490 · 4,634 · 3,254 · 4,740 |
 | completions during the 80-min stall | 5,967 (fetching continued; events waited in the outbox) |

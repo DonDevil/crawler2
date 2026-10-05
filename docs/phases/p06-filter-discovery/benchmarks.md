@@ -2,7 +2,10 @@
 
 Raw results: `benchmarks/p6-filter/results/`, `benchmarks/p6-m1/results/`.
 Scripts: `benchmarks/p6-filter/{throughput,fp_eval,corpus_build}.py`,
-`benchmarks/p6-m1/{run.sh,monitor.py,report.py,check.py}`.
+`benchmarks/p6-m1/{run.sh,monitor.py,report.py,check.py,watch.sh,logsummary.py}`
+(`watch.sh`: the alert loop used during run 2 — non-relay exits, relay
+exit storms, Redis > 700 MB, failing `check`; `logsummary.py`: per-run
+log summaries).
 
 ## 1. Gate D — filter throughput (≥ 100,000 decisions/s in-process)
 
@@ -83,4 +86,6 @@ which 780 in an 80-min Redis-full stall, X-16); http/admit/extract RSS
 flat over the last 12 h; Chromium tree inconclusive. Gate G **not passed**:
 the stall and ~1,850 `page.observed` entries trimmed unread break "no lost
 events". [validation.md](validation.md) §4.3;
-raw: `benchmarks/p6-m1/results/m1-run2.json`.
+raw: `benchmarks/p6-m1/results/m1-run2.json`; samples, restart logs,
+configuration, log summaries and mid-run per-host diagnostics of both
+runs in `benchmarks/p6-m1/results/run1/`, `run2/` (see the README there).
