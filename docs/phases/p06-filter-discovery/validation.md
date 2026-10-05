@@ -277,5 +277,14 @@ M1 configuration inside the Gate G window and stalls the closed loop for
 80 min; both are reported with the gate verdict.** The watcher now also
 alerts at Redis > 700 MB.
 
+**Near-miss at 12.6–16.3 h.** Even at 3,000 entries, `urls.discovered`
+reached 347 MB at 20:35 UTC (~115 KB per entry): pages of
+`account.ncbi.nlm.nih.gov` carry ~5,200 links each (~4 MB per entry).
+Redis rose from 356 MB to a peak of 653.8 MB (23:57 UTC), then fell back
+to 407 MB as those entries rotated out; it never reached the 700 MB alert
+or the 768 MB limit, and no process exited. A lossless trim was prepared
+(operator-approved) but was not needed. Count-based retention cannot bound
+memory when one entry can be 4 MB (X-8, X-16).
+
 Evaluation after the window: `report.py --window-h 24 --out
 benchmarks/p6-m1/results/m1-run2.json`.
