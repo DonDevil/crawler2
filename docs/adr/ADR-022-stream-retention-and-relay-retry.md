@@ -64,3 +64,7 @@ supervisor (X-11).
   backpressure.
 - The outbox retention (14 days) is the limit on how long a stalled
   consumer can be tolerated without loss.
+- A consumer whose state is a rebuildable projection and must not be able
+  to hold back the relay reads the outbox instead of joining a group
+  ([ADR-023](ADR-023-projection-readers-outside-stream-retention.md), P7).
+  This ADR's rules are unchanged by it.

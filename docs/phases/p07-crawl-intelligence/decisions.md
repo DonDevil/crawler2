@@ -26,10 +26,14 @@ Audit: [audit.md](audit.md).
 
 | D-16 | **G5 measured: FAIL.** `page.changed` precision is 0.07 (sample) / 0.015 (weighted) against ≥ 0.8. The threshold is not changed. Raw `page.changed` is rejected as a scheduling signal, and so is plain URL novelty (precision 0.067). WHEN stays gated: its signal must come from WHAT (hub pages, the site's content URL template, spam patterns as negative knowledge) and be validated on a new labelled sample, because the G5 labels are held out (g5.md §4.1) | 2026-10-07 | g5.md §4 |
 | D-17 | **P7 design drafted (design.md); increment 1 = source health + fetch profile** (negative knowledge, lifecycle, reactivation, HOW). It is pure and deterministic, with an offline replay on M1 and no storage, consumer or admission wiring. Increment 2 (P7-owned table, `intel-*` best-effort consumer, admission advice) needs review and an ADR for the ADR-022 interaction (design §3). WHAT is next after review. WHEN stays gated (D-16) | 2026-10-07 | design §2–§5 |
+| D-18 | **Increment 2 review: the `intel-*` best-effort consumer group is rejected; [ADR-023](../../adr/ADR-023-projection-readers-outside-stream-retention.md) is adopted.** Under ADR-022 any group on `fetch.completed` (which has none today) would let a dead P7 hold back the relay, and with it every stream. Exempting `intel-*` would change the P2 publisher and still need a rebuild source. Instead, P7 reads the outbox (the 14-day system of record) read-only through P2's `OutboxStore`, with its own checkpoint, generations and gap rebuild. **ADR-022, the publisher, the relay, stream settings and P1 contracts are unchanged.** Storage: `intel_source_profiles` + `intel_projection_state` (V004). `source_profile_moves` is dropped (the profile keeps the latest target; the history is in W1). Admission advice is **off by default** (`intelligence.advice_enabled`). When off, stale, empty, rebuilding, unavailable or failing, it falls back to admit on http, which is today's behaviour. Implemented and tested (design §9); WHAT is next after review; WHEN stays gated; priority stays P6 | 2026-10-07 | design §3, §9; audit §6 |
 
 Superseded: "no P7 intelligence until the re-audit" (above, 2026-10-07)
 is replaced by D-13. P7 proceeds without a re-audit, and WHEN stays gated
 on G5.
+
+Superseded: the increment 2 mechanism in D-17 (an `intel-*` best-effort
+consumer group) is replaced by D-18 (an outbox reader, ADR-023).
 
 ## 2. Questions as raised by the audit (answered in D-5 … D-10)
 

@@ -338,3 +338,41 @@ G1/G2 numerically, and re-measure template churn. The existing data is rich
 for HOW and negative knowledge (dead, moved, parked, 4xx, 304, 429), for
 WHAT (21k pages on 11 live sites) and for lifecycle. The one missing
 measurement is G5, and that blocks only the WHEN component.
+
+## 6. Increment 2 architecture review (2026-10-07; decision D-18)
+
+Earlier sections are unchanged. Chronology: M1 → gate not passed (§3) →
+reassessment, M1b rejected (§5) → G5 FAIL ([g5.md](g5.md)) → design →
+increment 1 → **this review** → increment 2 implementation
+([implementation.md](implementation.md)).
+
+**Question.** The design draft (D-17) proposed a P7 consumer group
+`intel-sources` on `fetch.completed`, with groups named `intel-*` exempt
+from ADR-022 retention. Is that safe under B.5 #1?
+
+**What the code does** (`storage/events/publisher.py`, `relay.py`):
+
+- `trim_floor` and the byte-budget check treat every group alike. A
+  grouped stream whose unacknowledged entries fill `stream_max_bytes`
+  raises `StreamBackpressureError`, and the relay ends its whole cycle at
+  that stream.
+- `fetch.completed` has **no** consumer group in the runtime. Only
+  `page.observed` (extraction) and `urls.discovered` (discovery) are
+  grouped. Its stream is length- and byte-trimmed (ADR-022 rule 3).
+
+**Finding.** An ordinary P7 group would make `fetch.completed` a grouped
+stream. A dead P7 would then stall publication of `page.observed` and
+`urls.discovered`, which is the X-8/X-16 failure mode. The integration test
+`test_an_ordinary_group_on_fetch_completed_would_stall_the_relay`
+reproduces it on the real stack. The `intel-*` exemption would avoid the
+stall, but only by adding a new group class to the P2 publisher. That
+reader would still need gap detection on Redis IDs (reset by a flush) and
+a durable rebuild source.
+
+**Resolution (ADR-023).** P7 needs no group. It reads the outbox, which
+already holds every `fetch.completed` envelope for 14 days, through P2's
+read-only `OutboxStore` interface, with its own checkpoint. A gap exists
+only after a 14-day outage, and it is rebuilt from the same source by the
+same code path. ADR-022 is unchanged. Its interaction with P7 is removed
+by construction, not by an exception.
+
