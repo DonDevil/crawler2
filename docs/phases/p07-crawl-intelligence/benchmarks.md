@@ -1,0 +1,121 @@
+# P7 Benchmarks and data collection
+
+Audit: [audit.md](audit.md) · Decisions: [decisions.md](decisions.md).
+
+## 1. M1 history (audited 2026-10-07)
+
+`crawler2_m1`, runs 1 and 2, about 46 h. Measures and gate result are in
+[audit.md](audit.md) §2–§3 and `benchmarks/p7-intelligence/results/m1-audit*.json`.
+Gate not passed.
+
+## 2. Focused collection run "M1b" (decision D-5) — PLANNED, not started
+
+**Purpose.** Collect seed-set history that can satisfy G1–G4 and supply
+pairs for G5, under the unchanged static M1 policy. No P7 intelligence is
+involved.
+
+### 2.1 Configuration
+
+| Item | Value | Note |
+|---|---|---|
+| dataset | `M1_DATASET=m1b`: keyspace `crawler2_m1b`, Redis namespace `m1b`, streams `m1b:events:*`, bucket `crawler2-m1b`, state `var/p6-m1b/` | fresh. `crawler2_m1` stays untouched as evidence |
+| seeds | `benchmarks/v1-baseline/seeds.txt`: 52 lines, sha256 `26cd2294…d1b428cc`, 50 registrable domains, source `w52-v1-seeds` | the seed set of the P7 gate and M2 |
+| search | **off** (`run.sh start` without a query file) | no off-target scope roots (audit §2.2) |
+| scope | rooted seed domains plus leaves (P6 D-2) | unchanged |
+| revisits | seeds every 6 h (`--every 21600`); a rediscovered link when its last admission is ≥ 24 h old (`discovery.revisit_after_s`) | unchanged static M1 policy (P6 D-3) |
+| priorities | seed 70, link 50, leaf 40 | unchanged |
+| filter ruleset | built_in + V1 reviewed + EasyList + EasyPrivacy, imported at `setup` (the lists' current revisions) | ruleset id recorded in `var/p6-m1b/ruleset-status.json` and in the results |
+| workers | http concurrency 4, browser 2 pages, 2 × extract, 1 admit, relay, monitor (60 s) | as M1 run 2 (HDD-bound, P6 X-9) |
+| frontier | P3 defaults: `max_depth` 200,000 per queue, per-domain in-flight 2 | unchanged |
+| event retention | ADR-022: `stream_max_bytes` 48 MiB per stream (5 streams ≤ 240 MiB), `stream_maxlen` 10,000 for streams without groups | X-8 |
+| relay | in-process retry, 1 s → 30 s | X-11 |
+
+### 2.2 Prerequisites (operator)
+
+1. **Free the old M1 Redis state.** Redis holds 393 MB of `m1:*` keys
+   (199,996 frontier task hashes, queues, 5 streams) out of the 768 MB
+   `maxmemory`. Those keys are transient frontier and transport state for a
+   dataset that will not be continued. The M1 history in Scylla is not
+   affected. Deleting them (`m1:*` only) leaves room for the new frontier
+   and the stream budget. **Needs approval.**
+2. `M1_DATASET=m1b benchmarks/p6-m1/run.sh setup` (migrations, bucket, rules).
+3. Chromium on the host for the browser pool, as for M1.
+
+### 2.3 Expected growth
+
+From M1 run 2 (4,528 completions/h): Scylla +4.5 GB per day, MinIO
++9.8 GB per day. For 5 days that is about 23 GB of Scylla and 49 GB of
+MinIO, with 354.8 GB free. Seed-site pages are smaller than NCBI's, so this
+is an upper estimate.
+
+### 2.4 Monitoring and stop conditions
+
+The monitor samples every 60 s: process RSS/FDs/threads/children, Redis
+memory, per-stream length, **bytes** and group lag, frontier depth,
+scheduled, leased and dead letters, relay and admission metrics (including
+`outbox_backpressure_total` and `outbox_publish_failures_total`), the
+`fetch.completed` tally, host iowait, and Scylla/MinIO sizes.
+`run.sh check` flags:
+
+- a process down, or the monitor stale;
+- `fetch.completed` entries the monitor missed;
+- Redis > 700 MB;
+- relay backpressure in every sample for 15 min;
+- **`page.observed` not advancing for 15 min while fetches finish** (a fetch
+  is not a propagated observation).
+
+`benchmarks/p6-m1/watch.sh` (with `M1_DATASET=m1b`) prints these as alerts.
+A watcher started from a Claude session lives only as long as that session.
+
+**Stop and report** if:
+
+- an event is lost: a grouped stream's lag inconsistent with its entries,
+  or extraction/admission skipping entries;
+- Redis reaches its limit;
+- Scylla, Redis or MinIO cannot sustain the run;
+- the loop stalls for more than an hour.
+
+### 2.5 Start and recovery
+
+```bash
+export M1_DATASET=m1b
+benchmarks/p6-m1/run.sh setup
+benchmarks/p6-m1/run.sh start          # no query file: search off
+benchmarks/p6-m1/run.sh check          # health (exit 1 = problem)
+benchmarks/p6-m1/run.sh stop           # stop; `start` again continues the dataset
+```
+
+Every process runs under a `setsid` supervisor that restarts it, and the
+relay no longer exits on storage errors. After a host restart, `start`
+resumes the same dataset: the frontier refills from seed re-admission
+(6 h) and rediscovery, and unpublished events wait in the outbox for 14
+days.
+
+### 2.6 How the run is evaluated (pre-registered 2026-10-07)
+
+- The run ends when G1–G4 are met on its own data, or when they stall, and
+  never on the calendar alone (D-5). Progress is measured once a day with
+  `P7_EXPORT=var/p7/m1b-export env/bin/python benchmarks/p7-intelligence/export_m1.py
+  --host <ip> --keyspace crawler2_m1b`, followed by the audit scripts.
+- **The gate is evaluated on `crawler2_m1b` alone.** Thresholds and
+  definitions are those of audit §3.2. The combined M1 + M1b seed-set
+  figures are reported for information only.
+- **G2 windows:** A = the run's first 24 h, B = from 48 h after start, so
+  they are ≥ 24 h apart (`P7_WINDOW_A_END`, `P7_WINDOW_B_START`). The
+  domain criterion is unchanged: ≥ 30 attempts in the run and attempts in
+  both windows.
+- **G5:** ≥ 50 changed pairs sampled from `crawler2_m1b` across several seed
+  domains and path depths, labelled from the stored snapshots before any
+  P5/P7 rule change, and held out (D-9).
+- **G6** is reported for http and browser. Tor is deferred (D-7).
+- **G7** is deferred until P9 (D-7).
+- **M2 baseline:** the browser-requiring subset (domains/patterns with
+  http `needs_js` → browser escalation) and its M1b baseline are measured
+  from this run. The M2 metric and X/Y are fixed before any P7 evaluation
+  (D-8).
+
+**Risk.** Half of the seed domains were unreachable within days in P0/P4,
+and 25 of 50 never answered 2xx in M1. G1/G2 count attempts of any outcome,
+but G3 needs ≥ 10 seed domains with live, revisitable HTML. If fewer
+domains are alive, G3 cannot be met by collection. That will be reported
+as such, and the threshold will not be lowered.
