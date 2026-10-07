@@ -23,6 +23,7 @@
 | [019](ADR-019-frontier-domain-inflight-limit.md) | Frontier per-domain in-flight limit, global across queues and hosts | Accepted |
 | [020](ADR-020-page-revisions.md) | Page revisions: meaningful change as an additive identity beside page versions (contract 1.1, `page.changed`) | Accepted |
 | [021](ADR-021-filter-rules-and-admission.md) | Filter rules as durable, versioned data; filtering at admission | Accepted |
+| [022](ADR-022-stream-retention-and-relay-retry.md) | Event streams bounded by bytes, never trimmed past unread entries; relay retries in-process | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

@@ -20,6 +20,12 @@ Scan strategy per shard (bounded cost, no unbounded partitions):
 
 Several relays may run (one per host): they may publish the same row twice,
 which the at-least-once contract already allows. Nothing here is exactly-once.
+
+Failures (ADR-022): a storage or transport error ends the cycle and
+``run_forever`` retries it after an exponential pause; the process does not
+exit. Transport backpressure (a stream's consumers are behind) marks only the
+delivered prefix and ends the cycle; the remaining rows stay unpublished in the
+outbox and are offered again on the next cycle.
 """
 
 from __future__ import annotations
@@ -33,7 +39,8 @@ from typing import Protocol
 from prometheus_client import Counter
 
 from crawler2.core.observability import Metrics, get_logger
-from crawler2.storage.events.publisher import EventPublisher, OutboundEvent
+from crawler2.storage.errors import StorageUnavailableError
+from crawler2.storage.events.publisher import EventPublisher, OutboundEvent, StreamBackpressureError
 from crawler2.storage.layout import OUTBOX_BUCKET_SECONDS, OUTBOX_SHARDS, outbox_bucket
 
 
@@ -79,6 +86,8 @@ class RelayReport:
     late: int = 0
     buckets_scanned: int = 0
     checkpoints: dict[int, int] = field(default_factory=dict)
+    backpressure: str | None = None
+    """The stream that refused further events this cycle, if any."""
 
 
 class OutboxRelay:
@@ -109,6 +118,7 @@ class OutboxRelay:
         self._published: Counter | None = None
         self._late: Counter | None = None
         self._failures: Counter | None = None
+        self._backpressure: Counter | None = None
         if metrics is not None:
             self._published = metrics.counter(
                 "outbox_published_total", "Outbox rows handed to the transport", ["event_type"]
@@ -119,6 +129,10 @@ class OutboxRelay:
             )
             self._failures = metrics.counter(
                 "outbox_publish_failures_total", "Relay cycles aborted by a transport error"
+            )
+            self._backpressure = metrics.counter(
+                "outbox_backpressure_total",
+                "Relay cycles ended early because a stream's consumers are behind",
             )
 
     # --- one cycle --------------------------------------------------------------
@@ -145,6 +159,13 @@ class OutboxRelay:
                 if next_checkpoint != checkpoint:
                     self._store.set_checkpoint(shard, next_checkpoint, by=self._relay_id)
                 report.checkpoints[shard] = self._checkpoints[shard] = next_checkpoint
+        except StreamBackpressureError as exc:
+            # Not a failure: the checkpoint of the interrupted shard stays where it was.
+            report.backpressure = exc.stream
+            report.published += exc.published
+            if self._backpressure is not None:
+                self._backpressure.inc()
+            return report
         except Exception:
             if self._failures is not None:
                 self._failures.inc()
@@ -158,12 +179,21 @@ class OutboxRelay:
         todo = rows if republish else [r for r in rows if r.published_at is None]
         for start in range(0, len(todo), self._batch_size):
             chunk = todo[start : start + self._batch_size]
-            self._publisher.publish([r.outbound for r in chunk])
+            try:
+                self._publisher.publish([r.outbound for r in chunk])
+            except StreamBackpressureError as exc:
+                if exc.published:
+                    self._store.mark_published(chunk[: exc.published], self._clock())
+                    self._count(chunk[: exc.published])
+                raise
             self._store.mark_published(chunk, self._clock())
-            if self._published is not None:
-                for record in chunk:
-                    self._published.labels(event_type=record.event_type).inc()
+            self._count(chunk)
         return len(todo)
+
+    def _count(self, records: Sequence[OutboxRecord]) -> None:
+        if self._published is not None:
+            for record in records:
+                self._published.labels(event_type=record.event_type).inc()
 
     # --- recovery tools -----------------------------------------------------------
 
@@ -194,14 +224,47 @@ class OutboxRelay:
                 report.buckets_scanned += 1
         return report
 
-    def run_forever(self, *, poll_interval_s: float, stop: Callable[[], bool]) -> None:
+    def run_forever(
+        self,
+        *,
+        poll_interval_s: float,
+        stop: Callable[[], bool],
+        retry_max_s: float = 30.0,
+        sleep: Callable[[float], None] = time.sleep,
+    ) -> None:
+        """Relay until ``stop()``; storage/transport errors and backpressure are retried
+        in-process after ``poll_interval_s`` doubling up to ``retry_max_s``."""
         # A cycle drains every unpublished row it finds, so it always pauses afterwards:
         # the hot scan costs 2 reads per shard and must not spin.
+        pause = poll_interval_s
         while not stop():
-            report = self.run_once()
+            try:
+                report = self.run_once()
+            except StorageUnavailableError as exc:
+                self._log.warning("outbox_relay_retry", error=str(exc)[:300], retry_in_s=pause)
+                self._wait(pause, stop, sleep)
+                pause = min(pause * 2, retry_max_s)
+                continue
             if report.published:
                 self._log.info("outbox_relayed", published=report.published)
-            time.sleep(poll_interval_s)
+            if report.backpressure is not None:
+                self._log.warning(
+                    "outbox_backpressure", stream=report.backpressure, retry_in_s=pause
+                )
+                self._wait(pause, stop, sleep)
+                pause = min(pause * 2, retry_max_s)
+                continue
+            pause = poll_interval_s
+            self._wait(poll_interval_s, stop, sleep)
+
+    @staticmethod
+    def _wait(seconds: float, stop: Callable[[], bool], sleep: Callable[[float], None]) -> None:
+        """Sleep in short steps so a stop request is honoured within 0.5 s."""
+        remaining = seconds
+        while remaining > 0 and not stop():
+            step = min(remaining, 0.5)
+            sleep(step)
+            remaining -= step
 
 
 __all__ = [

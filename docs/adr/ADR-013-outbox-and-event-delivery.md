@@ -35,7 +35,7 @@ idempotency key, `enqueued_at` and `published_at`. TTL 14 days, TWCS.
 
 **Relay** (`storage/events/relay.py`, `crawler2-storage relay`): reads
 unpublished rows, publishes the stored bytes to Redis Streams
-(`<prefix><event_type>.v<major>`, approximate MAXLEN), then marks
+(`<prefix><event_type>.v<major>`; retention and backpressure per ADR-022), then marks
 `published_at`. Every cycle scans the current and previous minute; every
 `recheck_interval` it scans from a per-shard checkpoint and advances the
 checkpoint over buckets older than `settle_s` (10 min). `sweep` rescans

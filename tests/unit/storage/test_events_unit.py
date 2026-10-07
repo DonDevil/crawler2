@@ -18,9 +18,16 @@ from antipiracy_contracts.events.web import PageObserved
 from antipiracy_contracts.ids import EventId
 from antipiracy_contracts.ownership import Component
 
+from crawler2.storage.errors import StorageUnavailableError
 from crawler2.storage.events.consumer import ConsumeOutcome, IdempotentConsumer
 from crawler2.storage.events.idempotency import idempotency_key
-from crawler2.storage.events.publisher import OutboundEvent
+from crawler2.storage.events.publisher import (
+    GroupState,
+    OutboundEvent,
+    StreamBackpressureError,
+    next_id,
+    trim_floor,
+)
 from crawler2.storage.events.relay import OutboxRecord, OutboxRelay
 from crawler2.storage.layout import outbox_bucket
 from tests.fixtures.contracts import SPEC, T0, content_key, event_of, media, page_observation, url
@@ -234,3 +241,88 @@ def test_consumer_validates_through_the_contracts() -> None:
         consumer.handle(other.raw)
     with pytest.raises(ValueError, match="validation error"):
         consumer.handle(b'{"envelope_version": 1}')
+
+
+# --- retention and relay resilience (ADR-022) ---------------------------------------
+
+
+def test_trim_floor_keeps_what_the_slowest_group_still_needs() -> None:
+    assert trim_floor([]) is None
+    caught_up = GroupState("a", "1700-5", pending=0, oldest_pending_id=None)
+    assert trim_floor([caught_up]) == "1700-6"  # everything delivered and acked goes
+    pending = GroupState("b", "1800-0", pending=3, oldest_pending_id="1650-2")
+    assert trim_floor([caught_up, pending]) == "1650-2"  # unacked entries stay
+    fresh = GroupState("c", "0-0", pending=0, oldest_pending_id=None)
+    assert trim_floor([caught_up, fresh]) == "0-1"  # a group that read nothing keeps all
+    assert next_id("1700-9") == "1700-10"
+
+
+class BackpressurePublisher:
+    """Accepts ``capacity`` events in total, then reports backpressure."""
+
+    def __init__(self, capacity: int) -> None:
+        self.capacity = capacity
+        self.delivered: list[str] = []
+
+    def publish(self, events: Sequence[OutboundEvent]) -> None:
+        room = max(0, self.capacity - len(self.delivered))
+        self.delivered += [e.event_id for e in events[:room]]
+        if room < len(events):
+            raise StreamBackpressureError("s", room, 1)
+
+
+def test_backpressure_marks_only_the_delivered_prefix_and_keeps_the_checkpoint() -> None:
+    clock = Clock(T0)
+    now = outbox_bucket(T0)
+    store = MemoryOutbox(earliest=now - 5)
+    produced = store.add(0, now - 3, 5)
+    publisher = BackpressurePublisher(capacity=4)
+    relay = OutboxRelay(
+        store, publisher, relay_id="t", settle_s=60, batch_size=3, shards=[0], clock=clock
+    )
+    report = relay.run_once()
+    assert report.backpressure == "s"
+    assert store.unpublished() == 1  # 3 + 1 of the second chunk were delivered and marked
+    assert store.checkpoint(0) is None  # the shard did not move past the blocked bucket
+    publisher.capacity = 100  # consumers caught up
+    report = relay.run_once()
+    assert report.backpressure is None
+    assert store.unpublished() == 0
+    assert set(publisher.delivered) == set(produced)
+    # the blocked bucket and every other settled bucket are passed
+    assert store.checkpoint(0) == outbox_bucket(T0 - timedelta(seconds=60))
+
+
+def test_run_forever_retries_storage_errors_and_backpressure_without_exiting() -> None:
+    clock = Clock(T0)
+    store = MemoryOutbox(earliest=outbox_bucket(T0) - 1)
+    produced = store.add(0, outbox_bucket(T0), 2)
+    outcomes: list[str] = []
+
+    class Flaky:
+        calls = 0
+
+        def publish(self, events: Sequence[OutboundEvent]) -> None:
+            Flaky.calls += 1
+            if Flaky.calls <= 2:
+                outcomes.append("error")
+                raise StorageUnavailableError("redis down")
+            if Flaky.calls == 3:
+                outcomes.append("backpressure")
+                raise StreamBackpressureError("s", 0, 1)
+            outcomes.append("ok")
+
+    pauses: list[float] = []
+    relay = OutboxRelay(store, Flaky(), relay_id="t", settle_s=60, shards=[0], clock=clock)
+    relay.run_forever(
+        poll_interval_s=1.0,
+        retry_max_s=3.0,
+        stop=lambda: store.unpublished() == 0 or len(outcomes) > 10,
+        sleep=pauses.append,
+    )
+    assert outcomes == ["error", "error", "backpressure", "ok"]
+    assert store.unpublished() == 0
+    assert len(produced) == 2
+    # pauses of 1 s, 2 s, then 3 s (capped), each slept in ≤ 0.5 s steps
+    assert sum(pauses) == pytest.approx(6.0)
+    assert max(pauses) <= 0.5

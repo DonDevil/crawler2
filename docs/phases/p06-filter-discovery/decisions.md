@@ -80,8 +80,8 @@
 | Media identity, probing, manifests from discovered media | P8 |
 | Tor search (Torch) — no Tor daemon on this host | ops |
 | Prometheus endpoints for worker/extraction processes | P14 |
-| Relay (and other long-running consumers) retry storage timeouts in-process instead of exiting (X-11) | P14 |
-| Byte-based event-stream retention (X-8; it overflowed Redis in M1 run 2, X-16) | P14 |
+| Relay retries storage timeouts in-process instead of exiting (X-11) — **done 2026-10-07, ADR-022**; other long-running consumers (extract, admit) still exit on a Redis read error | relay: done; others P14 |
+| Byte-based event-stream retention (X-8; it overflowed Redis in M1 run 2, X-16) — **done 2026-10-07, ADR-022**: consumer-aware `MINID` trimming + byte budget with publisher backpressure | done |
 | Per-domain back-off on persistent 429 / `Retry-After` (X-14) | P7 / P14 |
 | Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | P7 |
 | Gate G: run 3, a 24 h M1 window without event loss — needs bounded-by-bytes stream retention with consumer-aware trimming (X-8, X-16) and in-process relay retry (X-11); X-14/X-15 for meaningful throughput. Run 2 settled the http/admit leak question (plateau) and measured the fetch metrics; the Chromium-tree drift is to be followed in the continuing M1 | P6 (open), depends on P14 items |

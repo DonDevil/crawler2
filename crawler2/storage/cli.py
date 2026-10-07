@@ -123,7 +123,9 @@ def cmd_relay(settings: Settings, args: argparse.Namespace) -> int:
         signal.signal(signal.SIGINT, _stop)
         metrics.serve()
         relay.run_forever(
-            poll_interval_s=settings.events.relay_poll_interval_s, stop=lambda: stopping
+            poll_interval_s=settings.events.relay_poll_interval_s,
+            stop=lambda: stopping,
+            retry_max_s=settings.events.relay_retry_max_s,
         )
         return 0
     finally:

@@ -110,11 +110,21 @@ class EventSettings(BaseModel):
     stream_prefix: str = Field(default="events:", pattern=r"^[a-z0-9:._-]{0,32}$")
     """Stream key = prefix + ``<event_type>.v<major>``; shared with the fingerprinter."""
     stream_maxlen: PositiveInt = 100_000
-    """Approximate per-stream cap (Redis is transport, not the system of record)."""
+    """Approximate entry cap for a stream that has no consumer group (ADR-022).
+    Streams with groups are never trimmed past an unacknowledged entry."""
+    stream_max_bytes: PositiveInt = 64 * 1024 * 1024
+    """Byte budget per stream (ADR-022): a stream with groups refuses new entries
+    (publisher backpressure) while its unacknowledged entries fill it; one without
+    groups drops its oldest entries. Size Redis ``maxmemory`` for the frontier plus
+    this budget times the number of streams."""
     relay_batch_size: PositiveInt = 500
     relay_settle_s: float = Field(default=600.0, gt=0)
     """A bucket older than this is assumed complete; the relay may move past it."""
     relay_poll_interval_s: float = Field(default=1.0, gt=0)
+    relay_retry_max_s: float = Field(default=30.0, gt=0)
+    """Longest pause between relay retries after a storage/transport error or
+    backpressure (exponential from ``relay_poll_interval_s``); the relay never exits
+    on these (ADR-022)."""
 
 
 class ExecutionQueue(StrEnum):

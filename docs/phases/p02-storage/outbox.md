@@ -37,9 +37,13 @@ crawler2-storage relay --replay-from 2026-09-28T00:00:00+00:00 [--replay-to ...]
 ```
 
 Watch `outbox_late_rows_total` (non-zero ⇒ raise `relay_settle_s`) and
-`outbox_publish_failures_total`. Stream length is capped approximately at
-`stream_maxlen` (100k in dev): Redis is transport, the outbox is the
-replay source.
+`outbox_publish_failures_total`. Retention follows ADR-022: a stream with
+consumer groups is trimmed only past entries every group has acknowledged
+and is bounded by `stream_max_bytes` through publisher backpressure
+(`outbox_backpressure_total`); a stream without groups keeps at most
+`stream_maxlen` entries and `stream_max_bytes` bytes. The relay retries
+storage/transport errors in-process (`relay_retry_max_s`). Redis is
+transport, the outbox is the replay source.
 
 ## Consumer markers
 
