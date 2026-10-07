@@ -21,7 +21,11 @@ EXPECTED_TTL = {
     "observations_by_domain_day": TTL_30D,
     "outbox": TTL_14D,
     "processed_events": TTL_14D,
+    "intel_source_profiles": TTL_30D,
 }
+# One row per key, overwritten in place; the TTL only expires abandoned keys. TWCS
+# would keep the overwritten cells of every window, so these stay size-tiered.
+UPSERTED_WITH_TTL = {"intel_source_profiles"}
 
 
 @pytest.fixture
@@ -62,7 +66,8 @@ def test_fresh_init_is_complete_and_rerun_is_a_noop(
     for name, row in tables.items():
         assert row.default_time_to_live == EXPECTED_TTL.get(name, 0), name
         strategy = row.compaction["class"]
-        expected = "TimeWindow" if name in EXPECTED_TTL else "SizeTiered"
+        time_series = name in EXPECTED_TTL and name not in UPSERTED_WITH_TTL
+        expected = "TimeWindow" if time_series else "SizeTiered"
         assert expected in strategy, (name, strategy)
     ScyllaStorage.over(session)  # repositories prepare against the migrated schema
     Migrator(session, Settings().scylla, applied_by="x").require_current()

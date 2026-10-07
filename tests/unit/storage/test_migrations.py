@@ -53,6 +53,8 @@ EXPECTED_TABLES = {
     "seeds_by_source": "P6/F9",
     "search_results_by_query_day": "P6/F10",
     "scope_sites": "P6/F11",
+    "intel_source_profiles": "P7/I1",
+    "intel_projection_state": "P7/I2",
 }
 
 

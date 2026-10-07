@@ -358,6 +358,29 @@ class DiscoverySettings(BaseModel):
     priority_leaf: int = Field(default=40, ge=0, le=100)
 
 
+class IntelligenceSettings(BaseModel):
+    """P7 source-profile projection and admission advice (P7 design §9, ADR-023)."""
+
+    advice_enabled: bool = False
+    """P6 admission consults P7 source advice. Off by default: admission is then
+    exactly the P6 behaviour (B.5 #1)."""
+    projection: str = Field(default="sources", pattern=r"^[a-z0-9._-]{1,64}$")
+    poll_interval_s: float = Field(default=30.0, gt=0)
+    retry_max_s: float = Field(default=300.0, gt=0)
+    max_buckets_per_cycle: PositiveInt = 60
+    outbox_retention_s: PositiveInt = 14 * 24 * 3600
+    """Must equal the outbox TTL (ADR-013); older buckets count as lost (gap)."""
+    retention_margin_s: PositiveInt = 3600
+    """Buckets this close to expiry are not trusted for a rebuild."""
+    dedupe_window: PositiveInt = 200_000
+    """Idempotency keys remembered by the reader to drop duplicate facts."""
+    snapshot_refresh_s: float = Field(default=300.0, gt=0)
+    max_snapshot_age_s: float = Field(default=1800.0, gt=0)
+    """An admission snapshot older than this gives no advice (fallback)."""
+    max_lag_s: float = Field(default=3600.0, gt=0)
+    """A projection checkpoint lagging more than this gives no advice (fallback)."""
+
+
 class SearchSettings(BaseModel):
     """P6 search discovery adapters (design §15)."""
 
@@ -398,6 +421,7 @@ class Settings(BaseSettings):
     filter: FilterSettings = Field(default_factory=FilterSettings)
     discovery: DiscoverySettings = Field(default_factory=DiscoverySettings)
     search: SearchSettings = Field(default_factory=SearchSettings)
+    intelligence: IntelligenceSettings = Field(default_factory=IntelligenceSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

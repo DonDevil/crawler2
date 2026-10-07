@@ -297,17 +297,14 @@ def test_weak_escalation_evidence_decays_back_to_http() -> None:
 
 def test_intelligence_package_stays_off_the_runtime_and_storage_paths() -> None:
     """B.5 #1 and design §3: no frontier, Redis, Scylla, worker or P6 store imports."""
-    forbidden = (
-        "crawler2.frontier",
-        "crawler2.storage",
-        "crawler2.crawlers",
-        "crawler2.discovery",
-        "crawler2.filtering.store",
-        "redis",
-        "cassandra",
-    )
+    # Increment 2 adds the projection, its P7-owned store and the CLI (P2 storage
+    # allowed). No P7 module may reach the frontier, workers, discovery or Redis
+    # (design §3, ADR-023), and the model itself stays pure.
+    everywhere = ("crawler2.frontier", "crawler2.crawlers", "crawler2.discovery", "redis")
+    pure = (*everywhere, "crawler2.storage", "crawler2.filtering.store", "cassandra")
     root = Path(__file__).resolve().parents[3] / "crawler2" / "intelligence"
     for path in root.glob("*.py"):
+        forbidden = pure if path.name in ("sources.py", "advice.py") else everywhere
         tree = ast.parse(path.read_text())
         for node in ast.walk(tree):
             names = (

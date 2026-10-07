@@ -26,6 +26,7 @@ crawler2-worker = "crawler2.crawlers.cli:main"
 crawler2-extract = "crawler2.extraction.cli:main"
 crawler2-filter = "crawler2.filtering.cli:main"
 crawler2-discover = "crawler2.discovery.cli:main"
+crawler2-intel = "crawler2.intelligence.cli:main"
 
 [dependency-groups]
 dev = [
@@ -57,6 +58,7 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 "tests/**" = ["S101", "S608"]  # plain asserts; test-built CQL/DDL on test keyspaces
 # CQL is built only from module constants; every value is a bind marker.
 "crawler2/storage/scylla/**" = ["S608"]
+"crawler2/intelligence/store.py" = ["S608"]
 # dev benchmark tooling: fixed docker/cqlsh invocations on our own keyspace names
 "benchmarks/p2-storage/**" = ["S603", "S607", "S608"]
 # dev benchmark tooling: seeded pseudo-random workloads, fixed lscpu call
