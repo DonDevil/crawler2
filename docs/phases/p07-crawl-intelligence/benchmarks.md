@@ -152,3 +152,35 @@ admission, and then the host is classified again.
 
 Not measurable offline: what the freed attempts would have discovered
 (M2 live A/B, design §10).
+
+## 4. Increment 2: admission latency and reader scan (2026-10-07)
+
+**Admission latency.** `env/bin/python benchmarks/p7-intelligence/admission_latency.py`
+→ `results/p7-admission-latency.json`. The P6 `Admitter` runs in-process
+over an in-memory frontier and store, so only the cost P7 adds is measured.
+Setup: 10,000 hosts (a seeded mix of live, dead and JS), 400 batches of 50
+URLs, 5 rounds.
+
+| Scenario | Median µs/URL | p99 µs/URL | vs P7 off |
+|---|---:|---:|---:|
+| P7 off (`advice_enabled=false`) | 18.57 | 34.56 | — |
+| informed, 10k-host snapshot | 41.84 | 63.43 | +23.27 |
+| fallback: no snapshot | 19.97 | 37.53 | +1.40 |
+| fallback: projection stale | 20.73 | 36.99 | +2.16 |
+| fallback: snapshot store hanging | 19.77 | 35.14 | +1.20 |
+
+- The informed figure includes a structlog debug line per deferred URL
+  (about a third of the URLs here).
+- Real admission adds a Redis `admit_many` and Scylla F5/F6 writes per
+  batch, which are not part of this measurement. P7 adds no remote call.
+- Snapshot: 10,000 rows of ~487 bytes of JSON decode in 72.5 ms, inside
+  the background refresh (every 300 s), never on the admission path.
+
+**Reader scan.** `benchmarks/p7-intelligence/reader_scan.py` on the
+throwaway integration keyspace → `results/p7-reader-scan.json`: 63 buckets
+(2,016 shard reads, 96 facts) in 1.39 s, which is 45 buckets/s on the dev
+host (USB HDD). A full 14-day rebuild is 20,160 buckets, about **7 min** at
+that rate. That is a lower bound, because these buckets were nearly empty.
+A busy outbox costs more per bucket. This is a sample of one, not a load
+test. The steady state is 1 bucket per minute.
+

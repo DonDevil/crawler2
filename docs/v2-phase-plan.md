@@ -25,6 +25,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-07 | **P7 collection decisions (Q1–Q5)**: seed-focused M1 collection run (fresh dataset, search off) after X-8/X-11; P4 §33a overridden for P7 (P4 frozen); Tor profiles and target relevance deferred (G6/G7 stay FAIL, scope change); M2 browser criterion "≥ Y % fewer browser fetches" withdrawn for a HOW-specific metric; G5 labelled check; M2 new-page discovery needs a live A/B | `docs/phases/p07-crawl-intelligence/decisions.md` D-5…D-10; X-8/X-11 done (ADR-022) |
 | 2026-10-07 | **M1b rejected (not run)**: read-only reassessment — 11/50 seed domains live, changes mostly template churn, ~2 % of 4-day revisits reveal new URLs; P7 design proceeds on existing M1 data, WHEN gated on G5 | P7 decisions D-12…D-15, audit §5 |
 | 2026-10-07 | **P7 G5 FAIL; increment 1 implemented**: `page.changed` precision 0.07 on 71 labelled seed pairs → raw changes rejected as a scheduling signal, WHEN stays gated; source-health/fetch-profile library + offline replay (off-target 17.5 % attempts suppressed, mostly 429; seed set 0.4 %) | P7 D-16, D-17; not wired to the runtime |
+| 2026-10-07 | **P7 increment 2**: review rejects an `intel-*` consumer group (a dead P7 would stall the relay under ADR-022); P7 reads the outbox with its own checkpoint (ADR-023, ADR-022 unchanged); P7-owned source profiles (V004); source advice at P6 admission, off by default, fallback = today's behaviour; failure injection passed on the real stack | P7 D-18; WHAT next after review, WHEN gated, M2 not started |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -530,7 +531,11 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   data with WHEN gated on G5 (D-13). G5 measured from the existing
   snapshots: **FAIL** (precision 0.07; D-16). Design drafted; increment 1
   (source health + fetch profile, pure library + offline replay) implemented
-  — see `docs/phases/p07-crawl-intelligence/validation.md`.
+  — see `docs/phases/p07-crawl-intelligence/validation.md`. Increment 2
+  (outbox projection of source profiles, ADR-023; optional source advice
+  at P6 admission, off by default) implemented and failure-injection
+  tested (D-18). WHAT is next after review; WHEN stays gated; M2 not
+  started.
 
 ### P8 — Media registry & identity (M)
 

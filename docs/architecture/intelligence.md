@@ -15,17 +15,29 @@ a pure library for source health and fetch profiles:
 - the starting capability: http, or browser on repeated `needs_js`
   evidence, with a weekly http re-test.
 
-**Not wired:** nothing calls it at runtime yet, and it has no storage and
-no consumer. The crawler runs exactly as in P6 (plan B.5 #1).
+**Implemented (increment 2, [ADR-023](../adr/ADR-023-projection-readers-outside-stream-retention.md)):**
+
+- `crawler2-intel sources run`: one reader folds every `fetch.completed`
+  from the **outbox** (read-only, its own checkpoint, no Redis consumer
+  group) into `intel_source_profiles`. A stopped reader cannot hold back
+  the relay (ADR-022 unchanged). After a gap longer than the outbox's
+  14 days, or a policy change, or an operator `rebuild`, it starts a new
+  generation from the retained facts.
+- P6 admission asks P7 for source advice **after** its own filter, scope
+  and revisit gate. P7 can defer a URL of a host in a negative state (one
+  probe per interval) and choose the browser starting queue. It cannot
+  admit what P6 rejected, and priorities stay P6's.
+- Advice reads an in-memory snapshot refreshed in the background, so there
+  is no I/O per URL. **Off by default** (`intelligence.advice_enabled`).
+  When off, empty, stale, rebuilding or unreachable, admission is today's
+  P6 behaviour (plan B.5 #1).
 
 **Planned, in review order:**
 
-1. a P7-owned `source_profiles` table, an `intel-*` best-effort
-   `fetch.completed` consumer (an ADR is needed for the ADR-022
-   interaction), and advice at P6 admission;
-2. WHAT: page kinds, URL templates, spam as negative knowledge;
-3. WHEN: hub-novelty recrawl, gated on a validated signal (G5 failed
+1. WHAT: page kinds, URL templates, spam as negative knowledge (its own
+   labelled sample, not the G5 labels);
+2. WHEN: hub-novelty recrawl, gated on a validated signal (G5 failed
    for `page.changed`);
-4. one priority function.
+3. one priority function.
 
 Target relevance waits for P9; Tor profiles wait for a Tor deployment.

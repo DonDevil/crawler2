@@ -27,7 +27,7 @@ Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 | Fetch layer & worker pools | `crawler2/crawlers` | [fetch-workers.md](fetch-workers.md), [P4](../phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md) |
 | Extraction & page intelligence | `crawler2/extraction` | [extraction.md](extraction.md), [P5](../phases/p05-extraction-page-intelligence/) |
 | Filter engine & discovery | `crawler2/filtering`, `crawler2/discovery` | [filter-discovery.md](filter-discovery.md), [P6](../phases/p06-filter-discovery/) |
-| **Crawl intelligence** (increment 1: library only) | `crawler2/intelligence` | [intelligence.md](intelligence.md), [P7](../phases/p07-crawl-intelligence/) |
+| **Crawl intelligence** (source health: outbox projection + optional admission advice, off by default) | `crawler2/intelligence` | [intelligence.md](intelligence.md), [P7](../phases/p07-crawl-intelligence/) |
 
 Workers (P4) claim from the frontier through its public API only, write
 attempts, observations and raw snapshots through the P2 repositories and

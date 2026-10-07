@@ -27,6 +27,17 @@ controllable clock (no sleeping on lease/backoff timers) and assert
 `audit()` on teardown. The property-based state machine
 (`test_state_machine.py`) runs 60 examples × 40 steps (~35 s).
 
+### P7 crawl intelligence (host)
+
+```bash
+make up
+scripts/test-intelligence.sh        # P7 + discovery unit tests, projection failure injection, admission
+```
+
+It uses the throwaway keyspace `crawler2_it_p7_host` and private stream
+prefixes and frontier namespaces. The failure-injection test waits for
+minute buckets to close, so it takes about 1.5 min.
+
 ### P4 fetch layer (host)
 
 Fetcher contract, runtime, browser and end-to-end tests run **from the

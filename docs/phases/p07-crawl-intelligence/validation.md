@@ -2,7 +2,8 @@
 
 Chronology: [audit.md](audit.md) §1–§4 (gate not passed) → §5
 (reassessment; M1b rejected, D-12) → [g5.md](g5.md) (G5 FAIL, D-16) →
-[design.md](design.md) → increment 1 ([implementation.md](implementation.md)).
+[design.md](design.md) → increment 1 ([implementation.md](implementation.md)) →
+increment 2 review (audit §6, D-18, ADR-023) → increment 2.
 
 ## 1. Gate status (2026-10-07)
 
@@ -50,7 +51,7 @@ browser starts where http would have answered.
 - The replay shows cost avoided and value lost on M1's own workload. It
   cannot show what the freed budget would have found (audit A-7).
 
-## 3. Regression (2026-10-07, host)
+## 3. Regression for increment 1 (2026-10-07, host)
 
 | Tier | Result |
 |---|---|
@@ -58,3 +59,57 @@ browser starts where http would have answered.
 | `tests/unit/intelligence` | 33 passed (hypothesis 200 examples) |
 | Replay determinism | two runs with different `PYTHONHASHSEED`: byte-identical `p7-sources-replay.json` |
 | Storage / P6 integration tiers | not re-run: increment 1 changes no runtime code. Last run at `8921980` (X-8/X-11): storage 192 passed, P6 104 passed (1 Chromium test skipped) |
+
+## 4. Increment 2 results (2026-10-07)
+
+Gate status (§1) is unchanged: G5 FAIL, WHEN gated, M2 not started.
+Increment 2 adds no new evaluation of P7's value. It makes source health
+available at runtime and safe to switch on.
+
+**Failure injection** (`test_a_stopped_p7_never_holds_back_the_event_path_and_catches_up`,
+real Scylla and Redis, real relay and publisher, a 64 KiB stream budget,
+the main `extraction` group on `page.observed`): **passed**.
+
+| Step | Result |
+|---|---|
+| 1. P7 consumes normally | profiles of 2 hosts equal the pure fold of 16 facts |
+| 2–4. P7 stopped; 80 more `fetch.completed` (more than the stream's byte budget) and 7 `page.observed` | relay `backpressure = None`; `fetch.completed` has **no group**; the main group read all 7 and has 0 pending; the ungrouped stream was trimmed (shorter than the facts produced); P7 state untouched |
+| 9. No crawl data lost | every attempt is in `fetch_attempts` |
+| 5–8. P7 restarts | catches up from the outbox; 3 profiles equal the pure fold of all 96 facts |
+| gap: checkpoint set 10,000 buckets before retention | `new_generation = gap`, generation + 1, `gaps = 1`; the rebuilt profiles equal the pure fold |
+| 10. Main consumers healthy | yes (step 2–4) |
+
+**The rejected design, reproduced** (`test_an_ordinary_group_on_fetch_completed_would_stall_the_relay`):
+an unread group `intel-sources` on `fetch.completed` and 120 facts →
+the relay reports backpressure on that stream. **Passed** (the stall is
+shown).
+
+**P7 → P6 → P3** (`test_admission_follows_p7_and_falls_back_when_it_is_gone`,
+real frontier): live host admitted on http, dead host `source_deferred`,
+JS host admitted on the **browser** queue. With the P7 store failing, both
+hosts are admitted on http. **Passed.**
+
+**Invariants (design §9.5):** 1 and 2 by `test_p7_fallback_is_exactly_admission_without_p7`
+and the advice fallback tests; 3 by `test_p7_cannot_admit_what_p6_rejected`
+and `test_p6_decisions_come_before_p7_and_tor_is_not_asked`; 4 by the import
+boundary and the integration test (no group); 5 by the rebuild/determinism
+tests and the integration catch-up and gap.
+
+**Latency** ([benchmarks.md](benchmarks.md) §4): P7 adds +1.2 to +2.2 µs
+per URL when it falls back, and +23 µs informed (including a debug log line
+per deferral), against 18.6 µs per URL for in-process P6 admission. A
+hanging P7 store costs nothing (no I/O on the admission path).
+
+## 5. Regression for increment 2 (2026-10-07, host)
+
+| Tier | Result |
+|---|---|
+| `make check` (ruff, mypy, unit + contract) | **612 passed**, 119 skipped (integration needs the stack) |
+| `scripts/test-intelligence.sh tests/integration/storage` (P7 unit + discovery unit + every storage integration test incl. P2 stream retention, outbox, schema V004, P5, P6 M1 loop, P7) | **139 passed** |
+| `scripts/test-filter-discovery.sh` (P6 tier incl. the M1 fixture loop and the Chromium interception test) | **109 passed** |
+
+**Not run:** M1b (rejected), M2, any collection. The old `m1:*` Redis keys
+were not touched (tests use private stream prefixes and frontier
+namespaces). `crawler2_m1` was not migrated or read. The tests use the
+throwaway keyspace `crawler2_it_p7_host`.
+
