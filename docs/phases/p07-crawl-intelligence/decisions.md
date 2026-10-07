@@ -11,7 +11,19 @@ Audit: [audit.md](audit.md).
 | D-3 | **Gate result: NOT PASSED** (G1, G2, G3, G4, G6, G7 fail; G5 open; G8 passes). P7 implementation is stopped | 2026-10-07 | audit §3.2 |
 | D-4 | The M1 history is exported read-only to `var/p7/m1-export` (git-ignored) and analysed offline. Nothing in `crawler2_m1` was changed | 2026-10-07 | M1 facts are evidence. Outbox and `*_by_domain_day` TTLs would otherwise expire run 1 (audit §1) |
 
-## 2. Open questions (operator decision needed before P7 continues)
+| D-5 | **Q1 = A.** A new seed-focused M1 collection run of about 4–5 days, with a fresh dataset (keyspace, Redis namespace, bucket), search disabled, the same 52-line W52 seed file, and the static M1 revisit policy (6 h seeds / 24 h links). It starts only after X-8/X-11 are fixed and validated, and only with explicit approval. The run ends on the G1–G4 volume/coverage thresholds, not on the calendar. The earlier M1 history stays as evidence | 2026-10-07 (operator) | audit §3.3–§3.4 |
+| D-6 | **Q2: the P4 §33a restriction is overridden for P7.** P4 stays complete and frozen for the current baseline. P7 neither reopens nor modifies P4 (its success gate, engines or `decide()`). P7 still has to satisfy its own data-sufficiency gate before implementation | 2026-10-07 (operator) | audit A-1 |
+| D-7 | **Q3 = b (scope/dependency change, not a gate pass).** P7 v1 may learn HTTP profiles, and browser profiles where real escalation exists; change-rate recrawl, productivity, negative knowledge, decay, and reactivation from non-target evidence; URL patterns, page types and source lifecycle. **Deferred:** target relevance, release timing and target-triggered reactivation (until P9 produces `target.registered`), and Tor fetch profiles (until a Tor daemon and workload exist). G6 and G7 stay **FAIL** as recorded. The re-audit reports G6 for HTTP/browser and states Tor as deferred, and reports G7 as deferred until P9 | 2026-10-07 (operator) | audit §3.3 items 3–4 |
+| D-8 | **Q4: the M2 browser criterion "≥ Y % fewer browser fetches than M1" is withdrawn.** Its replacement must measure HOW: browser use on the domains/path patterns where HTTP → browser escalation actually occurs, at equivalent successful-page coverage. Order: focused M1 history → identify the browser-requiring subset → measure its M1 baseline → define the metric and X/Y → record them **before** any final P7 evaluation. X/Y are never changed after P7 results are seen | 2026-10-07 (operator) | audit A-6 |
+| D-9 | **Q5: G5 is a real quality check.** Label ≥ 50 changed page pairs from the focused run, covering several seed domains and path depths, real changes, template/widget changes and metadata/link-only changes. G5 passes only at precision ≥ 0.8. The labels are held out: no P5/P7 rule is tuned on them | 2026-10-07 (operator) | audit §2.4 |
+| D-10 | **M2 evaluation:** offline replay evaluates ranking and scheduling over observed history only. Discovering pages M1 never fetched needs a controlled live A/B comparison (same seed set, comparable budget and period), with thresholds fixed before P7 results are observed | 2026-10-07 (operator) | audit A-7 |
+| D-11 | Pre-collection hardening done: X-8 (consumer-aware, byte-bounded stream retention with publisher backpressure) and X-11 (relay retries in-process), ADR-022, commit `8921980` | 2026-10-07 | P6 decisions X-8, X-11, X-16 |
+
+Until the re-audit passes for the implementable scope, **no P7
+intelligence is implemented**: no scheduler, fetch profiles, lifecycle,
+patterns, page types, priority, P3 integration or M2.
+
+## 2. Questions as raised by the audit (answered in D-5 … D-10)
 
 | # | Question | Options | Recommendation |
 |---|---|---|---|

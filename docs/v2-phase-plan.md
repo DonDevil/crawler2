@@ -22,6 +22,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-29 | **P5 extraction**: page *revisions* (`PageRevisionId`, normalized content) added beside raw page versions, `page.changed` in contract 1.1; W691 HTML captured twice as the benchmark/precision corpus (not in git) | ADR-020; D8, D9 closed in P5; CPU gate passed (17.9 % of V1); change-detection precision checked: 1/23 on real pairs, root cause = in-content template widgets → P6 rules / P7 |
 | 2026-09-29 | **P6 filter + discovery**: rules as durable versioned data with hot reload, filtering at admission (P5 facts unchanged), rooted-site scope with external leaves, static 6 h/24 h revisits, operator-supplied search queries; V1 blacklist (98 entries, not 1,463) imported through a reviewed manifest | ADR-021; D6, D7 closed in P6; Gates A–F, H passed; Gate G (24 h M1) open — run 1 reached 16.7 h; run 2 completed 24 h (2026-10-04/05) but lost events in a Redis-full stall (X-16), not passed; run 3 after X-8/X-11; M1 continues as P7 history collection |
 | 2026-10-07 | **P7 data-sufficiency gate NOT PASSED** on the M1 history (~46 h in two windows; M1 stopped 2026-10-05 09:31 UTC): seed-set thresholds G1–G4, G6 (browser/tor), G7 (no targets) fail, G5 (change precision) open | P7 implementation stopped; collection and scope questions Q1–Q5 in `docs/phases/p07-crawl-intelligence/decisions.md` |
+| 2026-10-07 | **P7 collection decisions (Q1–Q5)**: seed-focused M1 collection run (fresh dataset, search off) after X-8/X-11; P4 §33a overridden for P7 (P4 frozen); Tor profiles and target relevance deferred (G6/G7 stay FAIL, scope change); M2 browser criterion "≥ Y % fewer browser fetches" withdrawn for a HOW-specific metric; G5 labelled check; M2 new-page discovery needs a live A/B | `docs/phases/p07-crawl-intelligence/decisions.md` D-5…D-10; X-8/X-11 done (ADR-022) |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -511,7 +512,11 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   % of crawl budget on dead/stale sources — each vs M1 policy.
 - **Exit gate — M2:** on the same seed set and budget, ≥ X% more new
   pages/media discovered and ≥ Y% fewer browser fetches than M1
-  (X/Y set in the design review from M1 data). S1→S2 scenario test:
+  (X/Y set in the design review from M1 data). *(2026-10-07: the browser
+  criterion is withdrawn and replaced by a HOW-specific metric on the
+  browser-requiring subset, defined from the focused M1 history before any
+  P7 evaluation; new-page discovery is shown by a live A/B — P7 decisions
+  D-8, D-10.)* S1→S2 scenario test:
   a page added under an already-crawled `/movies/` is found within its
   scheduled recrawl window.
 - **Status (2026-10-07):** audit done; data-sufficiency gate **not passed**
