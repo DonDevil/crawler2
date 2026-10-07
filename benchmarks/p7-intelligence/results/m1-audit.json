@@ -1,0 +1,484 @@
+{
+ "export": {
+  "keyspace": "crawler2_m1",
+  "exported_at": "2026-10-07T13:36:31Z",
+  "rows": {
+   "attempts": 247104,
+   "observations": 215492,
+   "revisions": 130695,
+   "admissions": 384028,
+   "search": 114,
+   "seeds": 52,
+   "scope": 70,
+   "extracts": 138920
+  }
+ },
+ "attempts": {
+  "total": 247104,
+  "first": "2026-09-29T17:24:47.325761+00:00",
+  "last": "2026-10-05T09:31:46.092860+00:00",
+  "by_run": {
+   "1": 87964,
+   "2": 159140
+  },
+  "capability_outcome": {
+   "browser/blocked": 73,
+   "browser/connection_failure": 37,
+   "browser/response": 5048,
+   "browser/timeout": 57,
+   "http/blocked": 50233,
+   "http/connection_failure": 927,
+   "http/dns_failure": 601,
+   "http/response": 158995,
+   "http/timeout": 3972,
+   "http/tls_failure": 1217,
+   "http/too_large": 25944
+  },
+  "capability_code": {
+   "browser/blocked": 64,
+   "browser/captcha": 9,
+   "browser/http_error": 223,
+   "browser/invalid_response": 2,
+   "browser/network_error": 35,
+   "browser/ok": 4825,
+   "browser/timeout": 57,
+   "http/blocked": 48207,
+   "http/captcha": 2026,
+   "http/dns_error": 601,
+   "http/http_error": 11911,
+   "http/invalid_response": 146,
+   "http/media": 2,
+   "http/needs_js": 5119,
+   "http/network_error": 764,
+   "http/not_modified": 692,
+   "http/ok": 141271,
+   "http/redirect_error": 17,
+   "http/timeout": 3972,
+   "http/tls_error": 1217,
+   "http/too_large": 25944
+  },
+  "status_class": {
+   "2xx": 153253,
+   "429": 47652,
+   "none": 32755,
+   "403": 5839,
+   "404": 3471,
+   "4xx": 2052,
+   "5xx": 1390,
+   "304": 692
+  },
+  "attempts_with_redirects": 66464,
+  "escalations": {
+   "needs_js->browser:ok": 4761,
+   "needs_js->browser:timeout": 43,
+   "needs_js->browser:http_error": 210,
+   "needs_js->browser:network_error": 24,
+   "needs_js->browser:blocked": 64,
+   "needs_js->browser:captcha": 9,
+   "needs_js->browser:invalid_response": 1
+  },
+  "elapsed_s_median": 0.752555,
+  "registrable_domains": 503,
+  "domains_with_attempts_ge": {
+   "1": 503,
+   "3": 123,
+   "5": 78,
+   "10": 43,
+   "20": 29,
+   "30": 26,
+   "50": 24,
+   "100": 24,
+   "300": 17,
+   "1000": 12
+  },
+  "domains_in_both_runs": 53,
+  "domains_in_both_runs_ge10": 26,
+  "domains_with_browser_attempts": 20,
+  "domains_with_http_and_browser": 20,
+  "domains_with_tor_attempts": 0,
+  "top_domains_share": [
+   [
+    "nih.gov",
+    173845,
+    0.7035
+   ],
+   [
+    "google.com",
+    35564,
+    0.1439
+   ],
+   [
+    "moviesda.com.in",
+    5731,
+    0.0232
+   ],
+   [
+    "movflix.my",
+    5550,
+    0.0225
+   ],
+   [
+    "isaimini.com.in",
+    5427,
+    0.022
+   ],
+   [
+    "stripemovies.com",
+    3416,
+    0.0138
+   ],
+   [
+    "moviesda.business",
+    3162,
+    0.0128
+   ],
+   [
+    "moviesda16.best",
+    2813,
+    0.0114
+   ],
+   [
+    "tamilprint.com.in",
+    2787,
+    0.0113
+   ],
+   [
+    "isaiminimix.com",
+    1456,
+    0.0059
+   ],
+   [
+    "tamilrockers2024.com",
+    1034,
+    0.0042
+   ],
+   [
+    "uniprot.org",
+    1016,
+    0.0041
+   ],
+   [
+    "isaiminisong.com",
+    777,
+    0.0031
+   ],
+   [
+    "blogger.com",
+    747,
+    0.003
+   ],
+   [
+    "photojin.icu",
+    476,
+    0.0019
+   ]
+  ],
+  "domains_with_2xx_ok": 357,
+  "domains_with_failures_only_ge5": 27,
+  "seed_domains": 50,
+  "seed_domains_fetched": 50,
+  "seed_domain_attempts": 32131,
+  "seed_domains_with_2xx": 25
+ },
+ "observations": {
+  "total": 215492,
+  "urls": 187536,
+  "content_type_top": [
+   [
+    "text/html",
+    192182
+   ],
+   [
+    "text/plain",
+    13196
+   ],
+   [
+    "application/x-gzip",
+    6797
+   ],
+   [
+    "application/pdf",
+    787
+   ],
+   [
+    "text/javascript",
+    510
+   ],
+   [
+    "application/json",
+    414
+   ],
+   [
+    "image/jpeg",
+    393
+   ],
+   [
+    "application/atom+xml",
+    340
+   ]
+  ],
+  "with_validators": 33265,
+  "html_2xx_urls": 129590,
+  "html_2xx_observations_per_url": {
+   "1": 116773,
+   "2": 11658,
+   "3": 959,
+   "4": 112,
+   "5-9": 75,
+   "10+": 13
+  },
+  "html_2xx_urls_ge2": 12817,
+  "html_2xx_urls_ge3": 1159,
+  "html_2xx_urls_ge3_span_ge24h": 1030,
+  "html_2xx_urls_ge2_span_ge24h": 6505,
+  "domains_with_ge3_url": 659,
+  "domains_with_ge2_url": 2338,
+  "repeat3_urls_on_seed_domains": 37,
+  "repeat2_urls_on_seed_domains": 2321,
+  "repeat3_top_domains": [
+   [
+    "nih.gov",
+    400
+   ],
+   [
+    "stripemovies.com",
+    15
+   ],
+   [
+    "uniprot.org",
+    14
+   ],
+   [
+    "eduid.ch",
+    13
+   ],
+   [
+    "pinterest.com",
+    11
+   ],
+   [
+    "cas.cz",
+    8
+   ],
+   [
+    "movflix.my",
+    8
+   ],
+   [
+    "tamilxt.site",
+    8
+   ],
+   [
+    "gofullmovies.com",
+    6
+   ],
+   [
+    "archi.fr",
+    5
+   ],
+   [
+    "ebi.ac.uk",
+    5
+   ],
+   [
+    "ipv.pt",
+    4
+   ],
+   [
+    "bg.ac.rs",
+    3
+   ],
+   [
+    "ex-tic.com",
+    3
+   ],
+   [
+    "renater.fr",
+    3
+   ]
+  ]
+ },
+ "revisions": {
+  "urls_with_revision": 128298,
+  "revisions": 130695,
+  "page_changed_events_equiv": 130695,
+  "true_changes": 2397,
+  "urls_changed": 2349,
+  "urls_changed_among_ge2": 2349,
+  "urls_changed_among_ge3": 136,
+  "changes_among_ge3": 184,
+  "domains_with_change": 48,
+  "seed_domain_urls_changed": 317,
+  "seed_domains_with_change": 6,
+  "revisions_per_url": {
+   "1": 125949,
+   "2": 2319,
+   "3": 25,
+   "4": 2,
+   "5-9": 2,
+   "10+": 1
+  },
+  "changed_top_domains": [
+   [
+    "nih.gov",
+    1349
+   ],
+   [
+    "uniprot.org",
+    379
+   ],
+   [
+    "tamilprint.com.in",
+    202
+   ],
+   [
+    "pinterest.com",
+    160
+   ],
+   [
+    "isaimini.com.in",
+    87
+   ],
+   [
+    "movcloud.click",
+    71
+   ],
+   [
+    "ebi.ac.uk",
+    26
+   ],
+   [
+    "moviesda.business",
+    13
+   ],
+   [
+    "google.com",
+    10
+   ],
+   [
+    "moviesda.com.in",
+    10
+   ],
+   [
+    "movflix.my",
+    4
+   ],
+   [
+    "univ-rennes.fr",
+    2
+   ],
+   [
+    "agro-bordeaux.fr",
+    1
+   ],
+   [
+    "ankara.edu.tr",
+    1
+   ],
+   [
+    "archi.fr",
+    1
+   ]
+  ]
+ },
+ "extracts": {
+  "total": 138920,
+  "metadata_present": {
+   "title": 134660,
+   "lang": 121453,
+   "canonical": 53972,
+   "og_title": 53456,
+   "og_type": 52255,
+   "published_at": 17329,
+   "modified_at": 16294,
+   "robots": 59556
+  },
+  "og_type_top": [
+   [
+    "article",
+    44246
+   ],
+   [
+    "website",
+    7241
+   ],
+   [
+    "object",
+    570
+   ],
+   [
+    "profile",
+    160
+   ],
+   [
+    "book",
+    20
+   ],
+   [
+    "product",
+    10
+   ],
+   [
+    "video.movie",
+    3
+   ],
+   [
+    "Website",
+    1
+   ],
+   [
+    "blog",
+    1
+   ],
+   [
+    "ebay-objects:item",
+    1
+   ]
+  ],
+  "links_per_page": {
+   "median": 9,
+   "p90": 162,
+   "max": 10000,
+   "total": 9670269
+  },
+  "pages_with_media": 703,
+  "media_refs": 3304,
+  "media_kinds": {
+   "video_file": 2462,
+   "audio_file": 795,
+   "unknown": 30,
+   "hls_manifest": 17
+  },
+  "pages_with_year_in_path": 13008,
+  "path_depth": {
+   "0": 10367,
+   "1": 57494,
+   "2": 32382,
+   "3": 8480,
+   "4": 18798,
+   "5": 6888,
+   "6": 4511
+  },
+  "seed_domain_extracts": 21940,
+  "seed_domain_pages_with_media": 127
+ },
+ "provenance": {
+  "admissions_by_origin_action": {
+   "link/classify": 192108,
+   "leaf/allow": 98018,
+   "link/allow": 72733,
+   "None/block": 21086,
+   "seed/allow": 52,
+   "search/allow": 16,
+   "leaf/classify": 10,
+   "search/classify": 5
+  },
+  "search_results": 114,
+  "search_engines": {
+   "bing": 114
+  },
+  "search_result_domains": 26,
+  "scope_sites": 70,
+  "seed_rows": 52
+ }
+}

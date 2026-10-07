@@ -1,0 +1,73 @@
+{
+ "seed_domains": 50,
+ "fetched": 50,
+ "attempts": 32131,
+ "domains_attempts_ge": {
+  "10": 23,
+  "30": 11,
+  "100": 11
+ },
+ "domains_with_ok": 25,
+ "domains_ok_ge30": 11,
+ "domains_both_runs": 43,
+ "domains_both_runs_ge30": 10,
+ "domains_with_browser": 1,
+ "domains_needs_js": 1,
+ "capability_codes": {
+  "http:ok": 26176,
+  "http:http_error": 5351,
+  "http:timeout": 302,
+  "http:tls_error": 96,
+  "http:not_modified": 79,
+  "http:network_error": 74,
+  "http:dns_error": 41,
+  "http:too_large": 3,
+  "http:blocked": 3,
+  "http:needs_js": 2,
+  "http:redirect_error": 2,
+  "browser:captcha": 2
+ },
+ "html_2xx_urls": 21022,
+ "urls_ge2": 2321,
+ "urls_ge2_both_runs": 413,
+ "urls_ge3": 37,
+ "urls_ge3_span_ge24h": 9,
+ "domains_with_ge3_url": 11,
+ "urls_changed": 317,
+ "urls_changed_both_runs": 298,
+ "domains_with_change": {
+  "isaimini.com.in": 87,
+  "tamilprint.com.in": 202,
+  "moviesda.com.in": 10,
+  "tamilrockers2024.com": 1,
+  "moviesda.business": 13,
+  "movflix.my": 4
+ },
+ "changed_by_path_depth": {
+  "0": 8,
+  "1": 264,
+  "3": 29,
+  "2": 16
+ },
+ "ge2_by_path_depth": {
+  "0": 14,
+  "1": 1618,
+  "3": 579,
+  "2": 110
+ },
+ "ge2_per_domain": {
+  "stripemovies.com": 1483,
+  "movflix.my": 357,
+  "tamilprint.com.in": 218,
+  "isaimini.com.in": 120,
+  "gofullmovies.com": 53,
+  "isaiminimix.com": 46,
+  "moviesda.com.in": 21,
+  "moviesda.business": 13,
+  "moviesda16.best": 4,
+  "tamilrockers2024.com": 2,
+  "tamilprint.co.in": 2,
+  "xn--mlc3avm5adt5g.net": 1,
+  "tamilprinttv.com": 1
+ }
+}
