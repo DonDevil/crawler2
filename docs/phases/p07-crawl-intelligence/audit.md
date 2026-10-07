@@ -327,7 +327,7 @@ reads nothing new from Scylla, Redis or MinIO.
 | G2 | FAIL (10/20) | Same. The live domain missing from run 2 (gofullmovies) was starved by the full frontier. |
 | G3 | FAIL; capacity **not provable** | A pool of 21,013 HTML pages on 11 domains exists. ≥ 10 qualifying domains would need almost every live domain revisited ≥ 3 times, which M1 never did. Per-page rates on these sites would be ~0 anyway (§5.2). |
 | G4 | FAIL; **proxy invalid** | Changes exist on 6 domains, but path depth is not a page class, and most changes are template churn. |
-| G5 | OPEN | 325 pairs and their snapshots exist, so it is measurable without new collection. |
+| G5 | OPEN → **FAIL (measured 2026-10-07)** | 325 pairs and their snapshots exist, so it was measurable without new collection. Precision 0.07 / 0.015 (g5.md §4) |
 | G6 | FAIL for the seed set | Seed sites are HTTP-only. The 5,112 escalations on 20 off-target domains can test the HOW mechanism, but they are not seed-set evidence. Tor is deferred (D-7). |
 | G7 | deferred (D-7) | no targets before P9 |
 | G8 | PASS | 127 pages, all on isaiminimix.com |

@@ -1,0 +1,54 @@
+{
+ "by_domain": {
+  "isaimini.com.in": {
+   "pairs": 25,
+   "useful": 0
+  },
+  "movflix.my": {
+   "pairs": 4,
+   "useful": 0
+  },
+  "moviesda.business": {
+   "pairs": 13,
+   "useful": 5
+  },
+  "moviesda.com.in": {
+   "pairs": 12,
+   "useful": 0
+  },
+  "tamilprint.com.in": {
+   "pairs": 16,
+   "useful": 0
+  },
+  "tamilrockers2024.com": {
+   "pairs": 1,
+   "useful": 0
+  }
+ },
+ "by_page_kind": {
+  "detail:not": 31,
+  "home:not": 10,
+  "home:useful": 2,
+  "listing:not": 18,
+  "listing:useful": 3,
+  "other:not": 7
+ },
+ "derived_new_url_signal": {
+  "false_negative": 4,
+  "false_positive": 14,
+  "precision": 0.067,
+  "recall_in_sample": 0.2,
+  "true_negative": 52,
+  "true_positive": 1
+ },
+ "label_counts": {
+  "cosmetic_noise": 13,
+  "new_content_url": 5,
+  "spam_or_irrelevant": 43,
+  "template_churn": 10
+ },
+ "labelled_pairs": 71,
+ "page_changed_precision_population_weighted": 0.015,
+ "page_changed_precision_sample": 0.07,
+ "population": 325
+}

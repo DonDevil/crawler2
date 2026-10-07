@@ -1,0 +1,1864 @@
+{
+ "population": 325,
+ "rule": "all pairs with an automatic new-URL flag; all others in strata of \u2264 15; else the first 15 by pair id (sha256)",
+ "sample": [
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ad123f8ee63123e24b96ecf031eb01414ccbb9b3ddaf720b29052a081401c924",
+    "observed_at": "2026-10-04T10:48:48.423000Z",
+    "page_version_id": "pgv_5bfdd48386fa8588af6ee6e585ba8023",
+    "raw": "sha256:4dcab3b53dc5465672e1d72c20d5739f2a4c258c557f75855078a58816180868",
+    "revision_id": "pgr_ebf2de6243968e2caf73503531efa374",
+    "size": 146909
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:fb47c54fe322ac30417128047a82f38d75d6dfdadfb8b459ec3f0992a772cb0b",
+    "observed_at": "2026-10-05T06:35:45.710000Z",
+    "page_version_id": "pgv_45ea59e82e408c37a2032191c1b6c7b5",
+    "raw": "sha256:786fc3a41e2fb2621b63fad2580571104d49c2ab66dcbc458629464f433380df",
+    "revision_id": "pgr_6b6ff1227fff81698169594a8ef23f1b",
+    "size": 146906
+   },
+   "domain": "isaimini.com.in",
+   "pair": "00228e2ba419",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/how-a-3-wick-coastal-wharf-candle-transforms-everyday-spaces-into-retreats/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:106ba8fb00ee02c3f9bce0fec296aada8c09e37e02a0f4751cfc6d8a20eb5687",
+    "observed_at": "2026-09-29T20:38:11.141000Z",
+    "page_version_id": "pgv_e2ad0bca303f8d258bec62308da05cbf",
+    "raw": "sha256:eadc24291798c324ea70c0531b7d3c61e68e23fff866e76cf293d10712dc56f8",
+    "revision_id": "pgr_1f8242b7fb718b9192be911008630967",
+    "size": 153379
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5a0f8eb6c729736cd5fe1e0db1816b0f0adc1a3aa32842ccaa699e40d361eab5",
+    "observed_at": "2026-10-05T08:40:53.714000Z",
+    "page_version_id": "pgv_9ff9bc870aa485faa19941a5b3a8fe02",
+    "raw": "sha256:49314be623f9665555de13b58aad169917edca3517c994493f8513a793335938",
+    "revision_id": "pgr_fea7ba128a688fdea3480c4b346d617e",
+    "size": 155910
+   },
+   "domain": "isaimini.com.in",
+   "pair": "01d72772eee3",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/download-tr88-app-for-smooth-online-gaming/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8121ae2d69a24a2a79cdf16ae5a65b948e720ddee5316c830fbea9839c92fcac",
+    "observed_at": "2026-09-29T20:22:35.940000Z",
+    "page_version_id": "pgv_3be6b5f6550f8e3c948b3c661163a013",
+    "raw": "sha256:77ed1394d1764af57b95aa234c8b0fed52b1d16abc9a48450800d912e1139738",
+    "revision_id": "pgr_a2268f7e37af859f802a615b9cce388b",
+    "size": 158793
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:325fed24e96397523b580da1b50cbec3b3543c22ffd69aa17cb25d1f871e9382",
+    "observed_at": "2026-10-05T08:40:34.441000Z",
+    "page_version_id": "pgv_8e3856166c7f83849db88641d67eec2e",
+    "raw": "sha256:fd1a26dd8a426b532b022c54bc1dc10dac7fa9189a8bfe6f4c9da5f6e3b80440",
+    "revision_id": "pgr_9dc5f37aa6fb8d5fa8c3b8566f0de22b",
+    "size": 157910
+   },
+   "domain": "isaimini.com.in",
+   "pair": "01f572c4ee8d",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/author/onyx-team/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:38686512c327f01aac566ca145e8b555c71e3831a051aa48f95c37dc0cb1a2f9",
+    "observed_at": "2026-09-29T19:51:50.885000Z",
+    "page_version_id": "pgv_1263bfa02b7a871c85e37eed85adecd0",
+    "raw": "sha256:48a2b7f1def4f36414ecf4c5231f3f9e349008dfd1b666710f95fa08eb5172ab",
+    "revision_id": "pgr_2230abbf788b8e1a842c689328408804",
+    "size": 176765
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:453492970ab81864aff3ce55cc21c913ad8480ff19cfd21df9b1a967a6a19c2f",
+    "observed_at": "2026-10-05T08:45:54.892000Z",
+    "page_version_id": "pgv_36334d43227b88b9b7632558cd9cd0f4",
+    "raw": "sha256:8dc86b42cc98c4acf12d1418e04dbbbce24112e07b688ef6174b55c36bfb2798",
+    "revision_id": "pgr_c9247fb440378de9a1bc008533eb86f3",
+    "size": 176754
+   },
+   "domain": "isaimini.com.in",
+   "pair": "059ba80a1b53",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/lens-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f7701877a775924bf8cbae5f6fbf190f23694cdd72faaf481ba7c5eb6147e005",
+    "observed_at": "2026-09-29T19:35:12.187000Z",
+    "page_version_id": "pgv_66cf00158d958670a438ae44e0d854c4",
+    "raw": "sha256:8296396cc0e0ab80a0e94527cc759d8e3980ef7f765e1c4fb9ac19980088ed50",
+    "revision_id": "pgr_5c82acc0e3af8b58bf6163813d16605a",
+    "size": 155188
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:95ccb5ff7a646a8150c14de51efe5e582d4e224eb3ad07b643f571c9d071f59c",
+    "observed_at": "2026-10-05T08:42:03.598000Z",
+    "page_version_id": "pgv_49123f14c11b8c0d988e78a276d1ebb8",
+    "raw": "sha256:1fceebb0ccc28b98c29e426be6342e02a73c8bc27f5a045dc364eaf6f97dc354",
+    "revision_id": "pgr_cb036b313ea188218a78618f240ed4ae",
+    "size": 157719
+   },
+   "domain": "isaimini.com.in",
+   "pair": "107f132b64f4",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/u888-official-website-and-mobile-access/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:aa278b26fb4c79e219dfacf6dba340faa27056ea6875cfd483b20229c0b82694",
+    "observed_at": "2026-09-29T18:52:35.755000Z",
+    "page_version_id": "pgv_a1206b5d74ef8ab3abbf9107aee40c9a",
+    "raw": "sha256:a1df018fad9dab109a5bcf23fb736169f2d1b7edacec69d12a81815fcf9fe4b7",
+    "revision_id": "pgr_a131e5633f7b839e8053b7fa47802b49",
+    "size": 177472
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:6f5768a02daeb01380431a0aa568019b762b6ce4b5e9d71c1bad8399caab3eb5",
+    "observed_at": "2026-10-05T08:45:00.476000Z",
+    "page_version_id": "pgv_a7b7112115988a35ba15c45a845e2e95",
+    "raw": "sha256:c2fef4a07f1c8339d381de59eee6b1eb7a13c5bf59a50913194f0bfffececa4c",
+    "revision_id": "pgr_e5601ddbc20e85c1a0481179195225da",
+    "size": 177461
+   },
+   "domain": "isaimini.com.in",
+   "pair": "10e292dfedaa",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/thiruttu-payale-2-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5dee2cf85e7cecf0fa0071afd646b8efdfa278cb6f4478cb6159a6addd91ec7c",
+    "observed_at": "2026-09-29T20:28:47.804000Z",
+    "page_version_id": "pgv_096c5912734c898a86536993f890249b",
+    "raw": "sha256:da5af2b733974ab2ace803b3ce5d2dc6dd8d096a563c8f8aaf48b5a77768bd1f",
+    "revision_id": "pgr_f91155d138048121aae6ece094d50c7b",
+    "size": 146479
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:3b08bf5915c599834ad999a226abfaa082e36bcf8ede4142b0ca64889eac829b",
+    "observed_at": "2026-10-05T08:00:33.544000Z",
+    "page_version_id": "pgv_3752a17200688bd1a5ebb56421d647f3",
+    "raw": "sha256:4ffd642650514795ff57fc5f8bf27edf693ff3c95877a17ce067ff98412c8e4e",
+    "revision_id": "pgr_715042e75d6b8549a396f2c3da92b173",
+    "size": 149010
+   },
+   "domain": "isaimini.com.in",
+   "pair": "13b828925a5b",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/depobos-a-gamers-paradise-for-slot-enthusiasts/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5082f9b64368e576db390f9b1d3ae2bdecb89e640dc0b688c632c5f1d44553ab",
+    "observed_at": "2026-09-29T17:37:02.145000Z",
+    "page_version_id": "pgv_0dc0410ef9f18f8eaf22a3cf8a33374e",
+    "raw": "sha256:6d7bed15aac7a2efa3466030def9559bc10dfbe222723687362f22b4afed43e7",
+    "revision_id": "pgr_03539df020688f4a8da1d5245cf0417d",
+    "size": 177603
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:b21bbbc1f6c5c4b9c7a3d4704e2c471e890a935873b83c4ef90d4befda82d43b",
+    "observed_at": "2026-10-05T08:45:26.776000Z",
+    "page_version_id": "pgv_3649d602bf5482859f621165f9d7f085",
+    "raw": "sha256:9027a32c322552f4cb4939d5002d640394618f7b94e406e0c72eb054c746f64b",
+    "revision_id": "pgr_a8ed5f99255481d88235fbc503f48156",
+    "size": 177592
+   },
+   "domain": "isaimini.com.in",
+   "pair": "173ae5bdb1f7",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/naanthan-shabana-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:e656ddc1fd8bea15ce40505342a5928889219e28c8d8a531ce843edeee7cc3ee",
+    "observed_at": "2026-09-29T17:37:07.535000Z",
+    "page_version_id": "pgv_de6036361bbb86a9b060bac34db3f334",
+    "raw": "sha256:f10ced9d5609efc915e2cc20a225e0bab1f188ab2f57a097645290291489c953",
+    "revision_id": "pgr_9183bd01405e8948b20f13d152071bae",
+    "size": 177094
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:b5b7b4e3e1714b4f07e313f498cb5c497ce0e9dde4a7cbdde4b0767496932772",
+    "observed_at": "2026-10-05T08:45:30.906000Z",
+    "page_version_id": "pgv_d2660d91e8d88e60864a2b590d0eb95c",
+    "raw": "sha256:78c4468b3047f340ba0e779dc370fe20ad709fa9721506f9aaf0c0000bcc45a7",
+    "revision_id": "pgr_dc39f467124c8762b5cc83e240afd950",
+    "size": 177083
+   },
+   "domain": "isaimini.com.in",
+   "pair": "18d8789db7e2",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/inayathalam-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ab877c22a6fd9c47ca2d2168a9c869fc9893f9eab3f4353be43f0db8d579c136",
+    "observed_at": "2026-09-29T19:51:46.393000Z",
+    "page_version_id": "pgv_0782df967b31875c97a1ca55682f58db",
+    "raw": "sha256:7f105cdc63c966cbaf76bb0ab2e3995db5033e944f0a47961a5d3228f4cbdaaf",
+    "revision_id": "pgr_f0a325c9948d82518046ff66c6139bc4",
+    "size": 176902
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:90cda6c4eff2f6c80014bccf4abe5a4c711a23e92e066ea2474e5471c21bbef2",
+    "observed_at": "2026-10-05T08:45:50.913000Z",
+    "page_version_id": "pgv_ed418a032798800186486464e77b9348",
+    "raw": "sha256:9efedde778ad1255aeecce1cde3c83d4a4bf224e24e8c99659816139a348a79c",
+    "revision_id": "pgr_8b25a9be9914808da597a76173d61116",
+    "size": 176891
+   },
+   "domain": "isaimini.com.in",
+   "pair": "1c94eb7e0eb5",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/thondan-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:6a031f1bc2bad3fce08e93c3b0f49fb0b7bb2e4586d09443810b0a24dd01a95a",
+    "observed_at": "2026-09-29T21:04:48.496000Z",
+    "page_version_id": "pgv_073e89ac34c58842b1b7c07b3d10071d",
+    "raw": "sha256:c638d047fda07daa59ab17edcf678ca5fea3eb91972bf4b901f5297204b6260c",
+    "revision_id": "pgr_a27f87b793ad8bf381285fa2749780a9",
+    "size": 147429
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c27ffb07fac2195eb0e7d57e0b18517c1a7cc86b051e59888f0a82efbbd0efd3",
+    "observed_at": "2026-10-05T09:07:43.666000Z",
+    "page_version_id": "pgv_ad61fa51279383baa85a22b2225debb6",
+    "raw": "sha256:79987e6b4c91a7f0b36ee67e6dc2562add480745919dbea8afdfb4c71dd94316",
+    "revision_id": "pgr_4ce19cb9832181dd85e1cd2130272b2b",
+    "size": 149960
+   },
+   "domain": "isaimini.com.in",
+   "pair": "1d00344f4522",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/jun88-your-ultimate-casino-destination/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c1e192438bf2685b95ca8cb9f7e107dfadd274ca7ce53bdb1e3c1cc3086ed5e9",
+    "observed_at": "2026-10-04T14:26:54.450000Z",
+    "page_version_id": "pgv_313577f2d97d8969944ea2dc20635887",
+    "raw": "sha256:cd4327345e6a776e3506d25f46d618b77427be0d3d2e6cca38591e7555b46d5a",
+    "revision_id": "pgr_94726fae84e9829ca9b1b2152009ee33",
+    "size": 158512
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:43128d41945ce4028ca4e2bcf913992ea83e3bb7455ec86a403bcda145dcc030",
+    "observed_at": "2026-10-05T09:19:25.916000Z",
+    "page_version_id": "pgv_69061e4d8d8a8712b1d364c84926f0fb",
+    "raw": "sha256:77f98812961ec5eba54facb109a919892e535d6ce9e0749f0469f59835f47ae7",
+    "revision_id": "pgr_ae9326a3f18e83d782ed12496570bd65",
+    "size": 162314
+   },
+   "domain": "isaimini.com.in",
+   "pair": "20c25f51f143",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/how-to-get-more-comments-on-instagram-posts-naturally/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:513bfd4520722f16311618cf390ea25b3dbdcef9c9fcc99219ddebfa12b04efc",
+    "observed_at": "2026-10-04T14:06:45.922000Z",
+    "page_version_id": "pgv_3e014b4927ab8ecfbf3c13abf7e7fd5d",
+    "raw": "sha256:41d8eb43e2b4601539f413ac64e2a3b41e313f1531d9b8ad7d1434cb4939698f",
+    "revision_id": "pgr_b9cbdcb1cf158fdbb80c03055f347ce9",
+    "size": 148373
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:be2bf35307b5bac749cfb7f18cc6656e14d2e2fd9ce8194733328877af07a832",
+    "observed_at": "2026-10-05T09:05:32.145000Z",
+    "page_version_id": "pgv_9b63d47bbba18df286ccda14ea383096",
+    "raw": "sha256:47a7054b9b6350a317d8f99760ca5193518a3718999f92f130162a6d2eb97e97",
+    "revision_id": "pgr_757e1f00637988e6a114a90e280ce412",
+    "size": 152175
+   },
+   "domain": "isaimini.com.in",
+   "pair": "22524349619d",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/debet-casino-a-premium-gaming/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5ede7cb3f653687e8f1725bbd25a3a72747c7b6166dcebdcbd3b79fbabd582c2",
+    "observed_at": "2026-10-04T13:47:42.088000Z",
+    "page_version_id": "pgv_0c995c9945f78922828e4d3be91acf2b",
+    "raw": "sha256:a5ae005d774b022925ad20ec5a1b2474af2d55c7f1caf25bf7e79b8681ab311a",
+    "revision_id": "pgr_aa4945c8266d8f5d9a6d070f8948a346",
+    "size": 146533
+   },
+   "auto_links_added": 2,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:a51f9b87a030fcef6e1c2d53b01d1f6d8d72ccee82bc9388524b4a97ab560319",
+    "observed_at": "2026-10-05T08:40:22.540000Z",
+    "page_version_id": "pgv_335b5443f6628355a063f8ee8e6e84f9",
+    "raw": "sha256:ff474d59be5ef6c889d328969c89d1b36a0094627232a1701e38ced04add1190",
+    "revision_id": "pgr_e64c321a52bf81a1855e4eece4f61f3e",
+    "size": 150335
+   },
+   "domain": "isaimini.com.in",
+   "pair": "27830ee416ce",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/what-makes-game-slot-malaysia-a-top-choice-for-gamers/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:6bc2479522fe088edd90e813ea561666b3c03089efcc9f55229b70a58e1a81aa",
+    "observed_at": "2026-09-29T17:27:23.166000Z",
+    "page_version_id": "pgv_ebf0ecd11611814cbd1cc5c202903a89",
+    "raw": "sha256:9247cc75a4a24c9ee0c5fc9da4e5010e3a83c15b40686ed29a38c41eb0c87b85",
+    "revision_id": "pgr_db49401a62d28fb7949eb3005d970319",
+    "size": 271294
+   },
+   "auto_links_added": 49,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:cf06521c5c4228752f55e0afe95a286125f8f7b5a90b4b6637bcddc6f9c1307b",
+    "observed_at": "2026-10-05T04:08:18.068000Z",
+    "page_version_id": "pgv_a7315b2480c8856ea4a2a1f871e7e1db",
+    "raw": "sha256:0c610e595686f3b5c2c9f29ae6bb3d300737a50d57d3aa0291e08938714362df",
+    "revision_id": "pgr_3942a9438ca38e74b5e5ba0d8f5f8f45",
+    "size": 271475
+   },
+   "domain": "isaimini.com.in",
+   "pair": "27c25615e7dc",
+   "stratum": "isaimini.com.in|none",
+   "url": "https://isaimini.com.in/tamil-hd-mobile-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c3dc3a9962fe9265f66d2eae0a707b8535780e0e96c4c4c4de91001a7f52c402",
+    "observed_at": "2026-10-05T05:45:16.240000Z",
+    "page_version_id": "pgv_7cc81e0676a68e548237dcb5248c2d02",
+    "raw": "sha256:d796e86706a0448a20d4d30dbd77cb894fdb3d36edbee06f835b223e74727b47",
+    "revision_id": "pgr_c73377a6af0a854ba58a6cb1f500dd70",
+    "size": 177380
+   },
+   "auto_links_added": 2,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:a78dcd48632119e14c947e78b4f34d04fb0a753b392fb21b6ed0eafb8bba883a",
+    "observed_at": "2026-10-05T07:39:03.428000Z",
+    "page_version_id": "pgv_2b76d438b00a8c4eb5d97be6dd939b2c",
+    "raw": "sha256:61edbd19f4fc0c55134705eac7a8843aa059cc9816ef953564365e4c412a4a3a",
+    "revision_id": "pgr_6d98062b49bc8b72b32bd6ab79ecf684",
+    "size": 177217
+   },
+   "domain": "isaimini.com.in",
+   "pair": "0bd819cf0399",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7029b0cfa025d10793ce6c3350b7a301a10364ec091b97ab494198dcd7c50f7f",
+    "observed_at": "2026-10-04T08:55:44.051000Z",
+    "page_version_id": "pgv_ab20a5598b3e8c5abd8625decaeb55b8",
+    "raw": "sha256:9d9d4541ce3ca85b8f67a0e1303ca5af1ebf3083a96e1a84f43a5ffdc4d3cca4",
+    "revision_id": "pgr_4d9255c9943e869f8329a22d922d43d6",
+    "size": 177375
+   },
+   "auto_links_added": 1,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8ac2c67d5bbf84e681c46bd728aa572b5efe053e07c11e0b426139cfaa065e3f",
+    "observed_at": "2026-10-04T10:21:42.165000Z",
+    "page_version_id": "pgv_9dfdd488dfca89d498fd8453a7d04804",
+    "raw": "sha256:2b665363042848c6458ef752ea5bf75de56ab6c7fc24b2352f8b6996a33c3ebc",
+    "revision_id": "pgr_8f9052eaa54c89fe848f7d97accc8f3d",
+    "size": 177377
+   },
+   "domain": "isaimini.com.in",
+   "pair": "24c6304c7499",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:073e594aa52dad0bd96646b5ac19cbf6d59bec683c44ed4b1f34ca937058e38b",
+    "observed_at": "2026-09-29T17:27:59.071000Z",
+    "page_version_id": "pgv_77854b3df2dc8a1383b440dadf8ee209",
+    "raw": "sha256:7cbf9dbb859f735a7ffa3d0e67e664a0ee38951f81cdaed160289db298ba82a8",
+    "revision_id": "pgr_4fd99d13984d867eae3ff3d0a1007c36",
+    "size": 164780
+   },
+   "auto_links_added": 12,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c6db0af4c76dc5a7cc94588c4767765f384697a0f93534cdae2c669cf8be9708",
+    "observed_at": "2026-10-05T03:21:26.355000Z",
+    "page_version_id": "pgv_40a5096044da8728b74d93f1ff45088e",
+    "raw": "sha256:0427c1686fde5ebad30d8e237be3028a5a2ff72c01129d04f32341c18b4a823b",
+    "revision_id": "pgr_f170f60eb2818c70af96e53eac8e380a",
+    "size": 158445
+   },
+   "domain": "isaimini.com.in",
+   "pair": "348e70d902af",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/category/blog/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5a5825ad6971b2f7a0f0f3a5fcfa131b1fddae0d5f1badae249b3dd92c01889f",
+    "observed_at": "2026-09-29T17:28:00.382000Z",
+    "page_version_id": "pgv_e5b3e289736f80c7b1ac12688d873a2d",
+    "raw": "sha256:6d04fa2dfa5fa9447a6a548f900386467332c7ff1d922672f0afeb51298db91f",
+    "revision_id": "pgr_8eac41ce448985ecb9f27651bd3747fd",
+    "size": 166933
+   },
+   "auto_links_added": 11,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:24a76656b093cb1cae2d67bcc9a137e9c4c0f15b35523a535b6ddb4f53ef4275",
+    "observed_at": "2026-10-05T03:24:56.058000Z",
+    "page_version_id": "pgv_739a2755c19389d1b29d54fffa58faae",
+    "raw": "sha256:60d65f7f3000df545ce2b9d64b0b98ea7d268f3e79269a87a3ef3818149d73f3",
+    "revision_id": "pgr_cb252b4f35e0824f887f54d9d3aed97b",
+    "size": 159943
+   },
+   "domain": "isaimini.com.in",
+   "pair": "4c982f95de7a",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/author/alfa-team/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5c02780692cf79f7f82fbb068df6d412fc43ea42390ee404b0887b62ff282a8b",
+    "observed_at": "2026-09-29T17:24:48.169000Z",
+    "page_version_id": "pgv_94213b9039728d36b3662ddc689e95e5",
+    "raw": "sha256:e08d82addfce1a8199687d5759e18753212a7a31794824cdf3943cbd97767a70",
+    "revision_id": "pgr_29ae7ffd8f348e2ab950e9eff169853d",
+    "size": 177408
+   },
+   "auto_links_added": 2,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c740bcd1759b549ad445af3abb9ceeb6d82efe867d506458bed59fb2161bc688",
+    "observed_at": "2026-09-30T13:37:50.574000Z",
+    "page_version_id": "pgv_c3bc061ced598d44bd93ab8d2236d9e6",
+    "raw": "sha256:4eb5b41374fb3e11465ddb6cf3f27dd0dcdb29fcf5425a5f03e95bf5f78b692c",
+    "revision_id": "pgr_9faabdc0259e8b8db0aa3f6883dc9de9",
+    "size": 177143
+   },
+   "domain": "isaimini.com.in",
+   "pair": "9a3e785da330",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:0a8c7a37102acde5178cb7d3d54ccc5693537bd91bdf7ab31ee335a70232c991",
+    "observed_at": "2026-09-29T17:27:23.314000Z",
+    "page_version_id": "pgv_47966da1d5ba86e18249587806bd91d2",
+    "raw": "sha256:3fe47cea23c47e2d1ae6026f3eb67dde4df71a8144a1b1858ad94e1ed49cc21b",
+    "revision_id": "pgr_16659dcc6c698e549b3a39b25551f738",
+    "size": 154927
+   },
+   "auto_links_added": 12,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:a929a5fe0e19ff9bda3e8e3651839cf9f6ae3ea0cbdf6f5851e65aeb9f9c51d5",
+    "observed_at": "2026-10-05T04:08:21.624000Z",
+    "page_version_id": "pgv_53b0f427ef4587a0bc3b788f59c69970",
+    "raw": "sha256:c56771b34d254c1ae8c98f5f972b71bcd967b4c466d8280a568af7577ffc32ea",
+    "revision_id": "pgr_719f51e391a189f496529f585f312ed6",
+    "size": 149764
+   },
+   "domain": "isaimini.com.in",
+   "pair": "c0d02c0ba9ae",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/?s="
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f8773beba911c7283e7ff2da0a8f3b22982971bebd5204e2f0ba3b2f310aa94f",
+    "observed_at": "2026-09-29T17:27:42.333000Z",
+    "page_version_id": "pgv_28be923565878862b6b30b53b9e75703",
+    "raw": "sha256:1d3c228746e0c50fe848eea73dfc77e6f57d31f7ad3683c069decca56c9f7398",
+    "revision_id": "pgr_fec26d25681084939ef94c448faa23a2",
+    "size": 193356
+   },
+   "auto_links_added": 15,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:e164a1ad5702d092d695312d7f3d2a366b81ffac21aeeec09f913383a7c1e635",
+    "observed_at": "2026-10-05T06:21:36.590000Z",
+    "page_version_id": "pgv_49e23edae9b080f782c0bba3680d5e86",
+    "raw": "sha256:de09ff796ef026799b41e0e0f552430387a21626c72cec185e4c96c8db568662",
+    "revision_id": "pgr_1e82bf7054f98125b63bc70532bbd779",
+    "size": 193205
+   },
+   "domain": "isaimini.com.in",
+   "pair": "c0def51769b7",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/tamil-daily-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c740bcd1759b549ad445af3abb9ceeb6d82efe867d506458bed59fb2161bc688",
+    "observed_at": "2026-09-30T13:37:50.574000Z",
+    "page_version_id": "pgv_c3bc061ced598d44bd93ab8d2236d9e6",
+    "raw": "sha256:4eb5b41374fb3e11465ddb6cf3f27dd0dcdb29fcf5425a5f03e95bf5f78b692c",
+    "revision_id": "pgr_9faabdc0259e8b8db0aa3f6883dc9de9",
+    "size": 177143
+   },
+   "auto_links_added": 5,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:91c7c815f73cc468e1018f0ff3d1b161c0eb10c79ed1e42f264771a1764a502b",
+    "observed_at": "2026-10-04T07:40:35.384000Z",
+    "page_version_id": "pgv_4e272381075881fd9725d653d40c85e1",
+    "raw": "sha256:0cf643c8221e51ef5c1997b85c0993448c925e7b36c3a4d81703ea46a6c747c9",
+    "revision_id": "pgr_46ac5c3fdaa6854d98993fc8bde0744b",
+    "size": 177368
+   },
+   "domain": "isaimini.com.in",
+   "pair": "d91d875d47f4",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5451d097f80cba4d6ae23353971692a458998985834ff280d6ca3f85ebf894e9",
+    "observed_at": "2026-10-04T10:05:45.434000Z",
+    "page_version_id": "pgv_cf53f15dd9d681c79db0693893a5fc67",
+    "raw": "sha256:23bb1967a3139aa3e7748ae6448d7e5eac4103118282af1e821dfd0d79b5cdf4",
+    "revision_id": "pgr_cf5cbac41e82893384412180a0932c87",
+    "size": 147246
+   },
+   "auto_links_added": 1,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7f024611a09c46cc0269742fa94f3a6569472dfa26328cc1781555d5eb254bc7",
+    "observed_at": "2026-10-05T05:45:07.766000Z",
+    "page_version_id": "pgv_919b8aa1a18180c48ceefbe4eb8227b1",
+    "raw": "sha256:e823d4ddad96dbde8d36aa481d80b7fdd06a9fa67e43a183ee5619950cc440c4",
+    "revision_id": "pgr_eec3684092608156a50cff2c92d61c03",
+    "size": 147243
+   },
+   "domain": "isaimini.com.in",
+   "pair": "e59be55fc4b7",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/the-lookah-turtle-does-three-things-most-cart-batterys-cant-do-at-all/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:73b5a927bcb90003813a832e79eeed938c93e385615d84bf4e63ffd9595ee533",
+    "observed_at": "2026-10-04T08:47:01.683000Z",
+    "page_version_id": "pgv_3d22484efef78d89b5c22c2bd5a00e9d",
+    "raw": "sha256:79e610f9abf34c2e0d16cc64c342ff95bb7b6f955220a992018ad765e6fef33f",
+    "revision_id": "pgr_5738c00a5eb1895c9cec24d0ebabdc85",
+    "size": 177410
+   },
+   "auto_links_added": 1,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7029b0cfa025d10793ce6c3350b7a301a10364ec091b97ab494198dcd7c50f7f",
+    "observed_at": "2026-10-04T08:55:44.051000Z",
+    "page_version_id": "pgv_ab20a5598b3e8c5abd8625decaeb55b8",
+    "raw": "sha256:9d9d4541ce3ca85b8f67a0e1303ca5af1ebf3083a96e1a84f43a5ffdc4d3cca4",
+    "revision_id": "pgr_4d9255c9943e869f8329a22d922d43d6",
+    "size": 177375
+   },
+   "domain": "isaimini.com.in",
+   "pair": "edfb23863cd9",
+   "stratum": "isaimini.com.in|new",
+   "url": "https://isaimini.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:63c2f56490766f0635861b001c961fa3f7c31e24d2868e4eee156784756a31a4",
+    "observed_at": "2026-09-29T19:30:07.748000Z",
+    "page_version_id": "pgv_2c0b278e3d748ac38c54baaccee39d75",
+    "raw": "sha256:e5eb5c69bd8355866ebe9c7c2f8bac4de8325bfa1f6a8a529b3002bc16ff5ef8",
+    "revision_id": "pgr_b5403e5333fa8dacb3227b433bef8ae8",
+    "size": 2982
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:28082af1fa9cb835cc2c5114556f18799154497f1012c3b4c56f5dcef11e8e29",
+    "observed_at": "2026-10-05T08:18:29.144000Z",
+    "page_version_id": "pgv_75ba7ccb4f7882c5821d31bbf9705cbd",
+    "raw": "sha256:45c3aa05c442acf8e5ee04d7c5a98fdbd99eeb91be5623576bbb3cc9654f6dc7",
+    "revision_id": "pgr_44653ff29b1f859a93b90f9fd11510cb",
+    "size": 2982
+   },
+   "domain": "movflix.my",
+   "pair": "00c94bc26f4c",
+   "stratum": "movflix.my|none",
+   "url": "https://movflix.my/wp-includes/sitemaps/providers/?MA"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:9cdb7793a11823613d8127423c068246a849299c1a96dd0be0893163f1714fcc",
+    "observed_at": "2026-09-29T19:30:01.186000Z",
+    "page_version_id": "pgv_6ef0faab089d8ee8a23c09e50450d70b",
+    "raw": "sha256:bcbadcc4ac05f11c3d169760e306e06551f38a1b5798db6d754b8c458d6671ec",
+    "revision_id": "pgr_c9306454e423864fb81ac2b35c05fa9e",
+    "size": 2982
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:b32e6478e405ca45702702be8134aa6f6312e00da04a4cc4798258161f70b72e",
+    "observed_at": "2026-10-05T08:18:28.200000Z",
+    "page_version_id": "pgv_2a6e141aabce80deb0c88ac184b31436",
+    "raw": "sha256:fd4a6ce9a82eeca843c90106c358aa6596f2a1b61c224f7c8cf97279d19ff67f",
+    "revision_id": "pgr_f0a20ac8d8b08ae3aa2807d7aff6a648",
+    "size": 2982
+   },
+   "domain": "movflix.my",
+   "pair": "3647121f2afd",
+   "stratum": "movflix.my|none",
+   "url": "https://movflix.my/wp-includes/sitemaps/providers/?SA"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:d714c7c1de83e8117a4a2a3013b7f5d0257badf9474a47167996a0bda67119e4",
+    "observed_at": "2026-09-29T19:30:04Z",
+    "page_version_id": "pgv_02228455e204868a84582a44e65ca600",
+    "raw": "sha256:bfa99bc0a135b7543efcc5d074049aa1769b91dd2c924f95e8af241107482b0d",
+    "revision_id": "pgr_3e37a8ba07a883568eedcdd90ffc8cf3",
+    "size": 2983
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5205fd96e895e370988f40423529115260e1a6869a78b99887571d37fc6b746f",
+    "observed_at": "2026-10-05T08:18:35.608000Z",
+    "page_version_id": "pgv_68136a2420d087aaba4986509ecb6fd6",
+    "raw": "sha256:b9fcef6ee6ef2c953b26d40fed0615a0d3d1d843e18b8eab52e98bbd8b20513b",
+    "revision_id": "pgr_b4cf43cd483d804797152aea7f17a24d",
+    "size": 2983
+   },
+   "domain": "movflix.my",
+   "pair": "bf0a34215303",
+   "stratum": "movflix.my|none",
+   "url": "https://movflix.my/wp-includes/sitemaps/providers/?ND"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:03382f90e0fa2372c6fa103975a7f14f5c171b59fef0dbd12f12212bcef2d9bc",
+    "observed_at": "2026-10-04T13:16:52.681000Z",
+    "page_version_id": "pgv_ca573c26216e8438a70c05c8fb11bf69",
+    "raw": "sha256:ac0457c47023793a86ccb8f701b3f3e317ec9869f6ad6cd7fdb4b854cead3ea4",
+    "revision_id": "pgr_4fda8fcfe2818e43af67c9c8389fd5c7",
+    "size": 2982
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:2d4b90b805ec42f5d8ef1a630e1ee4064d8fbeaef483fd8adf96b30eafcb7200",
+    "observed_at": "2026-10-05T08:18:34.241000Z",
+    "page_version_id": "pgv_c2ed2de4340b8f29a040f07eececa7b3",
+    "raw": "sha256:5329134e5e4de66437094f2e9e3b7d1d9250d6866b6234023d023c774fd5b969",
+    "revision_id": "pgr_8b12e6ab36b58e459a1ec2fa8623a106",
+    "size": 2982
+   },
+   "domain": "movflix.my",
+   "pair": "dc8b47799f1c",
+   "stratum": "movflix.my|none",
+   "url": "https://movflix.my/wp-includes/sitemaps/providers/?NA"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:22:09.214000Z",
+    "page_version_id": "pgv_85e0d0ef27388ceb8db02614579c0d2f",
+    "raw": "sha256:1a918d286ad85aafbb15175b2551355c6c28c00c01e1bf0a400edbc82eb35f09",
+    "revision_id": "pgr_7dcc05b048048f809ce29496873bfe52",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:19:42.966000Z",
+    "page_version_id": "pgv_4743a202d43a80599744623c736149ed",
+    "raw": "sha256:2c2377e2ea9907a9f21e0ff5aeb7d21b119a1db6ad9a0e6b10b72a3def2b2654",
+    "revision_id": "pgr_e060d30be6bc8460896a23a18dc1af44",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "1190dab639c8",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=21&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:55:27.004000Z",
+    "page_version_id": "pgv_c6d2a050b5718aceb57e0013b73ebd8c",
+    "raw": "sha256:e1069f8e9bd530aa8f81a2aaec3aff82e0571bcea670a25e0335f54a8c2d69b1",
+    "revision_id": "pgr_9d835368d3f8845783cebdc3c1b2fc35",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:31:48.423000Z",
+    "page_version_id": "pgv_570aeb481e96801e9eedd3c0809e35dd",
+    "raw": "sha256:c75832ce3610221de2e86017f2a7191c0ed149e70dcba9cfb0924937eb96d481",
+    "revision_id": "pgr_038acd08e69580a2b90ae13dd668e435",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "135558d9f75a",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-19T20:35:00-08:00&max-results=7&reverse-paginate=true&start=49&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:40:10.595000Z",
+    "page_version_id": "pgv_c75b2bfa9b988894a7617dfec2db2421",
+    "raw": "sha256:96adc18d5eb3d9181239185eba0bfab926ecda7433d0c08c4884baf6057f9c97",
+    "revision_id": "pgr_1a4482aae9b18b8f804530d93697c05b",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:26:33.948000Z",
+    "page_version_id": "pgv_d05ed43b0df982feb72fb7bf55774bec",
+    "raw": "sha256:c1018ae925f3fbf2f4cb671797533b1d6783a0da0d1c21c0fcc28aed3f6c8759",
+    "revision_id": "pgr_9077a91e2d72869eaef3200978845ce9",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "18136e164762",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=42&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:12:08.509000Z",
+    "page_version_id": "pgv_b66e5762f2a582d5ab3eb13317fb4297",
+    "raw": "sha256:ad5d72f7a9efc25c9b55358e1cafa6dace2da04e03b22acf7df99c0123398122",
+    "revision_id": "pgr_d29d5e6e64f086b3a448df546bc8fe02",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:12:32.905000Z",
+    "page_version_id": "pgv_bae91ab6809a8c77ae93c43b708458b9",
+    "raw": "sha256:2b4b46b83ad2d850e497416ff69c05959683f7be49cc3f68d92d30060e12a4e9",
+    "revision_id": "pgr_841ca30297438d4481e46808c36a2d8b",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "2b3456566b5e",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=28&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:2c3b1f83481aaaa7ec696c6370d17da0c945fcbadf7b123b6f6b779e0e397a5b",
+    "observed_at": "2026-09-29T17:27:15.730000Z",
+    "page_version_id": "pgv_6cacfd644c4185eea218241bf318d488",
+    "raw": "sha256:1e1dbc50941b6d8dc616b9cb813eaf9797a505ac93d2965dc76a2e3bdc3fdc91",
+    "revision_id": "pgr_5f283be8cf3c8c999e35eeec3a1d063e",
+    "size": 303413
+   },
+   "auto_links_added": 4,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8ec6b392bc64294737f6acc8cd91f6b05d7542203fe4b449dfedfb559f9a99aa",
+    "observed_at": "2026-10-05T03:30:50.501000Z",
+    "page_version_id": "pgv_8f77545b04188772822d5186401e7f9d",
+    "raw": "sha256:8acb53fffc814fc9dfa6670f57ccbec1d6c23827a52f736ff01d6bdf1c2d9620",
+    "revision_id": "pgr_78fc9c7fc9228534bbb707d563a674f5",
+    "size": 308498
+   },
+   "domain": "moviesda.business",
+   "pair": "2f166842e66b",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/2026/09/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:78b3af9289dcd3679647de57367f7ca1f975db1ed366181c57d020402c5abc53",
+    "observed_at": "2026-09-29T17:27:25.910000Z",
+    "page_version_id": "pgv_0132844c0d1382f9a112417c9e0fe0ed",
+    "raw": "sha256:176e805d25e1e6cf96a5d7ccd867f185d8e470027c4d257082d7759ef06acf5a",
+    "revision_id": "pgr_95862336a64c83dc83d1310d8f6559a8",
+    "size": 361050
+   },
+   "auto_links_added": 6,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:81fdc03f7298eea8feb19e41e2b31742c4db5391b10f97c812001dff630e9a03",
+    "observed_at": "2026-10-05T03:30:56.480000Z",
+    "page_version_id": "pgv_760671c1ad598078bab18bc4f608fc03",
+    "raw": "sha256:3cb10b3bb258a5d1fbcac2f8807b621d297cebc02c231441cdd4a96ab7dfdf7f",
+    "revision_id": "pgr_5e661080119d8e7591bed10c57aa44d2",
+    "size": 319860
+   },
+   "domain": "moviesda.business",
+   "pair": "37458a721432",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:51:39.759000Z",
+    "page_version_id": "pgv_2e79482a1b258737b8cb14cfc7031855",
+    "raw": "sha256:aa35dedeae20f633b57c13b7d97d42ec4ce9417ff3aebf21ba9310d5950618ce",
+    "revision_id": "pgr_eb716d9595a88ae282d51ef7fcd34581",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:31:44.598000Z",
+    "page_version_id": "pgv_e987e2e902e38068a966a80030bbce58",
+    "raw": "sha256:3b18431247b13cdebfefc0a52300384092502882112f8bf817493ebce2ac4f59",
+    "revision_id": "pgr_66985886c0b7855db904aca95b24e69c",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "8ecda316d838",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=56&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f5ad9d5e144dbb9db02d72f971eb854fd900838839a0e6cf7ecb2e617f99cba0",
+    "observed_at": "2026-09-29T23:23:21.333000Z",
+    "page_version_id": "pgv_5cde13a27f928e74882472f4023e30c5",
+    "raw": "sha256:1f31fe474e6c591f203bf4b02da65bf61b8ac866546010a1798a6e8b87ebbb39",
+    "revision_id": "pgr_3e9f2bee813384ce9410966821647af6",
+    "size": 333474
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T20:05:04.009000Z",
+    "page_version_id": "pgv_54887aa3dc63869c9ddea4ade856804f",
+    "raw": "sha256:afbd9b02a0dd13545c54534393c5942bfbbba31fa23c34c57ab32cfd8e0c04fb",
+    "revision_id": "pgr_9412c8421804801590f8f6d98189a787",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "8ff68273be7a",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2026-03-24T20:57:00-07:00&max-results=7&reverse-paginate=true&start=49&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T09:37:19.770000Z",
+    "page_version_id": "pgv_484832b7eca68471b098e87ab851646c",
+    "raw": "sha256:668ee04b8de615583b304aeec3b1521a22ce1a870a212fb33ef955fc22b83603",
+    "revision_id": "pgr_69f9631999058d498de33154c7de2772",
+    "size": 292085
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:23:00.060000Z",
+    "page_version_id": "pgv_eec4aea4b28c8b9c8f6ec3ac69e93127",
+    "raw": "sha256:d840ed7bd966f282087c1f5b429b31216cc0f3604f698f6131282ef0fb6eeb7c",
+    "revision_id": "pgr_8be85f354b0483cab2b00456bb08fbb0",
+    "size": 292192
+   },
+   "domain": "moviesda.business",
+   "pair": "9d27a6b7fc7b",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-21T20:19:00-08:00&max-results=7&reverse-paginate=true&start=63&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:3208c1fb377a31af98fb342090ba8a0f41ce209ee840edafdbd122ac85be2660",
+    "observed_at": "2026-09-29T17:27:23.037000Z",
+    "page_version_id": "pgv_c4366b13d052894f9a29fec371f24701",
+    "raw": "sha256:c4c56d8322e473db1c09b8953abc021babab3bbf24a7fe36288dd431a6bbc2b3",
+    "revision_id": "pgr_4382020709de8dd7955db17519cb73c1",
+    "size": 361888
+   },
+   "auto_links_added": 5,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:e55e29dc726113c6c3ef6caa6951606f2e7d89e0811b106ba84a29315be01d23",
+    "observed_at": "2026-10-05T03:30:54.082000Z",
+    "page_version_id": "pgv_82be74f78391889a92d30a12ef83b23f",
+    "raw": "sha256:d3447b4a5e7a061695029dd9a7659255be24cbc4ff779a9d6aaae2ec0feb7066",
+    "revision_id": "pgr_2ccf6ea03fc18129a6d6402f28de69a6",
+    "size": 315160
+   },
+   "domain": "moviesda.business",
+   "pair": "b51835cc6fa0",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ddddc2a2ec5d5ce740ca44d024f4a567a2a6e97b892515d6d9e034958a041927",
+    "observed_at": "2026-09-30T10:06:01.122000Z",
+    "page_version_id": "pgv_26f6f514bec78d48840ce55ec6b1893d",
+    "raw": "sha256:1040ad1573043c60b688871c6d9d47fbec7e59e2647554bf0231903a797ba44c",
+    "revision_id": "pgr_a5f8cff1e6af8132abc0848a160e5aa9",
+    "size": 291951
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:067f1037948db22c09dd8dc3ca0f3af3cf70c7a7e2dbd23bf42e84ff20576400",
+    "observed_at": "2026-10-04T23:36:30.211000Z",
+    "page_version_id": "pgv_6c2f3cd554078908a9e62e0972855eec",
+    "raw": "sha256:acfaa574ea9741d0cbef638ffdf5e60f8e1f829f87f54151baed4e93c4d65b0b",
+    "revision_id": "pgr_2b1d4f955b9d8cd4ac08ab6f89944a21",
+    "size": 292058
+   },
+   "domain": "moviesda.business",
+   "pair": "be4274b1d6da",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-10T21:22:00-08:00&max-results=7&start=63&by-date=false"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:552cf331d7bf515d41afec93d18222d5974167cb0368a03cab410f239d16a778",
+    "observed_at": "2026-09-29T17:27:18.113000Z",
+    "page_version_id": "pgv_2e9d92f876978281ade620804fb409ee",
+    "raw": "sha256:0ceb60a5431d844331990abf2cbc8e682210f0844430190e511e15070a976493",
+    "revision_id": "pgr_e2b4de13348185b2b8dd9dc3b3ba774a",
+    "size": 336190
+   },
+   "auto_links_added": 6,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5cce463a7681ee3f2ae05d3ca74325a85e59584c93d62877b6b672793d098419",
+    "observed_at": "2026-10-05T03:30:52.573000Z",
+    "page_version_id": "pgv_32ba25a30ded85e3998ed8d367d8e06d",
+    "raw": "sha256:9c30eab00759217e0a002329fa47116fcf37aea099c9af6cfbc46f604b9a8a01",
+    "revision_id": "pgr_ae75d9c061d58cdf80d3e9a8bc3df02f",
+    "size": 323850
+   },
+   "domain": "moviesda.business",
+   "pair": "ef3e3f08aea9",
+   "stratum": "moviesda.business|none",
+   "url": "https://www.moviesda.business/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:552cf331d7bf515d41afec93d18222d5974167cb0368a03cab410f239d16a778",
+    "observed_at": "2026-09-29T17:27:01.748000Z",
+    "page_version_id": "pgv_e36ab7674b8c8f6cbe363155b88d543f",
+    "raw": "sha256:382535529cce58a9a0227b80dfaca0ae0fd9bdc1da13e768620eadc4316209e2",
+    "revision_id": "pgr_041994c1e5bc88579a4c5299a4df23d5",
+    "size": 336190
+   },
+   "auto_links_added": 6,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5cce463a7681ee3f2ae05d3ca74325a85e59584c93d62877b6b672793d098419",
+    "observed_at": "2026-10-05T03:30:46.915000Z",
+    "page_version_id": "pgv_c900924b0c6d8d629ed57289841135d8",
+    "raw": "sha256:39a9305a8a626b9f5bbfb11e473c2f979385fb410b029f6647fc997b5a38bb06",
+    "revision_id": "pgr_b0ddc3757b4886bcaaab4403f10638c8",
+    "size": 323851
+   },
+   "domain": "moviesda.business",
+   "pair": "947e69d4e4ac",
+   "stratum": "moviesda.business|new",
+   "url": "https://www.moviesda.business/?q="
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:af408f5f4d8602fb35da46667e9e980fadd603f082fb1b75cc2cba90856e5429",
+    "observed_at": "2026-09-30T11:26:43.229000Z",
+    "page_version_id": "pgv_79aca07e815685438f90f5437a7d6138",
+    "raw": "sha256:65789c30b62ce3e1c035d6e2a3a35723eec4914a1e8741858c37f3cfef4bfe5a",
+    "revision_id": "pgr_1152e2c492cf894288182de2e7c79910",
+    "size": 203619
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:bbadc01e64afbfc89fe19faa64af17f960fab71073b11ca36511efbd75853a04",
+    "observed_at": "2026-10-04T23:52:50.772000Z",
+    "page_version_id": "pgv_e024b2af95bc849cbe24d31b1b201ad5",
+    "raw": "sha256:b8bf0eeafb8872cfdfd68a35865e26120b063ea8ff093a9b52cb6ccb2b322e93",
+    "revision_id": "pgr_38aea63edff082dd9da93ceaacaaec19",
+    "size": 204238
+   },
+   "domain": "moviesda.com.in",
+   "pair": "158335dce3df",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/why-pulitoto-is-the-future-of-online-betting-and-lottery/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:a28cbd5916520704d3ca4718bc6cb6bdee138e8a99158f9b76fc329494825e59",
+    "observed_at": "2026-09-29T18:21:55.975000Z",
+    "page_version_id": "pgv_fc57bdeb2347888197e71bdd27522c6c",
+    "raw": "sha256:a977417ec05930290e529b9488ef1da9801aa0894a270575e748f4e664ccf11e",
+    "revision_id": "pgr_2ef02dcfd1a78ba39ba997c2a39d8a49",
+    "size": 206359
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:cd66ddc95fe308382bee222b5b1c71abf348f5f6e2919c144ec3967a89d464a8",
+    "observed_at": "2026-10-05T04:08:06.597000Z",
+    "page_version_id": "pgv_604849e20f558f1f8788a7d2f5d3dbf0",
+    "raw": "sha256:52690dcf29c562a8177945d350d9f93d946fb293c1c84bd136c3d947674f3294",
+    "revision_id": "pgr_fe3d37cba31d8461be53235b2c7b6d1e",
+    "size": 206978
+   },
+   "domain": "moviesda.com.in",
+   "pair": "2ce95b4b476d",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/register-for-fun88-how-to-become-a-member-in-just-3-minutes/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:99ddd236cd0da31c137dde4eca8c5f0575851e85070779419ee17468f711ebbe",
+    "observed_at": "2026-09-29T17:27:00.354000Z",
+    "page_version_id": "pgv_8cf9a920c8aa88c2bcef3ad590bf5091",
+    "raw": "sha256:fca2ab32e3c8276ac2189fe0283a106a778e9b618c252d3ea33ea2154ca5bde5",
+    "revision_id": "pgr_1b27625758678a9b92eec785dc25ed61",
+    "size": 183662
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c2e442e8c08dc45d5ccf437841ace933457819d22f8dfc2d421ce209b59eed46",
+    "observed_at": "2026-10-05T03:29:43.248000Z",
+    "page_version_id": "pgv_ad46ad822c8880c099c0328af184a08b",
+    "raw": "sha256:c0939626a96866713ebabfb6693cd7ce558c06037313c195c2177058c8a9007c",
+    "revision_id": "pgr_7af973602b90880cac44e0a8a6883165",
+    "size": 184281
+   },
+   "domain": "moviesda.com.in",
+   "pair": "6b3c15fd26cd",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/write-for-us/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:fc162e8fd9355caa9c5a66e237e6e79741a52732b9d5d463b69acd8e2e2f1fd4",
+    "observed_at": "2026-09-29T17:26:55.583000Z",
+    "page_version_id": "pgv_17cb3843532583798905ad8c0f6bb8fd",
+    "raw": "sha256:02b06e3fc01ea6ae2e3a6bf14bde38cf8b184cbb713e3ef8dec7e0e15856e549",
+    "revision_id": "pgr_9d8fd5ea563f86fd899c777322aef092",
+    "size": 219881
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:0df01c7d5fc183de41d71f4e43b7f3608f39015c85752442977ee2710f7aec36",
+    "observed_at": "2026-10-05T01:47:33.499000Z",
+    "page_version_id": "pgv_04cc44ab6f8282fbb353263958343838",
+    "raw": "sha256:7345b303036d28bbad331826f37deb219ceb0cfa64ba6f7a94fa58d15ebd71c7",
+    "revision_id": "pgr_4dce1e23bb7b8d80ad202df0af831f6f",
+    "size": 220500
+   },
+   "domain": "moviesda.com.in",
+   "pair": "7ffede8d7b3b",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/tamil-2018-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:6d3b7bde87921a27d64205b18b0be17741c0e86dea1e4e0c85de5b331f468ba6",
+    "observed_at": "2026-09-29T17:27:03.204000Z",
+    "page_version_id": "pgv_9bb942c4aa4f827b892e7272a4f55eb5",
+    "raw": "sha256:e5fbefcb999384e17a8fa5c129063c90e69ac892174bfd8f164d4f8ad02d104c",
+    "revision_id": "pgr_4e59131e44898e72bef2b09c43461a25",
+    "size": 182007
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:619961e2128ef6805c3e4e5292b4b6b855158fd03926bc4b95c0285a97a4bb21",
+    "observed_at": "2026-10-05T03:39:11.683000Z",
+    "page_version_id": "pgv_574fb2a69e07841ebc133876cb8ae24f",
+    "raw": "sha256:6c9eaa008397fe821cfab91badaacdf4bcac1d741ffe813d9355528d0de4410c",
+    "revision_id": "pgr_454f8349fc398d858d958674c8ff0f74",
+    "size": 182626
+   },
+   "domain": "moviesda.com.in",
+   "pair": "8f313a722f67",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/privacy-policy/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f3428207c2703b6cc7c772172e6eb8c82cee096a06b0c821f8bc5868b3f8e5c7",
+    "observed_at": "2026-09-29T17:27:17.748000Z",
+    "page_version_id": "pgv_663e22b2bbdf860ba68d3138f3add2e3",
+    "raw": "sha256:c07765fcbaa6b4ceda70248311d822c3f01f484f10a0b1b66be2e1be207d0eca",
+    "revision_id": "pgr_44fb2f4a1bcb85f78055c82d00622888",
+    "size": 214588
+   },
+   "auto_links_added": 3,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7e4c5cb4dd4fd17e35cf32716d6d73125aef25bb2d031e4deb2be1de374201d8",
+    "observed_at": "2026-10-05T03:45:51.279000Z",
+    "page_version_id": "pgv_80441b19f60c81f99eac79c840b87df1",
+    "raw": "sha256:b1c0d958a23b921fc81ec9daaee21abda6ed85bf02285718022accbcdf895274",
+    "revision_id": "pgr_3e8d7381675b876ba5bf9cde4cbdb2b0",
+    "size": 215313
+   },
+   "domain": "moviesda.com.in",
+   "pair": "b9aeea8d5684",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/how-to-complete-the-yaar-win-login-process/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:4549fc2f2f897197eb8f630d818f04f6a11e6ad333417bc28b460575e2c5efff",
+    "observed_at": "2026-09-29T17:27:01.222000Z",
+    "page_version_id": "pgv_7f7995c8fc66855385e2f3cb88ab838e",
+    "raw": "sha256:99b4d4002c69d9df0d29ee4f5d5851ecf35d465acda99333a8b0caf75ace540f",
+    "revision_id": "pgr_1b2f8f72ecdb87b3aa4a54158edc1dfa",
+    "size": 188282
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:43e70cef4e150bff60eb535c2510d4dd0d2196d9d947f87a6332b8c215a20d6e",
+    "observed_at": "2026-10-05T03:32:12.137000Z",
+    "page_version_id": "pgv_99a15781114283018721d04afac5e79d",
+    "raw": "sha256:e32955ec8b2bf703b372de8764d3b21426912bd0a6bbad78457c206ad36d762a",
+    "revision_id": "pgr_2523e73ff3fb8a12b33216ce55f1576b",
+    "size": 188901
+   },
+   "domain": "moviesda.com.in",
+   "pair": "cc091fdd7965",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/tamil-2014-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:4b23df5e9087157d9fee25e020b5b6cf8b93fe759273885ef35eeef42fa6c320",
+    "observed_at": "2026-09-29T17:26:43.296000Z",
+    "page_version_id": "pgv_b548a1d6c29784cba20f66be7eab5e2b",
+    "raw": "sha256:24e21947cf993f9de590ca3a03d957ae15c40ade90c402be1fc721dbf9660293",
+    "revision_id": "pgr_60b7221a7fbf83cdb33efa1ee9b2cb8a",
+    "size": 182042
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:174b9be6dc5735e25402e4b795c7b948782ba931703fed90b8c5a27cc5093979",
+    "observed_at": "2026-10-05T01:47:29.118000Z",
+    "page_version_id": "pgv_2843b123036b8fa983ce85760f23e7e1",
+    "raw": "sha256:0cc71f9accc32397f0b7435544a8f734690c84f57f3b6dfb669652ec00085021",
+    "revision_id": "pgr_88dc3765bd478f49b0cb5eac1f07f053",
+    "size": 182661
+   },
+   "domain": "moviesda.com.in",
+   "pair": "ecb047627e29",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/about-us/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7ab86f40ee3f024b2da6227491f045bbc273349728fd04b2f96fffb207d42e63",
+    "observed_at": "2026-09-29T17:26:58.713000Z",
+    "page_version_id": "pgv_b1e99d0fa91c8507af4c11e13ad8cc3d",
+    "raw": "sha256:9dc956392c48c9899fe59f1c732b2e5897134f8ad9866a7797e7ffbdc463d4b2",
+    "revision_id": "pgr_6311a6a4577482e6a074aa3ba7612f2f",
+    "size": 220134
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f30c15c76524cc19ed8478a965b963ae0c0078a4c6920e68296449cea6022147",
+    "observed_at": "2026-10-05T01:47:36.414000Z",
+    "page_version_id": "pgv_1929b9cfd3b78f0ebdfcad81b98162a4",
+    "raw": "sha256:c6d7984d0931b9b06ce8fa67777d305c8c1442150d04690ac13168424fc6ada6",
+    "revision_id": "pgr_120c5abc6ea58ba8a652ff7e4f7cf5c7",
+    "size": 220753
+   },
+   "domain": "moviesda.com.in",
+   "pair": "f17870e83463",
+   "stratum": "moviesda.com.in|none",
+   "url": "https://moviesda.com.in/tamil-2019-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:0d426e71b992eea265c5011fab8c843894b739a2ffac181dc7f03f1140f34655",
+    "observed_at": "2026-09-29T17:24:51.097000Z",
+    "page_version_id": "pgv_8b923e763b448fada3dc6c3d36f84ac7",
+    "raw": "sha256:61088ae380176c9473d68239d74c37992fa007fd3b3818fb6f317c7605e256ee",
+    "revision_id": "pgr_b0c167275de389bfbc846a8b113304aa",
+    "size": 222620
+   },
+   "auto_links_added": 1,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c1e74d9c036853196588b835ffd26de512038a2854a07591ef0260229ac5e007",
+    "observed_at": "2026-09-30T12:17:05.786000Z",
+    "page_version_id": "pgv_24e36a04bbe38e32a4436a084234891f",
+    "raw": "sha256:8e6468a1ce8e21511dbe5f1eedf0659c44624be5e902da18b2f0c2d0aae0f030",
+    "revision_id": "pgr_b837bfe3e8c38abb9fb8828a5ab883d0",
+    "size": 222600
+   },
+   "domain": "moviesda.com.in",
+   "pair": "20f558e8e0dd",
+   "stratum": "moviesda.com.in|new",
+   "url": "https://moviesda.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:fbb11423635d950559f87741d637e4b7e2c1671c38d347e95214d4b345b81ef1",
+    "observed_at": "2026-10-04T09:02:12.987000Z",
+    "page_version_id": "pgv_3884f53c1390834fb3946256ab9ed1ac",
+    "raw": "sha256:9b35091775948cbf2aa2a821378b470b717a85abcc92eb4daa9de97ae806178d",
+    "revision_id": "pgr_8c3826cd612386e9b96adafce32fad01",
+    "size": 223452
+   },
+   "auto_links_added": 2,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:6834b12ce4be153fe8a21c6854b234a012c6624b6a2012d41b36b46375037598",
+    "observed_at": "2026-10-04T19:40:27.184000Z",
+    "page_version_id": "pgv_8d2b06845623809597307f632c2de3b4",
+    "raw": "sha256:e89e155a37a03ecec9869181919c1211d704d5bca7ce2c134770589acfb1ca2f",
+    "revision_id": "pgr_b5f868ff08b789d7a6131f6c0b92ea34",
+    "size": 223463
+   },
+   "domain": "moviesda.com.in",
+   "pair": "b3a4a47f3156",
+   "stratum": "moviesda.com.in|new",
+   "url": "https://moviesda.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:c1e74d9c036853196588b835ffd26de512038a2854a07591ef0260229ac5e007",
+    "observed_at": "2026-09-30T12:17:05.786000Z",
+    "page_version_id": "pgv_24e36a04bbe38e32a4436a084234891f",
+    "raw": "sha256:8e6468a1ce8e21511dbe5f1eedf0659c44624be5e902da18b2f0c2d0aae0f030",
+    "revision_id": "pgr_b837bfe3e8c38abb9fb8828a5ab883d0",
+    "size": 222600
+   },
+   "auto_links_added": 5,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:fbb11423635d950559f87741d637e4b7e2c1671c38d347e95214d4b345b81ef1",
+    "observed_at": "2026-10-04T09:02:12.987000Z",
+    "page_version_id": "pgv_3884f53c1390834fb3946256ab9ed1ac",
+    "raw": "sha256:9b35091775948cbf2aa2a821378b470b717a85abcc92eb4daa9de97ae806178d",
+    "revision_id": "pgr_8c3826cd612386e9b96adafce32fad01",
+    "size": 223452
+   },
+   "domain": "moviesda.com.in",
+   "pair": "c641760f6179",
+   "stratum": "moviesda.com.in|new",
+   "url": "https://moviesda.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:a201bba7444cf3cf3c0a496b2a399556fe3ddab2ef21a666e53a71c65e9b5f1c",
+    "observed_at": "2026-09-29T17:55:22.409000Z",
+    "page_version_id": "pgv_609984456b2e8b4d918eaa986a5de20a",
+    "raw": "sha256:14c64f36a4ea7f8182e6e443c98e8e1e3cb5124cd2196e67b74cc122a49a0d66",
+    "revision_id": "pgr_82a4de2fa1138c778d999ba4105fdf3b",
+    "size": 182105
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:7f55f73802270704b853b2c67d946eec37673146d9a1d0dd4a600ebbbf44f4e7",
+    "observed_at": "2026-10-05T07:53:38.152000Z",
+    "page_version_id": "pgv_45eec3591cce833f9e81dcc26dc4278f",
+    "raw": "sha256:d37cb54e498673310283680f17050103a181a15bf122c25000d4c62853ec1ae2",
+    "revision_id": "pgr_36bbfa85f7918f9c988010bfe10afbc6",
+    "size": 199224
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "00b1f96068c7",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/muddy-2021/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:177b45b3d8c25a6891fc059528c026168f32825fafdc02018287c83d21ac6c9d",
+    "observed_at": "2026-09-29T17:55:58.187000Z",
+    "page_version_id": "pgv_28505cf9fb728dc9adf6f19dc93315d2",
+    "raw": "sha256:23475cc2407a8b912a478944948ec6fb138ada936684c7559bb1c3d576a98c32",
+    "revision_id": "pgr_2064574252c98060830f6e99d799947c",
+    "size": 183015
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:5853bb85db9c16b851194d02ce30a84bb3e3c3e9bb07cae617405d5a7d373520",
+    "observed_at": "2026-10-05T07:52:33.084000Z",
+    "page_version_id": "pgv_e47ff294d9598d1b8be108dff34d3ea1",
+    "raw": "sha256:b10ee8bccbdb83a17f463c3a07e6cc164b3591a0856370c99f38603acb2f4865",
+    "revision_id": "pgr_ef70cfbbbe868b3baa62d3aaa3cb62e7",
+    "size": 200134
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0172d0691907",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/yaarada-avan-2021/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:80a7ff997ed1b39be74485fbbda9a09b901c28d3cd956d212fdfdfc5fe546398",
+    "observed_at": "2026-09-29T17:42:56.439000Z",
+    "page_version_id": "pgv_45bf0a5abd938f1d9c8e6b5657aa6d3a",
+    "raw": "sha256:65136120eaa469ac9597af37539bc98e45cc515592ad621a19d948ddf876c1f3",
+    "revision_id": "pgr_3684dc1095f184c1b61f881403b29e5d",
+    "size": 182372
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:2208b97dd9dd87aeca644113a23152e84ec8d5bd181346f3010b144499edb867",
+    "observed_at": "2026-10-05T06:29:51.716000Z",
+    "page_version_id": "pgv_1ef1aae0408c8cc790516a15870fe720",
+    "raw": "sha256:1d12f5b73cb6caa5d29387e0e3bd6fd97e5fd9234ab8442284d70183ca762681",
+    "revision_id": "pgr_323f9a3571468f9f8a99a0c85294fe33",
+    "size": 199491
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "02ba9d8d2569",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/uru-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:63445c4842b3c2f13e2a84f143fb12a9a63db34d829acfef001cf01d7595613e",
+    "observed_at": "2026-09-29T18:33:23.011000Z",
+    "page_version_id": "pgv_c3650b91908784d28315469a67561c05",
+    "raw": "sha256:13bc6810f63e6fab61b5614919968d3d960a452a27c6945f70b17459fc6aee2a",
+    "revision_id": "pgr_cbb0f7b65a528e63a4bcab4fbf505964",
+    "size": 182660
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:2f4c784607cb74ae20515ea0b485409e0ac691f0d78f380f1cbd70b65292e1c2",
+    "observed_at": "2026-10-05T06:30:07.608000Z",
+    "page_version_id": "pgv_e34acf4a6f70872c8139f18bc81d14e6",
+    "raw": "sha256:4bed1d89967f0ba8cadb3f3313cc7e05839a9b1f06c18efe1386c8fac8dee0ff",
+    "revision_id": "pgr_893b52ba14b781c393b9332aacc00d7d",
+    "size": 199779
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "073444fa0990",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/7-naatkal-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:4996ca9a3e44268a071892a3a5d84f5faed60c0f9718781adfbb628871c7a19c",
+    "observed_at": "2026-09-29T18:27:14.604000Z",
+    "page_version_id": "pgv_880cccf50a1280c98b8fab1f948f9ebe",
+    "raw": "sha256:43c51dd8dd66d86ba2505e7cb49156033efa3fc87460bdef434f97c83c40a04a",
+    "revision_id": "pgr_83c28f12e6c087bfa4f7200a34a8b450",
+    "size": 183083
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:3c7e9c642acec92becdd12df9f5394be265a34499186d5edd4fe010eea53fd9c",
+    "observed_at": "2026-10-05T06:34:59.778000Z",
+    "page_version_id": "pgv_7772df4d9e4e8862ad3d38065863ddb9",
+    "raw": "sha256:825fdf9135444864c85e4a60cfa8fdb3ce99789068de423292c8edea3a5b9e88",
+    "revision_id": "pgr_d12695cae4e788f1aa63e5d27381065a",
+    "size": 200202
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "076d1b8c5a01",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/enbathettu-88-2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:40fac84a62f4db6146c0e03f74cf557c1420ef6c6a3780338fe077fdd33138d2",
+    "observed_at": "2026-09-29T18:28:39.425000Z",
+    "page_version_id": "pgv_5ba4e4fff371857da777c61f0cfe22d6",
+    "raw": "sha256:67f345ebc6c34bdd90514ee45f9300d8cd7a7ebba8ea98288508e7083e3a622f",
+    "revision_id": "pgr_06a0866a1c628055a652d8df4fcdbdf7",
+    "size": 182979
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:9d457f9289d2496ad906b1b02b6806bc71bd7cc871313313c1a5e816752833de",
+    "observed_at": "2026-10-05T06:25:45.474000Z",
+    "page_version_id": "pgv_cd630cb396008bcbaa97cafb4493a90f",
+    "raw": "sha256:adf2d5472792426d5fd3444d7f3736f5a5036a33bf67e3fd2235100553594de3",
+    "revision_id": "pgr_b1c955036d7f81628be46ef536fce73a",
+    "size": 200098
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "094d4254cc40",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/route-no-17-2023-2/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8872852fb2ce8357fd7bc46f5e83e93a681a4635d2f745f90a1319c8611fa7f1",
+    "observed_at": "2026-09-29T17:34:52.237000Z",
+    "page_version_id": "pgv_81285bf69e27861da6c89d01adaa1701",
+    "raw": "sha256:918be182690085273dff3e307a34a829c0bd2f634bdc2eebe2e39f1eff7514db",
+    "revision_id": "pgr_9b1b1d2d9fd38da1886319355c91976a",
+    "size": 179526
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:be8ac3ac3518de10399aafa0be6e5567599b41e9c96f041153fd1bfdf1db8fe7",
+    "observed_at": "2026-10-05T08:00:45.528000Z",
+    "page_version_id": "pgv_08e3dfe873178691994b4757d0d58b12",
+    "raw": "sha256:9efe920b339370dc8171f905cac2636ac610a0a7ead4894cbbe4b876dc10b9be",
+    "revision_id": "pgr_528a86d5f51e86469cc39f7b1957001c",
+    "size": 196645
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0968a5b4234a",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/pyaar-prema-kaadhal-2018/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:1595e9cea6ff478dff336a8ffbcd80478fabd59d8153ad14ee2a039c250e8a9a",
+    "observed_at": "2026-09-29T18:39:11.657000Z",
+    "page_version_id": "pgv_cf10445dcc6f842fbbaf1edc56680792",
+    "raw": "sha256:9e3ee507bfda05543b917276d037793e90324d46cafe5a8c17c5beca18580eac",
+    "revision_id": "pgr_2c14dfc1b32588b1a223d70a927aa3f3",
+    "size": 182702
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:978f84311b66fe503eb473c21638f57a8fd2e9fba64923dd2ceac6cbfea75673",
+    "observed_at": "2026-10-05T06:17:15.115000Z",
+    "page_version_id": "pgv_c307173fd8c48c1cba1f8f46620477b6",
+    "raw": "sha256:07c029913a01505264af36372c319be2fcfc84a7acb00dd1f2758719d48b2903",
+    "revision_id": "pgr_9ac2ae45e1b18ae9a5bcc03ad0c72156",
+    "size": 199821
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0b3024b2cb55",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/atharva-2023/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:b3fd3085b18c4a1bc54e9d5fc1ea2ece3823b48c33bd2c2f06c969fae553a1ea",
+    "observed_at": "2026-09-29T17:44:49.216000Z",
+    "page_version_id": "pgv_19f2cc8ab477810089e6926706125557",
+    "raw": "sha256:bc8bf57be36922d1458d3a4fba45d964cd2636739752d79f2431193993ba4016",
+    "revision_id": "pgr_ee1b7c8b16778133bd1ab8cc8359471a",
+    "size": 169601
+   },
+   "auto_links_added": 0,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:04f4f21b96d6fe81e7e22afdc07cc6e239ae59b454d55f11ae79f37cd2f3206f",
+    "observed_at": "2026-10-05T06:30:30.208000Z",
+    "page_version_id": "pgv_3fbf68d1dd9f8a19983abb4a428da1ec",
+    "raw": "sha256:a6831f5fba63db1234d72a928ade1b5189ba48663cf1682b59eca0dbaef558aa",
+    "revision_id": "pgr_048898fa83fa8f8887d2e8c4193b925c",
+    "size": 186048
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0cb6a247227c",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/category/2017/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:dca8d419c5c5828301aba1eae7e843ca0c0e6a085b4dbc746ba4659b07b2a310",
+    "observed_at": "2026-09-29T17:55:07.708000Z",
+    "page_version_id": "pgv_b8565493455c881e83d82ba9b786f1d0",
+    "raw": "sha256:b1e77ca34829ade042467e76a4d88fb831e48df58c58c7f55d93717811392318",
+    "revision_id": "pgr_aaed043b7c1e8fa0b4ca7b97e01ceef5",
+    "size": 183244
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:54aee8385cb5d42778ac1b5e1a17415bf14694fd7d96da6f902d0acbfc502107",
+    "observed_at": "2026-10-05T07:53:23.799000Z",
+    "page_version_id": "pgv_5c340834f2df8f0e9a61858e810a8e7f",
+    "raw": "sha256:fa5d65425d9dd6b04e8cbb3fc55698fcfaf53cde2332c6278c2e249976177f64",
+    "revision_id": "pgr_d3c3466b885a86c1ac4c2d1a4e1419b9",
+    "size": 200363
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0d5194f2fbad",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/galatta-kalyaanam-2021/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:310733612f12f1d0d2e5e8e9250f0d6d4bb702de23fee283a7e560d3d139d2ab",
+    "observed_at": "2026-09-29T18:03:06.191000Z",
+    "page_version_id": "pgv_d03769ede82d807c98a5a60647233518",
+    "raw": "sha256:8c6a76b1d937549eea2f50afe58dcf62a4dd4a91bbc13ec4196ae59982522c08",
+    "revision_id": "pgr_e29de71380bc8479a10d9da88f3ee73c",
+    "size": 182822
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:3fdaf27572fdf85ebbac248d122f819095aa5a901aae6c7915ed5fda1d94faea",
+    "observed_at": "2026-10-05T07:50:20.941000Z",
+    "page_version_id": "pgv_2788e12b29908985ac642cbb43d85012",
+    "raw": "sha256:e93b72592c331cb9e190e13af94365fe09ae970d59108326f1781e2503b3a959",
+    "revision_id": "pgr_958296a4c6588a7cad8d7861ae49e6a8",
+    "size": 199941
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0e51247119fd",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/kaaviyyan-2019/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:1e3a07fdfede5e07a43af942b5da54c7862c778e58a4f2a3c2deeac4e4718d32",
+    "observed_at": "2026-09-29T18:39:23.583000Z",
+    "page_version_id": "pgv_565a5d12632688cf80bc6b9be8d45fb3",
+    "raw": "sha256:6975c9f658f0c489a119e9c64c7ce681f68971e455967606e5a8bad0889f5e12",
+    "revision_id": "pgr_40eb7d4eebd08e21843ecf295cadaa5b",
+    "size": 182773
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8a7618534482fc9a3bb3f9bb53382e0224075dee3c552890a59e7a27fd16ab1b",
+    "observed_at": "2026-10-05T06:26:45.572000Z",
+    "page_version_id": "pgv_4e288ce23b098f749b09d2c4357e97db",
+    "raw": "sha256:3dc116c4ce7df1aed0b7e710e408783b7d22a3111ee2bbb9fa0e251aa5c193c6",
+    "revision_id": "pgr_23ad43ef94d3829d8bded9716b9f2b84",
+    "size": 199892
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "0ebd52207ceb",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/bhakshak-2024/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:e2b46c38252af026922d5d6083620258fb3b96e6ac4856652f935c69fe7639d9",
+    "observed_at": "2026-09-29T18:25:33.992000Z",
+    "page_version_id": "pgv_1c5d8cfd08c98872974b95d5bf9f631a",
+    "raw": "sha256:03995669649fe75c7161b8adcbc167db1707b9787439c8ce82f1c59490fbc80b",
+    "revision_id": "pgr_73ff58dfec0288cfbdf5d94111c838f3",
+    "size": 173773
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:878d5fe4cf68713200f6e5df14cd523099aa3b3886a2eb97d4a8e80d3b6fe9bf",
+    "observed_at": "2026-10-05T08:00:10.212000Z",
+    "page_version_id": "pgv_e055281d60a687259deab13c8eb9fd68",
+    "raw": "sha256:bc744036d08a60fdcbdb245302f528d47abae5215d9b56228b8b1edeb299501b",
+    "revision_id": "pgr_6c7674bb55958450a2192a7f41385873",
+    "size": 189285
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "1004175159e7",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/how-streaming-platforms-are-changing-the-way-audiences-discover-movies/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:42a94bfe5f1d90c20f345ccd279fe4d0584aad1b99be686a5e611ecc489135f3",
+    "observed_at": "2026-09-29T18:04:56.475000Z",
+    "page_version_id": "pgv_2df41f522fa88d88927bc102d5f4d14d",
+    "raw": "sha256:2098def4fc5019e9299d0e6513d9b3b14178c8affddeaeb4341257260a6e1bd0",
+    "revision_id": "pgr_6154ad7d1e4680dfad2609599729d9a7",
+    "size": 182575
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:dd5b5e00645d10cbe4ef9832a1d14299b488e6c0a7475fed1ababb66418b7ea5",
+    "observed_at": "2026-10-05T06:27:50.152000Z",
+    "page_version_id": "pgv_c0a8d81b293d89bca590a74dd04ac762",
+    "raw": "sha256:ecddfed5264e2947c5ef7ab5c7aadd6d5cfaf2378fbacdfe1289889a7c460887",
+    "revision_id": "pgr_d3ad390bea888269b2cc87f378d61981",
+    "size": 199694
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "105cac088539",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/thakka-thakka-2015/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:ca4cb500e43642238c9b7adfb5c8ad06124b5171e48e044f52c5a9141e326e59",
+    "observed_at": "2026-09-29T18:13:57.102000Z",
+    "page_version_id": "pgv_d2b3299bed92812792813460c6e3f648",
+    "raw": "sha256:81348198465ab917ff2a98cd090fd1879170a720b962a46d586879a2b1511325",
+    "revision_id": "pgr_cb4a6b9fca27841c8de64b6d62cf9aed",
+    "size": 183128
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:8703e1572025c28fa8c4bdf496822b3ab79355dabcf264bd184102f3256fe5a7",
+    "observed_at": "2026-10-05T06:35:39.617000Z",
+    "page_version_id": "pgv_9214585beeaf8696b7443c9171b32019",
+    "raw": "sha256:4abe8cc1e66b492df0579ab4cdc0977bc82d2cfba771bcd25ed3e11653d366f2",
+    "revision_id": "pgr_576fc4c7d45c8147bd6328501f5e872a",
+    "size": 200247
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "10be0d188b0e",
+   "stratum": "tamilprint.com.in|none",
+   "url": "https://tamilprint.com.in/sila-nodigalil-2023/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:f687c0232a81beac127688cca2b4f91f7f3a5e8cb02588642494ba0322508ba2",
+    "observed_at": "2026-09-29T17:25:00.669000Z",
+    "page_version_id": "pgv_39274aa0209f81b6bc187a2a627e6cae",
+    "raw": "sha256:ef7ce3fe84c0ab1127ab3537ed93811a776fc1de876d2fd18ccb0b165b6d8063",
+    "revision_id": "pgr_86535ae5cbea849181b03d7c7cc649c2",
+    "size": 177749
+   },
+   "auto_links_added": 1,
+   "auto_new_url": true,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:97465042ba9dab1d14806c4d61af2be6917a063b981f120839c6f21632595174",
+    "observed_at": "2026-10-04T13:40:25.227000Z",
+    "page_version_id": "pgv_84c609980b988f58aa02a1bf4fcfb96f",
+    "raw": "sha256:95f7b3ed63a7f42f36c27c9dd26b59cb8a10d6f9ebb43cc6595657f0d42996e6",
+    "revision_id": "pgr_145d1b4767cd81a3ba8657d00a8d06e1",
+    "size": 194856
+   },
+   "domain": "tamilprint.com.in",
+   "pair": "ccd023add26d",
+   "stratum": "tamilprint.com.in|new",
+   "url": "https://tamilprint.com.in/"
+  },
+  {
+   "a": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:9db46bbf665c5476032e5678ba863b6c9739e5a682d7220a1ead728a5645ccdf",
+    "observed_at": "2026-09-29T17:24:47.781000Z",
+    "page_version_id": "pgv_38fa344853d58783be43d4f489d50cba",
+    "raw": "sha256:ef54cab8e328d7b6645ca433ce85dd5fbc238e5e0df9a9b1e070da4a9a8d8d6c",
+    "revision_id": "pgr_aec4de88d1278d8abfb412529ac594db",
+    "size": 174483
+   },
+   "auto_links_added": 1,
+   "auto_new_url": false,
+   "b": {
+    "content_type": "text/html; charset=UTF-8",
+    "normalized": "sha256:2e8e79c7ff1342ef55832ee137ad1e7e07da9eb24bb11d5124b734c77b17f509",
+    "observed_at": "2026-10-04T13:40:38.236000Z",
+    "page_version_id": "pgv_5b6263528954893cb4227658aaeac783",
+    "raw": "sha256:b701b6128f41da391a18de840f71be519eccaad75d32080f5aa61f9b6bc7c2d0",
+    "revision_id": "pgr_8252ec64a4dd8891b5ee1c19652b3696",
+    "size": 175263
+   },
+   "domain": "tamilrockers2024.com",
+   "pair": "24aaa1d6b54a",
+   "stratum": "tamilrockers2024.com|none",
+   "url": "https://www.tamilrockers2024.com/"
+  }
+ ],
+ "strata": {
+  "isaimini.com.in|new": 10,
+  "isaimini.com.in|none": 83,
+  "movflix.my|none": 4,
+  "moviesda.business|new": 1,
+  "moviesda.business|none": 12,
+  "moviesda.com.in|new": 3,
+  "moviesda.com.in|none": 9,
+  "tamilprint.com.in|new": 1,
+  "tamilprint.com.in|none": 201,
+  "tamilrockers2024.com|none": 1
+ }
+}
