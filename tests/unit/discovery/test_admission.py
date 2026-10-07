@@ -32,6 +32,7 @@ from crawler2.discovery.admission import (
 from crawler2.filtering.model import Action, Classification, Policy, Rule, RuleKind, RuleSource
 from crawler2.filtering.store import RulesetHolder, publish, store_source
 from crawler2.frontier.model import Admission, AdmitOutcome, AdmitResult
+from crawler2.intelligence.advice import SourceAdvice, fallback
 from crawler2.storage.repositories import ScopeSite
 from tests.unit.filtering.fakes import MemoryDiscovery, MemoryFilterRules
 from tests.unit.filtering.test_store import _item
@@ -275,3 +276,104 @@ def test_a_blocked_redirect_stops_admission_of_the_pages_links() -> None:
     assert row is not None
     assert row.action == "block"
     assert '"matched_field": "redirect_hop[0]"' in row.decisions
+
+
+# --- P7 source advice (P7 design §9.4, increment 2) --------------------------------------
+
+
+class FakeAdvisor:
+    """Scripted P7 advice per host; records which hosts P6 asked about."""
+
+    def __init__(self, advice: dict[str, SourceAdvice] | None = None, *, fail: bool = False):
+        self.advice = advice or {}
+        self.fail = fail
+        self.asked: list[str] = []
+
+    def advise(self, domain_id: str, now: datetime) -> SourceAdvice:
+        self.asked.append(domain_id)
+        if self.fail:
+            raise RuntimeError("p7 bug")
+        return self.advice.get(domain_id, fallback("unavailable"))
+
+
+def _world_with(advisor: object) -> World:
+    w = World()
+    w.admitter = Admitter(
+        frontier=w.frontier,
+        discovery=w.repo,
+        holder=w.holder,
+        settings=DiscoverySettings(),
+        decision_ttl_s=3600,
+        clock=lambda: w.now,
+        advisor=advisor,  # type: ignore[arg-type]
+    )
+    return w
+
+
+MIXED = [
+    Candidate(ref("https://seed.test/"), Origin.SEED),
+    Candidate(ref("https://found.test/"), Origin.SEARCH),
+    Candidate(ref("https://site.test/in"), Origin.LINK, source_url="https://site.test/"),
+    Candidate(ref("https://ads.test/x"), Origin.LEAF, source_url="https://site.test/"),
+    Candidate(ref("http://abcdefghij234567.onion/"), Origin.SEED),
+]
+
+
+def _run(w: World) -> tuple[dict[str, str], list[tuple[str, str, int]], list[str]]:
+    outcomes = w.admitter.admit(MIXED)
+    return (
+        {str(k): v.value for k, v in outcomes.items()},
+        [(a.url.url, a.queue.value, a.priority) for a in w.frontier.admitted],
+        sorted(str(u) for u, st in w.repo.states.items() if st.last_admitted_at),
+    )
+
+
+def test_p7_fallback_is_exactly_admission_without_p7() -> None:
+    baseline = _run(World())
+    for advisor in (FakeAdvisor(), FakeAdvisor(fail=True)):
+        assert _run(_world_with(advisor)) == baseline
+
+
+def test_p6_decisions_come_before_p7_and_tor_is_not_asked() -> None:
+    advisor = FakeAdvisor()
+    w = _world_with(advisor)
+    w.admitter.admit(MIXED)
+    asked = set(advisor.asked)
+    assert str(ref("https://ads.test/x").domain_id) not in asked  # blocked by the P6 filter
+    assert str(ref("http://abcdefghij234567.onion/").domain_id) not in asked  # no Tor profiles
+    assert str(ref("https://site.test/in").domain_id) in asked
+    # Recent (P6 revisit gate): not asked again
+    advisor.asked.clear()
+    w.frontier.active.clear()
+    w.admitter.admit(MIXED[2:3])
+    assert advisor.asked == []
+
+
+def test_p7_defers_a_dead_host_and_sets_the_starting_queue() -> None:
+    dead_host, spa_host = ref("https://seed.test/"), ref("https://found.test/")
+    advisor = FakeAdvisor(
+        {
+            str(dead_host.domain_id): SourceAdvice(False, "http", "unreachable", reason="probe at"),
+            str(spa_host.domain_id): SourceAdvice(True, "browser", "active"),
+        }
+    )
+    w = _world_with(advisor)
+    outcomes = w.admitter.admit(MIXED)
+    assert outcomes[dead_host.url_id] is Outcome.SOURCE_DEFERRED
+    queues = {str(a.url.url): a.queue for a in w.frontier.admitted}
+    assert dead_host.url not in queues
+    assert queues[spa_host.url] is ExecutionQueue.BROWSER
+    assert queues["https://site.test/in"] is ExecutionQueue.HTTP
+    # A deferral is not an admission and not a filter decision: the URL can come back.
+    assert dead_host.url_id not in w.repo.states
+    assert w.repo.decisions(dead_host.url_id) == []
+    # Priorities stay P6's (design §8).
+    assert {str(a.url.url): a.priority for a in w.frontier.admitted}[spa_host.url] == 60
+
+
+def test_p7_cannot_admit_what_p6_rejected() -> None:
+    blocked = ref("https://ads.test/x")
+    advisor = FakeAdvisor({str(blocked.domain_id): SourceAdvice(True, "browser", "active")})
+    w = _world_with(advisor)
+    outcomes = w.admitter.admit(MIXED)
+    assert outcomes[blocked.url_id] is Outcome.BLOCKED

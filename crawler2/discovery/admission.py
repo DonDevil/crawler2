@@ -6,8 +6,12 @@ URL, the static M1 scope and revisit rules (§22 Q2/Q3), then
 ``Frontier.admit_many``. Decisions are recorded as data (F5/F6), bounded
 by "write on admission or when the decision changes".
 
-Nothing here is intelligence: priorities are static per provenance and the
-revisit interval is uniform. P7 replaces both by producing admissions.
+Priorities are static per provenance and the revisit interval is uniform.
+The only P7 input is optional source advice (P7 design §9.4), asked after
+P6's own filter, scope and revisit decisions: it can defer a URL of a host
+in a negative state and choose the starting queue, never admit what P6
+rejected. Without an advisor, or when P7 has no informed advice, admission is
+unchanged (B.5 #1).
 """
 
 from __future__ import annotations
@@ -31,6 +35,7 @@ from crawler2.filtering.inputs import host_of, link_input, redirect_inputs, regi
 from crawler2.filtering.model import Action, Decision
 from crawler2.filtering.store import RulesetHolder
 from crawler2.frontier.model import Admission, AdmitOutcome, AdmitResult
+from crawler2.intelligence.advice import SourceAdvice, SourceAdvisor, fallback
 from crawler2.storage.repositories import (
     AdmittedUrl,
     DiscoveryRepository,
@@ -65,6 +70,8 @@ class Outcome(StrEnum):
     REJECTED_FULL = "rejected_full"
     INVALID = "invalid"
     REDIRECT_BLOCKED = "redirect_blocked"
+    SOURCE_DEFERRED = "source_deferred"
+    """P7: the host is in a negative state and no probe is due (not a filter decision)."""
 
 
 class AdmissionSink(Protocol):
@@ -126,8 +133,10 @@ class Admitter:
         decision_ttl_s: int,
         metrics: Metrics | None = None,
         clock: Callable[[], datetime] = lambda: datetime.now(UTC),
+        advisor: SourceAdvisor | None = None,
     ) -> None:
         self._frontier = frontier
+        self._advisor = advisor
         self._repo = discovery
         self._holder = holder
         self._s = settings
@@ -189,15 +198,27 @@ class Admitter:
             if last is not None and (now - last).total_seconds() < revisit:
                 self._set(outcomes, cand, Outcome.RECENT)
                 continue
+            queue = ExecutionQueue.TOR if inp.host.endswith(".onion") else ExecutionQueue.HTTP
+            if self._advisor is not None and queue is ExecutionQueue.HTTP:  # no Tor profiles
+                advice = self._source_advice(cand.url, now)
+                if not advice.admit:
+                    self._set(outcomes, cand, Outcome.SOURCE_DEFERRED)
+                    _log.debug(
+                        "source_deferred",
+                        url=cand.url.url,
+                        reason=advice.reason,
+                        policy=advice.policy,
+                    )
+                    continue
+                if advice.capability == ExecutionQueue.BROWSER.value:
+                    queue = ExecutionQueue.BROWSER
             admissions.append(
                 (
                     cand,
                     decision,
                     Admission(
                         url=cand.url,
-                        queue=ExecutionQueue.TOR
-                        if inp.host.endswith(".onion")
-                        else ExecutionQueue.HTTP,
+                        queue=queue,
                         priority=self._priority[cand.origin],
                         reason=REASON[cand.origin.value],
                     ),
@@ -222,6 +243,15 @@ class Admitter:
         if admitted:
             self._repo.mark_admitted(admitted)
         return outcomes
+
+    def _source_advice(self, url: UrlRef, now: datetime) -> SourceAdvice:
+        """P7 is optional: any failure is today's behaviour (admit on http)."""
+        assert self._advisor is not None  # noqa: S101 -- checked by the caller
+        try:
+            return self._advisor.advise(str(url.domain_id), now)
+        except Exception:  # noqa: BLE001 -- P7 is optional (B.5 #1)
+            _log.exception("source_advice_failed", url=url.url)
+            return fallback("error")
 
     def _row(
         self,

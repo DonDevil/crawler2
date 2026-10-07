@@ -5,7 +5,8 @@ group; any number of processes on any hosts may share it (redelivery is
 harmless: the frontier deduplicates active tasks and the rows are
 idempotent). ``seeds`` and ``search`` admit through the same path.
 ``--every`` repeats a seed or search run on a static interval (§22 Q3).
-No intelligence service is needed (B.5 #1).
+No intelligence service is needed (B.5 #1): P7 source advice is used only
+with ``intelligence.advice_enabled`` and falls back to the P6 behaviour.
 """
 
 from __future__ import annotations
@@ -79,9 +80,36 @@ def build(settings: Settings) -> Context:
         settings=settings.discovery,
         decision_ttl_s=settings.filter.decision_ttl_s,
         metrics=metrics,
+        advisor=_source_advisor(settings, storage, metrics),
     )
     scope = Scope(storage.discovery, refresh_s=settings.discovery.scope_refresh_s)
     return Context(settings, identity, storage, redis, holder, admitter, scope, metrics)
+
+
+def _source_advisor(settings: Settings, storage: Any, metrics: Metrics) -> Any:
+    """P7 source advice (P7 design §9.4), only when enabled. The snapshot loads in the
+    background: admission never waits for P7 and falls back while it is missing."""
+    intel = settings.intelligence
+    if not intel.advice_enabled:
+        return None
+    from datetime import UTC, datetime, timedelta
+
+    from crawler2.intelligence.advice import SnapshotAdvisor, load_snapshot
+    from crawler2.intelligence.sources import DEFAULT_POLICY
+    from crawler2.intelligence.store import ScyllaSourceProfileStore
+
+    store = ScyllaSourceProfileStore(storage.session)
+    advisor = SnapshotAdvisor(
+        lambda: load_snapshot(
+            store, intel.projection, now=datetime.now(UTC), policy=DEFAULT_POLICY
+        ),
+        max_lag=timedelta(seconds=intel.max_lag_s),
+        max_snapshot_age=timedelta(seconds=intel.max_snapshot_age_s),
+        refresh_s=intel.snapshot_refresh_s,
+        metrics=metrics,
+    )
+    advisor.start()
+    return advisor
 
 
 class AdmissionLoop:
