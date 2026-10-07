@@ -24,6 +24,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-07 | **P7 data-sufficiency gate NOT PASSED** on the M1 history (~46 h in two windows; M1 stopped 2026-10-05 09:31 UTC): seed-set thresholds G1–G4, G6 (browser/tor), G7 (no targets) fail, G5 (change precision) open | P7 implementation stopped; collection and scope questions Q1–Q5 in `docs/phases/p07-crawl-intelligence/decisions.md` |
 | 2026-10-07 | **P7 collection decisions (Q1–Q5)**: seed-focused M1 collection run (fresh dataset, search off) after X-8/X-11; P4 §33a overridden for P7 (P4 frozen); Tor profiles and target relevance deferred (G6/G7 stay FAIL, scope change); M2 browser criterion "≥ Y % fewer browser fetches" withdrawn for a HOW-specific metric; G5 labelled check; M2 new-page discovery needs a live A/B | `docs/phases/p07-crawl-intelligence/decisions.md` D-5…D-10; X-8/X-11 done (ADR-022) |
 | 2026-10-07 | **M1b rejected (not run)**: read-only reassessment — 11/50 seed domains live, changes mostly template churn, ~2 % of 4-day revisits reveal new URLs; P7 design proceeds on existing M1 data, WHEN gated on G5 | P7 decisions D-12…D-15, audit §5 |
+| 2026-10-07 | **P7 G5 FAIL; increment 1 implemented**: `page.changed` precision 0.07 on 71 labelled seed pairs → raw changes rejected as a scheduling signal, WHEN stays gated; source-health/fetch-profile library + offline replay (off-target 17.5 % attempts suppressed, mostly 429; seed set 0.4 %) | P7 D-16, D-17; not wired to the runtime |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -526,7 +527,10 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   `docs/phases/p07-crawl-intelligence/audit.md`. No P7 code exists.
   M1b considered and rejected (D-12): the seed set (11/50 live), not
   collection time, is the limit; P7 design proceeds on the existing M1
-  data with WHEN gated on G5 (D-13).
+  data with WHEN gated on G5 (D-13). G5 measured from the existing
+  snapshots: **FAIL** (precision 0.07; D-16). Design drafted; increment 1
+  (source health + fetch profile, pure library + offline replay) implemented
+  — see `docs/phases/p07-crawl-intelligence/validation.md`.
 
 ### P8 — Media registry & identity (M)
 

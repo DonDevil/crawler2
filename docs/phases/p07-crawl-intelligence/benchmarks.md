@@ -124,3 +124,31 @@ and 25 of 50 never answered 2xx in M1. G1/G2 count attempts of any outcome,
 but G3 needs ≥ 10 seed domains with live, revisitable HTML. If fewer
 domains are alive, G3 cannot be met by collection. That will be reported
 as such, and the threshold will not be lowered.
+
+## 3. Increment 1 offline replay (2026-10-07)
+
+`env/bin/python benchmarks/p7-intelligence/replay_sources.py` (reads
+`var/p7/m1-export`). Output: `results/p7-sources-replay.json`. Method:
+design §5.3, policy `source-health/v1` (design §4.5). It is deterministic:
+attempts are ordered by start, then id.
+
+| Population | Attempts | Executed | Suppressed | Probes | Lost answers | M1 seconds | Seconds saved |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| all | 247,104 | 209,306 | 37,798 | 15 | 3 | 606,965 | 37,763 (6.2 %) |
+| off-target, run 1 | 57,774 | 55,756 | 2,018 | 5 | 1 | 190,944 | 6,874 (3.6 %) |
+| off-target, run 2 | 157,199 | 121,543 | 35,656 | 4 | 1 | 357,503 | 29,954 (8.4 %) |
+| seed, run 1 | 30,190 | 30,112 | 78 | 6 | 1 | 54,362 | 682 (1.3 %) |
+| seed, run 2 | 1,941 | 1,895 | 46 | 0 | 0 | 4,156 | 252 (6.1 %) |
+
+Hosts' states at the end of M1 (2026-10-05 09:31 UTC):
+
+- seed hosts: active 15, degraded 42, unreachable 9, error 1;
+- off-target hosts: active 176, degraded 581, blocked 11, unreachable 9,
+  error 8, moved 2.
+
+Many dead seed hosts read `degraded` at the end because their few failures
+have aged out (design §4.3). Under the policy that triggers a normal
+admission, and then the host is classified again.
+
+Not measurable offline: what the freed attempts would have discovered
+(M2 live A/B, design §10).

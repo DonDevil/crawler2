@@ -1,0 +1,603 @@
+{
+ "attempts": 247104,
+ "final_states": {
+  "off_target": {
+   "active": 176,
+   "blocked": 11,
+   "degraded": 581,
+   "error": 8,
+   "moved": 2,
+   "unreachable": 9
+  },
+  "seed": {
+   "active": 15,
+   "degraded": 42,
+   "error": 1,
+   "unreachable": 9
+  }
+ },
+ "policy": "source-health/v1",
+ "populations": {
+  "all": {
+   "advised_browser": 6458,
+   "attempts": 247104,
+   "executed": 209306,
+   "how_browser_unneeded": 98,
+   "how_http_saved": 1848,
+   "lost_answered": 3,
+   "lost_answered_share_of_suppressed": 0.0001,
+   "m1_blocked": 50306,
+   "m1_http_error": 9909,
+   "m1_moved": 18726,
+   "m1_needs_js": 2070,
+   "m1_ok": 133338,
+   "m1_other": 26109,
+   "m1_seconds": 606965.1,
+   "m1_unreachable": 6646,
+   "probes": 15,
+   "seconds_saved_share": 0.0622,
+   "suppressed": 37798,
+   "suppressed_blocked": 35676,
+   "suppressed_http_error": 872,
+   "suppressed_moved": 647,
+   "suppressed_needs_js": 1,
+   "suppressed_ok": 2,
+   "suppressed_other": 2,
+   "suppressed_seconds": 37762.5,
+   "suppressed_share": 0.153,
+   "suppressed_unreachable": 598
+  },
+  "off_target": {
+   "advised_browser": 6458,
+   "attempts": 214973,
+   "executed": 177299,
+   "how_browser_unneeded": 98,
+   "how_http_saved": 1848,
+   "lost_answered": 2,
+   "lost_answered_share_of_suppressed": 0.0001,
+   "m1_blocked": 50301,
+   "m1_http_error": 4568,
+   "m1_moved": 17595,
+   "m1_needs_js": 2068,
+   "m1_ok": 108204,
+   "m1_other": 26104,
+   "m1_seconds": 548447.4,
+   "m1_unreachable": 6133,
+   "probes": 9,
+   "seconds_saved_share": 0.0671,
+   "suppressed": 37674,
+   "suppressed_blocked": 35676,
+   "suppressed_http_error": 872,
+   "suppressed_moved": 646,
+   "suppressed_needs_js": 1,
+   "suppressed_ok": 1,
+   "suppressed_other": 1,
+   "suppressed_seconds": 36828.1,
+   "suppressed_share": 0.1752,
+   "suppressed_unreachable": 477
+  },
+  "off_target_run1": {
+   "advised_browser": 717,
+   "attempts": 57774,
+   "executed": 55756,
+   "how_browser_unneeded": 4,
+   "how_http_saved": 326,
+   "lost_answered": 1,
+   "lost_answered_share_of_suppressed": 0.0005,
+   "m1_blocked": 11919,
+   "m1_http_error": 1158,
+   "m1_moved": 8209,
+   "m1_needs_js": 396,
+   "m1_ok": 25412,
+   "m1_other": 8163,
+   "m1_seconds": 190944.3,
+   "m1_unreachable": 2517,
+   "probes": 5,
+   "seconds_saved_share": 0.036,
+   "suppressed": 2018,
+   "suppressed_blocked": 146,
+   "suppressed_http_error": 787,
+   "suppressed_moved": 644,
+   "suppressed_needs_js": 1,
+   "suppressed_other": 1,
+   "suppressed_seconds": 6874.1,
+   "suppressed_share": 0.0349,
+   "suppressed_unreachable": 439
+  },
+  "off_target_run2": {
+   "advised_browser": 5741,
+   "attempts": 157199,
+   "executed": 121543,
+   "how_browser_unneeded": 94,
+   "how_http_saved": 1522,
+   "lost_answered": 1,
+   "lost_answered_share_of_suppressed": 0.0,
+   "m1_blocked": 38382,
+   "m1_http_error": 3410,
+   "m1_moved": 9386,
+   "m1_needs_js": 1672,
+   "m1_ok": 82792,
+   "m1_other": 17941,
+   "m1_seconds": 357503.1,
+   "m1_unreachable": 3616,
+   "probes": 4,
+   "seconds_saved_share": 0.0838,
+   "suppressed": 35656,
+   "suppressed_blocked": 35530,
+   "suppressed_http_error": 85,
+   "suppressed_moved": 2,
+   "suppressed_ok": 1,
+   "suppressed_seconds": 29954.0,
+   "suppressed_share": 0.2268,
+   "suppressed_unreachable": 38
+  },
+  "seed": {
+   "attempts": 32131,
+   "executed": 32007,
+   "lost_answered": 1,
+   "lost_answered_share_of_suppressed": 0.0081,
+   "m1_blocked": 5,
+   "m1_http_error": 5341,
+   "m1_moved": 1131,
+   "m1_needs_js": 2,
+   "m1_ok": 25134,
+   "m1_other": 5,
+   "m1_seconds": 58517.8,
+   "m1_unreachable": 513,
+   "probes": 6,
+   "seconds_saved_share": 0.016,
+   "suppressed": 124,
+   "suppressed_moved": 1,
+   "suppressed_ok": 1,
+   "suppressed_other": 1,
+   "suppressed_seconds": 934.4,
+   "suppressed_share": 0.0039,
+   "suppressed_unreachable": 121
+  },
+  "seed_run1": {
+   "attempts": 30190,
+   "executed": 30112,
+   "lost_answered": 1,
+   "lost_answered_share_of_suppressed": 0.0128,
+   "m1_blocked": 4,
+   "m1_http_error": 4873,
+   "m1_moved": 1079,
+   "m1_needs_js": 2,
+   "m1_ok": 23945,
+   "m1_other": 4,
+   "m1_seconds": 54361.9,
+   "m1_unreachable": 283,
+   "probes": 6,
+   "seconds_saved_share": 0.0125,
+   "suppressed": 78,
+   "suppressed_moved": 1,
+   "suppressed_ok": 1,
+   "suppressed_seconds": 682.0,
+   "suppressed_share": 0.0026,
+   "suppressed_unreachable": 76
+  },
+  "seed_run2": {
+   "attempts": 1941,
+   "executed": 1895,
+   "lost_answered_share_of_suppressed": 0.0,
+   "m1_blocked": 1,
+   "m1_http_error": 468,
+   "m1_moved": 52,
+   "m1_ok": 1189,
+   "m1_other": 1,
+   "m1_seconds": 4155.9,
+   "m1_unreachable": 230,
+   "probes": 0,
+   "seconds_saved_share": 0.0607,
+   "suppressed": 46,
+   "suppressed_other": 1,
+   "suppressed_seconds": 252.4,
+   "suppressed_share": 0.0237,
+   "suppressed_unreachable": 45
+  }
+ },
+ "seed_hosts": [
+  {
+   "facts": 5427,
+   "moved_to": null,
+   "site": "isaimini.com.in",
+   "state": "active"
+  },
+  {
+   "facts": 1456,
+   "moved_to": null,
+   "site": "isaiminimix.com",
+   "state": "active"
+  },
+  {
+   "facts": 5,
+   "moved_to": null,
+   "site": "mantrimalgame.com",
+   "state": "active"
+  },
+  {
+   "facts": 5550,
+   "moved_to": null,
+   "site": "movflix.my",
+   "state": "active"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "moviedrivebd.com",
+   "state": "active"
+  },
+  {
+   "facts": 3161,
+   "moved_to": null,
+   "site": "moviesda.business",
+   "state": "active"
+  },
+  {
+   "facts": 5731,
+   "moved_to": null,
+   "site": "moviesda.com.in",
+   "state": "active"
+  },
+  {
+   "facts": 6,
+   "moved_to": null,
+   "site": "moviesda.info",
+   "state": "active"
+  },
+  {
+   "facts": 11,
+   "moved_to": null,
+   "site": "moviesda.net.in",
+   "state": "active"
+  },
+  {
+   "facts": 2813,
+   "moved_to": "tamilxt.site",
+   "site": "moviesda16.best",
+   "state": "active"
+  },
+  {
+   "facts": 222,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "active"
+  },
+  {
+   "facts": 2787,
+   "moved_to": null,
+   "site": "tamilprint.com.in",
+   "state": "active"
+  },
+  {
+   "facts": 5,
+   "moved_to": null,
+   "site": "tamilprinttv.com",
+   "state": "active"
+  },
+  {
+   "facts": 1034,
+   "moved_to": null,
+   "site": "tamilrockers2024.com",
+   "state": "active"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "xn--mlc3avm5adt5g.net",
+   "state": "active"
+  },
+  {
+   "facts": 8,
+   "moved_to": "1tamilmv.capital",
+   "site": "1tamilmv.army",
+   "state": "degraded"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "coolmoviez.forum",
+   "state": "degraded"
+  },
+  {
+   "facts": 150,
+   "moved_to": null,
+   "site": "gofullmovies.com",
+   "state": "degraded"
+  },
+  {
+   "facts": 4,
+   "moved_to": "isaiidub.com",
+   "site": "isaidub.love",
+   "state": "degraded"
+  },
+  {
+   "facts": 26,
+   "moved_to": "isaimini.fashion",
+   "site": "isaimini.farm",
+   "state": "degraded"
+  },
+  {
+   "facts": 13,
+   "moved_to": null,
+   "site": "isaimini.spot",
+   "state": "degraded"
+  },
+  {
+   "facts": 12,
+   "moved_to": null,
+   "site": "isaimini.vu",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "kollymovies.city",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "moviepie.xyz",
+   "state": "degraded"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "movier.xyz",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "movies-fd.shop",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "moviesda.business",
+   "state": "degraded"
+  },
+  {
+   "facts": 6,
+   "moved_to": null,
+   "site": "moviesda.farm",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "moviesda.red",
+   "state": "degraded"
+  },
+  {
+   "facts": 6,
+   "moved_to": null,
+   "site": "moviesda.uk",
+   "state": "degraded"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "moviesda.video",
+   "state": "degraded"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "moviesda17.com",
+   "state": "degraded"
+  },
+  {
+   "facts": 3,
+   "moved_to": null,
+   "site": "moviesdaott.com",
+   "state": "degraded"
+  },
+  {
+   "facts": 5,
+   "moved_to": "expireddomains.com",
+   "site": "moviesrace.xyz",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "moviezz.xyz",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "mp4moviez.diet",
+   "state": "degraded"
+  },
+  {
+   "facts": 6,
+   "moved_to": null,
+   "site": "mp4moviezz.xyz",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "newhdmovie2.org",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "ngmovies.com.ng",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 1,
+   "moved_to": null,
+   "site": "tamilprint.co.in",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "tamilprinthd.art",
+   "state": "degraded"
+  },
+  {
+   "facts": 16,
+   "moved_to": "xn--6-lve1d0cya6hb2e.com",
+   "site": "xn--3-lve1d0cya6hb2e.com",
+   "state": "degraded"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "moviesda.baby",
+   "state": "error"
+  },
+  {
+   "facts": 9,
+   "moved_to": null,
+   "site": "1tamilyogi.show",
+   "state": "unreachable"
+  },
+  {
+   "facts": 15,
+   "moved_to": null,
+   "site": "5movieg.com",
+   "state": "unreachable"
+  },
+  {
+   "facts": 18,
+   "moved_to": null,
+   "site": "filmyzilla34.mobi",
+   "state": "unreachable"
+  },
+  {
+   "facts": 12,
+   "moved_to": null,
+   "site": "kuttymovies1.fit",
+   "state": "unreachable"
+  },
+  {
+   "facts": 15,
+   "moved_to": null,
+   "site": "moviesda28.com",
+   "state": "unreachable"
+  },
+  {
+   "facts": 16,
+   "moved_to": null,
+   "site": "mp4moviz.xyz",
+   "state": "unreachable"
+  },
+  {
+   "facts": 3416,
+   "moved_to": null,
+   "site": "stripemovies.com",
+   "state": "unreachable"
+  },
+  {
+   "facts": 21,
+   "moved_to": "tamilprint68.art",
+   "site": "tamilprint7.art",
+   "state": "unreachable"
+  },
+  {
+   "facts": 15,
+   "moved_to": "tamilrockerss.cfd",
+   "site": "tamilrockers.website",
+   "state": "unreachable"
+  }
+ ]
+}
