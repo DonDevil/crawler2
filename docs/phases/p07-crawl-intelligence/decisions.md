@@ -25,6 +25,7 @@ Audit: [audit.md](audit.md).
 | D-15 | **Seed quality is an operator/data issue, not P7's.** P7 does not change the seed list, root redirect targets or replace dead domains. Seed refresh and redirect rooting are P6 operator procedures. A future M2 A/B on the current seed set would have a weak population (11 live domains, ~2 % new content per 4-day revisit). This must be settled before M2 | 2026-10-07 | audit §5.1 |
 
 | D-16 | **G5 measured: FAIL.** `page.changed` precision is 0.07 (sample) / 0.015 (weighted) against ≥ 0.8. The threshold is not changed. Raw `page.changed` is rejected as a scheduling signal, and so is plain URL novelty (precision 0.067). WHEN stays gated: its signal must come from WHAT (hub pages, the site's content URL template, spam patterns as negative knowledge) and be validated on a new labelled sample, because the G5 labels are held out (g5.md §4.1) | 2026-10-07 | g5.md §4 |
+| D-17 | **P7 design drafted (design.md); increment 1 = source health + fetch profile** (negative knowledge, lifecycle, reactivation, HOW). It is pure and deterministic, with an offline replay on M1 and no storage, consumer or admission wiring. Increment 2 (P7-owned table, `intel-*` best-effort consumer, admission advice) needs review and an ADR for the ADR-022 interaction (design §3). WHAT is next after review. WHEN stays gated (D-16) | 2026-10-07 | design §2–§5 |
 
 Superseded: "no P7 intelligence until the re-audit" (above, 2026-10-07)
 is replaced by D-13. P7 proceeds without a re-audit, and WHEN stays gated
