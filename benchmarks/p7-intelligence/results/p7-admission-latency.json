@@ -1,0 +1,50 @@
+{
+  "batch": 50,
+  "batches_per_round": 400,
+  "benchmark": "p7-admission-latency",
+  "hosts": 10000,
+  "machine": "x86_64",
+  "overhead_vs_off_median_us_per_url": {
+    "p7_fallback_no_snapshot": 1.4,
+    "p7_fallback_projection_stale": 2.16,
+    "p7_fallback_store_hanging": 1.2,
+    "p7_informed_10k_hosts": 23.27,
+    "p7_off": 0.0
+  },
+  "policy": "source-health/v1",
+  "python": "3.12.3",
+  "rounds": 5,
+  "scenarios": {
+    "p7_fallback_no_snapshot": {
+      "batches": 2000,
+      "median_us_per_url": 19.97,
+      "p99_us_per_url": 37.53
+    },
+    "p7_fallback_projection_stale": {
+      "batches": 2000,
+      "median_us_per_url": 20.73,
+      "p99_us_per_url": 36.99
+    },
+    "p7_fallback_store_hanging": {
+      "batches": 2000,
+      "median_us_per_url": 19.77,
+      "p99_us_per_url": 35.14
+    },
+    "p7_informed_10k_hosts": {
+      "batches": 2000,
+      "median_us_per_url": 41.84,
+      "p99_us_per_url": 63.43
+    },
+    "p7_off": {
+      "batches": 2000,
+      "median_us_per_url": 18.57,
+      "p99_us_per_url": 34.56
+    }
+  },
+  "snapshot": {
+    "bytes_per_row_json": 487,
+    "decode_ms": 72.5,
+    "load_in_memory_ms": 1.0,
+    "rows": 10000
+  }
+}

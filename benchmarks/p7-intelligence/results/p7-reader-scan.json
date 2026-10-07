@@ -1,0 +1,11 @@
+{
+  "benchmark": "p7-reader-scan",
+  "buckets": 63,
+  "buckets_per_s": 45.3,
+  "facts_applied": 96,
+  "full_rebuild_estimate_min": 7.4,
+  "keyspace": "crawler2_it_p7_host",
+  "profile_writes": 4,
+  "seconds": 1.39,
+  "shard_reads": 2016
+}
