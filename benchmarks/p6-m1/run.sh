@@ -11,20 +11,28 @@
 # namespace m1 and stream prefix m1:events:, MinIO bucket crawler2-m1. Runtime
 # state and logs live in git-ignored var/p6-m1/. Processes run on the host
 # (browsers live on the host; Scylla is reached at its container IP).
+#
+# Another dataset (e.g. the P7 seed-focused collection run, P7 decisions D-5):
+#   M1_DATASET=m1b benchmarks/p6-m1/run.sh setup|start|check|…
+# → keyspace crawler2_m1b, namespace m1b, prefix m1b:events:, bucket crawler2-m1b,
+#   state in var/p6-m1b/. Every command of one run needs the same M1_DATASET.
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 ROOT=$PWD
-VAR=$ROOT/var/p6-m1
+DATASET=${M1_DATASET:-m1}
+[[ $DATASET =~ ^m1[a-z0-9]*$ ]] || { echo "M1_DATASET must match m1[a-z0-9]*" >&2; exit 2; }
+VAR=$ROOT/var/p6-$DATASET
+export M1_VAR=$VAR
 mkdir -p "$VAR/logs" "$VAR/pids"
 
 set -a; . ./.env; set +a
 scylla_ip=$(sg docker -c "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${COMPOSE_PROJECT_NAME:-crawler2}-scylla-1")
 export CRAWLER2_REDIS__HOST=127.0.0.1 CRAWLER2_REDIS__PORT=${REDIS_HOST_PORT:-16379}
-export CRAWLER2_REDIS__NAMESPACE=m1 CRAWLER2_EVENTS__STREAM_PREFIX=m1:events:
-export CRAWLER2_SCYLLA__CONTACT_POINTS=$scylla_ip CRAWLER2_SCYLLA__KEYSPACE=crawler2_m1
-export CRAWLER2_MINIO__ENDPOINT=127.0.0.1:${MINIO_HOST_PORT:-19000} CRAWLER2_MINIO__BUCKET_RAW=crawler2-m1
+export CRAWLER2_REDIS__NAMESPACE=$DATASET CRAWLER2_EVENTS__STREAM_PREFIX=$DATASET:events:
+export CRAWLER2_SCYLLA__CONTACT_POINTS=$scylla_ip CRAWLER2_SCYLLA__KEYSPACE=crawler2_$DATASET
+export CRAWLER2_MINIO__ENDPOINT=127.0.0.1:${MINIO_HOST_PORT:-19000} CRAWLER2_MINIO__BUCKET_RAW=crawler2-$DATASET
 export CRAWLER2_MINIO__ACCESS_KEY=$MINIO_ROOT_USER CRAWLER2_MINIO__SECRET_KEY=$MINIO_ROOT_PASSWORD
-export CRAWLER2_HOST_ID=m1-host CRAWLER2_SCRATCH_DIR=$VAR/scratch
+export CRAWLER2_HOST_ID=$DATASET-host CRAWLER2_SCRATCH_DIR=$VAR/scratch
 export CRAWLER2_LOGGING__LEVEL=INFO
 # M1 worker configuration (recorded in the results): P4 defaults except these.
 # http 4: the rate the dev host's HDD-backed Scylla can extract and admit (16 and 8
@@ -32,9 +40,13 @@ export CRAWLER2_LOGGING__LEVEL=INFO
 export CRAWLER2_WORKERS__HTTP__CONCURRENCY=${M1_HTTP_CONCURRENCY:-4}
 export CRAWLER2_WORKERS__BROWSER__CONCURRENCY=${M1_BROWSER_CONCURRENCY:-2}
 export CRAWLER2_LIMITS__MAX_MEMORY_MB=${M1_MAX_MEMORY_MB:-1024}
-# Stream retention: urls.discovered entries are ~17 KB; 100k entries would exceed the
-# compose Redis maxmemory (768 MB, noeviction). Consumer lag stays far below 10k.
+# Stream retention (ADR-022): streams with consumer groups (page.observed,
+# urls.discovered) are trimmed only past acknowledged entries and bounded by bytes
+# through relay backpressure; streams without groups (fetch.completed — read by the
+# monitor —, page.changed, media.discovered) keep STREAM_MAXLEN entries and the
+# same byte budget. 5 streams × 48 MiB = 240 MiB of the 768 MB Redis maxmemory.
 export CRAWLER2_EVENTS__STREAM_MAXLEN=${M1_STREAM_MAXLEN:-10000}
+export CRAWLER2_EVENTS__STREAM_MAX_BYTES=${M1_STREAM_MAX_BYTES:-50331648}
 
 SEEDS=$ROOT/benchmarks/v1-baseline/seeds.txt
 BIN=$ROOT/env/bin
@@ -100,7 +112,7 @@ start)
     supervise http env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-worker" --pool http
     supervise browser env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-worker" --pool browser
     supervise seeds env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-discover" seeds "$SEEDS" \
-        --source w52-v1-seeds --meta file=benchmarks/v1-baseline/seeds.txt --meta phase=p6-m1 --every 21600
+        --source w52-v1-seeds --meta file=benchmarks/v1-baseline/seeds.txt --meta phase=p6-$DATASET --every 21600
     if [[ -n $queries ]]; then
         cp "$queries" "$VAR/queries.txt"
         supervise search env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-discover" search \
@@ -120,10 +132,10 @@ add-extract)  # another page.observed consumer in the same group: add-extract NA
     echo "$(date -u +%FT%TZ) add $name" >> "$VAR/restarts.log"
     supervise "$name" env CRAWLER2_METRICS__ENABLED=false "$BIN/crawler2-extract"
     ;;
-restart-relay)  # apply a new M1_STREAM_MAXLEN (the relay trims streams on publish)
+restart-relay)  # apply new M1_STREAM_MAXLEN / M1_STREAM_MAX_BYTES (retention is applied on publish)
     kill "$(cat "$VAR/pids/relay.pid")" 2>/dev/null || true
     kill "$(cat "$VAR/pids/relay.child")" 2>/dev/null || true
-    echo "$(date -u +%FT%TZ) reconfigure relay stream_maxlen=$CRAWLER2_EVENTS__STREAM_MAXLEN" >> "$VAR/restarts.log"
+    echo "$(date -u +%FT%TZ) reconfigure relay stream_maxlen=$CRAWLER2_EVENTS__STREAM_MAXLEN stream_max_bytes=$CRAWLER2_EVENTS__STREAM_MAX_BYTES" >> "$VAR/restarts.log"
     supervise relay env CRAWLER2_METRICS__PORT=9301 "$BIN/crawler2-storage" relay
     env | grep '^CRAWLER2_' | grep -v -i 'secret\|access_key\|password' | sort > "$VAR/config.env"
     ;;

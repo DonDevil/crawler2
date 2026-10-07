@@ -3,17 +3,27 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from collections import Counter, defaultdict
-from datetime import UTC, datetime
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from audit_m1 import code, read, reg, ts
 
-SPLIT = datetime(2026, 10, 2, tzinfo=UTC)
-OUT = Path(__file__).parent / "results" / "m1-audit-seed.json"
+# G2 windows (audit §3.2): A = before A_END, B = from B_START; time between them
+# belongs to neither. M1 runs 1/2: one split between the runs (4 days apart).
+# The focused run (benchmarks.md §2) pre-registers A = its first 24 h and
+# B = from 48 h on, i.e. ≥ 24 h apart.
+A_END = datetime.fromisoformat(os.environ.get("P7_WINDOW_A_END", "2026-10-02T00:00:00+00:00"))
+B_START = datetime.fromisoformat(os.environ.get("P7_WINDOW_B_START", A_END.isoformat()))
+OUT = Path(__file__).parent / "results" / os.environ.get("P7_AUDIT_SEED_OUT", "m1-audit-seed.json")
+
+
+def window(t: datetime) -> int | None:
+    return 1 if t < A_END else 2 if t >= B_START else None
 
 
 def main() -> int:
@@ -28,7 +38,9 @@ def main() -> int:
         if d not in seeds:
             continue
         att[d] += 1
-        runs[d].add(1 if ts(a["finished_at"]) < SPLIT else 2)
+        w = window(ts(a["finished_at"]))
+        if w is not None:
+            runs[d].add(w)
         c = code(a["detail"])
         caps[d][a["capability"] + ":" + c] += 1
         codes[a["capability"] + ":" + c] += 1
@@ -52,7 +64,7 @@ def main() -> int:
         return (ts(s[-1]) - ts(s[0])).total_seconds() / 3600
 
     def both(u: str) -> bool:
-        return len({ts(t) < SPLIT for t in obs[u]}) == 2
+        return {window(ts(t)) for t in obs[u]} >= {1, 2}
 
     ge2 = [u for u in obs if len(obs[u]) >= 2]
     ge3 = [u for u in obs if len(obs[u]) >= 3]

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import gzip
 import json
+import os
 import re
 import statistics
 import sys
@@ -25,8 +26,8 @@ from urllib.parse import urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from crawler2.filtering.inputs import registrable_domain
 
-EXPORT = Path("var/p7/m1-export")
-OUT = Path(__file__).parent / "results" / "m1-audit.json"
+EXPORT = Path(os.environ.get("P7_EXPORT", "var/p7/m1-export"))
+OUT = Path(__file__).parent / "results" / os.environ.get("P7_AUDIT_OUT", "m1-audit.json")
 YEAR = re.compile(r"(?<!\d)(19[5-9]\d|20[0-3]\d)(?!\d)")
 
 

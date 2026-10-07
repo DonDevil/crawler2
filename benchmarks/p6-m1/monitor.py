@@ -42,10 +42,12 @@ from crawler2.core.configuration import MinioSettings, Settings
 from crawler2.frontier.redis import RedisFrontier, connect_redis
 
 ROOT = Path(__file__).resolve().parents[2]
-VAR = ROOT / "var" / "p6-m1"
+VAR = ROOT / os.environ.get("M1_VAR", "var/p6-m1")  # run.sh exports it per dataset
 METRICS = {"relay": 9301, "admit": 9302}
 KEEP = (
     "crawler2_outbox_published_total",
+    "crawler2_outbox_backpressure_total",
+    "crawler2_outbox_publish_failures_total",
     "crawler2_discovery_",
     "crawler2_filter_",
     "crawler2_search_",
@@ -365,6 +367,7 @@ def _streams(redis: Any, prefix: str) -> dict[str, Any]:
         info = redis.xinfo_stream(key)
         streams[key.removeprefix(prefix)] = {
             "length": info["length"],
+            "bytes": redis.memory_usage(key, samples=0),
             "entries_added": info.get("entries-added"),
             "groups": groups,
         }

@@ -16,12 +16,21 @@ import os
 import sys
 from collections import Counter
 from datetime import UTC, datetime, timedelta
+from itertools import pairwise
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-VAR = ROOT / "var" / "p6-m1"
-WINDOW_H = 24.0
+VAR = ROOT / os.environ.get("M1_VAR", "var/p6-m1")  # run.sh exports it per dataset
+WINDOW_H = float(os.environ.get("M1_WINDOW_H", "24"))
+REDIS_ALERT_MB = 700
+
+
+def _metric(sample: dict[str, Any], process: str, name: str) -> float | None:
+    values = [
+        v for k, v in sample.get("metrics", {}).get(process, {}).items() if k.startswith(name)
+    ]
+    return sum(values) if values else None
 
 
 def alive(pid_file: Path) -> bool:
@@ -78,6 +87,25 @@ def main() -> int:
         status.update({k: v for k, v in f.get("status", {}).items() if k.endswith("xx")})
     if missed:
         problems.append(f"monitor missed {missed} fetch.completed entries (stream trimmed)")
+    mem = last.get("redis", {}).get("used_memory_mb")
+    if mem is not None and mem > REDIS_ALERT_MB:
+        problems.append(f"Redis {mem} MB > {REDIS_ALERT_MB} MB")
+    recent = [s for s in samples if now - datetime.fromisoformat(s["at"]) <= timedelta(minutes=15)]
+    if len(recent) >= 10:
+        # ADR-022: backpressure is safe (events wait in the outbox) but must not persist
+        raw = [_metric(s, "relay", "crawler2_outbox_backpressure_total") for s in recent]
+        bp = [b for b in raw if b is not None]
+        if len(bp) == len(raw) and all(b2 > b1 for b1, b2 in pairwise(bp)):
+            problems.append("relay backpressure in every sample for 15 min (a consumer is behind)")
+        # a fetch is not a propagated observation: page.observed must keep advancing
+        added = [
+            s.get("streams", {}).get("page.observed.v1", {}).get("entries_added") for s in recent
+        ]
+        fetched = sum((s.get("fetch") or {}).get("attempts", 0) for s in recent)
+        if None not in added and added[-1] == added[0] and fetched > 20:
+            problems.append(
+                f"page.observed not advancing for 15 min while {fetched} fetches finished"
+            )
     lag = {
         f"{name}/{group}": g.get("lag")
         for name, st in last.get("streams", {}).items()

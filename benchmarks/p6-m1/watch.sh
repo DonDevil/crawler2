@@ -2,7 +2,7 @@
 # M1 alert loop (used during run 2): emits one line per event worth acting on: a non-relay process exit, a relay
 # exit storm (> 20 in 10 min), Redis memory > 700 MB, or a failing `run.sh check` (DOWN / stale monitor).
 cd "$(dirname "$0")/../.." || exit 1
-VAR=var/p6-m1
+VAR=${M1_VAR:-var/p6-m1}
 tail -n0 -F "$VAR/restarts.log" 2>/dev/null \
     | grep --line-buffered " exit " | grep --line-buffered -v " exit relay " \
     | sed -u 's/^/EXIT: /' &

@@ -28,6 +28,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import os
 import sys
 import time
 from collections.abc import Iterator
@@ -37,7 +38,7 @@ from typing import Any
 from cassandra.cluster import Cluster, Session
 from cassandra.query import SimpleStatement
 
-OUT = Path("var/p7/m1-export")
+OUT = Path(os.environ.get("P7_EXPORT", "var/p7/m1-export"))
 
 
 def _rows(session: Session, cql: str, fetch_size: int = 1000) -> Iterator[Any]:

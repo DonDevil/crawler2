@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from collections import Counter
 from datetime import datetime, timedelta
 from itertools import pairwise
@@ -30,7 +31,7 @@ from crawler2.storage.scylla import ScyllaStorage
 from crawler2.storage.scylla.session import Consistency
 
 ROOT = Path(__file__).resolve().parents[2]
-VAR = ROOT / "var" / "p6-m1"
+VAR = ROOT / os.environ.get("M1_VAR", "var/p6-m1")  # run.sh exports it per dataset
 TRACKED = ("rss_mb", "fds", "threads", "tree_processes", "tree_rss_mb", "connections")
 
 

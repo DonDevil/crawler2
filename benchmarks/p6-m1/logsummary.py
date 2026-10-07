@@ -17,7 +17,7 @@ from pathlib import Path
 
 LEVEL = re.compile(r"^(\S+ \S+) \[(\w+)\s*\] (\S+)")
 EXCEPTION = re.compile(r"^([a-z_][\w.]*\.)?([A-Z]\w*(?:Error|Exception|Timeout|TimedOut)\w*): (.*)")
-TABLE = re.compile(r"for (crawler2_m1\.\w+)")
+TABLE = re.compile(r"for (crawler2_m1\w*\.\w+)")
 
 
 def summarise(path: Path) -> list[str]:
