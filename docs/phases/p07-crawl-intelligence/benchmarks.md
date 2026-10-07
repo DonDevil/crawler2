@@ -8,7 +8,12 @@ Audit: [audit.md](audit.md) · Decisions: [decisions.md](decisions.md).
 [audit.md](audit.md) §2–§3 and `benchmarks/p7-intelligence/results/m1-audit*.json`.
 Gate not passed.
 
-## 2. Focused collection run "M1b" (decision D-5) — PLANNED, not started
+## 2. Focused collection run "M1b" (decision D-5) — CONSIDERED AND REJECTED (D-12), NOT RUN
+
+> 2026-10-07: rejected after the read-only reassessment (audit §5). The limit
+> is the seed population (11 of 50 live), not collection time. The plan below
+> is kept as written, as history. Nothing in it was executed. The old `m1:*`
+> Redis keys were not deleted (D-14).
 
 **Purpose.** Collect seed-set history that can satisfy G1–G4 and supply
 pairs for G5, under the unchanged static M1 policy. No P7 intelligence is

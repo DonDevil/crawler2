@@ -19,9 +19,14 @@ Audit: [audit.md](audit.md).
 | D-10 | **M2 evaluation:** offline replay evaluates ranking and scheduling over observed history only. Discovering pages M1 never fetched needs a controlled live A/B comparison (same seed set, comparable budget and period), with thresholds fixed before P7 results are observed | 2026-10-07 (operator) | audit A-7 |
 | D-11 | Pre-collection hardening done: X-8 (consumer-aware, byte-bounded stream retention with publisher backpressure) and X-11 (relay retries in-process), ADR-022, commit `8921980` | 2026-10-07 | P6 decisions X-8, X-11, X-16 |
 
-Until the re-audit passes for the implementable scope, **no P7
-intelligence is implemented**: no scheduler, fetch profiles, lifecycle,
-patterns, page types, priority, P3 integration or M2.
+| D-12 | **M1b was considered and rejected; it is NOT RUN.** The read-only reassessment (audit §5) shows the limit is the seed population, not collection time or infrastructure: 11 of 50 seed domains are live, 39 are unreachable, moved, parked or empty, and changes are mostly template churn. Another 4–5 days on the same 50 domains would pass G1/G2 numerically through dead-domain timeouts and add little evidence. D-5 is superseded. The plan in benchmarks.md §2 is kept as history | 2026-10-07 (operator) | audit §5 |
+| D-13 | **P7 design starts on the existing M1 data.** No new collection is needed for the first design and implementation increment. Gate status is unchanged: G1–G4 FAIL (G3 capacity not provable, G4 proxy invalid), G5 OPEN, G6 FAIL for the seed set (Tor deferred), G7 deferred (D-7), G8 PASS. The **WHEN component (recrawl scheduling) stays gated on G5**, measured from the existing snapshots. Other components may proceed where audit §5 shows the evidence. `crawler2_m1` and the export stay as evidence | 2026-10-07 (operator) | audit §5.3 |
+| D-14 | The old `m1:*` Redis keys (393 MB) are **kept**. Deleting them is a separate maintenance decision, after confirming no analysis, replay or recovery depends on them | 2026-10-07 (operator) | — |
+| D-15 | **Seed quality is an operator/data issue, not P7's.** P7 does not change the seed list, root redirect targets or replace dead domains. Seed refresh and redirect rooting are P6 operator procedures. A future M2 A/B on the current seed set would have a weak population (11 live domains, ~2 % new content per 4-day revisit). This must be settled before M2 | 2026-10-07 | audit §5.1 |
+
+Superseded: "no P7 intelligence until the re-audit" (above, 2026-10-07)
+is replaced by D-13. P7 proceeds without a re-audit, and WHEN stays gated
+on G5.
 
 ## 2. Questions as raised by the audit (answered in D-5 … D-10)
 

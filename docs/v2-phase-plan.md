@@ -23,6 +23,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-09-29 | **P6 filter + discovery**: rules as durable versioned data with hot reload, filtering at admission (P5 facts unchanged), rooted-site scope with external leaves, static 6 h/24 h revisits, operator-supplied search queries; V1 blacklist (98 entries, not 1,463) imported through a reviewed manifest | ADR-021; D6, D7 closed in P6; Gates A–F, H passed; Gate G (24 h M1) open — run 1 reached 16.7 h; run 2 completed 24 h (2026-10-04/05) but lost events in a Redis-full stall (X-16), not passed; run 3 after X-8/X-11; M1 continues as P7 history collection |
 | 2026-10-07 | **P7 data-sufficiency gate NOT PASSED** on the M1 history (~46 h in two windows; M1 stopped 2026-10-05 09:31 UTC): seed-set thresholds G1–G4, G6 (browser/tor), G7 (no targets) fail, G5 (change precision) open | P7 implementation stopped; collection and scope questions Q1–Q5 in `docs/phases/p07-crawl-intelligence/decisions.md` |
 | 2026-10-07 | **P7 collection decisions (Q1–Q5)**: seed-focused M1 collection run (fresh dataset, search off) after X-8/X-11; P4 §33a overridden for P7 (P4 frozen); Tor profiles and target relevance deferred (G6/G7 stay FAIL, scope change); M2 browser criterion "≥ Y % fewer browser fetches" withdrawn for a HOW-specific metric; G5 labelled check; M2 new-page discovery needs a live A/B | `docs/phases/p07-crawl-intelligence/decisions.md` D-5…D-10; X-8/X-11 done (ADR-022) |
+| 2026-10-07 | **M1b rejected (not run)**: read-only reassessment — 11/50 seed domains live, changes mostly template churn, ~2 % of 4-day revisits reveal new URLs; P7 design proceeds on existing M1 data, WHEN gated on G5 | P7 decisions D-12…D-15, audit §5 |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -523,6 +524,9 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   (seed set: 11 domains with ≥ 30 attempts, 9 URLs with ≥ 3 observations
   over ≥ 24 h, no browser/Tor outcomes, no targets) — see
   `docs/phases/p07-crawl-intelligence/audit.md`. No P7 code exists.
+  M1b considered and rejected (D-12): the seed set (11/50 live), not
+  collection time, is the limit; P7 design proceeds on the existing M1
+  data with WHEN gated on G5 (D-13).
 
 ### P8 — Media registry & identity (M)
 

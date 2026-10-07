@@ -1,0 +1,1301 @@
+{
+ "change_pairs_new_url": 15,
+ "change_pairs_total": 325,
+ "live_domains": [
+  "gofullmovies.com",
+  "isaimini.com.in",
+  "isaiminimix.com",
+  "movflix.my",
+  "moviesda.business",
+  "moviesda.com.in",
+  "moviesda16.best",
+  "stripemovies.com",
+  "tamilprint.co.in",
+  "tamilprint.com.in",
+  "tamilrockers2024.com"
+ ],
+ "live_html2xx_urls": 21013,
+ "revisits_by_domain": {
+  "isaimini.com.in": {
+   "listing": 15,
+   "new_urls": 17,
+   "other": 79
+  },
+  "movflix.my": {
+   "listing": 43,
+   "new_urls": 0,
+   "other": 35
+  },
+  "moviesda.business": {
+   "listing": 3,
+   "new_urls": 5,
+   "other": 10
+  },
+  "moviesda.com.in": {
+   "listing": 3,
+   "new_urls": 7,
+   "other": 16
+  },
+  "moviesda16.best": {
+   "listing": 1,
+   "new_urls": 0
+  },
+  "tamilprint.co.in": {
+   "listing": 2,
+   "new_urls": 0
+  },
+  "tamilprint.com.in": {
+   "listing": 6,
+   "new_urls": 1,
+   "other": 196
+  },
+  "tamilprinttv.com": {
+   "new_urls": 0,
+   "other": 1
+  },
+  "tamilrockers2024.com": {
+   "listing": 1,
+   "new_urls": 0,
+   "other": 1
+  },
+  "xn--mlc3avm5adt5g.net": {
+   "new_urls": 0,
+   "other": 1
+  }
+ },
+ "revisits_run1_to_run2": {
+  "listing": 74,
+  "listing_revealed_new": 4,
+  "new_urls": 30,
+  "other": 339,
+  "other_revealed_new": 4
+ },
+ "rows": [
+  {
+   "attempts": 8,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "1tamilmv.army",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 6,
+    "http:ok": 2
+   },
+   "redirect_away": {
+    "1tamilmv.capital": 1,
+    "1tamilmv.lease": 1
+   },
+   "run1": 6,
+   "run2": 2,
+   "s429": 0,
+   "statuses": {
+    "200": 2
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "1tamilyogi.show",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "run2": 6,
+   "statuses": {}
+  },
+  {
+   "attempts": 15,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "5movieg.com",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 6,
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 9,
+   "statuses": {}
+  },
+  {
+   "attempts": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "coolmoviez.forum",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 18,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "filmyzilla34.mobi",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 6,
+    "http:timeout": 12
+   },
+   "redirect_away": {},
+   "run1": 9,
+   "run2": 9,
+   "statuses": {}
+  },
+  {
+   "attempts": 150,
+   "attempts_2xx": 145,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "gofullmovies.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 53,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 6,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 86,
+   "known_urls": 149,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 53,
+   "observed_ge3": 6,
+   "observed_urls": 90,
+   "outcomes": {
+    "http:http_error": 4,
+    "http:not_modified": 1,
+    "http:ok": 145
+   },
+   "redirect_away": {},
+   "run1": 150,
+   "s429": 0,
+   "statuses": {
+    "200": 145,
+    "304": 1,
+    "400": 1,
+    "404": 3
+   }
+  },
+  {
+   "attempts": 4,
+   "attempts_2xx": 1,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "isaidub.love",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:ok": 1,
+    "http:timeout": 3
+   },
+   "redirect_away": {
+    "isaiidub.com": 1
+   },
+   "run1": 3,
+   "run2": 1,
+   "s429": 0,
+   "statuses": {
+    "200": 1
+   }
+  },
+  {
+   "attempts": 5427,
+   "attempts_2xx": 5384,
+   "browser": 0,
+   "change_pairs": {
+    "links_added": 93,
+    "new_url_revealed": 10,
+    "pairs": 93
+   },
+   "changed_urls": 87,
+   "changes": 93,
+   "domain": "isaimini.com.in",
+   "ever_2xx": true,
+   "html2xx_ge2": 120,
+   "html2xx_ge2_span24h": 94,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 4801,
+   "known_urls": 5360,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 128,
+   "observed_ge3": 1,
+   "observed_urls": 4823,
+   "outcomes": {
+    "http:http_error": 26,
+    "http:ok": 5384,
+    "http:timeout": 17
+   },
+   "redirect_away": {},
+   "run1": 5112,
+   "run2": 315,
+   "s429": 0,
+   "statuses": {
+    "200": 5384,
+    "400": 2,
+    "404": 23,
+    "503": 1
+   }
+  },
+  {
+   "attempts": 26,
+   "attempts_2xx": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "isaimini.farm",
+   "ever_2xx": true,
+   "known_urls": 5,
+   "needs_js": 0,
+   "outcomes": {
+    "http:http_error": 10,
+    "http:network_error": 13,
+    "http:ok": 3
+   },
+   "redirect_away": {
+    "isaimini.dog": 1,
+    "isaimini.fashion": 2,
+    "isaimini.site": 10
+   },
+   "run1": 19,
+   "run2": 7,
+   "s429": 0,
+   "statuses": {
+    "200": 3,
+    "525": 10
+   }
+  },
+  {
+   "attempts": 13,
+   "attempts_2xx": 1,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "isaimini.spot",
+   "ever_2xx": true,
+   "html2xx_ge2": 0,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1,
+   "known_urls": 5,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 0,
+   "observed_ge3": 0,
+   "observed_urls": 5,
+   "outcomes": {
+    "http:http_error": 4,
+    "http:network_error": 8,
+    "http:ok": 1
+   },
+   "redirect_away": {},
+   "run1": 10,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "200": 1,
+    "404": 4
+   }
+  },
+  {
+   "attempts": 12,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "isaimini.vu",
+   "ever_2xx": false,
+   "known_urls": 2,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 3,
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 9,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 1456,
+   "attempts_2xx": 1454,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "isaiminimix.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 46,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1408,
+   "known_urls": 1459,
+   "media_pages": 127,
+   "needs_js": 0,
+   "observed_ge2": 46,
+   "observed_ge3": 0,
+   "observed_urls": 1410,
+   "outcomes": {
+    "http:http_error": 2,
+    "http:ok": 1454
+   },
+   "redirect_away": {},
+   "run1": 1455,
+   "run2": 1,
+   "s429": 0,
+   "statuses": {
+    "200": 1454,
+    "400": 1,
+    "404": 1
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "kollymovies.city",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 12,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "kuttymovies1.fit",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 3,
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 6,
+   "statuses": {}
+  },
+  {
+   "attempts": 5,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "mantrimalgame.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 0,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 2,
+   "known_urls": 3,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 0,
+   "observed_ge3": 0,
+   "observed_urls": 3,
+   "outcomes": {
+    "http:http_error": 1,
+    "http:not_modified": 2,
+    "http:ok": 2
+   },
+   "redirect_away": {},
+   "run1": 4,
+   "run2": 1,
+   "s429": 0,
+   "statuses": {
+    "200": 2,
+    "304": 2,
+    "404": 1
+   }
+  },
+  {
+   "attempts": 5550,
+   "attempts_2xx": 4642,
+   "browser": 0,
+   "change_pairs": {
+    "links_added": 0,
+    "new_url_revealed": 0,
+    "pairs": 4
+   },
+   "changed_urls": 4,
+   "changes": 4,
+   "domain": "movflix.my",
+   "ever_2xx": true,
+   "html2xx_ge2": 357,
+   "html2xx_ge2_span24h": 78,
+   "html2xx_ge3": 8,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 3462,
+   "known_urls": 5475,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 623,
+   "observed_ge3": 245,
+   "observed_urls": 4584,
+   "outcomes": {
+    "http:dns_error": 1,
+    "http:http_error": 802,
+    "http:not_modified": 61,
+    "http:ok": 4642,
+    "http:timeout": 42
+   },
+   "redirect_away": {},
+   "run1": 5014,
+   "run2": 536,
+   "s429": 0,
+   "statuses": {
+    "200": 4642,
+    "304": 61,
+    "500": 719,
+    "503": 42
+   }
+  },
+  {
+   "attempts": 9,
+   "attempts_2xx": 1,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviedrivebd.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 0,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1,
+   "known_urls": 109,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 0,
+   "observed_ge3": 0,
+   "observed_urls": 1,
+   "outcomes": {
+    "http:network_error": 2,
+    "http:ok": 1,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "200": 1
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviepie.xyz",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 1,
+    "http:network_error": 2,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "movier.xyz",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "movies-fd.shop",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 9,
+   "attempts_2xx": 0,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.baby",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "observed_ge2": 1,
+   "observed_ge3": 1,
+   "observed_urls": 1,
+   "outcomes": {
+    "http:http_error": 9
+   },
+   "redirect_away": {},
+   "run1": 5,
+   "run2": 4,
+   "s429": 0,
+   "statuses": {
+    "404": 9
+   }
+  },
+  {
+   "attempts": 3162,
+   "attempts_2xx": 1975,
+   "browser": 0,
+   "change_pairs": {
+    "links_added": 13,
+    "new_url_revealed": 1,
+    "pairs": 13
+   },
+   "changed_urls": 13,
+   "changes": 13,
+   "domain": "moviesda.business",
+   "ever_2xx": true,
+   "html2xx_ge2": 13,
+   "html2xx_ge2_span24h": 13,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 1640,
+   "known_urls": 3302,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 21,
+   "observed_ge3": 1,
+   "observed_urls": 3150,
+   "outcomes": {
+    "http:http_error": 1186,
+    "http:not_modified": 1,
+    "http:ok": 1975
+   },
+   "redirect_away": {},
+   "run1": 2729,
+   "run2": 433,
+   "s429": 0,
+   "statuses": {
+    "200": 1975,
+    "304": 1,
+    "400": 2,
+    "404": 1184
+   }
+  },
+  {
+   "attempts": 5731,
+   "attempts_2xx": 3314,
+   "browser": 2,
+   "change_pairs": {
+    "links_added": 4,
+    "new_url_revealed": 3,
+    "pairs": 12
+   },
+   "changed_urls": 10,
+   "changes": 12,
+   "domain": "moviesda.com.in",
+   "ever_2xx": true,
+   "html2xx_ge2": 21,
+   "html2xx_ge2_span24h": 19,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 3217,
+   "known_urls": 5713,
+   "media_pages": 0,
+   "needs_js": 2,
+   "observed_ge2": 33,
+   "observed_ge3": 1,
+   "observed_urls": 5604,
+   "outcomes": {
+    "browser:captcha": 2,
+    "http:http_error": 2395,
+    "http:needs_js": 2,
+    "http:ok": 3310,
+    "http:timeout": 21
+   },
+   "redirect_away": {},
+   "run1": 5652,
+   "run2": 79,
+   "s429": 0,
+   "statuses": {
+    "200": 3314,
+    "403": 2379,
+    "404": 9,
+    "503": 6
+   }
+  },
+  {
+   "attempts": 6,
+   "attempts_2xx": 0,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.farm",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:blocked": 3,
+    "http:network_error": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "403": 3
+   }
+  },
+  {
+   "attempts": 6,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.info",
+   "ever_2xx": true,
+   "html2xx_ge2": 0,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 2,
+   "known_urls": 2,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 0,
+   "observed_ge3": 0,
+   "observed_urls": 2,
+   "outcomes": {
+    "http:not_modified": 4,
+    "http:ok": 2
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "200": 2,
+    "304": 4
+   }
+  },
+  {
+   "attempts": 11,
+   "attempts_2xx": 1,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.net.in",
+   "ever_2xx": true,
+   "html2xx_ge2": 0,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1,
+   "known_urls": 2,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 0,
+   "observed_ge3": 0,
+   "observed_urls": 1,
+   "outcomes": {
+    "http:not_modified": 1,
+    "http:ok": 1,
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 5,
+   "s429": 0,
+   "statuses": {
+    "200": 1,
+    "304": 1
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.red",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 6,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.uk",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "statuses": {}
+  },
+  {
+   "attempts": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda.video",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 2813,
+   "attempts_2xx": 2302,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda16.best",
+   "ever_2xx": true,
+   "html2xx_ge2": 4,
+   "html2xx_ge2_span24h": 1,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 1192,
+   "known_urls": 2803,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 4,
+   "observed_ge3": 1,
+   "observed_urls": 1692,
+   "outcomes": {
+    "http:http_error": 500,
+    "http:network_error": 1,
+    "http:ok": 2302,
+    "http:timeout": 7,
+    "http:too_large": 2
+   },
+   "redirect_away": {
+    "downloadpage.xyz": 2,
+    "tamilxt.site": 1103
+   },
+   "run1": 2768,
+   "run2": 45,
+   "s429": 0,
+   "statuses": {
+    "200": 2302,
+    "404": 500
+   }
+  },
+  {
+   "attempts": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda17.com",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 15,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesda28.com",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 6,
+    "http:timeout": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 9,
+   "statuses": {}
+  },
+  {
+   "attempts": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesdaott.com",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 5,
+   "attempts_2xx": 5,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviesrace.xyz",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:ok": 5
+   },
+   "redirect_away": {
+    "expireddomains.com": 5
+   },
+   "run1": 2,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "200": 5
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "moviezz.xyz",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "mp4moviez.diet",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 6,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "mp4moviezz.xyz",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 3,
+    "http:timeout": 3
+   },
+   "redirect_away": {},
+   "run1": 3,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 16,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "mp4moviz.xyz",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 2,
+    "http:redirect_error": 1,
+    "http:timeout": 13
+   },
+   "redirect_away": {},
+   "run1": 9,
+   "run2": 7,
+   "statuses": {}
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "newhdmovie2.org",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "ngmovies.com.ng",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:dns_error": 9
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 3416,
+   "attempts_2xx": 3312,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "stripemovies.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 1483,
+   "html2xx_ge2_span24h": 0,
+   "html2xx_ge3": 15,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1813,
+   "known_urls": 3456,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 1483,
+   "observed_ge3": 15,
+   "observed_urls": 1817,
+   "outcomes": {
+    "http:http_error": 2,
+    "http:not_modified": 1,
+    "http:ok": 3312,
+    "http:timeout": 5,
+    "http:tls_error": 96
+   },
+   "redirect_away": {},
+   "run1": 3320,
+   "run2": 96,
+   "s429": 0,
+   "statuses": {
+    "200": 3312,
+    "304": 1,
+    "400": 1,
+    "404": 1
+   }
+  },
+  {
+   "attempts": 238,
+   "attempts_2xx": 218,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "tamilprint.co.in",
+   "ever_2xx": true,
+   "html2xx_ge2": 2,
+   "html2xx_ge2_span24h": 2,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 215,
+   "known_urls": 232,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 2,
+   "observed_ge3": 1,
+   "observed_urls": 232,
+   "outcomes": {
+    "http:http_error": 17,
+    "http:not_modified": 3,
+    "http:ok": 218
+   },
+   "redirect_away": {},
+   "run1": 234,
+   "run2": 4,
+   "s429": 0,
+   "statuses": {
+    "200": 218,
+    "304": 3,
+    "400": 1,
+    "404": 16
+   }
+  },
+  {
+   "attempts": 2787,
+   "attempts_2xx": 2750,
+   "browser": 0,
+   "change_pairs": {
+    "links_added": 164,
+    "new_url_revealed": 1,
+    "pairs": 202
+   },
+   "changed_urls": 202,
+   "changes": 202,
+   "domain": "tamilprint.com.in",
+   "ever_2xx": true,
+   "html2xx_ge2": 218,
+   "html2xx_ge2_span24h": 202,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 2529,
+   "known_urls": 2567,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 224,
+   "observed_ge3": 1,
+   "observed_urls": 2542,
+   "outcomes": {
+    "http:http_error": 17,
+    "http:ok": 2750,
+    "http:timeout": 20
+   },
+   "redirect_away": {},
+   "run1": 2501,
+   "run2": 286,
+   "s429": 0,
+   "statuses": {
+    "200": 2750,
+    "400": 2,
+    "404": 15
+   }
+  },
+  {
+   "attempts": 21,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "tamilprint7.art",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 6,
+    "http:ok": 2,
+    "http:timeout": 13
+   },
+   "redirect_away": {
+    "tamilprint67.art": 1,
+    "tamilprint68.art": 1
+   },
+   "run1": 13,
+   "run2": 8,
+   "s429": 0,
+   "statuses": {
+    "200": 2
+   }
+  },
+  {
+   "attempts": 9,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "tamilprinthd.art",
+   "ever_2xx": false,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 3,
+    "http:timeout": 6
+   },
+   "redirect_away": {},
+   "run1": 6,
+   "run2": 3,
+   "statuses": {}
+  },
+  {
+   "attempts": 5,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "tamilprinttv.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 1,
+   "html2xx_ge2_span24h": 1,
+   "html2xx_ge3": 0,
+   "html2xx_ge3_span24h": 0,
+   "html2xx_urls": 1,
+   "known_urls": 1,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 1,
+   "observed_ge3": 0,
+   "observed_urls": 1,
+   "outcomes": {
+    "http:not_modified": 3,
+    "http:ok": 2
+   },
+   "redirect_away": {},
+   "run1": 2,
+   "run2": 3,
+   "s429": 0,
+   "statuses": {
+    "200": 2,
+    "304": 3
+   }
+  },
+  {
+   "attempts": 15,
+   "attempts_2xx": 1,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "tamilrockers.website",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 7,
+    "http:ok": 1,
+    "http:timeout": 7
+   },
+   "redirect_away": {
+    "tamilrockerss.cfd": 1
+   },
+   "run1": 6,
+   "run2": 9,
+   "s429": 0,
+   "statuses": {
+    "200": 1
+   }
+  },
+  {
+   "attempts": 1034,
+   "attempts_2xx": 656,
+   "browser": 0,
+   "change_pairs": {
+    "links_added": 1,
+    "new_url_revealed": 0,
+    "pairs": 1
+   },
+   "changed_urls": 1,
+   "changes": 1,
+   "domain": "tamilrockers2024.com",
+   "ever_2xx": true,
+   "html2xx_ge2": 2,
+   "html2xx_ge2_span24h": 2,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 650,
+   "known_urls": 1028,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 2,
+   "observed_ge3": 1,
+   "observed_urls": 1027,
+   "outcomes": {
+    "http:http_error": 376,
+    "http:not_modified": 2,
+    "http:ok": 656
+   },
+   "redirect_away": {},
+   "run1": 1030,
+   "run2": 4,
+   "s429": 0,
+   "statuses": {
+    "200": 656,
+    "304": 2,
+    "403": 85,
+    "404": 290
+   }
+  },
+  {
+   "attempts": 16,
+   "attempts_2xx": 2,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "xn--3-lve1d0cya6hb2e.com",
+   "ever_2xx": true,
+   "known_urls": 1,
+   "needs_js": 0,
+   "outcomes": {
+    "http:network_error": 1,
+    "http:ok": 2,
+    "http:timeout": 13
+   },
+   "redirect_away": {
+    "xn--6-lve1d0cya6hb2e.com": 2
+   },
+   "run1": 9,
+   "run2": 7,
+   "s429": 0,
+   "statuses": {
+    "200": 2
+   }
+  },
+  {
+   "attempts": 3,
+   "attempts_2xx": 3,
+   "browser": 0,
+   "change_pairs": {},
+   "domain": "xn--mlc3avm5adt5g.net",
+   "ever_2xx": true,
+   "html2xx_ge2": 1,
+   "html2xx_ge2_span24h": 1,
+   "html2xx_ge3": 1,
+   "html2xx_ge3_span24h": 1,
+   "html2xx_urls": 1,
+   "known_urls": 1,
+   "media_pages": 0,
+   "needs_js": 0,
+   "observed_ge2": 1,
+   "observed_ge3": 1,
+   "observed_urls": 1,
+   "outcomes": {
+    "http:ok": 3
+   },
+   "redirect_away": {},
+   "run1": 2,
+   "run2": 1,
+   "s429": 0,
+   "statuses": {
+    "200": 3
+   }
+  }
+ ],
+ "seed_domains": 50
+}

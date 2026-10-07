@@ -260,3 +260,81 @@ unchanged would mostly add NCBI history.
 | A-7 | Offline replay can only score URLs that M1 actually fetched, because unfetched pages have no observed content | offline evaluation can rank and schedule within M1's observed set. "More new pages under the same budget" needs a live A/B run of both policies (plan §P7 M2) |
 | A-8 | 25 of 50 seed domains never answered 2xx | lifecycle "dead" is visible in the data; negative knowledge has real input |
 | A-9 | Only 12 % of pages carry published/modified dates, there are 3 `video.movie` og types, and 13,008 paths contain a year | temporal relevance without targets would rest on URL years and dates on a minority of pages |
+
+## 5. Reassessment of the seed set (2026-10-07, read-only; decision D-12)
+
+Added after the gate result above. §1–§4 are unchanged. The question was
+whether the existing M1 data is enough to start P7 without the M1b run
+(benchmarks.md §2). Tool: `benchmarks/p7-intelligence/reassess_seed.py`,
+results in `results/m1-reassess-seed.json`. It uses the same export and
+reads nothing new from Scylla, Redis or MinIO.
+
+### 5.1 Seed availability
+
+**11 of the 50 seed domains are live** (≥ 50 HTML 2xx pages): 21,013 HTML
+2xx pages in total. The other 39:
+
+| Class | Domains | Evidence |
+|---|---:|---|
+| unreachable (timeout / DNS / connection only) | 24 | 3–18 attempts each, never a response |
+| moved to a new mirror or parked | 7 | the response's final URL is on another registrable domain: isaimini.farm → isaimini.site, tamilprint7.art → tamilprint68.art, 1tamilmv.army → 1tamilmv.lease, tamilrockers.website → tamilrockerss.cfd, xn--3-… → xn--6-…, isaidub.love → isaiidub.com, moviesrace.xyz → expireddomains.com (parked). P6 does not root redirect targets (P6 limitation 4), so the mirrors were never crawled |
+| a response, but ≤ 2 HTML pages | 7 | e.g. moviesda.info (304s), isaimini.spot (404s), tamilprinttv.com |
+| only 4xx | 1 | moviesda.baby (404 × 9) |
+
+| Live domain | Attempts run 1 / run 2 | HTML 2xx pages | ≥ 2 obs over ≥ 24 h | ≥ 3 obs | changed pages | change pairs (new URL revealed) | media pages |
+|---|---|---:|---:|---:|---:|---|---:|
+| isaimini.com.in | 5,112 / 315 | 4,801 | 94 | 1 | 87 | 93 (10) | 0 |
+| movflix.my | 5,014 / 536 | 3,462 | 78 | 8 | 4 | 4 (0) | 0 |
+| moviesda.com.in | 5,652 / 79 | 3,217 | 19 | 1 | 10 | 12 (3) | 0 |
+| tamilprint.com.in | 2,501 / 286 | 2,529 | 202 | 1 | 202 | 202 (1) | 0 |
+| stripemovies.com | 3,320 / 96 | 1,813 | 0 | 15 | 0 | — | 0 |
+| moviesda.business | 2,729 / 433 | 1,640 | 13 | 1 | 13 | 13 (1) | 0 |
+| isaiminimix.com | 1,455 / 1 | 1,408 | 0 | 0 | 0 | — | 127 |
+| moviesda16.best | 2,768 / 45 | 1,192 | 1 | 1 | 0 | — | 0 |
+| tamilrockers2024.com | 1,030 / 4 | 650 | 2 | 1 | 1 | 1 (0) | 0 |
+| tamilprint.co.in | 234 / 4 | 215 | 2 | 1 | 0 | — | 0 |
+| gofullmovies.com | 150 / 0 | 86 | 0 | 6 | 0 | — | 0 |
+
+- **Revisits on the live domains collapsed in run 2.** 30k seed-domain
+  attempts in run 1 against 1.8k in run 2. The frontier stayed full of NCBI
+  tasks, so seed links could not be readmitted.
+- Browser: 2 attempts (both captcha) and 2 `needs_js`, all on moviesda.com.in.
+  No 429 on seed domains.
+
+### 5.2 What the changes contain
+
+- **325 `page.changed` transitions** on 6 seed domains. Only **15** of them
+  linked to a same-site URL the crawl had not seen before. (An earlier ad-hoc
+  count of 10 kept each revision's last extract instead of its first sighting.)
+- tamilprint.com.in's 202 changes are on old detail posts
+  (`/radhe-shyam-2022/`, `/purampokku-…-2015/`). In 164 of them the link set
+  changed, yet only 1 revealed a new URL. That is consistent with rotating
+  widgets.
+- isaimini.com.in carries SEO-spam posts (casino, EPR registration) next to
+  its film pages.
+- WordPress detail posts sit at path depth 1, so **path depth does not
+  separate listing from detail pages**. G4's class proxy is invalid for
+  these sites.
+- Of the 413 live-domain pages revisited between run 1 and run 2 (4 days
+  apart), **8 revealed a new same-site URL**, 30 new URLs in total: about 2 %
+  of revisits.
+
+### 5.3 Gate reading (the definitions in §3 are unchanged)
+
+| Gate | Formal status | What the existing data shows |
+|---|---|---|
+| G1 | FAIL (11/20) | The 11 are exactly the live domains. The dead ones would reach 30 attempts through about 2 more days of timeouts: a numeric pass with no new knowledge. The binding limit is seed availability. |
+| G2 | FAIL (10/20) | Same. The live domain missing from run 2 (gofullmovies) was starved by the full frontier. |
+| G3 | FAIL; capacity **not provable** | A pool of 21,013 HTML pages on 11 domains exists. ≥ 10 qualifying domains would need almost every live domain revisited ≥ 3 times, which M1 never did. Per-page rates on these sites would be ~0 anyway (§5.2). |
+| G4 | FAIL; **proxy invalid** | Changes exist on 6 domains, but path depth is not a page class, and most changes are template churn. |
+| G5 | OPEN | 325 pairs and their snapshots exist, so it is measurable without new collection. |
+| G6 | FAIL for the seed set | Seed sites are HTTP-only. The 5,112 escalations on 20 off-target domains can test the HOW mechanism, but they are not seed-set evidence. Tor is deferred (D-7). |
+| G7 | deferred (D-7) | no targets before P9 |
+| G8 | PASS | 127 pages, all on isaiminimix.com |
+
+**Conclusion.** The limit is the seed population, not collection time. A
+longer run on the same 50 domains would mostly wait on dead domains, pass
+G1/G2 numerically, and re-measure template churn. The existing data is rich
+for HOW and negative knowledge (dead, moved, parked, 4xx, 304, 429), for
+WHAT (21k pages on 11 live sites) and for lifecycle. The one missing
+measurement is G5, and that blocks only the WHEN component.
