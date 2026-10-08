@@ -184,3 +184,30 @@ that rate. That is a lower bound, because these buckets were nearly empty.
 A busy outbox costs more per bucket. This is a sample of one, not a load
 test. The steady state is 1 bucket per minute.
 
+
+## 5. Increment 3 (WHAT): CPU cost (2026-10-08)
+
+`benchmarks/p7-intelligence/what_bench.py` → `results/what-bench.json`.
+It runs on the host (Python 3.12, x86_64). The 20,966 seed pages are loaded
+first, outside the timing. It times `build_site_profile` per host and
+`analyze_page` per page. No network or storage is involved.
+
+| Measure | Value |
+|---|---|
+| pages / hosts | 20,966 / 27 (incl. spam subdomains) |
+| anchor links per page | median 31, p99 287, max 310 |
+| profile build, all hosts | 3.2 s total (the largest host, ~4,800 pages, sampled to 1,000) |
+| `analyze_page` | median **268 µs**, p99 **4.5 ms**, max 9.9 ms |
+
+Decisions over the whole population, unlabelled, descriptive only:
+
+| Kind | relevant | spam | unknown |
+|---|---:|---:|---:|
+| detail | 8,912 | 4,474 | 2,269 |
+| hub | 3,538 | 95 | 1,030 |
+| other | 6 | 17 | 625 |
+
+The cost scales with a page's links: each one is tokenized and checked
+against the vocabulary. This is fine for batch use. A runtime hook would
+want a per-profile cache of link templates, and that optimization is
+deferred until a runtime use exists.

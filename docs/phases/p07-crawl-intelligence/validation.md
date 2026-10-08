@@ -3,7 +3,8 @@
 Chronology: [audit.md](audit.md) §1–§4 (gate not passed) → §5
 (reassessment; M1b rejected, D-12) → [g5.md](g5.md) (G5 FAIL, D-16) →
 [design.md](design.md) → increment 1 ([implementation.md](implementation.md)) →
-increment 2 review (audit §6, D-18, ADR-023) → increment 2.
+increment 2 review (audit §6, D-18, ADR-023) → increment 2 → increment 3,
+WHAT ([what.md](what.md), D-19).
 
 ## 1. Gate status (2026-10-07)
 
@@ -113,3 +114,67 @@ were not touched (tests use private stream prefixes and frontier
 namespaces). `crawler2_m1` was not migrated or read. The tests use the
 throwaway keyspace `crawler2_it_p7_host`.
 
+
+## 6. Increment 3 (WHAT) results (2026-10-08)
+
+Gate status (§1) is unchanged: G5 FAIL, WHEN gated, M2 not started. WHAT
+is evaluated on its **own** labelled sample (what.md §3). It does not
+re-score G5, and no G5 label was read.
+
+**Method.** There are 286 seed pages (11 domains × 26), stratified and
+deterministic, with the G5 URLs excluded. Hash split: dev 142, holdout 144.
+The labels and the vocabulary were committed before any rule (`d699b94`).
+The rules were developed on dev and frozen in `2b8233f`. The holdout was
+scored once after that, with no change afterwards.
+
+| Measure (holdout) | Value |
+|---|---|
+| page kind accuracy | **0.972** (n = 144) |
+| hub P / R / F1 | 1.000 / 0.962 / 0.981 (n = 79) |
+| detail P / R / F1 | 0.953 / 0.984 / 0.968 (n = 62) |
+| other P / R / F1 | 0.750 / 1.000 / 0.857 (n = 3, too few to estimate) |
+| relevance decided | 105 / 138 (76 %); `unknown` = abstention |
+| relevant P / R / F1 | 0.977 / 0.804 / 0.882 (n = 107) |
+| spam P / R / F1 | 1.000 / 0.548 / 0.708 (n = 31) |
+| relevant details whose template is a content template | 43 / 43 |
+| spam details inside a content template | 5 / 19 (2 of them called relevant) |
+
+Dev numbers, which were tuned on, and the per-domain tables are in
+what.md §5. **Per domain:** page kind is ≥ 0.83 on every domain.
+Relevance abstains mostly on gofullmovies.com and stripemovies.com, whose
+titles carry no years or vocabulary. The 2 wrong holdout relevance
+decisions are on moviesda.com.in (an SEO "…for 2026" article) and
+moviesda16.best (a defaced film URL). No single domain carries the result.
+
+**Determinism.** `what_eval.py` output is byte-identical under
+`PYTHONHASHSEED` 1 and 999. Hypothesis checks order and duplicate
+independence of profiles and results. Every state is bounded by
+`WhatPolicy`.
+
+**Performance** ([benchmarks.md](benchmarks.md) §5). Over 20,966 pages,
+building profiles for 27 hosts takes 3.2 s. `analyze_page` costs a median
+of 268 µs and p99 4.5 ms (CPU only, I/O excluded).
+
+**Readiness.** WHAT is ready to be the **input** on which the WHEN signal
+is designed and validated: hub detection (holdout hub precision 1.0) and
+the content-template links per hub. It is **not** production-ready:
+
+- one population of 11 sites;
+- a single labeller;
+- spam recall 0.55;
+- 24 % abstention;
+- no runtime projection.
+
+WHEN still needs its own labelled hub-revisit sample (design §7).
+
+### 6.1 Regression for increment 3 (2026-10-08, host)
+
+| Tier | Result |
+|---|---|
+| `make check` (ruff, mypy, unit + contract) | **672 passed**, 119 skipped (integration needs the stack). That is +60 WHAT tests over increment 2 |
+| `scripts/test-intelligence.sh tests/integration/storage` (P7 + discovery unit, every storage integration test incl. the P7 projection) | **199 passed** |
+| `scripts/test-filter-discovery.sh` (P6 tier) | not re-run: increment 3 changes no P6, P5 or runtime code (last run at increment 2: 109 passed) |
+
+**Not run:** M1b (rejected), M2, any collection or crawl. MinIO
+`crawler2-m1` was read only, for the label cards. `crawler2_m1` and the old
+`m1:*` Redis keys were not touched. No migration and no setting were added.

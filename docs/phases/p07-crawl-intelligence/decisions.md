@@ -27,6 +27,7 @@ Audit: [audit.md](audit.md).
 | D-16 | **G5 measured: FAIL.** `page.changed` precision is 0.07 (sample) / 0.015 (weighted) against ≥ 0.8. The threshold is not changed. Raw `page.changed` is rejected as a scheduling signal, and so is plain URL novelty (precision 0.067). WHEN stays gated: its signal must come from WHAT (hub pages, the site's content URL template, spam patterns as negative knowledge) and be validated on a new labelled sample, because the G5 labels are held out (g5.md §4.1) | 2026-10-07 | g5.md §4 |
 | D-17 | **P7 design drafted (design.md); increment 1 = source health + fetch profile** (negative knowledge, lifecycle, reactivation, HOW). It is pure and deterministic, with an offline replay on M1 and no storage, consumer or admission wiring. Increment 2 (P7-owned table, `intel-*` best-effort consumer, admission advice) needs review and an ADR for the ADR-022 interaction (design §3). WHAT is next after review. WHEN stays gated (D-16) | 2026-10-07 | design §2–§5 |
 | D-18 | **Increment 2 review: the `intel-*` best-effort consumer group is rejected; [ADR-023](../../adr/ADR-023-projection-readers-outside-stream-retention.md) is adopted.** Under ADR-022 any group on `fetch.completed` (which has none today) would let a dead P7 hold back the relay, and with it every stream. Exempting `intel-*` would change the P2 publisher and still need a rebuild source. Instead, P7 reads the outbox (the 14-day system of record) read-only through P2's `OutboxStore`, with its own checkpoint, generations and gap rebuild. **ADR-022, the publisher, the relay, stream settings and P1 contracts are unchanged.** Storage: `intel_source_profiles` + `intel_projection_state` (V004). `source_profile_moves` is dropped (the profile keeps the latest target; the history is in W1). Admission advice is **off by default** (`intelligence.advice_enabled`). When off, stale, empty, rebuilding, unavailable or failing, it falls back to admit on http, which is today's behaviour. Implemented and tested (design §9); WHAT is next after review; WHEN stays gated; priority stays P6 | 2026-10-07 | design §3, §9; audit §6 |
+| D-19 | **WHAT implemented as a pure, offline library (increment 3, policy `what/v1`, [what.md](what.md)).** It classifies page kind (hub/detail/other), tokenizes URLs into per-host templates with roles (content, mixed, spam, listing, unknown), and decides page relevance (relevant/spam/unknown) with reason codes. Its vocabulary is versioned operator data (`what-vocabulary/v1`), and no single term decides. It was evaluated on a **new** labelled sample of 286 seed pages (dev 142 / holdout 144; G5 URLs excluded, G5 labels not read). The labels and vocabulary were committed before any rule. The rules were frozen on dev before the holdout was scored once. **Holdout:** kind accuracy 0.972 (hub P 1.000 / R 0.962); relevance decided on 76 %, relevant P 0.977 / R 0.804, spam P 1.000 / R 0.548. **No storage, no consumer, no runtime hook, no interface change**; P1–P6, ADR-022 and ADR-023 unchanged. WHAT is an input that WHEN can be designed on. It is not production-ready, and WHEN stays gated (D-16) | 2026-10-08 | what.md §3–§5 |
 
 Superseded: "no P7 intelligence until the re-audit" (above, 2026-10-07)
 is replaced by D-13. P7 proceeds without a re-audit, and WHEN stays gated
@@ -53,3 +54,41 @@ consumer group) is replaced by D-18 (an outbox reader, ADR-023).
 | Target relevance, release timing, target-triggered reactivation | after P9 (`target.registered`) |
 | Tor fetch profiles | needs a Tor daemon (environment) |
 | Media-identity-based "new media" | P8 |
+
+## 4. Frozen decisions and boundaries (2026-10-08)
+
+These hold for every later P7 increment. Each one is reopened only by an
+explicit decision recorded here, never as a side effect of an
+implementation.
+
+| # | Boundary | Source |
+|---|---|---|
+| F-1 | P1 contracts are frozen. A contract change needs an ADR before any code | P1, ADR-007/009 |
+| F-2 | ADR-022 is frozen: publisher, relay, stream retention, consumer-group retention, byte budgets and backpressure are unchanged | ADR-022 |
+| F-3 | ADR-023 is accepted and frozen. P7 reads the outbox outside stream retention, with no Redis consumer group, and adds no exception to ADR-022 | ADR-023, D-18 |
+| F-4 | The P2 publisher and relay are unchanged by P7 | D-18 |
+| F-5 | P3 owns the frontier: scheduling, queues, leases, politeness and priority execution. P7 never touches Redis frontier state | design §3 |
+| F-6 | P4 is complete and frozen: engines, escalation, worker pools, success metrics and `decide()` | D-6 |
+| F-7 | P5 owns extraction, revisions, hashes and page facts. P7 does not re-parse pages at runtime | design §3, what.md §2 |
+| F-8 | P6 owns filter, scope, the revisit gate, admission eligibility and the existing priorities. P7 never admits what P6 rejected | design §9.5 |
+| F-9 | Increment 1 (source health, `source-health/v1`) is frozen | D-17 |
+| F-10 | Increment 2 (source projection, V004, advice off by default, fallback) is frozen | D-18 |
+| F-11 | Increment 3 (WHAT, `what/v1`) is an offline library. It does not change crawling, and any runtime use needs its own design | D-19 |
+| F-12 | M1 (`crawler2_m1`, MinIO `crawler2-m1`, `var/p7/m1-export`) is read-only evidence | D-4 |
+| F-13 | M1b was rejected and is not run | D-12 |
+| F-14 | The old `m1:*` Redis keys are retained | D-14 |
+| F-15 | M2 has not started | design §10 |
+| F-16 | G5 remains FAIL. The G5 labels are held out and are never used to tune or score a P7 rule | D-9, D-16 |
+| F-17 | WHEN remains gated on a validated signal measured on a new labelled sample | D-16, what.md §8 |
+| F-18 | The priority function remains unimplemented. P6 priorities stay the default | design §8 |
+| F-19 | P7 remains optional and fail-open: the crawler runs unchanged with P7 stopped, empty, stale or failing | plan B.5 #1, design §9.4 |
+| F-20 | No new collection, benchmark run or crawl starts without the operator's explicit go | D-12, operator rule |
+
+Operational facts that stay true:
+
+- `crawler2-storage migrate` must run before any V004/P7 runtime use (P2
+  rule: services refuse an outdated schema).
+- `crawler2-intel sources run` is **operator-started**, one instance. No
+  compose service was added.
+- WHAT has no process, table or setting. Its evaluation is
+  `benchmarks/p7-intelligence/what_eval.py`.

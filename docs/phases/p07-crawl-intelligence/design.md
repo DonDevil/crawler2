@@ -2,7 +2,9 @@
 
 Status: **DRAFT for review (2026-10-07).** Increment 1 (§5) is implemented
 per D-17. Increment 2 (§9) is frozen after its review (D-18) and
-implemented. Everything else (WHAT, WHEN, priority) is design only.
+implemented. Increment 3, WHAT (§6), is implemented as an offline library
+and evaluated (D-19, [what.md](what.md)). WHEN and priority are design
+only. Frozen boundaries: [decisions.md](decisions.md) §4.
 
 Inputs: [audit.md](audit.md) (§5 reassessment),
 [g5.md](g5.md) (G5 FAIL), [decisions.md](decisions.md) (D-12…D-17).
@@ -30,7 +32,7 @@ Inputs: [audit.md](audit.md) (§5 reassessment),
 |---|---|---|---|
 | **Source health** (negative knowledge, lifecycle, reactivation) | Is this host worth fetching now? | 503 hosts' outcomes: unreachable, moved, parked, 4xx-only, 429 storms, 304s; 39/50 dead seeds | **Increment 1 — implemented**; increment 2 (projection, admission advice, off by default) **implemented** (§9) |
 | **Fetch profile** (HOW) | Which capability first? | 5,112 `needs_js` → browser escalations on 20 **off-target** hosts (93 % browser ok); seed set: none | **Increment 1 — implemented**, browser evidence off-target |
-| Page kind + URL templates (WHAT) | Hub or detail? Which template is the site's content? Spam? | 21,013 HTML pages on 11 live seed sites; G5 labels show the useful changes are on hubs and spam shares templates on 2 sites | design §6; needs its own labelled page sample |
+| Page kind + URL templates (WHAT) | Hub or detail? Which template is the site's content? Spam? | 21,013 HTML pages on 11 live seed sites; G5 labels show the useful changes are on hubs and spam shares templates on 2 sites | **Increment 3 — implemented, offline** (§6, [what.md](what.md)); own labelled sample of 286 pages; holdout kind 0.972, relevance P 0.98 (relevant) / 1.0 (spam) at 76 % coverage |
 | Recrawl (WHEN) | When to revisit a hub? | G5 FAIL: neither `page.changed` nor plain URL novelty works | **gated** (D-13, D-16); design §7 |
 | Priority composition | One number for P3 | depends on the above | design §8 |
 | Target relevance / release timing | — | no targets (G7) | deferred to P9 (D-7) |
@@ -198,7 +200,16 @@ offline on M1, and it is a prerequisite for priority (§8).
     that ends in a failure counts as `unreachable` in the replay. The live
     adapter uses the hops.
 
-## 6. WHAT (design; next increment after review)
+## 6. WHAT (design; implemented as increment 3, D-19)
+
+> 2026-10-08: implemented as the pure library `crawler2/intelligence/what.py`
+> (policy `what/v1`). The algorithm, thresholds, labelled sample and results
+> are in [what.md](what.md). The design below is kept as written. Deviations
+> found while implementing: path depth stays excluded; raw link counts are
+> replaced by page-specific links (site boilerplate removed); a slug that
+> ends in a year is its own token class (`{slug}-{year}`), which separates
+> film posts from spam at `/<slug>/`; template roles also use "listed by
+> the site's listings"; `og:type` and media are not used by any rule.
 
 - **Page kind:** `hub` (home, listing, category, archive, search) vs
   `detail` vs `other`. Features, each with a reason:

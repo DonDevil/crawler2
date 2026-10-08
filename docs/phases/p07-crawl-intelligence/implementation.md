@@ -115,3 +115,77 @@ bucket close.
   `advice.py` stay storage-free, and no P7 module imports the frontier,
   workers, discovery or Redis.
 
+
+## Increment 3 — WHAT (implemented 2026-10-08, D-19)
+
+Design: §6 and [what.md](what.md). No storage, no consumer, no runtime hook.
+
+| Module / file | Contents |
+|---|---|
+| `crawler2/intelligence/what.py` | `WhatPolicy` (`what/v1`); `Vocabulary`/`load_vocabulary`; `PageFacts` and adapters `facts_from_extract` (P5 `PageExtract`) and `facts_from_export` (M1 export row); `tokenize_url` → `UrlShape` (template, markers, slug words); `build_site_profile` → `SiteProfile` (templates with support, content/spam/listed counts and `TemplateRole`, boilerplate links and title segments, site script, `content_templates`, `pattern_templates()`); `analyze_page` → `WhatResult` (`PageKindResult`, `RelevanceResult`, `content_links`, versions). Pure: no I/O apart from reading the vocabulary file |
+| `crawler2/intelligence/data/what_vocabulary.toml` | operator data (`what-vocabulary/v1`): content terms, spam terms in seven scripts and languages, CMS hub-title patterns, utility terms, with provenance |
+| `benchmarks/p7-intelligence/what_sample.py` | population, the deterministic stratified sample and split, and the label cards (MinIO, read-only) |
+| `benchmarks/p7-intelligence/what/labels.csv`, `results/what-sample.json` | 286 labels with notes; sample ids, URLs, strata and splits |
+| `benchmarks/p7-intelligence/what_eval.py` | offline evaluation, aggregate and per domain, with confusion matrices, a template report and per-page reasons |
+| `benchmarks/p7-intelligence/what_bench.py` | CPU cost on the whole population |
+
+**Data flow:** P5 facts (`page_extracts` at runtime, or the M1 export
+offline) → `PageFacts` → per-host `SiteProfile` (batch) → `analyze_page` per
+page → `WhatResult` → (future) WHEN. Nothing in it is imported by a
+runtime component, and nothing calls it at runtime.
+
+**Unchanged:** P1 contracts, P2 publisher/relay/streams, ADR-022, ADR-023,
+P3, P4, P5 models and tables, P6 filter/scope/revisit/priorities,
+increments 1 and 2, settings, compose, migrations.
+
+**Commits:** labels, sample and vocabulary first (`d699b94`, before any
+rule); the frozen implementation and tests (`2b8233f`, before the holdout
+was scored); then results and documents.
+
+Deviations from design §6 are listed at the top of design §6.
+
+Defects found while implementing, all fixed before the holdout run:
+
+1. The profile build crashed on `Counter.update(dict)`, which adds the
+   anchor strings as counts. It now counts link keys.
+2. A unit test found that one vocabulary term made a page relevant in a
+   mixed template: `template_match` restated the page's own evidence as a
+   second positive. `template_match` was removed, and the year-slug token
+   (design §6) was added so that film and spam posts fall into different
+   templates.
+3. On dev, "login" inside long spam slugs marked them as utility pages.
+   The slug rule is now limited to slugs of ≤ 2 words. Detail pages with
+   in-text related links looked like hubs; they are now kept as items
+   below 24 content-template links.
+
+Rule development on dev, for the record: the first rules scored kind 0.894
+with relevance decided on 79/131. Site-relative evidence (boilerplate,
+listed share, template pattern, item rule) raised this to 0.979 and
+105/131. The holdout was scored once afterwards (what.md §5).
+
+## Tests (increment 3)
+
+`tests/unit/intelligence/test_what.py` (60):
+
+- tokenization: dates, numbers, slugs, the year slug, extensions,
+  literals, language prefixes, trailing slash, query normalization
+  (tracking dropped, pagination and search kept), fragments, case,
+  percent-encoded Thai slugs, truncated UTF-8, malformed and non-HTTP
+  URLs, the depth bound;
+- vocabulary: version, whole-word Latin vs substring Thai matching, and
+  replacement by operator data (the version is recorded in results);
+- profiles: separation of item and spam slug templates, a clean content
+  template, a mixed template, a template defined only by listings, small
+  sites without templates, foreign hosts ignored, independence of order
+  and duplicates (seeded shuffles, and hypothesis permutations with
+  duplicates), and state bounded under 2,000 pages × 400 links;
+- page kind: film detail, spam with and without vocabulary, script
+  mismatch, the one-keyword rule, listing hub, hub at a generic slug URL,
+  spam hub, detail with related links, beyond-the-end pagination, empty
+  pages and pages without links, utility vs long slugs, single-page site,
+  100,000 links bounded and order-free, malformed links;
+- adapters: real P5 `extract()` → `facts_from_extract` equals
+  `facts_from_export` of the same row;
+- boundary: `what.py` imports no storage, frontier, worker, discovery,
+  Redis or Cassandra module. The increment-1 boundary test covers the
+  package as before.

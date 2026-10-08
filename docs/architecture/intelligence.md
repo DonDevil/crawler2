@@ -32,12 +32,24 @@ a pure library for source health and fetch profiles:
   When off, empty, stale, rebuilding or unreachable, admission is today's
   P6 behaviour (plan B.5 #1).
 
+**Implemented (increment 3, offline only, [what.md](../phases/p07-crawl-intelligence/what.md)):**
+`crawler2/intelligence/what.py` is a pure library over P5 page facts:
+
+- per-host URL templates and their role (content, mixed, spam, listing);
+- page kind (hub/detail/other);
+- page relevance (relevant/spam/unknown), with reason codes and a
+  versioned operator vocabulary.
+
+It has no table, consumer, setting or runtime caller. The crawler's
+behaviour is unchanged.
+
 **Planned, in review order:**
 
-1. WHAT: page kinds, URL templates, spam as negative knowledge (its own
-   labelled sample, not the G5 labels);
-2. WHEN: hub-novelty recrawl, gated on a validated signal (G5 failed
-   for `page.changed`);
-3. one priority function.
+1. WHEN: hub-novelty recrawl over WHAT's hub and content-link features,
+   gated on a signal validated on a new labelled hub-revisit sample (G5
+   failed for `page.changed`);
+2. one priority function.
+
+Frozen P7 boundaries: [decisions.md §4](../phases/p07-crawl-intelligence/decisions.md).
 
 Target relevance waits for P9; Tor profiles wait for a Tor deployment.

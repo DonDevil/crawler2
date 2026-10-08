@@ -38,6 +38,24 @@ It uses the throwaway keyspace `crawler2_it_p7_host` and private stream
 prefixes and frontier namespaces. The failure-injection test waits for
 minute buckets to close, so it takes about 1.5 min.
 
+P7 runtime use needs `crawler2-storage migrate` first (V004). The source
+reader `crawler2-intel sources run` is started by the operator, one
+instance; there is no compose service for it.
+
+WHAT (increment 3) is an offline library with unit tests only
+(`tests/unit/intelligence/test_what.py`, part of `make check`). Its
+evaluation reads the M1 export and, for the label cards, the M1 snapshots
+in MinIO, read-only:
+
+```bash
+env/bin/python benchmarks/p7-intelligence/what_sample.py population   # var/p7/what/pages.jsonl.gz
+env/bin/python benchmarks/p7-intelligence/what_eval.py --split dev    # rule development only
+env/bin/python benchmarks/p7-intelligence/what_bench.py               # CPU cost
+```
+
+The holdout split (`--split holdout`) is scored once per frozen policy
+version. The G5 labels are never used (decisions.md §4).
+
 ### P4 fetch layer (host)
 
 Fetcher contract, runtime, browser and end-to-end tests run **from the

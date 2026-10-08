@@ -376,3 +376,19 @@ only after a 14-day outage, and it is rebuilt from the same source by the
 same code path. ADR-022 is unchanged. Its interaction with P7 is removed
 by construction, not by an exception.
 
+
+## 7. WHAT data audit (2026-10-08; decision D-19)
+
+Earlier sections are unchanged. Before WHAT was implemented, its inputs
+were audited against P5/P6 (what.md §2):
+
+- WHAT can run on existing P5 facts (`PageExtract`: final URL, anchor links
+  with anchor text, title/og metadata, text size). **No interface
+  changes**, and no P1/P5/P6 change.
+- P5 persists no visible text. The labelling cards re-extracted it from
+  the M1 snapshots, for evaluation only.
+- Two gaps were documented and not fixed: Blogger titles are missing in
+  P5 metadata, and P5 links carry no page region.
+- The seed population behind WHAT is the 20,966 extracted URLs on the 11
+  live seed domains (§5.1). The labelled sample is new and separate from
+  G5 (what.md §3).
