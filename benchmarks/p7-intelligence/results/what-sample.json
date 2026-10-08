@@ -1,0 +1,2026 @@
+{
+ "excluded_g5_urls": 65,
+ "population": {
+  "gofullmovies.com": 86,
+  "isaimini.com.in": 4783,
+  "isaiminimix.com": 1407,
+  "movflix.my": 3442,
+  "moviesda.business": 1632,
+  "moviesda.com.in": 3217,
+  "moviesda16.best": 1192,
+  "stripemovies.com": 1813,
+  "tamilprint.co.in": 215,
+  "tamilprint.com.in": 2529,
+  "tamilrockers2024.com": 650
+ },
+ "population_total": 20966,
+ "rule": "per domain 26: half proportional to coarse shape, half round-robin over shapes; within a shape sha256(p7-what-sample/v1|url) order; split holdout iff sha256(p7-what-split/v1|url) is odd",
+ "sample": [
+  {
+   "domain": "gofullmovies.com",
+   "id": "01400aeaeaff",
+   "shape": "www.gofullmovies.com/movies/animation",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/movies/animation//"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "0366d4eb0676",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/predator-badlands/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "0567eec38a9f",
+   "shape": "www.gofullmovies.com/?s",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "0b6cd778121a",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/transformers-one/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1af530cf8881",
+   "shape": "www.gofullmovies.com/{w}.php?Action",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1b42b21ed9cf",
+   "shape": "www.gofullmovies.com/{slug}/{year}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/release-year/2026/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1cbea1f1cc27",
+   "shape": "www.gofullmovies.com/page/{num}?s",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/page/1/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1dba1ec0fe8d",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/marty-supreme/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1dee7c3df009",
+   "shape": "www.gofullmovies.com/{slug}/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/release-year/2025/page/2/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "1fc425eb0482",
+   "shape": "www.gofullmovies.com/{w}.php?Action&PageID&k",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=watch-new-hollywood-movies&PageID=227133"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "291b90060dfe",
+   "shape": "www.gofullmovies.com/page/{num}?s",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/page/3/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "2bc3a39e23ad",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/smile-2/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "2ca44e69cad4",
+   "shape": "www.gofullmovies.com/{w}.php?Action&k",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=full-movies-with-trailers"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "32eab9eb0b99",
+   "shape": "www.gofullmovies.com/{w}.php?Action&PageID&k",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=full-movies-with-trailers&PageID=227132"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "370049c6262e",
+   "shape": "www.gofullmovies.com/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/release-year/page/2/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "3d6ef5afd202",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/furiosa-a-mad-max-saga/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "4112b0baa878",
+   "shape": "www.gofullmovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/a-complete-unknown/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "499a26240d35",
+   "shape": "www.gofullmovies.com/movies/page/{num}",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/movies/page/3/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "565ef5f3d305",
+   "shape": "www.gofullmovies.com/movies/page/{num}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/movies/page/4/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "655a5bf072d9",
+   "shape": "www.gofullmovies.com/{w}.php?Action&k",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=watch-new-hollywood-movies"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "6e5bc6594329",
+   "shape": "www.gofullmovies.com/{slug}/{year}",
+   "split": "holdout",
+   "url": "https://www.gofullmovies.com/release-year/2025/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "95ef9e014a87",
+   "shape": "www.gofullmovies.com/anaconda",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/anaconda/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "af2f5803a95c",
+   "shape": "www.gofullmovies.com/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/release-year/page/4/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "becd4bf2c29d",
+   "shape": "www.gofullmovies.com/",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "c6a8d18c14c9",
+   "shape": "www.gofullmovies.com/?s",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/?s="
+  },
+  {
+   "domain": "gofullmovies.com",
+   "id": "ec36000395e4",
+   "shape": "www.gofullmovies.com/movies/animation",
+   "split": "dev",
+   "url": "https://www.gofullmovies.com/movies/animation/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "00075115db41",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/content-planning-with-group-buy-seo-tools/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "000c677f62fa",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/a-practical-guide-to-getting-familiar-with-b52club/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "000e5621c3a2",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/comprehensive-guide-to-the-app-go789-experience-for-modern-bettors/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "001dd794b09d",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/4-sorry-2021/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "002f47c33894",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/forgot-exness-password-how-to-reset-it-quickly/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "00527b0fdc08",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/poiyattam-2020/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "006b49be649f",
+   "shape": "isaimini.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/tamil-movies-collection/60/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "0076b13d169d",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/brammanda-nayagan-2018/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "007cf216ec26",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/adipurush-2023/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "007d4d251c4e",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/discover-the-best-online-fish-shooting-games-at-88vin/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "007d7a4be397",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/how-ufabet-mobile-login-became-essential-for-online-betting-fans/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "0096cd2056ff",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/kakkan-2023/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "00cd0464c87f",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/vantha-rajavathaan-varuven-2019/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "00cd93210a6b",
+   "shape": "isaimini.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/tr88-nen-tang-ca-cuoc-truc-tuyen-noi-bat-nam-2026/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "015762ba9f16",
+   "shape": "isaimini.com.in/{slug}/{num}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/tamil-hd-mobile-movies/25/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "061b0d2f9339",
+   "shape": "isaimini.com.in/author/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/author/sher-ali/page/2/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "09210071b702",
+   "shape": "isaimini.com.in/category/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/category/2024/page/3/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "0ac80b1e9e7d",
+   "shape": "isaimini.com.in/category/{year}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/category/2019/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "0cd1ef4272de",
+   "shape": "isaimini.com.in/author/{slug}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/author/abdul-raheem/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "145aa7e1f09c",
+   "shape": "isaimini.com.in/category/uncategorized/page/{num}",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/category/uncategorized/page/2/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "4880b544ef90",
+   "shape": "isaimini.com.in/page/{num}?s",
+   "split": "dev",
+   "url": "https://isaimini.com.in/page/432/?s"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "78a704341b3a",
+   "shape": "isaimini.com.in/category/blog/page/{num}",
+   "split": "dev",
+   "url": "https://isaimini.com.in/category/blog/page/3/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "88b38b2946df",
+   "shape": "isaimini.com.in/?s",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/?s"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "bcf1ef4084e7",
+   "shape": "isaimini.com.in/author/arman",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/author/arman/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "c8f773dd056e",
+   "shape": "isaimini.com.in/airasiabet",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/airasiabet/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "id": "ff4c0e88ef38",
+   "shape": "isaimini.com.in/99exch",
+   "split": "holdout",
+   "url": "https://isaimini.com.in/99exch/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "0033b82e1289",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/kanni-rasi-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "003441e04188",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/velaiilla-pattadhari-2/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "00862e5fc2ac",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/silukkuvaarpatti-singam-2018-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "00cc8fa3bb65",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/cobra-2022-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "00e58bf79a93",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/yevanum-buthanillai-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "00ee5520630e",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/kalyana-vaibhogam-2016-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "0104828fc3f4",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/raja-mandhiri-2016-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "016198fe37eb",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/madurai-mavattam-2014-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "01aa7977bd6b",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/vaaren-odi-vaaren-2020-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "01d4969ebd26",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/naane-varuvean-2022-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "020a374bed45",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/dharmadurai-2016-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "025281202ad6",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/dhilluku-dhuddu-2016-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "026d77242bad",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/aadai-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "02b8843bd430",
+   "shape": "isaiminimix.com/{slug}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/clap-2022-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "03184784857b",
+   "shape": "isaiminimix.com/author/admin/page/{num}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/author/admin/page/19/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "08f74503e89c",
+   "shape": "isaiminimix.com/category/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/category/tamil-hit-songs/page/24/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "47e313861b12",
+   "shape": "isaiminimix.com/7aum",
+   "split": "dev",
+   "url": "https://isaiminimix.com/7aum/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "4ae63d36647f",
+   "shape": "isaiminimix.com/junga",
+   "split": "dev",
+   "url": "https://isaiminimix.com/junga/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "4c3d1ce78468",
+   "shape": "isaiminimix.com/",
+   "split": "dev",
+   "url": "https://isaiminimix.com/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "5aee4b2a7638",
+   "shape": "isaiminimix.com/aadukalam",
+   "split": "dev",
+   "url": "https://isaiminimix.com/aadukalam/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "7371347e440c",
+   "shape": "isaiminimix.com/author/admin",
+   "split": "dev",
+   "url": "https://isaiminimix.com/author/admin/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "92b217b82c90",
+   "shape": "isaiminimix.com/don",
+   "split": "dev",
+   "url": "https://isaiminimix.com/don/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "99b81c093daa",
+   "shape": "isaiminimix.com/kavan",
+   "split": "dev",
+   "url": "https://isaiminimix.com/kavan/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "b0055bddb676",
+   "shape": "isaiminimix.com/category/{slug}",
+   "split": "dev",
+   "url": "https://isaiminimix.com/category/tamil-hit-songs/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "bda3949ba9d2",
+   "shape": "isaiminimix.com/gulaebaghavali",
+   "split": "holdout",
+   "url": "https://isaiminimix.com/gulaebaghavali/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "id": "cd77321a3951",
+   "shape": "isaiminimix.com/aadhavan",
+   "split": "dev",
+   "url": "https://isaiminimix.com/aadhavan/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "007221d0acd5",
+   "shape": "movflix.my/{slug}/{w}.php",
+   "split": "dev",
+   "url": "https://movflix.my/wp-includes/blocks.php"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "00c9352b75e6",
+   "shape": "movflix.my/{slug}",
+   "split": "dev",
+   "url": "https://movflix.my/parmanu-the-story-of-pokhran-2018-web-dl-hindi-org-1080p-720p-480p/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "00d3316956d9",
+   "shape": "movflix.my/{slug}",
+   "split": "holdout",
+   "url": "https://movflix.my/love-all-2023-web-dl-hindi-org-movie/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "00faffad1e83",
+   "shape": "movflix.my/browse/page/{num}?by",
+   "split": "holdout",
+   "url": "https://movflix.my/browse/page/2/?by=C"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "00fbb103dbd5",
+   "shape": "movflix.my/{slug}",
+   "split": "holdout",
+   "url": "https://movflix.my/indias-got-latent-2026-web-dl-hindi-s01-download-720p/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0104312f50a6",
+   "shape": "movflix.my/{year}/{num}/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/2025/04/page/5/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0107b859f74a",
+   "shape": "movflix.my/{slug}",
+   "split": "holdout",
+   "url": "https://movflix.my/please-stand-by-2017-bluray-hindi-org-dual-audio-movie/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "01436a8a3029",
+   "shape": "movflix.my/{slug}",
+   "split": "holdout",
+   "url": "https://movflix.my/court-state-vs-a-nobody-2025-web-dl-hindi-org-dual-audio-movie/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "01440ad49d35",
+   "shape": "movflix.my/{slug}",
+   "split": "dev",
+   "url": "https://movflix.my/the-shameless-2024-web-dl-hindi-org-movie/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0177128c5e31",
+   "shape": "movflix.my/browse/page/{num}?by",
+   "split": "holdout",
+   "url": "https://movflix.my/browse/page/3/?by=F"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0181a65f7c94",
+   "shape": "movflix.my/{slug}/{w}.php",
+   "split": "dev",
+   "url": "https://movflix.my/wp-includes/class-wp-theme-json-schema.php"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "01b6a75d432b",
+   "shape": "movflix.my/{slug}",
+   "split": "dev",
+   "url": "https://movflix.my/the-chaser-2008-web-dl-hindi-org-dual-audio-movie/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "023b4c43129b",
+   "shape": "movflix.my/{slug}",
+   "split": "holdout",
+   "url": "https://movflix.my/hamnet-2025-web-dl-hindi-org-1080p-720p-480p/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0252c49a8c71",
+   "shape": "movflix.my/{year}/{num}/page/{num}",
+   "split": "holdout",
+   "url": "https://movflix.my/2025/07/page/6/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0252f008a6c8",
+   "shape": "movflix.my/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/2026/page/6/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "028215aa8bca",
+   "shape": "movflix.my/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/page/103/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "031efa58308a",
+   "shape": "movflix.my/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/2026/page/45/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0346ec04c80c",
+   "shape": "movflix.my/category/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/category/south-dual-audio-movies/page/5/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0385591a552b",
+   "shape": "movflix.my/author/admin2/page/{num}",
+   "split": "holdout",
+   "url": "https://movflix.my/author/admin2/page/26/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "06a41a42a3e8",
+   "shape": "movflix.my/category/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/category/south-dual-audio-movies/page/15/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "0a36e972dc77",
+   "shape": "movflix.my/{slug}/ID3/{w}.php",
+   "split": "holdout",
+   "url": "https://movflix.my/wp-includes/ID3/module.audio.mp3.php"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "19ce1f35f1ae",
+   "shape": "movflix.my/author/movflix/page/{num}",
+   "split": "dev",
+   "url": "https://movflix.my/author/movflix/page/35/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "1c0dcc9abff9",
+   "shape": "movflix.my/browse?by",
+   "split": "holdout",
+   "url": "https://movflix.my/browse/?by=T"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "1fa6a29f0820",
+   "shape": "movflix.my/{slug}/{slug}/{w}.php",
+   "split": "holdout",
+   "url": "https://movflix.my/wp-includes/html-api/class-wp-html-unsupported-exception.php"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "220f54050554",
+   "shape": "movflix.my/{year}/{num}",
+   "split": "holdout",
+   "url": "https://movflix.my/2026/07/"
+  },
+  {
+   "domain": "movflix.my",
+   "id": "24b208472e7f",
+   "shape": "movflix.my/{slug}/{slug}/{w}.php",
+   "split": "dev",
+   "url": "https://movflix.my/wp-includes/html-api/class-wp-html-text-replacement.php"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0026b1363095",
+   "shape": "www.moviesda.business/search?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search?updated-max=2026-04-18T04:41:00-07:00&max-results=20&start=111&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "002c3ec5d0a2",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-01-06T20:08:00-08:00&max-results=7&reverse-paginate=true&start=28&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "00b55ddfcc1b",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-01-24T19:55:00-08:00&max-results=7&reverse-paginate=true&start=21&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "00b8277ab09e",
+   "shape": "www.moviesda.business/search?max-results&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-25T18:16:00-08:00&max-results=7"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "00cb4ced8cad",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html",
+   "split": "dev",
+   "url": "https://www.moviesda.business/2026/02/thaai-kizhavi-tamil-movie-download-isaimini.html"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0110448451ce",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-01-18T20:55:00-08:00&max-results=7&reverse-paginate=true&start=7&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0120dd83ee77",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-03T19:58:00-08:00&max-results=7&reverse-paginate=true&start=21&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "01666633ad23",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html",
+   "split": "dev",
+   "url": "https://www.moviesda.business/2026/03/prakambanam-malayalam-movie-download-isaimini.html"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "018f7d36bb2c",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-06-18T07:15:00-07:00&max-results=7&reverse-paginate=true&start=35&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "01ab7a7c3101",
+   "shape": "www.moviesda.business/search/label/{slug}?&max-results",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search/label/English%20Movies?&max-results=6"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "01c13d7c43f8",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search?updated-max=2026-06-18T07:15:00-07:00&max-results=20&reverse-paginate=true&start=12&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "01d5a4578f1d",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-04-16T22:48:00-07:00&max-results=7&reverse-paginate=true&start=49&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "02128a740f9f",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html",
+   "split": "dev",
+   "url": "https://www.moviesda.business/2026/04/patriot-tamil-movie-download-moviesda.html"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0225efa1c8ce",
+   "shape": "www.moviesda.business/search?max-results&reverse-paginate&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search?updated-max=2026-02-19T21:54:00-08:00&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0259dc0d952b",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/2026/05/day-11-tamil-movie-download-isaimini.html"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "02635482a07d",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-06-27T21:34:00-07:00&max-results=7&reverse-paginate=true&start=21&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "026c0a2035b5",
+   "shape": "www.moviesda.business/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-06-04T22:22:00-07:00&max-results=7&reverse-paginate=true&start=42&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0309e7d19528",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html",
+   "split": "dev",
+   "url": "https://www.moviesda.business/2026/05/athiradi-tamil-movie-download-isaimini.html"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "03fef596766d",
+   "shape": "www.moviesda.business/search?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search?updated-max=2026-07-02T04:12:00-07:00&max-results=7&start=21&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "065e8f36276a",
+   "shape": "www.moviesda.business/search?max-results&reverse-paginate&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-02-10T22:51:00-08:00&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "0829b34f5d8f",
+   "shape": "www.moviesda.business/search?max-results&reverse-paginate&updated-max",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search?updated-max=2026-01-25T18:12:00-08:00&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "110aebe254b4",
+   "shape": "www.moviesda.business/search/label/{slug}?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies?updated-max=2026-05-12T21:48:00-07:00&max-results=20&start=73&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "475188517938",
+   "shape": "www.moviesda.business/{year}/{num}",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/2026/07/"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "5f93d4e87c31",
+   "shape": "www.moviesda.business/{year}/{num}/{w}.html?showComment",
+   "split": "dev",
+   "url": "https://www.moviesda.business/2026/06/engal-thangam-tamil-movie-download-isaimini.html?showComment=1781919124907"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "db6b6cbade68",
+   "shape": "www.moviesda.business/search/label/{slug}?max-results",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies?max-results=6"
+  },
+  {
+   "domain": "moviesda.business",
+   "id": "ea048821214c",
+   "shape": "www.moviesda.business/?m",
+   "split": "holdout",
+   "url": "https://www.moviesda.business/?m=1"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "0022dec6a307",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/sollividavaa-2018/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "003005aa74ff",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/specialized-drug-rehabilitation/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "003429d7442c",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/bong88-leading-online-gambling-site-today/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00363abd68ef",
+   "shape": "moviesda.com.in/{w}.php?redirect_to",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/wp-login.php?redirect_to=https%3A%2F%2Fmoviesda.com.in%2Fmobile-games-as-a-modern-lifestyle-why-they-continue%2F"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "0047f61b2513",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/how-jemari4d-keeps-players-engaged-online/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "006800364074",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/secrets-to-analyzing-corner-kick-odds/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00758def0713",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/belize-real-estate-the-complete-buyers-guide-for-2026/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "0096b423687a",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/manam-2014/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00b63701a573",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/aambala-2015/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00caadde717e",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/bingo4d-every-win-feels-like-bingo/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00cc547f12c0",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/discover-the-odds-of-5-star-bookmakers-a-complete-guide-to-betting-and-football-results/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00ec969c36ae",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/margazhi-thingal-2023/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "00fdbe0ea84f",
+   "shape": "moviesda.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/slot-deposit-1000/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "021df79c8c1f",
+   "shape": "moviesda.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/tamil-daily-movies/28/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "034674a2a454",
+   "shape": "moviesda.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/tamil-daily-movies/79/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "040c84c10dde",
+   "shape": "moviesda.com.in/{w}.php?redirect_to",
+   "split": "dev",
+   "url": "https://moviesda.com.in/wp-login.php?redirect_to=https%3A%2F%2Fmoviesda.com.in%2Flinetogel-the-ultimate-guide-to-winning-big-in-online-togel%2F"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "0f2e83208c12",
+   "shape": "moviesda.com.in/category/{year}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/category/2016/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "1c593790e14a",
+   "shape": "moviesda.com.in/7m",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/7m/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "27fc8f8b9a48",
+   "shape": "moviesda.com.in/page/{num}?s",
+   "split": "dev",
+   "url": "https://moviesda.com.in/page/2/?s"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "3b90c6ca39b1",
+   "shape": "moviesda.com.in/author/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/author/eclipse-team/page/2/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "5fc9d572cc38",
+   "shape": "moviesda.com.in/author/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/author/eclipse-team/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "6ca99e245298",
+   "shape": "moviesda.com.in/?s",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/?s="
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "74dd506831db",
+   "shape": "moviesda.com.in/author/movies1/page/{num}",
+   "split": "dev",
+   "url": "https://moviesda.com.in/author/movies1/page/2/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "b0a4a47f7a99",
+   "shape": "moviesda.com.in/bitbola",
+   "split": "holdout",
+   "url": "https://moviesda.com.in/bitbola/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "c4c3c678a940",
+   "shape": "moviesda.com.in/bet168",
+   "split": "dev",
+   "url": "https://moviesda.com.in/bet168/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "id": "cce1a7ff02d3",
+   "shape": "moviesda.com.in/author/movies1",
+   "split": "dev",
+   "url": "https://moviesda.com.in/author/movies1/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "00104565a091",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/razor-2026-tamil-movie"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "00317eb33d1b",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/karakkam-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "00351c14de71",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/konjam-kadhal-konjam-modhal-2025-tamil-movie"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "00b102848247",
+   "shape": "moviesda16.best/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/guest-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "010f8c088ee8",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/prathichaya-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "01155fea0390",
+   "shape": "moviesda16.best/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/deewana-2026-tamil-movie"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "01424abbddd8",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/derby-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "019e54496dc3",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/mollywood-times-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "0246429bd734",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/thaai-kizhavi-2026-dvdpre-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "02882588183c",
+   "shape": "moviesda16.best/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/thimmarajupalli-tv-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "029549a93e42",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/srinivasa-mangapuram-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "02a478718fbe",
+   "shape": "moviesda16.best/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/mortal-kombat-2-2026-tamil-dubbed"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "02ce068433e0",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/anecdotes-of-ape-mountain-2026-tamil-dubbed-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "030160ec4be8",
+   "shape": "moviesda16.best/{slug}",
+   "split": "dev",
+   "url": "https://moviesda16.best/drishyam-3-2026-dvdpre-tamil-movie"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "082ea0d10fac",
+   "shape": "moviesda16.best/?page",
+   "split": "dev",
+   "url": "https://moviesda16.best/?page=3"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "085f0e0c6276",
+   "shape": "moviesda16.best/?page",
+   "split": "holdout",
+   "url": "https://moviesda16.best/?page=14"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "0ee328ece605",
+   "shape": "moviesda16.best/?page",
+   "split": "holdout",
+   "url": "https://moviesda16.best/?page=29"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "19e6f4ba3fec",
+   "shape": "moviesda16.best/category/{slug}?page",
+   "split": "holdout",
+   "url": "https://moviesda16.best/category/tamil-hd-movies?page=10"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "1b181b041aa6",
+   "shape": "moviesda16.best/category/{slug}?page",
+   "split": "dev",
+   "url": "https://moviesda16.best/category/tamil-hd-movies?page=16"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "1bb975c5c72f",
+   "shape": "moviesda16.best/category/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/category/tamil-dubbed-movies"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "26c31b76927a",
+   "shape": "moviesda16.best/{w}.php",
+   "split": "dev",
+   "url": "https://moviesda16.best/contact.php"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "3f4c5f04882a",
+   "shape": "moviesda16.best/category/{slug}",
+   "split": "holdout",
+   "url": "https://moviesda16.best/category/tamil-hd-movies"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "4837f4825b34",
+   "shape": "moviesda16.best/",
+   "split": "holdout",
+   "url": "https://moviesda16.best/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "542755eafb6f",
+   "shape": "moviesda16.best/{w}.php?q",
+   "split": "dev",
+   "url": "https://moviesda16.best/search.php?q="
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "a8fa3cf26651",
+   "shape": "moviesda16.best/{w}.php",
+   "split": "dev",
+   "url": "https://moviesda16.best/privacy.php"
+  },
+  {
+   "domain": "moviesda16.best",
+   "id": "d23d2e03efa4",
+   "shape": "moviesda16.best/{w}.php?term",
+   "split": "dev",
+   "url": "https://moviesda16.best/search_suggest.php?term="
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "009f91e1729a",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/billions-5/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "013b3281c8fc",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/curse-sleeping-beauty/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0147feaf6489",
+   "shape": "www.stripemovies.com/page/{num}?s",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/page/140/?s"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0181416848ab",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/baby-driver-2/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0195161a26f4",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/the-dark-crystal-age-of-resistance/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "01a1c93c4fda",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/the-society/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "01c06e29d25c",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/the-wizard-of-lies/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "01dfdd0f0485",
+   "shape": "www.stripemovies.com/movies/action/page/{num}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/movies/action/page/26/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "01e1c6dcc0bd",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/all-of-us-strangers/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "01f0c5d89448",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/knives-out/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "023a72805d71",
+   "shape": "www.stripemovies.com/{slug}/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/release-year/2020/page/13/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "024bda29962b",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/robin-hood/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "02614f5238f2",
+   "shape": "www.stripemovies.com/{slug}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/love-guaranteed-1/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "02aa38d21154",
+   "shape": "www.stripemovies.com/movies/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/sci-fi/page/4/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "030d7542d169",
+   "shape": "www.stripemovies.com/{slug}/{year}/page/{num}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/release-year/2019/page/16/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "03332fc880cd",
+   "shape": "www.stripemovies.com/movies/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/page/151/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "034e1e665336",
+   "shape": "www.stripemovies.com/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/release-year/page/141/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0606409f19e2",
+   "shape": "www.stripemovies.com/author/admin/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/author/admin/page/144/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "08cb86cb6bd8",
+   "shape": "www.stripemovies.com/{slug}/{year}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/release-year/2024/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0b9d01ace362",
+   "shape": "www.stripemovies.com/movies/thriller/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/thriller/page/10/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0e3aa9b895e5",
+   "shape": "www.stripemovies.com/movies/comedy/page/{num}",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/movies/comedy/page/10/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0e98e6f35e36",
+   "shape": "www.stripemovies.com/movies/horror/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/horror/page/9/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "0fddf1a3f568",
+   "shape": "www.stripemovies.com/movies/action/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/action/page/27/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "11d9cbbfb408",
+   "shape": "www.stripemovies.com/movies/drama/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/drama/page/6/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "19decc7cdcad",
+   "shape": "www.stripemovies.com/page/{num}?s",
+   "split": "dev",
+   "url": "https://www.stripemovies.com/page/3/?s"
+  },
+  {
+   "domain": "stripemovies.com",
+   "id": "1d3395c25b24",
+   "shape": "www.stripemovies.com/movies/drama/page/{num}",
+   "split": "holdout",
+   "url": "https://www.stripemovies.com/movies/drama/page/4/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "028f9548849d",
+   "shape": "tamilprint.co.in/page/{num}?s",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/page/8/?s"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "02d9562e1112",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/neela-nira-sooriyan-2024-tamil-movie-download/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "04403c0b4e39",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/diuwin-login/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "05814285b22a",
+   "shape": "tamilprint.co.in/category/bollywood/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/category/bollywood/page/4/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "06209d0065f5",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/lara-2025-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "0765ae58df49",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/sugar-baby-2024-tamil-dubbed-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "079fb03638ec",
+   "shape": "tamilprint.co.in/category/{slug}/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/category/dual-audio/page/10/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "097347361df6",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/dappankuthu-2024-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "09cb103cc13f",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/sattam-en-kayil-2024-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "0b99b57ccaf5",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/longlegs-2024-tamil-dubbed-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "0da55285c3fe",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/bdg-win-login/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "0fd49123971a",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/alanaati-ramachandrudu-2024-tamil-dubbed-download/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "11c5ddf78734",
+   "shape": "tamilprint.co.in/page/{num}?s",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/page/3/?s"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "12f62b4e00e4",
+   "shape": "tamilprint.co.in/category/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/category/dual-audio/page/7/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "1661b6a595c6",
+   "shape": "tamilprint.co.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/saptha-kandam-2024-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "25aa318a5b37",
+   "shape": "tamilprint.co.in/author/admin/page/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/author/admin/page/7/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "32976df475d7",
+   "shape": "tamilprint.co.in/category/tamil/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/category/tamil/page/5/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "3753f23debf0",
+   "shape": "tamilprint.co.in/category/bollywood/page/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.co.in/category/bollywood/page/7/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "3cc9668fec98",
+   "shape": "55club.tamilprint.co.in/",
+   "split": "dev",
+   "url": "https://55club.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "3cf06dec41e8",
+   "shape": "tamilprint.co.in/author/admin/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/author/admin/page/2/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "5111cad1bc00",
+   "shape": "tamilprint.co.in/?s",
+   "split": "holdout",
+   "url": "https://tamilprint.co.in/?s"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "616ba713f7cf",
+   "shape": "bdggame.tamilprint.co.in/",
+   "split": "holdout",
+   "url": "https://bdggame.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "8bd753e5e3b8",
+   "shape": "91club.tamilprint.co.in/",
+   "split": "holdout",
+   "url": "https://91club.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "8d12c4c03761",
+   "shape": "damangame.tamilprint.co.in/",
+   "split": "holdout",
+   "url": "https://damangame.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "c694350d353e",
+   "shape": "82lottery.tamilprint.co.in/",
+   "split": "dev",
+   "url": "https://82lottery.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "id": "f8e1713d5805",
+   "shape": "bdgwin.tamilprint.co.in/",
+   "split": "dev",
+   "url": "https://bdgwin.tamilprint.co.in/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "0000ef2f8126",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/lilly-rani-2022lilly-rani-2022/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "006ef6a8781c",
+   "shape": "tamilprint.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/tamil-2023-movies/9/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "007134c41d10",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/pichuva-kaththi-2017/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "0075c8576a91",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/the-truth-about-bad-credit-loans-risks-benefits-and-smart-borrowing/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00aefef173aa",
+   "shape": "tamilprint.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/tamil-2022-movies/17/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00bce58e3427",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/hello-naan-pei-pesuren-2016/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00c331329aaa",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/tamil-hd-mobile-movies/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00c5b4fe3ec4",
+   "shape": "tamilprint.com.in/author/{slug}/page/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/author/alfa-team/page/37/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00ce695d44df",
+   "shape": "tamilprint.com.in/page/{num}?s",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/page/6/?s"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00d827fc65b8",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/neruppu-da-2017/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00d8b47dee7b",
+   "shape": "tamilprint.com.in/{slug}/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/tamil-daily-movies/69/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "00ea72783f7c",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/paatti-sollai-thattathe-2023/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "0120ab71e28e",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/ka-ka-ka-aabathin-arikuri-2017/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "017762df066f",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/kanne-kalaimaane-2019/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "0178f2ac90cf",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/dhamaka-2021/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "018ef0a3e1cf",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/boo-2022/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "01a6ef731b96",
+   "shape": "tamilprint.com.in/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/thoonga-vanam-2015/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "04bb049dddf9",
+   "shape": "tamilprint.com.in/category/{year}/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/category/2021/page/12/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "0c47f6b3810f",
+   "shape": "tamilprint.com.in/author/movies1/page/{num}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/author/movies1/page/2/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "2d65a4398053",
+   "shape": "tamilprint.com.in/author/{slug}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/author/musawir-ramejo/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "2d749a0d2e63",
+   "shape": "tamilprint.com.in/category/blog/page/{num}",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/category/blog/page/5/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "33d651ced71d",
+   "shape": "tamilprint.com.in/category/{year}",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/category/2021/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "3d3051e44dae",
+   "shape": "tamilprint.com.in/category/blog",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/category/blog/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "6169e918a16f",
+   "shape": "tamilprint.com.in/category/uncategorized",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/category/uncategorized/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "6a0d19da228d",
+   "shape": "tamilprint.com.in/?s",
+   "split": "holdout",
+   "url": "https://tamilprint.com.in/?s"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "id": "cf5ee5a42807",
+   "shape": "tamilprint.com.in/author/movies1",
+   "split": "dev",
+   "url": "https://tamilprint.com.in/author/movies1/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "006187d8cfa1",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-12-11T21:03:00-08:00&max-results=20&reverse-paginate=true&start=37&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "00a2b6ee0f7b",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-26T22:53:00-07:00&max-results=7&reverse-paginate=true&start=56&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "01043f3ab170",
+   "shape": "www.tamilrockers2024.com/search?max-results&reverse-paginate&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-04-03T09:30:00%2B05:30&max-results=20&reverse-paginate=true"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "01070fa6c498",
+   "shape": "www.tamilrockers2024.com/{year}/{num}/{w}.html",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/2025/04/odela-2-2025.html"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "01148835a00c",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-27T11:23:00%2B05:30&max-results=20&reverse-paginate=true&start=51&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "01dbcfd962b5",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-02-28T11:25:00%2B05:30&max-results=20&reverse-paginate=true&start=35&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "01fb8df35530",
+   "shape": "www.tamilrockers2024.com/{year}/{num}/{w}.html",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/2025/12/avatar-fire-and-ash-2025.html"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "024bfada9ad0",
+   "shape": "www.tamilrockers2024.com/search?max-results&reverse-paginate&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-08-20T22:00:00-07:00&max-results=20&reverse-paginate=true"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "030c98dbb8d4",
+   "shape": "www.tamilrockers2024.com/search?max-results&reverse-paginate&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-11-07T12:03:00%2B05:30&max-results=20&reverse-paginate=true"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "034a9ac5c961",
+   "shape": "www.tamilrockers2024.com/{year}/{num}/{w}.html",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/2026/01/anaganaga-oka-raju-2026.html"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "03c49dae5a8b",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-07-04T05:50:00-07:00&max-results=20&reverse-paginate=true&start=56&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "03d02560097f",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-05-01T17:51:00%2B05:30&max-results=7&reverse-paginate=true&start=35&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "0590884550bf",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-27T11:23:00%2B05:30&max-results=20&reverse-paginate=true&start=32&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "05f14dbdbdf3",
+   "shape": "www.tamilrockers2024.com/search?max-results&reverse-paginate&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-05-01T17:51:00%2B05:30&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "06a15d4d4c2a",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&reverse-paginate&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-26T22:53:00-07:00&max-results=7&reverse-paginate=true&start=7&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "164a3cf5a753",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-10-17T16:06:00%2B05:30&max-results=20&start=56&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "19715ebc6b12",
+   "shape": "www.tamilrockers2024.com/search?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-03-13T01:00:00-07:00&max-results=7&start=14&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "31e7e51966d5",
+   "shape": "www.tamilrockers2024.com/search/label/Telugu?by-date&max-results&start&updated-max",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search/label/Telugu?updated-max=2024-09-27T11:23:00%2B05:30&max-results=20&start=20&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "4c69d063dc02",
+   "shape": "www.tamilrockers2024.com/search/label/Tamil?by-date&max-results&start&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search/label/Tamil?updated-max=2025-04-10T15:50:00%2B05:30&max-results=20&start=73&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "5055c51a8e48",
+   "shape": "www.tamilrockers2024.com/search/label/Tamil?max-results",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search/label/Tamil?max-results=20"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "61a8bf2c066d",
+   "shape": "www.tamilrockers2024.com/search/label/Malayalam",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search/label/Malayalam"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "7a2cf2bae26c",
+   "shape": "www.tamilrockers2024.com/search/label/Telugu",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/search/label/Telugu"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "7dd143521592",
+   "shape": "www.tamilrockers2024.com/search/label/Tamil",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search/label/Tamil"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "9e35cdfea097",
+   "shape": "www.tamilrockers2024.com/search?max-results&updated-max",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-07-22T20:36:00-07:00&max-results=7"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "b01f8d1d329f",
+   "shape": "www.tamilrockers2024.com/p/{w}.html",
+   "split": "dev",
+   "url": "https://www.tamilrockers2024.com/p/about-us.html"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "id": "faacc1008156",
+   "shape": "www.tamilrockers2024.com/search",
+   "split": "holdout",
+   "url": "https://www.tamilrockers2024.com/search"
+  }
+ ],
+ "splits": {
+  "dev": 142,
+  "holdout": 144
+ }
+}

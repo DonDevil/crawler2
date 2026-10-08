@@ -1,0 +1,89 @@
+# P7 WHAT operator vocabulary (docs/phases/p07-crawl-intelligence/what.md §4).
+#
+# This file is operator data with provenance, not code. The WHAT classifier
+# (crawler2/intelligence/what.py) reads it and records its version in every
+# result. Replace it (or pass another file) to retarget WHAT at a different
+# kind of content site; bump `version` whenever a term changes, because
+# results are only comparable under the same vocabulary.
+#
+# Matching: text is NFKC-normalized and casefolded; slugs are percent-decoded
+# and their separators become spaces. A term written in Latin letters matches
+# a whole word or phrase; any other term matches as a substring (Thai and
+# similar scripts do not separate words). No single term decides a result:
+# every vocabulary hit is one signal among several (what.md §5).
+
+[vocabulary]
+version = "what-vocabulary/v1"
+authored_at = "2026-10-08"
+origin = """
+Written by hand on 2026-10-08, before the WHAT sample was labelled, from
+general knowledge of the operator's content (South Asian film, music and
+series piracy sites, plan §P7) and of gambling/SEO spam. The scripts of the
+spam terms (Thai, Devanagari, Vietnamese, Indonesian) were chosen from the
+population URL survey (what.md §2) and the G5 finding that spam on these sites
+is casino/betting SEO (g5.md §4). Not mined from labelled pages; not tuned on
+the G5 labels.
+"""
+
+[content]
+# The operator's content domain. A hit is positive evidence that a page is
+# about the site's intended content.
+terms = [
+    "movie", "movies", "film", "films", "full movie", "songs", "song", "mp3",
+    "128kbps", "320kbps", "ringtone", "bgm", "web-dl", "web dl", "webrip",
+    "hdrip", "bluray", "brrip", "dvdrip", "dvdscr", "hdtv", "camrip", "predvd",
+    "1080p", "720p", "480p", "360p", "4k", "x264", "x265", "hevc", "dubbed",
+    "dual audio", "hindi dubbed", "tamil dubbed", "esub", "esubs", "subtitles",
+    "tamil", "telugu", "hindi", "malayalam", "kannada", "bengali", "punjabi",
+    "marathi", "bollywood", "hollywood", "tollywood", "kollywood", "mollywood",
+    "season", "episode", "episodes", "web series", "tv series", "tv show",
+    "trailer", "watch online", "full hd", "hd movie", "box office", "cast",
+    "starring", "director", "imdb", "ott",
+]
+
+[spam]
+# Gambling/SEO spam that these sites publish next to their content. A hit is
+# negative evidence; a page needs a second signal to be called spam.
+terms = [
+    # English
+    "casino", "casinos", "online casino", "slot", "slots", "slot machine",
+    "slot game", "betting", "online betting", "betting id", "betting app",
+    "sportsbook", "bookmaker", "bookie", "gambling", "poker", "roulette",
+    "blackjack", "baccarat", "jackpot", "lottery", "lotto", "satta", "matka",
+    "teen patti", "rummy", "aviator game", "crash game", "free spins",
+    "bonus code", "promo code", "deposit bonus", "no deposit", "betting exchange",
+    "exchange id", "wager", "wagering", "payday loan", "loan app", "crypto casino",
+    "forex", "escort", "escorts", "viagra", "essay writing", "backlinks",
+    "seo services",
+    # Thai
+    "สล็อต", "บาคาร่า", "คาสิโน", "เว็บตรง", "แทงบอล", "หวย", "เดิมพัน", "พนัน",
+    "ยูฟ่า", "แตกง่าย", "เครดิตฟรี",
+    # Devanagari (Hindi)
+    "कैसीनो", "कसीनो", "सट्टेबाजी", "सट्टा", "जुआ", "स्लॉट", "बेटिंग", "लॉटरी", "दांव",
+    # Vietnamese
+    "nhà cái", "cá cược", "nổ hũ", "tài xỉu", "xổ số", "đá gà", "game bài",
+    # Indonesian / Malay
+    "judi", "slot gacor", "togel", "taruhan",
+    # Portuguese / Spanish
+    "apostas", "apuestas", "cassino", "tragamonedas",
+]
+
+[structure]
+# Generic CMS conventions (English), not content vocabulary.
+# Regular expressions over the casefolded title that mark a listing page.
+hub_title_patterns = [
+    '\bpage \d+ of \d+\b',
+    '\bpage \d+\b',
+    '\barchives?\b',
+    '\byou searched for\b',
+    '\bsearch results?\b',
+    '\bsearch\b.*\b(movies|songs|results)\b',
+]
+# Titles or slugs of utility pages (kind "other").
+utility_terms = [
+    "about us", "about", "contact", "contact us", "privacy policy", "privacy",
+    "dmca", "disclaimer", "terms", "terms of service", "terms and conditions",
+    "terms of use", "cookie policy", "login", "log in", "sign in", "sign up",
+    "register", "bot verification", "page not found", "not found", "404",
+    "sitemap", "faq", "advertise",
+]
