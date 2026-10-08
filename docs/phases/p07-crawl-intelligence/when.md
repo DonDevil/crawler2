@@ -275,6 +275,12 @@ Assessment:
 **Not executed. It needs the operator's explicit go (F-20) and a review of
 the benchmark-script changes listed below.**
 
+**Design review (2026-10-08): do not run W1 as written on the current
+seeds** ([when-w1-review.md](when-w1-review.md)). M1 shows one active
+film-publishing site family; 35 of the 84 hubs are historical archives;
+the stop rule is inconsistent with the 40 % cap; events of one publication
+are not independent. The required changes are listed there (§10).
+
 | Item | Proposal |
 |---|---|
 | Objective | ≥ 50 labelled hub revisits with candidate events, independent of G5 and WHAT samples, at a fine, fixed revisit cadence that can be sub-sampled offline (6 h → 12/24/48 h) |
@@ -388,4 +394,7 @@ bounded by the P6 interval (6 h seeds, 24 h links).
   ADR-022 and ADR-023 are unchanged. WHAT is unchanged.
 - **No ADR is required:** no architectural decision was taken. The
   collection proposal and the gate are recorded as decision D-20.
-- **Next:** operator decision on W1 (§7). Until then, WHEN stays gated.
+- **Next:** W1 reviewed: not to be run on the current seeds
+  ([when-w1-review.md](when-w1-review.md) §10). A WHEN collection needs a
+  seed population with ≥ 3 independent publishing site families first
+  (operator, D-15). Until then, WHEN stays gated.
