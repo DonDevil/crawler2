@@ -1,0 +1,57 @@
+{
+ "analyze_page_us": {
+  "max": 9927.3,
+  "median": 267.6,
+  "p99": 4530.6
+ },
+ "anchor_links_per_page": {
+  "max": 310,
+  "median": 31.0,
+  "p99": 287
+ },
+ "hosts": 27,
+ "machine": "x86_64",
+ "pages": 20966,
+ "population_decisions": {
+  "detail/relevant": 8912,
+  "detail/spam": 4474,
+  "detail/unknown": 2269,
+  "hub/relevant": 3538,
+  "hub/spam": 95,
+  "hub/unknown": 1030,
+  "other/relevant": 6,
+  "other/spam": 17,
+  "other/unknown": 625
+ },
+ "profile_build_ms": {
+  "55club.tamilprint.co.in": 0.3,
+  "82lottery.tamilprint.co.in": 0.1,
+  "91club.tamilprint.co.in": 0.1,
+  "bdggame.tamilprint.co.in": 0.1,
+  "bdgwin.tamilprint.co.in": 0.1,
+  "damangame.tamilprint.co.in": 0.1,
+  "diuwin.tamilprint.co.in": 0.1,
+  "goagames.tamilprint.co.in": 0.1,
+  "in999.tamilprint.co.in": 0.1,
+  "isaimini.com.in": 733.8,
+  "isaiminimix.com": 201.2,
+  "jaiclub.tamilprint.co.in": 0.1,
+  "jalwagame.tamilprint.co.in": 0.1,
+  "movflix.my": 412.6,
+  "moviesda.com.in": 859.1,
+  "moviesda16.best": 191.6,
+  "okwin.tamilprint.co.in": 0.2,
+  "rajaluck.tamilprint.co.in": 0.1,
+  "sikkimgame.tamilprint.co.in": 0.1,
+  "tamilprint.co.in": 34.4,
+  "tamilprint.com.in": 243.1,
+  "tirangagame.tamilprint.co.in": 0.1,
+  "www.gofullmovies.com": 10.3,
+  "www.moviesda.business": 241.4,
+  "www.stripemovies.com": 167.6,
+  "www.tamilrockers2024.com": 81.3,
+  "yaarwin.tamilprint.co.in": 0.1
+ },
+ "profile_build_total_s": 3.178,
+ "python": "3.12.3"
+}

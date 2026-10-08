@@ -1,0 +1,5328 @@
+{
+ "kind": {
+  "accuracy": 0.9788732394366197,
+  "confusion": {
+   "detail": {
+    "detail": 68,
+    "hub": 0,
+    "other": 0
+   },
+   "hub": {
+    "detail": 3,
+    "hub": 63,
+    "other": 0
+   },
+   "other": {
+    "detail": 0,
+    "hub": 0,
+    "other": 8
+   }
+  },
+  "n": 142,
+  "per_class": {
+   "detail": {
+    "f1": 0.9784172661870503,
+    "fn": 0,
+    "fp": 3,
+    "precision": 0.9577464788732394,
+    "recall": 1.0,
+    "support": 68,
+    "tp": 68
+   },
+   "hub": {
+    "f1": 0.9767441860465117,
+    "fn": 3,
+    "fp": 0,
+    "precision": 1.0,
+    "recall": 0.9545454545454546,
+    "support": 66,
+    "tp": 63
+   },
+   "other": {
+    "f1": 1.0,
+    "fn": 0,
+    "fp": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "support": 8,
+    "tp": 8
+   }
+  }
+ },
+ "labels": 142,
+ "per_domain": {
+  "gofullmovies.com": {
+   "kind": {
+    "accuracy": 0.7857142857142857,
+    "confusion": {
+     "detail": {
+      "detail": 6,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 3,
+      "hub": 5,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 14,
+    "per_class": {
+     "detail": {
+      "f1": 0.8,
+      "fn": 0,
+      "fp": 3,
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "support": 6,
+      "tp": 6
+     },
+     "hub": {
+      "f1": 0.7692307692307693,
+      "fn": 3,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.625,
+      "support": 8,
+      "tp": 5
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.14285714285714285,
+    "confusion": {
+     "relevant": {
+      "relevant": 2,
+      "spam": 0,
+      "unknown": 8
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 4
+     }
+    },
+    "decided": 2,
+    "n": 14,
+    "per_class": {
+     "relevant": {
+      "f1": 0.33333333333333337,
+      "fn": 8,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.2,
+      "support": 10,
+      "tp": 2
+     },
+     "spam": {
+      "f1": null,
+      "fn": 4,
+      "fp": 0,
+      "precision": null,
+      "recall": 0.0,
+      "support": 4,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "isaimini.com.in": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 8,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 5,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 13,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 8,
+      "tp": 8
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 5,
+      "tp": 5
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.9230769230769231,
+    "confusion": {
+     "relevant": {
+      "relevant": 6,
+      "spam": 1,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 6,
+      "unknown": 0
+     }
+    },
+    "decided": 13,
+    "n": 13,
+    "per_class": {
+     "relevant": {
+      "f1": 0.923076923076923,
+      "fn": 1,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.8571428571428571,
+      "support": 7,
+      "tp": 6
+     },
+     "spam": {
+      "f1": 0.923076923076923,
+      "fn": 0,
+      "fp": 1,
+      "precision": 0.8571428571428571,
+      "recall": 1.0,
+      "support": 6,
+      "tp": 6
+     }
+    }
+   }
+  },
+  "isaiminimix.com": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 14,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 3,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 17,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 14,
+      "tp": 14
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3,
+      "tp": 3
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 1.0,
+    "confusion": {
+     "relevant": {
+      "relevant": 17,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 17,
+    "n": 17,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 17,
+      "tp": 17
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "movflix.my": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 3,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 7,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 3
+     }
+    },
+    "n": 13,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3,
+      "tp": 3
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 7,
+      "tp": 7
+     },
+     "other": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3,
+      "tp": 3
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 1.0,
+    "confusion": {
+     "relevant": {
+      "relevant": 10,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 10,
+    "n": 10,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 10,
+      "tp": 10
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "moviesda.business": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 5,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 6,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 11,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 5,
+      "tp": 5
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 6,
+      "tp": 6
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 1.0,
+    "confusion": {
+     "relevant": {
+      "relevant": 10,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 10,
+    "n": 10,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 10,
+      "tp": 10
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "moviesda.com.in": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 5,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 5,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 1
+     }
+    },
+    "n": 11,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 5,
+      "tp": 5
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 5,
+      "tp": 5
+     },
+     "other": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 1,
+      "tp": 1
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.8,
+    "confusion": {
+     "relevant": {
+      "relevant": 1,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 2,
+      "spam": 7,
+      "unknown": 0
+     }
+    },
+    "decided": 10,
+    "n": 10,
+    "per_class": {
+     "relevant": {
+      "f1": 0.5,
+      "fn": 0,
+      "fp": 2,
+      "precision": 0.3333333333333333,
+      "recall": 1.0,
+      "support": 1,
+      "tp": 1
+     },
+     "spam": {
+      "f1": 0.8750000000000001,
+      "fn": 2,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.7777777777777778,
+      "support": 9,
+      "tp": 7
+     }
+    }
+   }
+  },
+  "moviesda16.best": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 10,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 3,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 3
+     }
+    },
+    "n": 16,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 10,
+      "tp": 10
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3,
+      "tp": 3
+     },
+     "other": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 3,
+      "tp": 3
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 1.0,
+    "confusion": {
+     "relevant": {
+      "relevant": 12,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 12,
+    "n": 12,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 12,
+      "tp": 12
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "stripemovies.com": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 4,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 6,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 10,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 4,
+      "tp": 4
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 6,
+      "tp": 6
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.4,
+    "confusion": {
+     "relevant": {
+      "relevant": 4,
+      "spam": 0,
+      "unknown": 6
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 4,
+    "n": 10,
+    "per_class": {
+     "relevant": {
+      "f1": 0.5714285714285715,
+      "fn": 6,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.4,
+      "support": 10,
+      "tp": 4
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  },
+  "tamilprint.co.in": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 8,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 4,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 12,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 8,
+      "tp": 8
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 4,
+      "tp": 4
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.8333333333333334,
+    "confusion": {
+     "relevant": {
+      "relevant": 9,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 1,
+      "unknown": 2
+     }
+    },
+    "decided": 10,
+    "n": 12,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 9,
+      "tp": 9
+     },
+     "spam": {
+      "f1": 0.5,
+      "fn": 2,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "support": 3,
+      "tp": 1
+     }
+    }
+   }
+  },
+  "tamilprint.com.in": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 4,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 7,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 0
+     }
+    },
+    "n": 11,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 4,
+      "tp": 4
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 7,
+      "tp": 7
+     },
+     "other": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.9090909090909091,
+    "confusion": {
+     "relevant": {
+      "relevant": 7,
+      "spam": 0,
+      "unknown": 0
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 3,
+      "unknown": 1
+     }
+    },
+    "decided": 10,
+    "n": 11,
+    "per_class": {
+     "relevant": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 7,
+      "tp": 7
+     },
+     "spam": {
+      "f1": 0.8571428571428571,
+      "fn": 1,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.75,
+      "support": 4,
+      "tp": 3
+     }
+    }
+   }
+  },
+  "tamilrockers2024.com": {
+   "kind": {
+    "accuracy": 1.0,
+    "confusion": {
+     "detail": {
+      "detail": 1,
+      "hub": 0,
+      "other": 0
+     },
+     "hub": {
+      "detail": 0,
+      "hub": 12,
+      "other": 0
+     },
+     "other": {
+      "detail": 0,
+      "hub": 0,
+      "other": 1
+     }
+    },
+    "n": 14,
+    "per_class": {
+     "detail": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 1,
+      "tp": 1
+     },
+     "hub": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 12,
+      "tp": 12
+     },
+     "other": {
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 1,
+      "tp": 1
+     }
+    }
+   },
+   "relevance": {
+    "accuracy_all": 0.5833333333333334,
+    "confusion": {
+     "relevant": {
+      "relevant": 7,
+      "spam": 0,
+      "unknown": 5
+     },
+     "spam": {
+      "relevant": 0,
+      "spam": 0,
+      "unknown": 0
+     }
+    },
+    "decided": 7,
+    "n": 12,
+    "per_class": {
+     "relevant": {
+      "f1": 0.7368421052631579,
+      "fn": 5,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "support": 12,
+      "tp": 7
+     },
+     "spam": {
+      "f1": null,
+      "fn": 0,
+      "fp": 0,
+      "precision": null,
+      "recall": null,
+      "support": 0,
+      "tp": 0
+     }
+    }
+   }
+  }
+ },
+ "policy": "what/v1",
+ "profile_build_seconds": 3.26,
+ "relevance": {
+  "accuracy_all": 0.7786259541984732,
+  "confusion": {
+   "relevant": {
+    "relevant": 85,
+    "spam": 1,
+    "unknown": 19
+   },
+   "spam": {
+    "relevant": 2,
+    "spam": 17,
+    "unknown": 7
+   }
+  },
+  "decided": 105,
+  "n": 131,
+  "per_class": {
+   "relevant": {
+    "f1": 0.8854166666666666,
+    "fn": 20,
+    "fp": 2,
+    "precision": 0.9770114942528736,
+    "recall": 0.8095238095238095,
+    "support": 105,
+    "tp": 85
+   },
+   "spam": {
+    "f1": 0.7727272727272727,
+    "fn": 9,
+    "fp": 1,
+    "precision": 0.9444444444444444,
+    "recall": 0.6538461538461539,
+    "support": 26,
+    "tp": 17
+   }
+  }
+ },
+ "rows": [
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "00075115db41",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 3,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://isaimini.com.in/content-planning-with-group-buy-seo-tools/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "000c677f62fa",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 3,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://isaimini.com.in/a-practical-guide-to-getting-familiar-with-b52club/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00104565a091",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 1,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "full movie",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/razor-2026-tamil-movie"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "001dd794b09d",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://isaimini.com.in/4-sorry-2021/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0022dec6a307",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://moviesda.com.in/sollividavaa-2018/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0026b1363095",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 12,
+   "own_links": 14,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.moviesda.business/search?updated-max=2026-04-18T04:41:00-07:00&max-results=20&start=111&by-date=false"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "002f47c33894",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 3,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://isaimini.com.in/forgot-exness-password-how-to-reset-it-quickly/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00317eb33d1b",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/karakkam-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0033b82e1289",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/kanni-rasi-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "003441e04188",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/velaiilla-pattadhari-2/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00351c14de71",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 1,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "full hd",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/konjam-kadhal-konjam-modhal-2025-tamil-movie"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "0047f61b2513",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 4,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://moviesda.com.in/how-jemari4d-keeps-players-engaged-online/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00527b0fdc08",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://isaimini.com.in/poiyattam-2020/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "006800364074",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 4,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://moviesda.com.in/secrets-to-analyzing-corner-kick-odds/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "006b49be649f",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 19,
+   "own_links": 136,
+   "positive": [
+    "content_terms",
+    "content_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://isaimini.com.in/tamil-movies-collection/60/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "006ef6a8781c",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 37,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://tamilprint.com.in/tamil-2023-movies/9/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "007221d0acd5",
+   "kind": "other",
+   "kind_reasons": [
+    "empty_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/wp-includes/{slug}.php",
+   "template_role": "unknown",
+   "terms": [],
+   "url": "https://movflix.my/wp-includes/blocks.php"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0076b13d169d",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://isaimini.com.in/brammanda-nayagan-2018/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "007d4d251c4e",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 4,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://isaimini.com.in/discover-the-best-online-fish-shooting-games-at-88vin/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "007d7a4be397",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_terms",
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 3,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [
+    "online betting"
+   ],
+   "url": "https://isaimini.com.in/how-ufabet-mobile-login-became-essential-for-online-betting-fans/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00862e5fc2ac",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/silukkuvaarpatti-singam-2018-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "00a2b6ee0f7b",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-26T22:53:00-07:00&max-results=7&reverse-paginate=true&start=56&by-date=false"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "00aefef173aa",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 36,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://tamilprint.com.in/tamil-2022-movies/17/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "00b8277ab09e",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 9,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.moviesda.business/search?updated-max=2025-12-25T18:16:00-08:00&max-results=7"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "00c5b4fe3ec4",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "listing_path",
+    "hub_title",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 5,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/author/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://tamilprint.com.in/author/alfa-team/page/37/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00c9352b75e6",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 6,
+   "own_links": 7,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "480p",
+    "720p",
+    "dual audio",
+    "hindi",
+    "movie",
+    "web dl"
+   ],
+   "url": "https://movflix.my/parmanu-the-story-of-pokhran-2018-web-dl-hindi-org-1080p-720p-480p/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00cb4ced8cad",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 2,
+   "own_links": 3,
+   "positive": [
+    "content_terms",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}.html",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://www.moviesda.business/2026/02/thaai-kizhavi-tamil-movie-download-isaimini.html"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "00cc547f12c0",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_terms",
+    "spam_template"
+   ],
+   "own_content_links": 1,
+   "own_links": 4,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [
+    "betting"
+   ],
+   "url": "https://moviesda.com.in/discover-the-odds-of-5-star-bookmakers-a-complete-guide-to-betting-and-football-results/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00cc8fa3bb65",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/cobra-2022-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "00ce695d44df",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "search",
+    "hub_title"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 17,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/page/{num}/?s",
+   "template_role": null,
+   "terms": [],
+   "url": "https://tamilprint.com.in/page/6/?s"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00d827fc65b8",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://tamilprint.com.in/neruppu-da-2017/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "00d8b47dee7b",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 114,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://tamilprint.com.in/tamil-daily-movies/69/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00e58bf79a93",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/yevanum-buthanillai-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "00ea72783f7c",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://tamilprint.com.in/paatti-sollai-thattathe-2023/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0104312f50a6",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "date_archive",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://movflix.my/2025/04/page/5/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "010f8c088ee8",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/prathichaya-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0120ab71e28e",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://tamilprint.com.in/ka-ka-ka-aabathin-arikuri-2017/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "01400aeaeaff",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/{slug}/",
+   "template_role": null,
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/movies/animation//"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01424abbddd8",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/derby-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01440ad49d35",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 6,
+   "own_links": 7,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "720p",
+    "hindi",
+    "movie",
+    "web dl",
+    "web-dl"
+   ],
+   "url": "https://movflix.my/the-shameless-2024-web-dl-hindi-org-movie/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01666633ad23",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 2,
+   "own_links": 3,
+   "positive": [
+    "content_terms",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}.html",
+   "template_role": "content",
+   "terms": [
+    "malayalam",
+    "movie"
+   ],
+   "url": "https://www.moviesda.business/2026/03/prakambanam-malayalam-movie-download-isaimini.html"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "0181a65f7c94",
+   "kind": "other",
+   "kind_reasons": [
+    "empty_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/wp-includes/{slug}.php",
+   "template_role": "unknown",
+   "terms": [],
+   "url": "https://movflix.my/wp-includes/class-wp-theme-json-schema.php"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "018ef0a3e1cf",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}-{year}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://tamilprint.com.in/boo-2022/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "019e54496dc3",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "mollywood",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/mollywood-times-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01a1c93c4fda",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.stripemovies.com/the-society/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01aa7977bd6b",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/vaaren-odi-vaaren-2020-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01b6a75d432b",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "720p",
+    "dual audio",
+    "hindi",
+    "movie",
+    "web dl",
+    "web-dl"
+   ],
+   "url": "https://movflix.my/the-chaser-2008-web-dl-hindi-org-dual-audio-movie/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "01c06e29d25c",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.stripemovies.com/the-wizard-of-lies/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "ambiguous",
+   "id": "01c13d7c43f8",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.moviesda.business/search?updated-max=2026-06-18T07:15:00-07:00&max-results=20&reverse-paginate=true&start=12&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "01dbcfd962b5",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-02-28T11:25:00%2B05:30&max-results=20&reverse-paginate=true&start=35&by-date=false"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "01dfdd0f0485",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 15,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.stripemovies.com/movies/action/page/26/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "02128a740f9f",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 3,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}.html",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://www.moviesda.business/2026/04/patriot-tamil-movie-download-moviesda.html"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "021df79c8c1f",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 114,
+   "positive": [
+    "content_terms",
+    "content_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda.com.in/tamil-daily-movies/28/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0225efa1c8ce",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 9,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.moviesda.business/search?updated-max=2026-02-19T21:54:00-08:00&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "023a72805d71",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 16,
+   "positive": [
+    "year",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{year}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.stripemovies.com/release-year/2020/page/13/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0246429bd734",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 9,
+   "own_links": 11,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/thaai-kizhavi-2026-dvdpre-tamil-movie-online-free"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "024bda29962b",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.stripemovies.com/robin-hood/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "024bfada9ad0",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 18,
+   "own_links": 19,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-08-20T22:00:00-07:00&max-results=20&reverse-paginate=true"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "025281202ad6",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/dhilluku-dhuddu-2016-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0252f008a6c8",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "date_archive",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://movflix.my/2026/page/6/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "02614f5238f2",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.stripemovies.com/love-guaranteed-1/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "026d77242bad",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/aadai-2019-tamil-songs-download-isaimini/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "028215aa8bca",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies"
+   ],
+   "url": "https://movflix.my/page/103/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "029549a93e42",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/srinivasa-mangapuram-2026-tamil-movie-online-free"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "02ce068433e0",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 9,
+   "own_links": 11,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "1080p",
+    "movie",
+    "tamil dubbed"
+   ],
+   "url": "https://moviesda16.best/anecdotes-of-ape-mountain-2026-tamil-dubbed-online-free"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "02d9562e1112",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 7,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://tamilprint.co.in/neela-nira-sooriyan-2024-tamil-movie-download/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "030160ec4be8",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 1,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}",
+   "template_role": "content",
+   "terms": [
+    "full movie",
+    "movie",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/drishyam-3-2026-dvdpre-tamil-movie"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0309e7d19528",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 2,
+   "own_links": 3,
+   "positive": [
+    "content_terms",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}.html",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://www.moviesda.business/2026/05/athiradi-tamil-movie-download-isaimini.html"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "030c98dbb8d4",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 12,
+   "own_links": 15,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-11-07T12:03:00%2B05:30&max-results=20&reverse-paginate=true"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "030d7542d169",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 14,
+   "positive": [
+    "year",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{year}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.stripemovies.com/release-year/2019/page/16/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "031efa58308a",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "date_archive",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://movflix.my/2026/page/45/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "034674a2a454",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 114,
+   "positive": [
+    "content_terms",
+    "content_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda.com.in/tamil-daily-movies/79/"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0346ec04c80c",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "dual audio",
+    "movies"
+   ],
+   "url": "https://movflix.my/category/south-dual-audio-movies/page/5/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "034a9ac5c961",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 3,
+   "own_links": 4,
+   "positive": [
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}-{year}.html",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/2026/01/anaganaga-oka-raju-2026.html"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "034e1e665336",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 15,
+   "positive": [
+    "content_template_links"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.stripemovies.com/release-year/page/141/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0366d4eb0676",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 1,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.gofullmovies.com/predator-badlands/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "03c49dae5a8b",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 3,
+   "own_links": 5,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-07-04T05:50:00-07:00&max-results=20&reverse-paginate=true&start=56&by-date=false"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "03fef596766d",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 9,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.moviesda.business/search?updated-max=2026-07-02T04:12:00-07:00&max-results=7&start=21&by-date=false"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "040c84c10dde",
+   "kind": "other",
+   "kind_reasons": [
+    "empty_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/{slug}.php",
+   "template_role": "unknown",
+   "terms": [],
+   "url": "https://moviesda.com.in/wp-login.php?redirect_to=https%3A%2F%2Fmoviesda.com.in%2Flinetogel-the-ultimate-guide-to-winning-big-in-online-togel%2F"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0590884550bf",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-27T11:23:00%2B05:30&max-results=20&reverse-paginate=true&start=32&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "05f14dbdbdf3",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 3,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-05-01T17:51:00%2B05:30&max-results=7&reverse-paginate=true"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "06a15d4d4c2a",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2024-09-26T22:53:00-07:00&max-results=7&reverse-paginate=true&start=7&by-date=false"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "06a41a42a3e8",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 21,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "dual audio",
+    "movies"
+   ],
+   "url": "https://movflix.my/category/south-dual-audio-movies/page/15/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0765ae58df49",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 7,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "tamil dubbed"
+   ],
+   "url": "https://tamilprint.co.in/sugar-baby-2024-tamil-dubbed-download-tamilprint/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "082ea0d10fac",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "site_root"
+   ],
+   "negative": [],
+   "own_content_links": 21,
+   "own_links": 26,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/?page",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/?page=3"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "09210071b702",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 15,
+   "positive": [
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{year}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://isaimini.com.in/category/2024/page/3/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "097347361df6",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 10,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://tamilprint.co.in/dappankuthu-2024-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "09cb103cc13f",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://tamilprint.co.in/sattam-en-kayil-2024-tamil-movie-download-tamilprint/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0ac80b1e9e7d",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 9,
+   "own_links": 15,
+   "positive": [
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{year}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://isaimini.com.in/category/2019/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "0b99b57ccaf5",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 11,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "tamil dubbed"
+   ],
+   "url": "https://tamilprint.co.in/longlegs-2024-tamil-dubbed-download-tamilprint/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "0e3aa9b895e5",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 16,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.stripemovies.com/movies/comedy/page/10/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "110aebe254b4",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 13,
+   "own_links": 15,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search/label/{slug}?start&updated-max",
+   "template_role": null,
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://www.moviesda.business/search/label/Tamil%20Movies?updated-max=2026-05-12T21:48:00-07:00&max-results=20&start=73&by-date=false"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "11c5ddf78734",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "search",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 13,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/page/{num}/?s",
+   "template_role": null,
+   "terms": [],
+   "url": "https://tamilprint.co.in/page/3/?s"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "12f62b4e00e4",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 15,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "dual audio"
+   ],
+   "url": "https://tamilprint.co.in/category/dual-audio/page/7/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "164a3cf5a753",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 13,
+   "own_links": 16,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2025-10-17T16:06:00%2B05:30&max-results=20&start=56&by-date=false"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "19715ebc6b12",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 9,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search?start&updated-max",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/search?updated-max=2026-03-13T01:00:00-07:00&max-results=7&start=14&by-date=false"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "19ce1f35f1ae",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 15,
+   "own_links": 20,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/author/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://movflix.my/author/movflix/page/35/"
+  },
+  {
+   "domain": "stripemovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "19decc7cdcad",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "search",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 15,
+   "positive": [
+    "content_template_links"
+   ],
+   "relevance": "unknown",
+   "template": "/page/{num}/?s",
+   "template_role": "listing",
+   "terms": [],
+   "url": "https://www.stripemovies.com/page/3/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "1af530cf8881",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 13,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}.php",
+   "template_role": null,
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "1b181b041aa6",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 20,
+   "own_links": 26,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}?page",
+   "template_role": "listing",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/category/tamil-hd-movies?page=16"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "1dee7c3df009",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "hub_title",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 2,
+   "positive": [
+    "year"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/{year}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://www.gofullmovies.com/release-year/2025/page/2/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "1fc425eb0482",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 12,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}.php",
+   "template_role": null,
+   "terms": [
+    "hollywood",
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=watch-new-hollywood-movies&PageID=227133"
+  },
+  {
+   "domain": "movflix.my",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "24b208472e7f",
+   "kind": "other",
+   "kind_reasons": [
+    "empty_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/wp-includes/{slug}/{slug}.php",
+   "template_role": "unknown",
+   "terms": [],
+   "url": "https://movflix.my/wp-includes/html-api/class-wp-html-text-replacement.php"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "25aa318a5b37",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 9,
+   "own_links": 15,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/author/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://tamilprint.co.in/author/admin/page/7/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "26c31b76927a",
+   "kind": "other",
+   "kind_reasons": [
+    "utility_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [
+    "content_terms",
+    "year"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}.php",
+   "template_role": "unknown",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/contact.php"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "27fc8f8b9a48",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "search",
+    "hub_title"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 16,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/page/{num}/?s",
+   "template_role": null,
+   "terms": [],
+   "url": "https://moviesda.com.in/page/2/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "2ca44e69cad4",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 12,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}.php",
+   "template_role": null,
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=1&k=full-movies-with-trailers"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "2d749a0d2e63",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "listing_path"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 16,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://tamilprint.com.in/category/blog/page/5/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "ambiguous",
+   "id": "31e7e51966d5",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "search",
+    "listing_path",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/search/label/{slug}?start&updated-max",
+   "template_role": null,
+   "terms": [
+    "telugu"
+   ],
+   "url": "https://www.tamilrockers2024.com/search/label/Telugu?updated-max=2024-09-27T11:23:00%2B05:30&max-results=20&start=20&by-date=false"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "3753f23debf0",
+   "kind": "hub",
+   "kind_reasons": [
+    "pagination",
+    "listing_path",
+    "hub_title",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 2,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "content_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": "listing",
+   "terms": [
+    "bollywood"
+   ],
+   "url": "https://tamilprint.co.in/category/bollywood/page/7/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "3cc9668fec98",
+   "kind": "detail",
+   "kind_reasons": [
+    "single_page_site"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://55club.tamilprint.co.in/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "4112b0baa878",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.gofullmovies.com/a-complete-unknown/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "47e313861b12",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/7aum/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "4880b544ef90",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "search",
+    "hub_title"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 15,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/page/{num}/?s",
+   "template_role": null,
+   "terms": [],
+   "url": "https://isaimini.com.in/page/432/?s"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "499a26240d35",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 13,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/movies/page/3/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "4ae63d36647f",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/junga/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "4c3d1ce78468",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "site_root"
+   ],
+   "negative": [],
+   "own_content_links": 12,
+   "own_links": 12,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/",
+   "template_role": null,
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "hub",
+   "gold_relevance": "ambiguous",
+   "id": "542755eafb6f",
+   "kind": "hub",
+   "kind_reasons": [
+    "search",
+    "hub_title",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/search.php?q",
+   "template_role": null,
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/search.php?q="
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "5aee4b2a7638",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/aadukalam/"
+  },
+  {
+   "domain": "moviesda.business",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "5f93d4e87c31",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 3,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{year}/{mm}/{slug}.html",
+   "template_role": "content",
+   "terms": [
+    "movie",
+    "tamil"
+   ],
+   "url": "https://www.moviesda.business/2026/06/engal-thangam-tamil-movie-download-isaimini.html?showComment=1781919124907"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "655a5bf072d9",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "related_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 12,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}.php",
+   "template_role": null,
+   "terms": [
+    "hollywood",
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/gofullmovies.php?Action=2&k=watch-new-hollywood-movies"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "7371347e440c",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 10,
+   "own_links": 11,
+   "positive": [
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/author/{slug}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://isaiminimix.com/author/admin/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "74dd506831db",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "listing_path",
+    "hub_title"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 3,
+   "own_links": 14,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/author/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://moviesda.com.in/author/movies1/page/2/"
+  },
+  {
+   "domain": "isaimini.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "78a704341b3a",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "pagination",
+    "listing_path"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 15,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/category/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://isaimini.com.in/category/blog/page/3/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "7a2cf2bae26c",
+   "kind": "hub",
+   "kind_reasons": [
+    "search",
+    "listing_path",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 2,
+   "own_links": 3,
+   "positive": [
+    "content_terms",
+    "content_links"
+   ],
+   "relevance": "relevant",
+   "template": "/search/label/{slug}",
+   "template_role": null,
+   "terms": [
+    "telugu"
+   ],
+   "url": "https://www.tamilrockers2024.com/search/label/Telugu"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "92b217b82c90",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 4,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/don/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "95ef9e014a87",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [
+    "content_template"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [],
+   "url": "https://www.gofullmovies.com/anaconda/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "99b81c093daa",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/kavan/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "a8fa3cf26651",
+   "kind": "other",
+   "kind_reasons": [
+    "utility_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 1,
+   "positive": [
+    "content_terms",
+    "year"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}.php",
+   "template_role": "unknown",
+   "terms": [
+    "movies",
+    "tamil"
+   ],
+   "url": "https://moviesda16.best/privacy.php"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "af2f5803a95c",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "pagination",
+    "hub_title"
+   ],
+   "negative": [],
+   "own_content_links": 7,
+   "own_links": 10,
+   "positive": [
+    "content_template_links"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/page/{num}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://www.gofullmovies.com/release-year/page/4/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "b0055bddb676",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "content_template_links",
+    "listing_path"
+   ],
+   "negative": [],
+   "own_content_links": 9,
+   "own_links": 11,
+   "positive": [
+    "content_terms",
+    "content_links",
+    "content_template_links"
+   ],
+   "relevance": "relevant",
+   "template": "/category/{slug}/",
+   "template_role": null,
+   "terms": [
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/category/tamil-hit-songs/"
+  },
+  {
+   "domain": "tamilrockers2024.com",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "b01f8d1d329f",
+   "kind": "other",
+   "kind_reasons": [
+    "utility_page"
+   ],
+   "negative": [],
+   "own_content_links": 1,
+   "own_links": 2,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/p/{slug}.html",
+   "template_role": null,
+   "terms": [],
+   "url": "https://www.tamilrockers2024.com/p/about-us.html"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "becd4bf2c29d",
+   "kind": "hub",
+   "kind_reasons": [
+    "site_root",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 2,
+   "positive": [
+    "content_terms",
+    "year"
+   ],
+   "relevance": "relevant",
+   "template": "/",
+   "template_role": null,
+   "terms": [
+    "hd movie",
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/"
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "c4c3c678a940",
+   "kind": "detail",
+   "kind_reasons": [
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [
+    "spam_template"
+   ],
+   "own_content_links": 0,
+   "own_links": 4,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/{slug}/",
+   "template_role": "spam",
+   "terms": [],
+   "url": "https://moviesda.com.in/bet168/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "c694350d353e",
+   "kind": "detail",
+   "kind_reasons": [
+    "single_page_site"
+   ],
+   "negative": [
+    "spam_terms"
+   ],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/",
+   "template_role": null,
+   "terms": [
+    "lottery"
+   ],
+   "url": "https://82lottery.tamilprint.co.in/"
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "c6a8d18c14c9",
+   "kind": "hub",
+   "kind_reasons": [
+    "search",
+    "site_root",
+    "hub_title",
+    "few_page_links"
+   ],
+   "negative": [],
+   "own_content_links": 4,
+   "own_links": 7,
+   "positive": [
+    "content_template_links"
+   ],
+   "relevance": "unknown",
+   "template": "/?s",
+   "template_role": null,
+   "terms": [],
+   "url": "https://www.gofullmovies.com/?s="
+  },
+  {
+   "domain": "moviesda.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "cce1a7ff02d3",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "listing_path"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 13,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/author/{slug}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://moviesda.com.in/author/movies1/"
+  },
+  {
+   "domain": "isaiminimix.com",
+   "gold_kind": "detail",
+   "gold_relevance": "relevant_content",
+   "id": "cd77321a3951",
+   "kind": "detail",
+   "kind_reasons": [
+    "content_template",
+    "item_title",
+    "article_metadata",
+    "published_date"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms",
+    "year",
+    "content_template"
+   ],
+   "relevance": "relevant",
+   "template": "/{slug}/",
+   "template_role": "content",
+   "terms": [
+    "128kbps",
+    "songs",
+    "tamil"
+   ],
+   "url": "https://isaiminimix.com/aadhavan/"
+  },
+  {
+   "domain": "tamilprint.com.in",
+   "gold_kind": "hub",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "cf5ee5a42807",
+   "kind": "hub",
+   "kind_reasons": [
+    "many_page_links",
+    "listing_path"
+   ],
+   "negative": [
+    "spam_links"
+   ],
+   "own_content_links": 0,
+   "own_links": 13,
+   "positive": [],
+   "relevance": "spam",
+   "template": "/author/{slug}/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://tamilprint.com.in/author/movies1/"
+  },
+  {
+   "domain": "moviesda16.best",
+   "gold_kind": "other",
+   "gold_relevance": "n/a",
+   "id": "d23d2e03efa4",
+   "kind": "other",
+   "kind_reasons": [
+    "empty_page"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/{slug}.php?term",
+   "template_role": null,
+   "terms": [],
+   "url": "https://moviesda16.best/search_suggest.php?term="
+  },
+  {
+   "domain": "gofullmovies.com",
+   "gold_kind": "hub",
+   "gold_relevance": "relevant_content",
+   "id": "ec36000395e4",
+   "kind": "detail",
+   "kind_reasons": [
+    "item_title",
+    "article_metadata"
+   ],
+   "negative": [],
+   "own_content_links": 5,
+   "own_links": 5,
+   "positive": [
+    "content_terms"
+   ],
+   "relevance": "unknown",
+   "template": "/{slug}/{slug}/",
+   "template_role": null,
+   "terms": [
+    "movies"
+   ],
+   "url": "https://www.gofullmovies.com/movies/animation/"
+  },
+  {
+   "domain": "tamilprint.co.in",
+   "gold_kind": "detail",
+   "gold_relevance": "spam_or_irrelevant",
+   "id": "f8e1713d5805",
+   "kind": "detail",
+   "kind_reasons": [
+    "single_page_site"
+   ],
+   "negative": [],
+   "own_content_links": 0,
+   "own_links": 0,
+   "positive": [],
+   "relevance": "unknown",
+   "template": "/",
+   "template_role": null,
+   "terms": [],
+   "url": "https://bdgwin.tamilprint.co.in/"
+  }
+ ],
+ "split": "dev",
+ "templates": {
+  "hosts": {
+   "55club.tamilprint.co.in": {
+    "boilerplate_links": 0,
+    "labelled_details": {
+     "/ [None] gold=spam_or_irrelevant": 1
+    },
+    "pages": 1,
+    "script": "LATIN",
+    "templates": [],
+    "title_boilerplate": [],
+    "urls": 1
+   },
+   "82lottery.tamilprint.co.in": {
+    "boilerplate_links": 0,
+    "labelled_details": {
+     "/ [None] gold=spam_or_irrelevant": 1
+    },
+    "pages": 1,
+    "script": "LATIN",
+    "templates": [],
+    "title_boilerplate": [],
+    "urls": 1
+   },
+   "bdgwin.tamilprint.co.in": {
+    "boilerplate_links": 0,
+    "labelled_details": {
+     "/ [None] gold=spam_or_irrelevant": 1
+    },
+    "pages": 1,
+    "script": "LATIN",
+    "templates": [],
+    "title_boilerplate": [],
+    "urls": 1
+   },
+   "isaimini.com.in": {
+    "boilerplate_links": 13,
+    "labelled_details": {
+     "/{slug}-{year}/ [content] gold=relevant_content": 3,
+     "/{slug}/ [spam] gold=spam_or_irrelevant": 5
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 87,
+      "role": "spam",
+      "spam": 636,
+      "support": 2012,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 1106,
+      "role": "content",
+      "spam": 30,
+      "support": 1136,
+      "template": "/{slug}-{year}/"
+     },
+     {
+      "content": 354,
+      "role": "listing",
+      "spam": 0,
+      "support": 354,
+      "template": "/{slug}/{num}/"
+     },
+     {
+      "content": 262,
+      "role": "listing",
+      "spam": 0,
+      "support": 262,
+      "template": "/{year}/{mm}/{dd}/"
+     },
+     {
+      "content": 10,
+      "role": "listing",
+      "spam": 0,
+      "support": 25,
+      "template": "/category/{year}/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "isaimini 2026"
+    ],
+    "urls": 3834
+   },
+   "isaiminimix.com": {
+    "boilerplate_links": 6,
+    "labelled_details": {
+     "/{slug}/ [content] gold=relevant_content": 14
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 1344,
+      "role": "content",
+      "spam": 2,
+      "support": 1353,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 24,
+      "template": "/author/{slug}/page/{num}/"
+     },
+     {
+      "content": 23,
+      "role": "listing",
+      "spam": 0,
+      "support": 23,
+      "template": "/category/{slug}/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "isaimini"
+    ],
+    "urls": 1404
+   },
+   "movflix.my": {
+    "boilerplate_links": 48,
+    "labelled_details": {
+     "/{slug}/ [content] gold=relevant_content": 3
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 1320,
+      "role": "content",
+      "spam": 1,
+      "support": 1325,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 356,
+      "template": "/wp-includes/{slug}/{slug}/{slug}"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 255,
+      "template": "/wp-includes/{slug}.php"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 240,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 208,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/"
+     },
+     {
+      "content": 1,
+      "role": "unknown",
+      "spam": 0,
+      "support": 200,
+      "template": "/wp-includes/{slug}/{slug}.php"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 197,
+      "template": "/wp-includes/{slug}/{slug}"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 195,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 165,
+      "template": "/wp-includes/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 164,
+      "template": "/wp-includes/{slug}/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 119,
+      "template": "/wp-includes/{slug}/{slug}/{slug}.php"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 100,
+      "template": "/browse/page/{num}/"
+     },
+     {
+      "content": 25,
+      "role": "listing",
+      "spam": 0,
+      "support": 93,
+      "template": "/{year}/{mm}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 77,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}/{slug}"
+     },
+     {
+      "content": 72,
+      "role": "listing",
+      "spam": 0,
+      "support": 72,
+      "template": "/category/{slug}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 70,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}/{slug}/"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 51,
+      "template": "/author/{slug}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 46,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}/{slug}/{slug}"
+     },
+     {
+      "content": 9,
+      "role": "listing",
+      "spam": 0,
+      "support": 31,
+      "template": "/{year}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 29,
+      "template": "/wp-includes/{slug}/{slug}/{slug}/{slug}.php"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 27,
+      "template": "/browse"
+     },
+     {
+      "content": 7,
+      "role": "listing",
+      "spam": 0,
+      "support": 20,
+      "template": "/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "480p",
+     "movflix.in"
+    ],
+    "urls": 4164
+   },
+   "moviesda.com.in": {
+    "boilerplate_links": 12,
+    "labelled_details": {
+     "/{slug}-{year}/ [content] gold=relevant_content": 1,
+     "/{slug}/ [spam] gold=spam_or_irrelevant": 4
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 75,
+      "role": "spam",
+      "spam": 554,
+      "support": 1444,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 1097,
+      "role": "content",
+      "spam": 19,
+      "support": 1116,
+      "template": "/{slug}-{year}/"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 512,
+      "template": "/{slug}.php"
+     },
+     {
+      "content": 327,
+      "role": "listing",
+      "spam": 0,
+      "support": 327,
+      "template": "/{slug}/{num}/"
+     },
+     {
+      "content": 254,
+      "role": "listing",
+      "spam": 0,
+      "support": 254,
+      "template": "/{year}/{mm}/{dd}/"
+     }
+    ],
+    "title_boilerplate": [
+     "moviesda 2026"
+    ],
+    "urls": 3686
+   },
+   "moviesda16.best": {
+    "boilerplate_links": 21,
+    "labelled_details": {
+     "/{slug} [content] gold=relevant_content": 10
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 1092,
+      "role": "content",
+      "spam": 0,
+      "support": 1092,
+      "template": "/{slug}"
+     },
+     {
+      "content": 4,
+      "role": "unknown",
+      "spam": 0,
+      "support": 948,
+      "template": "/{slug}.php"
+     },
+     {
+      "content": 34,
+      "role": "listing",
+      "spam": 0,
+      "support": 38,
+      "template": "/?page"
+     },
+     {
+      "content": 29,
+      "role": "listing",
+      "spam": 0,
+      "support": 29,
+      "template": "/category/{slug}?page"
+     }
+    ],
+    "title_boilerplate": [
+     "tamilroy"
+    ],
+    "urls": 2117
+   },
+   "tamilprint.co.in": {
+    "boilerplate_links": 28,
+    "labelled_details": {
+     "/{slug}/ [content] gold=relevant_content": 5
+    },
+    "pages": 199,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 135,
+      "role": "content",
+      "spam": 3,
+      "support": 153,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 21,
+      "role": "listing",
+      "spam": 0,
+      "support": 22,
+      "template": "/category/{slug}/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "tamilprint"
+    ],
+    "urls": 215
+   },
+   "tamilprint.com.in": {
+    "boilerplate_links": 11,
+    "labelled_details": {
+     "/{slug}-{year}/ [content] gold=relevant_content": 4
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 1356,
+      "role": "content",
+      "spam": 5,
+      "support": 1361,
+      "template": "/{slug}-{year}/"
+     },
+     {
+      "content": 63,
+      "role": "spam",
+      "spam": 148,
+      "support": 443,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 279,
+      "role": "listing",
+      "spam": 0,
+      "support": 279,
+      "template": "/{slug}/{num}/"
+     },
+     {
+      "content": 29,
+      "role": "listing",
+      "spam": 0,
+      "support": 64,
+      "template": "/category/{year}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 31,
+      "template": "/author/{slug}/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "tamilprint 2026"
+    ],
+    "urls": 2217
+   },
+   "www.gofullmovies.com": {
+    "boilerplate_links": 26,
+    "labelled_details": {
+     "/{slug}.php [None] gold=spam_or_irrelevant": 3,
+     "/{slug}/ [content] gold=relevant_content": 3
+    },
+    "pages": 86,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 2,
+      "role": "content",
+      "spam": 0,
+      "support": 41,
+      "template": "/{slug}/"
+     }
+    ],
+    "title_boilerplate": [
+     "free instant download",
+     "watch in hd"
+    ],
+    "urls": 97
+   },
+   "www.moviesda.business": {
+    "boilerplate_links": 21,
+    "labelled_details": {
+     "/{year}/{mm}/{slug}.html [content] gold=relevant_content": 5
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 911,
+      "template": "/search?start&updated-max"
+     },
+     {
+      "content": 331,
+      "role": "content",
+      "spam": 0,
+      "support": 331,
+      "template": "/{year}/{mm}/{slug}.html"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 223,
+      "template": "/search?updated-max"
+     },
+     {
+      "content": 0,
+      "role": "unknown",
+      "spam": 0,
+      "support": 198,
+      "template": "/{slug}/{num}/comments/{slug}"
+     }
+    ],
+    "title_boilerplate": [],
+    "urls": 1699
+   },
+   "www.stripemovies.com": {
+    "boilerplate_links": 30,
+    "labelled_details": {
+     "/{slug}/ [content] gold=relevant_content": 4
+    },
+    "pages": 1000,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 22,
+      "role": "content",
+      "spam": 0,
+      "support": 1313,
+      "template": "/{slug}/"
+     },
+     {
+      "content": 141,
+      "role": "listing",
+      "spam": 0,
+      "support": 141,
+      "template": "/{slug}/{slug}/page/{num}/"
+     },
+     {
+      "content": 71,
+      "role": "listing",
+      "spam": 0,
+      "support": 135,
+      "template": "/{slug}/{year}/page/{num}/"
+     },
+     {
+      "content": 29,
+      "role": "listing",
+      "spam": 0,
+      "support": 61,
+      "template": "/{slug}/page/{num}/"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 28,
+      "template": "/page/{num}/?s"
+     },
+     {
+      "content": 13,
+      "role": "listing",
+      "spam": 0,
+      "support": 23,
+      "template": "/author/{slug}/page/{num}/"
+     }
+    ],
+    "title_boilerplate": [
+     "download movies 2026",
+     "free new movies"
+    ],
+    "urls": 1727
+   },
+   "www.tamilrockers2024.com": {
+    "boilerplate_links": 25,
+    "labelled_details": {
+     "/{year}/{mm}/{slug}-{year}.html [content] gold=relevant_content": 1
+    },
+    "pages": 650,
+    "script": "LATIN",
+    "templates": [
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 408,
+      "template": "/search?start&updated-max"
+     },
+     {
+      "content": 0,
+      "role": "listing",
+      "spam": 0,
+      "support": 138,
+      "template": "/search?updated-max"
+     },
+     {
+      "content": 81,
+      "role": "content",
+      "spam": 0,
+      "support": 81,
+      "template": "/{year}/{mm}/{slug}-{year}.html"
+     }
+    ],
+    "title_boilerplate": [
+     "tamilrockers 2026 tamil movies"
+    ],
+    "urls": 657
+   }
+  },
+  "relevant_details_in_content_or_mixed_template": "53/53",
+  "spam_details_in_content_template": "0/15"
+ },
+ "vocabulary": "what-vocabulary/v1"
+}
