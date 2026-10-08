@@ -4,7 +4,8 @@ Status: **DRAFT for review (2026-10-07).** Increment 1 (§5) is implemented
 per D-17. Increment 2 (§9) is frozen after its review (D-18) and
 implemented. Increment 3, WHAT (§6), is implemented as an offline library
 and evaluated (D-19, [what.md](what.md)). WHEN and priority are design
-only. Frozen boundaries: [decisions.md](decisions.md) §4.
+only. WHEN readiness was audited on M1 (D-20, [when.md](when.md)): the data
+is insufficient, and a hub-only collection is proposed, not run. Frozen boundaries: [decisions.md](decisions.md) §4.
 
 Inputs: [audit.md](audit.md) (§5 reassessment),
 [g5.md](g5.md) (G5 FAIL), [decisions.md](decisions.md) (D-12…D-17).
@@ -238,6 +239,14 @@ offline on M1, and it is a prerequisite for priority (§8).
   This is not the G5 set.
 
 ## 7. WHEN (gated: D-13, D-16)
+
+> 2026-10-08 (D-20, [when.md](when.md)): the data caveat below proved
+> binding. M1 has 6 candidate hub revisits, all on G5 hubs, against the 50
+> required. The candidate definition (`when-candidate/v0`), the analysis,
+> the crediting audit, the collection proposal "W1" (not run) and the
+> proposed gate W1–W9 are in when.md. The text below is kept as written.
+> One open point is recorded in when.md §9: how a WHEN interval would
+> reach P6/P3 is not designed.
 
 - **Candidate signal** (to be validated, not implemented): per hub page,
   the number of newly linked same-site URLs that match the site's content

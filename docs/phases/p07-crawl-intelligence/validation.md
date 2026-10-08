@@ -4,7 +4,7 @@ Chronology: [audit.md](audit.md) §1–§4 (gate not passed) → §5
 (reassessment; M1b rejected, D-12) → [g5.md](g5.md) (G5 FAIL, D-16) →
 [design.md](design.md) → increment 1 ([implementation.md](implementation.md)) →
 increment 2 review (audit §6, D-18, ADR-023) → increment 2 → increment 3,
-WHAT ([what.md](what.md), D-19).
+WHAT ([what.md](what.md), D-19) → WHEN readiness ([when.md](when.md), D-20).
 
 ## 1. Gate status (2026-10-07)
 
@@ -178,3 +178,44 @@ WHEN still needs its own labelled hub-revisit sample (design §7).
 **Not run:** M1b (rejected), M2, any collection or crawl. MinIO
 `crawler2-m1` was read only, for the label cards. `crawler2_m1` and the old
 `m1:*` Redis keys were not touched. No migration and no setting were added.
+
+## 7. WHEN readiness (2026-10-08, D-20)
+
+Gate status (§1) is unchanged: G5 FAIL, WHEN gated, M2 not started. No
+WHEN signal was evaluated, because no independent labelled sample can be
+drawn from M1 ([when.md](when.md) §5).
+
+| Measure (M1 export, 11 live seed domains) | Value |
+|---|---|
+| URLs observed / more than once / ≥ 2 visits ≥ 6 h apart | 20,966 / 2,318 / 475 |
+| WHAT hubs / observed more than once / revisited (≥ 2 visits) | 4,663 / 690 / 158 |
+| hub revisits | 172 (median interval 116 h; 46 at 6–24 h) |
+| with a new-to-hub link | 35 |
+| candidate events (`when-candidate/v0`) | **6** on 2 domains (5 on moviesda.business) |
+| candidate events outside the G5 sample | **0** |
+| required for a WHEN sample | 50 → **insufficient** |
+
+- **Not done, by rule:** no WHEN sample, no labels, no precision figure.
+  The sampler (`when_audit.py sample`) refuses. The collection that would
+  supply the data (W1, when.md §7) was **not run**.
+- **Determinism:** `when-audit.json` and `events.jsonl.gz` are
+  byte-identical under `PYTHONHASHSEED` 7 and 999.
+- **Tests:** `tests/unit/intelligence/test_when_audit.py` (19): windows,
+  site knowledge, novelty and role, empty and single-visit hubs, hubs
+  without new links, duplicate links and observations, several new links,
+  missing facts, order and duplicate independence (hypothesis), crediting
+  of several hubs, sampler determinism, domain cap, negatives, held-out
+  exclusion, sparse domains, bounded rows, and cards that hide the
+  decision.
+
+### 7.1 Regression (2026-10-08, host)
+
+| Tier | Result |
+|---|---|
+| `tests/unit/intelligence` | 146 passed (incl. the 19 new) |
+| `make check` (ruff, mypy, unit + contract) | **691 passed**, 119 skipped (integration needs the stack); +19 over increment 3 |
+| `scripts/test-intelligence.sh`, P6 tier | not re-run: this work adds an offline benchmark tool, its unit tests and documents, and changes no runtime code |
+
+**Not run:** W1, M1b, M2, any collection or crawl. `crawler2_m1`, MinIO
+`crawler2-m1` and the `m1:*` Redis keys were not touched. Only the export
+was read.

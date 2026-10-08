@@ -369,7 +369,9 @@ and a search listing of year collections at `/<slug>/` URLs.
   whose pages are not spam, credited to every hub that links them. The
   signal must reach precision ≥ 0.8 on a **new** labelled sample of hub
   revisits. M1 has few hub revisits (design §7 data caveat). A short
-  hub-only experiment would be proposed, not run.
+  hub-only experiment would be proposed, not run. Done 2026-10-08:
+  [when.md](when.md) (6 candidate hub revisits; experiment W1 proposed,
+  not run).
 - **Runtime profiles:** if WHEN needs them, a P7-owned, rebuildable
   projection of `SiteProfile` from `page_extracts` (P5, read-only), with its
   own design, migration and fallback, following ADR-023. No Redis, no P5/P6

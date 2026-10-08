@@ -392,3 +392,18 @@ were audited against P5/P6 (what.md §2):
 - The seed population behind WHAT is the 20,966 extracted URLs on the 11
   live seed domains (§5.1). The labelled sample is new and separate from
   G5 (what.md §3).
+
+## 8. WHEN data audit (2026-10-08; decision D-20)
+
+Earlier sections are unchanged. Before any WHEN work, M1 was audited for
+hub revisits ([when.md](when.md) §5), read-only, from the export:
+
+- 158 WHAT hubs were revisited (≥ 2 visits ≥ 6 h apart), 172 times.
+  Nearly all of these are the single run 1 → run 2 revisit, because the
+  run 2 collapse (§5.1) left only the seed roots on a 6 h cadence.
+- 6 revisits expose new-since-previous-visit WHAT content links: 5 on
+  moviesda.business and 1 on isaimini.com.in. All 6 are hubs of the G5
+  sample.
+- The data is **insufficient** (50 required) and **contaminated** for an
+  independent WHEN sample. A hub-only collection is proposed, not run
+  (when.md §7).

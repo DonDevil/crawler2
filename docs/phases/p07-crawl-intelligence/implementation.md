@@ -189,3 +189,18 @@ listed share, template pattern, item rule) raised this to 0.979 and
 - boundary: `what.py` imports no storage, frontier, worker, discovery,
   Redis or Cassandra module. The increment-1 boundary test covers the
   package as before.
+
+## WHEN readiness (2026-10-08, D-20) — no increment
+
+No runtime code. An offline benchmark tool and its tests only
+([when.md](when.md)):
+
+| File | Contents |
+|---|---|
+| `benchmarks/p7-intelligence/when_audit.py` | `audit` (visit windows, site knowledge, novelty and role of new-to-hub links, candidate events `when-candidate/v0`, crediting, per-domain distributions), `sample` (deterministic labelling sample and cards; refuses below 50 candidate events), `hubs` (the W1 hub population). It reads the M1 export or, through `P7_EXPORT`, another export. It uses only WHAT's public API |
+| `tests/unit/intelligence/test_when_audit.py` | 19 unit tests of the pure core (validation.md §7) |
+| `results/when-audit.json`, `results/when-hub-proposal.json` | the M1 audit and the W1 population |
+
+**Unchanged:** WHAT (`what/v1`, vocabulary, labels), the G5 sample and
+labels, P1–P6, ADR-022, ADR-023, increments 1–2, settings, compose,
+migrations, `run.sh`.

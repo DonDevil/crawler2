@@ -56,6 +56,18 @@ env/bin/python benchmarks/p7-intelligence/what_bench.py               # CPU cost
 The holdout split (`--split holdout`) is scored once per frozen policy
 version. The G5 labels are never used (decisions.md §4).
 
+WHEN readiness (no runtime code) has an offline audit over the same
+export, read-only:
+
+```bash
+env/bin/python benchmarks/p7-intelligence/when_audit.py audit   # results/when-audit.json, var/p7/when/events.jsonl.gz
+env/bin/python benchmarks/p7-intelligence/when_audit.py hubs    # results/when-hub-proposal.json
+env/bin/python benchmarks/p7-intelligence/when_audit.py sample  # refuses below 50 candidate hub revisits
+```
+
+Another export (e.g. a future hub-only collection) is audited with
+`P7_EXPORT=<dir> P7_WHEN_OUT=<dir>`.
+
 ### P4 fetch layer (host)
 
 Fetcher contract, runtime, browser and end-to-end tests run **from the

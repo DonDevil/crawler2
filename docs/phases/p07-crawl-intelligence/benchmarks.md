@@ -211,3 +211,17 @@ The cost scales with a page's links: each one is tokenized and checked
 against the vocabulary. This is fine for batch use. A runtime hook would
 want a per-profile cache of link templates, and that optimization is
 deferred until a runtime use exists.
+
+## 6. WHEN readiness audit (2026-10-08, D-20)
+
+`benchmarks/p7-intelligence/when_audit.py audit` → `results/when-audit.json`,
+`var/p7/when/events.jsonl.gz`. Offline, on the host, one pass over the
+export's observations and extracts: **39 s**, peak RSS **445 MB**. This is a
+dev-host offline figure, not a production claim. The results are in
+[when.md](when.md) §5.
+
+`when_audit.py hubs` → `results/when-hub-proposal.json`: the 84-hub
+population of the proposed hub-only collection **W1** (when.md §7:
+6-hourly, 7–14 days, ≈ 8,000 fetches, fresh dataset `m1w`). **W1 has not
+been run.** It needs the operator's explicit go and a reviewed `run.sh`
+change (seed file, no `admit`).

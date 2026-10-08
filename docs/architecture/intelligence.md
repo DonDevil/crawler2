@@ -47,7 +47,9 @@ behaviour is unchanged.
 
 1. WHEN: hub-novelty recrawl over WHAT's hub and content-link features,
    gated on a signal validated on a new labelled hub-revisit sample (G5
-   failed for `page.changed`);
+   failed for `page.changed`). Readiness audit ([when.md](../phases/p07-crawl-intelligence/when.md)):
+   M1 has 6 candidate hub revisits against the 50 required, so a hub-only
+   collection is proposed (not run). There is no WHEN code;
 2. one priority function.
 
 Frozen P7 boundaries: [decisions.md §4](../phases/p07-crawl-intelligence/decisions.md).
