@@ -1,0 +1,587 @@
+{
+ "what_policy": "what/v1",
+ "what_vocabulary": "what-vocabulary/v1",
+ "export_keyspace": "crawler2_m1",
+ "criteria": {
+  "kind": "hub (latest extract)",
+  "relevance": "not spam",
+  "pagination": "excluded",
+  "min_content_template_links": 3,
+  "root": "the bare site root is always eligible (not search-root variants)",
+  "per_domain": 12
+ },
+ "hubs": 84,
+ "fetches_per_day_at_6h": 336,
+ "sites": {
+  "gofullmovies.com": {
+   "hubs_eligible": 3,
+   "last_html_observation": "2026-09-29T17:30:27Z",
+   "chosen": [
+    {
+     "url": "https://www.gofullmovies.com/",
+     "root": true,
+     "content_template_links": 0,
+     "template": "/"
+    },
+    {
+     "url": "https://www.gofullmovies.com/?s",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/?s"
+    },
+    {
+     "url": "https://www.gofullmovies.com/?s=",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/?s"
+    }
+   ]
+  },
+  "isaimini.com.in": {
+   "hubs_eligible": 13,
+   "last_html_observation": "2026-10-05T09:20:38Z",
+   "chosen": [
+    {
+     "url": "https://isaimini.com.in/",
+     "root": true,
+     "content_template_links": 0,
+     "template": "/"
+    },
+    {
+     "url": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+     "root": false,
+     "content_template_links": 24,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2017/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/author/sher-ali/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/author/{slug}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2020/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2024/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2021/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2016/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2023/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2022/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2019/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://isaimini.com.in/category/2018/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    }
+   ]
+  },
+  "isaiminimix.com": {
+   "hubs_eligible": 3,
+   "last_html_observation": "2026-09-29T20:47:59Z",
+   "chosen": [
+    {
+     "url": "https://isaiminimix.com/",
+     "root": true,
+     "content_template_links": 12,
+     "template": "/"
+    },
+    {
+     "url": "https://isaiminimix.com/author/admin/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/author/{slug}/"
+    },
+    {
+     "url": "https://isaiminimix.com/category/tamil-hit-songs/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{slug}/"
+    }
+   ]
+  },
+  "movflix.my": {
+   "hubs_eligible": 61,
+   "last_html_observation": "2026-10-05T09:04:45Z",
+   "chosen": [
+    {
+     "url": "https://movflix.my/",
+     "root": true,
+     "content_template_links": 9,
+     "template": "/"
+    },
+    {
+     "url": "https://movflix.my/category/punjabi-movies/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://movflix.my/browse/?by=W",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/browse/"
+    },
+    {
+     "url": "https://movflix.my/2026/02/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://movflix.my/category/bollywood-movies/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://movflix.my/2025/12/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://movflix.my/author/admin2/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/author/{slug}/"
+    },
+    {
+     "url": "https://movflix.my/category/web-series/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://movflix.my/browse/?by=A",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/browse/"
+    },
+    {
+     "url": "https://movflix.my/browse/?by=N",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/browse/"
+    },
+    {
+     "url": "https://movflix.my/browse/?by=E",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/browse/"
+    },
+    {
+     "url": "https://movflix.my/2025/",
+     "root": false,
+     "content_template_links": 15,
+     "template": "/{year}/"
+    }
+   ]
+  },
+  "moviesda.business": {
+   "hubs_eligible": 19,
+   "last_html_observation": "2026-10-05T03:46:50Z",
+   "chosen": [
+    {
+     "url": "https://www.moviesda.business/?m=1",
+     "root": true,
+     "content_template_links": 7,
+     "template": "/"
+    },
+    {
+     "url": "https://www.moviesda.business/",
+     "root": true,
+     "content_template_links": 5,
+     "template": "/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/03/",
+     "root": false,
+     "content_template_links": 13,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/04/",
+     "root": false,
+     "content_template_links": 13,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/05/",
+     "root": false,
+     "content_template_links": 13,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/search/label/Tamil%20Movies?max-results=20",
+     "root": false,
+     "content_template_links": 12,
+     "template": "/search/label/{slug}"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/07/",
+     "root": false,
+     "content_template_links": 12,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/06/",
+     "root": false,
+     "content_template_links": 12,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2025/12/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/01/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2026/02/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/{year}/{mm}/"
+    },
+    {
+     "url": "https://www.moviesda.business/2025/11/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/{year}/{mm}/"
+    }
+   ]
+  },
+  "moviesda.com.in": {
+   "hubs_eligible": 14,
+   "last_html_observation": "2026-10-05T04:08:06Z",
+   "chosen": [
+    {
+     "url": "https://moviesda.com.in/",
+     "root": true,
+     "content_template_links": 0,
+     "template": "/"
+    },
+    {
+     "url": "https://moviesda.com.in/tamil-hd-mobile-movies/",
+     "root": false,
+     "content_template_links": 31,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://moviesda.com.in/tamil-movies-collection/",
+     "root": false,
+     "content_template_links": 27,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://moviesda.com.in/moviesda-dubbed-movies/",
+     "root": false,
+     "content_template_links": 26,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://moviesda.com.in/author/sher-ali/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/author/{slug}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2019/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2017/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2020/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2024/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2016/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2018/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://moviesda.com.in/category/2022/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    }
+   ]
+  },
+  "moviesda16.best": {
+   "hubs_eligible": 4,
+   "last_html_observation": "2026-10-05T01:40:38Z",
+   "chosen": [
+    {
+     "url": "https://moviesda16.best/",
+     "root": true,
+     "content_template_links": 13,
+     "template": "/"
+    },
+    {
+     "url": "https://moviesda16.best/category/tamil-dubbed-movies",
+     "root": false,
+     "content_template_links": 20,
+     "template": "/category/{slug}"
+    },
+    {
+     "url": "https://moviesda16.best/category/tamil-new-movies",
+     "root": false,
+     "content_template_links": 20,
+     "template": "/category/{slug}"
+    },
+    {
+     "url": "https://moviesda16.best/category/tamil-hd-movies",
+     "root": false,
+     "content_template_links": 11,
+     "template": "/category/{slug}"
+    }
+   ]
+  },
+  "stripemovies.com": {
+   "hubs_eligible": 5,
+   "last_html_observation": "2026-09-30T10:16:36Z",
+   "chosen": [
+    {
+     "url": "https://www.stripemovies.com/",
+     "root": true,
+     "content_template_links": 0,
+     "template": "/"
+    },
+    {
+     "url": "https://www.stripemovies.com/?s=",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/?s"
+    },
+    {
+     "url": "https://www.stripemovies.com/release-year/",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://www.stripemovies.com/?s",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/?s"
+    },
+    {
+     "url": "https://www.stripemovies.com/author/admin/",
+     "root": false,
+     "content_template_links": 4,
+     "template": "/author/{slug}/"
+    }
+   ]
+  },
+  "tamilprint.co.in": {
+   "hubs_eligible": 5,
+   "last_html_observation": "2026-10-05T08:37:39Z",
+   "chosen": [
+    {
+     "url": "https://tamilprint.co.in/",
+     "root": true,
+     "content_template_links": 4,
+     "template": "/"
+    },
+    {
+     "url": "https://tamilprint.co.in/category/dual-audio/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.co.in/category/hollywood/",
+     "root": false,
+     "content_template_links": 8,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.co.in/category/tamil/",
+     "root": false,
+     "content_template_links": 7,
+     "template": "/category/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.co.in/category/bollywood/",
+     "root": false,
+     "content_template_links": 6,
+     "template": "/category/{slug}/"
+    }
+   ]
+  },
+  "tamilprint.com.in": {
+   "hubs_eligible": 16,
+   "last_html_observation": "2026-10-05T08:37:26Z",
+   "chosen": [
+    {
+     "url": "https://tamilprint.com.in/",
+     "root": true,
+     "content_template_links": 0,
+     "template": "/"
+    },
+    {
+     "url": "https://tamilprint.com.in/tamil-movies-collection/",
+     "root": false,
+     "content_template_links": 38,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/tamilprint-dubbed-movies/",
+     "root": false,
+     "content_template_links": 38,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/tamil-hd-mobile-movies/",
+     "root": false,
+     "content_template_links": 37,
+     "template": "/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2024/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/author/sher-ali/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/author/{slug}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2017/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2021/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2019/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2016/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2020/",
+     "root": false,
+     "content_template_links": 10,
+     "template": "/category/{year}/"
+    },
+    {
+     "url": "https://tamilprint.com.in/category/2023/",
+     "root": false,
+     "content_template_links": 9,
+     "template": "/category/{year}/"
+    }
+   ]
+  },
+  "tamilrockers2024.com": {
+   "hubs_eligible": 4,
+   "last_html_observation": "2026-10-05T08:37:28Z",
+   "chosen": [
+    {
+     "url": "https://www.tamilrockers2024.com/",
+     "root": true,
+     "content_template_links": 7,
+     "template": "/"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/search/label/Tamil",
+     "root": false,
+     "content_template_links": 19,
+     "template": "/search/label/{slug}"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/search",
+     "root": false,
+     "content_template_links": 19,
+     "template": "/search"
+    },
+    {
+     "url": "https://www.tamilrockers2024.com/search/label/Tamil?max-results=20",
+     "root": false,
+     "content_template_links": 19,
+     "template": "/search/label/{slug}"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,4226 @@
+{
+ "audit": "when-audit/v1",
+ "candidate_definition": "when-candidate/v0",
+ "candidate_events_by_page_kind": {
+  "hub": 6,
+  "non_hub": 2
+ },
+ "counts": {
+  "observations_html_2xx": 23927,
+  "observations_seed": 30433,
+  "observations_total": 215492,
+  "observations_without_extract": 56
+ },
+ "credit": {
+  "credited_hubs_per_link": {
+   "max": 5,
+   "min": 1,
+   "n": 28,
+   "p50": 1,
+   "p90": 5,
+   "sum": 45
+  },
+  "distinct_candidate_links": 28,
+  "first_hub_is_root": 5,
+  "latest_pages_linking": {
+   "max": 8,
+   "min": 2,
+   "n": 28,
+   "p50": 4,
+   "p90": 7,
+   "sum": 123
+  },
+  "links_credited_to_one_hub": 23,
+  "links_credited_to_several_hubs": 5,
+  "per_site": {
+   "isaimini.com.in": {
+    "links": 23,
+    "several_hubs": 0
+   },
+   "moviesda.business": {
+    "links": 5,
+    "several_hubs": 5
+   }
+  },
+  "target_what": {
+   "not_fetched": 5,
+   "relevant": 23
+  },
+  "widget_like_links": 0
+ },
+ "credit_links": [
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/aarudhra-2018/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/adiyae-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.001,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/barot-house-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 7
+   },
+   "latest_pages_linking": 7,
+   "share_of_site_pages_linking": 0.0015,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/custody-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/dial-100-2021/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 8
+   },
+   "latest_pages_linking": 8,
+   "share_of_site_pages_linking": 0.0017,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/hey-sinamika-2022/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/highway-love-2024/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "detail": 2,
+    "hub": 3
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.001,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/how-paten188-is-changing-the-game-in-2025/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/japan-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/karnan-2021/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/mad-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.001,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/marainthirunthu-paarkum-marmam-enna-2018/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.001,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/modern-love-chennai-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/murder-mubarak-2024/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/naan-kadavul-illai-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/parole-2022/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 3
+   },
+   "latest_pages_linking": 3,
+   "share_of_site_pages_linking": 0.0006,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/perasiriyar-saanakkiyan-2019/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/periya-veettu-paiyan-2022/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.001,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/plan-panni-pannanum-2021/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 7
+   },
+   "latest_pages_linking": 7,
+   "share_of_site_pages_linking": 0.0015,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/razakar-2024/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/repeat-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 2
+   },
+   "latest_pages_linking": 2,
+   "share_of_site_pages_linking": 0.0004,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/vimanam-2023/"
+  },
+  {
+   "credited_events": 1,
+   "credited_hubs": 1,
+   "first_hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "first_hub_is_root": false,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0008,
+   "site": "isaimini.com.in",
+   "target_what": "relevant",
+   "url": "https://isaimini.com.in/vithaikkaran-2024/"
+  },
+  {
+   "credited_events": 5,
+   "credited_hubs": 5,
+   "first_hub": "https://www.moviesda.business/?q=",
+   "first_hub_is_root": true,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.0031,
+   "site": "moviesda.business",
+   "target_what": "not_fetched",
+   "url": "https://www.moviesda.business/2026/09/baththa-tamil-movie-download-moviesda.html"
+  },
+  {
+   "credited_events": 5,
+   "credited_hubs": 5,
+   "first_hub": "https://www.moviesda.business/?q=",
+   "first_hub_is_root": true,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.0031,
+   "site": "moviesda.business",
+   "target_what": "not_fetched",
+   "url": "https://www.moviesda.business/2026/09/the-paradise-tamil-movie-download-isaimini.html"
+  },
+  {
+   "credited_events": 5,
+   "credited_hubs": 5,
+   "first_hub": "https://www.moviesda.business/?q=",
+   "first_hub_is_root": true,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.0031,
+   "site": "moviesda.business",
+   "target_what": "not_fetched",
+   "url": "https://www.moviesda.business/2026/09/yezhu-kadal-yezhu-malai-tamil-movie-download-moviesda.html"
+  },
+  {
+   "credited_events": 4,
+   "credited_hubs": 4,
+   "first_hub": "https://www.moviesda.business/?q=",
+   "first_hub_is_root": true,
+   "latest_linking_kinds": {
+    "hub": 5
+   },
+   "latest_pages_linking": 5,
+   "share_of_site_pages_linking": 0.0031,
+   "site": "moviesda.business",
+   "target_what": "not_fetched",
+   "url": "https://www.moviesda.business/2026/10/sigma-movie-download-isaimini.html"
+  },
+  {
+   "credited_events": 3,
+   "credited_hubs": 3,
+   "first_hub": "https://www.moviesda.business/?q=",
+   "first_hub_is_root": true,
+   "latest_linking_kinds": {
+    "hub": 4
+   },
+   "latest_pages_linking": 4,
+   "share_of_site_pages_linking": 0.0025,
+   "site": "moviesda.business",
+   "target_what": "not_fetched",
+   "url": "https://www.moviesda.business/2026/10/sigma-tamil-movie-download-isaimini.html"
+  }
+ ],
+ "domains": {
+  "gofullmovies.com": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "n": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "n": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "n": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 0,
+    "events_changed": 0,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 0,
+    "interval_buckets": {},
+    "interval_h": {
+     "n": 0
+    },
+    "kind_at_window": {},
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "n": 0
+    },
+    "revisited_urls": 0,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 18,
+   "hubs_multi_obs": 9,
+   "observations": 145,
+   "urls": 86,
+   "urls_multi_obs": 53
+  },
+  "isaimini.com.in": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 49,
+     "min": 0,
+     "n": 19,
+     "p50": 0,
+     "p90": 12,
+     "sum": 98
+    },
+    "candidate_events": 1,
+    "candidate_events_by_interval": {
+     "3-7d": 1
+    },
+    "candidate_links": 23,
+    "candidates_per_candidate_event": {
+     "max": 23,
+     "min": 23,
+     "n": 1,
+     "p50": 23,
+     "p90": 23,
+     "sum": 23
+    },
+    "candidates_per_event": {
+     "max": 23,
+     "min": 0,
+     "n": 19,
+     "p50": 0,
+     "p90": 0,
+     "sum": 23
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 49,
+     "min": 0,
+     "n": 19,
+     "p50": 0,
+     "p90": 11,
+     "sum": 96
+    },
+    "distinct_candidate_links": 23,
+    "events": 19,
+    "events_changed": 19,
+    "events_with_new_to_hub": 8,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 1,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 12,
+    "interval_buckets": {
+     "3-7d": 11,
+     "6-24h": 8
+    },
+    "interval_h": {
+     "max": 134.88,
+     "min": 6.01,
+     "n": 19,
+     "p50": 129.89,
+     "p90": 134.46,
+     "sum": 1491.27
+    },
+    "kind_at_window": {
+     "hub": 19
+    },
+    "new_since_prev_roles": {
+     "content": 23,
+     "other:none": 5,
+     "other:spam": 70
+    },
+    "new_to_hub_novelty": {
+     "first_seen_here": 20,
+     "new_since_prev": 78
+    },
+    "new_to_hub_per_event": {
+     "max": 49,
+     "min": 0,
+     "n": 19,
+     "p50": 0,
+     "p90": 12,
+     "sum": 98
+    },
+    "revisited_urls": 13,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 466,
+   "hubs_multi_obs": 13,
+   "observations": 5359,
+   "urls": 4783,
+   "urls_multi_obs": 119,
+   "urls_multi_window": 119,
+   "urls_multi_window_detail": 101,
+   "urls_multi_window_hub": 13,
+   "urls_multi_window_other": 5
+  },
+  "isaiminimix.com": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "n": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "n": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "n": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 0,
+    "events_changed": 0,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 0,
+    "interval_buckets": {},
+    "interval_h": {
+     "n": 0
+    },
+    "kind_at_window": {},
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "n": 0
+    },
+    "revisited_urls": 0,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 50,
+   "hubs_multi_obs": 46,
+   "observations": 1453,
+   "urls": 1407,
+   "urls_multi_obs": 46
+  },
+  "movflix.my": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 71,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 71,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 71,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 71,
+    "events_changed": 43,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 71,
+    "interval_buckets": {
+     "3-7d": 59,
+     "6-24h": 12
+    },
+    "interval_h": {
+     "max": 134.09,
+     "min": 6.42,
+     "n": 71,
+     "p50": 116.04,
+     "p90": 133.05,
+     "sum": 7250.85
+    },
+    "kind_at_window": {
+     "hub": 71
+    },
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 71,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "revisited_urls": 71,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 967,
+   "hubs_multi_obs": 337,
+   "observations": 3808,
+   "urls": 3442,
+   "urls_multi_obs": 357,
+   "urls_multi_window": 91,
+   "urls_multi_window_detail": 16,
+   "urls_multi_window_hub": 71,
+   "urls_multi_window_other": 4
+  },
+  "moviesda.business": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 6,
+     "min": 1,
+     "n": 13,
+     "p50": 1,
+     "p90": 6,
+     "sum": 35
+    },
+    "candidate_events": 5,
+    "candidate_events_by_interval": {
+     "3-7d": 5
+    },
+    "candidate_links": 22,
+    "candidates_per_candidate_event": {
+     "max": 5,
+     "min": 3,
+     "n": 5,
+     "p50": 5,
+     "p90": 5,
+     "sum": 22
+    },
+    "candidates_per_event": {
+     "max": 5,
+     "min": 0,
+     "n": 13,
+     "p50": 0,
+     "p90": 5,
+     "sum": 22
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 28,
+     "min": 0,
+     "n": 13,
+     "p50": 0,
+     "p90": 28,
+     "sum": 144
+    },
+    "distinct_candidate_links": 5,
+    "events": 13,
+    "events_changed": 13,
+    "events_with_new_to_hub": 13,
+    "first_seen_here_events": 1,
+    "hubs_one_candidate_event": 5,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 8,
+    "interval_buckets": {
+     "3-7d": 13
+    },
+    "interval_h": {
+     "max": 130.06,
+     "min": 109.51,
+     "n": 13,
+     "p50": 110.01,
+     "p90": 130.06,
+     "sum": 1535.28
+    },
+    "kind_at_window": {
+     "hub": 13
+    },
+    "new_since_prev_roles": {
+     "content": 22,
+     "other:none": 13
+    },
+    "new_to_hub_novelty": {
+     "first_seen_here": 5,
+     "new_since_prev": 30
+    },
+    "new_to_hub_per_event": {
+     "max": 6,
+     "min": 1,
+     "n": 13,
+     "p50": 1,
+     "p90": 6,
+     "sum": 35
+    },
+    "revisited_urls": 13,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 1305,
+   "hubs_multi_obs": 13,
+   "observations": 1651,
+   "urls": 1632,
+   "urls_multi_obs": 13,
+   "urls_multi_window": 13,
+   "urls_multi_window_hub": 13
+  },
+  "moviesda.com.in": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 5,
+     "min": 0,
+     "n": 5,
+     "p50": 1,
+     "p90": 5,
+     "sum": 8
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 5,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 6,
+     "min": 0,
+     "n": 5,
+     "p50": 0,
+     "p90": 6,
+     "sum": 8
+    },
+    "distinct_candidate_links": 0,
+    "events": 5,
+    "events_changed": 5,
+    "events_with_new_to_hub": 3,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 1,
+    "interval_buckets": {
+     "3-7d": 1,
+     "6-24h": 4
+    },
+    "interval_h": {
+     "max": 97.25,
+     "min": 6.4,
+     "n": 5,
+     "p50": 7.23,
+     "p90": 97.25,
+     "sum": 125.71
+    },
+    "kind_at_window": {
+     "hub": 5
+    },
+    "new_since_prev_roles": {
+     "other:spam": 8
+    },
+    "new_to_hub_novelty": {
+     "first_seen_here": 8
+    },
+    "new_to_hub_per_event": {
+     "max": 5,
+     "min": 0,
+     "n": 5,
+     "p50": 1,
+     "p90": 5,
+     "sum": 8
+    },
+    "revisited_urls": 1,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 368,
+   "hubs_multi_obs": 1,
+   "observations": 3323,
+   "urls": 3217,
+   "urls_multi_obs": 21,
+   "urls_multi_window": 19,
+   "urls_multi_window_detail": 7,
+   "urls_multi_window_hub": 1,
+   "urls_multi_window_other": 11
+  },
+  "moviesda16.best": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 2,
+    "events_changed": 0,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 1,
+    "interval_buckets": {
+     "3-7d": 1,
+     "6-24h": 1
+    },
+    "interval_h": {
+     "max": 116.26,
+     "min": 12.0,
+     "n": 2,
+     "p50": 116.26,
+     "p90": 116.26,
+     "sum": 128.26
+    },
+    "kind_at_window": {
+     "hub": 2
+    },
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "revisited_urls": 1,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 74,
+   "hubs_multi_obs": 4,
+   "observations": 1200,
+   "urls": 1192,
+   "urls_multi_obs": 4,
+   "urls_multi_window": 1,
+   "urls_multi_window_hub": 1
+  },
+  "stripemovies.com": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 3,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 3,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 3,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 3,
+    "events_changed": 0,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 3,
+    "interval_buckets": {
+     "6-24h": 3
+    },
+    "interval_h": {
+     "max": 15.13,
+     "min": 8.34,
+     "n": 3,
+     "p50": 14.95,
+     "p90": 15.13,
+     "sum": 38.42
+    },
+    "kind_at_window": {
+     "hub": 3
+    },
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 3,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "revisited_urls": 3,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 369,
+   "hubs_multi_obs": 210,
+   "observations": 3311,
+   "urls": 1813,
+   "urls_multi_obs": 1483,
+   "urls_multi_window": 11,
+   "urls_multi_window_detail": 8,
+   "urls_multi_window_hub": 3
+  },
+  "tamilprint.co.in": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "distinct_candidate_links": 0,
+    "events": 2,
+    "events_changed": 2,
+    "events_with_new_to_hub": 0,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 1,
+    "interval_buckets": {
+     "3-7d": 1,
+     "6-24h": 1
+    },
+    "interval_h": {
+     "max": 98.19,
+     "min": 18.07,
+     "n": 2,
+     "p50": 98.19,
+     "p90": 98.19,
+     "sum": 116.26
+    },
+    "kind_at_window": {
+     "hub": 2
+    },
+    "new_since_prev_roles": {},
+    "new_to_hub_novelty": {},
+    "new_to_hub_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 2,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "revisited_urls": 1,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 59,
+   "hubs_multi_obs": 1,
+   "observations": 218,
+   "urls": 215,
+   "urls_multi_obs": 2,
+   "urls_multi_window": 2,
+   "urls_multi_window_detail": 1,
+   "urls_multi_window_hub": 1
+  },
+  "tamilprint.com.in": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 3,
+     "min": 0,
+     "n": 53,
+     "p50": 0,
+     "p90": 1,
+     "sum": 12
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 53,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 3,
+     "min": 0,
+     "n": 53,
+     "p50": 0,
+     "p90": 1,
+     "sum": 12
+    },
+    "distinct_candidate_links": 0,
+    "events": 53,
+    "events_changed": 53,
+    "events_with_new_to_hub": 8,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 53,
+    "interval_buckets": {
+     "3-7d": 38,
+     "6-24h": 15
+    },
+    "interval_h": {
+     "max": 135.17,
+     "min": 19.73,
+     "n": 53,
+     "p50": 132.36,
+     "p90": 134.06,
+     "sum": 5318.75
+    },
+    "kind_at_window": {
+     "hub": 53
+    },
+    "new_since_prev_roles": {
+     "other:listing": 2,
+     "other:spam": 2
+    },
+    "new_to_hub_novelty": {
+     "first_seen_here": 1,
+     "known_before": 8,
+     "new_since_prev": 3
+    },
+    "new_to_hub_per_event": {
+     "max": 3,
+     "min": 0,
+     "n": 53,
+     "p50": 0,
+     "p90": 1,
+     "sum": 12
+    },
+    "revisited_urls": 53,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 425,
+   "hubs_multi_obs": 54,
+   "observations": 2748,
+   "urls": 2529,
+   "urls_multi_obs": 218,
+   "urls_multi_window": 217,
+   "urls_multi_window_detail": 159,
+   "urls_multi_window_hub": 53,
+   "urls_multi_window_other": 5
+  },
+  "tamilrockers2024.com": {
+   "hub_events": {
+    "appeared_vs_prev_per_event": {
+     "max": 2,
+     "min": 0,
+     "n": 4,
+     "p50": 1,
+     "p90": 2,
+     "sum": 4
+    },
+    "candidate_events": 0,
+    "candidate_events_by_interval": {},
+    "candidate_links": 0,
+    "candidates_per_candidate_event": {
+     "n": 0
+    },
+    "candidates_per_event": {
+     "max": 0,
+     "min": 0,
+     "n": 4,
+     "p50": 0,
+     "p90": 0,
+     "sum": 0
+    },
+    "disappeared_vs_prev_per_event": {
+     "max": 1,
+     "min": 1,
+     "n": 4,
+     "p50": 1,
+     "p90": 1,
+     "sum": 4
+    },
+    "distinct_candidate_links": 0,
+    "events": 4,
+    "events_changed": 4,
+    "events_with_new_to_hub": 3,
+    "first_seen_here_events": 0,
+    "hubs_one_candidate_event": 0,
+    "hubs_repeated_candidate_events": 0,
+    "hubs_zero_candidate_events": 2,
+    "interval_buckets": {
+     "3-7d": 2,
+     "6-24h": 2
+    },
+    "interval_h": {
+     "max": 135.18,
+     "min": 12.0,
+     "n": 4,
+     "p50": 98.19,
+     "p90": 135.18,
+     "sum": 263.44
+    },
+    "kind_at_window": {
+     "hub": 4
+    },
+    "new_since_prev_roles": {
+     "other:none": 1
+    },
+    "new_to_hub_novelty": {
+     "known_before": 2,
+     "new_since_prev": 1
+    },
+    "new_to_hub_per_event": {
+     "max": 1,
+     "min": 0,
+     "n": 4,
+     "p50": 1,
+     "p90": 1,
+     "sum": 3
+    },
+    "revisited_urls": 2,
+    "truncated_events": 0,
+    "variants": 0
+   },
+   "hubs": 562,
+   "hubs_multi_obs": 2,
+   "observations": 655,
+   "urls": 650,
+   "urls_multi_obs": 2,
+   "urls_multi_window": 2,
+   "urls_multi_window_hub": 2
+  }
+ },
+ "export": {
+  "exported_at": "2026-10-07T13:36:31Z",
+  "keyspace": "crawler2_m1",
+  "rows": {
+   "admissions": 384028,
+   "attempts": 247104,
+   "extracts": 138920,
+   "observations": 215492,
+   "revisions": 130695,
+   "scope": 70,
+   "search": 114,
+   "seeds": 52
+  }
+ },
+ "hub_events": {
+  "appeared_vs_prev_per_event": {
+   "max": 49,
+   "min": 0,
+   "n": 172,
+   "p50": 0,
+   "p90": 1,
+   "sum": 157
+  },
+  "candidate_events": 6,
+  "candidate_events_by_interval": {
+   "3-7d": 6
+  },
+  "candidate_links": 45,
+  "candidates_per_candidate_event": {
+   "max": 23,
+   "min": 3,
+   "n": 6,
+   "p50": 5,
+   "p90": 23,
+   "sum": 45
+  },
+  "candidates_per_event": {
+   "max": 23,
+   "min": 0,
+   "n": 172,
+   "p50": 0,
+   "p90": 0,
+   "sum": 45
+  },
+  "disappeared_vs_prev_per_event": {
+   "max": 49,
+   "min": 0,
+   "n": 172,
+   "p50": 0,
+   "p90": 2,
+   "sum": 264
+  },
+  "distinct_candidate_links": 28,
+  "events": 172,
+  "events_changed": 139,
+  "events_with_new_to_hub": 35,
+  "first_seen_here_events": 1,
+  "hubs_one_candidate_event": 6,
+  "hubs_repeated_candidate_events": 0,
+  "hubs_zero_candidate_events": 152,
+  "interval_buckets": {
+   "3-7d": 126,
+   "6-24h": 46
+  },
+  "interval_h": {
+   "max": 135.18,
+   "min": 6.01,
+   "n": 172,
+   "p50": 116.26,
+   "p90": 133.11,
+   "sum": 16268.24
+  },
+  "kind_at_window": {
+   "hub": 172
+  },
+  "new_since_prev_roles": {
+   "content": 45,
+   "other:listing": 2,
+   "other:none": 19,
+   "other:spam": 80
+  },
+  "new_to_hub_novelty": {
+   "first_seen_here": 34,
+   "known_before": 10,
+   "new_since_prev": 112
+  },
+  "new_to_hub_per_event": {
+   "max": 49,
+   "min": 0,
+   "n": 172,
+   "p50": 0,
+   "p90": 1,
+   "sum": 156
+  },
+  "revisited_urls": 158,
+  "truncated_events": 0,
+  "variants": 0
+ },
+ "hubs": [
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 7,
+   "first": "2026-09-29T17:24:48Z",
+   "hub": "https://isaimini.com.in/",
+   "last": "2026-10-05T09:20:24Z",
+   "observations": 459,
+   "page_versions": 459,
+   "revisions": 8,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:24:48Z",
+    "2026-09-30T03:02:49Z",
+    "2026-09-30T09:03:08Z",
+    "2026-10-04T07:40:35Z",
+    "2026-10-04T13:47:36Z",
+    "2026-10-04T19:51:57Z",
+    "2026-10-05T02:13:31Z",
+    "2026-10-05T08:33:03Z"
+   ],
+   "windows": 8
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:27:23Z",
+   "hub": "https://isaimini.com.in/?s=",
+   "last": "2026-10-05T04:08:21Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:27:23Z",
+    "2026-10-05T04:08:21Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:28:00Z",
+   "hub": "https://isaimini.com.in/author/alfa-team/",
+   "last": "2026-10-05T03:24:56Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:28:00Z",
+    "2026-10-05T03:24:56Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:52:00Z",
+   "hub": "https://isaimini.com.in/author/backlinks-hub/",
+   "last": "2026-10-05T09:19:37Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T18:52:00Z",
+    "2026-10-05T09:19:37Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:27:45Z",
+   "hub": "https://isaimini.com.in/author/kabir-bhatia/",
+   "last": "2026-10-05T04:10:48Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:27:45Z",
+    "2026-10-05T04:10:48Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T20:22:35Z",
+   "hub": "https://isaimini.com.in/author/onyx-team/",
+   "last": "2026-10-05T08:40:34Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T20:22:35Z",
+    "2026-10-05T08:40:34Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T20:45:27Z",
+   "hub": "https://isaimini.com.in/author/rank-star/",
+   "last": "2026-10-05T08:25:38Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T20:45:27Z",
+    "2026-10-05T08:25:38Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:51:50Z",
+   "hub": "https://isaimini.com.in/author/sher-ali/",
+   "last": "2026-10-05T08:44:47Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:51:50Z",
+    "2026-10-05T08:44:47Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:35:36Z",
+   "hub": "https://isaimini.com.in/category/2017/",
+   "last": "2026-10-05T08:44:51Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T19:35:36Z",
+    "2026-10-05T08:44:51Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T13:52:37Z",
+   "hub": "https://isaimini.com.in/category/2017/page/12/",
+   "last": "2026-10-05T08:44:42Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-10-04T13:52:37Z",
+    "2026-10-05T08:44:42Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T13:53:02Z",
+   "hub": "https://isaimini.com.in/category/2017/page/2/",
+   "last": "2026-10-05T08:45:39Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-10-04T13:53:02Z",
+    "2026-10-05T08:45:39Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:27:59Z",
+   "hub": "https://isaimini.com.in/category/blog/",
+   "last": "2026-10-05T03:21:26Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:27:59Z",
+    "2026-10-05T03:21:26Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 23,
+   "events": 1,
+   "first": "2026-09-29T17:27:23Z",
+   "hub": "https://isaimini.com.in/tamil-hd-mobile-movies/",
+   "last": "2026-10-05T04:08:18Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "isaimini.com.in",
+   "window_starts": [
+    "2026-09-29T17:27:23Z",
+    "2026-10-05T04:08:18Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:24:59Z",
+   "hub": "https://movflix.my/",
+   "last": "2026-10-04T19:40:25Z",
+   "observations": 4,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T17:24:59Z",
+    "2026-10-04T19:40:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:07Z",
+   "hub": "https://movflix.my/2025/page/55/",
+   "last": "2026-10-04T15:33:11Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:07Z",
+    "2026-10-04T15:33:11Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:04Z",
+   "hub": "https://movflix.my/2025/page/56/",
+   "last": "2026-10-04T15:06:27Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:04Z",
+    "2026-10-04T15:06:27Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:10Z",
+   "hub": "https://movflix.my/2025/page/6/",
+   "last": "2026-10-04T15:34:54Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:10Z",
+    "2026-10-04T15:34:54Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:12Z",
+   "hub": "https://movflix.my/2025/page/7/",
+   "last": "2026-10-04T15:34:56Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:12Z",
+    "2026-10-04T15:34:56Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:00Z",
+   "hub": "https://movflix.my/2026/03/page/17/",
+   "last": "2026-10-04T15:03:36Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:00Z",
+    "2026-10-04T15:03:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:57Z",
+   "hub": "https://movflix.my/2026/03/page/18/",
+   "last": "2026-10-04T15:03:17Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:57Z",
+    "2026-10-04T15:03:17Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:50Z",
+   "hub": "https://movflix.my/2026/03/page/8/",
+   "last": "2026-10-04T15:01:59Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:50Z",
+    "2026-10-04T15:01:59Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:55Z",
+   "hub": "https://movflix.my/2026/03/page/9/",
+   "last": "2026-10-04T15:02:55Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:55Z",
+    "2026-10-04T15:02:55Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:40Z",
+   "hub": "https://movflix.my/2026/page/45/",
+   "last": "2026-10-04T15:00:48Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:40Z",
+    "2026-10-04T15:00:48Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:34Z",
+   "hub": "https://movflix.my/2026/page/46/",
+   "last": "2026-10-04T15:00:19Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:34Z",
+    "2026-10-04T15:00:19Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:44Z",
+   "hub": "https://movflix.my/2026/page/6/",
+   "last": "2026-10-04T15:00:51Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:44Z",
+    "2026-10-04T15:00:51Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:49Z",
+   "hub": "https://movflix.my/2026/page/7/",
+   "last": "2026-10-04T15:01:41Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:49Z",
+    "2026-10-04T15:01:41Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:23Z",
+   "hub": "https://movflix.my/author/admin/page/34/",
+   "last": "2026-10-04T15:40:23Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:23Z",
+    "2026-10-04T15:40:23Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:25Z",
+   "hub": "https://movflix.my/author/admin/page/35/",
+   "last": "2026-10-04T15:52:42Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:25Z",
+    "2026-10-04T15:52:42Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:19Z",
+   "hub": "https://movflix.my/author/admin/page/6/",
+   "last": "2026-10-04T15:36:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:19Z",
+    "2026-10-04T15:36:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:00:38Z",
+   "hub": "https://movflix.my/author/admin/page/7/",
+   "last": "2026-10-04T15:57:21Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:00:38Z",
+    "2026-10-04T15:57:21Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T01:26:22Z",
+   "hub": "https://movflix.my/author/admin2/page/28/",
+   "last": "2026-10-04T20:31:31Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T01:26:22Z",
+    "2026-10-04T20:31:31Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:29Z",
+   "hub": "https://movflix.my/author/admin2/page/30/",
+   "last": "2026-09-30T01:27:25Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:29Z",
+    "2026-09-30T01:27:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:34Z",
+   "hub": "https://movflix.my/author/admin2/page/31/",
+   "last": "2026-09-30T02:11:02Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:34Z",
+    "2026-09-30T02:11:02Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:07Z",
+   "hub": "https://movflix.my/author/admin2/page/6/",
+   "last": "2026-10-04T19:34:34Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:07Z",
+    "2026-10-04T19:34:34Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:11Z",
+   "hub": "https://movflix.my/author/admin2/page/7/",
+   "last": "2026-10-04T20:14:44Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:11Z",
+    "2026-10-04T20:14:44Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:05Z",
+   "hub": "https://movflix.my/author/movflix/page/31/",
+   "last": "2026-10-04T16:55:30Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:05Z",
+    "2026-10-04T16:55:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:01:48Z",
+   "hub": "https://movflix.my/author/movflix/page/32/",
+   "last": "2026-10-04T16:31:23Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:01:48Z",
+    "2026-10-04T16:31:23Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:01:34Z",
+   "hub": "https://movflix.my/author/movflix/page/8/",
+   "last": "2026-10-04T16:22:56Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:01:34Z",
+    "2026-10-04T16:22:56Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:21Z",
+   "hub": "https://movflix.my/author/movflix/page/9/",
+   "last": "2026-10-04T20:30:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:21Z",
+    "2026-10-04T20:30:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:58:54Z",
+   "hub": "https://movflix.my/category/bollywood-movies/page/14/",
+   "last": "2026-10-04T14:57:25Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:58:54Z",
+    "2026-10-04T14:57:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:58:49Z",
+   "hub": "https://movflix.my/category/bollywood-movies/page/15/",
+   "last": "2026-10-04T14:57:17Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:58:49Z",
+    "2026-10-04T14:57:17Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:58:36Z",
+   "hub": "https://movflix.my/category/bollywood-movies/page/8/",
+   "last": "2026-10-04T14:55:28Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:58:36Z",
+    "2026-10-04T14:55:28Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:58:47Z",
+   "hub": "https://movflix.my/category/bollywood-movies/page/9/",
+   "last": "2026-10-04T14:57:08Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:58:47Z",
+    "2026-10-04T14:57:08Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:41Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/10/",
+   "last": "2026-09-30T02:41:45Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:41Z",
+    "2026-09-30T02:41:45Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:47Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/11/",
+   "last": "2026-09-30T03:13:31Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:47Z",
+    "2026-09-30T03:13:31Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T03:14:07Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/13/",
+   "last": "2026-10-04T20:39:57Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T03:14:07Z",
+    "2026-10-04T20:39:57Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T03:17:35Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/28/",
+   "last": "2026-10-04T20:41:22Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T03:17:35Z",
+    "2026-10-04T20:41:22Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T03:16:44Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/29/",
+   "last": "2026-10-04T20:40:09Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T03:16:44Z",
+    "2026-10-04T20:40:09Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:51Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/30/",
+   "last": "2026-09-30T03:17:13Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:51Z",
+    "2026-09-30T03:17:13Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:49Z",
+   "hub": "https://movflix.my/category/dual-audio-movies/page/31/",
+   "last": "2026-09-30T03:14:12Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:49Z",
+    "2026-09-30T03:14:12Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:21Z",
+   "hub": "https://movflix.my/category/south-dual-audio-movies/page/14/",
+   "last": "2026-10-04T14:59:35Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:21Z",
+    "2026-10-04T14:59:35Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:16Z",
+   "hub": "https://movflix.my/category/south-dual-audio-movies/page/15/",
+   "last": "2026-10-04T14:58:30Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:16Z",
+    "2026-10-04T14:58:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:12Z",
+   "hub": "https://movflix.my/category/south-dual-audio-movies/page/8/",
+   "last": "2026-10-04T14:57:31Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:12Z",
+    "2026-10-04T14:57:31Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:30Z",
+   "hub": "https://movflix.my/category/south-dual-audio-movies/page/9/",
+   "last": "2026-10-04T15:00:02Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:30Z",
+    "2026-10-04T15:00:02Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:58:41Z",
+   "hub": "https://movflix.my/page/10/",
+   "last": "2026-10-04T14:57:06Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:58:41Z",
+    "2026-10-04T14:57:06Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:59:10Z",
+   "hub": "https://movflix.my/page/11/",
+   "last": "2026-10-04T14:57:33Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:59:10Z",
+    "2026-10-04T14:57:33Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T03:30:11Z",
+   "hub": "https://movflix.my/page/96/",
+   "last": "2026-10-04T20:45:35Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T03:30:11Z",
+    "2026-10-04T20:45:35Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T03:26:05Z",
+   "hub": "https://movflix.my/page/97/",
+   "last": "2026-10-04T20:43:57Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T03:26:05Z",
+    "2026-10-04T20:43:57Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:03:02Z",
+   "hub": "https://movflix.my/page/98/",
+   "last": "2026-09-30T03:30:14Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:03:02Z",
+    "2026-09-30T03:30:14Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:57Z",
+   "hub": "https://movflix.my/page/99/",
+   "last": "2026-09-30T03:25:46Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:02:57Z",
+    "2026-09-30T03:25:46Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:18:53Z",
+   "hub": "https://movflix.my/wp-includes/images/",
+   "last": "2026-10-05T08:24:33Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:18:53Z",
+    "2026-10-05T08:24:33Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:34:07Z",
+   "hub": "https://movflix.my/wp-includes/images/crystal/?MA",
+   "last": "2026-10-05T08:37:56Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:34:07Z",
+    "2026-10-05T08:37:56Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T13:42:13Z",
+   "hub": "https://movflix.my/wp-includes/images/crystal/?NA",
+   "last": "2026-10-05T08:38:38Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-10-04T13:42:13Z",
+    "2026-10-05T08:38:38Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:34:31Z",
+   "hub": "https://movflix.my/wp-includes/images/crystal/?ND",
+   "last": "2026-10-05T08:38:01Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:34:31Z",
+    "2026-10-05T08:38:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:35:30Z",
+   "hub": "https://movflix.my/wp-includes/images/crystal/?SA",
+   "last": "2026-10-05T08:38:13Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:35:30Z",
+    "2026-10-05T08:38:13Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:37:30Z",
+   "hub": "https://movflix.my/wp-includes/images/media/?MA",
+   "last": "2026-10-05T09:00:28Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:37:30Z",
+    "2026-10-05T09:00:28Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T14:03:24Z",
+   "hub": "https://movflix.my/wp-includes/images/media/?NA",
+   "last": "2026-10-05T09:04:45Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-10-04T14:03:24Z",
+    "2026-10-05T09:04:45Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:38:18Z",
+   "hub": "https://movflix.my/wp-includes/images/media/?ND",
+   "last": "2026-10-05T09:03:39Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:38:18Z",
+    "2026-10-05T09:03:39Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:36:44Z",
+   "hub": "https://movflix.my/wp-includes/images/media/?SA",
+   "last": "2026-10-05T09:00:13Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:36:44Z",
+    "2026-10-05T09:00:13Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:32:28Z",
+   "hub": "https://movflix.my/wp-includes/images/smilies/?MA",
+   "last": "2026-10-05T08:24:46Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:32:28Z",
+    "2026-10-05T08:24:46Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T13:23:50Z",
+   "hub": "https://movflix.my/wp-includes/images/smilies/?NA",
+   "last": "2026-10-05T08:25:08Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-10-04T13:23:50Z",
+    "2026-10-05T08:25:08Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:34:01Z",
+   "hub": "https://movflix.my/wp-includes/images/smilies/?ND",
+   "last": "2026-10-05T08:25:07Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:34:01Z",
+    "2026-10-05T08:25:07Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:31:02Z",
+   "hub": "https://movflix.my/wp-includes/images/smilies/?SA",
+   "last": "2026-10-05T08:24:36Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:31:02Z",
+    "2026-10-05T08:24:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:16:37Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/",
+   "last": "2026-10-05T01:43:52Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:16:37Z",
+    "2026-10-05T01:43:52Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T13:30:28Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/interactivity-router/?NA",
+   "last": "2026-10-05T02:05:51Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T13:30:28Z",
+    "2026-10-05T02:05:51Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T10:09:24Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/video-conversion/?SD",
+   "last": "2026-10-04T23:39:36Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T10:09:24Z",
+    "2026-10-04T23:39:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:10:56Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/vips/?MA",
+   "last": "2026-10-05T01:43:55Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:10:56Z",
+    "2026-10-05T01:43:55Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T12:10:17Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/vips/?NA",
+   "last": "2026-10-05T00:20:37Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-30T12:10:17Z",
+    "2026-10-05T00:20:37Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:10:52Z",
+   "hub": "https://movflix.my/wp-includes/js/dist/script-modules/vips/?SA",
+   "last": "2026-10-05T01:34:48Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:10:52Z",
+    "2026-10-05T01:34:48Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:18:55Z",
+   "hub": "https://movflix.my/wp-includes/sitemaps/",
+   "last": "2026-10-05T08:18:30Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T18:18:55Z",
+    "2026-10-05T08:18:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:30:07Z",
+   "hub": "https://movflix.my/wp-includes/sitemaps/providers/?MA",
+   "last": "2026-10-05T08:18:29Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:30:07Z",
+    "2026-10-05T08:18:29Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T13:16:52Z",
+   "hub": "https://movflix.my/wp-includes/sitemaps/providers/?NA",
+   "last": "2026-10-05T08:18:34Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-10-04T13:16:52Z",
+    "2026-10-05T08:18:34Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:30:04Z",
+   "hub": "https://movflix.my/wp-includes/sitemaps/providers/?ND",
+   "last": "2026-10-05T08:18:35Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:30:04Z",
+    "2026-10-05T08:18:35Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:30:01Z",
+   "hub": "https://movflix.my/wp-includes/sitemaps/providers/?SA",
+   "last": "2026-10-05T08:18:28Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "movflix.my",
+   "window_starts": [
+    "2026-09-29T19:30:01Z",
+    "2026-10-05T08:18:28Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 5,
+   "first": "2026-09-29T17:24:51Z",
+   "hub": "https://moviesda.com.in/",
+   "last": "2026-10-04T23:21:43Z",
+   "observations": 87,
+   "page_versions": 87,
+   "revisions": 4,
+   "site": "moviesda.com.in",
+   "window_starts": [
+    "2026-09-29T17:24:51Z",
+    "2026-09-30T01:23:27Z",
+    "2026-09-30T07:47:21Z",
+    "2026-10-04T09:02:12Z",
+    "2026-10-04T15:53:43Z",
+    "2026-10-04T23:07:31Z"
+   ],
+   "windows": 6
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 2,
+   "first": "2026-09-29T17:24:49Z",
+   "hub": "https://moviesda16.best/",
+   "last": "2026-10-05T01:40:38Z",
+   "observations": 6,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "moviesda16.best",
+   "window_starts": [
+    "2026-09-29T17:24:49Z",
+    "2026-10-04T13:40:39Z",
+    "2026-10-05T01:40:38Z"
+   ],
+   "windows": 3
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 2,
+   "first": "2026-09-29T17:24:47Z",
+   "hub": "https://tamilprint.co.in/",
+   "last": "2026-10-04T13:40:27Z",
+   "observations": 3,
+   "page_versions": 3,
+   "revisions": 1,
+   "site": "tamilprint.co.in",
+   "window_starts": [
+    "2026-09-29T17:24:47Z",
+    "2026-09-30T11:29:06Z",
+    "2026-10-04T13:40:27Z"
+   ],
+   "windows": 3
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:25:00Z",
+   "hub": "https://tamilprint.com.in/",
+   "last": "2026-10-04T13:40:25Z",
+   "observations": 3,
+   "page_versions": 3,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:25:00Z",
+    "2026-10-04T13:40:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:26:58Z",
+   "hub": "https://tamilprint.com.in/?s=",
+   "last": "2026-10-05T08:37:16Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:26:58Z",
+    "2026-10-05T08:37:16Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:49Z",
+   "hub": "https://tamilprint.com.in/author/alfa-team/page/34/",
+   "last": "2026-10-05T07:57:05Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:49Z",
+    "2026-10-05T07:57:05Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:29:06Z",
+   "hub": "https://tamilprint.com.in/author/alfa-team/page/4/",
+   "last": "2026-10-05T08:00:15Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:29:06Z",
+    "2026-10-05T08:00:15Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:27:36Z",
+   "hub": "https://tamilprint.com.in/author/movies1/",
+   "last": "2026-10-05T07:57:57Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:27:36Z",
+    "2026-10-05T07:57:57Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:49Z",
+   "hub": "https://tamilprint.com.in/author/sher-ali/",
+   "last": "2026-10-05T06:26:37Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:49Z",
+    "2026-10-05T06:26:37Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:26:15Z",
+   "hub": "https://tamilprint.com.in/author/sher-ali/page/161/",
+   "last": "2026-10-05T06:27:42Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:26:15Z",
+    "2026-10-05T06:27:42Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:45:53Z",
+   "hub": "https://tamilprint.com.in/author/sher-ali/page/162/",
+   "last": "2026-10-05T06:27:26Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:45:53Z",
+    "2026-10-05T06:27:26Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:26:06Z",
+   "hub": "https://tamilprint.com.in/author/sher-ali/page/3/",
+   "last": "2026-10-05T06:27:11Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:26:06Z",
+    "2026-10-05T06:27:11Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:45:02Z",
+   "hub": "https://tamilprint.com.in/category/2015/",
+   "last": "2026-10-05T06:27:44Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:45:02Z",
+    "2026-10-05T06:27:44Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:27Z",
+   "hub": "https://tamilprint.com.in/category/2015/page/3/",
+   "last": "2026-10-05T07:53:03Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:27Z",
+    "2026-10-05T07:53:03Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:06:47Z",
+   "hub": "https://tamilprint.com.in/category/2015/page/4/",
+   "last": "2026-10-05T07:53:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:06:47Z",
+    "2026-10-05T07:53:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:27Z",
+   "hub": "https://tamilprint.com.in/category/2015/page/5/",
+   "last": "2026-10-05T07:53:09Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:27Z",
+    "2026-10-05T07:53:09Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:46:21Z",
+   "hub": "https://tamilprint.com.in/category/2015/page/6/",
+   "last": "2026-10-05T07:52:57Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:46:21Z",
+    "2026-10-05T07:52:57Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:49Z",
+   "hub": "https://tamilprint.com.in/category/2017/",
+   "last": "2026-10-05T06:30:30Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:49Z",
+    "2026-10-05T06:30:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T10:48:08Z",
+   "hub": "https://tamilprint.com.in/category/2017/page/10/",
+   "last": "2026-10-05T06:33:52Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T10:48:08Z",
+    "2026-10-05T06:33:52Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:27:01Z",
+   "hub": "https://tamilprint.com.in/category/2017/page/11/",
+   "last": "2026-10-05T06:35:03Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:27:01Z",
+    "2026-10-05T06:35:03Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:45:56Z",
+   "hub": "https://tamilprint.com.in/category/2017/page/12/",
+   "last": "2026-10-05T06:30:11Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:45:56Z",
+    "2026-10-05T06:30:11Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:26:37Z",
+   "hub": "https://tamilprint.com.in/category/2017/page/3/",
+   "last": "2026-10-05T06:30:14Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:26:37Z",
+    "2026-10-05T06:30:14Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T10:46:39Z",
+   "hub": "https://tamilprint.com.in/category/2017/page/4/",
+   "last": "2026-10-05T06:30:25Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T10:46:39Z",
+    "2026-10-05T06:30:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:14:36Z",
+   "hub": "https://tamilprint.com.in/category/2018/",
+   "last": "2026-10-05T08:01:14Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:14:36Z",
+    "2026-10-05T08:01:14Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:14:22Z",
+   "hub": "https://tamilprint.com.in/category/2018/page/12/",
+   "last": "2026-10-05T08:01:16Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:14:22Z",
+    "2026-10-05T08:01:16Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:29:09Z",
+   "hub": "https://tamilprint.com.in/category/2018/page/13/",
+   "last": "2026-10-05T08:00:49Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:29:09Z",
+    "2026-10-05T08:00:49Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:46:41Z",
+   "hub": "https://tamilprint.com.in/category/2018/page/14/",
+   "last": "2026-10-05T08:00:43Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:46:41Z",
+    "2026-10-05T08:00:43Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:14:59Z",
+   "hub": "https://tamilprint.com.in/category/2018/page/4/",
+   "last": "2026-10-05T08:02:24Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:14:59Z",
+    "2026-10-05T08:02:24Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:57Z",
+   "hub": "https://tamilprint.com.in/category/2019/",
+   "last": "2026-10-05T07:50:34Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:57Z",
+    "2026-10-05T07:50:34Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:22Z",
+   "hub": "https://tamilprint.com.in/category/2019/page/15/",
+   "last": "2026-10-05T07:50:08Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:22Z",
+    "2026-10-05T07:50:08Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:04:08Z",
+   "hub": "https://tamilprint.com.in/category/2019/page/4/",
+   "last": "2026-10-05T07:50:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:04:08Z",
+    "2026-10-05T07:50:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:03:18Z",
+   "hub": "https://tamilprint.com.in/category/2020/page/4/",
+   "last": "2026-10-05T07:48:36Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:03:18Z",
+    "2026-10-05T07:48:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:59Z",
+   "hub": "https://tamilprint.com.in/category/2021/",
+   "last": "2026-10-05T07:52:52Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:59Z",
+    "2026-10-05T07:52:52Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:07:17Z",
+   "hub": "https://tamilprint.com.in/category/2021/page/13/",
+   "last": "2026-10-05T07:53:22Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:07:17Z",
+    "2026-10-05T07:53:22Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:29Z",
+   "hub": "https://tamilprint.com.in/category/2021/page/14/",
+   "last": "2026-10-05T07:53:20Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:29Z",
+    "2026-10-05T07:53:20Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:46:22Z",
+   "hub": "https://tamilprint.com.in/category/2021/page/15/",
+   "last": "2026-10-05T07:52:43Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:46:22Z",
+    "2026-10-05T07:52:43Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:26Z",
+   "hub": "https://tamilprint.com.in/category/2021/page/3/",
+   "last": "2026-10-05T07:52:30Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:26Z",
+    "2026-10-05T07:52:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:06:38Z",
+   "hub": "https://tamilprint.com.in/category/2021/page/4/",
+   "last": "2026-10-05T07:52:51Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:06:38Z",
+    "2026-10-05T07:52:51Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:58Z",
+   "hub": "https://tamilprint.com.in/category/2022/",
+   "last": "2026-10-05T07:51:29Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:58Z",
+    "2026-10-05T07:51:29Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:24Z",
+   "hub": "https://tamilprint.com.in/category/2022/page/3/",
+   "last": "2026-10-05T07:51:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:24Z",
+    "2026-10-05T07:51:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:04:06Z",
+   "hub": "https://tamilprint.com.in/category/2022/page/30/",
+   "last": "2026-10-05T07:49:44Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:04:06Z",
+    "2026-10-05T07:49:44Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:46:17Z",
+   "hub": "https://tamilprint.com.in/category/2022/page/32/",
+   "last": "2026-10-05T07:51:21Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:46:17Z",
+    "2026-10-05T07:51:21Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:04:28Z",
+   "hub": "https://tamilprint.com.in/category/2022/page/4/",
+   "last": "2026-10-05T07:51:29Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:04:28Z",
+    "2026-10-05T07:51:29Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:44:53Z",
+   "hub": "https://tamilprint.com.in/category/2023/",
+   "last": "2026-10-05T06:32:33Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:44:53Z",
+    "2026-10-05T06:32:33Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:26:47Z",
+   "hub": "https://tamilprint.com.in/category/2023/page/3/",
+   "last": "2026-10-05T06:33:36Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:26:47Z",
+    "2026-10-05T06:33:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T10:48:33Z",
+   "hub": "https://tamilprint.com.in/category/2023/page/32/",
+   "last": "2026-10-05T06:35:43Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T10:48:33Z",
+    "2026-10-05T06:35:43Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:27:10Z",
+   "hub": "https://tamilprint.com.in/category/2023/page/33/",
+   "last": "2026-10-05T06:35:25Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:27:10Z",
+    "2026-10-05T06:35:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:46:00Z",
+   "hub": "https://tamilprint.com.in/category/2023/page/34/",
+   "last": "2026-10-05T06:33:20Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:46:00Z",
+    "2026-10-05T06:33:20Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T10:47:44Z",
+   "hub": "https://tamilprint.com.in/category/2023/page/4/",
+   "last": "2026-10-05T06:33:00Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T10:47:44Z",
+    "2026-10-05T06:33:00Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T18:45:13Z",
+   "hub": "https://tamilprint.com.in/category/2024/",
+   "last": "2026-10-05T06:17:09Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T18:45:13Z",
+    "2026-10-05T06:17:09Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:08:49Z",
+   "hub": "https://tamilprint.com.in/category/blog/page/44/",
+   "last": "2026-10-05T07:57:42Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:08:49Z",
+    "2026-10-05T07:57:42Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:54Z",
+   "hub": "https://tamilprint.com.in/category/blog/page/45/",
+   "last": "2026-10-05T07:58:01Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:54Z",
+    "2026-10-05T07:58:01Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:54:17Z",
+   "hub": "https://tamilprint.com.in/category/blog/page/47/",
+   "last": "2026-10-05T07:57:53Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T17:54:17Z",
+    "2026-10-05T07:57:53Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-10-04T12:07:43Z",
+   "hub": "https://tamilprint.com.in/category/blog/page/5/",
+   "last": "2026-10-05T07:56:15Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-10-04T12:07:43Z",
+    "2026-10-05T07:56:15Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:57Z",
+   "hub": "https://tamilprint.com.in/page/209/?s",
+   "last": "2026-10-05T07:59:25Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:57Z",
+    "2026-10-05T07:59:25Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:28:40Z",
+   "hub": "https://tamilprint.com.in/page/5/?s",
+   "last": "2026-10-05T07:53:45Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "tamilprint.com.in",
+   "window_starts": [
+    "2026-09-29T19:28:40Z",
+    "2026-10-05T07:53:45Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 5,
+   "events": 1,
+   "first": "2026-09-29T17:27:18Z",
+   "hub": "https://www.moviesda.business/",
+   "last": "2026-10-05T03:30:52Z",
+   "observations": 8,
+   "page_versions": 8,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T17:27:18Z",
+    "2026-10-05T03:30:52Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 3,
+   "events": 1,
+   "first": "2026-09-29T17:27:15Z",
+   "hub": "https://www.moviesda.business/2026/09/",
+   "last": "2026-10-05T03:30:50Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T17:27:15Z",
+    "2026-10-05T03:30:50Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 5,
+   "events": 1,
+   "first": "2026-09-29T17:27:01Z",
+   "hub": "https://www.moviesda.business/?q=",
+   "last": "2026-10-05T03:30:46Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T17:27:01Z",
+    "2026-10-05T03:30:46Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 5,
+   "events": 1,
+   "first": "2026-09-29T17:27:25Z",
+   "hub": "https://www.moviesda.business/search",
+   "last": "2026-10-05T03:30:56Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T17:27:25Z",
+    "2026-10-05T03:30:56Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 1,
+   "candidate_links": 4,
+   "events": 1,
+   "first": "2026-09-29T17:27:23Z",
+   "hub": "https://www.moviesda.business/search/label/Tamil%20Movies",
+   "last": "2026-10-05T03:30:54Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T17:27:23Z",
+    "2026-10-05T03:30:54Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T10:06:01Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-10T21:22:00-08:00&max-results=7&start=63&by-date=false",
+   "last": "2026-10-04T23:36:30Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T10:06:01Z",
+    "2026-10-04T23:36:30Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:55:27Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-19T20:35:00-08:00&max-results=7&reverse-paginate=true&start=49&by-date=false",
+   "last": "2026-10-04T23:31:48Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:55:27Z",
+    "2026-10-04T23:31:48Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:37:19Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-21T20:19:00-08:00&max-results=7&reverse-paginate=true&start=63&by-date=false",
+   "last": "2026-10-04T23:23:00Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:37:19Z",
+    "2026-10-04T23:23:00Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:22:09Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=21&by-date=false",
+   "last": "2026-10-04T23:19:42Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:22:09Z",
+    "2026-10-04T23:19:42Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:12:08Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=28&by-date=false",
+   "last": "2026-10-04T23:12:32Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:12:08Z",
+    "2026-10-04T23:12:32Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:40:10Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=42&by-date=false",
+   "last": "2026-10-04T23:26:33Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:40:10Z",
+    "2026-10-04T23:26:33Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-30T09:51:39Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2025-12-28T18:53:00-08:00&max-results=7&reverse-paginate=true&start=56&by-date=false",
+   "last": "2026-10-04T23:31:44Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-30T09:51:39Z",
+    "2026-10-04T23:31:44Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T23:23:21Z",
+   "hub": "https://www.moviesda.business/search?updated-max=2026-03-24T20:57:00-07:00&max-results=7&reverse-paginate=true&start=49&by-date=false",
+   "last": "2026-10-04T20:05:04Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 2,
+   "site": "moviesda.business",
+   "window_starts": [
+    "2026-09-29T23:23:21Z",
+    "2026-10-04T20:05:04Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:02:51Z",
+   "hub": "https://www.stripemovies.com/movies/drama/page/26/",
+   "last": "2026-09-30T03:23:20Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "stripemovies.com",
+   "window_starts": [
+    "2026-09-29T19:02:51Z",
+    "2026-09-30T03:23:20Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:08:28Z",
+   "hub": "https://www.stripemovies.com/release-year/2017/page/12/",
+   "last": "2026-09-30T10:05:22Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "stripemovies.com",
+   "window_starts": [
+    "2026-09-29T19:08:28Z",
+    "2026-09-30T10:05:22Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T19:08:47Z",
+   "hub": "https://www.stripemovies.com/release-year/2017/page/13/",
+   "last": "2026-09-30T10:16:36Z",
+   "observations": 2,
+   "page_versions": 1,
+   "revisions": 1,
+   "site": "stripemovies.com",
+   "window_starts": [
+    "2026-09-29T19:08:47Z",
+    "2026-09-30T10:16:36Z"
+   ],
+   "windows": 2
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 3,
+   "first": "2026-09-29T17:24:47Z",
+   "hub": "https://www.tamilrockers2024.com/",
+   "last": "2026-10-05T01:40:36Z",
+   "observations": 5,
+   "page_versions": 5,
+   "revisions": 2,
+   "site": "tamilrockers2024.com",
+   "window_starts": [
+    "2026-09-29T17:24:47Z",
+    "2026-09-30T11:29:16Z",
+    "2026-10-04T13:40:38Z",
+    "2026-10-05T01:40:36Z"
+   ],
+   "windows": 4
+  },
+  {
+   "candidate_events": 0,
+   "candidate_links": 0,
+   "events": 1,
+   "first": "2026-09-29T17:26:40Z",
+   "hub": "https://www.tamilrockers2024.com/search/label/Malayalam",
+   "last": "2026-10-05T08:37:28Z",
+   "observations": 2,
+   "page_versions": 2,
+   "revisions": 1,
+   "site": "tamilrockers2024.com",
+   "window_starts": [
+    "2026-09-29T17:26:40Z",
+    "2026-10-05T08:37:28Z"
+   ],
+   "windows": 2
+  }
+ ],
+ "min_gap_h": 6.0,
+ "non_hub_candidate_events": [
+  {
+   "candidates": [
+    "https://isaimini.com.in/download-alostora-apk-latest-2026/",
+    "https://isaimini.com.in/e-mail-2024/",
+    "https://isaimini.com.in/gurkha-2019/",
+    "https://isaimini.com.in/infinity-2023/",
+    "https://isaimini.com.in/komban-2015/",
+    "https://isaimini.com.in/local-sarakku-2024/",
+    "https://isaimini.com.in/pikashow-apk-v90-for-android-devices-unlocking-premium-features-in-2025/",
+    "https://isaimini.com.in/pindam-2023/",
+    "https://isaimini.com.in/puriyatha-puthir-2017/",
+    "https://isaimini.com.in/richie-2017/"
+   ],
+   "kind": "detail",
+   "url": "https://isaimini.com.in/moviesda-dubbed-movies/",
+   "window": 2
+  },
+  {
+   "candidates": [
+    "https://isaimini.com.in/butta-bomma-2023/",
+    "https://isaimini.com.in/cobra-2022/",
+    "https://isaimini.com.in/dd-returns-2023/",
+    "https://isaimini.com.in/delhi-crime-2022/",
+    "https://isaimini.com.in/doctor-2021/",
+    "https://isaimini.com.in/echarikkai-idhu-manithargal-nadamadum-idam-2018/",
+    "https://isaimini.com.in/ism-2020/",
+    "https://isaimini.com.in/jenni-2023/",
+    "https://isaimini.com.in/kaarmegam-2022/",
+    "https://isaimini.com.in/konjam-konjam-2017/"
+   ],
+   "kind": "detail",
+   "url": "https://isaimini.com.in/tamil-movies-collection/",
+   "window": 2
+  }
+ ],
+ "non_hub_events": {
+  "appeared_vs_prev_per_event": {
+   "max": 50,
+   "min": 0,
+   "n": 317,
+   "p50": 1,
+   "p90": 2,
+   "sum": 441
+  },
+  "candidate_events": 2,
+  "candidate_events_by_interval": {
+   "3-7d": 2
+  },
+  "candidate_links": 29,
+  "candidates_per_candidate_event": {
+   "max": 16,
+   "min": 13,
+   "n": 2,
+   "p50": 16,
+   "p90": 16,
+   "sum": 29
+  },
+  "candidates_per_event": {
+   "max": 16,
+   "min": 0,
+   "n": 317,
+   "p50": 0,
+   "p90": 0,
+   "sum": 29
+  },
+  "disappeared_vs_prev_per_event": {
+   "max": 50,
+   "min": 0,
+   "n": 317,
+   "p50": 1,
+   "p90": 2,
+   "sum": 441
+  },
+  "distinct_candidate_links": 29,
+  "events": 317,
+  "events_changed": 280,
+  "events_with_new_to_hub": 238,
+  "first_seen_here_events": 0,
+  "hubs_one_candidate_event": 2,
+  "hubs_repeated_candidate_events": 0,
+  "hubs_zero_candidate_events": 315,
+  "interval_buckets": {
+   "3-7d": 284,
+   "6-24h": 33
+  },
+  "interval_h": {
+   "max": 135.18,
+   "min": 12.24,
+   "n": 317,
+   "p50": 132.4,
+   "p90": 133.97,
+   "sum": 37788.52
+  },
+  "kind_at_window": {
+   "detail": 292,
+   "other": 25
+  },
+  "new_since_prev_roles": {
+   "content": 29,
+   "content_bad": 2,
+   "other:spam": 402
+  },
+  "new_to_hub_novelty": {
+   "first_seen_here": 2,
+   "known_before": 8,
+   "new_since_prev": 431
+  },
+  "new_to_hub_per_event": {
+   "max": 50,
+   "min": 0,
+   "n": 317,
+   "p50": 1,
+   "p90": 2,
+   "sum": 441
+  },
+  "revisited_urls": 317,
+  "truncated_events": 0,
+  "variants": 0
+ },
+ "population": {
+  "hubs": 4663,
+  "hubs_multi_obs": 690,
+  "urls": 20966,
+  "urls_multi_obs": 2318,
+  "urls_multi_window": 475,
+  "urls_multi_window_by_kind": {
+   "detail": 292,
+   "hub": 158,
+   "other": 25
+  }
+ },
+ "sufficiency": {
+  "candidate_hub_events": 6,
+  "candidate_hub_events_outside_g5": 0,
+  "domains_with_candidate_events": 2,
+  "g5_hubs_among_revisited": 27,
+  "largest_domain_share": 0.833,
+  "required": 50,
+  "sufficient": false
+ },
+ "what_policy": "what/v1",
+ "what_vocabulary": "what-vocabulary/v1"
+}
