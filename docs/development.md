@@ -141,6 +141,12 @@ headline numbers is [benchmarks.md](benchmarks.md).
   scripts are run from `$V1_ROOT` with its own venv and
   `PYTHONDONTWRITEBYTECODE=1`, so V1 is only read.
 - P2 storage: `benchmarks/p2-storage/run.sh` (needs `make up-two-host`).
+- P8 media registry (exit gate): `benchmarks/p8-media/run.sh` runs the
+  synthetic dedup benchmark from the host against the compose stack
+  (keyspace `crawler2_p8_bench`, recreated per run; private Redis
+  namespace; loopback fixture web; needs `ffmpeg`). Writes
+  `benchmarks/p8-media/results/dedup-bench.json`; exits non-zero if the
+  gate fails. About 30 s.
 - P4 fetch: `benchmarks/p4-fetch/run.sh v1-engines` measures each V1 engine
   on the P0 seeds; `run.sh gate` runs the exit gate (V1 hybrid chain vs V2
   workers on the fixed 691-URL workload `w691.txt`, same session). Both

@@ -29,6 +29,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-08 | **P7 WHAT (increment 3)** offline library `what/v1` on its own labelled sample (holdout kind 0.972, relevant P 0.977, spam P 1.0 / R 0.55); **WHEN readiness**: M1 has 6 candidate hub revisits vs 50 required; W1 reviewed and **not run** (one active publishing family) | P7 D-19, D-20, D-21; WHEN gated; seed refresh (D-15) is its prerequisite |
 | 2026-10-09 | **P7 closed (scoped, D-22 approved)**: increments 1–3 implementation-complete, new-code coverage 89.4 % (≥ 85 %); WHEN, priority, CrawlTask/scheduler and the live M2 acceptance gates **deferred, not passed** pending adequate seed-population evidence; G1–G6 FAIL, G7 deferred, G8 PASS unchanged; no crawl run to close | P7 D-22; `docs/phases/p07-crawl-intelligence/exit.md`; **P8 is the active phase**; P6 Gate G still open |
 | 2026-10-09 | **P8 started**: audit (P1/P2 already define levels 1–3 and M1–M6; P4 probe has no digest; no SSRF guard in crawler2) and design draft | P8 decisions P8-D3…P8-D8 proposed |
+| 2026-10-09 | **P8 complete**: resolver (ADR-024 outbox reader, per-observation claims), probe pool, `full-bytes/v1` hash reader with SSRF guard, encode requester + sweeper, representation projection; exit gate 0 duplicate encodes / 0 false merges; coverage 92 % | P8 exit.md; P9 is next (not started); P6 Gate G still open |
 | 2026-10-09 | **P8 design approved for implementation**: level 3 = `full-bytes/v1` (full SHA-256), outbox resolver with per-observation LWT claims (ADR-024), PC-1/PC-2 applied to §P8 | P8 decisions P8-D2…P8-D8 approved; implementation in progress, gates not yet measured |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
@@ -549,12 +550,13 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
 
 ### P8 — Media registry & identity (M)
 
-- **Status (2026-10-09):** active phase. Design **approved for
-  implementation** (P8-D2…P8-D8, ADR-024). Increments 1 (resolver, outbox
-  reader with per-observation claims), 2 (probe pool, `full-bytes/v1`
-  hash reader, SSRF guard) and 3 (encode requester, representation
-  projection) implemented and validated on the real stack incl. two hosts
-  (P8 validation.md); exit gate open. Docs: `docs/phases/p08-media-registry/`.
+- **Status (2026-10-09): COMPLETE.** Design approved (P8-D2…P8-D8,
+  ADR-024); increments 1–3 implemented and validated on the real stack
+  incl. two hosts. **Exit gate PASS:** 0 duplicate encode tasks, 0 false
+  merges (synthetic dedup benchmark); coverage 92 %; smoke suite passes.
+  Deferred, not P8 gates: equivalence cross-check (P10), re-request and
+  default-spec semantics (P9), DNS-rebinding pinning (P14). Evidence:
+  `docs/phases/p08-media-registry/exit.md`. Docs: `docs/phases/p08-media-registry/`.
   The corrections PC-1 and PC-2 (P8 decisions.md §2) are approved and
   applied below (marked *PC-1*, *PC-2*): a sampled level-3 key cannot
   pass the crafted-collision test.

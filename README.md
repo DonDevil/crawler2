@@ -3,8 +3,9 @@
 V2 is a fresh architecture; V1 (`../crawler`) is a reference and benchmark
 baseline only. The authoritative plan is [`docs/v2-phase-plan.md`](docs/v2-phase-plan.md).
 
-**Current phase: P8 — Media registry & identity** (audit and design:
-[`docs/phases/p08-media-registry/`](docs/phases/p08-media-registry/)).
+**P8 — Media registry & identity is complete** (exit gate passed:
+[`docs/phases/p08-media-registry/exit.md`](docs/phases/p08-media-registry/exit.md));
+P9 is next and not started.
 P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
 [`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
 Phase status for every phase is in the plan. Earlier phases:

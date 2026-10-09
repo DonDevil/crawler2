@@ -1,7 +1,7 @@
 # P8 Validation — media registry & identity
 
-Status: **in progress.** Increments 1–3 are implemented and validated
-below. The exit gate is recorded in its own section once run. Design: [design.md](design.md). Decisions:
+Status: **complete (2026-10-09).** Increments 1–3 and the exit gate are
+validated below; the exit decision is in [exit.md](exit.md). Design: [design.md](design.md). Decisions:
 [decisions.md](decisions.md). ADR: [ADR-024](../../adr/ADR-024-authoritative-outbox-readers.md).
 
 Status values: **PASS** (the test ran against the stated services and
@@ -122,3 +122,24 @@ Redis), `tests/unit/media/test_encode_unit.py`, and the two-host stages.
 | I3-9 | Two hosts: concurrent encode claims | `media_multihost.py encode-race/encode-verify` | `scripts/test-media-two-host.sh` | 30 contents requested by both hosts at once (each with its own source media): 30 claims (host-1 14, host-2 16), host-1 14 `claimed_elsewhere` + 2 `suppressed`, host-2 11 + 3; exactly one `event_id` per content in the outbox | PASS |
 | I3-10 | Two hosts: hash workers on both hosts issue encode requests for real hashes | `workers` stage with requester | same script, `workers-verify` | 6 ContentIds → 6 claims, claims decided by both hosts, one `event_id` each | PASS |
 | I3-11 | Coverage ≥ 85 %, increment 3 | — | coverage command with `P8_SCYLLA_OUTAGE=1`, 126 tests | `crawler2/media` **92 %** (1,516 statements, 104 missed): `encode.py` 93 %, `cli.py` 73 % | PASS |
+
+## Exit gate and final runs (2026-10-09)
+
+| # | Requirement | Implementation | Test / command | Observed | Status |
+|---|---|---|---|---|---|
+| X-1 | Plan exit gate: **0 duplicate encode tasks** for byte-identical content; **0 false merges** in the different-content set (design §3.2) | `benchmarks/p8-media/dedup_bench.py` (full pipeline in-process: outbox → resolver → probe → hash → encode, real Scylla keyspace `crawler2_p8_bench`, real Redis, loopback fixture web through the SSRF guard) | `benchmarks/p8-media/run.sh` → `benchmarks/p8-media/results/dedup-bench.json` | corpus from ffmpeg 6.1.1 (6 s testsrc + temporal noise, 320×240): H.264 200k and 900k MP4, Matroska remux, fragmented MP4, VP8 WebM, HLS with 1-s and 2-s segments, crafted twins of the 900k MP4 and of a 512 KiB blob. 10 items × 3 locators × 2 pages = 60 sightings → 30 probes, 24 hashes (manifests never hashed). **Each of the 8 hashable groups: all 3 locators carry the same current ContentId, 1 encode claim, 1 `event_id` → 0 duplicate encode tasks.** 28 different-content pairs: 0 share a ContentId; 0 locators share a MediaId; no P8 equivalence table; HLS groups: probed, no ContentId, no claim. **False merges 0. Gate PASS.** Timings: resolve 2.0 s, probe+hash+encode 2.7 s, 15.8 MB served | PASS |
+| X-2 | Two-host profile: resolver handover, probe/hash workers on both hosts, concurrent encode claims | `scripts/test-media-two-host.sh` | same | I1-18, I2-19, I3-9, I3-10 — all passed in one run of the script (image rebuilt from the final code) | PASS |
+| X-3 | Coverage of new code ≥ 85 % (final) | — | coverage command with `P8_SCYLLA_OUTAGE=1` (126 tests) | `crawler2/media` **92 %** (1,516 statements, 104 missed, branch-aware). Not in the figure: `MediaSettings` (declarative; its validator is unit-tested) and test/benchmark code | PASS |
+| X-4 | Canonical checks | `make lint`, `make typecheck`, `make check` | — | ruff and format clean, mypy strict clean (245 files), 774 passed / 156 skipped (integration tiers skip without the stack) | PASS |
+| X-5 | End-to-end smoke suite still passes (B.1 #5) | `make validate-stack` | — | `make validate-stack` exit 0: integration suites 141 passed / 5 skipped in each of `app`, `app-host-1`, `app-host-2` (P8 suites included; the outage test skips without its flag); P2 concurrent writers converged; P2 crash + Scylla restart: 200 committed, 200 durable, 206 delivered, 200 applied once | PASS |
+
+Tests that ran against real services: everything under
+`tests/integration/storage/test_media_*.py` (Scylla 6.2 + Redis of the
+compose stack), the two-host drivers, and the benchmark. Tests with
+in-memory doubles only: `tests/unit/media/test_resolver.py`,
+`test_pool.py`, `test_encode_unit.py` (branch coverage; the concurrency
+guarantees are asserted on the real Scylla). Fixture-web tests
+(`test_ssrf.py`, `test_probe_hash.py`) use real HTTP over loopback and an
+injected resolver, no external network. Skipped by default:
+`test_media_outage.py` (needs `P8_SCYLLA_OUTAGE=1`; it ran and passed for
+I1-9 and X-3).

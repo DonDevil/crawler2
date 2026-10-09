@@ -1,0 +1,215 @@
+{
+  "benchmark": "p8 synthetic dedup (exit gate)",
+  "corpus": "ffmpeg testsrc + temporal noise, 6 s 320x240 25 fps (libx264 200k/900k, Matroska remux, fragmented MP4, libvpx 500k, HLS 1 s / 2 s segments) + crafted collisions",
+  "different_content_pairs": 28,
+  "duplicate_encode_tasks": 0,
+  "false_merges": 0,
+  "gate": "PASS",
+  "groups": {
+    "crafted_twin_of_blob": {
+      "bytes": 524288,
+      "content_ids": [
+        "cnt_96d14d4091c6825a877a2674a43a764a"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "05512f2f797876df281789cde208866ad02b591698785cc07d41fd5086e69db1",
+      "sightings": 6
+    },
+    "crafted_twin_of_mp4_900k": {
+      "bytes": 796283,
+      "content_ids": [
+        "cnt_b56cfecf9be888d6ae106874b9302c19"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "8162a8f96345d143a59ffd36ee7bf827772300111dadedfb164aa45d345082c1",
+      "sightings": 6
+    },
+    "fmp4_repack_900k": {
+      "bytes": 796900,
+      "content_ids": [
+        "cnt_c518fbd6b4d58509aa940a6d0614a6fb"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "1ffb9a31882bcef6167b5ef4cb5910b601a896ca2c5422b5ebacc48cba066cee",
+      "sightings": 6
+    },
+    "hls_1s_segments": {
+      "bytes": 256,
+      "content_ids": [],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 0,
+      "encode_event_ids": 0,
+      "expected": "no ContentId (P8-D6)",
+      "kind": "hls_manifest",
+      "locators": 3,
+      "locators_with_content_key": 0,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "de8cae41043d6f6deb27ac7ba9f4d90d2b846f73f86d4a2445296d24cf8b03db",
+      "sightings": 6
+    },
+    "hls_2s_segments": {
+      "bytes": 172,
+      "content_ids": [],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 0,
+      "encode_event_ids": 0,
+      "expected": "no ContentId (P8-D6)",
+      "kind": "hls_manifest",
+      "locators": 3,
+      "locators_with_content_key": 0,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "f2f18ac52273e02dceef655531b06ed009e5996040b41cff6bd878dd58b187e5",
+      "sightings": 6
+    },
+    "mkv_remux_900k": {
+      "bytes": 795710,
+      "content_ids": [
+        "cnt_024003f93ece8204a43934462b284db5"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "4c0a92c9b38e0340aa1edaa1525232bdd31b9317be838920e5701ff505be70fb",
+      "sightings": 6
+    },
+    "mp4_h264_200k": {
+      "bytes": 160914,
+      "content_ids": [
+        "cnt_14863af0f5a3842594c94a577b41e28c"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "e6a31bcf785ef0b0ca1d61387fb9ea2f28bc452ad11a216e70df9b8c629b2955",
+      "sightings": 6
+    },
+    "mp4_h264_900k": {
+      "bytes": 796283,
+      "content_ids": [
+        "cnt_e1dfaa4cdd128f678bbd58ce02094a4b"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "7f44decd4130cc950d4cbc16dcbf72b8bad358bea03a907879c7c10f88b6ba34",
+      "sightings": 6
+    },
+    "random_blob": {
+      "bytes": 524288,
+      "content_ids": [
+        "cnt_f3351a514cef8cc58b8e11b64dfd52df"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "e97d0c8ef82fc30967e25800062b873a1792aa2c7d09743c1f780231e4a72e3d",
+      "sightings": 6
+    },
+    "webm_vp8_500k": {
+      "bytes": 332894,
+      "content_ids": [
+        "cnt_970ea359ceef87b9937ef55d420fd86e"
+      ],
+      "duplicate_encode_tasks": 0,
+      "encode_claims": 1,
+      "encode_event_ids": 1,
+      "expected": "one ContentId and one encode",
+      "kind": "video_file",
+      "locators": 3,
+      "locators_with_content_key": 3,
+      "ok": true,
+      "probe_status": [
+        "probed"
+      ],
+      "sha256": "ba1669f923c6448c71f054fc721fef4542181f60b615db4c8a51ddc126d094ca",
+      "sightings": 6
+    }
+  },
+  "hash_bytes_served": 15756828,
+  "hashes": 24,
+  "keyspace": "crawler2_p8_bench",
+  "locators_sharing_a_media_id": 0,
+  "p8_equivalence_tables": [],
+  "pairs_sharing_a_content_id": [],
+  "probes": 30,
+  "run_at": "2026-10-09T16:44:57.696997+00:00",
+  "scheme": "full-bytes/v1",
+  "sightings": 60,
+  "sweeper": {
+    "reemitted": 0,
+    "scanned": 8
+  },
+  "timings": {
+    "corpus_s": 24.61,
+    "probe_hash_encode_s": 2.67,
+    "resolve_s": 2.01
+  }
+}
