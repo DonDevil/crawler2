@@ -272,7 +272,77 @@ override a manual CQL `DELETE` (a newer tombstone).
 
 ## Encode requester and representation projection (increment 3)
 
-Not implemented yet.
+```bash
+crawler2-media hash run               # issues encode.requested after every ok hash
+crawler2-media encode sweep           # loop; re-emits stalled claims (or --once)
+crawler2-media representations run    # representation.ready / encode.failed → projection
+```
+
+**One logical request per (ContentId, spec)** (`crawler2/media/encode.py`).
+After an `ok` hash:
+
+1. if `representation_status` shows the `default` row `requested`/`ready`,
+   or any spec `ready`, nothing is emitted (see the interim rule below);
+2. the `event_id` is allocated, the envelope built, the sweeper's index row
+   written (`encode_claims_by_day`, TTL 14 d), then `encode_claims` is
+   claimed with `INSERT … IF NOT EXISTS` (partition = ContentId) storing
+   the **complete envelope**; a loser emits nothing;
+3. the winner appends the **stored** envelope to the outbox (pattern B),
+   marks the P1 projection `requested` and sets `emitted_at IF emitted_at =
+   null`.
+
+`source` is the hashed media, `referer` its observation page,
+`required_spec` absent (spec key `default`). Byte-identical media on many
+URLs therefore produce one claim and one `event_id`; the others are
+`suppressed` or `claimed_elsewhere` (`media_encode_claims_total{result}`).
+
+**Crash recovery.** A claim without `emitted_at` older than
+`claim_emit_grace_s` (300 s) is re-emitted by `encode sweep` (scans the
+last `sweep_lookback_days` = 2 days of the index, every `sweep_interval_s`
+= 60 s) with the **stored** envelope: a redelivery of the same event, never
+a second claim. A crash between an ok hash and its claim is recovered when
+the media is next observed: the resolver's sink calls `ensure`, which
+requests a current content key that has no claim (one EC projection read
+first; a SERIAL claim read only if needed).
+
+**Interim suppression rule (P9 handoff).** `representation.ready` always
+carries a concrete spec and lands on that spec's row, never on `default`
+(the row `encode.requested` marks). Which concrete spec is the default is
+P9's to define (design §12). Until then any ready representation
+suppresses a request. The claim guarantees one logical request regardless.
+
+**No re-request after `encode.failed`** (P8-D7): the failure is recorded in
+the projection; a later request for the same content finds the claim and
+emits nothing. The idempotency-key conflict of re-requests is P9's.
+
+**Representation projection.** `representations run` reads the
+fingerprinter's streams `representation.ready.v1` and `encode.failed.v1`
+with the consumer group `media.consumer_group` (`media-registry`), applies
+them with P2's idempotent `apply_representation_ready` /
+`apply_encode_failed` behind `IdempotentConsumer` (`processed_events`), and
+acknowledges. Invalid entries are logged and acknowledged; storage failures
+leave entries pending (reclaimed after `claim_idle_ms`). These events are
+never in crawler2's outbox, so the crawler2 relay never carries them and
+this group cannot hold back any crawl stream. Whether the fingerprinter's
+own publisher applies ADR-022 to this group is P9's design.
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `claim_emit_grace_s` | 300 | age before the sweeper re-emits an unemitted claim |
+| `sweep_interval_s` / `sweep_lookback_days` | 60 / 2 | sweeper cadence and index window |
+| `consumer_group` | `media-registry` | group on the fingerprinter streams |
+| `batch_size` / `block_ms` / `claim_idle_ms` | 50 / 2000 / 60000 | stream reading |
+
+**Metrics:** `media_encode_claims_total{result}` (emitted, suppressed,
+claimed_elsewhere, reemitted), `consumer_events_total{consumer,outcome}`.
+**Logs:** `media_encode_request`, `media_encode_reemitted` (warning),
+`media_encode_sweep_retry`, `representation_event_invalid`,
+`representation_storage_unavailable`.
+
+| Symptom | Meaning / action |
+|---|---|
+| `media_encode_claims_total{result="reemitted"}` > 0 | a requester died between claim and outbox write; the sweeper repaired it. Frequent: look for crashing hash workers |
+| a ContentId never requested | check `crawler2-media show <locator>`: no ok hash, a stale hash (validators changed), or suppressed by a ready representation |
 
 ## Storage (V005, P8-owned)
 
@@ -284,7 +354,8 @@ Not implemented yet.
 | `media_probes` | authoritative | probe facts per media and month |
 | `media_hashes` | authoritative | full-content hash attempts per media and month |
 | `media_probe_latest` | derived | latest probe / hash / ok hash per media |
-| `encode_claims` | LWT, write-once | one logical `encode.requested` per (content, spec) (increment 3) |
-| `encode_claims_by_day` | index, TTL 14 d | sweeper index (increment 3) |
+| `encode_claims` | LWT, write-once | one logical `encode.requested` per (content, spec), with the stored envelope and `emitted_at` |
+| `encode_claims_by_day` | index, TTL 14 d | sweeper index (written before the claim) |
+| (existing, P2) `representation_status` | projection | `requested` / `ready` / `failed` per (content, spec key) |
 
 Apply with `crawler2-storage migrate` (additive; existing tables unchanged).

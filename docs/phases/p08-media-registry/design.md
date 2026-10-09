@@ -512,6 +512,19 @@ the current version.
    that triggered the probe; `required_spec` absent (the fingerprinter's
    default, `spec_key` = `default` in P2).
 
+*Implementation notes (2026-10-09, increment 3), within the approved design:*
+
+- `encode_claims` also stores the complete `encode.requested` envelope
+  (like the observation claims), so every (re-)emission writes identical
+  bytes with the stored `event_id`.
+- Step 1 suppresses when the `default` row is `requested`/`ready` **or any
+  spec is `ready`**: `representation.ready` carries a concrete spec and
+  never lands on the `default` row. Which concrete spec is the default is
+  the §12 handoff to P9. The claim alone guarantees one logical request.
+- A crash between an `ok` hash and its claim is recovered by the
+  resolver's sink: a later sighting of a media with a current content key
+  and no claim requests it (`ensure`).
+
 ### 7.2 Failures (P8-D7)
 
 `encode.failed` updates the projection only. Re-requesting with another

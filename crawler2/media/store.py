@@ -15,12 +15,14 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-from antipiracy_contracts.ids import EventId, MediaId, ObservationId
+from antipiracy_contracts.ids import ContentId, EventId, MediaId, ObservationId
 from cassandra import ConsistencyLevel
 from cassandra.query import BoundStatement
 
 from crawler2.media.model import (
     ClaimResult,
+    EncodeClaim,
+    EncodeClaimResult,
     GapRecord,
     HashRecord,
     MediaLatest,
@@ -32,6 +34,7 @@ from crawler2.media.model import (
 from crawler2.storage.errors import StorageUnavailableError
 from crawler2.storage.layout import (
     CONTENT_SHARDS,
+    day_bucket,
     earliest_wins,
     latest_wins,
     month_bucket,
@@ -129,6 +132,25 @@ _LATEST_HASH = (
 _LATEST_OK = (
     "UPDATE {ks}.media_probe_latest USING TIMESTAMP ? SET ok_hash_doc = ? WHERE media_id = ?"
 )
+_ENC_CLAIM = (
+    "INSERT INTO {ks}.encode_claims (content_id, spec_key, event_id, envelope, claimed_at, "
+    "claimed_by, source_media_id, referer) VALUES (?, ?, ?, ?, ?, ?, ?, ?) IF NOT EXISTS"
+)
+_ENC_COLS = (
+    "content_id, spec_key, event_id, envelope, claimed_at, claimed_by, source_media_id, emitted_at"
+)
+_ENC_GET = f"SELECT {_ENC_COLS} FROM {{ks}}.encode_claims WHERE content_id = ? AND spec_key = ?"
+_ENC_EMITTED = (
+    "UPDATE {ks}.encode_claims SET emitted_at = ? WHERE content_id = ? AND spec_key = ? "
+    "IF emitted_at = null"
+)
+_ENC_INDEX = (
+    "INSERT INTO {ks}.encode_claims_by_day (day, shard, content_id, spec_key, claimed_at) "
+    "VALUES (?, ?, ?, ?, ?)"
+)
+_ENC_DAY = "SELECT content_id, spec_key FROM {ks}.encode_claims_by_day WHERE day = ? AND shard = ?"
+ENCODE_DAY_SHARDS = 8
+"""encode_claims_by_day partitions per day."""
 _LATEST_GET = (
     "SELECT probe_doc, hash_doc, ok_hash_doc FROM {ks}.media_probe_latest WHERE media_id = ?"
 )
@@ -146,6 +168,21 @@ def _reader_state(row: Any) -> ReaderState:
         gap_to=row.gap_to,
         gaps=row.gaps or 0,
         started_bucket=row.started_bucket,
+    )
+
+
+def _encode_claim(row: Any) -> EncodeClaim:
+    return EncodeClaim(
+        content_id=str(ContentId.from_uuid(row.content_id)),
+        spec_key=row.spec_key,
+        event_id=str(EventId.from_uuid(row.event_id)),
+        envelope=row.envelope,
+        claimed_at=utc(row.claimed_at),
+        claimed_by=row.claimed_by,
+        source_media_id=(
+            str(MediaId.from_uuid(row.source_media_id)) if row.source_media_id else None
+        ),
+        emitted=row.emitted_at is not None,
     )
 
 
@@ -493,3 +530,79 @@ class ScyllaRegistryStore:
         for record in hashes:
             self._s.execute_all(self._hash_derived(record))
         return len(probes), len(hashes)
+
+    # --- encode claims (design §7.1) -------------------------------------------------------
+
+    def index_encode_claim(self, content_id: ContentId, spec_key: str, *, at: datetime) -> None:
+        """The sweeper's index row, written *before* the claim (idempotent)."""
+        self._s.execute(
+            self._s.bind(
+                _ENC_INDEX,
+                AUTH,
+                (
+                    day_bucket(at),
+                    shard_of(content_id, ENCODE_DAY_SHARDS),
+                    content_id.uuid,
+                    spec_key,
+                    at,
+                ),
+            )
+        )
+
+    def claim_encode(
+        self,
+        content_id: ContentId,
+        spec_key: str,
+        *,
+        event_id: EventId,
+        envelope: str,
+        at: datetime,
+        by: str,
+        source_media_id: MediaId,
+        referer: str | None,
+    ) -> EncodeClaimResult:
+        """Write-once: at most one logical encode request per (content, spec)."""
+        rows = self._cas_rows(
+            self._s.bind(
+                _ENC_CLAIM,
+                SERIAL,
+                (
+                    content_id.uuid,
+                    spec_key,
+                    event_id.uuid,
+                    envelope,
+                    at,
+                    by,
+                    source_media_id.uuid,
+                    referer,
+                ),
+            )
+        )
+        if rows[0].applied:
+            claim = EncodeClaim(
+                str(content_id),
+                spec_key,
+                str(event_id),
+                envelope,
+                at,
+                by,
+                str(source_media_id),
+                emitted=False,
+            )
+            return EncodeClaimResult(won=True, claim=claim)
+        stored = _encode_claim(rows[0])
+        return EncodeClaimResult(won=stored.event_id == str(event_id), claim=stored)
+
+    def encode_claim(self, content_id: ContentId, spec_key: str) -> EncodeClaim | None:
+        rows = self._serial_read(_ENC_GET, (content_id.uuid, spec_key))
+        return _encode_claim(rows[0]) if rows else None
+
+    def mark_emitted(self, content_id: ContentId, spec_key: str, *, at: datetime) -> None:
+        self._cas(_ENC_EMITTED, (at, content_id.uuid, spec_key))
+
+    def encode_claims_on(self, day: datetime) -> list[tuple[ContentId, str]]:
+        results = self._s.execute_many(
+            self._s.bind(_ENC_DAY, STRONG, (day_bucket(day), shard))
+            for shard in range(ENCODE_DAY_SHARDS)
+        )
+        return [(ContentId.from_uuid(r.content_id), r.spec_key) for rows in results for r in rows]

@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta
+from typing import Any
 
 from antipiracy_contracts.models.media import MediaKind, MediaObservation, ProbeStatus
 
@@ -51,13 +52,20 @@ def hash_due(
 
 
 class ProbeScheduler:
-    """The resolver's sink: want a probe for a committed observation's media."""
+    """The resolver's sink: want a probe for a committed observation's media, and
+    (with a requester) make sure a current content key has an encode request."""
 
     def __init__(
-        self, work: RedisWork, *, reprobe_after: timedelta, metrics: Metrics | None = None
+        self,
+        work: RedisWork,
+        *,
+        reprobe_after: timedelta,
+        requester: Any = None,
+        metrics: Metrics | None = None,
     ) -> None:
         self._work = work
         self._reprobe_after = reprobe_after
+        self._requester = requester
         self._wants = (
             metrics.counter(
                 "media_wants_total", "Probe/hash wants, by stage and result", ["stage", "result"]
@@ -67,6 +75,8 @@ class ProbeScheduler:
         )
 
     def observed(self, observation: MediaObservation, latest: MediaLatest | None) -> None:
+        if self._requester is not None and latest is not None:
+            self._requester.ensure(latest, observation.media, observation.page.url)
         if not probe_due(latest, self._work.now(), self._reprobe_after):
             return
         media = observation.media

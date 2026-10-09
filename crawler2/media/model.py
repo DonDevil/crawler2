@@ -238,3 +238,23 @@ class MediaLatest:
         # Without any validator, equality proves nothing; the hash stays current
         # until the rehash_after re-hash (a stated limitation, design §12).
         return self.ok_hash.content
+
+
+@dataclass(frozen=True, slots=True)
+class EncodeClaim:
+    """One row of ``encode_claims``: the decided ``encode.requested`` (wire bytes)."""
+
+    content_id: str
+    spec_key: str
+    event_id: str
+    envelope: str
+    claimed_at: datetime
+    claimed_by: str | None
+    source_media_id: str | None
+    emitted: bool
+
+
+@dataclass(frozen=True, slots=True)
+class EncodeClaimResult:
+    won: bool
+    claim: EncodeClaim

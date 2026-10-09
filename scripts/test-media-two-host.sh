@@ -48,4 +48,12 @@ wait "$w1" && wait "$w2" || fail "a worker host failed"
 in_app app-host-2 python -m tests.integration.media_multihost workers-verify --keyspace "$ks" --run "$run"
 wait "$srv" || true
 
+step "concurrent encode claims on both hosts (run $run)"
+in_app app-host-1 python -m tests.integration.media_multihost encode-race --keyspace "$ks" --run "$run" &
+e1=$!
+in_app app-host-2 python -m tests.integration.media_multihost encode-race --keyspace "$ks" --run "$run" &
+e2=$!
+wait "$e1" && wait "$e2" || fail "an encode-race host failed"
+in_app app-host-2 python -m tests.integration.media_multihost encode-verify --keyspace "$ks" --run "$run"
+
 step "P8 two-host checks passed"

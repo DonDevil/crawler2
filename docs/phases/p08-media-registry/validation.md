@@ -1,8 +1,7 @@
 # P8 Validation — media registry & identity
 
-Status: **in progress.** Increments 1 (resolver) and 2 (probe, hash) are
-implemented and validated below. Increment 3 and the exit gate are not yet
-run; their rows are added as they are. Design: [design.md](design.md). Decisions:
+Status: **in progress.** Increments 1–3 are implemented and validated
+below. The exit gate is recorded in its own section once run. Design: [design.md](design.md). Decisions:
 [decisions.md](decisions.md). ADR: [ADR-024](../../adr/ADR-024-authoritative-outbox-readers.md).
 
 Status values: **PASS** (the test ran against the stated services and
@@ -104,3 +103,22 @@ Redis.
 Not claimed by increment 2: hash throughput, bandwidth and the 8 GiB /
 3,600 s bounds on real media (approved assumptions, not measured); DNS
 rebinding protection (P14).
+
+## Increment 3 — encode requester and representation projection (2026-10-09)
+
+Tests: `tests/integration/storage/test_media_encode.py` (real Scylla and
+Redis), `tests/unit/media/test_encode_unit.py`, and the two-host stages.
+
+| # | Requirement | Implementation | Test / command | Observed | Status |
+|---|---|---|---|---|---|
+| I3-1 | Claim race between two requesters → one logical request | `encode_claims` LWT, event id allocated first | `test_two_host_claim_race_has_one_logical_request` (both released together after the index write) | one `emitted`, one `claimed_elsewhere`; 1 outbox row, the claim's `event_id`; projection `requested` with that `event_id` | PASS |
+| I3-2 | Byte-identical content → one claim, later requests suppressed | step 1 + claim | `test_byte_identical_media_one_claim_then_suppressed` | `emitted`, `suppressed`, `suppressed`; 1 claim, 1 event | PASS |
+| I3-3 | Crash after claim, before the outbox write; sweeper re-emits the **same** `event_id` | `sweep`, stored envelope | `test_crash_after_claim_before_outbox_then_sweeper_reemits_same_event` | before grace: pending, 0 rows; another media: `claimed_elsewhere`; after grace: 1 re-emission with the stored `event_id`, referer kept, `required_spec` absent; `emitted_at` set; next sweep 0 | PASS |
+| I3-4 | Crash after the outbox write, before `emitted_at` (twice) | conditional `emitted_at` | `test_crash_after_outbox_before_emitted_redelivers_one_event` | redeliveries carry one `event_id` and identical bytes; finally emitted | PASS |
+| I3-5 | `ready` suppresses; `encode.failed` recorded, no alternative-source re-request (P8-D7) | `_suppressed`, projection | `test_ready_suppresses_and_failed_never_re_requests` | ready → no claim; failed → state `failed`; a second source → `claimed_elsewhere`, still 1 event | PASS |
+| I3-6 | Crash between an ok hash and its claim is recovered | `ensure` via the resolver sink | `test_ensure_recovers_a_crash_between_hash_and_claim` | request created once; a second `ensure` emits nothing | PASS |
+| I3-7 | `representation.ready` / `encode.failed` through the streams, repeated delivery applied once | `RepresentationLoop` + `IdempotentConsumer` | `test_representation_events_through_streams_are_applied_once` (each event delivered twice, plus one malformed entry) | projection `ready` (supersedes the earlier failure); 2 applied, 2 duplicates; malformed acknowledged; nothing pending | PASS |
+| I3-8 | Loop/sweeper failure branches; CLI `encode sweep`, `representations run` | `encode.py`, `cli.py` | `test_loop_acks_invalid…`, `test_sweep_forever…`, `test_cli_encode_sweep_and_representations_run` (private stream prefix and group) | invalid acked, storage failure left pending; sweep retries; CLI re-emitted 1 and applied ready | PASS |
+| I3-9 | Two hosts: concurrent encode claims | `media_multihost.py encode-race/encode-verify` | `scripts/test-media-two-host.sh` | 30 contents requested by both hosts at once (each with its own source media): 30 claims (host-1 14, host-2 16), host-1 14 `claimed_elsewhere` + 2 `suppressed`, host-2 11 + 3; exactly one `event_id` per content in the outbox | PASS |
+| I3-10 | Two hosts: hash workers on both hosts issue encode requests for real hashes | `workers` stage with requester | same script, `workers-verify` | 6 ContentIds → 6 claims, claims decided by both hosts, one `event_id` each | PASS |
+| I3-11 | Coverage ≥ 85 %, increment 3 | — | coverage command with `P8_SCYLLA_OUTAGE=1`, 126 tests | `crawler2/media` **92 %** (1,516 statements, 104 missed): `encode.py` 93 %, `cli.py` 73 % | PASS |

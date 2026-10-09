@@ -6,6 +6,8 @@
     python -m tests.integration.media_multihost serve-media    --keyspace KS --run RUN
     python -m tests.integration.media_multihost workers        --keyspace KS --run RUN
     python -m tests.integration.media_multihost workers-verify --keyspace KS --run RUN
+    python -m tests.integration.media_multihost encode-race    --keyspace KS --run RUN
+    python -m tests.integration.media_multihost encode-verify  --keyspace KS --run RUN
 
 C-11 (design §10.1): both hosts run a resolver with a short real lease (Redis TIME).
 host-1 owns the lease and dies (``os._exit``) between a claim and its commit, mid-bucket;
@@ -16,8 +18,12 @@ decided claims (a handover inside the run).
 Probe/hash workers: host-1 serves a fixture media web (``serve-media``, port 18080,
 reached as ``app-host-1`` through the SSRF guard with the compose subnet as the
 explicit ``ssrf_allowed_networks`` opt-out). Both hosts run probe and hash pools on
-the same queues at once; the verifier checks one probe and one hash per media,
-work done by both hosts, and one ContentId per byte-identical group.
+the same queues at once, each with an encode requester; the verifier checks one
+probe and one hash per media, work done by both hosts, one ContentId per
+byte-identical group and exactly one encode claim and one event_id per ContentId.
+
+Encode race: both hosts request the same RACE_CONTENTS contents at once (after a
+Redis barrier), each with its own source media; one claim and one event_id each.
 """
 
 from __future__ import annotations
@@ -328,7 +334,14 @@ def cmd_workers(settings: Settings, args: argparse.Namespace) -> None:
         fetcher = probe_fetcher(settings.workers.fetch, guarded(media), connections=8)
         hasher = FullContentHasher(guarded(media), hash_limits(media, settings.workers.fetch))
         probe = ProbeWorker(fetcher, store, work, worker=identity, settings=media)
-        hashw = HashWorker(hasher, store, work, worker=identity, settings=media)
+        hashw = HashWorker(
+            hasher,
+            store,
+            work,
+            worker=identity,
+            settings=media,
+            requester=_requester(storage, store, work, identity),
+        )
 
         async def counted_probe(job: Job) -> None:
             if await probe.handle(job) is not None:
@@ -349,6 +362,30 @@ def cmd_workers(settings: Settings, args: argparse.Namespace) -> None:
 
     asyncio.run(main())
     print(json.dumps({"host": settings.host_id} | counts))
+
+
+def _requester(storage: ScyllaStorage, store: ScyllaRegistryStore, work: RedisWork, me: str) -> Any:
+    from crawler2.media.encode import EncodeRequester
+
+    return EncodeRequester(
+        store, storage.projections, storage.outbox, producer=producer_for(me), clock=work.now
+    )
+
+
+def _one_request(
+    storage: ScyllaStorage, store: ScyllaRegistryStore, content_id: Any, started: datetime
+) -> str:
+    """Exactly one claim; every outbox copy of its key carries the claim's event_id."""
+    from antipiracy_contracts.events.fingerprinting import EncodeRequested
+
+    claim = store.encode_claim(content_id, "default")
+    assert claim is not None, f"no encode claim for {content_id}"
+    key = idempotency_key(decode_event_as(claim.envelope, EncodeRequested))
+    rows = [r for r in _observed_rows(storage, started) if r.idempotency_key == key]
+    ids = {str(EventId.from_uuid(r.event_id)) for r in rows}
+    assert ids == {claim.event_id}, (content_id, ids, claim.event_id)
+    assert all(r.envelope == claim.envelope for r in rows)
+    return str(claim.claimed_by).split(":")[0]
 
 
 def cmd_workers_verify(settings: Settings, args: argparse.Namespace) -> None:
@@ -374,6 +411,10 @@ def cmd_workers_verify(settings: Settings, args: argparse.Namespace) -> None:
     assert all(len(ids) == 1 for ids in groups.values()), groups  # byte-identical → one id
     distinct = {next(iter(ids)) for ids in groups.values()}
     assert len(distinct) == GROUPS  # different bytes → different ids
+    from antipiracy_contracts.ids import ContentId
+
+    started = datetime.now(UTC) - timedelta(minutes=30)
+    claimers = {_one_request(storage, store, ContentId(c), started) for c in distinct}
     assert hosts == {"host-1", "host-2"}, f"work done by {hosts}"
     client.set(f"p8mh:{args.run}:media-stop", "1", ex=600)
     print(
@@ -382,7 +423,67 @@ def cmd_workers_verify(settings: Settings, args: argparse.Namespace) -> None:
                 "verified": True,
                 "media": len(_bodies(args.run)),
                 "content_ids": len(distinct),
+                "encode_claims": len(distinct),
+                "claimed_by": sorted(claimers),
                 "hosts": sorted(hosts),
+            }
+        )
+    )
+
+
+RACE_CONTENTS = 30
+
+
+def _race_contents(run: str) -> list[Any]:
+    from antipiracy_contracts.digests import ContentDigest
+    from antipiracy_contracts.models.media import ContentKey
+
+    from crawler2.media.model import SCHEME
+
+    return [
+        ContentKey.of(SCHEME, ContentDigest.of_bytes(f"{run}-race-{i}".encode()))
+        for i in range(RACE_CONTENTS)
+    ]
+
+
+def cmd_encode_race(settings: Settings, args: argparse.Namespace) -> None:
+    from antipiracy_contracts.models.media import Media, MediaKind
+
+    storage = _open(settings, args.keyspace)
+    client = connect_redis(settings.redis)
+    work = RedisWork(client, namespace=f"p8mh-{args.run}")
+    store = ScyllaRegistryStore(storage.session)
+    me = f"{settings.host_id}:media_probe:{os.getpid()}:{os.urandom(16).hex()}"
+    requester = _requester(storage, store, work, me)
+    if client.incr(f"p8mh:{args.run}:race") == 2:
+        client.rpush(f"p8mh:{args.run}:race-go", "go", "go")
+    if client.blpop([f"p8mh:{args.run}:race-go"], timeout=120) is None:
+        raise SystemExit("barrier timed out")
+    results: dict[str, int] = {}
+    for i, content in enumerate(_race_contents(args.run)):
+        source = Media.of(
+            UrlRef.of(f"https://{settings.host_id}-{args.run}.example/{i}.mp4"),
+            MediaKind.VIDEO_FILE,
+        )
+        result = requester.request_content(content, source, None)
+        results[result.value] = results.get(result.value, 0) + 1
+    print(json.dumps({"host": settings.host_id} | results))
+
+
+def cmd_encode_verify(settings: Settings, args: argparse.Namespace) -> None:
+    storage = _open(settings, args.keyspace)
+    store = ScyllaRegistryStore(storage.session)
+    started = datetime.now(UTC) - timedelta(minutes=30)
+    claimers = [
+        _one_request(storage, store, c.content_id, started) for c in _race_contents(args.run)
+    ]
+    print(
+        json.dumps(
+            {
+                "verified": True,
+                "contents": RACE_CONTENTS,
+                "claims": len(claimers),
+                "claims_by_host": {h: claimers.count(h) for h in sorted(set(claimers))},
             }
         )
     )
@@ -398,6 +499,8 @@ def main(argv: list[str] | None = None) -> int:
         ("serve-media", cmd_serve_media),
         ("workers", cmd_workers),
         ("workers-verify", cmd_workers_verify),
+        ("encode-race", cmd_encode_race),
+        ("encode-verify", cmd_encode_verify),
     ):
         p = sub.add_parser(name)
         p.add_argument("--keyspace", required=True)

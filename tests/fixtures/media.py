@@ -210,30 +210,7 @@ class Bench:
 
     def observed_rows(self, key: str) -> list[OutboxRecord]:
         """Every outbox row of this idempotency key written since the test started."""
-        first = outbox_bucket(self.started - timedelta(minutes=2))
-        last = outbox_bucket(datetime.now(UTC) + timedelta(minutes=2))
-        session = self.storage.session
-        results = session.execute_many(
-            session.bind(_ROWS, Consistency.STRONG_READ, (shard, bucket))
-            for bucket in range(first, last + 1)
-            for shard in range(OUTBOX_SHARDS)
-        )
-        return [
-            OutboxRecord(
-                shard=r.shard,
-                bucket=r.bucket,
-                event_id=str(EventId.from_uuid(r.event_id)),
-                event_type=r.event_type,
-                schema_version=r.schema_version,
-                idempotency_key=r.idempotency_key,
-                envelope=r.envelope.encode("utf-8"),
-                enqueued_at=r.enqueued_at,
-                published_at=r.published_at,
-            )
-            for rows in results
-            for r in rows
-            if r.idempotency_key == key
-        ]
+        return outbox_rows(self.storage, key, since=self.started)
 
     def key(self, page_obs: ObservationId, media_id: MediaId) -> str:
         claim = self.store.claim(page_obs, media_id)
@@ -266,3 +243,31 @@ class Bench:
         else:
             assert self.state().next_bucket <= self.b0  # never past uncommitted work
         return len(rows)
+
+
+def outbox_rows(storage: ScyllaStorage, key: str, *, since: datetime) -> list[OutboxRecord]:
+    """Every outbox row with idempotency ``key`` enqueued (real time) since ``since``."""
+    first = outbox_bucket(since - timedelta(minutes=2))
+    last = outbox_bucket(datetime.now(UTC) + timedelta(minutes=2))
+    session = storage.session
+    results = session.execute_many(
+        session.bind(_ROWS, Consistency.STRONG_READ, (shard, bucket))
+        for bucket in range(first, last + 1)
+        for shard in range(OUTBOX_SHARDS)
+    )
+    return [
+        OutboxRecord(
+            shard=r.shard,
+            bucket=r.bucket,
+            event_id=str(EventId.from_uuid(r.event_id)),
+            event_type=r.event_type,
+            schema_version=r.schema_version,
+            idempotency_key=r.idempotency_key,
+            envelope=r.envelope.encode("utf-8"),
+            enqueued_at=r.enqueued_at,
+            published_at=r.published_at,
+        )
+        for rows in results
+        for r in rows
+        if r.idempotency_key == key
+    ]

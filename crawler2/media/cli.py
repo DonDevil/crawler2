@@ -8,9 +8,12 @@ retention gap). ``resolve accept-gap`` records a halted gap as accepted loss
 and resumes at the oldest retained outbox bucket.
 
 ``probe run`` / ``hash run`` work the Redis probe/hash queues on any number
-of hosts (per-media leases). ``rebuild`` re-derives the media read models of
-one media from the authoritative rows. ``show`` prints what the registry
-knows about one locator.
+of hosts (per-media leases); ``hash run`` also issues ``encode.requested``
+(one logical request per content). ``encode sweep`` re-emits claims whose
+outbox write never completed. ``representations run`` keeps
+``representation_status`` from the fingerprinter's events. ``rebuild``
+re-derives the media read models of one media from the authoritative rows.
+``show`` prints what the registry knows about one locator.
 """
 
 from __future__ import annotations
@@ -31,6 +34,7 @@ from antipiracy_contracts.ownership import Component, Producer
 from crawler2.core.configuration import Settings, WorkerRole
 from crawler2.core.identity import WorkerIdentity
 from crawler2.core.observability import Metrics, configure_logging
+from crawler2.media.encode import EncodeRequester, RepresentationLoop, RepresentationProjection
 from crawler2.media.hashing import FullContentHasher
 from crawler2.media.probe import (
     HashWorker,
@@ -84,9 +88,18 @@ class Context:
         self.work = RedisWork(self.redis, namespace=settings.redis.namespace)
         self.metrics = metrics
 
-    def requester(self) -> Any:
-        """Increment 3 (encode requester); none yet."""
-        return None
+    def requester(self) -> EncodeRequester:
+        m = self.settings.media
+        return EncodeRequester(
+            self.store,
+            self.storage.projections,
+            self.storage.outbox,
+            producer=producer_for(self.identity),
+            clock=self.work.now,
+            grace=timedelta(seconds=m.claim_emit_grace_s),
+            lookback_days=m.sweep_lookback_days,
+            metrics=self.metrics,
+        )
 
     def resolver(self, *, schedule: bool = True) -> Resolver:
         sink = None
@@ -94,6 +107,7 @@ class Context:
             sink = ProbeScheduler(
                 self.work,
                 reprobe_after=timedelta(seconds=self.settings.media.reprobe_after_s),
+                requester=self.requester(),
                 metrics=self.metrics,
             )
         return Resolver(
@@ -229,6 +243,75 @@ def cmd_hash_run(args: Any, settings: Settings) -> int:
     return 0
 
 
+def cmd_encode_sweep(args: Any, settings: Settings) -> int:
+    """Re-emit encode claims whose outbox write never completed (crash recovery)."""
+    ctx = Context(settings)
+    requester = ctx.requester()
+    if args.once:
+        print(_json(asdict(requester.sweep())))
+        return 0
+    requester.sweep_forever(interval_s=settings.media.sweep_interval_s, stop=_stopper())
+    return 0
+
+
+def cmd_representations_run(args: Any, settings: Settings) -> int:
+    """Consume representation.ready / encode.failed (fingerprinter streams) into the
+    P1 ``representation_status`` projection."""
+    from antipiracy_contracts.events.fingerprinting import EncodeFailed, RepresentationReady
+
+    from crawler2.storage.events.consumer import (
+        IdempotentConsumer,
+        RedisStreamReader,
+        connect_stream_client,
+    )
+    from crawler2.storage.events.publisher import stream_name
+
+    metrics = Metrics(settings)
+    metrics.serve()
+    ctx = Context(settings, metrics=metrics)
+    m = settings.media
+    client = connect_stream_client(settings.redis)
+    projection = RepresentationProjection(ctx.storage.projections)
+    ready_reader = RedisStreamReader(
+        client,
+        stream_name(
+            settings.events, RepresentationReady.EVENT_TYPE, RepresentationReady.SCHEMA_MAJOR
+        ),
+        m.consumer_group,
+        ctx.identity,
+    )
+    failed_reader = RedisStreamReader(
+        client,
+        stream_name(settings.events, EncodeFailed.EVENT_TYPE, EncodeFailed.SCHEMA_MAJOR),
+        m.consumer_group,
+        ctx.identity,
+    )
+    store = ctx.storage.processed_events
+    pairs: list[Any] = [
+        (
+            ready_reader,
+            IdempotentConsumer(
+                m.consumer_group, RepresentationReady, projection.ready, store, metrics=metrics
+            ),
+        ),
+        (
+            failed_reader,
+            IdempotentConsumer(
+                m.consumer_group, EncodeFailed, projection.failed, store, metrics=metrics
+            ),
+        ),
+    ]
+    for reader, _ in pairs:
+        reader.ensure_group()
+    loop = RepresentationLoop(
+        pairs, batch_size=m.batch_size, block_ms=m.block_ms, claim_idle_ms=m.claim_idle_ms
+    )
+    for sig in (signal.SIGTERM, signal.SIGINT):
+        signal.signal(sig, lambda *_: loop.stop())
+    loop.run(max_idle_polls=args.exit_when_idle)
+    return 0
+
+
 def _window(args: Any) -> tuple[datetime, datetime]:
     until = datetime.fromisoformat(args.until) if args.until else datetime.now().astimezone()
     since = datetime.fromisoformat(args.since)
@@ -300,6 +383,19 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("hash", help="full-content hash pool").add_subparsers(
         dest="action", required=True
     ).add_parser("run", help="work the hash queue").set_defaults(func=cmd_hash_run)
+    encode = sub.add_parser("encode", help="encode requester").add_subparsers(
+        dest="action", required=True
+    )
+    p = encode.add_parser("sweep", help="re-emit claims whose outbox write never completed")
+    p.add_argument("--once", action="store_true", help="one sweep, print the report, exit")
+    p.set_defaults(func=cmd_encode_sweep)
+    p = (
+        sub.add_parser("representations", help="representation_status projection")
+        .add_subparsers(dest="action", required=True)
+        .add_parser("run", help="consume representation.ready / encode.failed")
+    )
+    p.add_argument("--exit-when-idle", type=int, default=None, help="stop after N empty polls")
+    p.set_defaults(func=cmd_representations_run)
     p = sub.add_parser("rebuild", help="re-derive one media's read models")
     p.add_argument("media", help="media id (med_…) or locator URL")
     p.add_argument("--since", required=True, help="ISO time, e.g. 2026-09-01T00:00:00+00:00")
