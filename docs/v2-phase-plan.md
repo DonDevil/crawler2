@@ -28,6 +28,8 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-07 | **P7 increment 2**: review rejects an `intel-*` consumer group (a dead P7 would stall the relay under ADR-022); P7 reads the outbox with its own checkpoint (ADR-023, ADR-022 unchanged); P7-owned source profiles (V004); source advice at P6 admission, off by default, fallback = today's behaviour; failure injection passed on the real stack | P7 D-18; WHAT next after review, WHEN gated, M2 not started |
 | 2026-10-08 | **P7 WHAT (increment 3)** offline library `what/v1` on its own labelled sample (holdout kind 0.972, relevant P 0.977, spam P 1.0 / R 0.55); **WHEN readiness**: M1 has 6 candidate hub revisits vs 50 required; W1 reviewed and **not run** (one active publishing family) | P7 D-19, D-20, D-21; WHEN gated; seed refresh (D-15) is its prerequisite |
 | 2026-10-09 | **P7 closed (scoped, D-22 approved)**: increments 1–3 implementation-complete, new-code coverage 89.4 % (≥ 85 %); WHEN, priority, CrawlTask/scheduler and the live M2 acceptance gates **deferred, not passed** pending adequate seed-population evidence; G1–G6 FAIL, G7 deferred, G8 PASS unchanged; no crawl run to close | P7 D-22; `docs/phases/p07-crawl-intelligence/exit.md`; **P8 is the active phase**; P6 Gate G still open |
+| 2026-10-09 | **P8 started**: audit (P1/P2 already define levels 1–3 and M1–M6; P4 probe has no digest; no SSRF guard in crawler2) and design draft | P8 decisions P8-D3…P8-D8 proposed |
+| 2026-10-09 | **P8 design approved for implementation**: level 3 = `full-bytes/v1` (full SHA-256), outbox resolver with per-observation LWT claims (ADR-024), PC-1/PC-2 applied to §P8 | P8 decisions P8-D2…P8-D8 approved; implementation in progress, gates not yet measured |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -547,6 +549,13 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
 
 ### P8 — Media registry & identity (M)
 
+- **Status (2026-10-09):** active phase. Design **approved for
+  implementation** (P8-D2…P8-D8, ADR-024); implementation in progress,
+  exit gate not yet measured. Docs: `docs/phases/p08-media-registry/`.
+  The corrections PC-1 and PC-2 (P8 decisions.md §2) are approved and
+  applied below (marked *PC-1*, *PC-2*): a sampled level-3 key cannot
+  pass the crafted-collision test.
+
 **Goal:** separate URL identity from content identity (D11).
 
 - **Audit:** V1 media evidence store (asset identity, observations,
@@ -559,26 +568,29 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   |---|---|---|
   | 1. URL identity (`media_id`) | canonical media URL | "same address" |
   | 2. Technical identity | content-length, ETag, container/codec probe, manifest variant set | "probably same file" (hint only) |
-  | 3. Candidate content identity | hash of sampled bytes / first N segments | "same bytes" — **candidate only** |
+  | 3. Content identity | SHA-256 of the full byte sequence (`full-bytes/v1`) *(PC-2)* | "same exact bytes" (byte identity) |
   | 4. Fingerprint representation | fingerprinter embedding (P9) | perceptual similarity |
   | 5. Verified media equivalence | fingerprinter temporal verification of representations | "same underlying media" |
 
-  - A sampled-byte hash match is used **only to skip redundant work**
-    (e.g. not re-encoding byte-identical files). It never establishes
-    media equivalence and never merges records irreversibly.
+  - A level-3 match is used **only to skip redundant work** (e.g. not
+    re-encoding byte-identical files). It never establishes media
+    equivalence and never merges records irreversibly.
   - Different encodings/packagings of the same movie (CDN A vs CDN B vs
     mirror, HLS vs MP4) will have *different* level-3 hashes. They are
     linked as equivalent only at level 5, stored as an equivalence
     relation with confidence and provenance. The relation stays reversible.
-  - A level-3 hash collision between different content must be
-    detectable: level-4 disagreement splits them.
+  - *(PC-2)* Level-3 equality is byte identity (SHA-256 of the full
+    content); a sampled-byte match is a level-2 hint and never shares a
+    `ContentId`.
   - Media versions when content at a URL changes; observations (page →
     media, when, by which crawl); `encode.requested` only when the
     required representation is missing for that level-3 identity.
-- **Develop:** registry service consuming `media.discovered`; lightweight
-  probe step (HEAD / range / first-segment hash, with the fingerprinter's
-  SSRF guard logic ported) run by a media-probe pool, not the crawler.
-  Full media download stays in the fingerprinter service. Registry emits
+- **Develop:** registry service consuming `media.discovered`; *(PC-1)* a
+  probe for level-2 hints **and a full-content hash for level 3** (bytes
+  streamed and discarded, never stored), with the fingerprinter's SSRF
+  guard logic ported, run by a media-probe pool, not the crawler. Full
+  media **acquisition for encoding and storage** stays in the
+  fingerprinter service. Registry emits
   `encode.requested` only for content identities lacking the required
   representation version (it learns this from `representation.ready` events).
 - **Test:**

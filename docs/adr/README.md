@@ -25,6 +25,7 @@
 | [021](ADR-021-filter-rules-and-admission.md) | Filter rules as durable, versioned data; filtering at admission | Accepted |
 | [022](ADR-022-stream-retention-and-relay-retry.md) | Event streams bounded by bytes, never trimmed past unread entries; relay retries in-process | Accepted |
 | [023](ADR-023-projection-readers-outside-stream-retention.md) | Rebuildable projections read the outbox, not a consumer group (P7 source profiles); ADR-022 unchanged | Accepted |
+| [024](ADR-024-authoritative-outbox-readers.md) | Authoritative idempotent consumers may read the outbox with per-fact LWT claims (P8 resolver); ADR-022/023 unchanged | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.
