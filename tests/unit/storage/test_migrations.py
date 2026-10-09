@@ -55,6 +55,15 @@ EXPECTED_TABLES = {
     "scope_sites": "P6/F11",
     "intel_source_profiles": "P7/I1",
     "intel_projection_state": "P7/I2",
+    # V005 (P8, ADR-024): resolver state/gaps/claims, probe and hash facts, encode claims.
+    "media_reader_state": "P8/R1",
+    "media_reader_gaps": "P8/R2",
+    "media_observation_claims": "P8/R3",
+    "media_probes": "P8/R4",
+    "media_hashes": "P8/R5",
+    "media_probe_latest": "P8/R6",
+    "encode_claims": "P8/R7",
+    "encode_claims_by_day": "P8/R8",
 }
 
 

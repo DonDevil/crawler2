@@ -28,6 +28,7 @@ Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 | Extraction & page intelligence | `crawler2/extraction` | [extraction.md](extraction.md), [P5](../phases/p05-extraction-page-intelligence/) |
 | Filter engine & discovery | `crawler2/filtering`, `crawler2/discovery` | [filter-discovery.md](filter-discovery.md), [P6](../phases/p06-filter-discovery/) |
 | **Crawl intelligence** (source health: outbox projection + optional admission advice, off by default) | `crawler2/intelligence` | [intelligence.md](intelligence.md), [P7](../phases/p07-crawl-intelligence/) |
+| **Media registry & identity** (levels 1–3: resolver from the outbox, ADR-024; probe/hash and encode requester per increment) | `crawler2/media` | [media-registry.md](media-registry.md), [P8](../phases/p08-media-registry/) |
 
 Workers (P4) claim from the frontier through its public API only, write
 attempts, observations and raw snapshots through the P2 repositories and

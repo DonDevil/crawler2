@@ -22,6 +22,7 @@ EXPECTED_TTL = {
     "outbox": TTL_14D,
     "processed_events": TTL_14D,
     "intel_source_profiles": TTL_30D,
+    "encode_claims_by_day": TTL_14D,
 }
 # One row per key, overwritten in place; the TTL only expires abandoned keys. TWCS
 # would keep the overwritten cells of every window, so these stay size-tiered.

@@ -68,6 +68,27 @@ env/bin/python benchmarks/p7-intelligence/when_audit.py sample  # refuses below 
 Another export (e.g. a future hub-only collection) is audited with
 `P7_EXPORT=<dir> P7_WHEN_OUT=<dir>`.
 
+### P8 media registry (host and two-host)
+
+```bash
+make up
+scripts/test-media.sh                          # P8 unit tests + real Scylla/Redis suites
+P8_SCYLLA_OUTAGE=1 scripts/test-media.sh       # also freezes Scylla ~25 s (outage test)
+scripts/test-media-two-host.sh                 # rebuilds the image; C-11 and the two-host stages
+```
+
+`scripts/test-media.sh` uses the throwaway keyspace `crawler2_it_p8_host`
+(recreated per session) and private Redis namespaces/stream prefixes. Its
+resolver tests write `media.discovered` rows into private *future* outbox
+buckets and drive an injected clock, so they never read another test's rows.
+Two tests wait for real minute buckets to close (~3 min in total). The
+two-host script uses keyspace `crawler2_p8_mh`. Results and the coverage
+command: [P8 validation](phases/p08-media-registry/validation.md).
+
+P8 runtime use needs `crawler2-storage migrate` (V005). Processes are
+started by the operator (no compose service): see
+[media-registry.md](architecture/media-registry.md).
+
 ### P4 fetch layer (host)
 
 Fetcher contract, runtime, browser and end-to-end tests run **from the

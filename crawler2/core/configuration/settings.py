@@ -381,6 +381,60 @@ class IntelligenceSettings(BaseModel):
     """A projection checkpoint lagging more than this gives no advice (fallback)."""
 
 
+class MediaSettings(BaseModel):
+    """P8 media registry (docs/phases/p08-media-registry/design.md, ADR-024).
+
+    Probe/hash defaults are the approved initial values (P8 Q2); they are
+    assumptions, not performance-validated.
+    """
+
+    reader: str = Field(default="resolver", pattern=r"^[a-z0-9._-]{1,64}$")
+    """Name of the resolver's reader-state row (one active reader per name)."""
+    lease_ttl_s: float = Field(default=60.0, gt=0)
+    """Resolver lease; a standby takes over this long after the owner stops renewing."""
+    poll_interval_s: float = Field(default=15.0, gt=0)
+    retry_max_s: float = Field(default=300.0, gt=0)
+    max_buckets_per_cycle: PositiveInt = 60
+    outbox_retention_s: PositiveInt = 14 * 24 * 3600
+    """Must equal the outbox TTL (ADR-013); an older checkpoint is a gap (halt)."""
+    retention_margin_s: PositiveInt = 3600
+    lag_warn_s: PositiveInt = 3 * 24 * 3600
+    lag_critical_s: PositiveInt = 7 * 24 * 3600
+    reprobe_after_s: PositiveInt = 7 * 24 * 3600
+    rehash_after_s: PositiveInt = 30 * 24 * 3600
+    """Re-hash interval for media whose probes carry no validator at all."""
+    probe_concurrency: PositiveInt = 8
+    probe_per_host_interval_s: float = Field(default=2.0, ge=0)
+    probe_lease_s: PositiveInt = 300
+    hash_concurrency: PositiveInt = 2
+    hash_per_host_concurrency: PositiveInt = 1
+    hash_max_bytes: PositiveInt = 8 * 1024**3
+    """Above this, no content key and no encode (outcome ``too_large``)."""
+    hash_timeout_s: float = Field(default=3600.0, gt=0)
+    hash_read_timeout_s: float = Field(default=60.0, gt=0)
+    """Inactivity bound between two received chunks of a hash read."""
+    queue_block_s: float = Field(default=2.0, gt=0)
+    ssrf_allowed_networks: CsvList = Field(default_factory=list)
+    """CIDRs exempt from the SSRF guard. Empty in production; fixtures/tests only."""
+    claim_emit_grace_s: float = Field(default=300.0, gt=0)
+    """An encode claim without ``emitted_at`` this old is re-emitted by the sweeper."""
+    sweep_interval_s: float = Field(default=60.0, gt=0)
+    sweep_lookback_days: PositiveInt = 2
+    consumer_group: str = Field(default="media-registry", pattern=r"^[a-z0-9._-]{1,64}$")
+    """Group on representation.ready / encode.failed (fingerprinter streams, design §7.3)."""
+    batch_size: PositiveInt = 50
+    block_ms: PositiveInt = 2000
+    claim_idle_ms: PositiveInt = 60_000
+
+    @model_validator(mode="after")
+    def _check(self) -> Self:
+        if self.lag_critical_s < self.lag_warn_s:
+            raise ValueError("lag_critical_s must be >= lag_warn_s")
+        if self.lag_critical_s >= self.outbox_retention_s:
+            raise ValueError("lag_critical_s must alarm before the outbox retention expires")
+        return self
+
+
 class SearchSettings(BaseModel):
     """P6 search discovery adapters (design §15)."""
 
@@ -422,6 +476,7 @@ class Settings(BaseSettings):
     discovery: DiscoverySettings = Field(default_factory=DiscoverySettings)
     search: SearchSettings = Field(default_factory=SearchSettings)
     intelligence: IntelligenceSettings = Field(default_factory=IntelligenceSettings)
+    media: MediaSettings = Field(default_factory=MediaSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

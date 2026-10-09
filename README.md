@@ -46,6 +46,7 @@ every field is overridable via `CRAWLER2_<FIELD>` / `CRAWLER2_<SECTION>__<FIELD>
 | `crawler2/storage` | repositories (Scylla), object store (MinIO), outbox relay, consumer idempotency, `crawler2-storage` CLI (ADR-012…014) |
 | `crawler2/frontier` | Redis frontier: execution queues, shared politeness gate, leases, scheduling, retries, admission limits (ADR-015, ADR-016) |
 | `crawler2/crawlers` | worker runtime, http/tor/browser fetchers, outcome mapping, recorder, `crawler2-worker` CLI (ADR-017, ADR-018) |
+| `crawler2/media` | P8 media registry: outbox resolver with per-observation claims (ADR-024), probe/hash, encode requester, `crawler2-media` CLI |
 | `contracts/` | `antipiracy-contracts` 1.0.0: IDs, domain models, events, catalog, JSON Schemas, compat fixtures (ADR-007…011) |
 | `docker/`, `docker-compose.yml` | dev stack, profiles `single` / `two-host` |
 | `tests/unit`, `tests/contract`, `tests/integration`, `tests/fixtures` | tests; contract suite; local fixture web server |

@@ -301,6 +301,13 @@ references) and stops at the first failure, which bounds stale work.
 | replay idempotent | yes: claims are never re-decided; commits rewrite identical rows |
 | crawling never depends on the registry | unchanged (§4.1) |
 
+*Implementation note (2026-10-09, increment 1):* an outbox row's key is
+(shard of `event_id`, minute bucket of the write, `event_id`). Re-commits
+inside one minute bucket therefore upsert the same physical row; each
+re-commit in a later bucket adds one. The bound statement above stays
+true: physical copies are unbounded over time, never asserted
+(validation.md I1-6).
+
 **Cost:** per reference, one LWT (Paxos), one logged batch and one
 conditional update. M1 had 3,304 references in ~46 h. Throughput is
 measured in increment 1 and is not assumed.
