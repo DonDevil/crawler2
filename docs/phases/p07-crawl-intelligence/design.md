@@ -5,7 +5,8 @@ per D-17. Increment 2 (§9) is frozen after its review (D-18) and
 implemented. Increment 3, WHAT (§6), is implemented as an offline library
 and evaluated (D-19, [what.md](what.md)). WHEN and priority are design
 only. WHEN readiness was audited on M1 (D-20, [when.md](when.md)): the data
-is insufficient, and a hub-only collection is proposed, not run. Frozen boundaries: [decisions.md](decisions.md) §4.
+is insufficient, and a hub-only collection is proposed, reviewed and not
+run (D-21). P7 is closed with WHEN and M2 deferred: [exit.md](exit.md) (D-22, approved). Frozen boundaries: [decisions.md](decisions.md) §4.
 
 Inputs: [audit.md](audit.md) (§5 reassessment),
 [g5.md](g5.md) (G5 FAIL), [decisions.md](decisions.md) (D-12…D-17).

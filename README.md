@@ -3,9 +3,13 @@
 V2 is a fresh architecture; V1 (`../crawler`) is a reference and benchmark
 baseline only. The authoritative plan is [`docs/v2-phase-plan.md`](docs/v2-phase-plan.md).
 
-**Current phase: P4 — Fetch layer & worker pools.** What exists and why:
-[`docs/phases/p04-fetch-workers/`](docs/phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md);
-earlier phases: [`p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md), [`p02-storage/`](docs/phases/p02-storage/) (start with
+**Current phase: P8 — Media registry & identity** (audit and design:
+[`docs/phases/p08-media-registry/`](docs/phases/p08-media-registry/)).
+P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
+[`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
+Phase status for every phase is in the plan. Earlier phases:
+[`p07-crawl-intelligence/`](docs/phases/p07-crawl-intelligence/), [`p06-filter-discovery/`](docs/phases/p06-filter-discovery/), [`p05-extraction-page-intelligence/`](docs/phases/p05-extraction-page-intelligence/),
+[`p04-fetch-workers/`](docs/phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md), [`p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md), [`p02-storage/`](docs/phases/p02-storage/) (start with
 `what-was-built.md`), [`p01-contracts/`](docs/phases/p01-contracts/),
 [`p00-foundations/`](docs/phases/p00-foundations/).
 Architecture: [`docs/architecture/`](docs/architecture/); decisions:

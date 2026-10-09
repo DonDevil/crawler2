@@ -13,7 +13,8 @@ in `var/p7/when/events.jsonl.gz` (git-ignored, regenerable).
 
 **Result in one line:** M1 has **6** candidate hub revisits, on 2 domains,
 all on hubs of the G5 sample (**0** outside it). The minimum is 50, so no
-WHEN sample can be drawn from M1. A hub-only collection is proposed in §7.
+WHEN sample can be drawn from M1. A hub-only collection is proposed in §7;
+its review rejects it on the current seeds (D-21, [when-w1-review.md](when-w1-review.md)).
 **It was not run.**
 
 ## 1. The question

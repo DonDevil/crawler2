@@ -219,3 +219,42 @@ drawn from M1 ([when.md](when.md) §5).
 **Not run:** W1, M1b, M2, any collection or crawl. `crawler2_m1`, MinIO
 `crawler2-m1` and the `m1:*` Redis keys were not touched. Only the export
 was read.
+
+## 8. W1 design review (2026-10-08, D-21)
+
+Review only ([when-w1-review.md](when-w1-review.md)). W1 was **not run**.
+The audit figures were re-verified from `when-audit.json`. M1 shows one
+actively publishing film-site family, against the ≥ 3 independent
+sources the gate needs. Verdict: do not run W1 on the current seeds.
+Gate status (§1) is unchanged.
+
+## 9. Phase exit (2026-10-09)
+
+The requirement-by-requirement audit is in [exit.md](exit.md):
+traceability matrix, evidence re-checks and the P8 handoff.
+
+| Status | Rows (of 36) |
+|---|---:|
+| PASS | 13 |
+| IMPL-NFV (implemented, not fully validated) | 7 |
+| FAIL | 6 (G1–G6) |
+| BLOCKED | 3 |
+| NOT IMPL | 6, all WHEN-dependent |
+| DEFERRED | 1 (G7) |
+
+**Closed (D-22, approved by the operator 2026-10-09):** P7 is
+implementation-complete for increments 1–3, with WHEN, priority and the
+live M2 acceptance gates deferred, not passed. The gate results above are
+unchanged by the closure.
+
+Re-checked at HEAD:
+
+- `tests/unit/intelligence`: **146 passed**.
+- **Coverage (B.3, ≥ 85 % of new code), measured 2026-10-09:**
+  - 89.4 % of P7 new code;
+  - `crawler2/intelligence` at 89 %;
+  - the P7 test tier passed 177 tests under `coverage`;
+  - method in exit.md §9;
+  - the CLIs are uncovered.
+
+Nothing else was re-run, because the audit changed documents only.

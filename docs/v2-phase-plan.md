@@ -26,6 +26,8 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-07 | **M1b rejected (not run)**: read-only reassessment — 11/50 seed domains live, changes mostly template churn, ~2 % of 4-day revisits reveal new URLs; P7 design proceeds on existing M1 data, WHEN gated on G5 | P7 decisions D-12…D-15, audit §5 |
 | 2026-10-07 | **P7 G5 FAIL; increment 1 implemented**: `page.changed` precision 0.07 on 71 labelled seed pairs → raw changes rejected as a scheduling signal, WHEN stays gated; source-health/fetch-profile library + offline replay (off-target 17.5 % attempts suppressed, mostly 429; seed set 0.4 %) | P7 D-16, D-17; not wired to the runtime |
 | 2026-10-07 | **P7 increment 2**: review rejects an `intel-*` consumer group (a dead P7 would stall the relay under ADR-022); P7 reads the outbox with its own checkpoint (ADR-023, ADR-022 unchanged); P7-owned source profiles (V004); source advice at P6 admission, off by default, fallback = today's behaviour; failure injection passed on the real stack | P7 D-18; WHAT next after review, WHEN gated, M2 not started |
+| 2026-10-08 | **P7 WHAT (increment 3)** offline library `what/v1` on its own labelled sample (holdout kind 0.972, relevant P 0.977, spam P 1.0 / R 0.55); **WHEN readiness**: M1 has 6 candidate hub revisits vs 50 required; W1 reviewed and **not run** (one active publishing family) | P7 D-19, D-20, D-21; WHEN gated; seed refresh (D-15) is its prerequisite |
+| 2026-10-09 | **P7 closed (scoped, D-22 approved)**: increments 1–3 implementation-complete, new-code coverage 89.4 % (≥ 85 %); WHEN, priority, CrawlTask/scheduler and the live M2 acceptance gates **deferred, not passed** pending adequate seed-population evidence; G1–G6 FAIL, G7 deferred, G8 PASS unchanged; no crawl run to close | P7 D-22; `docs/phases/p07-crawl-intelligence/exit.md`; **P8 is the active phase**; P6 Gate G still open |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -494,6 +496,11 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   events across at least several page types; fetch outcomes for every
   capability. If the thresholds aren't met, the run continues. The gate is
   not waived.
+  *(2026-10-07: the gate was **not passed**, and it is not waived. M1b,
+  the continuation run, was rejected because the limit is the seed
+  population, not time (D-12). Implementation proceeded on the existing
+  M1 data with the gate recorded as failed (D-13). No P7 requirement now
+  depends on a continuous multi-day run.)*
 - **Design** (start rule/statistics-based, ML later is V3):
   - **HOW — fetch profiles** per domain/path pattern: cheapest capability
     that succeeded recently; escalation outcomes from P4 update it; decay so it re-tests cheaper paths.
@@ -522,20 +529,21 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   D-8, D-10.)* S1→S2 scenario test:
   a page added under an already-crawled `/movies/` is found within its
   scheduled recrawl window.
-- **Status (2026-10-07):** audit done; data-sufficiency gate **not passed**
-  (seed set: 11 domains with ≥ 30 attempts, 9 URLs with ≥ 3 observations
-  over ≥ 24 h, no browser/Tor outcomes, no targets) — see
-  `docs/phases/p07-crawl-intelligence/audit.md`. No P7 code exists.
-  M1b considered and rejected (D-12): the seed set (11/50 live), not
-  collection time, is the limit; P7 design proceeds on the existing M1
-  data with WHEN gated on G5 (D-13). G5 measured from the existing
-  snapshots: **FAIL** (precision 0.07; D-16). Design drafted; increment 1
-  (source health + fetch profile, pure library + offline replay) implemented
-  — see `docs/phases/p07-crawl-intelligence/validation.md`. Increment 2
-  (outbox projection of source profiles, ADR-023; optional source advice
-  at P6 admission, off by default) implemented and failure-injection
-  tested (D-18). WHAT is next after review; WHEN stays gated; M2 not
-  started.
+- **Status (2026-10-09):** **CLOSED under D-22 (approved): implementation
+  complete; WHEN and the dependent live M2 acceptance gates explicitly
+  deferred pending adequate seed-population evidence.** Not a pass of M2.
+  - DoD coverage: 89.4 % of P7 new code (≥ 85 %, exit.md §9).
+  - Increment 1: source health + HOW, offline replay.
+  - Increment 2: outbox projection (ADR-023) + P6 admission advice, off
+    by default.
+  - Increment 3: WHAT, an offline library, evaluated on its own holdout.
+  - Data-sufficiency gate: G1–G6 FAIL, G7 deferred, G8 PASS.
+  - WHEN: not implemented. G5 failed; M1 has 6 of the 50 candidate events
+    required; W1 not run (D-21).
+  - Not implemented, all dependent on WHEN evidence: priority function,
+    CrawlTask/scheduler path, productivity decay, M2 (incl. S1→S2).
+  - Reopening WHEN starts with a seed refresh (D-15), not more runtime.
+  - Traceability and the P8 handoff: `docs/phases/p07-crawl-intelligence/exit.md`.
 
 ### P8 — Media registry & identity (M)
 

@@ -225,6 +225,10 @@ waived").
 
 ### 3.4 Additional collection that would close G1–G4
 
+> Superseded (D-12): this 4–5 day estimate was for M1b, which was rejected
+> and not run. §5 shows the limit is the seed population, not collection
+> time. Kept as history.
+
 M1 gave the seed set about 700 attempts per hour (32,131 in ~46 h) while NCBI dominated.
 If the same http capacity (4 slots, about 1.7 fetches/s) is spent on the
 seed set, that rises to about 6,000 per hour. That is enough to revisit the

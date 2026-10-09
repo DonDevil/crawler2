@@ -48,9 +48,15 @@ behaviour is unchanged.
 1. WHEN: hub-novelty recrawl over WHAT's hub and content-link features,
    gated on a signal validated on a new labelled hub-revisit sample (G5
    failed for `page.changed`). Readiness audit ([when.md](../phases/p07-crawl-intelligence/when.md)):
-   M1 has 6 candidate hub revisits against the 50 required, so a hub-only
-   collection is proposed (not run). There is no WHEN code;
+   M1 has 6 candidate hub revisits against the 50 required. The proposed
+   hub-only collection W1 is not run, because the seeds have one active
+   publishing family (D-21). There is no WHEN code;
 2. one priority function.
+
+**Phase status:** P7 is closed (D-22, approved 2026-10-09). Increments
+1–3 are implementation-complete. WHEN, priority and M2 are deferred, not
+passed; P7 neither schedules recrawls nor sets priorities:
+[exit.md](../phases/p07-crawl-intelligence/exit.md).
 
 Frozen P7 boundaries: [decisions.md §4](../phases/p07-crawl-intelligence/decisions.md).
 
