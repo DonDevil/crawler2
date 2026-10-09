@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import redis
@@ -78,9 +78,13 @@ class RedisWork:
         return ":".join((self._ns, *parts))
 
     def now(self) -> datetime:
-        """Redis ``TIME``: the one clock every host agrees on (B.4 #3)."""
+        """Redis ``TIME``: the one clock every host agrees on (B.4 #3), truncated to
+        milliseconds, the precision of a Scylla ``timestamp`` (stored facts and their
+        JSON documents then carry the same instant)."""
         seconds, micros = self._call(self._r.time)
-        return datetime.fromtimestamp(int(seconds) + int(micros) / 1e6, tz=UTC)
+        return datetime.fromtimestamp(int(seconds), tz=UTC) + timedelta(
+            milliseconds=int(micros) // 1000
+        )
 
     # --- queues ---------------------------------------------------------------------
 

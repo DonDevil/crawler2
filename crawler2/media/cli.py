@@ -6,23 +6,41 @@ it never affects the crawl. ``resolve status`` exits 0 (ok, warning, never
 started), 1 (lag beyond ``media.lag_critical_s``) or 2 (halted in a
 retention gap). ``resolve accept-gap`` records a halted gap as accepted loss
 and resumes at the oldest retained outbox bucket.
+
+``probe run`` / ``hash run`` work the Redis probe/hash queues on any number
+of hosts (per-media leases). ``rebuild`` re-derives the media read models of
+one media from the authoritative rows. ``show`` prints what the registry
+knows about one locator.
 """
 
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import signal
 import sys
 from dataclasses import asdict
-from datetime import timedelta
+from datetime import datetime, timedelta
 from typing import Any
 
+from antipiracy_contracts.ids import MediaId
+from antipiracy_contracts.models.web import UrlRef
 from antipiracy_contracts.ownership import Component, Producer
 
 from crawler2.core.configuration import Settings, WorkerRole
 from crawler2.core.identity import WorkerIdentity
 from crawler2.core.observability import Metrics, configure_logging
+from crawler2.media.hashing import FullContentHasher
+from crawler2.media.probe import (
+    HashWorker,
+    ProbeMetrics,
+    ProbeWorker,
+    guarded,
+    hash_limits,
+    probe_fetcher,
+    run_pool,
+)
 from crawler2.media.resolver import Resolver, ResolverConfig
 from crawler2.media.schedule import ProbeScheduler
 from crawler2.media.store import ScyllaRegistryStore
@@ -65,6 +83,10 @@ class Context:
         self.redis = connect_redis(settings.redis)
         self.work = RedisWork(self.redis, namespace=settings.redis.namespace)
         self.metrics = metrics
+
+    def requester(self) -> Any:
+        """Increment 3 (encode requester); none yet."""
+        return None
 
     def resolver(self, *, schedule: bool = True) -> Resolver:
         sink = None
@@ -139,6 +161,123 @@ def cmd_resolve_accept_gap(args: Any, settings: Settings) -> int:
     return 0 if state is not None else 1
 
 
+def cmd_probe_run(args: Any, settings: Settings) -> int:
+    metrics = Metrics(settings)
+    metrics.serve()
+    ctx = Context(settings, metrics=metrics)
+    m = settings.media
+    pm = ProbeMetrics(metrics)
+    fetcher = probe_fetcher(
+        settings.workers.fetch,
+        guarded(m, on_reject=pm.rejected("probe")),
+        connections=m.probe_concurrency * 2,
+    )
+    worker = ProbeWorker(fetcher, ctx.store, ctx.work, worker=ctx.identity, settings=m, metrics=pm)
+    stop = _stopper()
+
+    async def main() -> None:
+        try:
+            await run_pool(
+                "probe",
+                ctx.work,
+                worker.handle,
+                concurrency=m.probe_concurrency,
+                stop=stop,
+                block_s=m.queue_block_s,
+            )
+        finally:
+            await fetcher.close()
+
+    asyncio.run(main())
+    return 0
+
+
+def cmd_hash_run(args: Any, settings: Settings) -> int:
+    metrics = Metrics(settings)
+    metrics.serve()
+    ctx = Context(settings, metrics=metrics)
+    m = settings.media
+    pm = ProbeMetrics(metrics)
+    stop = _stopper()
+
+    async def main() -> None:
+        hasher = FullContentHasher(
+            guarded(m, on_reject=pm.rejected("hash")), hash_limits(m, settings.workers.fetch)
+        )
+        worker = HashWorker(
+            hasher,
+            ctx.store,
+            ctx.work,
+            worker=ctx.identity,
+            settings=m,
+            requester=ctx.requester(),
+            metrics=pm,
+        )
+        try:
+            await run_pool(
+                "hash",
+                ctx.work,
+                worker.handle,
+                concurrency=m.hash_concurrency,
+                stop=stop,
+                block_s=m.queue_block_s,
+            )
+        finally:
+            await hasher.close()
+
+    asyncio.run(main())
+    return 0
+
+
+def _window(args: Any) -> tuple[datetime, datetime]:
+    until = datetime.fromisoformat(args.until) if args.until else datetime.now().astimezone()
+    since = datetime.fromisoformat(args.since)
+    return since, until
+
+
+def _media_id(value: str) -> MediaId:
+    if value.startswith(("http://", "https://")):
+        return MediaId.of_locator(UrlRef.of(value).url)
+    return MediaId(value)
+
+
+def cmd_rebuild(args: Any, settings: Settings) -> int:
+    """M1/M4/M5/M6 from M3 → M2 (P2), then the hash side of M5/M6 and the latest view."""
+    ctx = Context(settings)
+    media_id = _media_id(args.media)
+    since, until = _window(args)
+    observations = ctx.storage.media.rebuild_media(media_id, since=since, until=until)
+    probes, hashes = ctx.store.rebuild(media_id, since=since, until=until)
+    print(
+        _json(
+            {
+                "media_id": str(media_id),
+                "observations": observations,
+                "probes": probes,
+                "hashes": hashes,
+            }
+        )
+    )
+    return 0
+
+
+def cmd_show(args: Any, settings: Settings) -> int:
+    ctx = Context(settings)
+    media_id = _media_id(args.media)
+    latest = ctx.store.latest(media_id)
+    current = latest.current_content() if latest else None
+    record = ctx.storage.media.get(media_id)
+    doc = {
+        "media_id": str(media_id),
+        "media": record.media.model_dump(mode="json") if record else None,
+        "latest_probe": json.loads(latest.probe.to_json()) if latest and latest.probe else None,
+        "latest_hash": json.loads(latest.hash.to_json()) if latest and latest.hash else None,
+        "current_content": current.model_dump(mode="json") if current else None,
+    }
+    print(_json(doc))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="crawler2-media", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -155,6 +294,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--note", required=True, help="why the loss is accepted (stored)")
     p.add_argument("--by", default=None, help="operator name (default: this process identity)")
     p.set_defaults(func=cmd_resolve_accept_gap)
+    sub.add_parser("probe", help="probe pool").add_subparsers(
+        dest="action", required=True
+    ).add_parser("run", help="work the probe queue").set_defaults(func=cmd_probe_run)
+    sub.add_parser("hash", help="full-content hash pool").add_subparsers(
+        dest="action", required=True
+    ).add_parser("run", help="work the hash queue").set_defaults(func=cmd_hash_run)
+    p = sub.add_parser("rebuild", help="re-derive one media's read models")
+    p.add_argument("media", help="media id (med_…) or locator URL")
+    p.add_argument("--since", required=True, help="ISO time, e.g. 2026-09-01T00:00:00+00:00")
+    p.add_argument("--until", default=None, help="ISO time (default: now)")
+    p.set_defaults(func=cmd_rebuild)
+    p = sub.add_parser("show", help="what the registry knows about one media")
+    p.add_argument("media", help="media id (med_…) or locator URL")
+    p.set_defaults(func=cmd_show)
     return parser
 
 

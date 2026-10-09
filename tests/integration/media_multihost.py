@@ -3,12 +3,21 @@
     python -m tests.integration.media_multihost resolve-setup  --keyspace KS --run RUN
     python -m tests.integration.media_multihost resolve        --keyspace KS --run RUN [--die-after]
     python -m tests.integration.media_multihost resolve-verify --keyspace KS --run RUN
+    python -m tests.integration.media_multihost serve-media    --keyspace KS --run RUN
+    python -m tests.integration.media_multihost workers        --keyspace KS --run RUN
+    python -m tests.integration.media_multihost workers-verify --keyspace KS --run RUN
 
 C-11 (design §10.1): both hosts run a resolver with a short real lease (Redis TIME).
 host-1 owns the lease and dies (``os._exit``) between a claim and its commit, mid-bucket;
 host-2 stands by, takes over after the lease expires, commits host-1's stored envelope
 and finishes. The verifier checks the invariant for every reference and that both hosts
 decided claims (a handover inside the run).
+
+Probe/hash workers: host-1 serves a fixture media web (``serve-media``, port 18080,
+reached as ``app-host-1`` through the SSRF guard with the compose subnet as the
+explicit ``ssrf_allowed_networks`` opt-out). Both hosts run probe and hash pools on
+the same queues at once; the verifier checks one probe and one hash per media,
+work done by both hosts, and one ContentId per byte-identical group.
 """
 
 from __future__ import annotations
@@ -26,6 +35,7 @@ from antipiracy_contracts.events import decode_event_as
 from antipiracy_contracts.events.media import MediaObserved
 from antipiracy_contracts.ids import EventId, MediaId
 from antipiracy_contracts.models.web import UrlRef
+from antipiracy_contracts.urls import CanonicalUrl
 
 from crawler2.core.configuration import Settings
 from crawler2.frontier.redis import connect_redis
@@ -226,6 +236,158 @@ def _observed_rows(storage: ScyllaStorage, started: datetime) -> list[Any]:
     return [r for rows in results for r in rows]
 
 
+MEDIA_PORT = 18080
+GROUPS = 6
+COPIES = 3
+
+
+def _bodies(run: str) -> dict[str, bytes]:
+    """GROUPS distinct bodies, each served at COPIES locators."""
+    from tests.fixtures.mediaweb import blob
+
+    return {
+        f"/{run}/g{g}/c{c}.mp4": blob(f"{run}-g{g}", 256 * 1024 + g * 1000)
+        for g in range(GROUPS)
+        for c in range(COPIES)
+    }
+
+
+def cmd_serve_media(settings: Settings, args: argparse.Namespace) -> None:
+    from tests.fixtures.mediaweb import media_site
+
+    client = connect_redis(settings.redis)
+    with media_site("0.0.0.0", MEDIA_PORT) as site:  # noqa: S104 -- compose network only
+        for path, body in _bodies(args.run).items():
+            site.put(path, body, stall_s=0.02)
+        client.set(f"p8mh:{args.run}:media-up", "1", ex=600)
+        print(json.dumps({"serving": len(_bodies(args.run)), "port": MEDIA_PORT}))
+        sys.stdout.flush()
+        while client.get(f"p8mh:{args.run}:media-stop") is None:
+            time.sleep(0.5)
+
+
+def _media_settings(settings: Settings) -> Any:
+    return settings.media.model_copy(
+        update={
+            "ssrf_allowed_networks": ["172.16.0.0/12"],  # the compose bridge network
+            "probe_per_host_interval_s": 0.0,
+            "hash_per_host_concurrency": 4,
+        }
+    )
+
+
+def _url(run: str, path: str) -> CanonicalUrl:
+    return UrlRef.of(f"http://app-host-1:{MEDIA_PORT}{path}").url
+
+
+def cmd_workers(settings: Settings, args: argparse.Namespace) -> None:
+    import asyncio
+
+    from crawler2.media.hashing import FullContentHasher
+    from crawler2.media.probe import (
+        HashWorker,
+        ProbeWorker,
+        guarded,
+        hash_limits,
+        probe_fetcher,
+        run_pool,
+    )
+    from crawler2.media.work import Job
+
+    storage = _open(settings, args.keyspace)
+    client = connect_redis(settings.redis)
+    deadline = time.monotonic() + 60
+    while client.get(f"p8mh:{args.run}:media-up") is None:
+        if time.monotonic() > deadline:
+            raise SystemExit("media server never came up")
+        time.sleep(0.5)
+    work = RedisWork(client, namespace=f"p8mh-{args.run}")
+    media = _media_settings(settings)
+    store = ScyllaRegistryStore(storage.session)
+    identity = f"{settings.host_id}:media_probe:{os.getpid()}:{os.urandom(16).hex()}"
+    if client.incr(f"p8mh:{args.run}:arrived") == 2:  # start both hosts together
+        client.rpush(f"p8mh:{args.run}:go", "go", "go")
+    if client.blpop([f"p8mh:{args.run}:go"], timeout=120) is None:
+        raise SystemExit("barrier timed out: the other host never arrived")
+    for path in _bodies(args.run):  # both hosts want every media: Redis dedupes
+        url = _url(args.run, path)
+        work.want("probe", Job(str(MediaId.of_locator(url)), url, "video_file"))
+    end = time.monotonic() + args.max_s
+    counts = {"probes": 0, "hashes": 0}
+
+    def stop() -> bool:
+        if time.monotonic() > end:
+            return True
+        key = f"p8mh:{args.run}:idle:{settings.host_id}"
+        if work.depth("probe") or work.depth("hash"):
+            client.delete(key)
+            return False
+        return int(client.incr(key)) > 40
+
+    async def main() -> None:
+        fetcher = probe_fetcher(settings.workers.fetch, guarded(media), connections=8)
+        hasher = FullContentHasher(guarded(media), hash_limits(media, settings.workers.fetch))
+        probe = ProbeWorker(fetcher, store, work, worker=identity, settings=media)
+        hashw = HashWorker(hasher, store, work, worker=identity, settings=media)
+
+        async def counted_probe(job: Job) -> None:
+            if await probe.handle(job) is not None:
+                counts["probes"] += 1
+
+        async def counted_hash(job: Job) -> None:
+            if await hashw.handle(job) is not None:
+                counts["hashes"] += 1
+
+        try:
+            await asyncio.gather(
+                run_pool("probe", work, counted_probe, concurrency=4, stop=stop, block_s=0.5),
+                run_pool("hash", work, counted_hash, concurrency=2, stop=stop, block_s=0.5),
+            )
+        finally:
+            await fetcher.close()
+            await hasher.close()
+
+    asyncio.run(main())
+    print(json.dumps({"host": settings.host_id} | counts))
+
+
+def cmd_workers_verify(settings: Settings, args: argparse.Namespace) -> None:
+    storage = _open(settings, args.keyspace)
+    client = connect_redis(settings.redis)
+    store = ScyllaRegistryStore(storage.session)
+    window = {
+        "since": datetime.now(UTC) - timedelta(days=1),
+        "until": datetime.now(UTC) + timedelta(days=1),
+    }
+    hosts: set[str] = set()
+    groups: dict[str, set[str]] = {}
+    for path in _bodies(args.run):
+        media = MediaId.of_locator(_url(args.run, path))
+        probes = store.probes(media, **window)
+        hashes = store.hashes(media, **window)
+        assert len(probes) == 1, (path, len(probes))
+        assert len(hashes) == 1, (path, len(hashes))
+        assert hashes[0].outcome.value == "ok", hashes[0]
+        hosts |= {probes[0].worker.split(":")[0], hashes[0].worker.split(":")[0]}
+        group = path.split("/")[2]
+        groups.setdefault(group, set()).add(str(hashes[0].content_id))
+    assert all(len(ids) == 1 for ids in groups.values()), groups  # byte-identical → one id
+    distinct = {next(iter(ids)) for ids in groups.values()}
+    assert len(distinct) == GROUPS  # different bytes → different ids
+    assert hosts == {"host-1", "host-2"}, f"work done by {hosts}"
+    client.set(f"p8mh:{args.run}:media-stop", "1", ex=600)
+    print(
+        json.dumps(
+            {
+                "verified": True,
+                "media": len(_bodies(args.run)),
+                "content_ids": len(distinct),
+                "hosts": sorted(hosts),
+            }
+        )
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="media_multihost")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -233,6 +395,9 @@ def main(argv: list[str] | None = None) -> int:
         ("resolve-setup", cmd_resolve_setup),
         ("resolve", cmd_resolve),
         ("resolve-verify", cmd_resolve_verify),
+        ("serve-media", cmd_serve_media),
+        ("workers", cmd_workers),
+        ("workers-verify", cmd_workers_verify),
     ):
         p = sub.add_parser(name)
         p.add_argument("--keyspace", required=True)
@@ -242,6 +407,8 @@ def main(argv: list[str] | None = None) -> int:
             p.add_argument("--die-after", type=int, default=0)
             p.add_argument("--lease-s", type=float, default=4.0)
             p.add_argument("--max-s", type=float, default=180.0)
+        if name == "workers":
+            p.add_argument("--max-s", type=float, default=240.0)
     args = parser.parse_args(argv)
     args.func(Settings(), args)
     return 0

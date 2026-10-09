@@ -37,4 +37,15 @@ set -e
 [[ $c2 == 0 ]] || fail "host-2 resolver failed ($c2)"
 in_app app-host-2 python -m tests.integration.media_multihost resolve-verify --keyspace "$ks" --run "$run"
 
+step "probe and hash workers on both hosts (run $run)"
+in_app app-host-1 python -m tests.integration.media_multihost serve-media --keyspace "$ks" --run "$run" &
+srv=$!
+in_app app-host-1 python -m tests.integration.media_multihost workers --keyspace "$ks" --run "$run" &
+w1=$!
+in_app app-host-2 python -m tests.integration.media_multihost workers --keyspace "$ks" --run "$run" &
+w2=$!
+wait "$w1" && wait "$w2" || fail "a worker host failed"
+in_app app-host-2 python -m tests.integration.media_multihost workers-verify --keyspace "$ks" --run "$run"
+wait "$srv" || true
+
 step "P8 two-host checks passed"

@@ -156,7 +156,119 @@ Logs: `media_reader_bootstrap`, `media_reader_acquired`,
 
 ## Probe pool and hash reader (increment 2)
 
-Not implemented yet.
+```bash
+crawler2-media probe run      # any number of hosts; per-media leases
+crawler2-media hash run       # any number of hosts; per-media leases, per-host slots
+crawler2-media show <media id | locator URL>
+crawler2-media rebuild <media id | locator URL> --since 2026-09-01T00:00:00+00:00
+```
+
+**Wants (Redis, never facts).** After each committed observation the
+resolver wants a probe when the media has none or its latest probe is older
+than `reprobe_after_s` (7 d): `SET NX queued:probe:<media>` then `LPUSH
+q:probe`, so a locator on 227 pages is queued once. A probe that shows a
+hashable media wants a hash (`q:hash`, with the probe id). A lost queue only
+loses wants; the next sighting or re-probe wants the media again.
+
+**Probe (level 2).** P4's `HttpFetcher` with `Expectation.MEDIA_PROBE`,
+unchanged: `Range: bytes=0-65535`, at most 64 KiB read. No proxy (a proxy
+would bypass the transport). Result → `ProbeStatus`:
+
+| P4 result | `probe_status` | `fetch_detail` |
+|---|---|---|
+| media response (`Outcome.MEDIA`) | `probed` | — |
+| manifest body (`body_kind = manifest`) | `probed` | `manifest` (hints only, never hashed, P8-D6) |
+| SSRF guard refused any hop | `forbidden` | `unsafe_destination` |
+| HTTP 401/403, block page, captcha | `forbidden` | `http_<status>` |
+| other HTTP error, timeout, DNS, TLS, network, redirect error | `unreachable` | `http_<status>` or outcome |
+| any other 2xx body (HTML, …) | `not_media` | outcome |
+
+**Hash (level 3, `full-bytes/v1`).** `crawler2/media/hashing.py`: one
+streamed GET with `Accept-Encoding: identity` and the observation page as
+`Referer`; redirects by hand (≤ `workers.fetch.max_redirects`), each hop
+through the guard; SHA-256 over `aiter_raw()` (transfer framing removed,
+no content decoding); bytes discarded. Outcomes:
+
+| Outcome | When | ContentId / encode |
+|---|---|---|
+| `ok` | 200, identity encoding, validators match the probe before and after (HEAD) the read, all declared bytes read | yes |
+| `too_large` | declared or streamed bytes > `hash_max_bytes` | no |
+| `timeout` | `hash_timeout_s` total, or `hash_read_timeout_s` without data | no |
+| `unreachable` | network/DNS, 404/410, redirect loop, short read | no |
+| `forbidden` | 401/403, or the SSRF guard (`detail = unsafe_destination…`) | no |
+| `changed_during_read` | validators differ from the probe, or a HEAD after the read shows other validators | no |
+| `http_error` | any other non-200 (incl. 206 to a plain GET) | no |
+| `content_encoded` | the server applied a Content-Encoding anyway | no |
+
+**Which media are hashed:** `video_file`, `audio_file`, and `unknown` whose
+probe shows a `video/*`/`audio/*` type or a sniffed container; never
+manifests (P8-D6). **Re-hash** when the probe's validators (total length,
+ETag, Last-Modified) differ from the last hash attempt's, or — without any
+validator, or after a failed attempt — when the last attempt is older than
+`rehash_after_s` (30 d).
+
+**Freshness on observations (design §6.2).** An observation carries a
+`ContentKey` only if the latest ok hash's validators equal the latest
+probe's. A re-probe that shows a change hides the old key until the re-hash.
+Not detected: a content change with unchanged validators inside
+`rehash_after_s` (stated limitation).
+
+**SSRF.** `crawler2/media/ssrf.py`, ported from the fingerprinter's guard:
+loopback, private, link-local, unspecified, multicast, reserved,
+100.64.0.0/10 (IPv4-mapped IPv6 included) are refused, as is any non-http(s)
+scheme; one unsafe DNS record refuses the host. It is an httpx transport,
+so every request — every redirect hop — is checked on both paths before any
+byte is sent. `media.ssrf_allowed_networks` (default empty) is the only
+opt-out, for fixtures and the compose test network. **DNS rebinding is not
+solved** (the guard and the connection resolve separately); pinning is P14.
+
+**Politeness and concurrency.** Media hosts are third parties, outside P3's
+per-domain gate, so P8 has its own limits on Redis `TIME`, keyed by the
+locator's host (redirect targets are not separately limited):
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `probe_concurrency` | 8 | probe loops per process |
+| `probe_per_host_interval_s` | 2 | one probe start per host per interval, across all hosts |
+| `probe_lease_s` | 300 | per-media probe lease |
+| `hash_concurrency` | 2 | hash loops per process |
+| `hash_per_host_concurrency` | 1 | concurrent full transfers per host, across all hosts (a busy host's job is put back) |
+| `hash_max_bytes` | 8 GiB | size bound (assumption, not performance-validated) |
+| `hash_timeout_s` / `hash_read_timeout_s` | 3,600 / 60 | whole read / inactivity |
+| `rehash_after_s` | 30 d | re-hash without validators or after a failure |
+| `queue_block_s` | 2 | queue pop wait |
+| `ssrf_allowed_networks` | `[]` | CIDRs exempt from the guard (tests only) |
+
+**Bandwidth.** Each media content version is transferred in full once by
+the hash reader (plus the fingerprinter's own acquisition of one source per
+`ContentId`, P9). At the defaults one process moves at most 2 transfers at
+a time and one per host. Not measured on real media; the 8 GiB / 1 h bounds
+are approved assumptions.
+
+**Facts.** `media_probes` and `media_hashes` (per media and month, no TTL)
+hold every attempt with worker, final URL, hop count, HTTP status and time.
+`media_probe_latest` is derived (latest-wins). Every `ok` hash also writes
+M5 `media_by_content` and M6 `media_content_versions` with P2's own
+statements and timestamp rules (earliest-wins `first_seen`, latest-wins
+`last_seen`), so the hash path and the observation path commute.
+`crawler2-media rebuild` re-derives M1/M4/M5/M6 from M3 → M2 (P2) and the
+latest view and hash-side M5/M6 from the probe/hash rows. Like every
+convergent derived row, rebuild repairs *lost* derived writes; it cannot
+override a manual CQL `DELETE` (a newer tombstone).
+
+**Metrics:** `media_probes_total{status}`, `media_hashes_total{outcome}`,
+`media_hash_bytes_total`, `media_hash_seconds`,
+`media_ssrf_rejections_total{path}`, `media_work_skipped_total{stage,reason}`
+(leased, fresh, not_due, host_busy), `media_wants_total{stage,result}`.
+**Logs:** `media_probed`, `media_hashed`, `media_queue_unavailable`,
+`media_job_retry`, `media_job_failed`.
+
+| Symptom | Meaning / action |
+|---|---|
+| `media_ssrf_rejections_total` rising | locators or redirects point at internal addresses; recorded as `forbidden`/`unsafe_destination`, nothing fetched |
+| many `host_busy` skips | one host has many media; raise `hash_per_host_concurrency` only with that host's limits in mind |
+| `media_hashes_total{outcome="too_large"}` | media above `hash_max_bytes`: no ContentId, no encode; raise the bound deliberately |
+| `content_encoded` | the host compresses media despite `identity`; no ContentId (by design) |
 
 ## Encode requester and representation projection (increment 3)
 
@@ -169,9 +281,9 @@ Not implemented yet.
 | `media_reader_state` | LWT state | epoch, lease, checkpoint, gap state per reader |
 | `media_reader_gaps` | authoritative | detected and accepted gaps (never expire) |
 | `media_observation_claims` | LWT, write-once | decided `media.observed` envelope per (page observation, media), `committed_at` |
-| `media_probes` | authoritative | probe facts per media and month (increment 2) |
-| `media_hashes` | authoritative | full-content hash attempts per media and month (increment 2) |
-| `media_probe_latest` | derived | latest probe / hash / ok hash per media (increment 2) |
+| `media_probes` | authoritative | probe facts per media and month |
+| `media_hashes` | authoritative | full-content hash attempts per media and month |
+| `media_probe_latest` | derived | latest probe / hash / ok hash per media |
 | `encode_claims` | LWT, write-once | one logical `encode.requested` per (content, spec) (increment 3) |
 | `encode_claims_by_day` | index, TTL 14 d | sweeper index (increment 3) |
 

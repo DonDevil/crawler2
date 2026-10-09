@@ -178,7 +178,8 @@ class HashRecord:
     worker: str
     probe_id: str
     validators: Validators
-    """Of the response that was read (equal to the probe's for an ``ok`` hash)."""
+    """The probe's validators: the content version this attempt was for. An ``ok``
+    hash read a response whose validators matched them before and after the read."""
     scheme: str = SCHEME
     digest: str | None = None
     byte_count: int = 0

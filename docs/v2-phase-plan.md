@@ -550,10 +550,10 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
 ### P8 — Media registry & identity (M)
 
 - **Status (2026-10-09):** active phase. Design **approved for
-  implementation** (P8-D2…P8-D8, ADR-024). Increment 1 (resolver, outbox
-  reader with per-observation claims) implemented and validated on the
-  real stack incl. two hosts (P8 validation.md); increments 2–3 and the
-  exit gate open. Docs: `docs/phases/p08-media-registry/`.
+  implementation** (P8-D2…P8-D8, ADR-024). Increments 1 (resolver, outbox
+  reader with per-observation claims) and 2 (probe pool, `full-bytes/v1`
+  hash reader, SSRF guard) implemented and validated on the real stack
+  incl. two hosts (P8 validation.md); increment 3 and the exit gate open. Docs: `docs/phases/p08-media-registry/`.
   The corrections PC-1 and PC-2 (P8 decisions.md §2) are approved and
   applied below (marked *PC-1*, *PC-2*): a sampled level-3 key cannot
   pass the crafted-collision test.

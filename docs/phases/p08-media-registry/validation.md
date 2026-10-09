@@ -1,8 +1,8 @@
 # P8 Validation — media registry & identity
 
-Status: **in progress.** Increment 1 (resolver) is implemented and
-validated below. Increments 2–3 and the exit gate are not yet run; their
-rows are added as they are. Design: [design.md](design.md). Decisions:
+Status: **in progress.** Increments 1 (resolver) and 2 (probe, hash) are
+implemented and validated below. Increment 3 and the exit gate are not yet
+run; their rows are added as they are. Design: [design.md](design.md). Decisions:
 [decisions.md](decisions.md). ADR: [ADR-024](../../adr/ADR-024-authoritative-outbox-readers.md).
 
 Status values: **PASS** (the test ran against the stated services and
@@ -66,3 +66,41 @@ passed.
 
 Not claimed by increment 1: throughput per reference (one Paxos round,
 one logged batch, one conditional update) is not measured.
+
+## Increment 2 — probing and full-content hashing (2026-10-09)
+
+Fixture tests (`tests/unit/media/test_ssrf.py`, `test_probe_hash.py`) run
+the real P4 `HttpFetcher` and the hash reader against a loopback fixture
+media web (`tests/fixtures/mediaweb.py`: GET and HEAD, Range, chunked
+framing, gzip, redirects, mutable bytes, stalls). The guard sees
+public-looking names through an injected resolver (no real DNS), and a
+routing transport delivers the bytes from loopback. Worker tests
+(`tests/integration/storage/test_media_probe_hash.py`) add real Scylla and
+Redis.
+
+| # | Requirement | Implementation | Test / command | Observed | Status |
+|---|---|---|---|---|---|
+| I2-1 | SSRF guard ported (fingerprinter suite) | `ssrf.py` | `test_ssrf.py`: loopback v4/v6, RFC 1918, fd00::/8, link-local + metadata IP, unspecified, multicast/reserved, 100.64/10, IPv4-mapped, mixed records, DNS failure ≠ SSRF, non-http schemes, allowlist opt-out | 28 passed; nothing reached the inner transport (`NeverCalled`) | PASS |
+| I2-2 | Redirect to private / loopback / link-local refused on **both** paths, every hop | `GuardedTransport` in `HttpFetcher(transport=…)` and in the hash reader | `test_redirect_to_private_or_loopback_is_refused_on_both_paths` (4 targets) | probe `forbidden`/`unsafe_destination`; hash `forbidden`, no ContentId; only the public first hop was sent | PASS |
+| I2-3 | Public redirects work and are provenance | manual redirects | `test_redirect_between_public_hosts…`, `test_probe_redirect_is_provenance_not_identity` | final URL + hop count stored; `MediaId` stays the locator's (P8-D4) | PASS |
+| I2-4 | Range honoured and ignored; P4 64 KiB invariant untouched | P4 `HttpFetcher` unchanged | `test_probe_with_range_honoured…`, `…ignored…` | `Range: bytes=0-65535`; ≤ 64 KiB sent; total length from `Content-Range`, or `Content-Length` of a full response | PASS |
+| I2-5 | 403/401/404, non-media, unreachable (probe) | `probe_status` | `test_probe_http_errors`, `test_probe_non_media_and_unreachable`, `test_probe_status_mapping` (9 cases) | forbidden / unreachable / not_media as mapped | PASS |
+| I2-6 | Full SHA-256 of known byte sequences | `hashing.py` | `test_full_sha256_of_known_bytes…` | digest = `sha256(body)` with and without Range support; `Accept-Encoding: identity`, no Range, Referer sent; HEAD re-check | PASS |
+| I2-7 | Transfer framing and content encoding | `aiter_raw`, `content_encoded` | `test_transfer_framing…`, `test_content_encoding_is_refused…` | chunked body → digest of the content only; gzip despite identity → `content_encoded`, no ContentId | PASS |
+| I2-8 | Crafted collision (equal length, equal first/middle/last 64 KiB) → distinct ContentIds | `full-bytes/v1` | `test_crafted_collision_gets_a_distinct_content_id` | samples equal, bytes differ, ContentIds differ | PASS |
+| I2-9 | Byte-identical on 3 URLs → one ContentId | — | `test_byte_identical_copies_share_one_content_id` | 1 ContentId | PASS |
+| I2-10 | Too large (declared and streamed), timeout, forbidden, unreachable, http_error | bounds in `HashLimits` | `test_too_large…`, `test_timeout_forbidden_unreachable_http_error` | declared: 0 bytes read; streamed: stops at the bound; no ContentId in every failure | PASS |
+| I2-11 | Content changed since the probe and **during** the read | validators before + HEAD after | `test_content_changed_since_the_probe_or_during_the_read` | both `changed_during_read`, no ContentId | PASS |
+| I2-12 | Manifests probed for hints, never hashed; `unknown` hashed only when the probe shows media | `schedule.hashable` | `test_manifest_is_probed…`, `test_unknown_kind…`, `test_hashable_kinds` (9 cases) | as designed (P8-D6) | PASS |
+| I2-13 | Facts with provenance, latest view, M5/M6 from hashes | `store.record_probe/record_hash` | `test_probe_then_hash_writes_facts_latest_and_m5_m6` (real Scylla/Redis) | probe and hash rows (worker, final URL, status); latest view; M5 row; M6 version | PASS |
+| I2-14 | Same URL, changed bytes → new ContentId and M6 version; stale hash not attached | re-probe → validators differ → re-hash | `test_same_url_changed_bytes…`, `test_stale_hash_is_not_attached_to_new_observations` | 2 ContentIds, 2 M6 rows; between re-probe and re-hash `current_content()` is None and the resolver's new observation has hints but no content key | PASS |
+| I2-15 | One probe and one hash per media under concurrency | per-media Redis leases + freshness re-check | `test_one_probe_and_one_hash_per_media_under_concurrency` (4 concurrent handlers, two worker identities) | 1 probe row, 1 hash row | PASS |
+| I2-16 | Observation and hash paths commute; rebuild repairs lost derived writes | P2 statements and timestamp rules | `test_hash_and_observation_paths_commute…`, `test_rebuild_repairs_lost_derived_writes` | M6 first_seen = earliest of both, last_seen = latest; after losing the derived writes, `rebuild` restores the latest view, M5, M6; idempotent | PASS |
+| I2-17 | Per-host hash slot: a busy host's job is put back; CLI `show`/`rebuild` | `HashWorker`, `cli.py` | `test_busy_host_requeues_and_cli_show_rebuild` | job requeued, hashed after the slot was free; CLI outputs | PASS |
+| I2-18 | Probe/hash pool survives storage errors and bad jobs | `run_pool` | `test_pool_survives_storage_errors_and_bad_jobs` | failing job wanted again; others handled | PASS |
+| I2-19 | Two hosts: probe and hash workers on both | `media_multihost.py` `serve-media`, `workers`, `workers-verify` | `scripts/test-media-two-host.sh` | 18 media (6 groups × 3 copies) served from app-host-1 through the guard (compose subnet allowlisted): exactly 1 probe and 1 `ok` hash per media; host-1 9 probes / 8 hashes, host-2 9 / 10; 6 ContentIds, one per group | PASS |
+| I2-20 | Coverage of new code ≥ 85 %, increment 2 | — | coverage command, 115 tests | `crawler2/media` **92 %** (1,270 statements, 96 missed): `hashing.py` 92 %, `probe.py` 92 %, `ssrf.py` 91 %, `store.py` 93 %, `cli.py` 67 % | PASS |
+
+Not claimed by increment 2: hash throughput, bandwidth and the 8 GiB /
+3,600 s bounds on real media (approved assumptions, not measured); DNS
+rebinding protection (P14).

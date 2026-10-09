@@ -425,6 +425,28 @@ media_probe_latest (media_id)   derived: latest probe + latest ok hash (+ its pr
 `head_sample_sha256` is recorded only if a later reviewed P4 addition
 provides it. It is a hint and is not needed for correctness.
 
+*Implementation notes (2026-10-09, increment 2), within the approved design:*
+
+- Probe and hash documents are stored as JSON in a `doc` column
+  (`media_hashes` also keeps `outcome` and `content_id` as columns);
+  `media_probe_latest` keeps the latest probe, the latest hash attempt and
+  the latest `ok` hash.
+- Two hash outcomes were added to the six above: `http_error` (a non-200
+  final response other than 401/403/404/410) and `content_encoded` (the
+  server applied a Content-Encoding despite `identity`; hashing a decoded
+  or re-compressed body would not be the served byte sequence). Neither
+  issues a content key.
+- "Changed during read" is detected twice: the GET's validators must match
+  the probe's, and a HEAD after the read must show the same validators. A
+  read shorter than the declared length is `unreachable`.
+- A hash row's `validators` are the probe's (the version attempted); `ok`
+  means the response matched them.
+- The P8 clock (Redis `TIME`) is truncated to milliseconds, the precision
+  of a Scylla `timestamp`.
+- Per-host limits are keyed by the locator's host; redirect targets are not
+  limited separately. P4's probe sends no `Referer` (P4 unchanged); the
+  hash reader sends the observation page.
+
 Partitions are month-bucketed, as M3/M6. Retention is the same as M2/M3:
 none.
 

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import random
 import time
+import uuid
 from datetime import datetime
 from typing import Any
 
@@ -29,8 +30,22 @@ from crawler2.media.model import (
     StoredClaim,
 )
 from crawler2.storage.errors import StorageUnavailableError
+from crawler2.storage.layout import (
+    CONTENT_SHARDS,
+    earliest_wins,
+    latest_wins,
+    month_bucket,
+    months_back,
+    shard_of,
+)
+
+# The exact M5/M6 statements of P2's derived path (scylla/media.py), so that the
+# observation path and the hash path write the same cells with the same timestamp
+# rules and therefore commute (design §6.3). Table schemas are unchanged.
+from crawler2.storage.scylla.media import _BY_CONTENT, _VERSION_FIRST, _VERSION_LAST
 from crawler2.storage.scylla.session import Consistency, ScyllaSession, utc
 
+DERIVED = Consistency.DERIVED_WRITE
 SERIAL = Consistency.SERIAL
 STRONG = Consistency.STRONG_READ
 AUTH = Consistency.AUTHORITATIVE_WRITE
@@ -94,6 +109,25 @@ _CLAIMS_ON = (
 _COMMITTED = (
     "UPDATE {ks}.media_observation_claims SET committed_at = ? "
     "WHERE page_observation_id = ? AND media_id = ? IF committed_at = null"
+)
+_PROBE_INSERT = (
+    "INSERT INTO {ks}.media_probes (media_id, month, probed_at, probe_id, doc) "
+    "VALUES (?, ?, ?, ?, ?)"
+)
+_PROBES = "SELECT doc FROM {ks}.media_probes WHERE media_id = ? AND month = ?"
+_HASH_INSERT = (
+    "INSERT INTO {ks}.media_hashes (media_id, month, hashed_at, hash_id, outcome, content_id, "
+    "doc) VALUES (?, ?, ?, ?, ?, ?, ?)"
+)
+_HASHES = "SELECT doc FROM {ks}.media_hashes WHERE media_id = ? AND month = ?"
+_LATEST_PROBE = (
+    "UPDATE {ks}.media_probe_latest USING TIMESTAMP ? SET probe_doc = ? WHERE media_id = ?"
+)
+_LATEST_HASH = (
+    "UPDATE {ks}.media_probe_latest USING TIMESTAMP ? SET hash_doc = ? WHERE media_id = ?"
+)
+_LATEST_OK = (
+    "UPDATE {ks}.media_probe_latest USING TIMESTAMP ? SET ok_hash_doc = ? WHERE media_id = ?"
 )
 _LATEST_GET = (
     "SELECT probe_doc, hash_doc, ok_hash_doc FROM {ks}.media_probe_latest WHERE media_id = ?"
@@ -341,3 +375,121 @@ class ScyllaRegistryStore:
             hash=HashRecord.from_json(r.hash_doc) if r.hash_doc else None,
             ok_hash=HashRecord.from_json(r.ok_hash_doc) if r.ok_hash_doc else None,
         )
+
+    # --- probe and hash facts (design §5.4, §6.3) ---------------------------------------
+
+    def record_probe(self, probe: ProbeRecord) -> None:
+        """Authoritative probe row, then the derived latest view (latest-wins)."""
+        media = MediaId(probe.media_id)
+        self._s.execute(
+            self._s.bind(
+                _PROBE_INSERT,
+                AUTH,
+                (
+                    media.uuid,
+                    month_bucket(probe.probed_at),
+                    probe.probed_at,
+                    uuid.UUID(probe.probe_id),
+                    probe.to_json(),
+                ),
+            )
+        )
+        self._s.execute_all(self._probe_derived(probe))
+
+    def record_hash(self, record: HashRecord) -> None:
+        """Authoritative hash row, then latest view and (ok only) M5/M6."""
+        media = MediaId(record.media_id)
+        content = record.content_id
+        self._s.execute(
+            self._s.bind(
+                _HASH_INSERT,
+                AUTH,
+                (
+                    media.uuid,
+                    month_bucket(record.hashed_at),
+                    record.hashed_at,
+                    uuid.UUID(record.hash_id),
+                    record.outcome.value,
+                    content.uuid if content is not None else None,
+                    record.to_json(),
+                ),
+            )
+        )
+        self._s.execute_all(self._hash_derived(record))
+
+    def _probe_derived(self, probe: ProbeRecord) -> list[BoundStatement]:
+        media = MediaId(probe.media_id)
+        return [
+            self._s.bind(
+                _LATEST_PROBE,
+                DERIVED,
+                (latest_wins(probe.probed_at), probe.to_json(), media.uuid),
+            )
+        ]
+
+    def _hash_derived(self, record: HashRecord) -> list[BoundStatement]:
+        s = self._s
+        media = MediaId(record.media_id)
+        latest = latest_wins(record.hashed_at)
+        statements = [s.bind(_LATEST_HASH, DERIVED, (latest, record.to_json(), media.uuid))]
+        key = record.content
+        if key is None:
+            return statements
+        earliest = earliest_wins(record.hashed_at)
+        version = (media.uuid, month_bucket(record.hashed_at), key.content_id.uuid)
+        statements += [
+            s.bind(_LATEST_OK, DERIVED, (latest, record.to_json(), media.uuid)),
+            s.bind(
+                _BY_CONTENT,
+                DERIVED,
+                (
+                    earliest,
+                    record.locator_url,
+                    record.hashed_at,
+                    key.content_id.uuid,
+                    shard_of(media, CONTENT_SHARDS),
+                    media.uuid,
+                ),
+            ),
+            s.partition_batch(
+                [
+                    s.bind(
+                        _VERSION_FIRST,
+                        DERIVED,
+                        (earliest, key.scheme, str(key.digest), record.hashed_at, *version),
+                    ),
+                    s.bind(_VERSION_LAST, DERIVED, (latest, record.hashed_at, *version)),
+                ],
+                DERIVED,
+            ),
+        ]
+        return statements
+
+    def probes(self, media_id: MediaId, *, since: datetime, until: datetime) -> list[ProbeRecord]:
+        results = self._s.execute_many(
+            self._s.bind(_PROBES, STRONG, (media_id.uuid, month))
+            for month in months_back(until, since)
+        )
+        found = [ProbeRecord.from_json(r.doc) for rows in results for r in rows]
+        found = [p for p in found if since <= p.probed_at <= until]
+        return sorted(found, key=lambda p: p.probed_at, reverse=True)
+
+    def hashes(self, media_id: MediaId, *, since: datetime, until: datetime) -> list[HashRecord]:
+        results = self._s.execute_many(
+            self._s.bind(_HASHES, STRONG, (media_id.uuid, month))
+            for month in months_back(until, since)
+        )
+        found = [HashRecord.from_json(r.doc) for rows in results for r in rows]
+        found = [h for h in found if since <= h.hashed_at <= until]
+        return sorted(found, key=lambda h: h.hashed_at, reverse=True)
+
+    def rebuild(self, media_id: MediaId, *, since: datetime, until: datetime) -> tuple[int, int]:
+        """Re-derive ``media_probe_latest`` and the hash side of M5/M6 from the
+        authoritative probe/hash rows (B.5 #3). Returns (probes, hashes) replayed."""
+        probes = self.probes(media_id, since=since, until=until)
+        hashes = self.hashes(media_id, since=since, until=until)
+        for probe in probes:
+            self._s.execute_all(self._probe_derived(probe))
+        for record in hashes:
+            self._s.execute_all(self._hash_derived(record))
+        return len(probes), len(hashes)
