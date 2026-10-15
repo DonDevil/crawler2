@@ -26,6 +26,9 @@
 | [022](ADR-022-stream-retention-and-relay-retry.md) | Event streams bounded by bytes, never trimmed past unread entries; relay retries in-process | Accepted |
 | [023](ADR-023-projection-readers-outside-stream-retention.md) | Rebuildable projections read the outbox, not a consumer group (P7 source profiles); ADR-022 unchanged | Accepted |
 | [024](ADR-024-authoritative-outbox-readers.md) | Authoritative idempotent consumers may read the outbox with per-fact LWT claims (P8 resolver); ADR-022/023 unchanged | Accepted |
+| [025](ADR-025-groupless-intake-and-gap-protocol.md) | Fingerprinter reads `encode.requested` without a group; gaps by stream counts, closed only by replay or explicit `accept-gap` (P9) | Accepted |
+| [026](ADR-026-durable-intents-and-held-publication.md) | One-LWT commit point, durable intents + reconciler, events held until consumers exist (P9) | Accepted |
+| [027](ADR-027-runtime-profiles-fail-closed.md) | Specs pin a runtime profile and precision; encoders outside it refuse (P9) | Accepted |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

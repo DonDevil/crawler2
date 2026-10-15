@@ -29,6 +29,7 @@ Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 | Filter engine & discovery | `crawler2/filtering`, `crawler2/discovery` | [filter-discovery.md](filter-discovery.md), [P6](../phases/p06-filter-discovery/) |
 | **Crawl intelligence** (source health: outbox projection + optional admission advice, off by default) | `crawler2/intelligence` | [intelligence.md](intelligence.md), [P7](../phases/p07-crawl-intelligence/) |
 | **Media registry & identity** (levels 1–3: resolver from the outbox, ADR-024; probe/hash and encode requester per increment) | `crawler2/media` | [media-registry.md](media-registry.md), [P8](../phases/p08-media-registry/) |
+| **Fingerprinter encoder** (separate service, fingerprinter repo: group-less intake ADR-025, intents/held publication ADR-026, runtime profiles ADR-027; crawler2 side = P8 adapter + cross-service test) | fingerprinter `fingerprinter/` | [fingerprinter-encoder.md](fingerprinter-encoder.md), [P9](../phases/p09-fingerprinter-encoder/) |
 
 Workers (P4) claim from the frontier through its public API only, write
 attempts, observations and raw snapshots through the P2 repositories and
