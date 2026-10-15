@@ -5,7 +5,10 @@ baseline only. The authoritative plan is [`docs/v2-phase-plan.md`](docs/v2-phase
 
 **P8 — Media registry & identity is complete** (exit gate passed:
 [`docs/phases/p08-media-registry/exit.md`](docs/phases/p08-media-registry/exit.md));
-P9 is next and not started.
+P9 (fingerprinter encoder) **is complete for its approved scope** (accepted 2026-10-15 with documented limitations; not production-deployed): on
+licensed real media the S1/S2 reuse, GPU ≥ 5× (6.59×) and 1,000-video soak gates pass (soak
+criteria 3/4 only vacuously); FP16 stays gated (its precision gate G-2 failed):
+[`docs/phases/p09-fingerprinter-encoder/exit.md`](docs/phases/p09-fingerprinter-encoder/exit.md).
 P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
 [`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
 Phase status for every phase is in the plan. Earlier phases:

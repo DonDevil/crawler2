@@ -31,6 +31,15 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-09 | **P8 started**: audit (P1/P2 already define levels 1–3 and M1–M6; P4 probe has no digest; no SSRF guard in crawler2) and design draft | P8 decisions P8-D3…P8-D8 proposed |
 | 2026-10-09 | **P8 complete**: resolver (ADR-024 outbox reader, per-observation claims), probe pool, `full-bytes/v1` hash reader with SSRF guard, encode requester + sweeper, representation projection; exit gate 0 duplicate encodes / 0 false merges; coverage 92 % | P8 exit.md; P9 is next (not started); P6 Gate G still open |
 | 2026-10-09 | **P8 design approved for implementation**: level 3 = `full-bytes/v1` (full SHA-256), outbox resolver with per-observation LWT claims (ADR-024), PC-1/PC-2 applied to §P8 | P8 decisions P8-D2…P8-D8 approved; implementation in progress, gates not yet measured |
+| 2026-10-10 | **P9 started (audit + design draft)**: candidates re-embedded per job and the fingerprinter still not multi-host safe by default (13D fix = opt-in shared directory, not MinIO); CPU baseline 1.80 s per minute of video (synthetic 320×240 fixture only); a consumer group on `encode.requested` could stall crawler2's relay (ADR-022) → group-less intake proposed; data-sufficiency gate not passed | P9 decisions P9-D1…P9-D19 and PC-3 proposed; GPU gate definition pending (P9-D17) |
+| 2026-10-10 | **P9 design revision 2** after review: intake gap protocol by stream counts (not ID arithmetic) with explicit replay/`accept-gap`; durable intents and reconciler for partial commits; no TTL on unpublished events or active-work indexes; target events held until consumers register; typed external/internal sources; OOM failure classes matching an observable soak gate; runtime profiles fail closed; 5× gate scoped to inference | P9-D20…P9-D27 added, all PROPOSED; P9 stays in design review; nothing implemented |
+| 2026-10-10 | **P9 operator decisions**: architecture approved in principle; PC-3 approved and applied; precision is part of the identity (FP32 default, FP16 a distinct spec gated by the precision and labelled-decision gates, never merged); 5× gate on inference-stage throughput, end-to-end reported without threshold; simulated two-host for P9; licensed test films allowed after licence verification, `Blast.mp4` local-only; NVML mismatch to be fixed before GPU validation; colour policy accepted in principle | P9-D2, D3, D17, D18 approved; other P9 decisions await final design approval; no gate passed |
+| 2026-10-10 | **P9 final design approval**: the operator approved PC-3 and P9-D1…P9-D27 with all recommendations, trade-offs and qualifications of the readiness review (group-less intake with explicit audited `accept-gap`; no candidate-media archive, source loss reported in backfill; pinned dependency set + lock file; observable soak gate with zero uncontrolled terminations) | P9 implementation authorized within the approved scope; approval is not validation — gate status in `docs/phases/p09-fingerprinter-encoder/exit.md` |
+| 2026-10-11 | **P9 implemented, validation incomplete**: group-less intake with count-based gap protocol (ADR-025), one-LWT commit + durable intents + held publication (ADR-026), runtime profiles fail closed (ADR-027), typed sources, target manager, backfill/retirement, GPU/CPU encoder with typed failure classes; S1/S2 gate passes; data gates not measured; open findings OF-1 (truncated media) and OF-2 (batch calibration rule) for the operator | P9 not complete; P10 may start only after the operator decides on P9's open gates |
+| 2026-10-11 | **P9 operator decisions OF-1…OF-3** (P9 decisions §0a): explicitly detected truncated media → `decode_error` via new spec `dinov2-seg/2` (`dinov2-seg/1` unchanged); GPU batch calibration by best repeatable measured throughput (`throughput/v1`, B = 2 selected on the RTX 2050); G-5 threshold 5× FP32 on C-PREC unchanged. Implemented and verified; synthetic soak harness now passes 8/8 | P9 still IMPLEMENTED BUT VALIDATION INCOMPLETE (G-2/G-3/G-5/G-6/G-8 need corpora) |
+| 2026-10-12 | **P9 real-media validation**: licensed corpus S-SRC completed (7 Blender films, ≥ 6 required) and C-PREC (63 clips), L-PAIRS (150 positive / 330 negative pairs), SOAK-1000 (1,030 items) derived from it; G-5 PASS (GPU FP32 6.59× CPU FP32 on C-PREC); G-2 FAIL (FP16, 7 of 10,267 segments < 0.999) and G-3 FAIL as implemented → FP16 stays gated; G-6 2.37 s/min (GPU end-to-end 1.117 s/min, 2.12×); SOAK-1000 criteria 1–7 met (3/4 vacuously), criterion 8 FAIL (truncated MP4 accepted per design §3.2a); the soak found X-8 (Scylla `WriteFailure` killed a worker) and X-9 (service stop → permanent `decode_error`), both fixed; real 8 GiB / > 5 GiB storage tests pass | P9 still IMPLEMENTED BUT VALIDATION INCOMPLETE; operator decisions OF-4/OF-5 open; G-8 rerun after OF-5 |
+| 2026-10-15 | **P9 OF-4/OF-5 follow-up**: operator chose OF-5 (a) (truncation policy and `dinov2-seg/2` unchanged; SOAK-1000 expected failures verified against the decoder at build time, `c-04-h264.mp4` replaced, manifest `ed3bfd8d…`) and OF-4 (G-3 alignment applies to matched pairs); G-3 PASS on L-PAIRS, G-2 still FAIL → FP16 gated; SOAK-1000 run 5 **PASS** 8/8 (3/4 vacuous) after run 3 (host shutdown) and run 4 (defect X-10: one storage error ended the reconcile loop; fixed) aborted; exit gates G-1, G-5, G-8 met | P9 validation §8, exit.md |
+| 2026-10-15 | **P9 accepted** by the operator as complete for the approved implementation and validation scope, with the documented limitations (FP16 gated after G-2 FAIL; soak criteria 3/4 vacuous; partial truncation detection; real multi-machine deferred to P14; P8 real-stack tiers not re-run); not production-deployed; FP32 default; design not reopened | P9 decisions §5c, exit.md §1 |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -614,9 +623,38 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
 
 ### P9 — Fingerprinter service: media-centric encoder + target manager (L)
 
+- **Status (2026-10-15): COMPLETE — every mandatory exit gate satisfied;
+  accepted by the operator for the approved implementation and validation
+  scope with the documented limitations (P9 decisions §5c); not
+  production-deployed; FP32 default, FP16 gated.** Operator decisions OF-4/OF-5 (P9
+  decisions §5b); SOAK-1000 corrupt set corrected and verified against the
+  decoder; G-8 **PASS** (run 5, 8/8 criteria; 3/4 only vacuously); G-3
+  **PASS** under OF-4; G-2 **FAIL** (FP16 stays gated); defect X-10 fixed;
+  216 tests passing. Details: P9 `validation.md` §8, `exit.md`.
+- Status as of 2026-10-12 (history): IMPLEMENTED BUT VALIDATION INCOMPLETE. All data
+  gates measured on licensed real media (7 films; C-PREC, L-PAIRS, SOAK-1000):
+  G-1 and G-5 (6.59× on C-PREC) **PASS**; G-8 SOAK-1000 **FAIL** on criterion
+  8 only (a ⅓-truncated MP4 accepted per design §3.2a; operator decision
+  OF-5); FP16 G-2/G-3 **FAIL** (FP16 stays gated; OF-4); G-6 2.37 s/min;
+  soak-found defects X-8/X-9 fixed; 206 tests passing. Details: P9
+  `validation.md` §7, `exit.md`.
+- Status as of 2026-10-11 (history): IMPLEMENTED BUT VALIDATION INCOMPLETE. Design
+  approved 2026-10-10 (PC-3, P9-D1…P9-D27). Implemented in the fingerprinter
+  repo (package `fingerprinter/`), 197 tests passing on the real stack, RTX 2050 and
+  simulated two-host; crawler2 cross-service test passes. Exit gate S1/S2
+  (G-1) **PASS**; GPU ≥ 5× (G-5) and the 1,000-video soak (G-8) **NOT
+  MEASURED** (licensed corpora missing). Operator decisions OF-1…OF-3
+  (2026-10-11) implemented: default spec `dinov2-seg/2` rejects explicitly
+  truncated media; GPU batch calibrated by measured throughput (synthetic
+  inference ratio 6.47× at the calibrated B = 2 — not C-PREC); synthetic soak
+  harness PASS 8/8 (not SOAK-1000). Gate table:
+  `docs/phases/p09-fingerprinter-encoder/exit.md`.
+
 **Work happens in the `fingerprinter` repo**, planned and gated here.
 crawler2 side: the fingerprinter adapter (publishes `encode.requested`,
-consumes `representation.ready` / `match.found`).
+consumes `representation.ready` / `match.found`). *(P9-D19, approved: the
+P8 requester and representation consumer already are the adapter; P9 adds
+cross-service tests; `match.found` consumers stay in P11/P12.)*
 
 **Goal:** fingerprinting as reusable infrastructure (fixes D11).
 
@@ -628,15 +666,22 @@ consumes `representation.ready` / `match.found`).
 - **Design:**
   - Job model changes from `(candidate, target)` to `encode(media)`;
     matching becomes a separate step (P10).
-  - Representation registry keyed by
-    `(content_identity, media_version, model_name, model_version, sampling_config_hash)`,
-    in the **fingerprinter-owned keyspace in the shared Scylla deployment**
+  - Representation registry keyed by P1's `RepresentationId` =
+    `(ContentId, spec name, spec version, config_digest)` *(PC-3)*; the
+    digest covers model name + immutable revision, runtime profile, decode,
+    timestamps, sampling, colour, preprocessing, normalization, precision and
+    artifact format; `media_version` and the source locator are provenance
+    (new bytes ⇒ new `ContentId`). In the **fingerprinter-owned keyspace in the shared Scylla deployment**
     (authoritative: representation metadata + vectors or vector refs); vectors in the object
     store (MinIO) + index (P10). Target representations the same way.
   - Model upgrade = backfill job; old representations kept until retired.
   - Multi-host: 13d fix applied — target media and artifacts in MinIO,
     build-on-miss under a Redis lock, no host-local authoritative cache.
   - **GPU plan for the RTX 2050 (4 GB VRAM):**
+    - *(P9-D3, approved 2026-10-10: precision is part of the representation
+      identity; FP32 is the default; FP16 is a distinct spec that may be
+      enabled or made default only after the fp16/fp32 gates below pass, and
+      passing them never merges the FP16 and FP32 identities.)*
     - `facebook/dinov2-base` in **fp16** (~170 MB weights); ViT-B/14 at
       224 px leaves room for batches of roughly 32–64 frames. The design
       doc fixes the value by measurement, not this estimate.
@@ -661,6 +706,13 @@ consumes `representation.ready` / `match.found`).
 - **Exit gate:** reuse scenario passes; GPU encoding ≥ 5× CPU throughput
   on this machine (target to be confirmed at design review);
   no OOM crash in a 1,000-video soak.
+  *(P9-D17, approved 2026-10-10: the 5× compares GPU and CPU inference-stage
+  throughput on the same preprocessed inputs; end-to-end speedup is reported
+  separately with no threshold until a valid real-media benchmark exists.
+  P9-D18, approved: two-host = simulated on one machine; real multi-machine
+  validation stays in P14. P9-D25, approved: "no OOM crash"
+  = no uncontrolled process termination, no lost or stuck requests, recovered
+  and single-item OOMs reported — design §13.3.)*
 
 ### P10 — Fingerprinter service: vector index & matcher (L) → Milestone M3
 
