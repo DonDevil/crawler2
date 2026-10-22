@@ -401,6 +401,23 @@ class FeedbackSettings(BaseModel):
     explore_percent: int = Field(default=20, ge=0, le=100)
 
 
+class EvidenceSettings(BaseModel):
+    """P12 evidence collector & finalizer (docs/phases/p12-evidence-collector/design.md)."""
+
+    consumer_group: str = Field(default="evidence-collector", pattern=r"^[a-z0-9._-]{1,64}$")
+    batch_size: PositiveInt = 50
+    block_ms: PositiveInt = 2000
+    claim_idle_ms: PositiveInt = 60_000
+    max_media_per_match: int = Field(default=50, ge=1, le=500)
+    max_sources: int = Field(default=50, ge=1, le=500)
+    """Source pages recorded per evidence item; more are counted and declared truncated."""
+    sighting_window_days: int = Field(default=90, ge=1, le=3650)
+    max_artifact_bytes: PositiveInt = 32 * 1024 * 1024
+    """Larger artifacts are not read for verification or packaging (declared, not dropped)."""
+    max_package_bytes: PositiveInt = 256 * 1024 * 1024
+    """Upper bound on the bytes of one exported case package (it is assembled in memory)."""
+
+
 class MediaSettings(BaseModel):
     """P8 media registry (docs/phases/p08-media-registry/design.md, ADR-024).
 
@@ -498,6 +515,7 @@ class Settings(BaseSettings):
     intelligence: IntelligenceSettings = Field(default_factory=IntelligenceSettings)
     media: MediaSettings = Field(default_factory=MediaSettings)
     feedback: FeedbackSettings = Field(default_factory=FeedbackSettings)
+    evidence: EvidenceSettings = Field(default_factory=EvidenceSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

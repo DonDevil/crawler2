@@ -47,6 +47,7 @@ _OPEN = (
     "IF NOT EXISTS"
 )
 _OPENED = "SELECT evidence_id FROM {ks}.evidence_by_match WHERE match_id = ?"
+_OPENED_AT = "SELECT evidence_id, opened_at FROM {ks}.evidence_by_match WHERE match_id = ?"
 _CREATE = (
     "INSERT INTO {ks}.evidence (evidence_id, match_id, target_id, state, collected_at, "
     "candidate_doc) VALUES (?, ?, ?, ?, ?, ?) IF NOT EXISTS"
@@ -112,6 +113,13 @@ class ScyllaEvidenceRepository:
         if rows[0].applied:
             return proposed
         return EvidenceId.from_uuid(rows[0].evidence_id)
+
+    def opened(self, match_id: MatchId) -> tuple[EvidenceId, datetime] | None:
+        """E1 read: the match's evidence id and the instant the winning open was written."""
+        rows = self._serial(self._s.bind(_OPENED_AT, SERIAL, (match_id.uuid,)))
+        if not rows:
+            return None
+        return EvidenceId.from_uuid(rows[0].evidence_id), utc(rows[0].opened_at)
 
     def create_candidate(
         self,

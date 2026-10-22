@@ -543,6 +543,10 @@ class EvidenceRepository(Protocol):
         """E1: returns the one evidence id of this match (``proposed`` if it won)."""
         ...
 
+    def opened(self, match_id: MatchId) -> tuple[EvidenceId, datetime] | None:
+        """E1 read: (evidence id, opened_at) of the match's evidence item, if opened."""
+        ...
+
     def create_candidate(
         self,
         candidate: EvidenceCandidate,

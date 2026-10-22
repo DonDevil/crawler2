@@ -67,6 +67,12 @@ EXPECTED_TABLES = {
     # V006 (P11): match evidence per source host, hosts with evidence.
     "feedback_evidence": "P11/B1",
     "feedback_sources": "P11/B2",
+    # V007 (P12): evidence candidates, finalized versions, audit, campaigns.
+    "evidence_candidates": "P12/E5",
+    "evidence_versions": "P12/E6",
+    "evidence_audit": "P12/E7",
+    "evidence_campaigns": "P12/E8",
+    "evidence_campaign_index": "P12/E9",
 }
 
 
