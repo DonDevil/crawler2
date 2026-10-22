@@ -50,6 +50,19 @@ Keyspace `crawler2_it_p12_host`, a test bucket and private stream prefixes;
 nothing is fetched. The package directory must not exist yet (export never
 overwrites).
 
+### P13 analytics (host)
+
+```bash
+make up
+scripts/test-analytics.sh -q        # P13 unit tests (synthetic) + real-Scylla export test (~2 min)
+env/bin/pytest -q tests/unit/analytics   # unit only, no stack (~80 s)
+```
+
+Keyspace `crawler2_it_p13_host` (dropped and recreated per session), a test
+bucket and private stream prefixes; exports go to pytest temporary
+directories. Nothing is fetched. Operator commands:
+[architecture/analytics.md](architecture/analytics.md).
+
 ### P11 match feedback (host)
 
 ```bash

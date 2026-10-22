@@ -12,6 +12,7 @@ Current-state architecture, by component. Decisions live in
 | **MinIO** | raw immutable objects (page snapshots, media artefacts) | authoritative for bytes | none (ADR-003/-014) |
 | **Redis** | hot execution/coordination state: the frontier (what is executable now, leases, politeness gates), event transport (Streams) | **not** authoritative | bounded: lost frontier state is re-derived from Scylla by admission; events are re-published from the outbox |
 | process memory / scratch | caches only | none | total (ADR-006: no authoritative local state) |
+| analytics root (`var/analytics`, P13) | Parquet exports of Scylla, derived graphs/clusters, run records | **derived** (never read by the crawler) | total: re-export from Scylla |
 
 Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 "Seen historically" (Scylla) is not "currently scheduled" (Redis).
@@ -30,6 +31,7 @@ Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 | **Crawl intelligence** (source health: outbox projection + optional admission advice, off by default) | `crawler2/intelligence` | [intelligence.md](intelligence.md), [P7](../phases/p07-crawl-intelligence/) |
 | **Match feedback** (`match.found` → source/template evidence → bounded admission priority, off by default) | `crawler2/intelligence/feedback*.py` | [match-feedback.md](match-feedback.md), [P11](../phases/p11-feedback-loop/) |
 | **Evidence collector & finalizer** (`match.found` → candidate → validated, append-only finalized versions → case package; technical baseline, ADR-005 open) | `crawler2/evidence` | [evidence.md](evidence.md), [P12](../phases/p12-evidence-collector/) |
+| **Analytics** (offline: token-range export → revisioned Parquet → DuckDB reports, graph, site/template clustering; read-only on Scylla) | `crawler2/analytics` | [analytics.md](analytics.md), [P13](../phases/p13-analytics/) |
 | **Media registry & identity** (levels 1–3: resolver from the outbox, ADR-024; probe/hash and encode requester per increment) | `crawler2/media` | [media-registry.md](media-registry.md), [P8](../phases/p08-media-registry/) |
 | **Fingerprinter encoder** (separate service, fingerprinter repo: group-less intake ADR-025, intents/held publication ADR-026, runtime profiles ADR-027; crawler2 side = P8 adapter + cross-service test) | fingerprinter `fingerprinter/` | [fingerprinter-encoder.md](fingerprinter-encoder.md), [P9](../phases/p09-fingerprinter-encoder/) |
 

@@ -15,10 +15,13 @@ replay because P10's M3 is not passed; feedback is off by default):
 **P12 — Evidence collector & finalizer is implemented; M5 is not passed — awaiting owner review**
 of the fixture case package (all inputs synthetic; ADR-005 open):
 [`docs/phases/p12-evidence-collector/exit.md`](docs/phases/p12-evidence-collector/exit.md).
+**P13 — Analytics layer is implemented** (offline Parquet/DuckDB exports, reports, graph,
+clustering prototype; validated on synthetic fixtures and a throwaway Scylla keyspace, real-data
+export not yet run): [`docs/phases/p13-analytics/exit.md`](docs/phases/p13-analytics/exit.md).
 P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
 [`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
 Phase status for every phase is in the plan. Earlier phases:
-[`p12-evidence-collector/`](docs/phases/p12-evidence-collector/), [`p11-feedback-loop/`](docs/phases/p11-feedback-loop/), [`p07-crawl-intelligence/`](docs/phases/p07-crawl-intelligence/), [`p06-filter-discovery/`](docs/phases/p06-filter-discovery/), [`p05-extraction-page-intelligence/`](docs/phases/p05-extraction-page-intelligence/),
+[`p13-analytics/`](docs/phases/p13-analytics/), [`p12-evidence-collector/`](docs/phases/p12-evidence-collector/), [`p11-feedback-loop/`](docs/phases/p11-feedback-loop/), [`p07-crawl-intelligence/`](docs/phases/p07-crawl-intelligence/), [`p06-filter-discovery/`](docs/phases/p06-filter-discovery/), [`p05-extraction-page-intelligence/`](docs/phases/p05-extraction-page-intelligence/),
 [`p04-fetch-workers/`](docs/phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md), [`p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md), [`p02-storage/`](docs/phases/p02-storage/) (start with
 `what-was-built.md`), [`p01-contracts/`](docs/phases/p01-contracts/),
 [`p00-foundations/`](docs/phases/p00-foundations/).
@@ -56,6 +59,7 @@ every field is overridable via `CRAWLER2_<FIELD>` / `CRAWLER2_<SECTION>__<FIELD>
 | `crawler2/storage` | repositories (Scylla), object store (MinIO), outbox relay, consumer idempotency, `crawler2-storage` CLI (ADR-012…014) |
 | `crawler2/frontier` | Redis frontier: execution queues, shared politeness gate, leases, scheduling, retries, admission limits (ADR-015, ADR-016) |
 | `crawler2/crawlers` | worker runtime, http/tor/browser fetchers, outcome mapping, recorder, `crawler2-worker` CLI (ADR-017, ADR-018) |
+| `crawler2/analytics` | P13 offline analytics: read-only Scylla export → revisioned Parquet, DuckDB reports/SQL, derived graph, site/template clustering, `crawler2-analytics` CLI |
 | `crawler2/media` | P8 media registry: outbox resolver with per-observation claims (ADR-024), probe/hash, encode requester, `crawler2-media` CLI |
 | `contracts/` | `antipiracy-contracts` 1.0.0: IDs, domain models, events, catalog, JSON Schemas, compat fixtures (ADR-007…011) |
 | `docker/`, `docker-compose.yml` | dev stack, profiles `single` / `two-host` |

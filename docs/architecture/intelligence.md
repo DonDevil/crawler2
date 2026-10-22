@@ -58,6 +58,13 @@ behaviour is unchanged.
 passed; P7 neither schedules recrawls nor sets priorities:
 [exit.md](../phases/p07-crawl-intelligence/exit.md).
 
+**Site/template clustering (plan feature 9)** is prototyped offline in P13
+(`crawler2-analytics cluster run`): it writes *unreviewed* bootstrap
+candidates next to an analytics export and never touches
+`intel_source_profiles`, advice or priorities. Importing reviewed candidates
+into P7 is a separate, not yet approved workflow
+([P13 design §10.1](../phases/p13-analytics/design.md)).
+
 Frozen P7 boundaries: [decisions.md §4](../phases/p07-crawl-intelligence/decisions.md).
 
 Target relevance waits for P9; Tor profiles wait for a Tor deployment.

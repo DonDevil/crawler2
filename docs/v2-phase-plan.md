@@ -42,6 +42,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-15 | **P9 accepted** by the operator as complete for the approved implementation and validation scope, with the documented limitations (FP16 gated after G-2 FAIL; soak criteria 3/4 vacuous; partial truncation detection; real multi-machine deferred to P14; P8 real-stack tiers not re-run); not production-deployed; FP32 default; design not reopened | P9 decisions §5c, exit.md §1 |
 | 2026-10-22 | **P11 implemented, M4 NOT PASSED**: `match.found` consumer attributes matches to page hosts through crawler2's registry (M5 → M3 → W4) and records evidence (V006); bounded, decaying boost (≤ 15 source + ≤ 5 template, ≤ 20 total; τ 14 d) and browser preference (20 % http re-test) applied in P6 admission behind `CRAWLER2_FEEDBACK__ENABLED` (default off). Real-stack replay with simulated fetch and matcher: next cycle 15 vs 2 matching media at equal budget; no-match control identical; decays to neutral. P10 M3 is NOT PASSED (fingerprinter repo), so the matcher link is simulated | P11 exit.md; operator decision OD-2; next phase P12 |
 | 2026-10-22 | **P12 implemented, M5 NOT PASSED (awaiting owner review)**: `match.found` → evidence candidate through crawler2's registry (E1 identity, V007 E5 candidates with explicit gaps/ambiguity), SHA-256 artifact verification, finalization into append-only versions (E6 LWT, E2 seal = v1, supersession, E7 audit), canonical manifest (reproducible digest), campaign statistics, case package (JSON + HTML + artifacts + SHA256SUMS + deterministic tar.gz), `crawler2-evidence` CLI. Technical baseline only: no screenshots/clips/WARC, no object lock, no trusted timestamp/signature (all declared). Validated with fixtures on the real stack; no real matcher output (P10 M3 not passed) | P12 exit.md; owner decisions OD-P12-1…7 |
+| 2026-10-22 | **P13 implemented (analytics, offline)**: read-only token-range export of the crawler2 keyspace (17 datasets, explicit exclusions) → revisioned, reconciled Parquet (date partitions, domain as sorted column, manifests with counts + SHA-256, unchanged/new-revision re-export, resumable runs) → DuckDB views, campaign/source reports reproducible from Parquet alone (`report_digest`), offline graph (site↔site, page→media→content←match→target, evidence), deterministic site/template clustering writing *unreviewed* P7 bootstrap candidates; `crawler2-analytics` CLI; DuckDB the only new dependency. Validated on synthetic fixtures and a throwaway real-Scylla keyspace; the real-data export of `crawler2_m1` was not run (OD-P13-1); no real match exists (P10 M3) | P13 exit.md; P10/M3, P11/M4, P12/M5 unchanged |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | ADR-005 stays open; P12 implemented a conservative technical baseline without it (P12 decisions §3). |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -817,6 +818,13 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
   feature 9) prototyped here and fed back to P7 as source-profile bootstrap.
 - **Test:** export completeness (row counts vs source), idempotent re-export.
 - **Exit gate:** standard campaign/source reports reproducible from Parquet alone.
+- Status as of 2026-10-22: **IMPLEMENTED; exit gate PASSED on synthetic fixtures and a
+  throwaway real-Scylla keyspace; real-data demonstration PENDING.** Export (completeness
+  reconciliation, idempotent re-export, revisioned publication, resume), DuckDB reports, graph
+  and clustering prototype in `crawler2/analytics`; the read-only export of the real M1 history
+  (`crawler2_m1`) has not been run (owner decision OD-P13-1); no campaign report on real
+  matcher output is possible until P10/M3. Cluster bootstrap candidates are unreviewed and not
+  imported into P7. Gate table: `docs/phases/p13-analytics/exit.md`.
 
 ### P14 — Production hardening (L) → Milestone M6
 
