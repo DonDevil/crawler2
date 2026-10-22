@@ -64,6 +64,9 @@ EXPECTED_TABLES = {
     "media_probe_latest": "P8/R6",
     "encode_claims": "P8/R7",
     "encode_claims_by_day": "P8/R8",
+    # V006 (P11): match evidence per source host, hosts with evidence.
+    "feedback_evidence": "P11/B1",
+    "feedback_sources": "P11/B2",
 }
 
 

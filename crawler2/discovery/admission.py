@@ -12,6 +12,12 @@ P6's own filter, scope and revisit decisions: it can defer a URL of a host
 in a negative state and choose the starting queue, never admit what P6
 rejected. Without an advisor, or when P7 has no informed advice, admission is
 unchanged (B.5 #1).
+
+The optional P11 prioritizer (P11 design §6) raises the static priority by a
+bounded boost for hosts and URL templates whose pages carried matching media,
+and may start such a host on the browser when only the browser reached its
+media and P7 has no informed opinion. It never lowers a priority and never
+admits or rejects anything; without it, or on fallback, priorities are static.
 """
 
 from __future__ import annotations
@@ -36,6 +42,7 @@ from crawler2.filtering.model import Action, Decision
 from crawler2.filtering.store import RulesetHolder
 from crawler2.frontier.model import Admission, AdmitOutcome, AdmitResult
 from crawler2.intelligence.advice import SourceAdvice, SourceAdvisor, fallback
+from crawler2.intelligence.feedback import PriorityDecision
 from crawler2.storage.repositories import (
     AdmittedUrl,
     DiscoveryRepository,
@@ -72,6 +79,12 @@ class Outcome(StrEnum):
     REDIRECT_BLOCKED = "redirect_blocked"
     SOURCE_DEFERRED = "source_deferred"
     """P7: the host is in a negative state and no probe is due (not a filter decision)."""
+
+
+class Prioritizer(Protocol):
+    def prioritize(self, url: UrlRef, base: int, now: datetime) -> PriorityDecision:
+        """Must not raise or block (admission still guards the call)."""
+        ...
 
 
 class AdmissionSink(Protocol):
@@ -134,9 +147,11 @@ class Admitter:
         metrics: Metrics | None = None,
         clock: Callable[[], datetime] = lambda: datetime.now(UTC),
         advisor: SourceAdvisor | None = None,
+        prioritizer: Prioritizer | None = None,
     ) -> None:
         self._frontier = frontier
         self._advisor = advisor
+        self._prioritizer = prioritizer
         self._repo = discovery
         self._holder = holder
         self._s = settings
@@ -199,8 +214,10 @@ class Admitter:
                 self._set(outcomes, cand, Outcome.RECENT)
                 continue
             queue = ExecutionQueue.TOR if inp.host.endswith(".onion") else ExecutionQueue.HTTP
+            informed = False
             if self._advisor is not None and queue is ExecutionQueue.HTTP:  # no Tor profiles
                 advice = self._source_advice(cand.url, now)
+                informed = advice.fallback is None
                 if not advice.admit:
                     self._set(outcomes, cand, Outcome.SOURCE_DEFERRED)
                     _log.debug(
@@ -212,6 +229,16 @@ class Admitter:
                     continue
                 if advice.capability == ExecutionQueue.BROWSER.value:
                     queue = ExecutionQueue.BROWSER
+            priority = self._priority[cand.origin]
+            if self._prioritizer is not None:
+                fb = self._feedback(cand.url, priority, now)
+                priority = fb.priority
+                if (
+                    fb.capability == ExecutionQueue.BROWSER.value
+                    and queue is ExecutionQueue.HTTP
+                    and not informed
+                ):
+                    queue = ExecutionQueue.BROWSER
             admissions.append(
                 (
                     cand,
@@ -219,7 +246,7 @@ class Admitter:
                     Admission(
                         url=cand.url,
                         queue=queue,
-                        priority=self._priority[cand.origin],
+                        priority=priority,
                         reason=REASON[cand.origin.value],
                     ),
                 )
@@ -252,6 +279,18 @@ class Admitter:
         except Exception:  # noqa: BLE001 -- P7 is optional (B.5 #1)
             _log.exception("source_advice_failed", url=url.url)
             return fallback("error")
+
+    def _feedback(self, url: UrlRef, base: int, now: datetime) -> PriorityDecision:
+        """P11 is optional: any failure is the static priority."""
+        assert self._prioritizer is not None  # noqa: S101 -- checked by the caller
+        try:
+            fb = self._prioritizer.prioritize(url, base, now)
+        except Exception:  # noqa: BLE001 -- P11 is optional (B.5 #1)
+            _log.exception("feedback_priority_failed", url=url.url)
+            return PriorityDecision(base, base, reason="error", fallback="error")
+        if not 0 <= fb.priority <= 100:  # never trust a broken boost with the frontier
+            return PriorityDecision(base, base, reason="invalid", fallback="invalid")
+        return fb
 
     def _row(
         self,

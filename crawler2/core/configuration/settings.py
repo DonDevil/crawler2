@@ -381,6 +381,26 @@ class IntelligenceSettings(BaseModel):
     """A projection checkpoint lagging more than this gives no advice (fallback)."""
 
 
+class FeedbackSettings(BaseModel):
+    """P11 match feedback (docs/phases/p11-feedback-loop/design.md §6)."""
+
+    enabled: bool = False
+    """P6 admission adds the P11 priority boost. Off by default: admission is then
+    exactly the P6/P7 behaviour (B.5 #1). The consumer may run either way."""
+    consumer_group: str = Field(default="crawl-feedback", pattern=r"^[a-z0-9._-]{1,64}$")
+    batch_size: PositiveInt = 50
+    block_ms: PositiveInt = 2000
+    claim_idle_ms: PositiveInt = 60_000
+    snapshot_refresh_s: float = Field(default=60.0, gt=0)
+    max_snapshot_age_s: float = Field(default=900.0, gt=0)
+    """An admission snapshot older than this gives no boost (fallback)."""
+    tau_days: float = Field(default=14.0, gt=0)
+    max_source_boost: int = Field(default=15, ge=0, le=50)
+    max_pattern_boost: int = Field(default=5, ge=0, le=50)
+    max_total_boost: int = Field(default=20, ge=0, le=50)
+    explore_percent: int = Field(default=20, ge=0, le=100)
+
+
 class MediaSettings(BaseModel):
     """P8 media registry (docs/phases/p08-media-registry/design.md, ADR-024).
 
@@ -477,6 +497,7 @@ class Settings(BaseSettings):
     search: SearchSettings = Field(default_factory=SearchSettings)
     intelligence: IntelligenceSettings = Field(default_factory=IntelligenceSettings)
     media: MediaSettings = Field(default_factory=MediaSettings)
+    feedback: FeedbackSettings = Field(default_factory=FeedbackSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

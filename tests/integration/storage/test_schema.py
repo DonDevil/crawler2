@@ -14,7 +14,7 @@ from tests.unit.storage.test_migrations import EXPECTED_TABLES
 
 pytestmark = pytest.mark.integration
 
-TTL_30D, TTL_14D = 2_592_000, 1_209_600
+TTL_90D, TTL_30D, TTL_14D = 7_776_000, 2_592_000, 1_209_600
 EXPECTED_TTL = {
     "fetch_attempts_by_domain_day": TTL_30D,
     "fetch_attempts_by_url": TTL_30D,
@@ -23,10 +23,12 @@ EXPECTED_TTL = {
     "processed_events": TTL_14D,
     "intel_source_profiles": TTL_30D,
     "encode_claims_by_day": TTL_14D,
+    "feedback_evidence": TTL_90D,
+    "feedback_sources": TTL_90D,
 }
 # One row per key, overwritten in place; the TTL only expires abandoned keys. TWCS
 # would keep the overwritten cells of every window, so these stay size-tiered.
-UPSERTED_WITH_TTL = {"intel_source_profiles"}
+UPSERTED_WITH_TTL = {"intel_source_profiles", "feedback_evidence", "feedback_sources"}
 
 
 @pytest.fixture

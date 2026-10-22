@@ -81,6 +81,7 @@ def build(settings: Settings) -> Context:
         decision_ttl_s=settings.filter.decision_ttl_s,
         metrics=metrics,
         advisor=_source_advisor(settings, storage, metrics),
+        prioritizer=_feedback_prioritizer(settings, storage, metrics),
     )
     scope = Scope(storage.discovery, refresh_s=settings.discovery.scope_refresh_s)
     return Context(settings, identity, storage, redis, holder, admitter, scope, metrics)
@@ -110,6 +111,18 @@ def _source_advisor(settings: Settings, storage: Any, metrics: Metrics) -> Any:
     )
     advisor.start()
     return advisor
+
+
+def _feedback_prioritizer(settings: Settings, storage: Any, metrics: Metrics) -> Any:
+    """P11 match feedback (P11 design §6), only when enabled; loads in the background
+    like P7 advice, and admission uses static priorities while it is missing."""
+    if not settings.feedback.enabled:
+        return None
+    from crawler2.intelligence.feedback_service import build_prioritizer
+
+    prioritizer = build_prioritizer(settings, storage, metrics)
+    prioritizer.start()
+    return prioritizer
 
 
 class AdmissionLoop:
