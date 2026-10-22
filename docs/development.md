@@ -38,6 +38,16 @@ It uses the throwaway keyspace `crawler2_it_p7_host` and private stream
 prefixes and frontier namespaces. The failure-injection test waits for
 minute buckets to close, so it takes about 1.5 min.
 
+### P11 match feedback (host)
+
+```bash
+make up
+scripts/test-feedback.sh -s         # P11 unit tests + the M4 replay on Scylla/Redis (~30 s)
+```
+
+Keyspace `crawler2_it_p11_host`, private stream prefixes, frontier
+namespaces in Redis db 9. `-s` prints the `P11-M4-REPLAY` measurement line.
+
 P7 runtime use needs `crawler2-storage migrate` first (V004). The source
 reader `crawler2-intel sources run` is started by the operator, one
 instance; there is no compose service for it.

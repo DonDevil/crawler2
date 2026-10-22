@@ -40,6 +40,7 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-12 | **P9 real-media validation**: licensed corpus S-SRC completed (7 Blender films, ≥ 6 required) and C-PREC (63 clips), L-PAIRS (150 positive / 330 negative pairs), SOAK-1000 (1,030 items) derived from it; G-5 PASS (GPU FP32 6.59× CPU FP32 on C-PREC); G-2 FAIL (FP16, 7 of 10,267 segments < 0.999) and G-3 FAIL as implemented → FP16 stays gated; G-6 2.37 s/min (GPU end-to-end 1.117 s/min, 2.12×); SOAK-1000 criteria 1–7 met (3/4 vacuously), criterion 8 FAIL (truncated MP4 accepted per design §3.2a); the soak found X-8 (Scylla `WriteFailure` killed a worker) and X-9 (service stop → permanent `decode_error`), both fixed; real 8 GiB / > 5 GiB storage tests pass | P9 still IMPLEMENTED BUT VALIDATION INCOMPLETE; operator decisions OF-4/OF-5 open; G-8 rerun after OF-5 |
 | 2026-10-15 | **P9 OF-4/OF-5 follow-up**: operator chose OF-5 (a) (truncation policy and `dinov2-seg/2` unchanged; SOAK-1000 expected failures verified against the decoder at build time, `c-04-h264.mp4` replaced, manifest `ed3bfd8d…`) and OF-4 (G-3 alignment applies to matched pairs); G-3 PASS on L-PAIRS, G-2 still FAIL → FP16 gated; SOAK-1000 run 5 **PASS** 8/8 (3/4 vacuous) after run 3 (host shutdown) and run 4 (defect X-10: one storage error ended the reconcile loop; fixed) aborted; exit gates G-1, G-5, G-8 met | P9 validation §8, exit.md |
 | 2026-10-15 | **P9 accepted** by the operator as complete for the approved implementation and validation scope, with the documented limitations (FP16 gated after G-2 FAIL; soak criteria 3/4 vacuous; partial truncation detection; real multi-machine deferred to P14; P8 real-stack tiers not re-run); not production-deployed; FP32 default; design not reopened | P9 decisions §5c, exit.md §1 |
+| 2026-10-22 | **P11 implemented, M4 NOT PASSED**: `match.found` consumer attributes matches to page hosts through crawler2's registry (M5 → M3 → W4) and records evidence (V006); bounded, decaying boost (≤ 15 source + ≤ 5 template, ≤ 20 total; τ 14 d) and browser preference (20 % http re-test) applied in P6 admission behind `CRAWLER2_FEEDBACK__ENABLED` (default off). Real-stack replay with simulated fetch and matcher: next cycle 15 vs 2 matching media at equal budget; no-match control identical; decays to neutral. P10 M3 is NOT PASSED (fingerprinter repo), so the matcher link is simulated | P11 exit.md; operator decision OD-2; next phase P12 |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
 
 This document turns the V2 design into phases. Every phase follows the
@@ -771,6 +772,11 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
   produced matches; stability test (no oscillation).
 - **Exit gate — M4:** end-to-end: register target → crawl → media →
   encode → match → source priority rises → next crawl cycle reaches more matching media.
+- Status as of 2026-10-22: **IMPLEMENTED; M4 NOT PASSED.** Feedback loop
+  wired into P6 admission → P3 frontier (off by default); demonstrated on the
+  real Redis/Scylla stack with the fetch and the P10 matcher simulated (M3 not
+  passed): 15 vs 2 matching media in the next cycle at equal budget. Gate
+  table: `docs/phases/p11-feedback-loop/exit.md`. Next planned phase: P12.
 
 ### P12 — Evidence collector & finalizer (L) → Milestone M5
 
