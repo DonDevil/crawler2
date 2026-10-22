@@ -11,11 +11,14 @@ criteria 3/4 only vacuously); FP16 stays gated (its precision gate G-2 failed):
 [`docs/phases/p09-fingerprinter-encoder/exit.md`](docs/phases/p09-fingerprinter-encoder/exit.md).
 **P11 — Feedback loop is implemented; M4 is not passed** (matcher and fetch simulated in the
 replay because P10's M3 is not passed; feedback is off by default):
-[`docs/phases/p11-feedback-loop/exit.md`](docs/phases/p11-feedback-loop/exit.md). Next: P12.
+[`docs/phases/p11-feedback-loop/exit.md`](docs/phases/p11-feedback-loop/exit.md).
+**P12 — Evidence collector & finalizer is implemented; M5 is not passed — awaiting owner review**
+of the fixture case package (all inputs synthetic; ADR-005 open):
+[`docs/phases/p12-evidence-collector/exit.md`](docs/phases/p12-evidence-collector/exit.md).
 P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
 [`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
 Phase status for every phase is in the plan. Earlier phases:
-[`p11-feedback-loop/`](docs/phases/p11-feedback-loop/), [`p07-crawl-intelligence/`](docs/phases/p07-crawl-intelligence/), [`p06-filter-discovery/`](docs/phases/p06-filter-discovery/), [`p05-extraction-page-intelligence/`](docs/phases/p05-extraction-page-intelligence/),
+[`p12-evidence-collector/`](docs/phases/p12-evidence-collector/), [`p11-feedback-loop/`](docs/phases/p11-feedback-loop/), [`p07-crawl-intelligence/`](docs/phases/p07-crawl-intelligence/), [`p06-filter-discovery/`](docs/phases/p06-filter-discovery/), [`p05-extraction-page-intelligence/`](docs/phases/p05-extraction-page-intelligence/),
 [`p04-fetch-workers/`](docs/phases/p04-fetch-workers/p4-fetch-layer-worker-pools.md), [`p03-frontier-scheduling/`](docs/phases/p03-frontier-scheduling/p3-frontier-scheduling.md), [`p02-storage/`](docs/phases/p02-storage/) (start with
 `what-was-built.md`), [`p01-contracts/`](docs/phases/p01-contracts/),
 [`p00-foundations/`](docs/phases/p00-foundations/).

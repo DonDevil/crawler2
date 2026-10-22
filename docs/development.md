@@ -38,6 +38,18 @@ It uses the throwaway keyspace `crawler2_it_p7_host` and private stream
 prefixes and frontier namespaces. The failure-injection test waits for
 minute buckets to close, so it takes about 1.5 min.
 
+### P12 evidence (host)
+
+```bash
+make up
+scripts/test-evidence.sh -q                                    # P12 unit + real-stack tests (~40 s)
+P12_CASE_OUT=var/p12-fixture-case scripts/test-evidence.sh -q  # also writes the review package
+```
+
+Keyspace `crawler2_it_p12_host`, a test bucket and private stream prefixes;
+nothing is fetched. The package directory must not exist yet (export never
+overwrites).
+
 ### P11 match feedback (host)
 
 ```bash

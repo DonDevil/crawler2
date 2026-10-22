@@ -41,7 +41,8 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-15 | **P9 OF-4/OF-5 follow-up**: operator chose OF-5 (a) (truncation policy and `dinov2-seg/2` unchanged; SOAK-1000 expected failures verified against the decoder at build time, `c-04-h264.mp4` replaced, manifest `ed3bfd8d…`) and OF-4 (G-3 alignment applies to matched pairs); G-3 PASS on L-PAIRS, G-2 still FAIL → FP16 gated; SOAK-1000 run 5 **PASS** 8/8 (3/4 vacuous) after run 3 (host shutdown) and run 4 (defect X-10: one storage error ended the reconcile loop; fixed) aborted; exit gates G-1, G-5, G-8 met | P9 validation §8, exit.md |
 | 2026-10-15 | **P9 accepted** by the operator as complete for the approved implementation and validation scope, with the documented limitations (FP16 gated after G-2 FAIL; soak criteria 3/4 vacuous; partial truncation detection; real multi-machine deferred to P14; P8 real-stack tiers not re-run); not production-deployed; FP32 default; design not reopened | P9 decisions §5c, exit.md §1 |
 | 2026-10-22 | **P11 implemented, M4 NOT PASSED**: `match.found` consumer attributes matches to page hosts through crawler2's registry (M5 → M3 → W4) and records evidence (V006); bounded, decaying boost (≤ 15 source + ≤ 5 template, ≤ 20 total; τ 14 d) and browser preference (20 % http re-test) applied in P6 admission behind `CRAWLER2_FEEDBACK__ENABLED` (default off). Real-stack replay with simulated fetch and matcher: next cycle 15 vs 2 matching media at equal budget; no-match control identical; decays to neutral. P10 M3 is NOT PASSED (fingerprinter repo), so the matcher link is simulated | P11 exit.md; operator decision OD-2; next phase P12 |
-| open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | Blocks P12 design only; ADR-005 stays open. |
+| 2026-10-22 | **P12 implemented, M5 NOT PASSED (awaiting owner review)**: `match.found` → evidence candidate through crawler2's registry (E1 identity, V007 E5 candidates with explicit gaps/ambiguity), SHA-256 artifact verification, finalization into append-only versions (E6 LWT, E2 seal = v1, supersession, E7 audit), canonical manifest (reproducible digest), campaign statistics, case package (JSON + HTML + artifacts + SHA256SUMS + deterministic tar.gz), `crawler2-evidence` CLI. Technical baseline only: no screenshots/clips/WARC, no object lock, no trusted timestamp/signature (all declared). Validated with fixtures on the real stack; no real matcher output (P10 M3 not passed) | P12 exit.md; owner decisions OD-P12-1…7 |
+| open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | ADR-005 stays open; P12 implemented a conservative technical baseline without it (P12 decisions §3). |
 
 This document turns the V2 design into phases. Every phase follows the
 same four-step cycle V1 already used successfully (audit → design →
@@ -798,6 +799,13 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
   package reproducibility (same inputs → same manifest hash); stats
   correctness vs hand-counted fixture campaign.
 - **Exit gate — M5:** a full case package for a test campaign reviewed and accepted by you.
+- Status as of 2026-10-22: **IMPLEMENTED; M5 NOT PASSED — AWAITING OWNER
+  REVIEW.** Collector, validation, append-only finalization/supersession with
+  audit, reproducible manifests, campaign statistics and case export
+  implemented and tested on the real Scylla/MinIO/Redis stack with a
+  synthetic fixture campaign (`var/p12-fixture-case/`, not committed). Not
+  provided: screenshots/clips, WARC, object lock, RFC 3161/signing (ADR-005
+  open). Gate table: `docs/phases/p12-evidence-collector/exit.md`.
 
 ### P13 — Analytics layer (M)
 

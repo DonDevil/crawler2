@@ -31,3 +31,9 @@ come from the project owner / counsel, not be invented by engineering.
   answers can be applied without re-crawling.
 - No component may delete raw data irreversibly on a policy that has not
   been agreed here.
+- P12 (2026-10-22) implemented a conservative *technical* evidence baseline
+  without these answers: provenance, SHA-256 verification, append-only
+  finalization, declared gaps, no legal claims. The open owner decisions it
+  depends on are listed in
+  [P12 decisions §3](../phases/p12-evidence-collector/decisions.md). This ADR
+  stays open.
