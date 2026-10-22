@@ -16,6 +16,8 @@ cffi==2.1.1 ; platform_python_implementation != 'CPython'
     # via brotlicffi
 click==8.5.0
     # via geomet
+duckdb==1.5.6
+    # via crawler2
 geomet==1.1.0
     # via scylla-driver
 greenlet==3.5.6

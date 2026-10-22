@@ -17,6 +17,7 @@ dependencies = [
     "psutil>=7.1,<8",
     "selectolax>=0.3.34,<1",
     "publicsuffixlist>=1.0,<2",
+    "duckdb>=1.5.6,<1.6",
 ]
 
 [project.scripts]
@@ -29,6 +30,7 @@ crawler2-discover = "crawler2.discovery.cli:main"
 crawler2-intel = "crawler2.intelligence.cli:main"
 crawler2-media = "crawler2.media.cli:main"
 crawler2-evidence = "crawler2.evidence.cli:main"
+crawler2-analytics = "crawler2.analytics.cli:main"
 
 [dependency-groups]
 dev = [
@@ -64,6 +66,8 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 "crawler2/intelligence/feedback_store.py" = ["S608"]
 "crawler2/evidence/store.py" = ["S608"]
 "crawler2/media/store.py" = ["S608"]
+# DuckDB/CQL over identifiers from the dataset catalog; user values are bound or quoted.
+"crawler2/analytics/**" = ["S608"]
 # dev benchmark tooling: fixed docker/cqlsh invocations on our own keyspace names
 "benchmarks/p2-storage/**" = ["S603", "S607", "S608"]
 # dev benchmark tooling: seeded pseudo-random workloads, fixed lscpu call

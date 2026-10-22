@@ -19,6 +19,9 @@ build/
 *.sqlite
 *.sqlite3
 *.rdb
+*.duckdb
+*.duckdb.wal
+*.parquet
 *.aof
 appendonly*
 dump.rdb

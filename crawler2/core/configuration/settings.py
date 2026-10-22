@@ -418,6 +418,23 @@ class EvidenceSettings(BaseModel):
     """Upper bound on the bytes of one exported case package (it is assembled in memory)."""
 
 
+class AnalyticsSettings(BaseModel):
+    """P13 offline analytics (docs/phases/p13-analytics/design.md).
+
+    Exports read the crawler2 keyspace with full token-range scans; they never write
+    to Scylla, Redis or MinIO. Everything is written under ``root``.
+    """
+
+    root: Path = Path("var/analytics")
+    """Exports, run records, derived graphs and clusters (git-ignored under var/)."""
+    segments: int = Field(default=64, ge=1, le=4096)
+    """Token-range segments per table: the unit of checkpointing and retry."""
+    max_retries: int = Field(default=3, ge=0, le=20)
+    retry_backoff_s: float = Field(default=2.0, ge=0)
+    duckdb_memory_limit: str = Field(default="1GB", pattern=r"^[0-9]+(\.[0-9]+)?\s*[KMGT]i?B$")
+    duckdb_threads: int = Field(default=2, ge=1, le=64)
+
+
 class MediaSettings(BaseModel):
     """P8 media registry (docs/phases/p08-media-registry/design.md, ADR-024).
 
@@ -516,6 +533,7 @@ class Settings(BaseSettings):
     media: MediaSettings = Field(default_factory=MediaSettings)
     feedback: FeedbackSettings = Field(default_factory=FeedbackSettings)
     evidence: EvidenceSettings = Field(default_factory=EvidenceSettings)
+    analytics: AnalyticsSettings = Field(default_factory=AnalyticsSettings)
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:

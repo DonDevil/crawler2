@@ -1,4 +1,5 @@
 from crawler2.core.configuration.settings import (
+    AnalyticsSettings,
     DiscoverySettings,
     Environment,
     EventSettings,
@@ -23,6 +24,7 @@ from crawler2.core.configuration.settings import (
 )
 
 __all__ = [
+    "AnalyticsSettings",
     "DiscoverySettings",
     "Environment",
     "EventSettings",
