@@ -1,0 +1,31 @@
+# Runs the soak under a supervisor so a crash of the runner is a recorded, resumable interruption
+# rather than the end of the run. Start with the config path in the instance name's environment:
+#   systemctl edit crawler2-soak   (set SOAK_CONFIG / SOAK_RUN_DIR)
+#   systemctl start crawler2-soak
+# First start creates the run; after that the unit resumes SOAK_RUN_DIR. Both go through the same
+# checks (a completed run is never resumed; a held lock is never taken).
+[Unit]
+Description=crawler2 7-day soak runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=crawler2
+Group=crawler2
+WorkingDirectory=/opt/crawler2
+EnvironmentFile=-/etc/crawler2/soak.env
+Environment=SOAK_CONFIG=/opt/crawler2/scripts/soak/production.toml
+Environment=SOAK_RUN_DIR=
+ExecStart=/bin/bash -c 'if [ -n "$SOAK_RUN_DIR" ] && [ -d "$SOAK_RUN_DIR" ]; then exec /opt/crawler2/env/bin/crawler2-soak resume "$SOAK_RUN_DIR"; else exec /opt/crawler2/env/bin/crawler2-soak start "$SOAK_CONFIG"; fi'
+# A restart after a crash resumes and records the gap; the continuity criterion decides what it costs.
+Restart=on-failure
+RestartSec=20
+TimeoutStopSec=120
+KillSignal=SIGTERM
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/crawler2/soak
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

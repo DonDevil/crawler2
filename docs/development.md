@@ -12,6 +12,24 @@ of the development machine.
 | integration, all | compose stack | `make validate-stack` (runs `tests/integration` inside the app containers) |
 | integration, one area from the host | compose stack | see below |
 
+### What CI runs (`.github/workflows/ci.yml`)
+
+| Job | Runs | Notes |
+|---|---|---|
+| `quality` | `make lint`, `make typecheck`, `make test` (unit + contract, no services), systemd unit verification, synthetic soak dry run | the only job that existed before P14 apart from `compose` |
+| `browser` | `tests/contract/crawlers` with Chromium (`RUN_BROWSER_TESTS=1`), incl. the SSRF guard in a real browser | added P14 |
+| `observability` | `promtool check config/rules` + `promtool test rules`; secured-compose `config -q` | added P14 |
+| `tiers` | `scripts/test-extraction\|filter-discovery\|media\|evidence\|analytics\|feedback\|intelligence.sh` against the compose stack | added P14 (P8–P13 tiers were not in CI before, `to_complete.md` X-8) |
+| `compose` | `scripts/validate-stack.sh` (P0–P2, both profiles) | unchanged |
+
+**None of the P14 CI changes has run on GitHub**: the workflow was validated as YAML and its commands were run
+locally (see the P14 `validation.md`), and the repository's 40+ local commits have never been pushed, so no remote
+run of any CI job is on record (`phases/p00-foundations/validation.md` "partially verified" still stands).
+**Not in CI by design** (need hardware, licensed media or elapsed time): GPU/encoder tiers
+(`scripts/test-fingerprinter-p9.sh`, fingerprinter repo), `scripts/test-crawlers.sh` with the live stack and
+multi-host tiers (`test-media-two-host.sh`), all benchmarks, the 24 h/7-day runs. The contract-compatibility check
+against the fingerprinter pin (`antipiracy-contracts` 1.1.0) runs only where both repositories are checked out.
+
 Integration tests are marked `integration` and skipped unless
 `RUN_INTEGRATION_TESTS=1`. Tests that need only Redis (the frontier) can
 run from the host against the published Redis port:
@@ -211,6 +229,19 @@ scripts/test-filter-discovery.sh    # unit + Scylla rule store + M1 fixture loop
 ```
 
 Throwaway keyspace `crawler2_it_p6_host`, bucket `crawler2-it-p6-host`.
+
+### P14 hardening tools (host)
+
+```bash
+env/bin/pytest -q tests/unit/soak tests/unit/ops tests/unit/test_exporter.py tests/unit/test_trace.py \
+  tests/unit/test_observability_config.py tests/unit/crawlers/test_ssrf_pagefetch.py   # no services
+RUN_BROWSER_TESTS=1 env/bin/pytest -q tests/contract/crawlers                          # Chromium
+env/bin/crawler2-soak dry-run scripts/soak/dryrun-synthetic.toml                       # 2 min, synthetic
+sg docker -c "env/bin/python scripts/backup/rehearsal.py"                              # local backup->restore rehearsal
+```
+
+Running the integration suites as the **restricted Redis user** (ACL) is documented in
+`docs/phases/p14-production-hardening/validation.md` §3.
 
 ## V1 is read-only
 

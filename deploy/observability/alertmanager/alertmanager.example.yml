@@ -1,0 +1,22 @@
+# OPERATOR DECISION REQUIRED: the alert destination (person/channel/pager) is not decided
+# (docs/phases/p14-production-hardening/decisions.md OD-P14-4). This example routes everything to one
+# webhook whose URL is read from a file, so no endpoint or secret is committed.
+route:
+  receiver: operator
+  group_by: [alertname, severity]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+    - matchers: [severity="critical"]
+      receiver: operator
+      repeat_interval: 1h
+receivers:
+  - name: operator
+    webhook_configs:
+      - url_file: /run/secrets/alert_webhook_url     # OPERATOR: create this secret file
+        send_resolved: true
+inhibit_rules:
+  - source_matchers: [alertname="HostDown"]
+    target_matchers: [severity=~"warning|critical"]
+    equal: [instance]

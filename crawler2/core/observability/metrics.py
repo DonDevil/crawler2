@@ -15,6 +15,27 @@ from prometheus_client import CollectorRegistry, Counter, Gauge, Histogram, Info
 from prometheus_client import start_http_server as _start_http_server
 
 from crawler2.core.configuration.settings import Settings
+from crawler2.core.observability.logging import get_logger
+
+_log = get_logger("core.metrics")
+
+ROLE_PORT_OFFSETS: dict[str, int] = {
+    "worker-http": 1,
+    "worker-browser": 2,
+    "worker-tor": 3,
+    "extract": 4,
+    "relay": 5,
+    "admit": 6,
+    "resolve": 7,
+    "probe": 8,
+    "hash": 9,
+    "representations": 10,
+    "intel": 11,
+    "feedback": 12,
+    "evidence-collect": 13,
+    "exporter": 14,
+}
+"""Per-role offsets from ``metrics.port`` (see docs/phases/p14-production-hardening/)."""
 
 DEFAULT_LATENCY_BUCKETS: tuple[float, ...] = (
     0.005,
@@ -97,7 +118,21 @@ class Metrics:
         """Prometheus text exposition of every registered series."""
         return generate_latest(self.registry)
 
-    def serve(self) -> None:
-        """Expose /metrics over HTTP on the configured port (no-op when disabled)."""
-        if self._settings.enabled:
-            _start_http_server(self._settings.port, registry=self.registry)
+    def serve(self, role: str | None = None) -> int | None:
+        """Expose /metrics over HTTP; returns the port, or None when disabled or unbindable.
+
+        ``role`` selects a fixed offset from ``metrics.port`` (``ROLE_PORT_OFFSETS``) so the
+        long-running processes of one host never collide; ``None`` keeps the base port.
+        A bind failure is logged and does not stop the process: losing a metrics port must
+        not turn into lost work (the missing scrape target alerts instead).
+        """
+        if not self._settings.enabled:
+            return None
+        port = self._settings.port + ROLE_PORT_OFFSETS.get(role or "", 0)
+        try:
+            _start_http_server(port, addr=self._settings.bind, registry=self.registry)
+        except OSError as exc:
+            _log.error("metrics_bind_failed", role=role, port=port, error=str(exc)[:160])
+            return None
+        _log.info("metrics_serving", role=role, port=port, bind=self._settings.bind)
+        return port

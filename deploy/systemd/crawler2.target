@@ -1,0 +1,7 @@
+[Unit]
+Description=crawler2 (all roles enabled on this host)
+Wants=network-online.target
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target

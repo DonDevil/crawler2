@@ -42,6 +42,7 @@ _COMPLETE = frozenset(
         Outcome.CAPTCHA,
         Outcome.TOO_LARGE,
         Outcome.REDIRECT_ERROR,
+        Outcome.UNSAFE_DESTINATION,  # a property of the URL: retrying cannot change it
     }
 )
 _FAIL = frozenset({Outcome.INVALID_RESPONSE, Outcome.TLS_ERROR, Outcome.FETCHER_CRASH})

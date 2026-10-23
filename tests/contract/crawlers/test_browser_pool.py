@@ -29,7 +29,9 @@ from tests.fixtures.web import FixtureSite, serve
 pytestmark = pytest.mark.skipif(
     os.environ.get("RUN_BROWSER_TESTS") != "1", reason="needs Chromium; set RUN_BROWSER_TESTS=1"
 )
-HTTP = HttpFetchSettings(total_timeout_s=5, media_probe_bytes=64 * 1024)
+HTTP = HttpFetchSettings(
+    total_timeout_s=5, media_probe_bytes=64 * 1024, ssrf_allowed_networks=["127.0.0.0/8", "::1/128"]
+)
 
 
 @pytest.fixture(scope="module")

@@ -362,5 +362,10 @@ consumer-aware trimming, so a backlog replay cannot trim unread entries;
 exiting (X-11); (3) per-domain back-off on persistent 429 (X-14) and no
 bulk non-HTML downloads to the size limit (X-15), so that throughput and
 fetch-rate numbers describe the crawl rather than two hosts. Items (1) and
-(2) are P14 hardening in the plan; Gate G stays open until run 3, or until
-the plan moves the gate to after that hardening.
+(2) were done 2026-10-07 (ADR-022, `outbox_relay_retry`, byte-bounded
+retention). Of item (3), X-14 (per-domain 429 back-off, `crawlers/backoff.py`)
+and the declared-size half of X-15 (`TOO_LARGE` before streaming) were
+implemented in the P14 sprint (2026-10-22, unit-tested; not part of any
+24 h run). Run 3 has not been run and no one has decided whether it will be:
+the Gate G disposition (run 3, or replacing the gate by the P14 soak) is an
+open owner decision. Gate G stays open.

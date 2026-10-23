@@ -57,7 +57,7 @@ def _open(settings: Settings, metrics: Metrics | None = None) -> tuple[Any, Sour
 
 def cmd_run(args: Any, settings: Settings) -> int:
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("intel")
     _, projector = _open(settings, metrics)
     stopping = False
 
@@ -159,7 +159,7 @@ def cmd_feedback_run(args: Any, settings: Settings) -> int:
     from crawler2.storage.events.publisher import stream_name
 
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("feedback")
     storage, _, feedback = _feedback(settings, metrics)
     targets = TargetFeedback(storage.projections)
     fb = settings.feedback

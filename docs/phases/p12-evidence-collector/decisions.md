@@ -43,4 +43,4 @@ P11's `CRAWLER2_FEEDBACK__ENABLED` is untouched.
 | OD-P12-4 | Trusted timestamp authority and signing key custody | not configured; shown in every package |
 | OD-P12-5 | Is a `partial` package acceptable for any use, and who may finalize | allowed only with `--allow-partial`; actor recorded in E6/E7 |
 | OD-P12-6 | Personal data in snapshots (GDPR/DPDP) and redaction policy for exported artifacts | URL redaction only; artifact bytes are exported as stored |
-| OD-P12-7 | M5 acceptance: review of the fixture case package (this phase) and later of a package from a real crawl + real matcher | M5 NOT PASSED — awaiting owner review |
+| OD-P12-7 | M5 acceptance: review of the fixture case package (this phase) and later of a package from a real crawl + real matcher | M5 NOT PASSED. Fixture-package review **reported accepted by the operator** (2026-10-22 audit brief); no durable record - reviewer, review date and scope were not supplied, so this row is not a formal acceptance. Real-package check pending; ADR-005 open |

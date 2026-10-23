@@ -21,6 +21,7 @@ from antipiracy_contracts.models.web import FetchAttempt, HttpValidators, UrlRef
 from crawler2.core.configuration import ExecutionQueue, Settings, WorkerRole
 from crawler2.core.identity import WorkerIdentity
 from crawler2.core.observability import Metrics, configure_logging, get_logger
+from crawler2.crawlers.backoff import DomainBackoff
 from crawler2.crawlers.browser import BrowserFetcher
 from crawler2.crawlers.health import NetworkHealth
 from crawler2.crawlers.http import HttpFetcher
@@ -91,6 +92,7 @@ async def run_pool(
     queue, role = POOLS[pool]
     identity = str(WorkerIdentity.create(settings.host_id, role))
     metrics = Metrics(settings)
+    metrics.serve(f"worker-{pool}")
     frontier = RedisFrontier(
         connect_redis(settings.redis), settings.frontier, namespace=settings.redis.namespace
     )
@@ -122,6 +124,11 @@ async def run_pool(
         metrics=metrics,
         max_memory_mb=settings.limits.max_memory_mb,
         recover_every_s=settings.workers.recover_every_s,
+        backoff=(
+            DomainBackoff(settings.workers.rate_limit_backoff)
+            if settings.workers.rate_limit_backoff.enabled
+            else None
+        ),
     )
     loop = asyncio.get_running_loop()
     for sig in (signal.SIGTERM, signal.SIGINT):

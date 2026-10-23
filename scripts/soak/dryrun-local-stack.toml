@@ -1,0 +1,70 @@
+# Monitoring-pipeline dry run against the LOCAL dev stack (compose Redis/MinIO) and this host.
+# Real collectors, real stream tailing; no crawl is started, so match.found is never seen and the
+# verdict is INCONCLUSIVE by design - proof that the harness refuses a production pass without it.
+#   set -a; . ./.env; set +a
+#   crawler2-soak dry-run scripts/soak/dryrun-local-stack.toml
+run_name = "dryrun-local"
+mode = "production"
+dry_run = true               # short mechanics check: never M6-eligible
+duration_h = 0.0667          # 4 minutes
+sample_interval_s = 10
+run_root = "var/soak"
+required_stages = ["match.found"]
+repos = []                   # a real run lists ["/path/crawler2", "/path/fingerprinter"]
+
+[redis]
+host = "127.0.0.1"
+port = 16379
+db = 0
+stream_prefix = "events:"
+
+[[collectors]]
+name = "host"
+type = "host"
+[collectors.options.disk_paths]
+root = "/"
+[[collectors.series]]
+name = "cpu_percent"
+[[collectors.series]]
+name = "mem_available_mb"
+[[collectors.series]]
+name = "disk_root_free_fraction"
+role = "disk_free"
+
+[[collectors]]
+name = "redis"
+type = "redis"
+[collectors.options]
+host = "127.0.0.1"
+port = 16379
+[collectors.options.streams]
+fetch_completed = "events:fetch.completed.v1"
+page_observed = "events:page.observed.v1"
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "used_memory_mb"
+growth_watch = true
+[[collectors.series]]
+name = "connected_clients"
+
+[[collectors]]
+name = "minio"
+type = "http_health"
+[collectors.options]
+url = "http://127.0.0.1:19000/minio/health/live"
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "latency_ms"
+
+[[edges]]
+name = "fetch-to-page"
+from_type = "fetch.completed"
+to_types = ["page.observed"]
+from_key = "payload.attempt.fetch_attempt_id"
+to_key = "payload.observation.fetch_attempt_id"
+grace_s = 60
+required = false

@@ -1,0 +1,5 @@
+# Copy to targets/workers.yml and replace the placeholders with real host:port values.
+- targets: ["HOST_A:9101", "HOST_A:9102"]
+  labels:
+    host_group: replace-me
+    role: worker

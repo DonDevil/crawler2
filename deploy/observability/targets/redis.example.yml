@@ -1,0 +1,5 @@
+# Copy to targets/redis.yml and replace the placeholders with real host:port values.
+- targets: ["REDIS_HOST:9121"]
+  labels:
+    host_group: replace-me
+    role: redis

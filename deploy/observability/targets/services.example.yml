@@ -1,0 +1,5 @@
+# Copy to targets/services.yml and replace the placeholders with real host:port values.
+- targets: ["HOST_A:9104", "HOST_A:9105"]
+  labels:
+    host_group: replace-me
+    role: service

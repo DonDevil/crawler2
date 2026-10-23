@@ -26,6 +26,97 @@ jobs:
       - run: make lint
       - run: make typecheck
       - run: make test
+      - name: deployment files parse (systemd units, role launcher)
+        run: |
+          bash -n deploy/systemd/run-role
+          cd deploy/systemd && systemd-analyze verify ./crawler2-role@worker-http.service 2>&1 \
+            | grep -v "is not executable: No such file or directory" || true
+      - name: soak harness mechanics (synthetic dry run, ~2 min; never M6 evidence)
+        run: env/bin/python -m crawler2.soak.cli dry-run scripts/soak/dryrun-synthetic.toml
+
+  # Chromium-backed P4 contract suite, incl. the SSRF guard in a real browser (TC-060).
+  browser:
+    runs-on: ubuntu-24.04
+    needs: quality
+    env:
+      UV_PROJECT_ENVIRONMENT: env
+      RUN_BROWSER_TESTS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.17"
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - run: env/bin/playwright install --with-deps chromium
+      - run: env/bin/pytest tests/contract/crawlers -q
+
+  # Prometheus rules and scrape config, validated and unit-tested by promtool (TC-051/TC-054).
+  observability:
+    runs-on: ubuntu-24.04
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - name: promtool check + rule tests
+        run: |
+          mkdir -p /tmp/prom/targets
+          cp -r deploy/observability/alerts deploy/observability/rules-tests /tmp/prom/
+          cp deploy/observability/prometheus/prometheus.yml /tmp/prom/
+          for f in deploy/observability/targets/*.example.yml; do
+            cp "$f" "/tmp/prom/targets/$(basename "$f" .example.yml).yml"
+          done
+          P="docker run --rm -v /tmp/prom:/etc/prometheus --entrypoint promtool prom/prometheus:v2.55.1"
+          $P check config /etc/prometheus/prometheus.yml
+          $P check rules /etc/prometheus/alerts/crawler2.rules.yml
+          docker run --rm -v /tmp/prom:/etc/prometheus -w /etc/prometheus/rules-tests \
+            --entrypoint promtool prom/prometheus:v2.55.1 test rules crawler2.rules.test.yml
+      - name: secured compose overlay is valid
+        run: |
+          cp .env.example .env
+          deploy/secure/provision-secrets.sh
+          docker compose -f docker-compose.yml -f docker-compose.secure.yml config -q
+
+  # Later test tiers against the real stack (no GPU, no licensed media, no credentials).
+  # P8-P13 tiers were not in CI before P14 (to_complete.md X-8).
+  tiers:
+    runs-on: ubuntu-24.04
+    needs: quality
+    env:
+      UV_PROJECT_ENVIRONMENT: env
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.17"
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: dev .env with throwaway credentials
+        run: |
+          cp .env.example .env
+          sed -i "s/change-me-dev-only/$(openssl rand -hex 16)/" .env
+      - name: raise AIO limit for ScyllaDB
+        run: sudo sysctl -w fs.aio-max-nr=1048576
+      - name: bring the stack up and wait until the app container is healthy
+        run: |
+          make up
+          for i in $(seq 1 60); do
+            [ "$(docker inspect -f '{{.State.Health.Status}}' crawler2-app-1)" = healthy ] && exit 0
+            sleep 5
+          done
+          docker compose ps; exit 1
+      - run: scripts/test-extraction.sh -q
+      - run: scripts/test-filter-discovery.sh -q
+      - run: scripts/test-media.sh -q
+      - run: scripts/test-evidence.sh -q
+      - run: scripts/test-analytics.sh -q
+      - run: scripts/test-feedback.sh -q
+      - run: scripts/test-intelligence.sh -q
+      - name: service logs on failure
+        if: failure()
+        run: docker compose logs --no-color --tail=200
+      - name: tear down
+        if: always()
+        run: docker compose down -v
 
   compose:
     runs-on: ubuntu-24.04

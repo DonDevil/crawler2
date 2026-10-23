@@ -1,0 +1,206 @@
+# Alert rules (P14, TC-054). Thresholds are PROPOSALS pending owner approval of the SLOs
+# (docs/phases/p14-production-hardening/slo.md). Every rule has a unit test in rules-tests/.
+# Metric names come from the code (crawler2_* : see tests/unit/test_observability_config.py, which
+# fails if a rule or dashboard references a crawler2 series nothing produces) or from the standard
+# exporters named in prometheus.yml.
+groups:
+  - name: crawler2-liveness
+    rules:
+      - alert: ScrapeTargetDown
+        expr: up{job=~"crawler2-.*"} == 0
+        for: 5m
+        labels: {severity: critical}
+        annotations:
+          summary: "{{ $labels.job }} {{ $labels.instance }} is not scrapeable"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"
+      - alert: ProcessRestarting
+        expr: changes(process_start_time_seconds{job=~"crawler2-.*"}[1h]) > 3
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.job }} {{ $labels.instance }} restarted {{ $value }} times in 1h"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#restarts"
+      - alert: ExporterSourceDown
+        expr: crawler2_exporter_source_up == 0
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "Pipeline exporter cannot read {{ $labels.source }}"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"
+      - alert: WorkerNotReady
+        expr: max by (pool) (crawler2_worker_state{state=~"unavailable|offline|stopped"}) == 1
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Worker pool {{ $labels.pool }} reports a non-working state"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#restarts"
+
+  - name: crawler2-pipeline
+    rules:
+      - alert: ConsumerStalled
+        expr: crawler2_stream_group_oldest_pending_age_seconds > 600
+        for: 10m
+        labels: {severity: critical}
+        annotations:
+          summary: "Group {{ $labels.group }} has an entry on {{ $labels.event_type }} unacknowledged for {{ $value | humanizeDuration }}"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#stuck-consumer"
+      - alert: EventLagGrowing
+        expr: |
+          crawler2_stream_group_lag > 5000
+          and deriv(crawler2_stream_group_lag[30m]) > 0
+        for: 30m
+        labels: {severity: warning}
+        annotations:
+          summary: "Group {{ $labels.group }} is falling behind on {{ $labels.event_type }} (lag {{ $value }})"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#event-lag"
+      - alert: OutboxRelayBehind
+        expr: crawler2_outbox_checkpoint_lag_seconds > 900
+        for: 10m
+        labels: {severity: critical}
+        annotations:
+          summary: "Outbox checkpoint is {{ $value | humanizeDuration }} old: events are not being published"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"
+      - alert: OutboxLateRows
+        expr: increase(crawler2_outbox_late_rows_total[1h]) > 0
+        labels: {severity: warning}
+        annotations:
+          summary: "Rows appeared behind the relay checkpoint (ADR-013): settle window too small"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"
+      - alert: OutboxPublishFailures
+        expr: increase(crawler2_outbox_publish_failures_total[15m]) > 3
+        labels: {severity: warning}
+        annotations:
+          summary: "Relay cycles are failing on the transport"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"
+      - alert: DeadLettersGrowing
+        expr: increase(crawler2_frontier_dead_letters[1h]) > 0
+        labels: {severity: warning}
+        annotations:
+          summary: "Frontier dead letters grew by {{ $value }} in the last hour"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#dead-letters"
+      - alert: FrontierNotDraining
+        expr: |
+          sum(crawler2_frontier_depth) > 1000
+          and sum(rate(crawler2_fetch_attempts_total[30m])) == 0
+        for: 30m
+        labels: {severity: critical}
+        annotations:
+          summary: "Tasks are waiting but no fetch attempt completed for 30 minutes"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#stalled-crawl"
+      - alert: FetchFailureRatioHigh
+        expr: |
+          sum by (pool) (rate(crawler2_fetch_attempts_total{outcome=~"network_error|timeout|dns_error|tls_error|invalid_response|fetcher_crash"}[15m]))
+          / sum by (pool) (rate(crawler2_fetch_attempts_total[15m])) > 0.5
+        for: 15m
+        labels: {severity: warning}
+        annotations:
+          summary: "More than half of {{ $labels.pool }} attempts fail on the network/transport"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#fetch-failures"
+      - alert: FetchRecordErrors
+        expr: increase(crawler2_fetch_record_errors_total[15m]) > 0
+        labels: {severity: warning}
+        annotations:
+          summary: "Attempts were deferred because storage failed to record them"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#storage"
+      - alert: UnsafeDestinationBlocked
+        expr: |
+          increase(crawler2_fetch_attempts_total{outcome="unsafe_destination"}[15m]) > 0
+          or increase(crawler2_media_ssrf_rejections_total[15m]) > 0
+        labels: {severity: info}
+        annotations:
+          summary: "The SSRF guard refused a destination (hostile link or DNS rebinding attempt)"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#ssrf-blocks"
+      - alert: ObjectStoreErrors
+        expr: increase(crawler2_object_store_errors_total[15m]) > 5
+        labels: {severity: warning}
+        annotations:
+          summary: "Object store calls fail ({{ $labels.operation }})"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#storage"
+
+  - name: infrastructure
+    rules:
+      - alert: HostDown
+        expr: up{job="node"} == 0
+        for: 3m
+        labels: {severity: critical}
+        annotations:
+          summary: "Host {{ $labels.instance }} is not reporting"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"
+      - alert: RedisDown
+        expr: redis_up == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: "Redis is down: the frontier and every event stream are unavailable"
+          runbook: "docs/phases/p14-production-hardening/recovery.md#redis"
+      - alert: RedisMemoryHigh
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.8 and redis_memory_max_bytes > 0
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "Redis memory at {{ $value | humanizePercentage }} of maxmemory (a full Redis stalled M1 run 2, X-16)"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"
+      - alert: RedisMemoryCritical
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.95 and redis_memory_max_bytes > 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: "Redis memory above 95%: writes will be refused"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"
+      - alert: RedisEvictions
+        expr: increase(redis_evicted_keys_total[10m]) > 0
+        labels: {severity: critical}
+        annotations:
+          summary: "Redis evicted keys: frontier or stream data may be lost (policy must be noeviction)"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"
+      - alert: ScyllaNodeDown
+        expr: up{job="scylla"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: "Scylla node {{ $labels.instance }} is down"
+          runbook: "docs/phases/p14-production-hardening/recovery.md#scylla"
+      - alert: ScyllaPendingCompactions
+        # VERIFY the metric name against the deployed Scylla version before relying on this rule.
+        expr: sum by (instance) (scylla_compaction_manager_pending_compactions) > 200
+        for: 30m
+        labels: {severity: warning}
+        annotations:
+          summary: "Scylla {{ $labels.instance }} has {{ $value }} pending compactions"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#scylla-health"
+      - alert: MinioDown
+        expr: up{job="minio"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: "MinIO is down: page snapshots and evidence cannot be stored or read"
+          runbook: "docs/phases/p14-production-hardening/recovery.md#minio"
+      - alert: DiskSpaceLow
+        expr: |
+          node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"}
+          / node_filesystem_size_bytes{fstype!~"tmpfs|overlay|squashfs"} < 0.10
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.instance }}:{{ $labels.mountpoint }} has {{ $value | humanizePercentage }} free"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#disk"
+      - alert: DiskWillFillIn24h
+        expr: predict_linear(node_filesystem_avail_bytes{fstype!~"tmpfs|overlay|squashfs"}[6h], 24 * 3600) < 0
+        for: 30m
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.instance }}:{{ $labels.mountpoint }} is projected to fill within 24h"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#disk"
+      - alert: HostMemoryLow
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.08
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.instance }} has under 8% memory available (oomd kills terminals first, then workers)"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#host-memory"
+      - alert: GpuMemoryHigh
+        expr: crawler2_gpu_memory_used_bytes / crawler2_gpu_memory_total_bytes > 0.95
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: "GPU memory above 95% on {{ $labels.instance }}"
+          runbook: "docs/phases/p14-production-hardening/runbook.md#gpu"

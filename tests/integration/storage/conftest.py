@@ -11,6 +11,7 @@ import pytest
 import redis
 
 from crawler2.core.configuration import EventSettings, Settings
+from crawler2.storage.events.consumer import connect_stream_client
 from crawler2.storage.objectstore import S3ObjectStore
 from crawler2.storage.scylla import Migrator, ScyllaSession, ScyllaStorage
 
@@ -51,7 +52,7 @@ def object_store(
 
 @pytest.fixture
 def redis_client(settings: Settings) -> Iterator[redis.Redis]:
-    client = redis.Redis(host=settings.redis.host, port=settings.redis.port, db=settings.redis.db)
+    client = connect_stream_client(settings.redis)
     yield client
     client.close()
 

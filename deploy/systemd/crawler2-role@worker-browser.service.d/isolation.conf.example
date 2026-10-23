@@ -1,0 +1,7 @@
+# Network isolation for the roles that touch hostile content (TC-067). Copy to isolation.conf,
+# replace the placeholders with this deployment's Redis/Scylla/MinIO addresses, then
+# `systemctl daemon-reload && systemctl restart crawler2-role@worker-browser`.
+# Takes effect only for system units (root); NOT exercised in this repository's validation.
+[Service]
+IPAddressDeny=10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 169.254.0.0/16 100.64.0.0/10 127.0.0.0/8 fc00::/7 fe80::/10 ::1
+IPAddressAllow=REDIS_IP SCYLLA_IP_1 SCYLLA_IP_2 SCYLLA_IP_3 MINIO_IP 127.0.0.1

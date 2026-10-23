@@ -1,0 +1,47 @@
+# Prometheus for the crawler2 pipeline (P14, TC-051). Validated with `promtool check config`
+# (docs/phases/p14-production-hardening/observability.md). Scrape targets are file-based so the
+# operator lists real hosts in targets/*.yml (see targets/*.example.yml); nothing here names a host.
+global:
+  scrape_interval: 15s
+  evaluation_interval: 30s
+  external_labels:
+    system: crawler2
+
+rule_files:
+  - /etc/prometheus/alerts/*.yml
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]   # OPERATOR: where Alertmanager runs
+
+scrape_configs:
+  # Worker pools: crawler2-worker http|browser|tor  (ports 9101-9103; base 9100 + role offset)
+  - job_name: crawler2-workers
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/workers.yml]
+  # Long-running consumers/services: extract 9104, relay 9105, admit 9106, resolve 9107, probe 9108,
+  # hash 9109, representations 9110, intel 9111, feedback 9112, evidence-collect 9113
+  - job_name: crawler2-services
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/services.yml]
+  # crawler2-exporter (9114): queue/lag/backlog SLIs; one instance per deployment
+  - job_name: crawler2-exporter
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/exporter.yml]
+  - job_name: redis
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/redis.yml]        # oliver006/redis_exporter :9121
+  - job_name: scylla
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/scylla.yml]       # native endpoint :9180
+  - job_name: minio
+    metrics_path: /minio/v2/metrics/cluster
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/minio.yml]        # needs MinIO prometheus auth (see docs)
+  - job_name: node
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/node.yml]         # node_exporter :9100
+  - job_name: fingerprinter
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/fingerprinter.yml]  # only once fp exposes /metrics (gap FP-1)

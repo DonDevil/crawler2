@@ -1,0 +1,5 @@
+# Copy to targets/minio.yml and replace the placeholders with real host:port values.
+- targets: ["MINIO_HOST:9000"]
+  labels:
+    host_group: replace-me
+    role: minio

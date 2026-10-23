@@ -12,12 +12,19 @@ criteria 3/4 only vacuously); FP16 stays gated (its precision gate G-2 failed):
 **P11 — Feedback loop is implemented; M4 is not passed** (matcher and fetch simulated in the
 replay because P10's M3 is not passed; feedback is off by default):
 [`docs/phases/p11-feedback-loop/exit.md`](docs/phases/p11-feedback-loop/exit.md).
-**P12 — Evidence collector & finalizer is implemented; M5 is not passed — awaiting owner review**
-of the fixture case package (all inputs synthetic; ADR-005 open):
+**P12 — Evidence collector & finalizer is implemented; M5 is not passed.** The fixture case package
+(all inputs synthetic) was reported accepted by the operator on 2026-10-22 (no durable record: reviewer,
+date and scope not supplied); the real-package check is pending and ADR-005 is open:
 [`docs/phases/p12-evidence-collector/exit.md`](docs/phases/p12-evidence-collector/exit.md).
 **P13 — Analytics layer is implemented** (offline Parquet/DuckDB exports, reports, graph,
 clustering prototype; validated on synthetic fixtures and a throwaway Scylla keyspace, real-data
 export not yet run): [`docs/phases/p13-analytics/exit.md`](docs/phases/p13-analytics/exit.md).
+**P10 — vector index & matcher** lives in the fingerprinter repository (`p10-impl`, unpushed): implementation
+complete, **M3 not passed** (level-5 equivalence recall 0.933 vs 1.0; capacity, calibration blocked; `match.found`
+publication held), recorded in the plan. **P14 — production hardening: groundwork only** (SSRF/DNS-rebinding
+closure for page fetching, metrics endpoints + alerts + dashboards, supervision units, backup/restore tooling and a
+local rehearsal, the 7-day soak **harness** — not the soak). **M6 is not passed and the system is not
+production-ready**; status and what is still open: [`docs/phases/p14-production-hardening/exit.md`](docs/phases/p14-production-hardening/exit.md).
 P7 is closed with WHEN and the M2 gate deferred, not passed (D-22):
 [`docs/phases/p07-crawl-intelligence/exit.md`](docs/phases/p07-crawl-intelligence/exit.md).
 Phase status for every phase is in the plan. Earlier phases:
@@ -55,11 +62,15 @@ every field is overridable via `CRAWLER2_<FIELD>` / `CRAWLER2_<SECTION>__<FIELD>
 | `crawler2/core/configuration` | typed settings, host roles, resource limits |
 | `crawler2/core/identity.py` | worker identity `{host_id}:{role}:{pid}:{instance_id}` |
 | `crawler2/core/observability` | structured JSON logging, Prometheus metrics scaffold |
-| `crawler2/diagnostics` | `crawler2-check`: backend connectivity (health check) |
 | `crawler2/storage` | repositories (Scylla), object store (MinIO), outbox relay, consumer idempotency, `crawler2-storage` CLI (ADR-012…014) |
 | `crawler2/frontier` | Redis frontier: execution queues, shared politeness gate, leases, scheduling, retries, admission limits (ADR-015, ADR-016) |
 | `crawler2/crawlers` | worker runtime, http/tor/browser fetchers, outcome mapping, recorder, `crawler2-worker` CLI (ADR-017, ADR-018) |
 | `crawler2/analytics` | P13 offline analytics: read-only Scylla export → revisioned Parquet, DuckDB reports/SQL, derived graph, site/template clustering, `crawler2-analytics` CLI |
+| `crawler2/core/netguard.py` | P14 SSRF guard shared by every fetch path (connection pinning, per-hop checks); `media/ssrf.py` re-exports it |
+| `crawler2/soak` | P14 soak harness: config, collectors, ledger reconciliation, verdicts, reports; `crawler2-soak` |
+| `crawler2/ops` | P14 `crawler2-backup` create / verify / restore (new names only) / prune |
+| `crawler2/diagnostics` | `crawler2-check`; P14 `crawler2-exporter` (queue/lag/backlog SLIs) and `crawler2-trace` |
+| `deploy/` | P14 systemd units, Prometheus/Alertmanager/Grafana as code, secrets and MinIO/Redis least-privilege provisioning |
 | `crawler2/media` | P8 media registry: outbox resolver with per-observation claims (ADR-024), probe/hash, encode requester, `crawler2-media` CLI |
 | `contracts/` | `antipiracy-contracts` 1.0.0: IDs, domain models, events, catalog, JSON Schemas, compat fixtures (ADR-007…011) |
 | `docker/`, `docker-compose.yml` | dev stack, profiles `single` / `two-host` |

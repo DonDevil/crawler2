@@ -18,11 +18,13 @@ from datetime import UTC, datetime
 from enum import StrEnum
 
 import psutil
+from antipiracy_contracts.ids import DomainId
 from antipiracy_contracts.models.web import FetchCapability, UrlRef
 
 from crawler2.core.configuration import ExecutionQueue
 from crawler2.core.configuration.settings import PoolSettings
 from crawler2.core.observability import Metrics, get_logger
+from crawler2.crawlers.backoff import DomainBackoff
 from crawler2.crawlers.classify import error_info
 from crawler2.crawlers.decide import Decision, Operation, decide
 from crawler2.crawlers.health import NetworkHealth
@@ -83,6 +85,9 @@ class FetchMetrics:
             "fetch_duration_seconds", "Attempt wall time", ["pool", "outcome"]
         )
         self.lost_claims = metrics.counter("fetch_lost_claims_total", "Claims lost", ["pool"])
+        self.rate_limited = metrics.counter(
+            "fetch_rate_limited_total", "Responses that widened a domain interval", ["pool"]
+        )
         self.record_errors = metrics.counter(
             "fetch_record_errors_total", "Attempts deferred because storage failed", ["pool"]
         )
@@ -118,7 +123,9 @@ class WorkerRuntime:
         metrics: Metrics,
         max_memory_mb: int,
         recover_every_s: float = 30.0,
+        backoff: DomainBackoff | None = None,
     ) -> None:
+        self._backoff = backoff
         self._frontier = frontier
         self._queue = queue
         self._fetcher = fetcher
@@ -259,6 +266,33 @@ class WorkerRuntime:
                 await asyncio.to_thread(self._frontier.recover)
             except FrontierUnavailableError as exc:
                 _log.warning("recover_unavailable", error=str(exc)[:200])
+            await self._expire_backoffs()
+
+    async def _expire_backoffs(self) -> None:
+        if self._backoff is None:
+            return
+        for domain in self._backoff.expired():
+            await self._set_interval(DomainId(domain), None)
+
+    async def _set_interval(self, domain_id: DomainId, interval_s: float | None) -> None:
+        """Best effort: an unavailable frontier must not fail the attempt (the task is
+        reported separately and retried by its own budget)."""
+        try:
+            await asyncio.to_thread(self._frontier.set_domain_interval, domain_id, interval_s)
+        except FrontierUnavailableError as exc:
+            _log.warning("backoff_unavailable", error=str(exc)[:200])
+
+    async def _apply_backoff(self, claim: Claim, result: FetchResult) -> None:
+        if self._backoff is None:
+            return
+        domain = str(claim.domain_id)
+        if self._backoff.is_rate_limited(result.status, result.headers):
+            interval = self._backoff.on_rate_limited(domain, result.headers)
+            self._metrics.rate_limited.labels(self._pool).inc()
+            _log.warning("domain_rate_limited", pool=self._pool, interval_s=round(interval, 1))
+            await self._set_interval(claim.domain_id, interval)
+        elif result.outcome.has_content and self._backoff.on_success(domain):
+            await self._set_interval(claim.domain_id, None)
 
     # --- one attempt --------------------------------------------------------
     async def _attempt(self, claim: Claim) -> None:
@@ -280,6 +314,7 @@ class WorkerRuntime:
             self._metrics.active.labels(self._pool).dec()
         finished_wall = datetime.now(UTC)
         self._health.observe(result.outcome)
+        await self._apply_backoff(claim, result)
         decision = decide(result, self._queue, network_offline=self._health.offline)
         if decision.consumes_attempt:
             decision = await self._record(claim, result, decision, started_wall, finished_wall)

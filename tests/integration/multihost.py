@@ -36,7 +36,12 @@ from antipiracy_contracts.models.web import FetchAttempt, PageObservation
 from antipiracy_contracts.ownership import Component, Producer
 
 from crawler2.core.configuration import Settings
-from crawler2.storage.events.consumer import ConsumeOutcome, IdempotentConsumer, RedisStreamReader
+from crawler2.storage.events.consumer import (
+    ConsumeOutcome,
+    IdempotentConsumer,
+    RedisStreamReader,
+    connect_stream_client,
+)
 from crawler2.storage.events.publisher import OutboundEvent, RedisStreamPublisher, stream_name
 from crawler2.storage.events.relay import OutboxRelay
 from crawler2.storage.scylla import Migrator, ScyllaSession, ScyllaStorage
@@ -60,7 +65,7 @@ CRASH_AFTER = 80
 
 
 def _redis(settings: Settings) -> redis.Redis:
-    return redis.Redis(host=settings.redis.host, port=settings.redis.port, db=settings.redis.db)
+    return connect_stream_client(settings.redis)
 
 
 def _open(settings: Settings, keyspace: str) -> ScyllaStorage:

@@ -32,3 +32,6 @@ ms-playwright/
 *.warc.gz
 cookies*.json
 storage_state*.json
+
+# generated credentials (deploy/secure/provision-secrets.sh) and soak/backup run output
+/secrets/

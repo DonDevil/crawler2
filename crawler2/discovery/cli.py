@@ -229,7 +229,7 @@ def _repeat(every: float | None, action: Any) -> int:
 
 def cmd_admit(args: Any, settings: Settings) -> int:
     ctx = build(settings)
-    ctx.metrics.serve()
+    ctx.metrics.serve("admit")
     loop = build_admission_loop(ctx)
     for sig in (signal.SIGTERM, signal.SIGINT):
         signal.signal(sig, lambda *_: loop.stop())

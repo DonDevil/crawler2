@@ -128,6 +128,7 @@ fine-grained code goes into `FetchAttempt.detail` as `outcome=<code>`):
 | `tls_error` | handshake/certificate | `tls_failure` |
 | `redirect_error` | loop, > `max_redirects`, invalid/unsupported `Location` | `connection_failure` (detail) |
 | `invalid_response` | malformed status line/headers, truncated body, bad encoding | `connection_failure` (detail) |
+| `unsafe_destination` *(added P14, 2026-10-22)* | the SSRF guard refused the URL or a redirect hop (private/loopback/link-local/… address, bad scheme, DNS answer changed to an internal address) | `connection_failure` (detail) |
 | `too_large` | page body over `max_body_bytes` | `too_large` |
 | `proxy_unavailable` | Tor/SOCKS proxy unreachable (local infrastructure, not target) | not recorded as an attempt (deferred) |
 | `fetcher_crash` | browser/page/renderer died during the attempt | `cancelled` (detail) |
@@ -389,7 +390,7 @@ function; P7 later replaces the escalation column with learned profiles.
 | `needs_js` | **fail → `browser`** (escalation, consumes one attempt) | complete (rendered) | complete (no tor browser) |
 | `blocked` 429 | fail (backoff) | fail | fail |
 | `blocked`, `captcha` | complete (recorded; no escalation, no bypass) | complete | complete |
-| `too_large`, `redirect_error` | complete | complete | complete |
+| `too_large`, `redirect_error`, `unsafe_destination` | complete | complete | complete |
 | `invalid_response` | fail | fail | fail |
 | `timeout`, `dns_error`, `network_error` | fail, or **defer** if health `OFFLINE` | same | same |
 | `tls_error` | fail | fail | fail |

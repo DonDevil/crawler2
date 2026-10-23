@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Maps a role name to its command (exec: systemd supervises the real process, signals reach it).
+set -euo pipefail
+cd "$(dirname "$0")/../.."
+BIN=env/bin
+case "${1:?role}" in
+  worker-http)       exec $BIN/crawler2-worker --pool http ;;
+  worker-browser)    exec $BIN/crawler2-worker --pool browser ;;
+  worker-tor)        exec $BIN/crawler2-worker --pool tor ;;
+  extract)           exec $BIN/crawler2-extract ;;
+  relay)             exec $BIN/crawler2-storage relay ;;
+  admit)             exec $BIN/crawler2-discover admit ;;
+  resolve)           exec $BIN/crawler2-media resolve run ;;
+  probe)             exec $BIN/crawler2-media probe run ;;
+  hash)              exec $BIN/crawler2-media hash run ;;
+  representations)   exec $BIN/crawler2-media representations run ;;
+  intel)             exec $BIN/crawler2-intel sources run ;;
+  feedback)          exec $BIN/crawler2-intel feedback run ;;   # P11: enable only after the owner decision (OD-2)
+  evidence-collect)  exec $BIN/crawler2-evidence collect run ;;
+  exporter)          exec $BIN/crawler2-exporter ;;
+  *) echo "unknown role: $1" >&2; exit 64 ;;
+esac

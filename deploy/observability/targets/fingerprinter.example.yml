@@ -1,0 +1,5 @@
+# Copy to targets/fingerprinter.yml and replace the placeholders with real host:port values.
+- targets: ["GPU_HOST:9200"]
+  labels:
+    host_group: replace-me
+    role: fingerprinter

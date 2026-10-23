@@ -1,0 +1,83 @@
+# Hardening overlay for the local stack (P14, TC-065/TC-066/TC-067). NOT the production topology
+# (that is multi-host, deploy/systemd); it exists so the secured configuration is runnable and
+# testable on one machine:
+#
+#   deploy/secure/provision-secrets.sh                       # generates ./secrets/*
+#   docker compose -f docker-compose.yml -f docker-compose.secure.yml up -d
+#   deploy/secure/provision-minio.sh http://127.0.0.1:9000 crawler2-raw   # service user, once
+#
+# What changes: Redis requires a login (ACL: no `default` user, separate app/monitor/operator
+# users); the application receives service credentials from ./secrets/crawler2.secrets.env and
+# environment=prod; the data services publish no host ports; Scylla requires roles (see
+# docs/phases/p14-production-hardening/security.md for the role provisioning and for what is
+# NOT covered: TLS, inter-service auth, container-level egress control).
+x-secure-app-env: &secure-app-env
+  CRAWLER2_ENVIRONMENT: prod
+  CRAWLER2_MINIO__ACCESS_KEY: !reset null
+  CRAWLER2_MINIO__SECRET_KEY: !reset null
+
+services:
+  # One-shot: installs the ACL file where the unprivileged redis user can read it (the host copy
+  # is 0600 and owned by the operator).
+  redis-acl-init:
+    image: docker.io/library/redis:7.4.2-alpine
+    user: root
+    entrypoint:
+      - sh
+      - -c
+      - install -m 600 -o redis -g redis /run/secrets/redis.acl /data/users.acl
+    volumes:
+      - redis-data:/data
+      - ./secrets/redis.acl:/run/secrets/redis.acl:ro
+    restart: "no"
+    networks: [backend]
+
+  redis:
+    depends_on:
+      redis-acl-init:
+        condition: service_completed_successfully
+    command:
+      - redis-server
+      - --aclfile
+      - /data/users.acl
+      - --appendonly
+      - "yes"
+      - --maxmemory
+      - 768mb
+      - --maxmemory-policy
+      - noeviction
+    volumes:
+      - redis-data:/data
+      - ./secrets/redis_monitor_password:/run/secrets/redis_monitor_password:ro
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli --user monitor --pass \"$$(cat /run/secrets/redis_monitor_password)\" --no-auth-warning ping | grep -q PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports: !reset []
+
+  scylla:
+    command:
+      - --smp
+      - "2"
+      - --memory
+      - 1400M
+      - --reserve-memory
+      - 512M
+      - --overprovisioned
+      - "1"
+      - --developer-mode
+      - "1"
+      - --authenticator
+      - PasswordAuthenticator
+      - --authorizer
+      - CassandraAuthorizer
+    ports: !reset []
+
+  minio:
+    ports: !reset []
+
+  app:
+    env_file: [./secrets/crawler2.secrets.env]
+    environment:
+      <<: *secure-app-env

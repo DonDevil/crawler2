@@ -1,0 +1,5 @@
+# Copy to targets/exporter.yml and replace the placeholders with real host:port values.
+- targets: ["HOST_A:9114"]
+  labels:
+    host_group: replace-me
+    role: exporter

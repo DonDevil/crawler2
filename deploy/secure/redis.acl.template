@@ -1,0 +1,12 @@
+# Redis ACL (P14, TC-065). Rendered by provision-secrets.sh; values in @...@ are replaced with
+# generated passwords. The built-in `default` user is disabled: nothing can connect without a login.
+#
+# crawler2   every application process (frontier Lua scripts, streams, data). Cannot run the
+#            @dangerous/@admin command groups (FLUSHALL, KEYS, CONFIG, DEBUG, SHUTDOWN, ACL, ...).
+# monitor    read-only: INFO and the stream/queue inspection commands used by crawler2-exporter
+#            and crawler2-soak. Cannot write.
+# operator   break-glass administration by a human; never given to a service.
+user default off
+user crawler2 on >@REDIS_APP_PASSWORD@ ~* &* +@all -@dangerous -@admin +info +client|setname +client|id +memory|usage
+user monitor on >@REDIS_MONITOR_PASSWORD@ ~* &* -@all +ping +info +xlen +xinfo +xpending +xrange +zcard +scard +hgetall +hget +type +ttl +exists +dbsize +client|list +client|info
+user operator on >@REDIS_OPERATOR_PASSWORD@ ~* &* +@all

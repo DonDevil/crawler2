@@ -61,5 +61,5 @@ so the worst case is ≈4 GB for the single profile.
   (driver follows container IPs); run such code inside the compose network.
 - New shells need `docker` group membership (log out/in once after the install).
 - NVIDIA Container Toolkit not installed (needed for the P9 GPU encoder, not P0).
-- CI has not run on GitHub yet (no remote).
+- CI has not run on GitHub yet (no remote). *Update 2026-10-22:* `origin/main` now exists but the local branch is 40 commits ahead of it (unpushed), so still no remote CI run of any recent commit is on record; P14 added jobs (browser, observability, later tiers) that have likewise only been run locally.
 - Baseline is a single live-internet run; see `baseline.md` limitations.

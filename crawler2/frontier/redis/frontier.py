@@ -46,6 +46,7 @@ def connect_redis(settings: RedisSettings) -> redis.Redis:
         host=settings.host,
         port=settings.port,
         db=settings.db,
+        username=settings.username,
         password=settings.password.get_secret_value() if settings.password else None,
         socket_timeout=settings.socket_timeout_s,
         socket_connect_timeout=settings.socket_timeout_s,

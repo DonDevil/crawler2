@@ -1,0 +1,52 @@
+# One unit per process role: `systemctl enable --now crawler2-role@worker-http`.
+# Roles and their commands live in /opt/crawler2/deploy/systemd/run-role (single source of truth).
+# Supervision contract (P14, TC-041): restart on failure with growing delay, a bounded restart
+# budget that ends in `failed` (visible to alerts) instead of crash-looping, SIGTERM then a grace
+# period for in-flight work (claims are returned, events are idempotent), health pre-check.
+[Unit]
+Description=crawler2 role %i
+Documentation=file:///opt/crawler2/docs/phases/p14-production-hardening/deployment.md
+After=network-online.target
+Wants=network-online.target
+PartOf=crawler2.target
+# 5 failures within 10 minutes => stop trying and stay failed (alert: ScrapeTargetDown / unit failed)
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=crawler2
+Group=crawler2
+WorkingDirectory=/opt/crawler2
+# Non-secret settings, then secrets (mode 0600, owned by root, read by systemd before dropping privileges)
+EnvironmentFile=/etc/crawler2/crawler2.env
+EnvironmentFile=-/etc/crawler2/secrets.env
+Environment=CRAWLER2_HOST_ID=%H
+# Wait (bounded) until Redis, Scylla and MinIO answer; a failing check counts against the start budget
+ExecStartPre=/opt/crawler2/env/bin/crawler2-check --wait 120
+ExecStart=/opt/crawler2/deploy/systemd/run-role %i
+Restart=on-failure
+RestartSec=5
+RestartSteps=6
+RestartMaxDelaySec=120
+TimeoutStopSec=60
+KillSignal=SIGTERM
+SuccessExitStatus=0 143
+# Hardening (does not change behaviour of a correct role)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/crawler2 /var/log/crawler2
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+# Memory cap per role so one runaway process is killed by the unit, not by oomd picking a victim
+# (override per role in a drop-in, see crawler2-role@worker-browser.service.d/limits.conf)
+MemoryHigh=1500M
+MemoryMax=2G
+TasksMax=2048
+
+[Install]
+WantedBy=crawler2.target

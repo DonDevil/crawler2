@@ -91,6 +91,7 @@ def _worker_env(namespace: str, storage_settings: Settings) -> dict[str, str]:
             "CRAWLER2_FRONTIER__LEASE_TTL_S": "4",
             "CRAWLER2_WORKERS__RECOVER_EVERY_S": "1",
             "CRAWLER2_WORKERS__FETCH__TOTAL_TIMEOUT_S": "3",
+            "CRAWLER2_WORKERS__FETCH__SSRF_ALLOWED_NETWORKS": "127.0.0.0/8,::1/128",
             "CRAWLER2_WORKERS__FETCH__READ_TIMEOUT_S": "2",
             "CRAWLER2_WORKERS__BROWSER_ENGINE__NAVIGATION_TIMEOUT_S": "8",
             "CRAWLER2_WORKERS__BROWSER_ENGINE__SETTLE_S": "0.5",

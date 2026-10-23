@@ -41,7 +41,8 @@ Inputs: `gpt-disscussed-plan.md`, `version2-comaprison.md`, V1 crawler
 | 2026-10-15 | **P9 OF-4/OF-5 follow-up**: operator chose OF-5 (a) (truncation policy and `dinov2-seg/2` unchanged; SOAK-1000 expected failures verified against the decoder at build time, `c-04-h264.mp4` replaced, manifest `ed3bfd8d…`) and OF-4 (G-3 alignment applies to matched pairs); G-3 PASS on L-PAIRS, G-2 still FAIL → FP16 gated; SOAK-1000 run 5 **PASS** 8/8 (3/4 vacuous) after run 3 (host shutdown) and run 4 (defect X-10: one storage error ended the reconcile loop; fixed) aborted; exit gates G-1, G-5, G-8 met | P9 validation §8, exit.md |
 | 2026-10-15 | **P9 accepted** by the operator as complete for the approved implementation and validation scope, with the documented limitations (FP16 gated after G-2 FAIL; soak criteria 3/4 vacuous; partial truncation detection; real multi-machine deferred to P14; P8 real-stack tiers not re-run); not production-deployed; FP32 default; design not reopened | P9 decisions §5c, exit.md §1 |
 | 2026-10-22 | **P11 implemented, M4 NOT PASSED**: `match.found` consumer attributes matches to page hosts through crawler2's registry (M5 → M3 → W4) and records evidence (V006); bounded, decaying boost (≤ 15 source + ≤ 5 template, ≤ 20 total; τ 14 d) and browser preference (20 % http re-test) applied in P6 admission behind `CRAWLER2_FEEDBACK__ENABLED` (default off). Real-stack replay with simulated fetch and matcher: next cycle 15 vs 2 matching media at equal budget; no-match control identical; decays to neutral. P10 M3 is NOT PASSED (fingerprinter repo), so the matcher link is simulated | P11 exit.md; operator decision OD-2; next phase P12 |
-| 2026-10-22 | **P12 implemented, M5 NOT PASSED (awaiting owner review)**: `match.found` → evidence candidate through crawler2's registry (E1 identity, V007 E5 candidates with explicit gaps/ambiguity), SHA-256 artifact verification, finalization into append-only versions (E6 LWT, E2 seal = v1, supersession, E7 audit), canonical manifest (reproducible digest), campaign statistics, case package (JSON + HTML + artifacts + SHA256SUMS + deterministic tar.gz), `crawler2-evidence` CLI. Technical baseline only: no screenshots/clips/WARC, no object lock, no trusted timestamp/signature (all declared). Validated with fixtures on the real stack; no real matcher output (P10 M3 not passed) | P12 exit.md; owner decisions OD-P12-1…7 |
+| 2026-10-22 | **P10 status recorded** (fingerprinter repo, `p10-impl`, unpushed): implementation complete, M3 NOT PASSED (T4 FAIL 0.933/0.760 vs 1.0; T6/T10/T8 BLOCKED; `match.found` publication held). No decision taken here; O-1…O-6 and P10-D16 remain open | fp P10 README, validation §11 |
+| 2026-10-22 | **P12 implemented, M5 NOT PASSED** (fixture-package review reported accepted by the operator, 2026-10-22 - unrecorded: reviewer/date/scope not supplied; real-package check and ADR-005 pending): `match.found` → evidence candidate through crawler2's registry (E1 identity, V007 E5 candidates with explicit gaps/ambiguity), SHA-256 artifact verification, finalization into append-only versions (E6 LWT, E2 seal = v1, supersession, E7 audit), canonical manifest (reproducible digest), campaign statistics, case package (JSON + HTML + artifacts + SHA256SUMS + deterministic tar.gz), `crawler2-evidence` CLI. Technical baseline only: no screenshots/clips/WARC, no object lock, no trusted timestamp/signature (all declared). Validated with fixtures on the real stack; no real matcher output (P10 M3 not passed) | P12 exit.md; owner decisions OD-P12-1…7 |
 | 2026-10-22 | **P13 implemented (analytics, offline)**: read-only token-range export of the crawler2 keyspace (17 datasets, explicit exclusions) → revisioned, reconciled Parquet (date partitions, domain as sorted column, manifests with counts + SHA-256, unchanged/new-revision re-export, resumable runs) → DuckDB views, campaign/source reports reproducible from Parquet alone (`report_digest`), offline graph (site↔site, page→media→content←match→target, evidence), deterministic site/template clustering writing *unreviewed* P7 bootstrap candidates; `crawler2-analytics` CLI; DuckDB the only new dependency. Validated on synthetic fixtures and a throwaway real-Scylla keyspace; the real-data export of `crawler2_m1` was not run (OD-P13-1); no real match exists (P10 M3) | P13 exit.md; P10/M3, P11/M4, P12/M5 unchanged |
 | open | Evidence/legal requirements (jurisdictions, screenshots/clips, retention) | ADR-005 stays open; P12 implemented a conservative technical baseline without it (P12 decisions §3). |
 
@@ -490,8 +491,12 @@ P7 Crawl Intelligence (M2) ─► P8 Media Registry ─► P9 Targets + Encoder 
   10-05 07:39:53 UTC) completed the window without a crash and settled
   the leak question for http/admit/extract, but an 80-min Redis-full
   stall lost ~1,850 extraction events (X-16), so the gate is not passed;
-  run 3 follows byte-bounded retention and relay retry (X-8, X-11); M1
-  keeps running as P7 history; throughput
+  byte-bounded retention (X-8) and in-process relay retry (X-11) were done
+  2026-10-07 (ADR-022), but run 3 was never started and **the Gate G
+  disposition (run 3 vs. replacing the gate by the P14 soak) is an open
+  owner decision**; M1 was stopped 2026-10-05 09:31 UTC and M1b was
+  rejected (the earlier "M1 keeps running as P7 history" is superseded);
+  throughput
   on the dev host is bound by Scylla on the USB HDD — see
   `docs/phases/p06-filter-discovery/validation.md`. "Seeds + search" is
   realised as admissions through the P3 API (there is no separate
@@ -680,6 +685,11 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
   - Model upgrade = backfill job; old representations kept until retired.
   - Multi-host: 13d fix applied — target media and artifacts in MinIO,
     build-on-miss under a Redis lock, no host-local authoritative cache.
+    *(Reconciliation note, 2026-10-22: the P9 audit A-5 and the fingerprinter
+    README record the fix as an opt-in shared directory with default host-local
+    storage, and multi-host as SIMULATED only; which description holds in the
+    fingerprinter code was not re-verified — P14 TC-046 must settle it on
+    separate machines. Treat "applied" above as unverified.)*
   - **GPU plan for the RTX 2050 (4 GB VRAM):**
     - *(P9-D3, approved 2026-10-10: precision is part of the representation
       identity; FP32 is the default; FP16 is a distinct spec that may be
@@ -761,6 +771,19 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
   as equivalent.
 - **Exit gate — M3:** precision/recall ≥ V1 fingerprinter on the labeled
   set; new target matched against historical media without re-encoding.
+
+**Status as of 2026-10-22 (record added by the P14 sprint; the work and its authoritative documents
+are in the fingerprinter repo, branch `p10-impl`, 30 commits ahead of `main`, not pushed):**
+implementation complete, **M3 NOT PASSED**. Passed on a single host: M3-1, M3-2, T1, T2, T3, T5, T11.
+**T4 FAIL** (level-5 equivalence recall: `equiv/v1` 0.760, `equiv/v2` 0.933, a not-registered 1 s-sampling
+spec 0.953, criterion 1.0; 0 false links in 12,420; every miss is a coverage failure of a very-low-bitrate
+encode or a scene-cut straddle). The production rule was re-run on 2026-10-22 and reproduced 0.760 (P14
+validation §6). **T6/T10 BLOCKED** (E-R1 index capacity fails on the USB HDD; needs SSD-class storage and
+O-1). **T8 BLOCKED** (calibration UNAVAILABLE for lack of hard negatives; `match.found` publication is
+**held**). N-SOAK baseline BLOCKED (O-4). Open owner decisions O-1…O-6 and P10-D12/D13(b). No document in
+this repository previously recorded any of this (to_complete.md X-2); P10-D16 (moving the P10 documents and
+ADR-028 here) is still undecided. Authoritative: `fingerprinter/docs/phases/p10-vector-index-matcher/README.md`
+and its `validation.md` §11.
 
 ### P11 — Feedback loop (M) → Milestone M4
 
@@ -909,5 +932,5 @@ cross-service tests; `match.found` consumers stay in P11/P12.)*
 Resolved 2026-09-28: see the decisions log at the top.
 
 Still open:
-1. Legal/evidence requirements (jurisdictions, whether screenshots/clips are needed, retention period). This blocks the P12 design only.
-2. Hardware for the P14 multi-host proof: which physical machines are available besides this one.
+1. Legal/evidence requirements (jurisdictions, whether screenshots/clips are needed, retention period). Originally "blocks the P12 design only"; ADR-005 now also gates P12/P13 retention, WORM, redaction, the Tor policy and backup retention (P14).
+2. Hardware for the P14 multi-host proof: which physical machines are available besides this one. **Still open (no owner/date yet); it is the root blocker for RF=3, the multi-host proof, E-R1 on fast storage and the 7-day soak.**

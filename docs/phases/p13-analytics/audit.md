@@ -17,7 +17,7 @@ durable records can feed it, and the constraints found. Design:
 - Gates of earlier phases this phase depends on but does not change:
   **P10 / M3 NOT PASSED** (fingerprinter repo: no real `match.found` exists);
   **P11 / M4 NOT PASSED** (feedback off by default); **P12 / M5 NOT PASSED —
-  awaiting owner review**; P7 closed with WHEN/M2 deferred; P6 Gate G open.
+  fixture-package review reported accepted by the operator, unrecorded**; P7 closed with WHEN/M2 deferred; P6 Gate G open.
 
 ## 2. What existed and was reused
 

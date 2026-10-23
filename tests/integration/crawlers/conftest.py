@@ -41,7 +41,11 @@ from tests.fixtures.web import FixtureSite, serve
 TEST_DB = 9
 WORKER = "dev-1:http:1:" + "0" * 32
 HTTP_SETTINGS = HttpFetchSettings(
-    connect_timeout_s=2, read_timeout_s=2, total_timeout_s=4, media_probe_bytes=64 * 1024
+    connect_timeout_s=2,
+    read_timeout_s=2,
+    total_timeout_s=4,
+    media_probe_bytes=64 * 1024,
+    ssrf_allowed_networks=["127.0.0.0/8", "::1/128"],
 )
 browser_only = pytest.mark.skipif(
     os.environ.get("RUN_BROWSER_TESTS") != "1", reason="needs Chromium; set RUN_BROWSER_TESTS=1"

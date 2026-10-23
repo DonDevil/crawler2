@@ -48,7 +48,12 @@ from tests.fixtures.web import Dynamic, FixtureHandler, serve
 
 pytestmark = pytest.mark.integration
 WORKER = "it-1:http:1:" + "0" * 32
-HTTP = HttpFetchSettings(connect_timeout_s=2, read_timeout_s=2, total_timeout_s=4)
+HTTP = HttpFetchSettings(
+    connect_timeout_s=2,
+    read_timeout_s=2,
+    total_timeout_s=4,
+    ssrf_allowed_networks=["127.0.0.0/8", "::1/128"],
+)
 
 
 def _html(*links: str) -> bytes:

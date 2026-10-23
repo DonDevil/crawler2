@@ -55,7 +55,11 @@ from crawler2.intelligence.feedback_service import (
     rebuild,
 )
 from crawler2.intelligence.feedback_store import ScyllaFeedbackStore
-from crawler2.storage.events.consumer import IdempotentConsumer, RedisStreamReader
+from crawler2.storage.events.consumer import (
+    IdempotentConsumer,
+    RedisStreamReader,
+    connect_stream_client,
+)
 from crawler2.storage.events.publisher import OutboundEvent, RedisStreamPublisher, stream_name
 from crawler2.storage.scylla import ScyllaStorage
 from tests.fixtures.contracts import (
@@ -165,7 +169,7 @@ def stack(
     # numbers are reproducible run to run.
     run = "r" + format(zlib.crc32(request.node.name.encode()), "08x")
     events = EventSettings(stream_prefix=f"it-p11-{run}:")
-    rb = redis.Redis(host=settings.redis.host, port=settings.redis.port, db=settings.redis.db)
+    rb = connect_stream_client(settings.redis)
     fc = connect_redis(settings.redis.model_copy(update={"db": 9}))
     targets = {k: target(f"p11-{run}-{k}") for k in ("A", "B")}
     s = Stack(storage, rb, events, run, targets, fc)

@@ -12,6 +12,11 @@ Design §11, §15, §17, §18. Guarantees:
   ``media_probe_bytes`` of its body are read; URLs with a media extension
   are requested with ``Range: bytes=0-(N-1)`` (D2).
 - No cookies survive an attempt; no browser-impersonation headers.
+- SSRF (P14, ``core/netguard.py``): direct fetching connects only to validated
+  public addresses (pinned at connect time, so DNS rebinding cannot swap the
+  destination); every redirect hop is re-checked. With a proxy the name is
+  resolved by the proxy, so each hop is checked as a literal/internal name only.
+  A refused destination is ``Outcome.UNSAFE_DESTINATION``, never a retry.
 """
 
 from __future__ import annotations
@@ -29,6 +34,14 @@ import httpx
 from antipiracy_contracts.models.web import FetchCapability, HttpValidators
 
 from crawler2.core.configuration.settings import HttpFetchSettings
+from crawler2.core.netguard import (
+    GuardedTransport,
+    Resolver,
+    UnsafeDestinationError,
+    check_url_literal,
+    default_resolver,
+    parse_networks,
+)
 from crawler2.crawlers import signals
 from crawler2.crawlers.classify import classify_exception, error_info
 from crawler2.crawlers.model import (
@@ -183,8 +196,11 @@ class HttpFetcher:
         proxy: str | None = None,
         max_connections: int = 64,
         transport: httpx.AsyncBaseTransport | None = None,
+        resolver: Resolver = default_resolver,
     ) -> None:
         self._settings = settings
+        self._resolver = resolver
+        self._allowed = parse_networks(settings.ssrf_allowed_networks)
         self._capability = capability
         self._proxy = proxy if proxy is not None else settings.proxy
         self._max_connections = max_connections
@@ -203,6 +219,15 @@ class HttpFetcher:
         if self._client is not None:
             return
         s = self._settings
+        limits = httpx.Limits(
+            max_connections=self._max_connections,
+            max_keepalive_connections=self._max_connections,
+        )
+        transport = self._transport
+        if transport is None and self._proxy is None:
+            transport = GuardedTransport(
+                resolver=self._resolver, allowed=self._allowed, limits=limits
+            )
         self._client = httpx.AsyncClient(
             timeout=httpx.Timeout(
                 connect=s.connect_timeout_s,
@@ -210,14 +235,11 @@ class HttpFetcher:
                 write=s.read_timeout_s,
                 pool=s.connect_timeout_s,
             ),
-            limits=httpx.Limits(
-                max_connections=self._max_connections,
-                max_keepalive_connections=self._max_connections,
-            ),
+            limits=limits,
             follow_redirects=False,
             trust_env=False,
             proxy=self._proxy,
-            transport=self._transport,
+            transport=transport,
             cookies=http.cookiejar.CookieJar(policy=_RejectAllCookies()),
             headers={
                 "User-Agent": s.user_agent,
@@ -251,6 +273,8 @@ class HttpFetcher:
             result = state.failure(self, Outcome.TOO_LARGE, None)
         except _BadEncodingError as exc:
             result = state.failure(self, Outcome.INVALID_RESPONSE, exc)
+        except UnsafeDestinationError as exc:
+            result = state.failure(self, Outcome.UNSAFE_DESTINATION, exc)
         except httpx.InvalidURL as exc:
             result = state.failure(self, Outcome.REDIRECT_ERROR, exc)
         except httpx.UnsupportedProtocol as exc:
@@ -285,6 +309,8 @@ class HttpFetcher:
                 if request.validators.last_modified:
                     headers["If-Modified-Since"] = request.validators.last_modified
                 conditional = Conditional.SENT if headers.keys() - {"Range"} else Conditional.NONE
+            if self._proxy is not None and self._transport is None:
+                check_url_literal(url, allowed=self._allowed)  # the proxy resolves the name
             outgoing = self._client.build_request("GET", url, headers=headers)
             cookies.set_cookie_header(outgoing)
             response = await self._client.send(outgoing, stream=True)
@@ -344,6 +370,14 @@ class HttpFetcher:
             return replace(result, media=probe)
         kind = signals.body_kind(url, content_type)
         limit = s.max_manifest_bytes if kind is BodyKind.MANIFEST else s.max_body_bytes
+        declared = _int_header(_safe_headers(response.headers), "content-length")
+        if (
+            declared is not None
+            and declared > limit
+            and not response.headers.get("content-encoding")
+        ):
+            # X-15: a bulk file announces its size; do not stream it up to the limit to find out.
+            return state.result(self, Outcome.TOO_LARGE, response, url, ttfb)
         decoder = _BoundedDecoder(response.headers.get("content-encoding", ""), limit)
         chunks: list[bytes] = []
         async for raw in response.aiter_raw():

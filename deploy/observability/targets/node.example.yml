@@ -1,0 +1,5 @@
+# Copy to targets/node.yml and replace the placeholders with real host:port values.
+- targets: ["HOST_A:9100", "GPU_HOST:9100"]
+  labels:
+    host_group: replace-me
+    role: node

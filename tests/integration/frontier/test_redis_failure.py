@@ -91,7 +91,13 @@ def outage(
     cfg = Settings().redis
     proxy = CuttableProxy(cfg.host, cfg.port)
     client = redis.Redis(
-        host="127.0.0.1", port=proxy.port, db=TEST_DB, decode_responses=True, socket_timeout=2
+        host="127.0.0.1",
+        port=proxy.port,
+        db=TEST_DB,
+        username=cfg.username,
+        password=cfg.password.get_secret_value() if cfg.password else None,
+        decode_responses=True,
+        socket_timeout=2,
     )
     via_proxy = RedisFrontier(
         client,

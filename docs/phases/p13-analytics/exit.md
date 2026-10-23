@@ -16,7 +16,7 @@ real-Scylla keyspace; REAL-DATA DEMONSTRATION PENDING (not run).**
 | Automated tests | **Pass**: 75 P13 unit tests (synthetic world); whole default suite see validation §1; ruff, format, mypy clean |
 | Integration test | **Pass** on the real compose Scylla/MinIO/Redis (throwaway keyspace; rows written by the real repositories and the real P12 collector/finalizer): source counts = independent `count(*)`, verify-counts drift 0, unchanged re-export, changed source → revision 2 |
 | Real-data validation | **Not run**: the read-only export of the real M1 history (`crawler2_m1`) was refused by this session's permission policy (OD-P13-1). No real match/evidence exists anywhere (P10 M3 not passed), so a campaign report on real matcher output is impossible regardless |
-| Earlier gates | unchanged: P10/M3 NOT PASSED, P11/M4 NOT PASSED, P12/M5 NOT PASSED (awaiting owner review), P7 WHEN/M2 deferred, P6 Gate G open |
+| Earlier gates | unchanged: P10/M3 NOT PASSED, P11/M4 NOT PASSED, P12/M5 NOT PASSED (fixture-package review reported accepted by the operator, unrecorded; real-package check pending), P7 WHEN/M2 deferred, P6 Gate G open |
 
 ## 2. Acceptance criteria
 

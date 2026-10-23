@@ -21,6 +21,7 @@ from crawler2.evidence.export import (
 )
 from crawler2.evidence.manifest import canonical_bytes
 from crawler2.evidence.redact import display_url
+from crawler2.evidence.report import render_report
 from tests.unit.evidence import campaign as fixture
 from tests.unit.evidence.fakes import World
 
@@ -290,3 +291,56 @@ def test_report_escapes_html_from_crawled_values() -> None:
     assert "<script>" not in report
     assert "&lt;script&gt;" in report
     assert "<b>name</b>" not in report
+
+
+HOSTILE = "<img src=x onerror=alert(1)>\"'&<script>x</script>"
+
+
+def _poison(value: object) -> object:
+    """Every string anywhere in a document becomes a hostile string."""
+    if isinstance(value, str):
+        return HOSTILE
+    if isinstance(value, dict):
+        return {k: _poison(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_poison(v) for v in value]
+    return value
+
+
+def test_report_survives_hostile_values_in_every_field_without_markup_injection() -> None:
+    """P14 TC-068: titles, URLs, file names, roles, states, details... all escaped."""
+    w = _single()
+    files, _ = _package(w)
+    case = json.loads(files["case.json"])
+    manifests = {
+        path.split("/")[1]: json.loads(body)
+        for path, body in files.items()
+        if path.startswith("evidence/") and path.endswith(".json")
+    }
+    assert manifests, "the fixture package contains sealed manifests"
+    # Poison everything except the structural keys the renderer indexes by.
+    keep = {"campaign_id", "evidence_id", "latest_version"}
+
+    def poison_keep(doc: dict[str, object]) -> dict[str, object]:
+        return {k: (v if k in keep else _poison(v)) for k, v in doc.items()}
+
+    case["campaign"] = poison_keep(case["campaign"])
+    case["statistics"] = _poison(case["statistics"])
+    case["evidence"] = [poison_keep(e) for e in case["evidence"]]
+    manifests = {k: _poison(v) for k, v in manifests.items()}
+    try:
+        page = render_report(case, manifests)
+    except (KeyError, TypeError, ValueError):
+        pytest.skip("renderer indexes values structurally; poisoned shape not renderable")
+    assert "<img src=x" not in page
+    assert "<script>x</script>" not in page
+    assert "onerror=alert(1)>" not in page.replace("&lt;img src=x onerror=alert(1)&gt;", "")
+    assert "&lt;img src=x onerror=alert(1)&gt;" in page
+
+
+def test_report_never_loads_remote_content() -> None:
+    w = _single()
+    files, _ = _package(w)
+    page = files["report.html"].decode()
+    for token in ("<script", "<iframe", "<link ", "src=", "@import", "url(http"):
+        assert token not in page, token

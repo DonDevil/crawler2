@@ -13,9 +13,10 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import socket
 import time
 from collections import Counter
-from collections.abc import AsyncIterator, Callable
+from collections.abc import AsyncIterator, Callable, Sequence
 from dataclasses import dataclass, field, replace
 from urllib.parse import urlsplit
 
@@ -29,12 +30,22 @@ from playwright.async_api import (
     Request,
     Response,
     Route,
+    WebSocketRoute,
     async_playwright,
 )
 from playwright.async_api import Error as PlaywrightError
 from playwright.async_api import TimeoutError as PlaywrightTimeoutError
 
 from crawler2.core.configuration.settings import BrowserSettings, HttpFetchSettings
+from crawler2.core.netguard import (
+    Network,
+    Resolver,
+    UnsafeDestinationError,
+    check_url_literal,
+    check_url_resolved,
+    default_resolver,
+    parse_networks,
+)
 from crawler2.core.observability import get_logger
 from crawler2.crawlers import signals
 from crawler2.crawlers.classify import classify_exception, error_info
@@ -62,6 +73,9 @@ from crawler2.crawlers.model import (
 )
 
 _log = get_logger("crawlers.browser")
+
+_LOCAL_SCHEMES = frozenset({"data", "blob", "about"})
+"""Never leave the browser process; every other scheme is validated (or refused)."""
 _RSS_CHECK_EVERY = 10
 _CRASH_MARKERS = ("target page, context or browser has been closed", "browser has been closed")
 
@@ -304,8 +318,19 @@ class _PageObserver:
     """Per-page request accounting and interception."""
 
     def __init__(
-        self, settings: BrowserSettings, interceptor: RequestInterceptor, page_url: str = ""
+        self,
+        settings: BrowserSettings,
+        interceptor: RequestInterceptor,
+        page_url: str = "",
+        *,
+        ssrf_allowed: Sequence[Network] = (),
+        resolver: Resolver = default_resolver,
     ) -> None:
+        self._ssrf_allowed = tuple(ssrf_allowed)
+        self._resolver = resolver
+        self._proxied = bool(settings.proxy)  # the proxy resolves names: literals only
+        self.unsafe = 0
+        self.unsafe_navigation = False
         self._blocked_types = frozenset(settings.blocked_resource_types)
         self._interceptor = interceptor
         self.page_url = page_url
@@ -319,9 +344,48 @@ class _PageObserver:
         self.ruleset: str | None = None
         self._sizes: list[asyncio.Task[None]] = []
 
+    async def destination_ok(self, url: str) -> bool:
+        """SSRF check of one request URL (every redirect hop is a new route event).
+
+        Chromium resolves the name again when it connects, so this is a check, not a
+        pin (residual TOCTOU, docs/phases/p14-production-hardening/security.md).
+        """
+        if urlsplit(url).scheme in _LOCAL_SCHEMES:
+            return True
+        try:
+            if self._proxied:
+                check_url_literal(url, allowed=self._ssrf_allowed)
+            else:
+                await asyncio.to_thread(
+                    check_url_resolved, url, self._resolver, allowed=self._ssrf_allowed
+                )
+        except UnsafeDestinationError as exc:
+            self.unsafe += 1
+            _log.warning(
+                "browser_unsafe_request_blocked", host=urlsplit(url).hostname, error=str(exc)[:160]
+            )
+            return False
+        except socket.gaierror:
+            return True  # unresolvable: the browser reports it as an ordinary DNS error
+        return True
+
+    async def route_web_socket(self, ws: WebSocketRoute) -> None:
+        # page.route() does not see WebSockets; without this a page script could open
+        # ws://127.0.0.1:<port> and probe internal services.
+        if await self.destination_ok(ws.url):
+            ws.connect_to_server()
+        else:
+            await ws.close(code=1008, reason="blocked")
+
     async def route(self, route: Route) -> None:
         request = route.request
         self.requests += 1
+        if not await self.destination_ok(request.url):
+            self.aborted += 1
+            if request.is_navigation_request():
+                self.unsafe_navigation = True
+            await route.abort("blockedbyclient")
+            return
         kind = request.resource_type
         if kind == "media":
             self.media += 1
@@ -407,12 +471,15 @@ class BrowserFetcher:
         http_settings: HttpFetchSettings,
         *,
         interceptor: RequestInterceptor | None = None,
+        resolver: Resolver = default_resolver,
     ) -> None:
+        self._resolver = resolver
+        self._ssrf_allowed = parse_networks(http_settings.ssrf_allowed_networks)
         self._s = settings
         self._http_settings = http_settings
         self._interceptor = interceptor or AllowAll()
         self.pool = BrowserPool(settings)
-        self._prober = HttpFetcher(http_settings, max_connections=4)
+        self._prober = HttpFetcher(http_settings, max_connections=4, resolver=resolver)
 
     @property
     def capability(self) -> FetchCapability:
@@ -439,7 +506,13 @@ class BrowserFetcher:
         if request.expect is Expectation.MEDIA_PROBE or signals.has_media_extension(request.url):
             return await self._prober.fetch(request)
         started = time.monotonic()
-        observer = _PageObserver(self._s, self._interceptor, request.url)
+        observer = _PageObserver(
+            self._s,
+            self._interceptor,
+            request.url,
+            ssrf_allowed=self._ssrf_allowed,
+            resolver=self._resolver,
+        )
         lease: PageLease | None = None
         try:
             async with self.pool.page() as lease:
@@ -473,7 +546,9 @@ class BrowserFetcher:
         self, request: FetchRequest, exc: BaseException, observer: _PageObserver
     ) -> FetchResult:
         text = str(exc).lower()
-        if observer.crashed or any(marker in text for marker in _CRASH_MARKERS):
+        if observer.unsafe_navigation:
+            outcome = Outcome.UNSAFE_DESTINATION
+        elif observer.crashed or any(marker in text for marker in _CRASH_MARKERS):
             if "browser has been closed" in text:
                 self.pool.mark_dead()
             outcome = Outcome.FETCHER_CRASH
@@ -496,6 +571,7 @@ class BrowserFetcher:
         page.on("requestfinished", observer.on_finished)
         page.on("popup", lambda popup: asyncio.ensure_future(popup.close()))
         await page.route("**/*", observer.route)
+        await page.route_web_socket("**/*", observer.route_web_socket)
         deadline = time.monotonic() + self._s.navigation_timeout_s
         nav_started = time.monotonic()
         response = await page.goto(

@@ -20,7 +20,7 @@ capability, and one retry authority (ADR-016).
    `needs_js`, `blocked`, `captcha`, `media`, `timeout`, `dns_error`,
    `network_error`, `tls_error`, `redirect_error`, `invalid_response`,
    `too_large`, `proxy_unavailable`, `fetcher_unavailable`,
-   `fetcher_crash`, `cancelled`), not strategy.
+   `fetcher_crash`, `cancelled`; `unsafe_destination` added in P14), not strategy.
 3. **One runtime** owns claim, heartbeat, the hard attempt deadline,
    health gating, recording and reporting for every pool. The mapping
    outcome → `complete` / `fail(next_queue)` / `defer` is one pure

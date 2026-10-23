@@ -107,6 +107,7 @@ class MemoryObjects:
     puts: int = 0
     bucket: str = BUCKET
     fail_puts: int = 0
+    fail_reads: int = 0
 
     def put(
         self,
@@ -140,6 +141,9 @@ class MemoryObjects:
         return data
 
     def stat(self, digest: ContentDigest) -> ObjectInfo | None:
+        if self.fail_reads:
+            self.fail_reads -= 1
+            raise StorageUnavailableError("object store down (read)")
         data = self.blobs.get(digest.hex)
         if data is None:
             return None

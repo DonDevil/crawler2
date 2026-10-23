@@ -40,6 +40,7 @@ def check_redis(settings: Settings) -> str:
         host=cfg.host,
         port=cfg.port,
         db=cfg.db,
+        username=cfg.username,
         password=cfg.password.get_secret_value() if cfg.password else None,
         socket_timeout=cfg.socket_timeout_s,
         socket_connect_timeout=cfg.socket_timeout_s,

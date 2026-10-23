@@ -100,6 +100,7 @@ def connect_stream_client(settings: RedisSettings) -> redis.Redis:
         host=settings.host,
         port=settings.port,
         db=settings.db,
+        username=settings.username,
         password=settings.password.get_secret_value() if settings.password else None,
         socket_timeout=settings.socket_timeout_s,
         socket_connect_timeout=settings.socket_timeout_s,
@@ -133,14 +134,22 @@ class RedisStreamReader:
 
     def claim_stale(self, *, min_idle_ms: int, count: int = 100) -> list[StreamEntry]:
         """Take over entries another consumer read but never acknowledged (it crashed)."""
-        reply: Any = self._client.xautoclaim(
-            self.stream, self.group, self.consumer, min_idle_ms, "0-0", count=count
-        )
+        try:
+            reply: Any = self._client.xautoclaim(
+                self.stream, self.group, self.consumer, min_idle_ms, "0-0", count=count
+            )
+        except redis.RedisError as exc:
+            raise StorageUnavailableError(str(exc)) from exc
         return [self._entry(i, f) for i, f in reply[1]]
 
     def ack(self, entries: list[StreamEntry]) -> None:
         if entries:
-            self._client.xack(self.stream, self.group, *[e.entry_id for e in entries])
+            try:
+                self._client.xack(self.stream, self.group, *[e.entry_id for e in entries])
+            except (
+                redis.RedisError
+            ) as exc:  # unacked entries are redelivered; handlers are idempotent
+                raise StorageUnavailableError(str(exc)) from exc
 
     @staticmethod
     def _entry(entry_id: bytes | str, fields: dict[bytes, bytes]) -> StreamEntry:

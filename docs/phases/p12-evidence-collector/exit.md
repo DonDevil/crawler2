@@ -7,7 +7,10 @@ Date: 2026-10-22. Evidence: [validation.md](validation.md). Design:
 
 ## 1. Status
 
-**P12 IMPLEMENTED; M5 NOT PASSED — AWAITING OWNER REVIEW.**
+**P12 IMPLEMENTED; M5 NOT PASSED.** The fixture-package review is **reported accepted by the operator**
+(stated in the 2026-10-22 audit brief). There is no durable record of it: the reviewer, the date of the review and the
+exact scope were not supplied, so it is recorded here as operator-reported, not as a formal decision. The real-package
+check is still pending and ADR-005 (legal/evidence) is open; neither is affected by the fixture acceptance.
 
 | Dimension | Status |
 |---|---|
@@ -16,7 +19,7 @@ Date: 2026-10-22. Evidence: [validation.md](validation.md). Design:
 | Integration tests | **Pass** on the real compose stack (Scylla, MinIO, Redis): 3 P12 tests incl. CLI and restart recovery; 90 regression tests (schema incl. V007, P2 evidence tables, P11 replay) |
 | Real-data validation | **Not done**: all inputs are fixtures; the P10 matcher has not passed M3, no real `match.found` exists; no live site was visited |
 | Not provided (by decision) | screenshots, media clips, WARC/full headers, object lock/WORM, trusted timestamps, signatures, PDF — all declared in every package |
-| **M5** | **NOT PASSED** — requires the owner's review and acceptance of a full case package (plan §P12). A fixture package exists for that review; it is not evidence from a real run |
+| **M5** | **NOT PASSED** — requires the owner's review and acceptance of a full case package (plan §P12). The fixture package was reported accepted (operator, unrecorded, see above); it is not evidence from a real run, so the real-package check remains |
 
 ## 2. M5 gate table
 

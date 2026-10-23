@@ -56,6 +56,21 @@ Local capacity never bypasses P3 domain politeness.
 
 ## Operating
 
+- **SSRF (P14).** HTTP page fetching connects only to validated public
+  addresses (pinned at connect time; every redirect hop re-checked); a refused
+  destination ends `unsafe_destination` (final, not retried). Tor/proxy fetches
+  check literals and internal names on every hop; the browser checks every
+  request, sub-resource and WebSocket (check at request time, not a pin).
+  `workers.fetch.ssrf_allowed_networks` is for fixtures and is refused when
+  `environment=prod`. Details and residual risks:
+  [P14 security](../phases/p14-production-hardening/security.md) §1.
+- **Rate limits (P14, X-14).** A 429 (or 503 with `Retry-After`) widens that
+  domain's politeness interval (exponential from `workers.rate_limit_backoff.base_s`,
+  `Retry-After` honoured, capped at `max_s`) and is cleared on the next success or
+  when the window expires; metric `fetch_rate_limited_total`. Only the
+  interval changes: the task still retries under its normal budget.
+- **Declared size (P14, X-15).** A non-media response whose `Content-Length`
+  exceeds the body limit ends `too_large` without being streamed.
 - Metrics (bounded labels: pool, outcome, op): `fetch_attempts_total`,
   `fetch_frontier_ops_total`, `fetch_escalations_total`,
   `fetch_bytes_total`, `fetch_media_probe_bytes_total`,

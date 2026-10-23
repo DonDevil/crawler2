@@ -79,10 +79,10 @@
 | Selector (cosmetic) rules for normalization, per-site templates (P5 precision 1/23) | P7 (templates), operator rules (P6 mechanism exists) |
 | Media identity, probing, manifests from discovered media | P8 |
 | Tor search (Torch) — no Tor daemon on this host | ops |
-| Prometheus endpoints for worker/extraction processes | P14 |
-| Relay retries storage timeouts in-process instead of exiting (X-11) — **done 2026-10-07, ADR-022**; other long-running consumers (extract, admit) still exit on a Redis read error | relay: done; others P14 |
+| Prometheus endpoints for worker/extraction processes | **done 2026-10-22 (P14 sprint)**: every long-running role serves `/metrics` on `metrics.port` + a role offset; see p14-production-hardening/observability.md |
+| Relay retries storage timeouts in-process instead of exiting (X-11) — **done 2026-10-07, ADR-022**; other long-running consumers (extract, admit) still exited on a Redis read error | relay: done; **others fixed 2026-10-22 (P14 sprint)**: `RedisStreamReader.claim_stale`/`ack` now raise the typed `StorageUnavailableError` that every loop already retries (unit-tested; the read path already did) |
 | Byte-based event-stream retention (X-8; it overflowed Redis in M1 run 2, X-16) — **done 2026-10-07, ADR-022**: consumer-aware `MINID` trimming + byte budget with publisher backpressure | done |
-| Per-domain back-off on persistent 429 / `Retry-After` (X-14) | P7 / P14 |
-| Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | P7 |
-| Gate G: run 3, a 24 h M1 window without event loss — needs bounded-by-bytes stream retention with consumer-aware trimming (X-8, X-16) and in-process relay retry (X-11); X-14/X-15 for meaningful throughput. Run 2 settled the http/admit leak question (plateau) and measured the fetch metrics; the Chromium-tree drift is to be followed in the continuing M1 | P6 (open), depends on P14 items |
+| Per-domain back-off on persistent 429 / `Retry-After` (X-14) | **implemented 2026-10-22 (P14 sprint)**: `crawlers/backoff.py` widens the domain interval (exponential, `Retry-After` honoured, capped, cleared on success/expiry); unit-tested, **not measured in a 24 h window** |
+| Cap a domain's share of fetch capacity; do not download non-HTML bulk files to the size limit (X-15) | declared-size refusal **done 2026-10-22 (P14 sprint)** (`TOO_LARGE` before streaming when `Content-Length` exceeds the limit); per-domain share cap remains P7 (deferred, D-22) |
+| Gate G: run 3, a 24 h M1 window without event loss. Prerequisites X-8/X-16 and X-11 were done 2026-10-07 (ADR-022); X-14/X-15 (above) 2026-10-22. Run 2 settled the http/admit leak question (plateau); the Chromium-tree drift is still inconclusive and M1 is no longer running (stopped 2026-10-05). **Whether to run run 3 or replace the gate by the P14 soak is an open owner decision (TC-006); no run is started without an explicit go-ahead** | P6 (open) |
 | Rebuilding F5/F6 by replaying `urls.discovered` from Scylla facts | P14 (procedure documented, not automated) |

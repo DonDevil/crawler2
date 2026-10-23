@@ -1,7 +1,7 @@
 # Evidence collector & finalizer (operator guide)
 
 P12. Design: [../phases/p12-evidence-collector/design.md](../phases/p12-evidence-collector/design.md).
-Status: implemented; **M5 not passed (awaiting owner review)**. Nothing
+Status: implemented; **M5 not passed** (fixture-package review reported accepted by the operator, unrecorded; real-package check pending). Nothing
 here is a legal determination; packages state that on every page.
 
 ## What it does

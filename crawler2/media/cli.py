@@ -140,7 +140,7 @@ def _json(doc: Any) -> str:
 
 def cmd_resolve_run(args: Any, settings: Settings) -> int:
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("resolve")
     ctx = Context(settings, metrics=metrics)
     ctx.resolver().run_forever(
         poll_interval_s=settings.media.poll_interval_s,
@@ -177,7 +177,7 @@ def cmd_resolve_accept_gap(args: Any, settings: Settings) -> int:
 
 def cmd_probe_run(args: Any, settings: Settings) -> int:
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("probe")
     ctx = Context(settings, metrics=metrics)
     m = settings.media
     pm = ProbeMetrics(metrics)
@@ -208,7 +208,7 @@ def cmd_probe_run(args: Any, settings: Settings) -> int:
 
 def cmd_hash_run(args: Any, settings: Settings) -> int:
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("hash")
     ctx = Context(settings, metrics=metrics)
     m = settings.media
     pm = ProbeMetrics(metrics)
@@ -267,7 +267,7 @@ def cmd_representations_run(args: Any, settings: Settings) -> int:
     from crawler2.storage.events.publisher import stream_name
 
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("representations")
     ctx = Context(settings, metrics=metrics)
     m = settings.media
     client = connect_stream_client(settings.redis)

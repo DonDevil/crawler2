@@ -99,7 +99,7 @@ def cmd_collect_run(args: Any, settings: Settings) -> int:
     from crawler2.storage.events.publisher import stream_name
 
     metrics = Metrics(settings)
-    metrics.serve()
+    metrics.serve("evidence-collect")
     svc = _Services(settings, metrics)
     cfg = settings.evidence
     reader = RedisStreamReader(

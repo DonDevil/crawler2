@@ -239,6 +239,24 @@ def test_retry_after_transient_storage_error_does_not_duplicate(fail: str) -> No
     assert w.store.candidate(eid).status is CandidateStatus.FINALIZED  # type: ignore[union-attr]
 
 
+def test_object_store_outage_while_reading_is_unavailable_not_missing() -> None:
+    """P14: an outage must never be recorded as a missing/corrupt artefact - that would reject
+    or half-seal good evidence. It surfaces as the typed error, writes nothing, and a retry after
+    the store returns finalizes normally."""
+    w, eid = _collected()
+    w.objects.fail_reads = 1
+    with pytest.raises(StorageUnavailableError):
+        w.finalizer().validate(eid)
+    w.objects.fail_reads = 1
+    with pytest.raises(StorageUnavailableError):
+        w.finalizer().finalize(eid, actor="t")
+    assert w.store.versions(eid) == []
+    assert w.repo.get(eid) is None, "nothing was sealed during the outage"
+    report = w.finalizer().validate(eid)
+    assert report.outcome is ValidationOutcome.COMPLETE
+    assert w.finalizer().finalize(eid, actor="t").result == "finalized"
+
+
 def test_dry_run_plan_writes_nothing() -> None:
     w, eid = _collected()
     plan = w.finalizer().plan(eid)

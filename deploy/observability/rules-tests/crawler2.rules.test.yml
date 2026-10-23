@@ -1,0 +1,84 @@
+# promtool test rules: EVERY alert in alerts/crawler2.rules.yml is fired once, and a healthy series stays
+# silent (ScrapeTargetDown on a live target). Series are constructed, not scraped from a real system.
+rule_files: [../alerts/crawler2.rules.yml]
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    input_series:
+      # liveness
+      - {series: 'up{job="crawler2-workers",instance="h:9101"}', values: '1x120'}
+      - {series: 'up{job="crawler2-services",instance="h:9105"}', values: '1x10 0x110'}
+      - {series: 'process_start_time_seconds{job="crawler2-workers",instance="h:9102"}', values: '1 1 2 2 3 3 4 4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5'}
+      - {series: 'crawler2_exporter_source_up{source="redis"}', values: '0x120'}
+      - {series: 'crawler2_worker_state{pool="http",state="offline"}', values: '1x120'}
+      # pipeline
+      - {series: 'crawler2_stream_group_oldest_pending_age_seconds{event_type="page.observed",group="extraction"}', values: '0+60x120'}
+      - {series: 'crawler2_stream_group_lag{event_type="media.discovered",group="media"}', values: '6000+100x120'}
+      - {series: 'crawler2_outbox_checkpoint_lag_seconds', values: '1000x120'}
+      - {series: 'crawler2_outbox_late_rows_total', values: '0 0 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5'}
+      - {series: 'crawler2_outbox_publish_failures_total', values: '0+1x120'}
+      - {series: 'crawler2_frontier_dead_letters', values: '0+1x120'}
+      - {series: 'crawler2_fetch_attempts_total{pool="http",outcome="timeout"}', values: '0+10x10 100x110'}
+      - {series: 'crawler2_fetch_attempts_total{pool="browser",outcome="timeout"}', values: '0+10x120'}
+      - {series: 'crawler2_fetch_attempts_total{pool="browser",outcome="ok"}', values: '0+1x120'}
+      - {series: 'crawler2_fetch_record_errors_total', values: '0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3'}
+      - {series: 'crawler2_fetch_attempts_total{pool="http",outcome="unsafe_destination"}', values: '0 0 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2'}
+      - {series: 'crawler2_object_store_errors_total{operation="put"}', values: '0+1x120'}
+      # infrastructure
+      - {series: 'up{job="node",instance="n1"}', values: '1x10 0x110'}
+      - {series: 'redis_up', values: '1x5 0x115'}
+      - {series: 'redis_memory_used_bytes', values: '900x120'}
+      - {series: 'redis_memory_max_bytes', values: '1000x120'}
+      - {series: 'redis_evicted_keys_total', values: '0+1x120'}
+      - {series: 'up{job="scylla",instance="s1"}', values: '1x5 0x115'}
+      - {series: 'scylla_compaction_manager_pending_compactions{instance="s1"}', values: '300x120'}
+      - {series: 'up{job="minio",instance="m1"}', values: '1x5 0x115'}
+      - {series: 'node_filesystem_avail_bytes{instance="n1",mountpoint="/data",fstype="ext4"}', values: '1000-8x120'}
+      - {series: 'node_filesystem_size_bytes{instance="n1",mountpoint="/data",fstype="ext4"}', values: '10000x120'}
+      - {series: 'node_memory_MemAvailable_bytes{instance="n1"}', values: '50x120'}
+      - {series: 'node_memory_MemTotal_bytes{instance="n1"}', values: '1000x120'}
+      - {series: 'crawler2_gpu_memory_used_bytes{instance="g1"}', values: '980x120'}
+      - {series: 'crawler2_gpu_memory_total_bytes{instance="g1"}', values: '1000x120'}
+    alert_rule_test:
+      - {eval_time: 20m, alertname: ScrapeTargetDown, exp_alerts: [{exp_labels: {severity: critical, job: crawler2-services, instance: "h:9105"}, exp_annotations: {summary: "crawler2-services h:9105 is not scrapeable", runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"}}]}
+      - {eval_time: 20m, alertname: ProcessRestarting, exp_alerts: [{exp_labels: {severity: warning, job: crawler2-workers, instance: "h:9102"}, exp_annotations: {summary: "crawler2-workers h:9102 restarted 4 times in 1h", runbook: "docs/phases/p14-production-hardening/runbook.md#restarts"}}]}
+      - {eval_time: 20m, alertname: ExporterSourceDown, exp_alerts: [{exp_labels: {severity: warning, source: redis}, exp_annotations: {summary: "Pipeline exporter cannot read redis", runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"}}]}
+      - {eval_time: 20m, alertname: WorkerNotReady, exp_alerts: [{exp_labels: {severity: warning, pool: http}, exp_annotations: {summary: "Worker pool http reports a non-working state", runbook: "docs/phases/p14-production-hardening/runbook.md#restarts"}}]}
+      - {eval_time: 25m, alertname: ConsumerStalled, exp_alerts: [{exp_labels: {severity: critical, event_type: page.observed, group: extraction}, exp_annotations: {summary: "Group extraction has an entry on page.observed unacknowledged for 25m 0s", runbook: "docs/phases/p14-production-hardening/runbook.md#stuck-consumer"}}]}
+      - {eval_time: 60m, alertname: EventLagGrowing, exp_alerts: [{exp_labels: {severity: warning, event_type: media.discovered, group: media}, exp_annotations: {summary: "Group media is falling behind on media.discovered (lag 12000)", runbook: "docs/phases/p14-production-hardening/runbook.md#event-lag"}}]}
+      - {eval_time: 25m, alertname: OutboxRelayBehind, exp_alerts: [{exp_labels: {severity: critical}, exp_annotations: {summary: "Outbox checkpoint is 16m 40s old: events are not being published", runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"}}]}
+      - {eval_time: 10m, alertname: OutboxLateRows, exp_alerts: [{exp_labels: {severity: warning}, exp_annotations: {summary: "Rows appeared behind the relay checkpoint (ADR-013): settle window too small", runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"}}]}
+      - {eval_time: 30m, alertname: OutboxPublishFailures, exp_alerts: [{exp_labels: {severity: warning}, exp_annotations: {summary: "Relay cycles are failing on the transport", runbook: "docs/phases/p14-production-hardening/runbook.md#outbox-backlog"}}]}
+      - {eval_time: 65m, alertname: DeadLettersGrowing, exp_alerts: [{exp_labels: {severity: warning}, exp_annotations: {summary: "Frontier dead letters grew by 60 in the last hour", runbook: "docs/phases/p14-production-hardening/runbook.md#dead-letters"}}]}
+      - {eval_time: 100m, alertname: FetchFailureRatioHigh, exp_alerts: [{exp_labels: {severity: warning, pool: browser}, exp_annotations: {summary: "More than half of browser attempts fail on the network/transport", runbook: "docs/phases/p14-production-hardening/runbook.md#fetch-failures"}}]}
+      - {eval_time: 10m, alertname: FetchRecordErrors, exp_alerts: [{exp_labels: {severity: warning}, exp_annotations: {summary: "Attempts were deferred because storage failed to record them", runbook: "docs/phases/p14-production-hardening/runbook.md#storage"}}]}
+      - {eval_time: 10m, alertname: UnsafeDestinationBlocked, exp_alerts: [{exp_labels: {severity: info, pool: http, outcome: unsafe_destination}, exp_annotations: {summary: "The SSRF guard refused a destination (hostile link or DNS rebinding attempt)", runbook: "docs/phases/p14-production-hardening/runbook.md#ssrf-blocks"}}]}
+      - {eval_time: 20m, alertname: ObjectStoreErrors, exp_alerts: [{exp_labels: {severity: warning, operation: put}, exp_annotations: {summary: "Object store calls fail (put)", runbook: "docs/phases/p14-production-hardening/runbook.md#storage"}}]}
+      - {eval_time: 20m, alertname: HostDown, exp_alerts: [{exp_labels: {severity: critical, job: node, instance: n1}, exp_annotations: {summary: "Host n1 is not reporting", runbook: "docs/phases/p14-production-hardening/runbook.md#target-down"}}]}
+      - {eval_time: 25m, alertname: RedisDown, exp_alerts: [{exp_labels: {severity: critical}, exp_annotations: {summary: "Redis is down: the frontier and every event stream are unavailable", runbook: "docs/phases/p14-production-hardening/recovery.md#redis"}}]}
+      - {eval_time: 25m, alertname: RedisMemoryHigh, exp_alerts: [{exp_labels: {severity: warning}, exp_annotations: {summary: "Redis memory at 90% of maxmemory (a full Redis stalled M1 run 2, X-16)", runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"}}]}
+      - {eval_time: 25m, alertname: RedisMemoryCritical, exp_alerts: []}      # 90 % < 95 %: stays silent
+      - {eval_time: 20m, alertname: RedisEvictions, exp_alerts: [{exp_labels: {severity: critical}, exp_annotations: {summary: "Redis evicted keys: frontier or stream data may be lost (policy must be noeviction)", runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"}}]}
+      - {eval_time: 25m, alertname: ScyllaNodeDown, exp_alerts: [{exp_labels: {severity: critical, job: scylla, instance: s1}, exp_annotations: {summary: "Scylla node s1 is down", runbook: "docs/phases/p14-production-hardening/recovery.md#scylla"}}]}
+      - {eval_time: 60m, alertname: ScyllaPendingCompactions, exp_alerts: [{exp_labels: {severity: warning, instance: s1}, exp_annotations: {summary: "Scylla s1 has 300 pending compactions", runbook: "docs/phases/p14-production-hardening/runbook.md#scylla-health"}}]}
+      - {eval_time: 25m, alertname: MinioDown, exp_alerts: [{exp_labels: {severity: critical, job: minio, instance: m1}, exp_annotations: {summary: "MinIO is down: page snapshots and evidence cannot be stored or read", runbook: "docs/phases/p14-production-hardening/recovery.md#minio"}}]}
+      - {eval_time: 20m, alertname: DiskSpaceLow, exp_alerts: [{exp_labels: {severity: warning, instance: n1, mountpoint: /data, fstype: ext4}, exp_annotations: {summary: "n1:/data has 8.4% free", runbook: "docs/phases/p14-production-hardening/runbook.md#disk"}}]}
+      - {eval_time: 60m, alertname: DiskWillFillIn24h, exp_alerts: [{exp_labels: {severity: warning, instance: n1, mountpoint: /data, fstype: ext4}, exp_annotations: {summary: "n1:/data is projected to fill within 24h", runbook: "docs/phases/p14-production-hardening/runbook.md#disk"}}]}
+      - {eval_time: 20m, alertname: HostMemoryLow, exp_alerts: [{exp_labels: {severity: warning, instance: n1}, exp_annotations: {summary: "n1 has under 8% memory available (oomd kills terminals first, then workers)", runbook: "docs/phases/p14-production-hardening/runbook.md#host-memory"}}]}
+      - {eval_time: 20m, alertname: GpuMemoryHigh, exp_alerts: [{exp_labels: {severity: warning, instance: g1}, exp_annotations: {summary: "GPU memory above 95% on g1", runbook: "docs/phases/p14-production-hardening/runbook.md#gpu"}}]}
+
+  # a stalled crawl: tasks wait, nothing completes (separate case: the main case has live fetch counters)
+  - interval: 1m
+    input_series:
+      - {series: 'crawler2_frontier_depth{queue="http"}', values: '5000x120'}
+      - {series: 'crawler2_fetch_attempts_total{pool="http",outcome="ok"}', values: '77x120'}
+    alert_rule_test:
+      - {eval_time: 90m, alertname: FrontierNotDraining, exp_alerts: [{exp_labels: {severity: critical}, exp_annotations: {summary: "Tasks are waiting but no fetch attempt completed for 30 minutes", runbook: "docs/phases/p14-production-hardening/runbook.md#stalled-crawl"}}]}
+      - {eval_time: 5m, alertname: FrontierNotDraining, exp_alerts: []}   # not yet 30 minutes
+
+  - interval: 1m
+    input_series:
+      - {series: 'redis_memory_used_bytes', values: '970x30'}
+      - {series: 'redis_memory_max_bytes', values: '1000x30'}
+    alert_rule_test:
+      - {eval_time: 10m, alertname: RedisMemoryCritical, exp_alerts: [{exp_labels: {severity: critical}, exp_annotations: {summary: "Redis memory above 95%: writes will be refused", runbook: "docs/phases/p14-production-hardening/runbook.md#redis-memory"}}]}

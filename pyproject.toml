@@ -31,6 +31,10 @@ crawler2-intel = "crawler2.intelligence.cli:main"
 crawler2-media = "crawler2.media.cli:main"
 crawler2-evidence = "crawler2.evidence.cli:main"
 crawler2-analytics = "crawler2.analytics.cli:main"
+crawler2-soak = "crawler2.soak.cli:main"
+crawler2-exporter = "crawler2.diagnostics.exporter:main"
+crawler2-backup = "crawler2.ops.cli:main"
+crawler2-trace = "crawler2.diagnostics.trace:main"
 
 [dependency-groups]
 dev = [
@@ -76,6 +80,17 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "S", "BLE", "PT"]
 "benchmarks/p5-extraction/**" = ["S311"]
 # exit-gate benchmark: fixed ffmpeg calls, plain asserts, catalog query on its own keyspace
 "benchmarks/p8-media/**" = ["S101", "S603", "S607", "S608"]
+
+# soak harness: fixed-argv nvidia-smi/git/validator calls, seeded synthetic workload; criterion
+# messages are operator-facing sentences
+"crawler2/soak/**" = ["S603", "S607", "S311", "S105"]
+"tests/unit/soak/**" = ["S101", "S105", "S106", "S603"]  # fake credentials; fixed argv
+"crawler2/soak/evaluate.py" = ["E501"]
+"scripts/backup/**" = ["S101", "S608", "E501"]  # drill script: asserts on throwaway names
+"deploy/**" = ["E501"]  # dashboard definitions
+"crawler2/ops/**" = ["S603", "S314"]  # fixed docker/nodetool/git argv; S3 listing XML from our store
+"crawler2/soak/reconcile.py" = ["E501"]  # SQL
+"crawler2/soak/report.py" = ["E501"]  # HTML template
 
 [tool.mypy]
 python_version = "3.12"

@@ -18,7 +18,13 @@ from typing import Protocol
 from antipiracy_contracts.digests import ContentDigest
 from antipiracy_contracts.events import new_event
 from antipiracy_contracts.events.web import FetchCompleted, PageObserved
-from antipiracy_contracts.ids import FetchAttemptId, ObservationId, PageVersionId, UrlId
+from antipiracy_contracts.ids import (
+    CorrelationId,
+    FetchAttemptId,
+    ObservationId,
+    PageVersionId,
+    UrlId,
+)
 from antipiracy_contracts.models.web import (
     FetchAttempt,
     FetchOutcome,
@@ -55,6 +61,7 @@ _P1_OUTCOME = {
     Outcome.NETWORK_ERROR: FetchOutcome.CONNECTION_FAILURE,
     Outcome.REDIRECT_ERROR: FetchOutcome.CONNECTION_FAILURE,
     Outcome.INVALID_RESPONSE: FetchOutcome.CONNECTION_FAILURE,
+    Outcome.UNSAFE_DESTINATION: FetchOutcome.CONNECTION_FAILURE,
     Outcome.TLS_ERROR: FetchOutcome.TLS_FAILURE,
     Outcome.TOO_LARGE: FetchOutcome.TOO_LARGE,
     Outcome.FETCHER_CRASH: FetchOutcome.CANCELLED,
@@ -166,18 +173,24 @@ class StorageRecorder:
         )
         if attempt is None:
             return None
+        # One correlation id per recorded attempt: every event it causes, here and downstream
+        # (extraction, media, evidence propagate it), shares it - the trace key of TC-055.
+        correlation = CorrelationId.new()
         if (
             result.body is not None
             and result.status is not None
             and attempt.http_status is not None
             and result.outcome is not Outcome.NOT_MODIFIED
         ):
-            observation_id = self._observe(attempt, result)
+            observation_id = self._observe(attempt, result, correlation)
             self._record_interceptions(observation_id, result, finished_at)
         self._attempts.record(
             attempt,
             event=new_event(
-                FetchCompleted(attempt=attempt), producer=self._producer, occurred_at=finished_at
+                FetchCompleted(attempt=attempt),
+                producer=self._producer,
+                occurred_at=finished_at,
+                correlation_id=correlation,
             ),
         )
         return attempt
@@ -201,7 +214,9 @@ class StorageRecorder:
         except StorageError:
             _log.warning("interception_summary_not_recorded", observation=str(observation_id))
 
-    def _observe(self, attempt: FetchAttempt, result: FetchResult) -> ObservationId:
+    def _observe(
+        self, attempt: FetchAttempt, result: FetchResult, correlation: CorrelationId
+    ) -> ObservationId:
         assert result.body is not None  # noqa: S101 -- guarded by record()
         assert result.status is not None  # noqa: S101
         final = attempt.final or _ref(result.final_url) or attempt.requested
@@ -230,6 +245,7 @@ class StorageRecorder:
                 PageObserved(observation=observation),
                 producer=self._producer,
                 occurred_at=attempt.finished_at,
+                correlation_id=correlation,
             ),
         )
         return observation.observation_id

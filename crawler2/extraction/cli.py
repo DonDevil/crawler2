@@ -84,13 +84,15 @@ class ExtractionLoop:
                 return
 
 
-def build(settings: Settings) -> ExtractionLoop:
+def build(settings: Settings, *, serve_metrics: bool = False) -> ExtractionLoop:
     from crawler2.storage.objectstore.s3 import S3ObjectStore
     from crawler2.storage.scylla import ScyllaStorage
 
     identity = str(WorkerIdentity.create(settings.host_id, WorkerRole.EXTRACTION))
     storage = ScyllaStorage.open(settings.scylla, instance=identity)
     metrics = Metrics(settings)
+    if serve_metrics:
+        metrics.serve("extract")
     service = PageIntelligenceService(
         objects=S3ObjectStore(settings.minio, scratch_dir=settings.scratch_dir),
         links=storage.links,
@@ -126,7 +128,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     settings = Settings()
     configure_logging(settings)
-    loop = build(settings)
+    loop = build(settings, serve_metrics=True)
     for sig in (signal.SIGTERM, signal.SIGINT):
         signal.signal(sig, lambda *_: loop.stop())
     loop.run(max_idle_polls=args.exit_when_idle)

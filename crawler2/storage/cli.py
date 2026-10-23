@@ -88,6 +88,7 @@ def cmd_relay(settings: Settings, args: argparse.Namespace) -> int:
         host=cfg.host,
         port=cfg.port,
         db=cfg.db,
+        username=cfg.username,
         password=cfg.password.get_secret_value() if cfg.password else None,
         socket_timeout=cfg.socket_timeout_s,
     )
@@ -121,7 +122,7 @@ def cmd_relay(settings: Settings, args: argparse.Namespace) -> int:
 
         signal.signal(signal.SIGTERM, _stop)
         signal.signal(signal.SIGINT, _stop)
-        metrics.serve()
+        metrics.serve("relay")
         relay.run_forever(
             poll_interval_s=settings.events.relay_poll_interval_s,
             stop=lambda: stopping,

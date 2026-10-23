@@ -43,6 +43,7 @@ SETTINGS = HttpFetchSettings(
     total_timeout_s=4,
     max_body_bytes=5 * 1024 * 1024,
     media_probe_bytes=PROBE,
+    ssrf_allowed_networks=["127.0.0.0/8", "::1/128"],
 )
 FULL_DOWNLOAD_GUARD = 4 * 1024 * 1024
 """Server-side bytes allowed for a probe: N + socket buffers, far below 1 GiB."""

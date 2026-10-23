@@ -34,6 +34,7 @@ class Outcome(StrEnum):
     REDIRECT_ERROR = "redirect_error"
     INVALID_RESPONSE = "invalid_response"
     TOO_LARGE = "too_large"
+    UNSAFE_DESTINATION = "unsafe_destination"
     PROXY_UNAVAILABLE = "proxy_unavailable"
     FETCHER_UNAVAILABLE = "fetcher_unavailable"
     FETCHER_CRASH = "fetcher_crash"

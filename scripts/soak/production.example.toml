@@ -1,0 +1,225 @@
+# 7-day soak on the PHYSICAL topology - the M6 gate (docs/phases/p14-production-hardening/soak.md).
+# Copy to scripts/soak/production.toml (git-ignored), replace every REPLACE-ME, then:
+#   crawler2-soak prepare scripts/soak/production.toml
+#   crawler2-soak start   scripts/soak/production.toml        (or the systemd unit)
+#
+# Every limit below is `unset` = NOT DECIDED. A criterion whose limit is unset ends INCONCLUSIVE
+# (never PASS). Decide them, record the decision, then fill [approval]. Proposed values are in
+# soak.md §4 - they are proposals, not approved thresholds.
+run_name = "m6-soak"
+mode = "production"
+dry_run = false
+duration_h = 168                 # fixed by the plan; production runs below 168 h are rejected
+sample_interval_s = 60
+run_root = "/var/lib/crawler2/soak"
+heartbeat_stale_s = 300
+
+# Stages that MUST occur at least once. Without match.found the run can never pass: the real
+# matcher is held (P10-T8) and the pipeline would be soaked without its back half.
+required_stages = ["fetch.completed", "page.observed", "media.discovered", "encode.requested",
+                   "representation.ready", "match.found", "evidence.finalized"]
+
+# Repositories whose commit and working tree are pinned for the whole run (a change = INVALIDATED).
+repos = ["/opt/crawler2", "/opt/fingerprinter"]
+# Files/dirs whose CONTENT is pinned too (deployment configuration, not secrets).
+watch_paths = ["/etc/crawler2/crawler2.env"]
+
+# What the run is judged against and who decided it. All three fields are required to start.
+[approval]
+approved_by = ""                 # REPLACE-ME: person who approved the limits
+approved_at = ""                 # REPLACE-ME: date
+reference = ""                   # REPLACE-ME: ADR / ticket / message recording the decision
+
+# Physical topology as deployed (recorded verbatim, fingerprinted). Required.
+[topology]
+# "host-a" = "crawler pools, extract, admit, media registry"      # REPLACE-ME
+# "gpu-1"  = "fingerprinter encoder + matcher (RTX 2050)"
+# "scylla-1" = "scylla"   "scylla-2" = "scylla"   "scylla-3" = "scylla"
+# "redis-1" = "redis"     "minio-1" = "minio"
+
+[thresholds]
+# max_interruptions = ...        # OD-S1: how many runner interruptions a 168 h run may contain
+# max_interruption_gap_s = ...   # OD-S1: how long any single one may last
+# min_series_coverage = ...      # OD-S2: fraction of samples in which each required series must exist
+# max_dependency_outage_s = ...  # OD-S3: longest tolerated outage of any dependency
+# max_restarts_per_service = ... # OD-S4
+# min_disk_free_fraction = ...   # OD-S5
+# max_queue_age_s = ...          # OD-S6
+# max_event_lag_s = ...          # OD-S6
+# max_retry_ratio = ...          # OD-S7: retries per completed unit of work
+# growth limits per series: see [thresholds.growth."<series>"] below (OD-S8)
+# [thresholds.growth."host_a_workers.rss_mb"]
+# max_slope_per_h = ...
+
+[redis]
+host = "REPLACE-ME"
+port = 6379
+db = 0
+username_env = "SOAK_REDIS_USER"       # names of environment variables, never values
+password_env = "SOAK_REDIS_PASSWORD"   # the `monitor` ACL user is enough (read-only)
+stream_prefix = "events:"
+
+# --- reconciliation edges (see soak.md §5 for what can and cannot be joined by event ids) -----
+[[edges]]
+name = "encode"
+from_type = "encode.requested"
+to_types = ["representation.ready", "encode.failed"]
+from_key = "payload.content.content_id"
+to_key = "payload.representation.content_id"
+effect_path = "payload.representation.representation_id"
+# grace_s = ...     # OD-S9: how long an encode request may wait for its outcome before it counts as lost
+#                    (undecided => this edge cannot be judged => LOST_WORK is INCONCLUSIVE)
+[edges.to_key_by_type]
+"encode.failed" = "payload.content_id"
+[edges.to_filters."encode.failed"]
+"payload.retryable" = "False"
+
+[[edges]]
+name = "evidence-unique"
+from_type = "evidence.finalized"
+to_types = ["evidence.finalized"]
+from_key = "payload.seal.evidence_id"
+to_key = "payload.seal.evidence_id"
+effect_path = "payload.seal.manifest.digest"
+grace_s = 60         # self-edge: the grace is irrelevant, only the effect comparison matters
+
+[[edges]]
+name = "fetch-to-page"
+from_type = "fetch.completed"
+to_types = ["page.observed"]
+from_key = "payload.attempt.fetch_attempt_id"
+to_key = "payload.observation.fetch_attempt_id"
+grace_s = 600
+required = false     # informational: not every completed fetch has a body to observe
+
+[evidence]
+enabled = true
+sample = 200
+command = ["/opt/crawler2/env/bin/crawler2-evidence", "validate", "{id}", "--dry-run"]
+
+# --- collectors --------------------------------------------------------------------------------
+[[collectors]]
+name = "host_a"
+type = "prometheus"
+[collectors.options]
+url = "http://REPLACE-ME:9100/metrics"      # node_exporter on the crawler host
+[collectors.options.metrics]
+cpu_idle = 'node_cpu_seconds_total{mode="idle"}'
+mem_available_mb = 'node_memory_MemAvailable_bytes'
+disk_data_free_fraction = 'node_filesystem_avail_bytes{mountpoint="/var/lib/crawler2"} / node_filesystem_size_bytes{mountpoint="/var/lib/crawler2"}'
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "mem_available_mb"
+[[collectors.series]]
+name = "disk_data_free_fraction"
+role = "disk_free"
+
+[[collectors]]
+name = "exporter"
+type = "prometheus"
+[collectors.options]
+url = "http://REPLACE-ME:9114/metrics"      # crawler2-exporter
+[collectors.options.metrics]
+frontier_depth = 'crawler2_frontier_depth'
+dead_letters = 'crawler2_frontier_dead_letters'
+outbox_lag_s = 'crawler2_outbox_checkpoint_lag_seconds'
+redis_memory_ratio = 'crawler2_redis_memory_ratio'
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "frontier_depth"
+growth_watch = true
+[[collectors.series]]
+name = "dead_letters"
+growth_watch = true
+[[collectors.series]]
+name = "outbox_lag_s"
+role = "event_lag"
+[[collectors.series]]
+name = "redis_memory_ratio"
+growth_watch = true
+
+# One process collector PER HOST that runs workers: run `crawler2-soak` where those processes are,
+# or scrape their /metrics (process_resident_memory_bytes, process_open_fds) with a prometheus
+# collector per role. Example for the runner's own host:
+[[collectors]]
+name = "workers"
+type = "process"
+[collectors.options]
+tree = true
+[collectors.options.match]
+http = "crawler2-worker --pool http"
+browser = "crawler2-worker --pool browser"
+relay = "crawler2-storage relay"
+[[collectors.series]]
+name = "http_rss_mb"
+growth_watch = true
+[[collectors.series]]
+name = "browser_rss_mb"
+growth_watch = true
+[[collectors.series]]
+name = "browser_fds"
+growth_watch = true
+[[collectors.series]]
+name = "browser_threads"
+growth_watch = true
+
+[[collectors]]
+name = "redis"
+type = "redis"
+[collectors.options]
+host = "REPLACE-ME"
+port = 6379
+username_env = "SOAK_REDIS_USER"
+password_env = "SOAK_REDIS_PASSWORD"
+[collectors.options.streams]
+page_observed = "events:page.observed.v1"
+media_discovered = "events:media.discovered.v1"
+encode_requested = "events:encode.requested.v1"
+representation_ready = "events:representation.ready.v1"
+match_found = "events:match.found.v1"
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "used_memory_mb"
+growth_watch = true
+[[collectors.series]]
+name = "group_page_observed_extraction_pending_age_s"
+role = "queue_age"
+
+[[collectors]]
+name = "scylla"
+type = "prometheus"
+[collectors.options]
+url = "http://REPLACE-ME:9180/metrics"
+[collectors.options.metrics]
+pending_compactions = 'scylla_compaction_manager_pending_compactions'   # verify the name on your version
+[[collectors.series]]
+name = "up"
+role = "up"
+[[collectors.series]]
+name = "pending_compactions"
+growth_watch = true
+
+[[collectors]]
+name = "minio"
+type = "http_health"
+[collectors.options]
+url = "http://REPLACE-ME:9000/minio/health/live"
+[[collectors.series]]
+name = "up"
+role = "up"
+
+[[collectors]]
+name = "gpu"
+type = "gpu"
+[[collectors.series]]
+name = "gpu_mem_used_mb"
+growth_watch = true
+[[collectors.series]]
+name = "gpu_util_percent"
+required = false

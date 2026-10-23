@@ -43,3 +43,8 @@ writes links, revisions and archival decisions through the P2 repositories.
 Discovery (P6) consumes `urls.discovered`, applies the filter and the static
 M1 scope/revisit rules and admits through the frontier API; browser pools
 consult the same filter through the P4 interception hook.
+
+**Operations** (P14, groundwork): deployment and supervision, observability (metrics, SLOs, alerts, tracing),
+runbook, backup/restore/rebuild, security model and the 7-day soak are in
+[../phases/p14-production-hardening/](../phases/p14-production-hardening/README.md). Those documents
+state exactly what was verified and what was not.

@@ -39,7 +39,11 @@ from crawler2.evidence.export import export_case
 from crawler2.evidence.finalize import EvidenceFinalizer
 from crawler2.evidence.stats import campaign_stats, load_campaign
 from crawler2.evidence.store import Campaign, ScyllaEvidenceStore
-from crawler2.storage.events.consumer import IdempotentConsumer, RedisStreamReader
+from crawler2.storage.events.consumer import (
+    IdempotentConsumer,
+    RedisStreamReader,
+    connect_stream_client,
+)
 from crawler2.storage.events.publisher import OutboundEvent, RedisStreamPublisher, stream_name
 from crawler2.storage.objectstore import S3ObjectStore
 from crawler2.storage.repositories import EvidenceState
@@ -158,7 +162,7 @@ def stack(
     settings: Settings,
     event_settings: EventSettings,
 ) -> Iterator[Stack]:
-    client = redis.Redis(host=settings.redis.host, port=settings.redis.port, db=settings.redis.db)
+    client = connect_stream_client(settings.redis)
     yield Stack(
         storage,
         object_store,

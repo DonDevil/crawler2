@@ -21,6 +21,12 @@ from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 HOST_ID_PATTERN = r"^[a-z0-9][a-z0-9-]{0,62}$"
 
 
+_ROOT_LIKE_USERS = frozenset({"minioadmin", "root", "admin", "crawler2-dev"})
+_PLACEHOLDER_SECRETS = frozenset(
+    {"minioadmin", "change-me", "changeme", "change-me-dev-only", "password"}
+)
+
+
 class Environment(StrEnum):
     DEV = "dev"
     TEST = "test"
@@ -68,6 +74,8 @@ class RedisSettings(BaseModel):
     host: str = "redis"
     port: int = Field(default=6379, ge=1, le=65535)
     db: int = Field(default=0, ge=0)
+    username: str | None = None
+    """Redis 6+ ACL user; ``None`` uses the ``default`` user."""
     password: SecretStr | None = None
     namespace: str = "crawler2"
     socket_timeout_s: float = Field(default=5.0, gt=0)
@@ -206,6 +214,8 @@ class HttpFetchSettings(BaseModel):
     """Prefix of an HTML body inspected for needs_js / captcha / block markers."""
     proxy: str | None = None
     """Outbound proxy URL (benchmarks' counting proxy); the Tor pool sets its own."""
+    ssrf_allowed_networks: CsvList = Field(default_factory=list)
+    """CIDRs exempt from the SSRF guard. Must be empty when ``environment=prod``."""
 
 
 class BrowserSettings(BaseModel):
@@ -279,6 +289,18 @@ class PoolSettings(BaseModel):
     """Pause between retries of an outcome report while the frontier is unavailable."""
 
 
+class RateLimitBackoffSettings(BaseModel):
+    """Per-domain interval widening after 429 / ``Retry-After`` (P6 X-14, crawlers/backoff.py)."""
+
+    enabled: bool = True
+    base_s: float = Field(default=5.0, gt=0)
+    """Interval after the first 429; doubles per consecutive 429 from this process."""
+    max_s: float = Field(default=600.0, gt=0)
+    """Ceiling for the interval, including any ``Retry-After`` the server asks for."""
+    min_window_s: float = Field(default=60.0, gt=0)
+    """The widened interval stays at least this long before the sweep may clear it."""
+
+
 class WorkersSettings(BaseModel):
     http: PoolSettings = Field(default_factory=lambda: PoolSettings(concurrency=32))
     browser: PoolSettings = Field(default_factory=lambda: PoolSettings(concurrency=2))
@@ -287,6 +309,7 @@ class WorkersSettings(BaseModel):
     browser_engine: BrowserSettings = Field(default_factory=BrowserSettings)
     tor_network: TorSettings = Field(default_factory=TorSettings)
     network_health: NetworkHealthSettings = Field(default_factory=NetworkHealthSettings)
+    rate_limit_backoff: RateLimitBackoffSettings = Field(default_factory=RateLimitBackoffSettings)
     recover_every_s: float = Field(default=30.0, gt=0)
     """How often each worker process runs ``frontier.recover()`` (safe concurrently)."""
 
@@ -300,6 +323,10 @@ class MetricsSettings(BaseModel):
     enabled: bool = True
     namespace: str = Field(default="crawler2", pattern=r"^[a-zA-Z_][a-zA-Z0-9_]*$")
     port: int = Field(default=9100, ge=1, le=65535)
+    """Base port; each process role adds its own offset (``ROLE_PORT_OFFSETS``)."""
+    bind: str = "127.0.0.1"
+    """Listen address of /metrics. Loopback by default; set to a private interface address
+    (never a public one) on hosts a remote Prometheus scrapes."""
 
 
 class ResourceLimits(BaseModel):
@@ -535,10 +562,46 @@ class Settings(BaseSettings):
     evidence: EvidenceSettings = Field(default_factory=EvidenceSettings)
     analytics: AnalyticsSettings = Field(default_factory=AnalyticsSettings)
 
+    def _check_production_secrets(self) -> None:
+        """P14 (TC-065): a production process refuses to start without authenticated backends
+        and with placeholder or root-looking credentials."""
+        problems: list[str] = []
+        if self.redis.password is None:
+            problems.append("redis.password is not set (Redis must require authentication)")
+        if self.scylla.username is None or self.scylla.password is None:
+            problems.append("scylla.username/password are not set (PasswordAuthenticator)")
+        key, secret = self.minio.access_key, self.minio.secret_key
+        if key is None or secret is None:
+            problems.append("minio.access_key/secret_key are not set")
+        else:
+            if key.get_secret_value().lower() in _ROOT_LIKE_USERS:
+                problems.append(
+                    "minio.access_key looks like a root/default user; use a "
+                    "least-privilege service user"
+                )
+            if (
+                secret.get_secret_value().lower() in _PLACEHOLDER_SECRETS
+                or len(secret.get_secret_value()) < 16
+            ):
+                problems.append("minio.secret_key is a placeholder or shorter than 16 characters")
+        if problems:
+            raise ValueError("production configuration refused: " + "; ".join(problems))
+
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:
         if len(set(self.roles)) != len(self.roles):
             raise ValueError(f"duplicate roles: {[r.value for r in self.roles]}")
         if WorkerRole.ENCODER in self.roles and self.limits.gpu_vram_mb == 0:
             raise ValueError("role 'encoder' requires limits.gpu_vram_mb > 0 (GPU hosts only)")
+        if self.environment is Environment.PROD:
+            self._check_production_secrets()
+            exempt = {
+                "workers.fetch": self.workers.fetch.ssrf_allowed_networks,
+                "media": self.media.ssrf_allowed_networks,
+            }
+            bad = sorted(name for name, nets in exempt.items() if nets)
+            if bad:
+                raise ValueError(
+                    f"ssrf_allowed_networks must be empty when environment=prod (set in: {bad})"
+                )
         return self

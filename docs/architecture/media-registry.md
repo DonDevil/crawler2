@@ -219,8 +219,12 @@ loopback, private, link-local, unspecified, multicast, reserved,
 scheme; one unsafe DNS record refuses the host. It is an httpx transport,
 so every request — every redirect hop — is checked on both paths before any
 byte is sent. `media.ssrf_allowed_networks` (default empty) is the only
-opt-out, for fixtures and the compose test network. **DNS rebinding is not
-solved** (the guard and the connection resolve separately); pinning is P14.
+opt-out, for fixtures and the compose test network; with `environment=prod` a
+non-empty list stops the process at startup. **DNS rebinding is closed since
+P14**: the implementation moved to `crawler2/core/netguard.py` (`media/ssrf.py`
+re-exports it) and the default transport now resolves, validates and connects
+in one step, so the address checked is the address used. See
+[P14 security](../phases/p14-production-hardening/security.md).
 
 **Politeness and concurrency.** Media hosts are third parties, outside P3's
 per-domain gate, so P8 has its own limits on Redis `TIME`, keyed by the

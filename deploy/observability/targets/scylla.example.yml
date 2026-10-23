@@ -1,0 +1,5 @@
+# Copy to targets/scylla.yml and replace the placeholders with real host:port values.
+- targets: ["SCYLLA_1:9180", "SCYLLA_2:9180", "SCYLLA_3:9180"]
+  labels:
+    host_group: replace-me
+    role: scylla
