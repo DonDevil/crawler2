@@ -59,6 +59,25 @@ genuine defect of the harness, not of the test. The DURATION criterion measured 
 run's own start → `completed` record (the sample log is judged by METRICS/SAMPLES/CONTINUITY), the event timestamps follow the
 runner's clock, and a dead runner that nobody resumed is reported `INTERRUPTED` instead of `RUNNING` (3 new tests).
 
+### 2.1a Two defects found by a 3-hour repeat-run on one host (2026-11-14), fixed afterwards
+* **`earliest_wins` boundary (`storage/layout.py`, `tests/unit/storage/test_layout.py`).** The write timestamp is
+  `2·anchor − at` and must stay `> 0` (the test's own invariant). With `anchor = 2020-01-01`, `2·anchor` is
+  **2069-12-31T00:00:00Z**, not 2070-01-01, so that instant maps to 0 and is rejected (`mirrored <= 0`) while the
+  documented range ("valid until 2070") and the Hypothesis strategy (`max_value=2069-12-31`) included it: the property
+  test failed intermittently (2 of 25 suite runs, whenever Hypothesis drew the boundary). The implementation was
+  correct; range wording and the strategy were off by one. Corrected: valid instants are strictly before
+  2069-12-31T00:00:00Z (last valid `…T23:59:59.999999Z` → timestamp 1); docstring, error message and ADR-012 now say so;
+  the strategy ends at the last valid µs; new tests cover the anchor, the last valid instant, the boundary and later
+  instants (rejected), and offset-aware inputs. Behaviour of the function is unchanged.
+* **Slow soak preflight test (`tests/unit/soak/test_cli.py`).** `test_the_shipped_example_configs_parse_and_the_production_one_is_not_startable`
+  calls `runner.preflight()` on `production.example.toml`, whose collectors and Redis point at the placeholder host
+  `REPLACE-ME`. Instrumenting `socket.getaddrinfo` showed ~26 lookups of `REPLACE-ME`; on a run where the host's
+  resolver timed out each blocked 10–15 s (77 s test), otherwise they return in ms. The delay is host-resolver latency,
+  not the code under test. The test now makes name resolution an immediate NXDOMAIN, asserts only the placeholder is
+  looked up, and that the `redis` check fails as unreachable, in addition to the `approval`/`thresholds` assertions.
+  No production code changed. A ~8 s deterministic floor remains (redis-py's own connection-retry back-off ≈7 s and
+  local `nvidia-smi`/git subprocesses), independent of the network.
+
 ### 2.2 Fingerprinter (excluding `tests/p10`, which needs its own stack env)
 `cd ../fingerprinter && env/bin/python -m pytest tests -q -p no:cacheprovider --ignore=tests/p10`: **553 passed, 118 skipped**
 (skips need the Scylla/Redis/MinIO/GPU stacks or env flags). `tests/p10` was run only for the O-6 test (above), not as a whole.

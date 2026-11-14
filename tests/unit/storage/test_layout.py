@@ -1,6 +1,7 @@
 from collections import Counter
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime, timedelta, timezone
 
+import pytest
 from antipiracy_contracts.ids import ObservationId, UrlId
 from antipiracy_contracts.urls import canonicalize_url
 from hypothesis import given
@@ -20,8 +21,15 @@ from crawler2.storage.layout import (
     version_wins,
 )
 
+# earliest_wins() = 2*anchor - at must stay > 0: valid strictly before 2069-12-31T00:00:00Z.
+EW_ANCHOR = datetime(2020, 1, 1, tzinfo=UTC)
+EW_LIMIT = datetime(2069, 12, 31, tzinfo=UTC)  # = 2 * anchor, first rejected instant
+EW_LAST_VALID = EW_LIMIT - timedelta(microseconds=1)
+
 instants = st.datetimes(
-    min_value=datetime(2020, 1, 1), max_value=datetime(2069, 12, 31), timezones=st.just(UTC)
+    min_value=EW_ANCHOR.replace(tzinfo=None),
+    max_value=EW_LAST_VALID.replace(tzinfo=None),
+    timezones=st.just(UTC),
 )
 
 
@@ -71,3 +79,31 @@ def test_convergent_timestamps_order(a: datetime, b: datetime) -> None:
 
 def test_version_wins_orders_versions() -> None:
     assert version_wins(1) < version_wins(2)
+
+
+def test_earliest_wins_lower_boundary_is_the_anchor() -> None:
+    # the mirror's fixed point: at == anchor maps to itself
+    assert earliest_wins(EW_ANCHOR) == latest_wins(EW_ANCHOR)
+
+
+def test_earliest_wins_upper_boundary_last_valid_instant() -> None:
+    assert earliest_wins(EW_LAST_VALID) == 1
+    assert earliest_wins(EW_LAST_VALID - timedelta(microseconds=1)) == 2
+    assert earliest_wins(EW_LAST_VALID) < earliest_wins(EW_LAST_VALID - timedelta(seconds=1))
+
+
+def test_earliest_wins_rejects_the_first_instant_at_and_after_the_limit() -> None:
+    # regression: 2069-12-31T00:00:00Z maps to timestamp 0, which the contract excludes (0 < ts)
+    for at in (EW_LIMIT, EW_LIMIT + timedelta(microseconds=1), datetime(2070, 1, 1, tzinfo=UTC)):
+        with pytest.raises(ValueError, match="earliest_wins range"):
+            earliest_wins(at)
+
+
+def test_earliest_wins_uses_the_utc_instant_not_the_offset() -> None:
+    ist = timezone(timedelta(hours=5, minutes=30))
+    at = datetime(2026, 9, 30, 23, 30, tzinfo=UTC)
+    assert earliest_wins(at.astimezone(ist)) == earliest_wins(at)
+    # an offset-aware value whose UTC instant is exactly the limit is rejected too
+    with pytest.raises(ValueError, match="earliest_wins range"):
+        earliest_wins(EW_LIMIT.astimezone(ist))
+    assert earliest_wins(EW_LAST_VALID.astimezone(ist)) == 1

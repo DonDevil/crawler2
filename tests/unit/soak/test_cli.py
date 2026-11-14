@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import socket
 from pathlib import Path
 
 import pytest
@@ -130,7 +131,9 @@ def test_invalid_config_is_a_clear_error(tmp_path: Path) -> None:
         cli.main(["prepare", str(f)])
 
 
-def test_the_shipped_example_configs_parse_and_the_production_one_is_not_startable() -> None:
+def test_the_shipped_example_configs_parse_and_the_production_one_is_not_startable(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     from crawler2.soak import runner
     from crawler2.soak.config import load_config
 
@@ -141,7 +144,21 @@ def test_the_shipped_example_configs_parse_and_the_production_one_is_not_startab
     prod = load_config(root / "production.example.toml")
     assert prod.m6_eligible
     assert prod.duration_h == 168
+    # The shipped example points its collectors and Redis at the placeholder host REPLACE-ME.
+    # Preflight really tries to reach them; make name resolution deterministic (an instant
+    # NXDOMAIN) so the result does not depend on the machine's resolver (a resolver that times
+    # out made this test take minutes) and prove that only the placeholder is ever looked up.
+    looked_up: list[str] = []
+
+    def _nxdomain(host: object, *args: object, **kwargs: object) -> None:
+        looked_up.append(str(host))
+        raise socket.gaierror(socket.EAI_NONAME, "Name or service not known")
+
+    monkeypatch.setattr(socket, "getaddrinfo", _nxdomain)
     checks = {c.name: c for c in runner.preflight(prod)}
+    assert looked_up
+    assert set(looked_up) == {"REPLACE-ME"}
+    assert checks["redis"].status == "fail", "the placeholder Redis host is unreachable"
     assert checks["approval"].status == "fail", "no one has approved any limit yet"
     assert checks["thresholds"].status == "warn"
     assert "match.found" in prod.required_stages

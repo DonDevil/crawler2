@@ -36,7 +36,11 @@ TARGETS_BUCKET: Final = 0
 """targets (P2): 10^2-10^4 rows in total fit one listing partition."""
 
 _MIRROR_ANCHOR: Final = datetime(2020, 1, 1, tzinfo=UTC)
-"""earliest_wins mirrors instants around this anchor (valid for instants before 2070)."""
+"""earliest_wins mirrors instants around this anchor.
+
+The write timestamp ``2*anchor - at`` must stay > 0, so the valid instants are those strictly
+before ``2*anchor`` = 2069-12-31T00:00:00Z (the last valid one is ``2*anchor`` minus 1 µs).
+"""
 
 
 def shard_of(identifier: TypedId, shards: int) -> int:
@@ -112,7 +116,9 @@ def earliest_wins(at: datetime) -> int:
     """
     mirrored = 2 * _micros(_MIRROR_ANCHOR) - _micros(at)
     if mirrored <= 0:
-        raise ValueError(f"instant outside the earliest_wins range (before 2070): {at}")
+        raise ValueError(
+            f"instant outside the earliest_wins range (before 2069-12-31T00:00:00Z): {at}"
+        )
     return mirrored
 
 

@@ -31,7 +31,10 @@ and bounded partition sizes at a 1M-page load, on Scylla 6.2 (open source).
    - `earliest_wins(t)` = 2·anchor − t (anchor 2020-01-01): first_seen
      columns keep the oldest fact. The textbook `MAX − t` is rejected by
      Scylla (`restrict_future_timestamp`: no timestamps > 3 days ahead), so
-     the mirror keeps every timestamp in the past; valid until 2070.
+     the mirror keeps every timestamp in the past. The write timestamp must stay
+     positive, so it is valid for instants strictly before 2·anchor =
+     2069-12-31T00:00:00Z (the last valid instant is 2069-12-30T23:59:59.999999Z,
+     which maps to 1 µs); the boundary itself and later instants are rejected.
    - `version_wins(v)` = v: the highest target version / encode attempt wins.
    Each fact family has its own columns, so the rules never compete.
    Ties (same instant, different values) are resolved by Scylla's value
