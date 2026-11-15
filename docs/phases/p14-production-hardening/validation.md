@@ -169,3 +169,132 @@ Real multi-host, RF=3, physical network, Redis failover, MinIO distributed mode,
 7-day soak, a 24 h run, the real end-to-end chain, `crawler2_m1` export (no approval), P10 gates other than the T4 reproduction,
 `test-fingerprinter-p9.sh`, `test-media-two-host.sh`, the Scylla outage test (shared dev Scylla), Tor (no service), unit start of the
 systemd units, application of the network isolation drop-in, secret rotation, Scylla auth, remote CI.
+
+## 9. Preparation for the three-hour real-webpage validation (2026-11-15)
+
+Scope: infrastructure and integration preparation only. **No crawl, no live query, no soak was run**; nothing here
+is a P14 gate result. Evidence is labelled V (verified in this session), I (inferred from code/docs), U (untested
+assumption), B (blocked).
+
+### 9.1 What was verified (V) and what blocks (B)
+
+| Stage | Status | Evidence / blocker |
+|---|---|---|
+| 1 Qdrant | **PASS** | 1.15.1 by digest, loopback 16333/16334, API key (401 without/with a wrong key, 200 with), health check `healthy`, 1.5 GiB limit, volume persistence, collection `fp_a4df3d192528_target_g1` 768-d Dot/int8, 42 MiB resident. fingerprinter repo `docs/p10-matcher.md` §2, §10 |
+| 2 Blast P10 | **PARTIAL** | 1,700/1,700 vectors indexed per role, manifests equal, matcher tasks `DONE` with 0 candidates (own-content exclusion, design N-13). No positive decision exists (needs a distinct copy of Blast) → NOT TESTED. Calibration 2.1 `UNAVAILABLE` (unchanged) |
+| 3 `match.found` | **BLOCKED** | The matcher builds/publishes `match.found` only for a CALIBRATED technique (`matching.py`); `match publish-held` refuses otherwise. Not bypassed, nothing fabricated. Verified instead: groups `crawl-feedback` and `evidence-collector` registered on `match.found.v1`; `target.registered.v1` (Blast) published after registering `crawl-feedback`, delivered (pending 0, lag 0), crawler2 `targets` projection filled; envelope `correlation_id` null (operator-originated) |
+| 4 Evidence | **BLOCKED** | Needs a real `match.found` with crawler2 registry provenance. Only verified: `crawler2-evidence collect run` starts, joins group `evidence-collector`, and is the registered required consumer. No evidence record, object or integrity check exists for a new match |
+| 5 GPU | **PASS** (bounded) | CUDA FP32 cosine ≥ 0.9999999 vs CPU, 40.7 frames/s vs 8.9 (batch 8), 608 MiB VRAM, GPU ≤ 61 °C, CPU ≤ 86 °C vs 96 °C on CPU inference; seconds-long runs, sustained thermals U. fingerprinter `docs/v2-encoder.md` §8.1. `cuda` runtime variant **not admitted** |
+| 6 Plan | **PARTIAL** | `scripts/live-validation/three-hour.sh` (preflight 12/13 pass on the real stack; supervisor ordering, early stop and orphan check tested with `STUB=1`; the real roles were not started) |
+
+**Consequence for the three-hour run.** With technique 2.1 `UNAVAILABLE`, matches found during the run are *stored and held*
+(`match summary` → `unpublished`); `match.found` events, the P11 feedback consumer and the P12 evidence collector will receive
+nothing. The run can validate discovery → crawl → extraction → media → encode → index → matcher decisions, but **not**
+the match → evidence leg. That is an owner decision (O-3) and is not solved by this document.
+
+### 9.2 Owner decisions required before starting
+
+1. `python -m fingerprinter intake init --from-start` **or** `--from-now --reason "…"` (not initialised: preflight FAIL; changes how
+   old `encode.requested` entries are treated).
+2. `python -m fingerprinter runtime admit-cuda` (records the CUDA variant of `rt-1`; the script defaults to `--device cuda` and its preflight
+   refuses otherwise; `ENCODER_DEVICE=cpu` runs the CPU path that reached 97 °C).
+3. Authorisation to contact duckduckgo, bing and brave with the four queries of `~/Documents/query.txt` (unmodified, 4 lines).
+4. Acceptance that matching/evidence stay held (§9.1).
+
+### 9.3 Role order and data flow (I, from code and docs)
+
+`crawler2-discover search` → `urls.discovered` → `admit` (dedupe, filter, frontier) → `worker-http`/`worker-browser` → outbox →
+`relay` → `extract` (pages, media URLs, `media.discovered` in the outbox) → `resolve` (reads settled outbox buckets, **10 min settle**,
+so media work lags discovery by ≥ 10 min) → `probe` → `hash` (reads the whole file; ≤ 8 GiB, 1 per host) → `representations`
+(emits `encode.requested`, reads `representation.ready`/`encode.failed` via group `media-registry`) → fingerprinter `intake`
+→ `scheduler` → `encoder` (acquires the media itself, writes the representation, `representation.ready`) → `reconcile` (publisher, intents)
+→ `matcher reconcile` (hints → index upserts) → `matcher run` (searches against the Blast target index; decisions held). `feedback`
+and `evidence-collect` consume `match.found`. Discovered media enter the **existing** pipeline only through
+`media.discovered` → `encode.requested`; the script adds no alternative path. Targets are matched implicitly: every indexed media
+subject is searched against all indexed targets (here only Blast, `tgt_01a1dfb096c67b3fab003ec6677832e7`).
+
+### 9.4 Configuration (set by the script; U = not performance-validated)
+
+Search engines: `CRAWLER2_SEARCH__ENGINES=duckduckgo,bing,brave` (verified to parse; ahmia/Tor excluded). The runner records a status per
+engine and query (`results|empty|blocked|parse_error|error|cooldown|unavailable`) and never substitutes another engine. After a CAPTCHA
+the engine sits out `blocked_cooldown_queries` = 999 queries, i.e. **for the rest of the run**. CAPTCHA, rate limits and access controls are not bypassed.
+Queries repeat every `SEARCH_EVERY_S` = 3,600 s (3 runs; later runs mostly yield duplicate URLs).
+
+| Role | Count | Setting | Why |
+|---|---|---|---|
+| worker-http | 1 process | concurrency 16 (default 32); per-domain in-flight 2 | network-bound; leaves CPU/thermal headroom |
+| worker-browser | 1 process | 2 contexts × 1 page; Chromium RSS limit 1,200 MB (default) | ≈ 1.5 GB worst case on a 15.7 GiB host |
+| probe / hash | 1 each | probe 4 (default 8); hash 2, 1 per host | hash streams whole files; bandwidth, not CPU |
+| fp-encoder | 1 (one per host by design) | `cuda`, `max_batch` 32 (≈ 1 GiB VRAM of 4), decode threads 2 | GPU 4.5× CPU at lower CPU heat; batch 8 was fastest in the smoke test, the encoder calibrates the batch |
+| matcher | 1 `run` + 1 `reconcile` | defaults | index is 42 MiB, queries ≈ 1 ms |
+| fp-intake/scheduler/reconcile, relay, admit, extract, resolve, representations, feedback, evidence | 1 each | defaults | consumers are idempotent; more instances add nothing on one host |
+
+Headroom (I/U, estimate not measured): host baseline 5.5 GiB used of 15.7; Scylla 0.55/2 GiB, MinIO 0.21/0.5 GiB (watch: tightest limit),
+Redis 18 MiB/1 GiB, Qdrant 42 MiB/1.5 GiB. Scratch is on NVMe under `~/anti_piracy/var-live3h` (62 GB free; stop at < 15 GB).
+
+### 9.5 Commands
+
+```bash
+cd ~/anti_piracy/crawler2
+scripts/live-validation/three-hour.sh plan         # exact commands and values; starts nothing
+scripts/live-validation/three-hour.sh preflight    # 13 checks; starts nothing
+nohup scripts/live-validation/three-hour.sh run > /tmp/live3h.out 2>&1 &     # ONLY after the owner's go
+touch "$RUN_DIR/STOP_REQUESTED"                    # early, ordered stop ($RUN_DIR is in the first line of /tmp/live3h.out)
+```
+
+Start order: relay, admit, extract, resolve, probe, hash, representations, fp-reconcile, fp-intake, fp-scheduler, fp-encoder,
+fp-match-reconcile, fp-match, feedback, evidence, worker-http, worker-browser, then `search` (T0, 8 s between starts). The
+supervisor measures `DURATION_S` = 10,800 s on its monotonic clock from T0; or an early stop on any `STOP` condition below.
+
+### 9.6 Duration control and shutdown
+
+Producers stop at T0 + 10,800 s exactly; the rest drain for at most `DRAIN_S` = 300 s and then stop in data-flow order, each phase
+SIGTERM + up to 60 s (the role unit's `TimeoutStopSec`; workers return in-flight claims without charging the target, consumers leave
+entries unacknowledged for redelivery, I): (1) search, worker-browser, worker-http; drain; (2) extract, admit; (3) relay, resolve, probe,
+hash, representations; (4) fp-intake, fp-scheduler, fp-encoder; (5) fp-match, fp-match-reconcile, fp-reconcile (publisher last, so
+held/pending intents flush); (6) feedback, evidence. Worst case about T0 + 10,800 + 300 + 6 × 60 s ≈ 11,460 s. A role that ignores SIGTERM is
+SIGKILLed and logged (`alerts.log`); its claims recover by lease expiry. The frontier, outbox, streams, Scylla rows and Qdrant state are durable, so work
+that is not drained stays queued and is not lost, but it is **not counted as completed** in the report. A final snapshot and an orphan scan
+(`pgrep` for role commands and Chromium) end the run (`SHUTDOWN_COMPLETE`). Tested with stub roles: normal end, early stop, no orphans (V);
+real-role SIGTERM latency under load is U.
+
+### 9.7 Monitoring and thresholds
+
+`resources.csv` every 30 s (CPU package °C, GPU °C/util/VRAM, MemAvailable, swap, disk free, load, dead roles); `snapshots/t<sec>/` every 300 s
+(`docker stats`, restart/OOM/health of the four containers, Redis memory and ops, `XLEN`/`XINFO GROUPS` for eight streams, Qdrant collections and
+memory, `match summary`, `encode status`, `publisher status`, `index status`, and each role's `/metrics`: crawler2 9100 + offset, fingerprinter 9201–9206).
+
+| Signal | WARN | STOP (ordered shutdown) |
+|---|---|---|
+| CPU package | ≥ 90 °C | ≥ 97 °C for 5 consecutive samples (the CPU-only encode reached 96–97 °C) |
+| GPU | ≥ 80 °C | ≥ 87 °C |
+| MemAvailable | ≤ 2 GiB | ≤ 1 GiB |
+| swap used | ≥ 1 GiB | – |
+| disk free | – | < 15 GB |
+| role process gone | always | – (alert only; supervisor does not restart roles) |
+
+Where each requested signal lives (metric names from code; `grep` the `.prom` files):
+discovery `search_queries_total{engine,result}`, `discovery_admissions_total`; crawl `fetch_attempts_total`, `fetch_duration_seconds`, `fetch_rate_limited_total`,
+`fetch_escalations_total`, `frontier_depth`, `queue_depth`; extraction/media `media_observations_total`, `media_probes_total`, `media_hashes_total`, `media_encode_claims_total`,
+`media_reader_lag_seconds`; events `consumer_events_total`, `stream_group_oldest_pending_age_seconds`, `outbox_checkpoint_lag_seconds`; Redis `redis_memory_used_bytes`;
+fingerprinting/matching `fingerprinter_*` from the six fingerprinter ports, `encode status`, `match summary` (`unpublished`), `index status`; evidence `evidence_candidates_total`
+(will stay 0, §9.1). ScyllaDB errors are read from `docker logs crawler2-scylla-1` at the end (not sampled). Search-engine failures: `search_queries_total` per engine plus the
+per-query JSON reports in `logs/search.log`.
+
+### 9.8 Final verification (after `SHUTDOWN_COMPLETE`)
+
+```bash
+grep -E 'ALERT|SIGKILL' $RUN_DIR/alerts.log                 # expect none (or explained)
+cat $RUN_DIR/supervisor.log | grep -E 'stopped .* rc=|orphan'      # rc 0 or 143 for every role; "no orphan processes"
+cat $RUN_DIR/snapshots/final/restarts.txt                   # restarts=0 oom=false health=healthy for four containers
+cat $RUN_DIR/snapshots/final/streams.txt                    # pending / lag per group; compare with the t0 snapshot
+python -m fingerprinter match summary; python -m fingerprinter encode status; python -m fingerprinter index check --spec <digest> --role media
+python -m fingerprinter publisher status                    # media-registry group present; held streams
+```
+
+### 9.9 Known limitations of this plan
+
+No `match.found`/evidence leg (§9.1); one host, no failure injection; every numeric setting above is an initial, unvalidated value; real search engines
+may block or change markup (recorded, not bypassed); the 10-minute resolver settle delays media work; `hash` and the encoder download whole files (8 GiB cap) so bandwidth and
+disk, not CPU, may bind; the sampled GPU data come from seconds-long runs; Scylla/MinIO limits were not raised (no evidence). Results of a three-hour run would be a
+single-host observation, not a P14 acceptance gate.
