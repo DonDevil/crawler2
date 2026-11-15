@@ -76,6 +76,16 @@ with the SHA-256 of the original); originals stay in the protected rows.
 - Match verdict/confidence are matcher claims; P10's matcher has not
   passed M3.
 
+## Live-stack status (2026-11-15, dev stack)
+
+Not yet exercised end to end on the real keyspaces. Verified: `crawler2-evidence collect run` starts, joins consumer group
+`evidence-collector` on `events:match.found.v1`, and that group is registered as a required consumer of the fingerprinter's
+`match.found.v1` stream. **Blocked:** no genuine `match.found` exists, because P10's only technique version (2.1) is
+`UNAVAILABLE` and the matcher builds/publishes `match.found` only for a CALIBRATED technique (fingerprinter
+`docs/p10-matcher.md` §10). No evidence record, MinIO object or integrity check has been produced for a new match, and none was
+fabricated. The leg needs a positive matcher decision on a media content that crawler2 actually crawled (provenance comes from
+the media registry), then calibration or an owner decision to publish.
+
 ## Enabling stronger protection later
 
 1. Object lock: create the evidence bucket with object lock + versioning
