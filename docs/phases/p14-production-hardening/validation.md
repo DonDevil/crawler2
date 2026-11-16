@@ -398,3 +398,15 @@ Labels: V verified, I inferred, U unverified. The fingerprinter-side findings (i
 - There is no dry-run flag. A non-mutating check: with no active ruleset (`crawler2-filter status` → `active: null`) the engine is `FilterEngine.empty()`, and `decide(link_input("http://127.0.0.1:8765/…"))` returns
   `allow`; nothing in `link_input`/the admitter refuses a loopback host. The fetch guard is the SSRF layer (needs the exemption).
 - U: robots/legal handling in the fetch path (only `extraction` mentions robots), the exact fixture-page shape, and the `events.relay_settle_s` effect on timing.
+
+## 12. Distinct-copy Blast test executed (2026-11-16/17) — acceptance points 1–7 PASS, 8–12 BLOCKED
+
+Executed per §10–§11 with an isolated fingerprinter keyspace; fingerprinter-side results and isolation design are in its `validation.md` §13.37; full report and monitoring series outside git in `artifacts/live-validation/blast-distinct-copy/20261116T130218Z/`. Technique 2.1 remains `UNAVAILABLE`.
+
+**Seed and scope (V).** `crawler2-discover seeds` with source `blast-distinct-copy-20261116`: 1 line, 1 admitted; new rows only `seeds_by_source` +1, `scope_sites` +1 (`127.0.0.1`), `url_admission`/`filter_decisions_by_url` +1, one frontier task. Records are append-only and stay. `admit`, browser, Tor and search were never started.
+
+**Roles and exemptions (V).** relay → worker-http (`CRAWLER2_WORKERS__FETCH__SSRF_ALLOWED_NETWORKS=127.0.0.1/32`, that process only) → extract → resolve/probe/hash (`CRAWLER2_MEDIA__SSRF_ALLOWED_NETWORKS=127.0.0.1/32`, each process only) → `representations run`. Fixture server on 127.0.0.1:8765 only. The relay and the resolver each first caught up from checkpoints of 2026-10-24 (relay > 10 min, resolver ≈ 4 min) before reaching the new events; `relay_settle_s` was not changed.
+
+**Acceptance points.** 1 page fetched, media observed, probe `probed` (video_file): PASS. 2 hashed, ContentId `cnt_ba949f10…` ≠ `cnt_798f…`, encode claim emitted: PASS. 3 `representation.ready.v1` delivered to `media-registry`, lag 0, `representation_status` ready at 19:55:48Z: PASS. 4 candidate retrieved (Blast target): PASS. 5 N-13 not applied, floor/min-hits met: PASS. 6 verdict `confirmed`, score 5.958, alignment 0.104→1200.0: PASS. 7 match row persisted, `published_at` null, `unpublished` 1: PASS. 8–12 (`match.found` publication, delivery, evidence): **BLOCKED**, not run; `events:match.found.v1` length 0 before and after.
+
+**Side effects (V).** crawler2 `crawler2-raw` +1 object (page snapshot); new streams `encode.requested`, `media.discovered`, `media.observed`, `representation.ready` (1), `encode.failed` (0); an untracked empty `crawler2/var/` appeared. The two pre-existing uncommitted changes (`docs/development.md`, `tests/integration/crawlers/conftest.py`) are untouched.
