@@ -298,3 +298,76 @@ No `match.found`/evidence leg (§9.1); one host, no failure injection; every num
 may block or change markup (recorded, not bypassed); the 10-minute resolver settle delays media work; `hash` and the encoder download whole files (8 GiB cap) so bandwidth and
 disk, not CPU, may bind; the sampled GPU data come from seconds-long runs; Scylla/MinIO limits were not raised (no evidence). Results of a three-hour run would be a
 single-host observation, not a P14 acceptance gate.
+
+## 10. Positive-match path: distinct-copy Blast test and acceptance points (2026-11-16)
+
+**Design only. Nothing in this section was executed**; no media was copied, crawled, encoded or indexed, and no state was
+changed. Labels: V verified in code/docs this pass, I inferred, U untested/unverified. Why technique 2.1 is `UNAVAILABLE`
+(primary blocker: 4 of 5 reliability bins fail on a population with 1 false confirmation in 877) and the dataset audit are in
+the fingerprinter repository, `docs/phases/p10-vector-index-matcher/validation.md` §13.35; they are not repeated here.
+
+### 10.1 Identity and exclusion facts (V)
+
+| Item | Fact | Source |
+|---|---|---|
+| `MediaId` | derived from the canonical URL locator only (level 1, "same address"); asserts nothing about bytes | `contracts/.../ids.py` `MediaId.of_locator` |
+| `ContentId` | `ContentKey("full-bytes/v1", sha256(all bytes))`; "two encodings of the same work have different content IDs" | `ids.py`, `crawler2/media/model.py` `SCHEME`, `docs/architecture/media-registry.md` |
+| `RepresentationId` | deterministic from content id + spec (idempotent re-encode) | `ids.py` |
+| N-13 exclusion | the matcher drops hits whose payload content id equals the subject's own content id (`fingerprinter/candidates.py`: `key == exclude_key or pl.cid == exclude_key`) | fingerprinter design N-13 |
+| Probe/hash/encode | encode requests are keyed by `(content_id, spec_key)` (`encode_claims`): the same bytes are encoded once | `media/store.py` |
+
+Consequence: a **byte-identical copy at another URL** gets a new `MediaId` but the **same `ContentId`** (I: the Blast target's
+content id `cnt_798f…` is the SHA-256 scheme over the file's bytes), so the registry de-duplicates it and N-13 excludes it:
+it can never produce a candidate. A different `MediaId` is not enough; the bytes must differ.
+
+### 10.2 Options evaluated against that logic
+
+| Option | New ContentId | Excluded by N-13 | Cost | Assessment |
+|---|---|---|---|---|
+| A. byte-for-byte copy, new URL | **no** | **yes** | none | insufficient (tests registry dedup only) |
+| B. stream-copy remux (`-c copy`) of the full file to MKV/fMP4 | yes | no | hashes 1.7 GiB; 1,700 segments to encode | valid; heavier |
+| **C. stream-copy remux of a ~120 s excerpt** | yes | no | ~24 segments | **recommended first**: smallest, no quality loss, same class as the L-PAIRS excerpt positives |
+| D. re-encode (e.g. H.264 3 Mb/s) | yes | no | decode+encode | later; realistic, but a miss would be a recall finding, not a defect (L-PAIRS recall 0.733; remux/low-bitrate variants miss the *equivalence* rule at 0.52–0.83, a different gate) |
+
+Frame content of C is identical, so segment cosines should approach 1.0 (U: not measured on Blast). Blast is local-only material
+(P9 `data-preparation.md` §6): the copy must stay outside git and be served only on loopback.
+
+### 10.3 Required path and what is not yet verified
+
+`fixture page + media on loopback HTTP` → crawler2 fetch → extraction (`media.discovered`) → `media resolve/probe/hash` →
+encode request → fingerprinter intake/encoder → `representation.ready` → `matcher reconcile` → `matcher run` (direction A).
+No seed command creates a media observation: `crawler2-media` has no such sub-command, so media enter only through a crawled page (V).
+
+- **No source change appears necessary (I)**, if the crawl admits a loopback fixture page. U (to verify before running): the crawl
+  filters/robots/legal admission for a loopback seed; the exact env names for the dev-only SSRF exemptions.
+- **Dev-only exemptions needed (I):** crawler2 `workers.fetch.ssrf_allowed_networks` and `media.ssrf_allowed_networks`, and the
+  fingerprinter `acquire.ssrf_allow_cidrs` (fingerprinter acquires by URL again). Settings validation refuses non-empty crawler2
+  lists when `environment=prod` (V, `settings.py`). Never set in production.
+- **Approvals needed (not authorised in this investigation):** `intake init` (not initialised), an encoder device (CPU works; CUDA needs
+  `runtime admit-cuda`), and starting the roles above. Reuse of the existing fixture web of `tests/integration/crawlers` is an option (U).
+- **Rules kept:** no manual vector insert, no manual `matches` row, no manual `match.found`, calibration gate untouched, original Blast
+  target and representations untouched.
+- **Cleanup:** none by deletion (the object store has no delete API; decisions are append-only; ids are deterministic so a re-run is
+  idempotent). The copy is recognisable by its fixture URL. The Blast target, its two representations and any evidence are never
+  touched. Consequence to accept in advance: the stored decision on the copy is permanent and, if 2.1 were ever set CALIBRATED,
+  `match publish-held --version 2.1` would release it as a real `match.found`.
+
+### 10.4 Acceptance points (each verified independently; a stage never passes because the previous one did)
+
+| # | Point | Expected state | Verify |
+|---|---|---|---|
+| 1 | Page fetched, media observed | `media.discovered` for the fixture URL; new `MediaId`; probe `probed` | `crawler2-media show <media>` |
+| 2 | Hashed, **distinct** content | `ContentId` ≠ `cnt_798f…`; encode claim emitted | `crawler2-media show`; `crawler2-media representations` |
+| 3 | Representation ready | `representation.ready.v1` delivered to `media-registry`; spec `dinov2-seg/2` | consumer group lag 0 |
+| 4 | Candidate retrieved | direction-A task `DONE`, Blast target among candidates | fingerprinter `match show --content <cnt>` |
+| 5 | Preliminary filtering | N-13 not applied (different cid); floor/min-hits met | candidate state `VERIFIED` |
+| 6 | Verified decision | verdict `confirmed`, score, alignment | `match show` |
+| 7 | Match row persisted | `matches` row, `published_at` null while 2.1 `UNAVAILABLE` | `match summary` → `unpublished` |
+| 8 | `match.found.v1` published | **blocked until CALIBRATED**; then envelope with `event_id`, `published_at` set, stream length +1 | row fields; `XLEN events:match.found.v1` |
+| 9 | Delivered | `crawl-feedback` and `evidence-collector`: pending 0, lag 0 | `XINFO GROUPS` |
+| 10 | Evidence candidate created | provenance from the registry, no re-fetch | `crawler2-evidence list`, `show evd_… --audit` |
+| 11 | Evidence metadata persisted/validated | complete, SHA-256 of stored artifacts verified | `crawler2-evidence validate evd_…` exit 0 |
+| 12 | Object stored, integrity-verified | content-addressed artifacts in MinIO; package checks | `crawler2-evidence export … ` then `sha256sum -c SHA256SUMS` |
+
+Points 1–7 can be tested now; 8–12 stay **BLOCKED** (live `match.found` count 0; no evidence for a new match exists). Do not claim 8–12
+from 1–7.
