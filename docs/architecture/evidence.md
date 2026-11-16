@@ -84,7 +84,8 @@ Not yet exercised end to end on the real keyspaces. Verified: `crawler2-evidence
 `UNAVAILABLE` and the matcher builds/publishes `match.found` only for a CALIBRATED technique (fingerprinter
 `docs/p10-matcher.md` §10). No evidence record, MinIO object or integrity check has been produced for a new match, and none was
 fabricated. The leg needs a positive matcher decision on a media content that crawler2 actually crawled (provenance comes from
-the media registry), then calibration or an owner decision to publish.
+the media registry), then a CALIBRATED technique version: there is no flag, fallback or "owner decision" mechanism that publishes an
+uncalibrated match (fingerprinter `validation.md` §13.22, §13.35). Test design and acceptance points: [P14 validation §10](../phases/p14-production-hardening/validation.md).
 
 ## Enabling stronger protection later
 
