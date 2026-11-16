@@ -371,3 +371,30 @@ No seed command creates a media observation: `crawler2-media` has no such sub-co
 
 Points 1–7 can be tested now; 8–12 stay **BLOCKED** (live `match.found` count 0; no evidence for a new match exists). Do not claim 8–12
 from 1–7.
+
+## 11. Distinct-copy Blast test: copy created, seed and scope findings (2026-11-16) — nothing admitted or started
+
+Labels: V verified, I inferred, U unverified. The fingerprinter-side findings (intake, SSRF names, held-decision release, isolation options) are in the fingerprinter
+`docs/phases/p10-vector-index-matcher/validation.md` §13.36.
+
+### 11.1 The distinct copy (V)
+- Source `~/Videos/Blast.mp4` SHA-256 `3151aaf09eba7bafb681d8b704835554aff40742786262e2cfebb8bbafc522bb` equals the target's stored `ref_sha256`;
+  `ContentId.of("full-bytes/v1", sha256:…)` reproduces `cnt_798f244f5a0f87fa8b9e89ad25473dff`. The file was only read.
+- Copy: `ffmpeg -ss 1200 -i Blast.mp4 -t 120 -map 0:v:0 -map 0:a:0 -c copy -avoid_negative_ts make_zero <out>.mkv` (ffmpeg 6.1.1), Matroska, 121.105 s, 23,861,897 bytes, HEVC 1920×800 24 fps (2,901 frames)
+  + EAC3 5.1 48 kHz, SHA-256 `4f4b98cf892b07bcf6088db886bb29bd984d421c27bd5300d6ca9b7447875701`, expected `ContentId` `cnt_ba949f1097c88e2ca1781909397aa11f` (≠ the target's, so N-13 does not apply).
+  Strict decode (`-xerror`, both streams) exits 0 with no output; the video packet payloads equal the source window's. A plain `-f null` decode prints 966 "non monotonically increasing dts" lines from
+  the null muxer (I: Matroska's 1 ms timebase against 24 fps; no decoder error). The file and logs are in the local artefact directory
+  `artifacts/live-validation/blast-distinct-copy/20261116T091717Z/` (outside git; the video must never be committed).
+- Probe sniffing accepts both `ftyp` and Matroska prefixes (`crawlers/signals.py`).
+
+### 11.2 Seed admission and scope (V unless marked)
+- The only seed entry is `crawler2-discover seeds <file> --source NAME [--meta k=v] [--every S]`; media can only enter through a crawled page (no media-seed command).
+  `--every` repeats; omit it for a one-shot.
+- It writes **permanent rows**: `SeedRecord` (idempotent per source and URL), a `scope_sites` row for `registrable_domain(host)` (for `127.0.0.1` the key is exactly `127.0.0.1`; `127.0.0.2` and
+  `localhost` are different keys), filter decision rows, an admission mark, and one frontier task. I found **no delete or retire API** for seeds, scope sites or decisions (grep); the frontier task is consumed by the fetch worker.
+  Scope is host-level, not path-level.
+- It admits only the listed URLs. Other URLs are admitted only by the separate `crawler2-discover admit` consumer (`urls.discovered`), which expands links of *rooted* pages only; **not starting `admit`
+  keeps admission limited to the seed**. A fixture page without outbound links is advisable.
+- There is no dry-run flag. A non-mutating check: with no active ruleset (`crawler2-filter status` → `active: null`) the engine is `FilterEngine.empty()`, and `decide(link_input("http://127.0.0.1:8765/…"))` returns
+  `allow`; nothing in `link_input`/the admitter refuses a loopback host. The fetch guard is the SSRF layer (needs the exemption).
+- U: robots/legal handling in the fetch path (only `extraction` mentions robots), the exact fixture-page shape, and the `events.relay_settle_s` effect on timing.
