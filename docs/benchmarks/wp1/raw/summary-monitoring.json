@@ -1,0 +1,1244 @@
+[
+ {
+  "name": "B attempt1 (aborted at 95C) whole file",
+  "samples": 323,
+  "start": "2026-11-17T18:35:07+0530",
+  "end": "2026-11-17T18:46:06+0530",
+  "secs": 658,
+  "cpu_pct_avg": 3.2,
+  "cpu_pct_peak": 20.9,
+  "iowait_pct_peak": 61.9,
+  "load1_peak": 6.44,
+  "cpu_pkg_c_avg": 59.6,
+  "cpu_pkg_c_peak": 96.0,
+  "secs_pkg_ge_90": 38,
+  "secs_pkg_ge_95": 22,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2232,
+  "freq_avg_min_mhz": 1083,
+  "throttle_pkg_delta": 25796,
+  "throttle_core_delta": 4402,
+  "nvme_c_avg": 42.7,
+  "nvme_c_peak": 79.85,
+  "mem_avail_mib_min": 11119,
+  "mem_used_mib_peak": 4606,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 63.73,
+  "psi_io_full_peak": 53.45,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 55.82,
+  "root_free_gib_start": 59.82,
+  "nvme_r_mbps_peak": 2749.3,
+  "nvme_w_mbps_peak": 1918.8,
+  "nvme_util_pct_peak": 93.0,
+  "nvme_r_iops_peak": 183816,
+  "nvme_w_iops_peak": 14639,
+  "nvme_r_await_ms_peak": 12.0,
+  "nvme_w_await_ms_peak": 25.0,
+  "gpu_temp_c_peak": 56.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 3.38,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.2,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 77.3,
+    "mem_mib_peak": 39,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 2.4,
+    "mem_mib_peak": 18,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 3.8,
+    "mem_mib_peak": 219,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 31.8,
+    "mem_mib_peak": 578,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "B idle baseline (pre-benchmark)",
+  "samples": 14,
+  "start": "2026-11-17T18:46:22+0530",
+  "end": "2026-11-17T18:46:50+0530",
+  "secs": 28,
+  "cpu_pct_avg": 3.5,
+  "cpu_pct_peak": 10.2,
+  "iowait_pct_peak": 0.4,
+  "load1_peak": 0.56,
+  "cpu_pkg_c_avg": 56.6,
+  "cpu_pkg_c_peak": 70.0,
+  "secs_pkg_ge_90": 0,
+  "secs_pkg_ge_95": 0,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2055,
+  "freq_avg_min_mhz": 1182,
+  "throttle_pkg_delta": 2112,
+  "throttle_core_delta": 352,
+  "nvme_c_avg": 29.1,
+  "nvme_c_peak": 30.85,
+  "mem_avail_mib_min": 10928,
+  "mem_used_mib_peak": 4797,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 0.0,
+  "psi_io_full_peak": 0.0,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 59.82,
+  "root_free_gib_start": 59.82,
+  "nvme_r_mbps_peak": 0.1,
+  "nvme_w_mbps_peak": 5.3,
+  "nvme_util_pct_peak": 3.2,
+  "nvme_r_iops_peak": 1,
+  "nvme_w_iops_peak": 82,
+  "nvme_r_await_ms_peak": 8.0,
+  "nvme_w_await_ms_peak": 8.0,
+  "gpu_temp_c_peak": 52.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 310.73,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001",
+   "0x0000000000000004"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 0.2,
+    "mem_mib_peak": 111,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 0,
+    "mem_mib_peak": 37,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 0.3,
+    "mem_mib_peak": 18,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 3.4,
+    "mem_mib_peak": 219,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 1.9,
+    "mem_mib_peak": 572,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "B run-2 case matrix (3 runs x 7 cases + smallfiles)",
+  "samples": 157,
+  "start": "2026-11-17T18:46:56+0530",
+  "end": "2026-11-17T18:52:15+0530",
+  "secs": 318,
+  "cpu_pct_avg": 5.1,
+  "cpu_pct_peak": 18.2,
+  "iowait_pct_peak": 74.7,
+  "load1_peak": 5.05,
+  "cpu_pkg_c_avg": 68.7,
+  "cpu_pkg_c_peak": 98.0,
+  "secs_pkg_ge_90": 50,
+  "secs_pkg_ge_95": 12,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2700,
+  "freq_avg_min_mhz": 1307,
+  "throttle_pkg_delta": 23746,
+  "throttle_core_delta": 4050,
+  "nvme_c_avg": 74.0,
+  "nvme_c_peak": 82.85,
+  "mem_avail_mib_min": 10712,
+  "mem_used_mib_peak": 5012,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 55.33,
+  "psi_io_full_peak": 52.61,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 55.69,
+  "root_free_gib_start": 58.37,
+  "nvme_r_mbps_peak": 2740.6,
+  "nvme_w_mbps_peak": 1909.2,
+  "nvme_util_pct_peak": 96.9,
+  "nvme_r_iops_peak": 117153,
+  "nvme_w_iops_peak": 170571,
+  "nvme_r_await_ms_peak": 2.5,
+  "nvme_w_await_ms_peak": 35.0,
+  "gpu_temp_c_peak": 55.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.4,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.7,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 81.1,
+    "mem_mib_peak": 38,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 2.9,
+    "mem_mib_peak": 18,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 3.6,
+    "mem_mib_peak": 220,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 46.1,
+    "mem_mib_peak": 595,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "B sustained 120 s seq write (final)",
+  "samples": 59,
+  "start": "2026-11-17T18:55:37+0530",
+  "end": "2026-11-17T18:57:36+0530",
+  "secs": 119,
+  "cpu_pct_avg": 3.0,
+  "cpu_pct_peak": 7.6,
+  "iowait_pct_peak": 39.1,
+  "load1_peak": 3.95,
+  "cpu_pkg_c_avg": 62.6,
+  "cpu_pkg_c_peak": 94.0,
+  "secs_pkg_ge_90": 4,
+  "secs_pkg_ge_95": 0,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2337,
+  "freq_avg_min_mhz": 1333,
+  "throttle_pkg_delta": 2892,
+  "throttle_core_delta": 482,
+  "nvme_c_avg": 77.6,
+  "nvme_c_peak": 82.85,
+  "mem_avail_mib_min": 11275,
+  "mem_used_mib_peak": 4450,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 72.02,
+  "psi_io_full_peak": 70.98,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 55.82,
+  "root_free_gib_start": 55.82,
+  "nvme_r_mbps_peak": 0.0,
+  "nvme_w_mbps_peak": 1902.6,
+  "nvme_util_pct_peak": 97.3,
+  "nvme_r_iops_peak": 1,
+  "nvme_w_iops_peak": 14515,
+  "nvme_r_await_ms_peak": 12.5,
+  "nvme_w_await_ms_peak": 17.808,
+  "gpu_temp_c_peak": 53.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.3,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 0.1,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 0,
+    "mem_mib_peak": 37,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 2.4,
+    "mem_mib_peak": 18,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 3.6,
+    "mem_mib_peak": 220,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 13.7,
+    "mem_mib_peak": 573,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D P2 latency (1x + 2x 10x + cleanup) whole file",
+  "samples": 305,
+  "start": "2026-11-17T18:59:10+0530",
+  "end": "2026-11-17T19:09:33+0530",
+  "secs": 623,
+  "cpu_pct_avg": 14.6,
+  "cpu_pct_peak": 82.4,
+  "iowait_pct_peak": 8.9,
+  "load1_peak": 5.21,
+  "cpu_pkg_c_avg": 72.9,
+  "cpu_pkg_c_peak": 100.0,
+  "secs_pkg_ge_90": 170,
+  "secs_pkg_ge_95": 78,
+  "secs_pkg_ge_100": 2,
+  "freq_avg_mhz": 2664,
+  "freq_avg_min_mhz": 1171,
+  "throttle_pkg_delta": 267422,
+  "throttle_core_delta": 54146,
+  "nvme_c_avg": 57.1,
+  "nvme_c_peak": 72.85,
+  "mem_avail_mib_min": 8636,
+  "mem_used_mib_peak": 7089,
+  "swap_mib_peak": 167,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 5.1,
+  "psi_io_full_peak": 5.09,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 58.01,
+  "root_free_gib_start": 59.82,
+  "nvme_r_mbps_peak": 128.0,
+  "nvme_w_mbps_peak": 85.6,
+  "nvme_util_pct_peak": 80.1,
+  "nvme_r_iops_peak": 11533,
+  "nvme_w_iops_peak": 3934,
+  "nvme_r_await_ms_peak": 8.0,
+  "nvme_w_await_ms_peak": 10.639,
+  "gpu_temp_c_peak": 58.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 310.73,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001",
+   "0x0000000000000004"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.6,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 79.4,
+    "mem_mib_peak": 68,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 34.7,
+    "mem_mib_peak": 142,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 67.8,
+    "mem_mib_peak": 512,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 114.4,
+    "mem_mib_peak": 1401,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-host-2-1": {
+    "cpu_pct_peak": 100.9,
+    "mem_mib_peak": 42,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-host-1-1": {
+    "cpu_pct_peak": 101.9,
+    "mem_mib_peak": 73,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "jolly_allen": {
+    "cpu_pct_peak": 370.9,
+    "mem_mib_peak": 322,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "ecstatic_haslett": {
+    "cpu_pct_peak": 377.8,
+    "mem_mib_peak": 320,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "vigorous_jemison": {
+    "cpu_pct_peak": 206.8,
+    "mem_mib_peak": 698,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "vibrant_archimedes": {
+    "cpu_pct_peak": 207.8,
+    "mem_mib_peak": 697,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "admiring_curran": {
+    "cpu_pct_peak": 385.1,
+    "mem_mib_peak": 706,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "objective_lumiere": {
+    "cpu_pct_peak": 385.1,
+    "mem_mib_peak": 711,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D E-R1 1-copy run 1",
+  "samples": 556,
+  "start": "2026-11-17T19:10:09+0530",
+  "end": "2026-11-17T19:29:05+0530",
+  "secs": 1136,
+  "cpu_pct_avg": 5.4,
+  "cpu_pct_peak": 32.6,
+  "iowait_pct_peak": 6.0,
+  "load1_peak": 2.96,
+  "cpu_pkg_c_avg": 64.5,
+  "cpu_pkg_c_peak": 98.0,
+  "secs_pkg_ge_90": 162,
+  "secs_pkg_ge_95": 76,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2322,
+  "freq_avg_min_mhz": 1148,
+  "throttle_pkg_delta": 194694,
+  "throttle_core_delta": 34388,
+  "nvme_c_avg": 43.7,
+  "nvme_c_peak": 64.85,
+  "mem_avail_mib_min": 8697,
+  "mem_used_mib_peak": 7028,
+  "swap_mib_peak": 167,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 4.3,
+  "psi_io_full_peak": 4.3,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 57.54,
+  "root_free_gib_start": 59.25,
+  "nvme_r_mbps_peak": 91.7,
+  "nvme_w_mbps_peak": 235.0,
+  "nvme_util_pct_peak": 40.9,
+  "nvme_r_iops_peak": 4032,
+  "nvme_w_iops_peak": 2123,
+  "nvme_r_await_ms_peak": 8.0,
+  "nvme_w_await_ms_peak": 25.45,
+  "gpu_temp_c_peak": 57.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 310.73,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001",
+   "0x0000000000000004"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.3,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 76.3,
+    "mem_mib_peak": 89,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 3.0,
+    "mem_mib_peak": 21,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 4.1,
+    "mem_mib_peak": 326,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 31.3,
+    "mem_mib_peak": 1418,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "qdrant-e-r1": {
+    "cpu_pct_peak": 201.4,
+    "mem_mib_peak": 970,
+    "health": [],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D E-R1 6-copy (OOM-killed)",
+  "samples": 427,
+  "start": "2026-11-17T19:29:07+0530",
+  "end": "2026-11-17T19:43:43+0530",
+  "secs": 877,
+  "cpu_pct_avg": 20.8,
+  "cpu_pct_peak": 79.4,
+  "iowait_pct_peak": 55.9,
+  "load1_peak": 6.39,
+  "cpu_pkg_c_avg": 89.8,
+  "cpu_pkg_c_peak": 100.0,
+  "secs_pkg_ge_90": 650,
+  "secs_pkg_ge_95": 336,
+  "secs_pkg_ge_100": 6,
+  "freq_avg_mhz": 3060,
+  "freq_avg_min_mhz": 1646,
+  "throttle_pkg_delta": 984051,
+  "throttle_core_delta": 176548,
+  "nvme_c_avg": 69.1,
+  "nvme_c_peak": 79.85,
+  "mem_avail_mib_min": 3962,
+  "mem_used_mib_peak": 11762,
+  "swap_mib_peak": 89,
+  "psi_mem_some_peak": 1.26,
+  "psi_io_some_peak": 50.3,
+  "psi_io_full_peak": 47.91,
+  "oom_kill_delta": 1,
+  "root_free_gib_min": 53.31,
+  "root_free_gib_start": 59.24,
+  "nvme_r_mbps_peak": 761.9,
+  "nvme_w_mbps_peak": 322.3,
+  "nvme_util_pct_peak": 94.9,
+  "nvme_r_iops_peak": 17820,
+  "nvme_w_iops_peak": 2680,
+  "nvme_r_await_ms_peak": 335.114,
+  "nvme_w_await_ms_peak": 638.0,
+  "gpu_temp_c_peak": 57.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.51,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.8,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 61.3,
+    "mem_mib_peak": 37,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 3.5,
+    "mem_mib_peak": 21,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 5.1,
+    "mem_mib_peak": 215,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 41.7,
+    "mem_mib_peak": 1438,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "qdrant-e-r1": {
+    "cpu_pct_peak": 207.7,
+    "mem_mib_peak": 1493,
+    "health": [],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D E-R1 1-copy run 2",
+  "samples": 541,
+  "start": "2026-11-17T19:43:53+0530",
+  "end": "2026-11-17T20:02:18+0530",
+  "secs": 1105,
+  "cpu_pct_avg": 5.9,
+  "cpu_pct_peak": 39.2,
+  "iowait_pct_peak": 9.1,
+  "load1_peak": 3.85,
+  "cpu_pkg_c_avg": 66.2,
+  "cpu_pkg_c_peak": 99.0,
+  "secs_pkg_ge_90": 160,
+  "secs_pkg_ge_95": 72,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2471,
+  "freq_avg_min_mhz": 1164,
+  "throttle_pkg_delta": 217914,
+  "throttle_core_delta": 38786,
+  "nvme_c_avg": 48.3,
+  "nvme_c_peak": 74.85,
+  "mem_avail_mib_min": 6503,
+  "mem_used_mib_peak": 9222,
+  "swap_mib_peak": 89,
+  "psi_mem_some_peak": 0.18,
+  "psi_io_some_peak": 5.15,
+  "psi_io_full_peak": 5.1,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 57.45,
+  "root_free_gib_start": 59.24,
+  "nvme_r_mbps_peak": 163.0,
+  "nvme_w_mbps_peak": 227.7,
+  "nvme_util_pct_peak": 43.7,
+  "nvme_r_iops_peak": 4209,
+  "nvme_w_iops_peak": 2073,
+  "nvme_r_await_ms_peak": 8.25,
+  "nvme_w_await_ms_peak": 25.993,
+  "gpu_temp_c_peak": 58.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 11.9,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001",
+   "0x0000000000000004"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.8,
+    "mem_mib_peak": 43,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 76.6,
+    "mem_mib_peak": 31,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 3.0,
+    "mem_mib_peak": 11,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 5.9,
+    "mem_mib_peak": 169,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 36.0,
+    "mem_mib_peak": 1268,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "qdrant-e-r1": {
+    "cpu_pct_peak": 203.8,
+    "mem_mib_peak": 985,
+    "health": [],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "E encoder B-GPU-a + env check",
+  "samples": 151,
+  "start": "2026-11-17T20:02:54+0530",
+  "end": "2026-11-17T20:08:06+0530",
+  "secs": 312,
+  "cpu_pct_avg": 47.0,
+  "cpu_pct_peak": 99.9,
+  "iowait_pct_peak": 7.0,
+  "load1_peak": 13.12,
+  "cpu_pkg_c_avg": 89.4,
+  "cpu_pkg_c_peak": 100.0,
+  "secs_pkg_ge_90": 230,
+  "secs_pkg_ge_95": 152,
+  "secs_pkg_ge_100": 4,
+  "freq_avg_mhz": 2494,
+  "freq_avg_min_mhz": 1321,
+  "throttle_pkg_delta": 450856,
+  "throttle_core_delta": 95360,
+  "nvme_c_avg": 31.3,
+  "nvme_c_peak": 46.85,
+  "mem_avail_mib_min": 7815,
+  "mem_used_mib_peak": 7910,
+  "swap_mib_peak": 89,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 3.31,
+  "psi_io_full_peak": 3.31,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 59.24,
+  "root_free_gib_start": 59.24,
+  "nvme_r_mbps_peak": 169.9,
+  "nvme_w_mbps_peak": 8.3,
+  "nvme_util_pct_peak": 29.8,
+  "nvme_r_iops_peak": 6312,
+  "nvme_w_iops_peak": 603,
+  "nvme_r_await_ms_peak": 12.25,
+  "nvme_w_await_ms_peak": 9.0,
+  "gpu_temp_c_peak": 87.0,
+  "gpu_util_pct_peak": 100.0,
+  "gpu_vram_mib_peak": 3544.0,
+  "gpu_power_w_peak": 54.87,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000000",
+   "0x0000000000000001",
+   "0x0000000000000004",
+   "0x0000000000000024",
+   "0x0000000000000400"
+  ],
+  "containers": {
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 3.6,
+    "mem_mib_peak": 43,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 12.6,
+    "mem_mib_peak": 16,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 3.5,
+    "mem_mib_peak": 11,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 7.1,
+    "mem_mib_peak": 169,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 52.7,
+    "mem_mib_peak": 1278,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D P2 1x run",
+  "samples": 55,
+  "start": "2026-11-17T19:00:20+0530",
+  "end": "2026-11-17T19:02:10+0530",
+  "secs": 110,
+  "cpu_pct_avg": 7.7,
+  "cpu_pct_peak": 64.8,
+  "iowait_pct_peak": 0.7,
+  "load1_peak": 1.87,
+  "cpu_pkg_c_avg": 66.5,
+  "cpu_pkg_c_peak": 96.0,
+  "secs_pkg_ge_90": 16,
+  "secs_pkg_ge_95": 6,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 2470,
+  "freq_avg_min_mhz": 1187,
+  "throttle_pkg_delta": 20640,
+  "throttle_core_delta": 4150,
+  "nvme_c_avg": 49.5,
+  "nvme_c_peak": 58.85,
+  "mem_avail_mib_min": 10199,
+  "mem_used_mib_peak": 5525,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 0.19,
+  "psi_io_full_peak": 0.19,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 59.69,
+  "root_free_gib_start": 59.82,
+  "nvme_r_mbps_peak": 0.1,
+  "nvme_w_mbps_peak": 20.2,
+  "nvme_util_pct_peak": 8.0,
+  "nvme_r_iops_peak": 22,
+  "nvme_w_iops_peak": 310,
+  "nvme_r_await_ms_peak": 8.0,
+  "nvme_w_await_ms_peak": 8.0,
+  "gpu_temp_c_peak": 54.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.34,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "crawler2-app-host-2-1": {
+    "cpu_pct_peak": 0,
+    "mem_mib_peak": 1,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-host-1-1": {
+    "cpu_pct_peak": 101.9,
+    "mem_mib_peak": 73,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 0.1,
+    "mem_mib_peak": 111,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 58.7,
+    "mem_mib_peak": 68,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 3.3,
+    "mem_mib_peak": 31,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 7.7,
+    "mem_mib_peak": 383,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 22.4,
+    "mem_mib_peak": 758,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "jolly_allen": {
+    "cpu_pct_peak": 370.9,
+    "mem_mib_peak": 322,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "ecstatic_haslett": {
+    "cpu_pct_peak": 377.8,
+    "mem_mib_peak": 320,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D P2 10x run 1",
+  "samples": 52,
+  "start": "2026-11-17T19:02:30+0530",
+  "end": "2026-11-17T19:04:15+0530",
+  "secs": 104,
+  "cpu_pct_avg": 31.6,
+  "cpu_pct_peak": 82.4,
+  "iowait_pct_peak": 8.5,
+  "load1_peak": 5.21,
+  "cpu_pkg_c_avg": 86.0,
+  "cpu_pkg_c_peak": 100.0,
+  "secs_pkg_ge_90": 70,
+  "secs_pkg_ge_95": 30,
+  "secs_pkg_ge_100": 2,
+  "freq_avg_mhz": 3175,
+  "freq_avg_min_mhz": 1400,
+  "throttle_pkg_delta": 107824,
+  "throttle_core_delta": 22028,
+  "nvme_c_avg": 61.1,
+  "nvme_c_peak": 68.85,
+  "mem_avail_mib_min": 8636,
+  "mem_used_mib_peak": 7089,
+  "swap_mib_peak": 0,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 2.33,
+  "psi_io_full_peak": 2.0,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 58.56,
+  "root_free_gib_start": 59.69,
+  "nvme_r_mbps_peak": 12.6,
+  "nvme_w_mbps_peak": 85.6,
+  "nvme_util_pct_peak": 63.4,
+  "nvme_r_iops_peak": 984,
+  "nvme_w_iops_peak": 3934,
+  "nvme_r_await_ms_peak": 0.5,
+  "nvme_w_await_ms_peak": 4.549,
+  "gpu_temp_c_peak": 58.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.53,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "crawler2-app-host-2-1": {
+    "cpu_pct_peak": 22.0,
+    "mem_mib_peak": 3,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-host-1-1": {
+    "cpu_pct_peak": 101.0,
+    "mem_mib_peak": 72,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.1,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 0,
+    "mem_mib_peak": 37,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 34.7,
+    "mem_mib_peak": 142,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 38.8,
+    "mem_mib_peak": 429,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 102.8,
+    "mem_mib_peak": 1385,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "vigorous_jemison": {
+    "cpu_pct_peak": 206.8,
+    "mem_mib_peak": 698,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "vibrant_archimedes": {
+    "cpu_pct_peak": 207.8,
+    "mem_mib_peak": 697,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   }
+  }
+ },
+ {
+  "name": "D P2 10x run 2",
+  "samples": 52,
+  "start": "2026-11-17T19:05:16+0530",
+  "end": "2026-11-17T19:07:00+0530",
+  "secs": 104,
+  "cpu_pct_avg": 31.6,
+  "cpu_pct_peak": 71.8,
+  "iowait_pct_peak": 7.7,
+  "load1_peak": 3.81,
+  "cpu_pkg_c_avg": 85.4,
+  "cpu_pkg_c_peak": 97.0,
+  "secs_pkg_ge_90": 68,
+  "secs_pkg_ge_95": 36,
+  "secs_pkg_ge_100": 0,
+  "freq_avg_mhz": 3152,
+  "freq_avg_min_mhz": 1182,
+  "throttle_pkg_delta": 115786,
+  "throttle_core_delta": 24078,
+  "nvme_c_avg": 64.9,
+  "nvme_c_peak": 70.85,
+  "mem_avail_mib_min": 8640,
+  "mem_used_mib_peak": 7085,
+  "swap_mib_peak": 142,
+  "psi_mem_some_peak": 0.0,
+  "psi_io_some_peak": 2.47,
+  "psi_io_full_peak": 1.95,
+  "oom_kill_delta": 0,
+  "root_free_gib_min": 58.01,
+  "root_free_gib_start": 58.56,
+  "nvme_r_mbps_peak": 22.6,
+  "nvme_w_mbps_peak": 65.7,
+  "nvme_util_pct_peak": 38.3,
+  "nvme_r_iops_peak": 2956,
+  "nvme_w_iops_peak": 3099,
+  "nvme_r_await_ms_peak": 1.0,
+  "nvme_w_await_ms_peak": 8.0,
+  "gpu_temp_c_peak": 58.0,
+  "gpu_util_pct_peak": 0.0,
+  "gpu_vram_mib_peak": 12.0,
+  "gpu_power_w_peak": 2.56,
+  "gpu_throttle_reasons_seen": [
+   "0x0000000000000001"
+  ],
+  "containers": {
+   "crawler2-app-host-2-1": {
+    "cpu_pct_peak": 100.9,
+    "mem_mib_peak": 42,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-host-1-1": {
+    "cpu_pct_peak": 100.8,
+    "mem_mib_peak": 73,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "fingerprinter-index-qdrant-1": {
+    "cpu_pct_peak": 2.6,
+    "mem_mib_peak": 112,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-app-1": {
+    "cpu_pct_peak": 0,
+    "mem_mib_peak": 37,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-redis-1": {
+    "cpu_pct_peak": 22.5,
+    "mem_mib_peak": 140,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-minio-1": {
+    "cpu_pct_peak": 49.6,
+    "mem_mib_peak": 512,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "crawler2-scylla-1": {
+    "cpu_pct_peak": 114.4,
+    "mem_mib_peak": 1390,
+    "health": [
+     "healthy"
+    ],
+    "restart_delta": 0
+   },
+   "admiring_curran": {
+    "cpu_pct_peak": 385.1,
+    "mem_mib_peak": 706,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   },
+   "objective_lumiere": {
+    "cpu_pct_peak": 385.1,
+    "mem_mib_peak": 711,
+    "health": [
+     "healthy",
+     "starting"
+    ],
+    "restart_delta": 0
+   }
+  }
+ }
+]

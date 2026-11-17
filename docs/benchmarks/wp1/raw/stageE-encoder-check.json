@@ -1,0 +1,68 @@
+{
+ "torch": "2.13.0+cu130",
+ "cuda_available": true,
+ "torch_cuda": "13.0",
+ "device": "NVIDIA GeForce RTX 2050",
+ "input_shape": [
+  8,
+  3,
+  224,
+  224
+ ],
+ "gpu_before": "60, 15, 2.95, 0",
+ "runs": {
+  "cpu": {
+   "init_s": 2.38,
+   "cold_first_batch2_s": 0.43,
+   "warm_batch8_s": [
+    1.1745,
+    1.2253,
+    1.2019,
+    1.1746,
+    1.5439
+   ],
+   "warm_frames_per_s_median": 6.66,
+   "shape": [
+    8,
+    768
+   ],
+   "finite": true,
+   "l2_norm_min_max": [
+    0.9999999403953552,
+    1.0
+   ],
+   "peak_rss_mib": 1198
+  },
+  "cuda": {
+   "init_s": 0.2,
+   "cold_first_batch2_s": 0.189,
+   "warm_batch8_s": [
+    0.2231,
+    0.1989,
+    0.1998,
+    0.2018,
+    0.2076
+   ],
+   "warm_frames_per_s_median": 39.64,
+   "shape": [
+    8,
+    768
+   ],
+   "finite": true,
+   "l2_norm_min_max": [
+    0.9999999403953552,
+    1.0
+   ],
+   "peak_rss_mib": 1236,
+   "vram": {
+    "allocated": 355642368,
+    "reserved": 520093696,
+    "max_allocated": 448883712,
+    "max_reserved": 520093696
+   },
+   "gpu_after": "75, 608, 50.76, 99"
+  }
+ },
+ "cpu_vs_cuda_cosine_min": 0.9999999403953552,
+ "external_connect_attempts": []
+}

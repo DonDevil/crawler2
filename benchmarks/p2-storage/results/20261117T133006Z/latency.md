@@ -1,0 +1,21 @@
+| operation | target p99 | host-1 p50 / p99 | host-2 p50 / p99 | met |
+|---|---|---|---|---|
+| latest_read | 25 ms | 0.9 / 1.58 ms | 0.95 / 1.63 ms | yes |
+| url_state_read | 25 ms | 0.53 / 1.45 ms | 0.53 / 1.19 ms | yes |
+| observation_get | 25 ms | 0.71 / 1.83 ms | 0.64 / 3.37 ms | yes |
+| representation_lookup | 25 ms | 0.41 / 1.02 ms | 0.41 / 1.39 ms | yes |
+| dedupe_check | 25 ms | 0.41 / 1.36 ms | 0.39 / 1.02 ms | yes |
+| dedupe_mark | 25 ms | 0.28 / 1.33 ms | 0.27 / 0.85 ms | yes |
+| outbox_append | 25 ms | 0.42 / 0.82 ms | 0.38 / 1.06 ms | yes |
+| content_lookup | 50 ms | 1.59 / 3.22 ms | 1.49 / 3.34 ms | yes |
+| discovered_record | 50 ms | 1.01 / 2.45 ms | 0.96 / 2.53 ms | yes |
+| attempt_record | 50 ms | 1.23 / 3.18 ms | 1.29 / 2.99 ms | yes |
+| observation_record | 100 ms | 2.0 / 4.77 ms | 1.94 / 4.85 ms | yes |
+| media_record | 100 ms | 1.38 / 6.49 ms | 1.33 / 3.72 ms | yes |
+| links_record | 150 ms | 3.35 / 6.56 ms | 3.15 / 6.23 ms | yes |
+| object_put | 250 ms | 3.45 / 7.38 ms | 3.36 / 7.03 ms | yes |
+| object_head | 50 ms | 0.79 / 1.77 ms | 0.77 / 1.76 ms | yes |
+| object_get | 100 ms | 0.74 / 2.16 ms | 0.72 / 2.21 ms | yes |
+
+- host-1: 10.1/10.0 units/s (10x the expected 10/s), failed units 0, client CPU 0.17 cores, schedule lag p99 0.41 ms, publication lag p50/p99 0.55/1.11 s
+- host-2: 10.1/10.0 units/s (10x the expected 10/s), failed units 0, client CPU 0.16 cores, schedule lag p99 0.38 ms, publication lag p50/p99 0.55/1.11 s

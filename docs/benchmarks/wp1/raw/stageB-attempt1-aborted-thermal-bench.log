@@ -1,0 +1,6 @@
+run1 seq_write_1MiB_qd4: 1779.1 MiB/s 1779 IOPS  nvme=71.85C free=55.82GiB
+run1 seq_read_1MiB_qd4: 2569.3 MiB/s 2569 IOPS  nvme=76.85C free=55.82GiB
+run1 rand_read_4KiB_qd1: 60.5 MiB/s 15494 IOPS  nvme=74.85C free=55.82GiB
+run1 rand_read_4KiB_qd32: 699.7 MiB/s 179112 IOPS  nvme=74.85C free=55.82GiB
+ABORTED by safety flag
+cleanup: dir exists = False

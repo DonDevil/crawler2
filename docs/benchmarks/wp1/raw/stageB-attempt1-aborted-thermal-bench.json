@@ -1,0 +1,293 @@
+{
+ "tool": "wp1_nvme_bench.py (python O_DIRECT; fio substitute)",
+ "params": {
+  "out": "raw/stageB-nvme-bench.json",
+  "dir": "/home/darkdevil/wp1-bench-tmp",
+  "size_gib": 4.0,
+  "secs": 20,
+  "runs": 3,
+  "sustained_secs": 120,
+  "abort_flag": "raw/ABORT"
+ },
+ "file_bytes": 4294967296,
+ "fs_dir": "/home/darkdevil/wp1-bench-tmp",
+ "start": {
+  "ts": "2026-11-17T18:35:41+0530",
+  "root_free_gib": 59.82,
+  "root_used_pct": 59.2,
+  "nvme_temp_c": 36.85,
+  "cpu_pkg_c": 75.0,
+  "mem_avail_mib": 11282,
+  "swap_used_mib": 0,
+  "throttle_pkg": 44496,
+  "throttle_core": 7652,
+  "gpu": {
+   "util": 0.0,
+   "vram_mib": 12.0,
+   "temp": 51.0,
+   "power_w": 2.15,
+   "sm_mhz": 210.0,
+   "throttle": "0x0000000000000001"
+  }
+ },
+ "cases": [
+  {
+   "name": "seq_write_1MiB_qd4",
+   "mode": "seqwrite",
+   "block_bytes": 1048576,
+   "threads": 4,
+   "secs": 20.0,
+   "start_epoch": 1794920743.8,
+   "mib_s": 1779.1,
+   "iops": 1779,
+   "write": {
+    "n": 35585,
+    "iops": 1779,
+    "avg_ms": 2.2454,
+    "p50_ms": 1.9428,
+    "p95_ms": 5.0964,
+    "p99_ms": 5.3876,
+    "p999_ms": 10.2286,
+    "max_ms": 16.158
+   },
+   "run": 1,
+   "pre": {
+    "ts": "2026-11-17T18:35:43+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 53.85,
+    "cpu_pkg_c": 64.0,
+    "mem_avail_mib": 11245,
+    "swap_used_mib": 0,
+    "throttle_pkg": 45204,
+    "throttle_core": 7770,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 51.0,
+     "power_w": 2.2,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   },
+   "post": {
+    "ts": "2026-11-17T18:36:03+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 71.85,
+    "cpu_pkg_c": 61.0,
+    "mem_avail_mib": 11303,
+    "swap_used_mib": 0,
+    "throttle_pkg": 45336,
+    "throttle_core": 7792,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 52.0,
+     "power_w": 2.22,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   }
+  },
+  {
+   "name": "seq_read_1MiB_qd4",
+   "mode": "seqread",
+   "block_bytes": 1048576,
+   "threads": 4,
+   "secs": 20.0,
+   "start_epoch": 1794920763.9,
+   "mib_s": 2569.3,
+   "iops": 2569,
+   "read": {
+    "n": 51390,
+    "iops": 2569,
+    "avg_ms": 1.5541,
+    "p50_ms": 1.5446,
+    "p95_ms": 1.7407,
+    "p99_ms": 2.7155,
+    "p999_ms": 3.1212,
+    "max_ms": 9.905
+   },
+   "run": 1,
+   "pre": {
+    "ts": "2026-11-17T18:36:03+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 71.85,
+    "cpu_pkg_c": 61.0,
+    "mem_avail_mib": 11298,
+    "swap_used_mib": 0,
+    "throttle_pkg": 45336,
+    "throttle_core": 7792,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 52.0,
+     "power_w": 2.22,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   },
+   "post": {
+    "ts": "2026-11-17T18:36:23+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 76.85,
+    "cpu_pkg_c": 67.0,
+    "mem_avail_mib": 11300,
+    "swap_used_mib": 0,
+    "throttle_pkg": 46212,
+    "throttle_core": 7938,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 53.0,
+     "power_w": 2.21,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   }
+  },
+  {
+   "name": "rand_read_4KiB_qd1",
+   "mode": "randread",
+   "block_bytes": 4096,
+   "threads": 1,
+   "secs": 20.0,
+   "start_epoch": 1794920784.0,
+   "mib_s": 60.5,
+   "iops": 15494,
+   "read": {
+    "n": 309876,
+    "iops": 15494,
+    "avg_ms": 0.0637,
+    "p50_ms": 0.0626,
+    "p95_ms": 0.0664,
+    "p99_ms": 0.081,
+    "p999_ms": 0.1358,
+    "max_ms": 8.2
+   },
+   "run": 1,
+   "pre": {
+    "ts": "2026-11-17T18:36:23+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 76.85,
+    "cpu_pkg_c": 67.0,
+    "mem_avail_mib": 11301,
+    "swap_used_mib": 0,
+    "throttle_pkg": 46212,
+    "throttle_core": 7938,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 53.0,
+     "power_w": 2.21,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   },
+   "post": {
+    "ts": "2026-11-17T18:36:44+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 74.85,
+    "cpu_pkg_c": 63.0,
+    "mem_avail_mib": 11259,
+    "swap_used_mib": 0,
+    "throttle_pkg": 46224,
+    "throttle_core": 7940,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 53.0,
+     "power_w": 2.25,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   }
+  },
+  {
+   "name": "rand_read_4KiB_qd32",
+   "mode": "randread",
+   "block_bytes": 4096,
+   "threads": 32,
+   "secs": 20.0,
+   "start_epoch": 1794920804.3,
+   "mib_s": 699.7,
+   "iops": 179112,
+   "read": {
+    "n": 3582384,
+    "iops": 179112,
+    "avg_ms": 0.1768,
+    "p50_ms": 0.1595,
+    "p95_ms": 0.4153,
+    "p99_ms": 0.612,
+    "p999_ms": 0.9476,
+    "max_ms": 9.114
+   },
+   "run": 1,
+   "pre": {
+    "ts": "2026-11-17T18:36:44+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 74.85,
+    "cpu_pkg_c": 63.0,
+    "mem_avail_mib": 11269,
+    "swap_used_mib": 0,
+    "throttle_pkg": 46224,
+    "throttle_core": 7940,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 53.0,
+     "power_w": 2.25,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   },
+   "post": {
+    "ts": "2026-11-17T18:37:08+0530",
+    "root_free_gib": 55.82,
+    "root_used_pct": 61.9,
+    "nvme_temp_c": 74.85,
+    "cpu_pkg_c": 93.0,
+    "mem_avail_mib": 11122,
+    "swap_used_mib": 0,
+    "throttle_pkg": 60140,
+    "throttle_core": 10362,
+    "gpu": {
+     "util": 0.0,
+     "vram_mib": 12.0,
+     "temp": 56.0,
+     "power_w": 2.41,
+     "sm_mhz": 210.0,
+     "throttle": "0x0000000000000001"
+    }
+   }
+  }
+ ],
+ "notes": "O_DIRECT, ext4 root fs, 4 KiB aligned, thread-per-queue-slot",
+ "aborted": "2026-11-17T18:37:02+0530 cpu_pkg=96.0C>=95\n",
+ "end": {
+  "ts": "2026-11-17T18:37:08+0530",
+  "root_free_gib": 55.82,
+  "root_used_pct": 61.9,
+  "nvme_temp_c": 74.85,
+  "cpu_pkg_c": 93.0,
+  "mem_avail_mib": 11117,
+  "swap_used_mib": 0,
+  "throttle_pkg": 60140,
+  "throttle_core": 10362,
+  "gpu": {
+   "util": 0.0,
+   "vram_mib": 12.0,
+   "temp": 56.0,
+   "power_w": 2.41,
+   "sm_mhz": 210.0,
+   "throttle": "0x0000000000000001"
+  }
+ },
+ "cleanup_dir_exists": false
+}

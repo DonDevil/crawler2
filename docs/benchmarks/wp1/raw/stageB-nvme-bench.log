@@ -1,0 +1,23 @@
+run1 seq_write_1MiB_qd4: 1766.6 MiB/s 1767 IOPS trunc=False  nvme=64.85C free=55.86GiB
+run1 seq_read_1MiB_qd4: 2213.3 MiB/s 2213 IOPS trunc=False  nvme=74.85C free=55.82GiB
+run1 rand_read_4KiB_qd1: 58.6 MiB/s 14993 IOPS trunc=False  nvme=70.85C free=55.82GiB
+run1 rand_read_4KiB_qd32: 772.1 MiB/s 197651 IOPS trunc=True  nvme=69.85C free=55.82GiB
+run1 rand_write_4KiB_qd1: 215.2 MiB/s 55103 IOPS trunc=False  nvme=69.85C free=55.82GiB
+run1 rand_write_4KiB_qd32: 754.4 MiB/s 193119 IOPS trunc=True  nvme=72.85C free=55.82GiB
+run1 mixed_70r30w_4KiB_qd16: 648.3 MiB/s 165958 IOPS trunc=True  nvme=72.85C free=55.82GiB
+run2 seq_write_1MiB_qd4: 1805.6 MiB/s 1806 IOPS trunc=True  nvme=76.85C free=55.82GiB
+run2 seq_read_1MiB_qd4: 2242.7 MiB/s 2243 IOPS trunc=False  nvme=77.85C free=55.82GiB
+run2 rand_read_4KiB_qd1: 59.0 MiB/s 15104 IOPS trunc=True  nvme=78.85C free=55.82GiB
+run2 rand_read_4KiB_qd32: 773.4 MiB/s 197998 IOPS trunc=True  nvme=77.85C free=55.82GiB
+run2 rand_write_4KiB_qd1: 216.1 MiB/s 55321 IOPS trunc=False  nvme=75.85C free=55.82GiB
+run2 rand_write_4KiB_qd32: 746.1 MiB/s 191010 IOPS trunc=True  nvme=74.85C free=55.82GiB
+run2 mixed_70r30w_4KiB_qd16: 644.3 MiB/s 164931 IOPS trunc=True  nvme=77.85C free=55.82GiB
+run3 seq_write_1MiB_qd4: 1103.8 MiB/s 1104 IOPS trunc=False  nvme=77.85C free=55.82GiB
+run3 seq_read_1MiB_qd4: 1657.0 MiB/s 1657 IOPS trunc=False  nvme=77.85C free=55.82GiB
+run3 rand_read_4KiB_qd1: 58.7 MiB/s 15034 IOPS trunc=False  nvme=77.85C free=55.82GiB
+run3 rand_read_4KiB_qd32: 774.5 MiB/s 198277 IOPS trunc=True  nvme=77.85C free=55.82GiB
+run3 rand_write_4KiB_qd1: 208.1 MiB/s 53281 IOPS trunc=False  nvme=77.85C free=55.82GiB
+run3 rand_write_4KiB_qd32: 674.7 MiB/s 172726 IOPS trunc=True  nvme=77.85C free=55.82GiB
+run3 mixed_70r30w_4KiB_qd16: 681.3 MiB/s 174424 IOPS trunc=True  nvme=77.85C free=55.82GiB
+sustained: []
+cleanup: dir exists = False

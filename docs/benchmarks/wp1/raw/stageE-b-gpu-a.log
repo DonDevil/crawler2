@@ -1,0 +1,16 @@
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 3912.52it/s]
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 12966.56it/s]
+[W1117 20:06:18.978339463 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 809500672 bytes (free: 292290560, total: 4007919616).
+[W1117 20:06:22.266578751 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 809500672 bytes (free: 699138048, total: 4007919616).
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 5824.37it/s]
+{
+ "benchmark": "B-GPU-a",
+ "summary": {
+  "gpu_fp32_over_cpu_fp32": 6.7,
+  "threshold": 5.0,
+  "cpu_batch": 8,
+  "gpu_batch": 2,
+  "meets_threshold_on_these_inputs": true
+ },
+ "gate_status": "PASS"
+}
