@@ -1,0 +1,40 @@
+/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py:115: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(host="127.0.0.1", port=a.http_port, grpc_port=a.grpc_port, prefer_grpc=True,
+Traceback (most recent call last):
+  File "/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/scripts/./wp1r2_qdrant_diag.py", line 213, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/scripts/./wp1r2_qdrant_diag.py", line 117, in main
+    t_green = h.wait_green(coll)
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py", line 172, in wait_green
+    info = self.client.get_collection(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/qdrant_client/qdrant_client.py", line 2223, in get_collection
+    return self._client.get_collection(collection_name=collection_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/qdrant_client/qdrant_remote.py", line 2579, in get_collection
+    self.grpc_collections.Get(
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_interceptor.py", line 276, in __call__
+    response, ignored_call = self._with_call(
+                             ^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_interceptor.py", line 331, in _with_call
+    return call.result(), call
+           ^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_channel.py", line 447, in result
+    raise self
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_interceptor.py", line 314, in continuation
+    response, call = self._thunk(new_method).with_call(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_channel.py", line 1182, in with_call
+    return _end_unary_response_blocking(state, call, True, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/datasets/p10/venv/lib/python3.12/site-packages/grpc/_channel.py", line 999, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:27902: Failed to connect to remote host: Connection refused"
+	debug_error_string = "UNAVAILABLE:failed to connect to all addresses; last error: UNKNOWN: ipv4:127.0.0.1:27902: Failed to connect to remote host: Connection refused"
+>
+exit=1

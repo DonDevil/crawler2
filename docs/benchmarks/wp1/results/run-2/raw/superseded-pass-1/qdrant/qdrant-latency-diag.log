@@ -1,0 +1,12 @@
+/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py:115: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(host="127.0.0.1", port=a.http_port, grpc_port=a.grpc_port, prefer_grpc=True,
+C0_gate_config V0_gate_params {'client_ms_p50_p95_p99': [1.794, 2.203, 2.609], 'server_ms_p50_p95_p99': [0.839, 1.141, 1.287], 'recall_at_100_mean_min': [0.9682, 0.07]}
+C0_gate_config V1_no_payload {'client_ms_p50_p95_p99': [1.088, 1.327, 1.448], 'server_ms_p50_p95_p99': [0.407, 0.6, 0.7], 'recall_at_100_mean_min': [0.9682, 0.07]}
+C0_gate_config V2_oversampling_1 {'client_ms_p50_p95_p99': [1.683, 2.008, 2.157], 'server_ms_p50_p95_p99': [0.76, 0.999, 1.098], 'recall_at_100_mean_min': [0.9571, 0.07]}
+C0_gate_config V3_hnsw_ef_64 {'client_ms_p50_p95_p99': [1.905, 2.338, 2.552], 'server_ms_p50_p95_p99': [0.852, 1.095, 1.208], 'recall_at_100_mean_min': [0.9682, 0.07]}
+C0_gate_config rest paced {'n': 600, 'client_ms_p50_p95_p99': [2.888, 3.482, 3.722], 'server_ms_p50_p95_p99': [1.217, 1.577, 1.698]}
+C0_gate_config paced {'n': 602, 'client_ms_p50_p95_p99': [7.788, 9.842, 10.738]}
+C1_originals_in_RAM V0_gate_params {'client_ms_p50_p95_p99': [2.022, 2.466, 2.806], 'server_ms_p50_p95_p99': [0.932, 1.173, 1.291], 'recall_at_100_mean_min': [0.9683, 0.06]}
+C1_originals_in_RAM rest paced {'n': 602, 'client_ms_p50_p95_p99': [3.215, 3.818, 4.1], 'server_ms_p50_p95_p99': [1.554, 1.973, 2.206]}
+C1_originals_in_RAM paced {'n': 602, 'client_ms_p50_p95_p99': [8.65, 10.883, 11.375]}
+exit=0

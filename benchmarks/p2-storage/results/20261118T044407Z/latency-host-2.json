@@ -1,0 +1,173 @@
+{
+  "host": "host-2",
+  "processes": 4,
+  "rate_target_units_per_s": 100.0,
+  "expected_per_host_units_per_s": 10,
+  "duration_s": 60.0,
+  "units": 6000,
+  "failed_units": 0,
+  "achieved_units_per_s": 100.0,
+  "client_cpu_utilisation": 1.56,
+  "schedule_lag": {
+    "count": 6000,
+    "p50_ms": 0.13,
+    "p95_ms": 1.34,
+    "p99_ms": 5.28,
+    "max_ms": 163.27,
+    "mean_ms": 0.56
+  },
+  "publication_lag_s": {
+    "count": 34893,
+    "p50": 0.96,
+    "p99": 2.54
+  },
+  "operations": {
+    "attempt_record": {
+      "count": 6000,
+      "p50_ms": 1.65,
+      "p95_ms": 7.51,
+      "p99_ms": 13.88,
+      "max_ms": 31.25,
+      "mean_ms": 2.6
+    },
+    "content_lookup": {
+      "count": 1848,
+      "p50_ms": 2.52,
+      "p95_ms": 6.49,
+      "p99_ms": 12.53,
+      "max_ms": 21.06,
+      "mean_ms": 3.03
+    },
+    "dedupe_check": {
+      "count": 6000,
+      "p50_ms": 0.57,
+      "p95_ms": 2.1,
+      "p99_ms": 7.51,
+      "max_ms": 168.21,
+      "mean_ms": 0.89
+    },
+    "dedupe_mark": {
+      "count": 6000,
+      "p50_ms": 0.43,
+      "p95_ms": 1.75,
+      "p99_ms": 6.52,
+      "max_ms": 19.36,
+      "mean_ms": 0.68
+    },
+    "discovered_record": {
+      "count": 6000,
+      "p50_ms": 1.57,
+      "p95_ms": 5.78,
+      "p99_ms": 11.36,
+      "max_ms": 19.63,
+      "mean_ms": 2.23
+    },
+    "latest_read": {
+      "count": 6000,
+      "p50_ms": 0.97,
+      "p95_ms": 4.07,
+      "p99_ms": 9.45,
+      "max_ms": 23.91,
+      "mean_ms": 1.44
+    },
+    "links_record": {
+      "count": 2983,
+      "p50_ms": 5.21,
+      "p95_ms": 11.94,
+      "p99_ms": 21.2,
+      "max_ms": 172.82,
+      "mean_ms": 6.16
+    },
+    "media_record": {
+      "count": 1848,
+      "p50_ms": 2.24,
+      "p95_ms": 9.91,
+      "p99_ms": 16.36,
+      "max_ms": 25.86,
+      "mean_ms": 3.4
+    },
+    "object_get": {
+      "count": 297,
+      "p50_ms": 0.93,
+      "p95_ms": 2.27,
+      "p99_ms": 5.09,
+      "max_ms": 9.58,
+      "mean_ms": 1.12
+    },
+    "object_head": {
+      "count": 297,
+      "p50_ms": 0.9,
+      "p95_ms": 1.79,
+      "p99_ms": 3.16,
+      "max_ms": 7.35,
+      "mean_ms": 1.02
+    },
+    "object_put": {
+      "count": 6000,
+      "p50_ms": 3.84,
+      "p95_ms": 7.38,
+      "p99_ms": 12.31,
+      "max_ms": 170.28,
+      "mean_ms": 4.33
+    },
+    "observation_get": {
+      "count": 297,
+      "p50_ms": 0.93,
+      "p95_ms": 2.95,
+      "p99_ms": 9.46,
+      "max_ms": 11.52,
+      "mean_ms": 1.28
+    },
+    "observation_record": {
+      "count": 6000,
+      "p50_ms": 2.83,
+      "p95_ms": 11.68,
+      "p99_ms": 19.94,
+      "max_ms": 122.97,
+      "mean_ms": 4.26
+    },
+    "outbox_append": {
+      "count": 627,
+      "p50_ms": 0.64,
+      "p95_ms": 2.56,
+      "p99_ms": 6.44,
+      "max_ms": 14.33,
+      "mean_ms": 0.95
+    },
+    "representation_lookup": {
+      "count": 1848,
+      "p50_ms": 0.68,
+      "p95_ms": 3.39,
+      "p99_ms": 9.22,
+      "max_ms": 16.01,
+      "mean_ms": 1.11
+    },
+    "url_state_read": {
+      "count": 12000,
+      "p50_ms": 0.71,
+      "p95_ms": 3.13,
+      "p99_ms": 8.11,
+      "max_ms": 157.3,
+      "mean_ms": 1.1
+    }
+  },
+  "errors": {},
+  "targets_ms": {
+    "latest_read": 25,
+    "url_state_read": 25,
+    "observation_get": 25,
+    "representation_lookup": 25,
+    "dedupe_check": 25,
+    "dedupe_mark": 25,
+    "outbox_append": 25,
+    "content_lookup": 50,
+    "discovered_record": 50,
+    "attempt_record": 50,
+    "observation_record": 100,
+    "media_record": 100,
+    "links_record": 150,
+    "object_put": 250,
+    "object_head": 50,
+    "object_get": 100
+  }
+}

@@ -103,3 +103,8 @@ cd ~ && rm -r ~/wp1-fio-tmp
 ## J. Git summary
 
 Initial: crawler2 `main` @ `14f69ed8…` (2 pre-existing modified files, left untouched); fingerprinter `main` @ `ab9c89ea…` (untracked `var/`, left untouched). WP1 adds files only; no push, no history rewrite. See the commits in each repository (`git log -1`) for the final hashes.
+
+
+## Run 2 (2026-11-18)
+
+Host baseline completion, automated checks and blocker closure: see `results/run-2/run-2-summary.md` and `results/run-2/run-2-report.md`; blocker status in `blocker-assessment.md` (Run 2 update). Tools: `scripts/wp1r2_*`.

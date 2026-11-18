@@ -9,7 +9,7 @@ are in the linked phase documents. How to run them:
 |---|---|---|---|---|
 | V1 baseline crawl | P0 | 1.02 pages/s per host (politeness-bound) | reference | [p00 baseline](phases/p00-foundations/baseline.md), `benchmarks/v1-baseline/` |
 | Scylla partitions, 1M pages | P2 | largest partition 43.4 MB (< 100 MB) | ✅ | [p02 benchmarks §1](phases/p02-storage/benchmarks.md) |
-| Storage latency at 10× per-host load | P2 | not met on the dev host (USB HDD saturated) | ⏳ **open — environment** | [p02 benchmarks §2](phases/p02-storage/benchmarks.md) |
+| Storage latency at 10× per-host load | P2 | **NVMe (local, 1 Scylla node, RF=1, 2 simulated hosts × 100 units/s, 60 s): met twice** — all 16 p99 targets, 0 failures, publication-lag p99 2.54–2.56 s (≤ 5 s), NVMe util ≈ 29 %. Historical USB-HDD result (kept): not met — ≈ 25 units/s/host, `sda` 99–100 %. **Not** evidence for RF=3 or multi-host production. | ✅ local single-node gate · ⏳ RF=3/multi-host open | [p02 benchmarks §2](phases/p02-storage/benchmarks.md), [WP1 database baseline](benchmarks/wp1/database-baseline.md) |
 | Frontier throughput, 8 workers, no rate limit | P3 | V2 13.2–13.7k claims/s vs V1 11.3–11.5k on the same Redis (+18 %); compose Redis 9.3k vs 8.4k | ✅ | [p3 §22](phases/p03-frontier-scheduling/p3-frontier-scheduling.md#22-results) |
 | 1M-claim distributed run with kills/pauses | P3 | 0 lost, 0 duplicate completions, 0 simultaneous ownership; 69 legitimate reclaims | ✅ | same |
 | Eligible-domain index vs `domain_scan_limit` | P3 | V2 finds the eligible domain behind up to 20 000 gated ones at a flat ~32 µs; V1 (K=250) finds none beyond 250 at ~800 µs | decision: index | same |
@@ -67,11 +67,12 @@ are in the linked phase documents. How to run them:
 
 ## Development-environment caveat
 
-The development machine runs Ubuntu from an external 5 400-rpm USB HDD;
-its internal NVMe (Windows) is intentionally not modified. Disk-bound
-benchmarks (P2 storage latency) are therefore not representative and the
-P2 10× gate stays open until re-run under WSL/NVMe or another high-IOPS
-environment. The P3 frontier benchmarks are Redis-CPU-bound and not
+*Historical (superseded for the local gate):* the development machine
+originally ran Ubuntu from an external 5 400-rpm USB HDD, where disk-bound
+benchmarks (P2 storage latency) were not representative and the P2 10× gate
+was unmet. Ubuntu now runs from the internal NVMe (ext4 root alongside a
+Windows installation that is never modified); WP1 re-ran the P2 10× gate there
+and it passed twice (single node, RF=1). The RF=3 / multi-host gate remains open. The P3 frontier benchmarks are Redis-CPU-bound and not
 affected by the disk.
 
 

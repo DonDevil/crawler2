@@ -1,0 +1,26 @@
+/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py:115: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(host="127.0.0.1", port=a.http_port, grpc_port=a.grpc_port, prefer_grpc=True,
+C0_gate_config V0_gate_params {'client_ms_p50_p95_p99': [1.786, 2.259, 2.595], 'server_ms_p50_p95_p99': [0.828, 1.18, 1.426], 'recall_at_100_mean_min': [0.9661, 0.08]}
+C0_gate_config V1_no_payload {'client_ms_p50_p95_p99': [1.103, 1.318, 1.457], 'server_ms_p50_p95_p99': [0.413, 0.61, 0.697], 'recall_at_100_mean_min': [0.9661, 0.08]}
+C0_gate_config V2_oversampling_1 {'client_ms_p50_p95_p99': [1.707, 1.994, 2.181], 'server_ms_p50_p95_p99': [0.76, 0.96, 1.103], 'recall_at_100_mean_min': [0.9551, 0.1]}
+C0_gate_config V3_hnsw_ef_64 {'client_ms_p50_p95_p99': [1.744, 2.182, 2.763], 'server_ms_p50_p95_p99': [0.802, 1.055, 1.235], 'recall_at_100_mean_min': [0.9661, 0.08]}
+C0_gate_config paced {'n': 600, 'client_ms_p50_p95_p99': [8.446, 9.729, 10.934]}
+Traceback (most recent call last):
+  File "/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/scripts/./wp1r2_qdrant_diag.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/scripts/./wp1r2_qdrant_diag.py", line 111, in main
+    got, srv = rest.query(coll, q, params, payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/scripts/./wp1r2_qdrant_diag.py", line 55, in query
+    r = json.loads(self.c.getresponse().read())
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+exit=1

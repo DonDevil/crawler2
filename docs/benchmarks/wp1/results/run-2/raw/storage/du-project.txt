@@ -1,0 +1,7 @@
+27873670541	/home/darkdevil/anti_piracy/datasets
+5817192359	/home/darkdevil/anti_piracy/fingerprinter
+599670735	/home/darkdevil/anti_piracy/crawler
+404098578	/home/darkdevil/anti_piracy/crawler2
+7779629072	/home/darkdevil/.cache
+12085832	/home/darkdevil/anti_piracy/crawler2/docs/benchmarks/wp1/results
+307601	/home/darkdevil/anti_piracy/crawler2/benchmarks/p2-storage/results

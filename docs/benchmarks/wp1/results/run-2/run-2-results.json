@@ -1,0 +1,108 @@
+{
+ "run": "WP1-run-2",
+ "date": "2026-11-18",
+ "scope": "single host, single node, RF=1",
+ "gates_changed": false,
+ "blockers": {
+  "H-01": "PARTIALLY_CLOSED",
+  "H-02": "CLOSED (local single-node RF=1 scope; owner to confirm)",
+  "H-03": "BLOCKED",
+  "H-04": "BLOCKED",
+  "H-05": "PARTIALLY_CLOSED",
+  "H-06": "NOT_TESTED",
+  "H-07": "NOT_TESTED",
+  "H-08": "BLOCKED (owner workload/retention)",
+  "H-09": "BLOCKED",
+  "H-10": "NOT_TESTED",
+  "FP-05": "OPEN"
+ },
+ "gates": {
+  "P2_scylla_10x_local": {
+   "status": "PASS",
+   "passes": 3
+  },
+  "E-R1": {
+   "1x": {
+    "status": "FAIL",
+    "steady_p95_ms": [
+     10.111,
+     10.171,
+     17.318,
+     10.776
+    ],
+    "anon_peak_gib": [
+     0.431,
+     0.437,
+     0.4215,
+     0.4423
+    ]
+   },
+   "2x": {
+    "status": "FAIL",
+    "steady_p95_ms": [
+     24.7,
+     25.302
+    ],
+    "anon_peak_gib": [
+     0.662,
+     0.656
+    ]
+   },
+   "3x": {
+    "status": "FAIL",
+    "steady_p95_ms": [
+     26.9,
+     28.135
+    ],
+    "anon_peak_gib": [
+     0.903,
+     0.8915
+    ]
+   },
+   "6x": {
+    "status": "FAIL",
+    "reason": "OOM-killed (Run 1)"
+   }
+  },
+  "index.max_points": 250000,
+  "seven_day_soak": "BLOCKED",
+  "rf3_scylla": "BLOCKED",
+  "multi_host": "BLOCKED",
+  "redis_ha": "NOT_TESTED",
+  "minio_durability": "NOT_TESTED",
+  "network_isolation": "NOT_TESTED"
+ },
+ "nvme": {
+  "percent_used": 9,
+  "media_errors": 0,
+  "unsafe_shutdowns": 242,
+  "seq_read_MiBps": 2666,
+  "seq_write_MiBps": 1701,
+  "qd1_read_iops": 11906,
+  "qd1_write_iops": 55362,
+  "sustained_write_cliff_GiB": [
+   10.2,
+   14.2,
+   8.4
+  ],
+  "cliff_thermal": false
+ },
+ "gpu": {
+  "cpu_fps": 6.35,
+  "gpu_fps_batch2": 42.53,
+  "ratio": 6.7,
+  "cosine_min": 0.99999994,
+  "external_connects": 0
+ },
+ "tests": {
+  "pytest_unit": "998 passed",
+  "hostguard_tests": 33,
+  "ruff": "clean",
+  "mypy": "no issues (332 files)"
+ },
+ "unexplained": [
+  "E-R1 1x steady p95 17.3 ms outlier",
+  "sustained-write cliff size variation",
+  "GPU throttle reason 0x400"
+ ]
+}

@@ -1,0 +1,5 @@
+# 2026-11-18T08:01:22+05:30 $ nvme fw-log /dev/nvme0
+Firmware Log for device:nvme0
+afi  : 0x1
+frs1 : 0x51313035374d5846 (FXM7501Q)
+# exit=0

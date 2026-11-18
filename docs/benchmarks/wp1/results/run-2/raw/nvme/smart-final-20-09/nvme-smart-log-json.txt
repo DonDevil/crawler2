@@ -1,0 +1,27 @@
+# 2026-11-18T20:09:17+05:30 $ nvme smart-log /dev/nvme0 -o json
+{
+  "critical_warning":0,
+  "temperature":307,
+  "avail_spare":100,
+  "spare_thresh":10,
+  "percent_used":9,
+  "endurance_grp_critical_warning_summary":0,
+  "data_units_read":98178062,
+  "data_units_written":56382363,
+  "host_read_commands":1362780020,
+  "host_write_commands":991148221,
+  "controller_busy_time":3204,
+  "power_cycles":2246,
+  "power_on_hours":5759,
+  "unsafe_shutdowns":242,
+  "media_errors":0,
+  "num_err_log_entries":0,
+  "warning_temp_time":0,
+  "critical_comp_time":0,
+  "temperature_sensor_1":307,
+  "thm_temp1_trans_count":3343,
+  "thm_temp2_trans_count":140,
+  "thm_temp1_total_time":2461,
+  "thm_temp2_total_time":35
+}
+# exit=0

@@ -1,0 +1,5 @@
+# 2026-11-18T20:09:17+05:30 $ nvme get-feature /dev/nvme0 -f 0x08 -H
+get-feature:0x08 (Interrupt Coalescing), Current value:00000000
+	Aggregation Time     (TIME): 0 usec
+	Aggregation Threshold (THR): 1
+# exit=0

@@ -1,0 +1,56 @@
+Images space usage:
+
+REPOSITORY               TAG                            IMAGE ID       CREATED         SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS
+localhost/crawler2-app   dev                            d12a75b513dc   3 weeks ago     729MB     32B           729.3MB       1
+pgsty/minio              RELEASE.2026-08-04T00-00-00Z   b6bfe7239bfc   3 months ago    216MB     0B            216.5MB       1
+hello-world              latest                         11a3eb1597e8   7 months ago    25.9kB    0B            25.87kB       2
+<none>                   <none>                         d122138f7686   16 months ago   292MB     32B           291.6MB       1
+scylladb/scylla          6.2.3                          a9d904089abe   22 months ago   947MB     0B            947.4MB       1
+redis                    7.4.2-alpine                   02419de7eddf   22 months ago   61.1MB    32B           61.12MB       1
+
+Containers space usage:
+
+CONTAINER ID   IMAGE                                      COMMAND                  LOCAL VOLUMES   SIZE      CREATED       STATUS                   NAMES
+eb5a05b18ad2   d122138f7686                               "./entrypoint.sh"        1               24.6kB    2 days ago    Up 3 hours (healthy)     fingerprinter-index-qdrant-1
+956ca5ec776c   localhost/crawler2-app:dev                 "sh -c 'crawler2-che…"   1               16.4kB    3 days ago    Up 3 hours (healthy)     crawler2-app-1
+c7a2f094830f   redis:7.4.2-alpine                         "docker-entrypoint.s…"   1               4.1kB     3 days ago    Up 3 hours (healthy)     crawler2-redis-1
+8525cb99c612   pgsty/minio:RELEASE.2026-08-04T00-00-00Z   "/usr/bin/docker-ent…"   1               57.3kB    3 days ago    Up 3 hours (healthy)     crawler2-minio-1
+22c6c9b47f24   scylladb/scylla:6.2.3                      "/docker-entrypoint.…"   1               11MB      3 days ago    Up 3 hours (healthy)     crawler2-scylla-1
+655cafcc9f75   hello-world                                "/hello"                 0               4.1kB     3 days ago    Exited (0) 3 days ago    romantic_hoover
+1b6da70a8e95   hello-world                                "/hello"                 0               4.1kB     3 weeks ago   Exited (0) 3 weeks ago   compassionate_shannon
+
+Local Volumes space usage:
+
+VOLUME NAME                       LINKS     SIZE
+crawler2_scratch-host-1           0         0B
+crawler2_scratch-host-2           0         0B
+crawler2_scylla-data              1         1.118GB
+fingerprinter-index_qdrant-data   1         908MB
+crawler2_minio-data               1         4.051GB
+crawler2_redis-data               1         88.72MB
+crawler2_scratch-dev-1            1         0B
+
+Build cache usage: 1.15GB
+
+CACHE ID       CACHE TYPE     SIZE      CREATED       LAST USED     USAGE     SHARED
+qwnrwzoczdug   regular        113MB     3 weeks ago   3 weeks ago   1         true
+kji0fxwal718   regular        13.9MB    3 weeks ago   3 weeks ago   1         true
+f1xdgmwfft9g   regular        58.6MB    3 weeks ago   3 weeks ago   1         true
+9ggyczbuwm8f   regular        18.3MB    3 weeks ago   3 weeks ago   1         false
+en2snjerefhn   regular        1.8MB     3 weeks ago   3 weeks ago   1         false
+4x0bsjm37r3e   regular        16.4kB    3 weeks ago   3 weeks ago   1         false
+i36n5e9e9hf4   regular        4.19MB    3 weeks ago   3 weeks ago   1         false
+p3n9452a7vi6   regular        1.74MB    3 weeks ago   3 weeks ago   1         true
+y2xv1pqd41y8   regular        8.19kB    3 weeks ago   3 weeks ago   1         false
+tv5nd87vw4mj   regular        18.3kB    3 weeks ago   3 weeks ago   1         true
+2ahqcflr723c   regular        77.2kB    3 weeks ago   3 weeks ago   1         true
+gip714ir0ly1   regular        16.6kB    3 weeks ago   3 weeks ago   1         true
+chq3z4w6a2y9   regular        392MB     3 weeks ago   3 weeks ago   1         false
+wukr8mbs4mg5   regular        422kB     3 weeks ago   3 weeks ago   1         false
+w01yb5w6u1vj   regular        541MB     3 weeks ago   3 weeks ago   1         true
+zi38vmbs0mgd   regular        79.1kB    3 weeks ago   3 weeks ago   1         true
+syp2iox3pe6k   regular        24.6kB    3 weeks ago   3 weeks ago   1         false
+p4t4ejt56p2o   regular        4.13kB    3 weeks ago   3 weeks ago   3         true
+czsxiygqtemf   source.local   8.19kB    3 weeks ago   3 weeks ago   3         false
+lrpjobbukvlj   source.local   8.19kB    3 weeks ago   3 weeks ago   3         false
+n975sg2xyw6s   source.local   3.75MB    3 weeks ago   3 weeks ago   3         false

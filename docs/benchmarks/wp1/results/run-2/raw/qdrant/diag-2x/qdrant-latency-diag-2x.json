@@ -1,0 +1,72 @@
+{
+ "benchmark": "E-R1-diag (not a gate)",
+ "points": 208886,
+ "queries": 760,
+ "configs": {
+  "C0_gate_config": {
+   "ingest_s": 110.8,
+   "green_s": 4.0,
+   "variants": {
+    "V0_gate_params": {
+     "client_ms_p50_p95_p99": [
+      4.959,
+      9.555,
+      11.032
+     ],
+     "server_ms_p50_p95_p99": [
+      3.885,
+      8.378,
+      9.952
+     ],
+     "recall_at_100_mean_min": null
+    },
+    "V1_no_payload": {
+     "client_ms_p50_p95_p99": [
+      1.281,
+      1.51,
+      1.588
+     ],
+     "server_ms_p50_p95_p99": [
+      0.564,
+      0.728,
+      0.789
+     ],
+     "recall_at_100_mean_min": null
+    },
+    "V5_rest_paced_2x5qps": {
+     "n": 602,
+     "client_ms_p50_p95_p99": [
+      3.089,
+      13.977,
+      15.279
+     ],
+     "server_ms_p50_p95_p99": [
+      1.683,
+      12.617,
+      13.936
+     ]
+    },
+    "V4_grpc_harness_sequential": {
+     "client_ms_p50_p95_p99": [
+      6.311,
+      6.927,
+      7.164
+     ],
+     "recall_at_100_mean_min": null
+    },
+    "V4_grpc_harness_paced_2x5qps": {
+     "n": 602,
+     "client_ms_p50_p95_p99": [
+      8.811,
+      14.465,
+      16.723
+     ]
+    }
+   },
+   "copies": 2,
+   "segments": 3,
+   "indexed_vectors": 208886,
+   "points": 208886
+  }
+ }
+}

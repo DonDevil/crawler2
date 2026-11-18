@@ -1,0 +1,754 @@
+[
+ {
+  "job": "mixed-4k-70r30w-qd16-j4",
+  "side": "read",
+  "n": 3,
+  "rw": "randrw",
+  "bs": "4k",
+  "iodepth": 16,
+  "numjobs": 4,
+  "runtime_s": 10,
+  "iops": {
+   "median": 182286.2,
+   "min": 180965.0,
+   "max": 182588.1,
+   "cv_pct": 0.4
+  },
+  "bw_MiBps": {
+   "median": 712.1,
+   "min": 706.9,
+   "max": 713.3,
+   "cv_pct": 0.4
+  },
+  "clat_p99_us": {
+   "median": 995.3,
+   "min": 962.6,
+   "max": 1044.5,
+   "cv_pct": 3.4
+  },
+  "clat_p99.9_us": {
+   "median": 8716.3,
+   "min": 8585.2,
+   "max": 8716.3,
+   "cv_pct": 0.7
+  },
+  "lat_mean_us": {
+   "median": 332.8,
+   "min": 332.4,
+   "max": 335.3,
+   "cv_pct": 0.4
+  },
+  "device_util_pct_median": 73.171477,
+  "nvme_max_c_per_run": [
+   74.85,
+   74.85,
+   74.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "mixed-4k-70r30w-qd16-j4",
+  "side": "write",
+  "n": 3,
+  "rw": "randrw",
+  "bs": "4k",
+  "iodepth": 16,
+  "numjobs": 4,
+  "runtime_s": 10,
+  "iops": {
+   "median": 78326.9,
+   "min": 77759.8,
+   "max": 78450.3,
+   "cv_pct": 0.4
+  },
+  "bw_MiBps": {
+   "median": 306.0,
+   "min": 303.8,
+   "max": 306.4,
+   "cv_pct": 0.4
+  },
+  "clat_p99_us": {
+   "median": 207.9,
+   "min": 193.5,
+   "max": 209.9,
+   "cv_pct": 3.6
+  },
+  "clat_p99.9_us": {
+   "median": 8585.2,
+   "min": 8585.2,
+   "max": 8585.2,
+   "cv_pct": 0.0
+  },
+  "lat_mean_us": {
+   "median": 42.0,
+   "min": 39.9,
+   "max": 42.5,
+   "cv_pct": 2.7
+  },
+  "device_util_pct_median": 73.171477,
+  "nvme_max_c_per_run": [
+   74.85,
+   74.85,
+   74.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd1",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 1,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 11906.2,
+   "min": 11848.6,
+   "max": 12197.8,
+   "cv_pct": 1.3
+  },
+  "bw_MiBps": {
+   "median": 46.5,
+   "min": 46.3,
+   "max": 47.6,
+   "cv_pct": 1.2
+  },
+  "clat_p99_us": {
+   "median": 107.0,
+   "min": 103.9,
+   "max": 109.1,
+   "cv_pct": 2.0
+  },
+  "clat_p99.9_us": {
+   "median": 195.6,
+   "min": 185.3,
+   "max": 205.8,
+   "cv_pct": 4.3
+  },
+  "lat_mean_us": {
+   "median": 83.6,
+   "min": 81.6,
+   "max": 84.0,
+   "cv_pct": 1.3
+  },
+  "device_util_pct_median": 94.060408,
+  "nvme_max_c_per_run": [
+   69.85,
+   69.85,
+   69.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd16",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 16,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 144528.2,
+   "min": 144501.1,
+   "max": 147788.4,
+   "cv_pct": 1.1
+  },
+  "bw_MiBps": {
+   "median": 564.6,
+   "min": 564.5,
+   "max": 577.3,
+   "cv_pct": 1.1
+  },
+  "clat_p99_us": {
+   "median": 236.5,
+   "min": 234.5,
+   "max": 238.6,
+   "cv_pct": 0.7
+  },
+  "clat_p99.9_us": {
+   "median": 383.0,
+   "min": 378.9,
+   "max": 675.8,
+   "cv_pct": 29.0
+  },
+  "lat_mean_us": {
+   "median": 110.4,
+   "min": 108.0,
+   "max": 110.4,
+   "cv_pct": 1.0
+  },
+  "device_util_pct_median": 68.791998,
+  "nvme_max_c_per_run": [
+   71.85,
+   70.85,
+   72.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd32",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 32,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 209152.9,
+   "min": 207565.1,
+   "max": 211181.0,
+   "cv_pct": 0.7
+  },
+  "bw_MiBps": {
+   "median": 817.0,
+   "min": 810.8,
+   "max": 824.9,
+   "cv_pct": 0.7
+  },
+  "clat_p99_us": {
+   "median": 407.6,
+   "min": 403.5,
+   "max": 415.7,
+   "cv_pct": 1.2
+  },
+  "clat_p99.9_us": {
+   "median": 8290.3,
+   "min": 8224.8,
+   "max": 8290.3,
+   "cv_pct": 0.4
+  },
+  "lat_mean_us": {
+   "median": 152.7,
+   "min": 151.3,
+   "max": 153.9,
+   "cv_pct": 0.7
+  },
+  "device_util_pct_median": 66.221272,
+  "nvme_max_c_per_run": [
+   73.85,
+   73.85,
+   74.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd32-j4",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 32,
+  "numjobs": 4,
+  "runtime_s": 10,
+  "iops": {
+   "median": 248460.0,
+   "min": 248419.0,
+   "max": 250633.7,
+   "cv_pct": 0.4
+  },
+  "bw_MiBps": {
+   "median": 970.6,
+   "min": 970.4,
+   "max": 979.1,
+   "cv_pct": 0.4
+  },
+  "clat_p99_us": {
+   "median": 1138.7,
+   "min": 1122.3,
+   "max": 1138.7,
+   "cv_pct": 0.7
+  },
+  "clat_p99.9_us": {
+   "median": 9109.5,
+   "min": 9109.5,
+   "max": 9109.5,
+   "cv_pct": 0.0
+  },
+  "lat_mean_us": {
+   "median": 514.8,
+   "min": 510.3,
+   "max": 514.8,
+   "cv_pct": 0.4
+  },
+  "device_util_pct_median": 69.796916,
+  "nvme_max_c_per_run": [
+   74.85,
+   73.85,
+   74.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd4",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 4,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 46287.3,
+   "min": 45904.0,
+   "max": 47843.6,
+   "cv_pct": 1.8
+  },
+  "bw_MiBps": {
+   "median": 180.8,
+   "min": 179.3,
+   "max": 186.9,
+   "cv_pct": 1.8
+  },
+  "clat_p99_us": {
+   "median": 142.3,
+   "min": 138.2,
+   "max": 146.4,
+   "cv_pct": 2.3
+  },
+  "clat_p99.9_us": {
+   "median": 228.4,
+   "min": 212.0,
+   "max": 284.7,
+   "cv_pct": 12.9
+  },
+  "lat_mean_us": {
+   "median": 86.1,
+   "min": 83.3,
+   "max": 86.8,
+   "cv_pct": 1.8
+  },
+  "device_util_pct_median": 83.827123,
+  "nvme_max_c_per_run": [
+   69.85,
+   69.85,
+   69.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randread-4k-qd64",
+  "side": "read",
+  "n": 3,
+  "rw": "randread",
+  "bs": "4k",
+  "iodepth": 64,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 247986.2,
+   "min": 246973.7,
+   "max": 250335.3,
+   "cv_pct": 0.6
+  },
+  "bw_MiBps": {
+   "median": 968.7,
+   "min": 964.8,
+   "max": 977.9,
+   "cv_pct": 0.6
+  },
+  "clat_p99_us": {
+   "median": 806.9,
+   "min": 790.5,
+   "max": 831.5,
+   "cv_pct": 2.1
+  },
+  "clat_p99.9_us": {
+   "median": 8716.3,
+   "min": 8585.2,
+   "max": 8716.3,
+   "cv_pct": 0.7
+  },
+  "lat_mean_us": {
+   "median": 257.8,
+   "min": 255.6,
+   "max": 259.1,
+   "cv_pct": 0.6
+  },
+  "device_util_pct_median": 66.368911,
+  "nvme_max_c_per_run": [
+   74.85,
+   73.85,
+   72.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd1",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 1,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 55362.0,
+   "min": 55035.8,
+   "max": 55610.7,
+   "cv_pct": 0.4
+  },
+  "bw_MiBps": {
+   "median": 216.3,
+   "min": 215.0,
+   "max": 217.2,
+   "cv_pct": 0.4
+  },
+  "clat_p99_us": {
+   "median": 20.1,
+   "min": 20.1,
+   "max": 20.1,
+   "cv_pct": 0.0
+  },
+  "clat_p99.9_us": {
+   "median": 72.2,
+   "min": 71.2,
+   "max": 79.4,
+   "cv_pct": 4.9
+  },
+  "lat_mean_us": {
+   "median": 17.7,
+   "min": 17.7,
+   "max": 17.8,
+   "cv_pct": 0.3
+  },
+  "device_util_pct_median": 75.908674,
+  "nvme_max_c_per_run": [
+   69.85,
+   69.85,
+   69.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd16",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 16,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 249190.9,
+   "min": 232620.2,
+   "max": 254693.6,
+   "cv_pct": 3.8
+  },
+  "bw_MiBps": {
+   "median": 973.4,
+   "min": 908.7,
+   "max": 994.9,
+   "cv_pct": 3.8
+  },
+  "clat_p99_us": {
+   "median": 160.8,
+   "min": 154.6,
+   "max": 183.3,
+   "cv_pct": 7.4
+  },
+  "clat_p99.9_us": {
+   "median": 2375.7,
+   "min": 2277.4,
+   "max": 2375.7,
+   "cv_pct": 2.0
+  },
+  "lat_mean_us": {
+   "median": 64.0,
+   "min": 62.6,
+   "max": 68.5,
+   "cv_pct": 3.9
+  },
+  "device_util_pct_median": 80.710195,
+  "nvme_max_c_per_run": [
+   72.85,
+   72.85,
+   73.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd32",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 32,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 252276.6,
+   "min": 235595.4,
+   "max": 256286.8,
+   "cv_pct": 3.6
+  },
+  "bw_MiBps": {
+   "median": 985.5,
+   "min": 920.3,
+   "max": 1001.1,
+   "cv_pct": 3.6
+  },
+  "clat_p99_us": {
+   "median": 362.5,
+   "min": 350.2,
+   "max": 897.0,
+   "cv_pct": 47.5
+  },
+  "clat_p99.9_us": {
+   "median": 4751.4,
+   "min": 4292.6,
+   "max": 4948.0,
+   "cv_pct": 5.9
+  },
+  "lat_mean_us": {
+   "median": 126.6,
+   "min": 124.6,
+   "max": 135.6,
+   "cv_pct": 3.7
+  },
+  "device_util_pct_median": 81.389843,
+  "nvme_max_c_per_run": [
+   73.85,
+   73.85,
+   72.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd32-j4",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 32,
+  "numjobs": 4,
+  "runtime_s": 10,
+  "iops": {
+   "median": 145423.0,
+   "min": 142795.1,
+   "max": 166022.2,
+   "cv_pct": 6.9
+  },
+  "bw_MiBps": {
+   "median": 568.1,
+   "min": 557.8,
+   "max": 648.6,
+   "cv_pct": 6.9
+  },
+  "clat_p99_us": {
+   "median": 3915.8,
+   "min": 3326.0,
+   "max": 6193.2,
+   "cv_pct": 27.6
+  },
+  "clat_p99.9_us": {
+   "median": 16711.7,
+   "min": 15532.0,
+   "max": 17694.7,
+   "cv_pct": 5.3
+  },
+  "lat_mean_us": {
+   "median": 879.6,
+   "min": 770.4,
+   "max": 895.8,
+   "cv_pct": 6.6
+  },
+  "device_util_pct_median": 89.578562,
+  "nvme_max_c_per_run": [
+   70.85,
+   69.85,
+   70.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd4",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 4,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 210900.0,
+   "min": 207151.0,
+   "max": 211077.2,
+   "cv_pct": 0.9
+  },
+  "bw_MiBps": {
+   "median": 823.8,
+   "min": 809.2,
+   "max": 824.5,
+   "cv_pct": 0.9
+  },
+  "clat_p99_us": {
+   "median": 30.1,
+   "min": 28.3,
+   "max": 31.6,
+   "cv_pct": 4.5
+  },
+  "clat_p99.9_us": {
+   "median": 264.2,
+   "min": 199.7,
+   "max": 354.3,
+   "cv_pct": 23.3
+  },
+  "lat_mean_us": {
+   "median": 18.7,
+   "min": 18.7,
+   "max": 19.1,
+   "cv_pct": 1.0
+  },
+  "device_util_pct_median": 72.449603,
+  "nvme_max_c_per_run": [
+   72.85,
+   72.85,
+   72.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "randwrite-4k-qd64",
+  "side": "write",
+  "n": 3,
+  "rw": "randwrite",
+  "bs": "4k",
+  "iodepth": 64,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 251290.9,
+   "min": 248246.8,
+   "max": 255096.4,
+   "cv_pct": 1.1
+  },
+  "bw_MiBps": {
+   "median": 981.6,
+   "min": 969.7,
+   "max": 996.5,
+   "cv_pct": 1.1
+  },
+  "clat_p99_us": {
+   "median": 1351.7,
+   "min": 1302.5,
+   "max": 1384.4,
+   "cv_pct": 2.5
+  },
+  "clat_p99.9_us": {
+   "median": 9240.6,
+   "min": 9109.5,
+   "max": 9371.6,
+   "cv_pct": 1.2
+  },
+  "lat_mean_us": {
+   "median": 254.4,
+   "min": 250.6,
+   "max": 257.5,
+   "cv_pct": 1.1
+  },
+  "device_util_pct_median": 81.153112,
+  "nvme_max_c_per_run": [
+   73.85,
+   72.85,
+   72.85
+  ],
+  "near_throttle_runs": 0
+ },
+ {
+  "job": "seqread-1M-qd8",
+  "side": "read",
+  "n": 3,
+  "rw": "read",
+  "bs": "1M",
+  "iodepth": 8,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 2665.6,
+   "min": 2656.6,
+   "max": 2696.4,
+   "cv_pct": 0.6
+  },
+  "bw_MiBps": {
+   "median": 2666.3,
+   "min": 2657.3,
+   "max": 2697.1,
+   "cv_pct": 0.6
+  },
+  "clat_p99_us": {
+   "median": 10944.5,
+   "min": 10944.5,
+   "max": 11206.7,
+   "cv_pct": 1.1
+  },
+  "clat_p99.9_us": {
+   "median": 11599.9,
+   "min": 11468.8,
+   "max": 18219.0,
+   "cv_pct": 22.9
+  },
+  "lat_mean_us": {
+   "median": 3000.0,
+   "min": 2965.7,
+   "max": 3010.3,
+   "cv_pct": 0.6
+  },
+  "device_util_pct_median": 81.812629,
+  "nvme_max_c_per_run": [
+   76.85,
+   80.85,
+   78.85
+  ],
+  "near_throttle_runs": 1
+ },
+ {
+  "job": "seqwrite-1M-qd8",
+  "side": "write",
+  "n": 3,
+  "rw": "write",
+  "bs": "1M",
+  "iodepth": 8,
+  "numjobs": 1,
+  "runtime_s": 10,
+  "iops": {
+   "median": 1701.1,
+   "min": 1692.8,
+   "max": 1716.1,
+   "cv_pct": 0.6
+  },
+  "bw_MiBps": {
+   "median": 1701.8,
+   "min": 1693.5,
+   "max": 1716.9,
+   "cv_pct": 0.6
+  },
+  "clat_p99_us": {
+   "median": 12517.4,
+   "min": 12386.3,
+   "max": 12517.4,
+   "cv_pct": 0.5
+  },
+  "clat_p99.9_us": {
+   "median": 15925.2,
+   "min": 15663.1,
+   "max": 16908.3,
+   "cv_pct": 3.3
+  },
+  "lat_mean_us": {
+   "median": 4699.9,
+   "min": 4658.9,
+   "max": 4722.9,
+   "cv_pct": 0.6
+  },
+  "device_util_pct_median": 87.082983,
+  "nvme_max_c_per_run": [
+   74.85,
+   74.85,
+   75.85
+  ],
+  "near_throttle_runs": 0
+ }
+]

@@ -1,0 +1,7 @@
+== /sys/class/powercap/intel-rapl:0 package-0
+  long_term limit_W=200 max_W=45 window_ms=31981
+  short_term limit_W=83 max_W=0 window_ms=2
+== /sys/class/powercap/intel-rapl:0/intel-rapl:0:0 core
+  long_term limit_W=0 max_W=0 window_ms=0
+== /sys/class/powercap/intel-rapl:0/intel-rapl:0:1 uncore
+  long_term limit_W=0 max_W=0 window_ms=0

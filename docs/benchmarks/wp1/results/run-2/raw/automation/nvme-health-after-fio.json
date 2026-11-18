@@ -1,0 +1,117 @@
+{
+  "checks": [
+    {
+      "detail": "74.85 C",
+      "name": "nvme_temp_hwmon",
+      "source": "sysfs hwmon (no root)",
+      "status": "OK",
+      "threshold": {
+        "fail": 81.0,
+        "warn": 75.0
+      },
+      "value": 74.85
+    },
+    {
+      "detail": "bitfield; 0 = none",
+      "name": "critical_warning",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "100%",
+      "name": "available_spare",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": "> 10",
+      "value": 100
+    },
+    {
+      "detail": "8 %",
+      "name": "percentage_used",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": {
+        "fail": 100.0,
+        "warn": 80.0
+      },
+      "value": 8.0
+    },
+    {
+      "detail": "0 expected (a zero is a real zero only because the field is present)",
+      "name": "media_errors",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "0 expected (a zero is a real zero only because the field is present)",
+      "name": "error_log_entries",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "lifetime counters only; pass --baseline to detect new events",
+      "name": "thermal_events",
+      "source": "nvme smart-log -o json",
+      "status": "OK",
+      "threshold": "no baseline: cumulative lifetime counters",
+      "value": {
+        "critical_comp_time": 0,
+        "thm_temp1_total_time": 2396,
+        "thm_temp1_trans_count": 3260,
+        "thm_temp2_total_time": 34,
+        "thm_temp2_trans_count": 136,
+        "warning_temp_time": 0
+      }
+    }
+  ],
+  "exit_code": 0,
+  "kind": "nvme",
+  "overall": "OK",
+  "policy": {
+    "cpu_fail_c": 95.0,
+    "cpu_warn_c": 90.0,
+    "ctr_mem_fail_pct": 95.0,
+    "ctr_mem_warn_pct": 85.0,
+    "gpu_fail_c": 90.0,
+    "gpu_warn_c": 83.0,
+    "min_free_gib": 20.0,
+    "nvme_fail_c": 81.0,
+    "nvme_warn_c": 75.0,
+    "percent_used_fail": 100.0,
+    "percent_used_warn": 80.0,
+    "warn_free_gib": 30.0
+  },
+  "raw_smart": {
+    "avail_spare": 100,
+    "controller_busy_time": 3148,
+    "critical_comp_time": 0,
+    "critical_warning": 0,
+    "data_units_read": 96856069,
+    "data_units_written": 54548242,
+    "endurance_grp_critical_warning_summary": 0,
+    "host_read_commands": 1279300728,
+    "host_write_commands": 915637020,
+    "media_errors": 0,
+    "num_err_log_entries": 0,
+    "percent_used": 8,
+    "power_cycles": 2244,
+    "power_on_hours": 5756,
+    "spare_thresh": 10,
+    "temperature": 348,
+    "temperature_sensor_1": 348,
+    "thm_temp1_total_time": 2396,
+    "thm_temp1_trans_count": 3260,
+    "thm_temp2_total_time": 34,
+    "thm_temp2_trans_count": 136,
+    "unsafe_shutdowns": 242,
+    "warning_temp_time": 0
+  },
+  "time": "2026-11-18T08:23:08+0530",
+  "tool": "wp1r2_hostguard"
+}

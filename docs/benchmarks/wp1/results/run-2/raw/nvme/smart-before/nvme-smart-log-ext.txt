@@ -1,0 +1,46 @@
+# 2026-11-18T08:01:22+05:30 $ nvme smart-log /dev/nvme0 -v
+opcode       : 02
+flags        : 00
+rsvd1        : 0000
+nsid         : ffffffff
+cdw2         : 00000000
+cdw3         : 00000000
+data_len     : 00000200
+metadata_len : 00000000
+addr         : 56c50c637000
+metadata     : 0
+cdw10        : 007f0002
+cdw11        : 00000000
+cdw12        : 00000000
+cdw13        : 00000000
+cdw14        : 00000000
+cdw15        : 00000000
+timeout_ms   : 00000000
+result       : 00000000
+err          : 0
+latency      : 15444 us
+Smart Log for NVME device:nvme0 namespace-id:ffffffff
+critical_warning			: 0
+temperature				: 75 °C (348 K)
+available_spare				: 100%
+available_spare_threshold		: 10%
+percentage_used				: 8%
+endurance group critical warning summary: 0
+Data Units Read				: 96363127 (49.34 TB)
+Data Units Written			: 54237886 (27.77 TB)
+host_read_commands			: 1233732925
+host_write_commands			: 891427577
+controller_busy_time			: 3140
+power_cycles				: 2244
+power_on_hours				: 5755
+unsafe_shutdowns			: 242
+media_errors				: 0
+num_err_log_entries			: 0
+Warning Temperature Time		: 0
+Critical Composite Temperature Time	: 0
+Temperature Sensor 1           : 75 °C (348 K)
+Thermal Management T1 Trans Count	: 3259
+Thermal Management T2 Trans Count	: 136
+Thermal Management T1 Total Time	: 2395
+Thermal Management T2 Total Time	: 34
+# exit=0

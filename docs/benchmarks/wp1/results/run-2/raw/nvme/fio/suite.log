@@ -1,0 +1,48 @@
+seqread-1M-qd8-r1 t_before=50 t_after=76 nvme_max_mC=76850 free=56GiB mem_avail_MiB=11290
+seqwrite-1M-qd8-r1 t_before=49 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11314
+randread-4k-qd1-r1 t_before=48 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11373
+randread-4k-qd4-r1 t_before=49 t_after=70 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11381
+randread-4k-qd16-r1 t_before=48 t_after=71 nvme_max_mC=71850 free=56GiB mem_avail_MiB=11364
+randread-4k-qd32-r1 t_before=51 t_after=74 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11337
+randread-4k-qd64-r1 t_before=49 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11349
+randwrite-4k-qd1-r1 t_before=51 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11372
+randwrite-4k-qd4-r1 t_before=48 t_after=72 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11373
+randwrite-4k-qd16-r1 t_before=48 t_after=72 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11342
+randwrite-4k-qd32-r1 t_before=51 t_after=72 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11366
+randwrite-4k-qd64-r1 t_before=49 t_after=73 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11368
+randread-4k-qd32-j4-r1 t_before=50 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11375
+randwrite-4k-qd32-j4-r1 t_before=51 t_after=71 nvme_max_mC=70850 free=56GiB mem_avail_MiB=11349
+mixed-4k-70r30w-qd16-j4-r1 t_before=50 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11366
+finished
+seqread-1M-qd8-r2 t_before=51 t_after=77 nvme_max_mC=80850 NEAR_THROTTLE free=56GiB mem_avail_MiB=11365
+seqwrite-1M-qd8-r2 t_before=48 t_after=75 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11358
+randread-4k-qd1-r2 t_before=48 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11347
+randread-4k-qd4-r2 t_before=47 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11357
+randread-4k-qd16-r2 t_before=48 t_after=71 nvme_max_mC=70850 free=56GiB mem_avail_MiB=11367
+randread-4k-qd32-r2 t_before=50 t_after=73 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11347
+randread-4k-qd64-r2 t_before=48 t_after=74 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11360
+randwrite-4k-qd1-r2 t_before=49 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11365
+randwrite-4k-qd4-r2 t_before=51 t_after=73 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11371
+randwrite-4k-qd16-r2 t_before=48 t_after=73 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11335
+randwrite-4k-qd32-r2 t_before=50 t_after=73 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11309
+randwrite-4k-qd64-r2 t_before=50 t_after=73 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11320
+randread-4k-qd32-j4-r2 t_before=48 t_after=74 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11347
+randwrite-4k-qd32-j4-r2 t_before=48 t_after=70 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11301
+mixed-4k-70r30w-qd16-j4-r2 t_before=49 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11328
+finished
+seqread-1M-qd8-r3 t_before=48 t_after=78 nvme_max_mC=78850 free=56GiB mem_avail_MiB=11321
+seqwrite-1M-qd8-r3 t_before=49 t_after=75 nvme_max_mC=75850 free=56GiB mem_avail_MiB=11322
+randread-4k-qd1-r3 t_before=50 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11339
+randread-4k-qd4-r3 t_before=48 t_after=70 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11275
+randread-4k-qd16-r3 t_before=50 t_after=72 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11324
+randread-4k-qd32-r3 t_before=51 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11307
+randread-4k-qd64-r3 t_before=47 t_after=69 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11329
+randwrite-4k-qd1-r3 t_before=51 t_after=69 nvme_max_mC=69850 free=56GiB mem_avail_MiB=11305
+randwrite-4k-qd4-r3 t_before=50 t_after=73 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11285
+randwrite-4k-qd16-r3 t_before=50 t_after=73 nvme_max_mC=73850 free=56GiB mem_avail_MiB=11580
+randwrite-4k-qd32-r3 t_before=48 t_after=72 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11590
+randwrite-4k-qd64-r3 t_before=49 t_after=72 nvme_max_mC=72850 free=56GiB mem_avail_MiB=11603
+randread-4k-qd32-j4-r3 t_before=48 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11584
+randwrite-4k-qd32-j4-r3 t_before=48 t_after=70 nvme_max_mC=70850 free=56GiB mem_avail_MiB=11326
+mixed-4k-70r30w-qd16-j4-r3 t_before=49 t_after=74 nvme_max_mC=74850 free=56GiB mem_avail_MiB=11512
+finished

@@ -1,0 +1,5 @@
+# 2026-11-18T08:01:22+05:30 $ nvme list
+Node                  Generic               SN                   Model                                    Namespace  Usage                      Format           FW Rev  
+--------------------- --------------------- -------------------- ---------------------------------------- ---------- -------------------------- ---------------- --------
+/dev/nvme0n1          /dev/ng0n1            <serial-redacted>       SAMSUNG MZVLQ512HBLU-00B00               0x1        405.06  GB / 512.11  GB    512   B +  0 B   FXM7501Q
+# exit=0

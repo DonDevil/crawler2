@@ -1,0 +1,6 @@
+# 2026-11-18T08:01:22+05:30 $ nvme get-feature /dev/nvme0 -f 0x04 -H --sel=0 --cdw11=0x10000
+get-feature:0x04 (Temperature Threshold), Current value:0x0001ffff
+	Threshold Type Select         (THSEL): 0 - Over Temperature Threshold
+	Threshold Temperature Select (TMPSEL): 1 - Temperature Sensor 1
+	Temperature Threshold         (TMPTH): 65262 °C (65535 K)
+# exit=0

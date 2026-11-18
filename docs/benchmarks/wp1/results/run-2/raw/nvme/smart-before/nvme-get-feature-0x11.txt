@@ -1,0 +1,3 @@
+# 2026-11-18T08:01:22+05:30 $ nvme get-feature /dev/nvme0 -f 0x11 -H
+NVMe status: Invalid Field in Command: A reserved coded value or an unsupported value in a defined field(0x2)
+# exit=1

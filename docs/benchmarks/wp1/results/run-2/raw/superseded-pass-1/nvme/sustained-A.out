@@ -1,0 +1,1 @@
+{"label": "A-unthrottled", "cliff": {"found": true, "t_s": 12.0, "baseline_MiBps": 1558.4, "window_mean_MiBps": 720.3, "cumulative_GiB_at_cliff": 15.73}, "aborted": null, "max_nvme_c": 77.85, "max_cpu_c": 95.0}

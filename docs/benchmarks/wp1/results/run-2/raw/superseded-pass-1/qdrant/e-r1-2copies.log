@@ -1,0 +1,69 @@
+/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py:115: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(host="127.0.0.1", port=a.http_port, grpc_port=a.grpc_port, prefer_grpc=True,
+{"boundary": "1", "exact": {"media": 10000, "g1": 208886}, "harness": {"media": 10000, "g1": 208886}, "equal": true, "t": 1794972294.4661634}
+{"boundary": "2", "exact": {"media": 10000, "g1": 208886}, "harness": {"media": 10000, "g1": 208886}, "equal": true, "t": 1794972314.1835086}
+{"phase3": "g2 built", "ingest_s": 113.1, "green_s": 4.0, "resident": 430340, "t": 1794972431.4765236}
+{"boundary": "3", "exact": {"media": 10000, "g1": 219134, "g2": 219134}, "harness": {"media": 10000, "g1": 219134, "g2": 219134}, "equal": true, "t": 1794973262.4148521}
+{"boundary": "4", "exact": {"media": 10000, "g2": 219134}, "harness": {"media": 10000, "g2": 219134}, "equal": true, "t": 1794973262.5341628}
+{"boundary": "5", "exact": {"media": 10000, "g2": 219134}, "harness": {"media": 10000, "g2": 219134}, "equal": true, "t": 1794973562.7995205}
+{
+ "pass": false,
+ "pass_rules": {
+  "no_oom_kill": true,
+  "anon_peak_le_1_35_gib": true,
+  "query_p95_le_10ms_phases_2_3_5": false,
+  "exact_counts_equal_at_boundaries": true,
+  "phase3_reached_R_req": true,
+  "completed": true
+ },
+ "memory": {
+  "by_phase": {
+   "1-build-g1": {
+    "anon_peak": 483221504,
+    "current_peak": 1610612736,
+    "file_peak": 1278652416
+   },
+   "2-warm": {
+    "anon_peak": 361566208,
+    "current_peak": 1301360640,
+    "file_peak": 933330944
+   },
+   "3-rebuild": {
+    "anon_peak": 710717440,
+    "current_peak": 1610792960,
+    "file_peak": 1169371136
+   },
+   "5-steady": {
+    "anon_peak": 391897088,
+    "current_peak": 1080557568,
+    "file_peak": 760930304
+   }
+  },
+  "anon_peak_bytes": 710717440,
+  "anon_peak_gib": 0.6619,
+  "memory_peak_bytes": 1611104256,
+  "oom_kill": 0,
+  "limit_bytes": 1610612736
+ },
+ "query_latency": {
+  "2-warm": {
+   "n_after_warmup": 0,
+   "p50_ms": null,
+   "p95_ms": null,
+   "p99_ms": null
+  },
+  "3-rebuild": {
+   "n_after_warmup": 8872,
+   "p50_ms": 15.612,
+   "p95_ms": 103.132,
+   "p99_ms": 146.001
+  },
+  "5-steady": {
+   "n_after_warmup": 2402,
+   "p50_ms": 10.043,
+   "p95_ms": 24.737,
+   "p99_ms": 37.066
+  }
+ }
+}
+harness exit=0

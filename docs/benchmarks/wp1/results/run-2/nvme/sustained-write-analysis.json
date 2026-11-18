@@ -1,0 +1,83 @@
+{
+ "A": {
+  "label": "A-unthrottled",
+  "rate_mib": 0,
+  "plateau_MiBps": 1724,
+  "first_drop": {
+   "t_s": 7.0,
+   "cumulative_GiB": 10.2,
+   "nvme_c": 61.85
+  },
+  "mean_MiBps_20_to_80s_after_drop": 211,
+  "total_written_GiB": 47.9,
+  "max_nvme_c": 80.85,
+  "max_cpu_c": 98.0,
+  "nvme_c_at_drop_minus_TMT1_81": -19.1,
+  "post_idle_burst_MiBps_mean": 1292,
+  "post_idle_burst_nvme_c_at_start": 74.85,
+  "aborted": null,
+  "smart_counters_available_in_script": false,
+  "smart_counter_delta_over_run": {
+   "warning_temp_time": 0,
+   "critical_comp_time": 0,
+   "thm_temp1_trans_count": 20,
+   "thm_temp2_trans_count": 1,
+   "thm_temp1_total_time": 18,
+   "thm_temp2_total_time": 0
+  }
+ },
+ "B": {
+  "label": "B-rate500",
+  "rate_mib": 500,
+  "plateau_MiBps": 500,
+  "first_drop": {
+   "t_s": 30.0,
+   "cumulative_GiB": 14.2,
+   "nvme_c": 74.85
+  },
+  "mean_MiBps_20_to_80s_after_drop": 201,
+  "total_written_GiB": 48.0,
+  "max_nvme_c": 80.85,
+  "max_cpu_c": 95.0,
+  "nvme_c_at_drop_minus_TMT1_81": -6.2,
+  "post_idle_burst_MiBps_mean": 1490,
+  "post_idle_burst_nvme_c_at_start": 74.85,
+  "aborted": null,
+  "smart_counters_available_in_script": false,
+  "smart_counter_delta_over_run": {
+   "warning_temp_time": 0,
+   "critical_comp_time": 0,
+   "thm_temp1_trans_count": 51,
+   "thm_temp2_trans_count": 0,
+   "thm_temp1_total_time": 40,
+   "thm_temp2_total_time": 0
+  }
+ },
+ "C": {
+  "label": "C-repeat-unthrottled",
+  "rate_mib": 0,
+  "plateau_MiBps": 1342,
+  "first_drop": {
+   "t_s": 6.0,
+   "cumulative_GiB": 8.4,
+   "nvme_c": 51.85
+  },
+  "mean_MiBps_20_to_80s_after_drop": 114,
+  "total_written_GiB": 47.9,
+  "max_nvme_c": 77.85,
+  "max_cpu_c": 93.0,
+  "nvme_c_at_drop_minus_TMT1_81": -29.1,
+  "post_idle_burst_MiBps_mean": 1320,
+  "post_idle_burst_nvme_c_at_start": 69.85,
+  "aborted": null,
+  "smart_counters_available_in_script": false,
+  "smart_counter_delta_over_run": {
+   "warning_temp_time": 0,
+   "critical_comp_time": 0,
+   "thm_temp1_trans_count": 0,
+   "thm_temp2_trans_count": 0,
+   "thm_temp1_total_time": 0,
+   "thm_temp2_total_time": 0
+  }
+ }
+}

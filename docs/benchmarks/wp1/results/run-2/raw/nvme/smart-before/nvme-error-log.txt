@@ -1,0 +1,1156 @@
+# 2026-11-18T08:01:22+05:30 $ nvme error-log /dev/nvme0 -e 64
+Error Log Entries for device:nvme0 entries:64
+.................
+ Entry[ 0]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 1]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 2]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 3]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 4]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 5]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 6]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 7]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 8]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[ 9]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[10]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[11]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[12]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[13]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[14]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[15]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[16]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[17]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[18]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[19]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[20]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[21]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[22]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[23]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[24]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[25]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[26]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[27]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[28]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[29]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[30]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[31]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[32]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[33]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[34]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[35]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[36]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[37]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[38]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[39]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[40]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[41]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[42]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[43]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[44]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[45]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[46]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[47]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[48]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[49]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[50]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[51]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[52]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[53]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[54]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[55]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[56]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[57]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[58]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[59]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[60]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[61]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[62]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+ Entry[63]   
+.................
+error_count	: 0
+sqid		: 0
+cmdid		: 0
+status_field	: 0(Successful Completion: The command completed without error)
+phase_tag	: 0
+parm_err_loc	: 0
+lba		: 0
+nsid		: 0
+vs		: 0
+trtype		: The transport type is not indicated or the error is not transport related.
+csi		: 0
+opcode		: 0
+cs		: 0
+trtype_spec_info: 0
+log_page_version: 0
+.................
+# exit=0

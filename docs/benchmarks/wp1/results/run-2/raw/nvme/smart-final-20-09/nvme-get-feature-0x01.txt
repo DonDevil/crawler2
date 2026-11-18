@@ -1,0 +1,7 @@
+# 2026-11-18T20:09:17+05:30 $ nvme get-feature /dev/nvme0 -f 0x01 -H
+get-feature:0x01 (Arbitration), Current value:0x03030302
+	High Priority Weight   (HPW): 4
+	Medium Priority Weight (MPW): 4
+	Low Priority Weight    (LPW): 4
+	Arbitration Burst       (AB): 4
+# exit=0

@@ -1,0 +1,15 @@
+seqread-1M-qd8 t_before=42 t_after=66 free=56GiB mem_avail_MiB=11689
+seqwrite-1M-qd8 t_before=45 t_after=74 free=56GiB mem_avail_MiB=11751
+randread-4k-qd1 t_before=53 t_after=70 free=56GiB mem_avail_MiB=11771
+randread-4k-qd4 t_before=52 t_after=72 free=56GiB mem_avail_MiB=11723
+randread-4k-qd16 t_before=53 t_after=68 free=56GiB mem_avail_MiB=11738
+randread-4k-qd32 t_before=56 t_after=77 free=56GiB mem_avail_MiB=11772
+randread-4k-qd64 t_before=52 t_after=69 free=56GiB mem_avail_MiB=11764
+randwrite-4k-qd1 t_before=55 t_after=74 free=56GiB mem_avail_MiB=11783
+randwrite-4k-qd4 t_before=52 t_after=76 free=56GiB mem_avail_MiB=11650
+randwrite-4k-qd16 t_before=53 t_after=76 free=56GiB mem_avail_MiB=11370
+randwrite-4k-qd32 t_before=51 t_after=74 free=56GiB mem_avail_MiB=11180
+randwrite-4k-qd64 t_before=56 t_after=76 free=56GiB mem_avail_MiB=11148
+randread-4k-qd32-j4 t_before=56 t_after=70 free=56GiB mem_avail_MiB=11121
+randwrite-4k-qd32-j4 t_before=53 t_after=75 free=56GiB mem_avail_MiB=11110
+mixed-4k-70r30w-qd16-j4 t_before=53 t_after=77 free=56GiB mem_avail_MiB=11119

@@ -1,0 +1,6 @@
+skip seqread-1M-qd8 (result exists)
+skip seqwrite-1M-qd8 (result exists)
+skip randread-4k-qd1 (result exists)
+skip randread-4k-qd4 (result exists)
+skip randread-4k-qd16 (result exists)
+skip randread-4k-qd32 (result exists)

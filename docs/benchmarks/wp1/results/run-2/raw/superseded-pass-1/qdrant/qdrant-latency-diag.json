@@ -1,0 +1,169 @@
+{
+ "benchmark": "E-R1-diag (not a gate)",
+ "points": 104443,
+ "queries": 760,
+ "configs": {
+  "C0_gate_config": {
+   "ingest_s": 51.5,
+   "green_s": 8.0,
+   "variants": {
+    "V0_gate_params": {
+     "client_ms_p50_p95_p99": [
+      1.794,
+      2.203,
+      2.609
+     ],
+     "server_ms_p50_p95_p99": [
+      0.839,
+      1.141,
+      1.287
+     ],
+     "recall_at_100_mean_min": [
+      0.9682,
+      0.07
+     ]
+    },
+    "V1_no_payload": {
+     "client_ms_p50_p95_p99": [
+      1.088,
+      1.327,
+      1.448
+     ],
+     "server_ms_p50_p95_p99": [
+      0.407,
+      0.6,
+      0.7
+     ],
+     "recall_at_100_mean_min": [
+      0.9682,
+      0.07
+     ]
+    },
+    "V2_oversampling_1": {
+     "client_ms_p50_p95_p99": [
+      1.683,
+      2.008,
+      2.157
+     ],
+     "server_ms_p50_p95_p99": [
+      0.76,
+      0.999,
+      1.098
+     ],
+     "recall_at_100_mean_min": [
+      0.9571,
+      0.07
+     ]
+    },
+    "V3_hnsw_ef_64": {
+     "client_ms_p50_p95_p99": [
+      1.905,
+      2.338,
+      2.552
+     ],
+     "server_ms_p50_p95_p99": [
+      0.852,
+      1.095,
+      1.208
+     ],
+     "recall_at_100_mean_min": [
+      0.9682,
+      0.07
+     ]
+    },
+    "V5_rest_paced_2x5qps": {
+     "n": 600,
+     "client_ms_p50_p95_p99": [
+      2.888,
+      3.482,
+      3.722
+     ],
+     "server_ms_p50_p95_p99": [
+      1.217,
+      1.577,
+      1.698
+     ]
+    },
+    "V4_grpc_harness_sequential": {
+     "client_ms_p50_p95_p99": [
+      6.228,
+      7.233,
+      7.557
+     ],
+     "recall_at_100_mean_min": [
+      0.9682,
+      0.07
+     ]
+    },
+    "V4_grpc_harness_paced_2x5qps": {
+     "n": 602,
+     "client_ms_p50_p95_p99": [
+      7.788,
+      9.842,
+      10.738
+     ]
+    }
+   },
+   "segments": 2,
+   "indexed_vectors": 104443,
+   "points": 104443
+  },
+  "C1_originals_in_RAM": {
+   "ingest_s": 54.6,
+   "green_s": 4.0,
+   "variants": {
+    "V0_gate_params": {
+     "client_ms_p50_p95_p99": [
+      2.022,
+      2.466,
+      2.806
+     ],
+     "server_ms_p50_p95_p99": [
+      0.932,
+      1.173,
+      1.291
+     ],
+     "recall_at_100_mean_min": [
+      0.9683,
+      0.06
+     ]
+    },
+    "V5_rest_paced_2x5qps": {
+     "n": 602,
+     "client_ms_p50_p95_p99": [
+      3.215,
+      3.818,
+      4.1
+     ],
+     "server_ms_p50_p95_p99": [
+      1.554,
+      1.973,
+      2.206
+     ]
+    },
+    "V4_grpc_harness_sequential": {
+     "client_ms_p50_p95_p99": [
+      6.296,
+      7.085,
+      9.99
+     ],
+     "recall_at_100_mean_min": [
+      0.9683,
+      0.06
+     ]
+    },
+    "V4_grpc_harness_paced_2x5qps": {
+     "n": 602,
+     "client_ms_p50_p95_p99": [
+      8.65,
+      10.883,
+      11.375
+     ]
+    }
+   },
+   "segments": 2,
+   "indexed_vectors": 102000,
+   "points": 104443
+  }
+ }
+}

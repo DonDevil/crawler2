@@ -1,0 +1,69 @@
+{
+ "date": "2026-11-18",
+ "scope": "this host only; no production retention/workload model exists (H-08 needs owner input) so none is invented",
+ "filesystem": {
+  "device": "nvme0n1p7 ext4",
+  "total_bytes": 157396975616,
+  "used_bytes": 85555548160,
+  "free_bytes": 63771586560,
+  "free_gib": 59.39,
+  "safety_floor_gib": 20,
+  "usable_above_floor_gib": 39.39,
+  "run1_end_free_gib": 59.2
+ },
+ "docker": {
+  "images_gb": 2.246,
+  "build_cache_gb": 1.15,
+  "volumes_gb": {
+   "crawler2_minio-data": 3.649,
+   "crawler2_scylla-data": 1.118,
+   "fingerprinter-index_qdrant-data": 0.908,
+   "crawler2_redis-data": 0.0448
+  },
+  "note": "MinIO transiently 4.05 GB minutes after deleting 12,000 objects, settled to 3.649 GB"
+ },
+ "local_artifacts_bytes": {
+  "datasets": 27873670541,
+  "fingerprinter": 5817192359,
+  "crawler": 599670735,
+  "crawler2": 404098578,
+  "~/.cache": 7779629072
+ },
+ "measured_workload_footprints": {
+  "qdrant_volume_per_resident_point_kb": {
+   "2x_phase1": 7.4,
+   "2x_rebuild_peak": 6.0,
+   "2x_after_promote": 6.73,
+   "3x_phase1": 5.78,
+   "3x_rebuild_peak": 5.51,
+   "3x_after_promote": 5.79,
+   "run1_range": "5.2-11.2 (1 copy outlier)",
+   "refined_range": "5.5-7.4 for >=2 copies"
+  },
+  "qdrant_rebuild_peak_over_single_generation": 1.95,
+  "qdrant_peak_volume_gb": {
+   "1x": 1.63,
+   "2x": 2.69,
+   "3x": 3.65
+  },
+  "minio_32KiB_objects_overhead": "\u224814 KB/object over 32 KiB payload (Run 1)",
+  "p2_latency_benchmark": "12,000 objects written + keyspace; Scylla volume \u00b10.1 GB (commitlog churn), MinIO transient +0.4 GB, all removed",
+  "fio_suite_file_gib": 4,
+  "sustained_write_file_gib": 24,
+  "run2_raw_evidence_uncompressed_mb": 12
+ },
+ "provisional_cap_arithmetic": {
+  "index.max_points": 250000,
+  "resident_required_two_generations": 532500,
+  "qdrant_volume_gb_range_at_peak": [
+   2.93,
+   3.94
+  ],
+  "note": "arithmetic at the UNAPPROVED provisional cap, not a forecast"
+ },
+ "floor_consequences": {
+  "largest_bounded_operation_in_run2_gib": 24,
+  "fraction_of_usable": 0.61,
+  "rule": "an operation may start only if free - planned >= 20 GiB; scripts here require 28-30 GiB free at start (floor + margin)"
+ }
+}

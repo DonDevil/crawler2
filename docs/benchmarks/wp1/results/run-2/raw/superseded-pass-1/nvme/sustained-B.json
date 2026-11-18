@@ -1,0 +1,2652 @@
+{
+ "label": "B-rate500",
+ "rate_mib": 500,
+ "file_gib": 24,
+ "total_gib": 48,
+ "counters_start": null,
+ "smart_counters_available": false,
+ "aborted": null,
+ "cliff": {
+  "found": true,
+  "t_s": 26.0,
+  "baseline_MiBps": 500.2,
+  "window_mean_MiBps": 219.3,
+  "cumulative_GiB_at_cliff": 9.18
+ },
+ "bw_series_MiBps": [
+  [
+   1.0,
+   500.0
+  ],
+  [
+   2.0,
+   500.5
+  ],
+  [
+   3.0,
+   500.0
+  ],
+  [
+   4.0,
+   500.5
+  ],
+  [
+   5.0,
+   500.0
+  ],
+  [
+   6.0,
+   500.0
+  ],
+  [
+   7.0,
+   500.5
+  ],
+  [
+   8.0,
+   500.0
+  ],
+  [
+   9.0,
+   500.5
+  ],
+  [
+   10.0,
+   500.0
+  ],
+  [
+   11.0,
+   500.5
+  ],
+  [
+   12.0,
+   290.0
+  ],
+  [
+   13.0,
+   309.0
+  ],
+  [
+   14.0,
+   256.3
+  ],
+  [
+   15.0,
+   280.0
+  ],
+  [
+   16.0,
+   274.3
+  ],
+  [
+   17.0,
+   287.0
+  ],
+  [
+   18.0,
+   279.3
+  ],
+  [
+   19.0,
+   238.0
+  ],
+  [
+   20.0,
+   290.0
+  ],
+  [
+   21.0,
+   293.3
+  ],
+  [
+   22.0,
+   314.0
+  ],
+  [
+   23.0,
+   312.3
+  ],
+  [
+   24.0,
+   308.0
+  ],
+  [
+   25.0,
+   29.0
+  ],
+  [
+   26.0,
+   133.1
+  ],
+  [
+   27.0,
+   312.0
+  ],
+  [
+   28.0,
+   304.3
+  ],
+  [
+   29.0,
+   323.0
+  ],
+  [
+   30.0,
+   313.3
+  ],
+  [
+   31.0,
+   1053.0
+  ],
+  [
+   32.0,
+   1708.7
+  ],
+  [
+   33.0,
+   1510.0
+  ],
+  [
+   34.0,
+   301.3
+  ],
+  [
+   35.0,
+   302.0
+  ],
+  [
+   36.0,
+   296.3
+  ],
+  [
+   37.0,
+   307.0
+  ],
+  [
+   38.0,
+   308.3
+  ],
+  [
+   39.0,
+   309.0
+  ],
+  [
+   40.0,
+   301.3
+  ],
+  [
+   41.0,
+   294.0
+  ],
+  [
+   42.0,
+   317.0
+  ],
+  [
+   43.0,
+   282.3
+  ],
+  [
+   44.0,
+   302.0
+  ],
+  [
+   45.0,
+   270.3
+  ],
+  [
+   46.0,
+   313.0
+  ],
+  [
+   47.0,
+   320.0
+  ],
+  [
+   48.0,
+   280.3
+  ],
+  [
+   49.0,
+   105.0
+  ],
+  [
+   50.0,
+   221.2
+  ],
+  [
+   51.0,
+   482.0
+  ],
+  [
+   52.0,
+   446.0
+  ],
+  [
+   53.0,
+   143.1
+  ],
+  [
+   54.0,
+   272.0
+  ],
+  [
+   55.0,
+   216.2
+  ],
+  [
+   56.0,
+   89.1
+  ],
+  [
+   57.0,
+   321.0
+  ],
+  [
+   58.0,
+   104.0
+  ],
+  [
+   59.0,
+   242.2
+  ],
+  [
+   60.0,
+   225.0
+  ],
+  [
+   61.0,
+   299.3
+  ],
+  [
+   62.0,
+   340.0
+  ],
+  [
+   63.0,
+   342.3
+  ],
+  [
+   64.0,
+   99.0
+  ],
+  [
+   65.0,
+   56.1
+  ],
+  [
+   66.0,
+   202.2
+  ],
+  [
+   67.0,
+   56.0
+  ],
+  [
+   68.0,
+   134.1
+  ],
+  [
+   69.0,
+   344.0
+  ],
+  [
+   70.0,
+   333.0
+  ],
+  [
+   71.0,
+   213.2
+  ],
+  [
+   72.0,
+   92.0
+  ],
+  [
+   73.0,
+   93.1
+  ],
+  [
+   74.0,
+   92.0
+  ],
+  [
+   75.0,
+   97.1
+  ],
+  [
+   76.0,
+   52.1
+  ],
+  [
+   77.0,
+   61.0
+  ],
+  [
+   78.0,
+   61.1
+  ],
+  [
+   79.0,
+   67.0
+  ],
+  [
+   80.0,
+   70.1
+  ],
+  [
+   81.0,
+   68.0
+  ],
+  [
+   82.0,
+   71.1
+  ],
+  [
+   83.0,
+   65.0
+  ],
+  [
+   84.0,
+   59.1
+  ],
+  [
+   85.0,
+   62.1
+  ],
+  [
+   86.0,
+   72.0
+  ],
+  [
+   87.0,
+   68.1
+  ],
+  [
+   88.0,
+   71.0
+  ],
+  [
+   89.0,
+   67.1
+  ],
+  [
+   90.0,
+   69.0
+  ],
+  [
+   91.0,
+   11.0
+  ],
+  [
+   92.0,
+   1.0
+  ],
+  [
+   95.0,
+   6.0
+  ],
+  [
+   96.0,
+   1.0
+  ],
+  [
+   98.0,
+   2.0
+  ],
+  [
+   99.0,
+   4.0
+  ],
+  [
+   100.0,
+   94.1
+  ],
+  [
+   101.0,
+   94.0
+  ],
+  [
+   102.0,
+   92.1
+  ],
+  [
+   103.0,
+   92.0
+  ],
+  [
+   104.0,
+   44.0
+  ],
+  [
+   105.0,
+   131.1
+  ],
+  [
+   106.0,
+   215.0
+  ],
+  [
+   107.0,
+   224.2
+  ],
+  [
+   108.0,
+   209.0
+  ],
+  [
+   109.0,
+   219.0
+  ],
+  [
+   110.0,
+   218.2
+  ],
+  [
+   111.0,
+   228.0
+  ],
+  [
+   112.0,
+   219.2
+  ],
+  [
+   113.0,
+   233.0
+  ],
+  [
+   114.0,
+   94.1
+  ],
+  [
+   115.0,
+   57.1
+  ],
+  [
+   116.0,
+   207.0
+  ],
+  [
+   117.0,
+   229.2
+  ],
+  [
+   118.0,
+   241.0
+  ],
+  [
+   119.0,
+   234.2
+  ],
+  [
+   120.0,
+   238.2
+  ],
+  [
+   121.0,
+   240.0
+  ],
+  [
+   122.0,
+   232.0
+  ],
+  [
+   123.0,
+   230.2
+  ],
+  [
+   124.0,
+   236.0
+  ],
+  [
+   125.0,
+   224.2
+  ],
+  [
+   126.0,
+   237.0
+  ],
+  [
+   127.0,
+   238.2
+  ],
+  [
+   128.0,
+   238.0
+  ],
+  [
+   129.0,
+   238.2
+  ],
+  [
+   130.0,
+   237.0
+  ],
+  [
+   131.0,
+   242.2
+  ],
+  [
+   132.0,
+   245.0
+  ],
+  [
+   133.0,
+   243.2
+  ],
+  [
+   134.0,
+   249.0
+  ],
+  [
+   135.0,
+   236.2
+  ],
+  [
+   136.0,
+   240.0
+  ],
+  [
+   137.0,
+   115.1
+  ],
+  [
+   138.0,
+   37.0
+  ],
+  [
+   139.0,
+   35.0
+  ],
+  [
+   140.0,
+   34.0
+  ],
+  [
+   141.0,
+   34.0
+  ],
+  [
+   142.0,
+   33.0
+  ],
+  [
+   143.0,
+   60.1
+  ],
+  [
+   144.0,
+   57.0
+  ],
+  [
+   145.0,
+   87.1
+  ],
+  [
+   146.0,
+   91.0
+  ],
+  [
+   147.0,
+   82.0
+  ],
+  [
+   148.0,
+   91.1
+  ],
+  [
+   149.0,
+   83.1
+  ],
+  [
+   150.0,
+   244.0
+  ],
+  [
+   151.0,
+   241.2
+  ],
+  [
+   152.0,
+   242.0
+  ],
+  [
+   153.0,
+   259.3
+  ],
+  [
+   154.0,
+   264.0
+  ],
+  [
+   155.0,
+   254.3
+  ],
+  [
+   156.0,
+   110.0
+  ],
+  [
+   157.0,
+   83.1
+  ],
+  [
+   158.0,
+   68.0
+  ],
+  [
+   159.0,
+   69.1
+  ],
+  [
+   160.0,
+   59.0
+  ],
+  [
+   161.0,
+   34.0
+  ],
+  [
+   162.0,
+   30.0
+  ],
+  [
+   163.0,
+   32.0
+  ],
+  [
+   164.0,
+   52.0
+  ],
+  [
+   165.0,
+   92.1
+  ],
+  [
+   166.0,
+   88.1
+  ],
+  [
+   167.0,
+   93.0
+  ],
+  [
+   168.0,
+   93.1
+  ],
+  [
+   169.0,
+   96.0
+  ],
+  [
+   170.0,
+   111.1
+  ],
+  [
+   171.0,
+   160.0
+  ],
+  [
+   172.0,
+   160.2
+  ],
+  [
+   173.0,
+   150.0
+  ],
+  [
+   174.0,
+   150.1
+  ],
+  [
+   175.0,
+   190.0
+  ],
+  [
+   176.0,
+   196.2
+  ],
+  [
+   177.0,
+   189.0
+  ],
+  [
+   178.0,
+   178.2
+  ],
+  [
+   179.0,
+   205.0
+  ],
+  [
+   180.0,
+   260.3
+  ],
+  [
+   181.0,
+   272.0
+  ],
+  [
+   182.0,
+   270.0
+  ],
+  [
+   183.0,
+   267.3
+  ],
+  [
+   184.0,
+   278.0
+  ],
+  [
+   185.0,
+   268.3
+  ],
+  [
+   186.0,
+   276.0
+  ],
+  [
+   187.0,
+   277.3
+  ],
+  [
+   188.0,
+   272.0
+  ],
+  [
+   189.0,
+   264.0
+  ],
+  [
+   190.0,
+   283.3
+  ],
+  [
+   191.0,
+   64.0
+  ],
+  [
+   192.0,
+   69.1
+  ],
+  [
+   193.0,
+   215.0
+  ],
+  [
+   194.0,
+   54.1
+  ],
+  [
+   195.0,
+   275.3
+  ],
+  [
+   196.0,
+   269.0
+  ],
+  [
+   197.0,
+   263.3
+  ],
+  [
+   198.0,
+   293.0
+  ],
+  [
+   199.0,
+   290.0
+  ],
+  [
+   200.0,
+   299.3
+  ],
+  [
+   201.0,
+   288.3
+  ],
+  [
+   202.0,
+   288.0
+  ],
+  [
+   203.0,
+   277.3
+  ],
+  [
+   204.0,
+   275.3
+  ],
+  [
+   205.0,
+   291.0
+  ],
+  [
+   206.0,
+   189.2
+  ],
+  [
+   207.0,
+   134.0
+  ],
+  [
+   208.0,
+   306.3
+  ],
+  [
+   209.0,
+   57.0
+  ],
+  [
+   210.0,
+   54.1
+  ],
+  [
+   211.0,
+   427.0
+  ],
+  [
+   212.0,
+   467.5
+  ],
+  [
+   213.0,
+   265.0
+  ],
+  [
+   214.0,
+   86.1
+  ],
+  [
+   215.0,
+   201.0
+  ],
+  [
+   216.0,
+   261.3
+  ],
+  [
+   217.0,
+   69.0
+  ],
+  [
+   218.0,
+   451.5
+  ],
+  [
+   219.0,
+   439.0
+  ],
+  [
+   220.0,
+   331.0
+  ],
+  [
+   221.0,
+   142.1
+  ],
+  [
+   222.0,
+   118.0
+  ],
+  [
+   223.0,
+   56.1
+  ]
+ ],
+ "counters_after_write": null,
+ "post_idle_burst_MiBps": [
+  [
+   1.0,
+   478.0
+  ],
+  [
+   2.0,
+   522.0
+  ],
+  [
+   3.0,
+   500.5
+  ],
+  [
+   4.0,
+   501.0
+  ],
+  [
+   5.0,
+   499.5
+  ],
+  [
+   6.0,
+   500.5
+  ],
+  [
+   7.0,
+   500.0
+  ],
+  [
+   8.0,
+   500.5
+  ]
+ ],
+ "counters_end": null,
+ "samples": [
+  {
+   "t": 125.3,
+   "phase": "sustained",
+   "nvme_c": 46.85,
+   "cpu_c": 53.0,
+   "free_gib": 59.9
+  },
+  {
+   "t": 126.3,
+   "phase": "sustained",
+   "nvme_c": 46.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 127.3,
+   "phase": "sustained",
+   "nvme_c": 56.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 128.3,
+   "phase": "sustained",
+   "nvme_c": 59.85,
+   "cpu_c": 86.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 129.3,
+   "phase": "sustained",
+   "nvme_c": 61.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 130.3,
+   "phase": "sustained",
+   "nvme_c": 62.85,
+   "cpu_c": 87.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 131.3,
+   "phase": "sustained",
+   "nvme_c": 64.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 132.3,
+   "phase": "sustained",
+   "nvme_c": 64.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 133.4,
+   "phase": "sustained",
+   "nvme_c": 65.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 134.4,
+   "phase": "sustained",
+   "nvme_c": 66.85,
+   "cpu_c": 53.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 135.4,
+   "phase": "sustained",
+   "nvme_c": 66.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 136.4,
+   "phase": "sustained",
+   "nvme_c": 66.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 137.4,
+   "phase": "sustained",
+   "nvme_c": 67.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 138.4,
+   "phase": "sustained",
+   "nvme_c": 67.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 139.5,
+   "phase": "sustained",
+   "nvme_c": 67.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 140.5,
+   "phase": "sustained",
+   "nvme_c": 68.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 141.6,
+   "phase": "sustained",
+   "nvme_c": 68.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 142.6,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 143.6,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 144.7,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 145.7,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 146.7,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 147.8,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 148.8,
+   "phase": "sustained",
+   "nvme_c": 70.85,
+   "cpu_c": 73.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 149.9,
+   "phase": "sustained",
+   "nvme_c": 69.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 152.2,
+   "phase": "sustained",
+   "nvme_c": 70.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 153.2,
+   "phase": "sustained",
+   "nvme_c": 70.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 154.2,
+   "phase": "sustained",
+   "nvme_c": 71.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 155.3,
+   "phase": "sustained",
+   "nvme_c": 71.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 156.3,
+   "phase": "sustained",
+   "nvme_c": 71.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 157.3,
+   "phase": "sustained",
+   "nvme_c": 73.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 158.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 159.4,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 62.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 160.4,
+   "phase": "sustained",
+   "nvme_c": 73.85,
+   "cpu_c": 60.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 161.5,
+   "phase": "sustained",
+   "nvme_c": 72.85,
+   "cpu_c": 92.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 162.5,
+   "phase": "sustained",
+   "nvme_c": 73.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 163.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 164.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 165.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 166.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 167.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 60.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 168.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 169.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 170.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 171.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 172.9,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 173.9,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 175.0,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 176.0,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 177.1,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 178.1,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 179.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 180.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 181.4,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 182.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 183.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 184.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 185.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 186.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 187.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 188.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 189.9,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 71.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 191.1,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 192.1,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 96.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 193.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 194.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 195.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 196.4,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 197.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 198.6,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 199.7,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 200.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 202.0,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 203.2,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 61.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 204.3,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 205.4,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 206.6,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 207.7,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 208.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 210.0,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 211.2,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 212.4,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 213.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 214.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 215.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 221.5,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 65.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 225.6,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 226.8,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 227.9,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 229.0,
+   "phase": "sustained",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 230.8,
+   "phase": "sustained",
+   "nvme_c": 75.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 231.8,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 232.9,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 233.9,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 235.0,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 61.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 236.0,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 237.1,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 238.1,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 239.1,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 240.3,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 241.5,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 82.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 242.5,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 243.6,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 244.6,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 245.6,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 246.7,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 247.8,
+   "phase": "sustained",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 248.8,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 249.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 250.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 252.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 62.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 253.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 254.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 85.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 255.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 256.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 257.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 258.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 259.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 260.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 261.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 262.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 263.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 264.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 266.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 267.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 268.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 269.8,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 270.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 272.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 273.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 274.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 275.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 276.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 277.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 278.5,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 279.5,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 280.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 281.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 282.7,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 283.8,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 284.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 286.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 287.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 288.5,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 289.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 291.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 292.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 293.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 294.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 295.4,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 296.5,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 297.5,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 298.6,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 299.7,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 67.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 300.7,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 301.7,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 302.8,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 303.8,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 304.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 305.9,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 307.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 308.0,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 309.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 310.1,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 311.1,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 312.2,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 313.2,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 314.3,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 315.3,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 91.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 316.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 317.5,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 318.6,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 319.7,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 320.8,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 321.8,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 322.9,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 323.9,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 88.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 324.9,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 326.0,
+   "phase": "sustained",
+   "nvme_c": 78.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 327.0,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 328.0,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 329.1,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 330.1,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 331.1,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 332.3,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 333.4,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 334.4,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 335.5,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 336.6,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 337.6,
+   "phase": "sustained",
+   "nvme_c": 80.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 338.7,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 339.8,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 341.0,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 342.2,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 343.3,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 344.3,
+   "phase": "sustained",
+   "nvme_c": 77.85,
+   "cpu_c": 94.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 345.4,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 346.4,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 347.5,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 348.6,
+   "phase": "sustained",
+   "nvme_c": 79.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 349.8,
+   "phase": "idle",
+   "nvme_c": 78.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 350.8,
+   "phase": "idle",
+   "nvme_c": 77.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 351.8,
+   "phase": "idle",
+   "nvme_c": 77.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 352.8,
+   "phase": "idle",
+   "nvme_c": 77.85,
+   "cpu_c": 53.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 353.8,
+   "phase": "idle",
+   "nvme_c": 75.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 354.8,
+   "phase": "idle",
+   "nvme_c": 76.85,
+   "cpu_c": 60.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 355.8,
+   "phase": "idle",
+   "nvme_c": 76.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 356.8,
+   "phase": "idle",
+   "nvme_c": 76.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 357.8,
+   "phase": "idle",
+   "nvme_c": 75.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 358.8,
+   "phase": "idle",
+   "nvme_c": 75.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 359.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 360.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 53.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 361.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 362.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 363.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 364.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 92.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 365.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 366.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 367.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 368.9,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 370.0,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 371.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 372.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 58.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 373.0,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 374.0,
+   "phase": "idle",
+   "nvme_c": 74.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 375.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 376.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 53.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 377.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 85.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 378.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 379.0,
+   "phase": "idle",
+   "nvme_c": 73.85,
+   "cpu_c": 54.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 380.0,
+   "phase": "burst",
+   "nvme_c": 73.85,
+   "cpu_c": 62.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 381.1,
+   "phase": "burst",
+   "nvme_c": 72.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 382.1,
+   "phase": "burst",
+   "nvme_c": 74.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 383.1,
+   "phase": "burst",
+   "nvme_c": 75.85,
+   "cpu_c": 55.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 384.1,
+   "phase": "burst",
+   "nvme_c": 76.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9,
+   "smart": null
+  },
+  {
+   "t": 385.1,
+   "phase": "burst",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 386.1,
+   "phase": "burst",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 387.1,
+   "phase": "burst",
+   "nvme_c": 77.85,
+   "cpu_c": 56.0,
+   "free_gib": 35.9
+  },
+  {
+   "t": 388.1,
+   "phase": "burst",
+   "nvme_c": 77.85,
+   "cpu_c": 57.0,
+   "free_gib": 35.9
+  }
+ ],
+ "max_nvme_c": 80.85,
+ "max_cpu_c": 96.0
+}

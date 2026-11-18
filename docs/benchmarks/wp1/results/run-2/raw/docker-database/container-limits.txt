@@ -1,0 +1,5 @@
+/fingerprinter-index-qdrant-1 mem=1610612736 memswap=1610612736 cpus=2000000000 restart_policy=unless-stopped restarts=0 oom=false started=2026-11-18T02:08:32.08588243Z
+/crawler2-app-1 mem=536870912 memswap=1073741824 cpus=1000000000 restart_policy=unless-stopped restarts=0 oom=false started=2026-11-18T02:08:32.079592831Z
+/crawler2-redis-1 mem=1073741824 memswap=2147483648 cpus=1000000000 restart_policy=unless-stopped restarts=0 oom=false started=2026-11-18T02:08:32.0768276Z
+/crawler2-minio-1 mem=536870912 memswap=1073741824 cpus=1000000000 restart_policy=unless-stopped restarts=0 oom=false started=2026-11-18T02:08:32.080835928Z
+/crawler2-scylla-1 mem=2147483648 memswap=4294967296 cpus=2000000000 restart_policy=unless-stopped restarts=0 oom=false started=2026-11-18T02:08:32.074722811Z

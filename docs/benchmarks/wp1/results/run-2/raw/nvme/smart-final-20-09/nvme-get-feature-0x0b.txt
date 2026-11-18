@@ -1,0 +1,12 @@
+# 2026-11-18T20:09:17+05:30 $ nvme get-feature /dev/nvme0 -f 0x0b -H
+get-feature:0x0b (Async Event Configuration), Current value:0x00000200
+	Discovery Log Page Change Notices                         : Do not send async event
+	Endurance Group Event Aggregate Log Change Notices        : Do not send async event
+	LBA Status Information Notices                            : Do not send async event
+	Predictable Latency Event Aggregate Log Change Notices    : Do not send async event
+	Asymmetric Namespace Access Change Notices                : Do not send async event
+	Telemetry Log Notices                                     : Do not send async event
+	Firmware Activation Notices                               : Send async event
+	Namespace Attribute Notices                               : Do not send async event
+	SMART / Health Critical Warnings                          : Do not send async event
+# exit=0

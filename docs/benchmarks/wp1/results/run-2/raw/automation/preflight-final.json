@@ -1,0 +1,307 @@
+{
+  "checks": [
+    {
+      "detail": "33.85 C",
+      "name": "nvme_temp_hwmon",
+      "source": "sysfs hwmon (no root)",
+      "status": "OK",
+      "threshold": {
+        "fail": 81.0,
+        "warn": 75.0
+      },
+      "value": 33.85
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "critical_warning",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "available_spare",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "percentage_used",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "media_errors",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "error_log_entries",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "SMART unavailable: command_failed rc=1: \u001b[1mUsage: nvme smart-log <device> [OPTIONS]\u001b[0m\n\nRetrieve SMART log for the given device (or optionally a namespace) in",
+      "name": "thermal_events",
+      "source": "nvme smart-log",
+      "status": "UNKNOWN",
+      "threshold": null,
+      "value": null
+    },
+    {
+      "detail": "free 58.2 GiB - planned 0.0 GiB = 58.2 GiB after",
+      "name": "free_space_after_operation",
+      "source": "os.statvfs",
+      "status": "OK",
+      "threshold": {
+        "fail_below": 20.0,
+        "warn_below": 30.0
+      },
+      "value": 58.16
+    },
+    {
+      "detail": "56 C",
+      "name": "gpu_temp",
+      "source": "nvidia-smi",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 87.0
+      },
+      "value": 56.0
+    },
+    {
+      "detail": "32.85 C",
+      "name": "nvme_temp",
+      "source": "sysfs hwmon",
+      "status": "OK",
+      "threshold": {
+        "fail": 81.0,
+        "warn": 75.0
+      },
+      "value": 32.85
+    },
+    {
+      "detail": "",
+      "name": "cpu_package_sustained",
+      "source": "sysfs coretemp, 1 Hz window",
+      "status": "OK",
+      "threshold": {
+        "fail_run": 3,
+        "tjmax": 100.0
+      },
+      "value": {
+        "longest_run_ge_fail": 0,
+        "max": 77.0,
+        "median": 64.0,
+        "n": 5
+      }
+    },
+    {
+      "detail": "",
+      "name": "fingerprinter-index-qdrant-1:oom_killed",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": false,
+      "value": false
+    },
+    {
+      "detail": "",
+      "name": "fingerprinter-index-qdrant-1:restarts",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "'none' = container has no healthcheck",
+      "name": "fingerprinter-index-qdrant-1:health",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": "healthy",
+      "value": "healthy"
+    },
+    {
+      "detail": "2.34049 %",
+      "name": "fingerprinter-index-qdrant-1:mem_pct_of_limit",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 85.0
+      },
+      "value": 2.340494791666667
+    },
+    {
+      "detail": "",
+      "name": "crawler2-app-1:oom_killed",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": false,
+      "value": false
+    },
+    {
+      "detail": "",
+      "name": "crawler2-app-1:restarts",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "'none' = container has no healthcheck",
+      "name": "crawler2-app-1:health",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": "healthy",
+      "value": "healthy"
+    },
+    {
+      "detail": "0.930078 %",
+      "name": "crawler2-app-1:mem_pct_of_limit",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 85.0
+      },
+      "value": 0.9300781249999999
+    },
+    {
+      "detail": "",
+      "name": "crawler2-redis-1:oom_killed",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": false,
+      "value": false
+    },
+    {
+      "detail": "",
+      "name": "crawler2-redis-1:restarts",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "'none' = container has no healthcheck",
+      "name": "crawler2-redis-1:health",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": "healthy",
+      "value": "healthy"
+    },
+    {
+      "detail": "0.656934 %",
+      "name": "crawler2-redis-1:mem_pct_of_limit",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 85.0
+      },
+      "value": 0.65693359375
+    },
+    {
+      "detail": "",
+      "name": "crawler2-minio-1:oom_killed",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": false,
+      "value": false
+    },
+    {
+      "detail": "",
+      "name": "crawler2-minio-1:restarts",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "'none' = container has no healthcheck",
+      "name": "crawler2-minio-1:health",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": "healthy",
+      "value": "healthy"
+    },
+    {
+      "detail": "26.3867 %",
+      "name": "crawler2-minio-1:mem_pct_of_limit",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 85.0
+      },
+      "value": 26.38671875
+    },
+    {
+      "detail": "",
+      "name": "crawler2-scylla-1:oom_killed",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": false,
+      "value": false
+    },
+    {
+      "detail": "",
+      "name": "crawler2-scylla-1:restarts",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": 0,
+      "value": 0
+    },
+    {
+      "detail": "'none' = container has no healthcheck",
+      "name": "crawler2-scylla-1:health",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": "healthy",
+      "value": "healthy"
+    },
+    {
+      "detail": "20.5859 %",
+      "name": "crawler2-scylla-1:mem_pct_of_limit",
+      "source": "docker inspect/stats",
+      "status": "OK",
+      "threshold": {
+        "fail": 95.0,
+        "warn": 85.0
+      },
+      "value": 20.5859375
+    }
+  ],
+  "exit_code": 3,
+  "kind": "preflight",
+  "overall": "UNKNOWN",
+  "policy": {
+    "cpu_fail_c": 95.0,
+    "cpu_warn_c": 90.0,
+    "ctr_mem_fail_pct": 95.0,
+    "ctr_mem_warn_pct": 85.0,
+    "gpu_fail_c": 95.0,
+    "gpu_warn_c": 87.0,
+    "min_free_gib": 20.0,
+    "nvme_fail_c": 81.0,
+    "nvme_warn_c": 75.0,
+    "percent_used_fail": 100.0,
+    "percent_used_warn": 80.0,
+    "warn_free_gib": 30.0
+  },
+  "raw_smart": null,
+  "time": "2026-11-18T20:09:26+0530",
+  "tool": "wp1r2_hostguard"
+}

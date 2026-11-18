@@ -1,0 +1,5 @@
+fingerprinter-index-qdrant-1 127.0.0.1:16333->6333/tcp, 127.0.0.1:16334->6334/tcp
+crawler2-app-1 
+crawler2-redis-1 127.0.0.1:16379->6379/tcp
+crawler2-minio-1 127.0.0.1:19000->9000/tcp, 127.0.0.1:19001->9001/tcp
+crawler2-scylla-1 22/tcp, 7000-7001/tcp, 9160/tcp, 9180/tcp, 10000/tcp, 127.0.0.1:19042->9042/tcp

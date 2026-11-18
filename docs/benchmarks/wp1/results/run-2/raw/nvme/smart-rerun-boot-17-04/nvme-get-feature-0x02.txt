@@ -1,0 +1,5 @@
+# 2026-11-18T17:09:33+05:30 $ nvme get-feature /dev/nvme0 -f 0x02 -H
+get-feature:0x02 (Power Management), Current value:0x00000004
+	Workload Hint (WH): 0 - No Workload
+	Power State   (PS): 4
+# exit=0

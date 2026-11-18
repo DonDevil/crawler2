@@ -1,0 +1,262 @@
+# 2026-11-18T08:01:22+05:30 $ nvme id-ctrl /dev/nvme0 -H
+NVME Identify Controller:
+vid       : 0x144d
+ssvid     : 0x144d
+sn        : <serial-redacted>      
+mn        : SAMSUNG MZVLQ512HBLU-00B00              
+fr        : FXM7501Q
+rab       : 2
+ieee      : 002538
+cmic      : 0
+  [3:3] : 0	ANA not supported
+  [2:2] : 0	PCI
+  [1:1] : 0	Single Controller
+  [0:0] : 0	Single Port
+
+mdts      : 9
+cntlid    : 0x5
+ver       : 0x10400
+rtd3r     : 0x7a120
+rtd3e     : 0x7a1200
+oaes      : 0x200
+  [31:31] : 0	Discovery Log Change Notice Not Supported
+  [27:27] : 0	Zone Descriptor Changed Notices Not Supported
+  [15:15] : 0	Normal NSS Shutdown Event Not Supported
+  [14:14] : 0	Endurance Group Event Aggregate Log Page Change Notice Not Supported
+  [13:13] : 0	LBA Status Information Notices Not Supported
+  [12:12] : 0	Predictable Latency Event Aggregate Log Change Notices Not Supported
+  [11:11] : 0	Asymmetric Namespace Access Change Notices Not Supported
+  [9:9] : 0x1	Firmware Activation Notices Supported
+  [8:8] : 0	Namespace Attribute Changed Event Not Supported
+
+ctratt    : 0x10
+  [19:19] : 0	Flexible Data Placement Not Supported
+  [15:15] : 0	Extended LBA Formats Not Supported
+  [14:14] : 0	Delete NVM Set Not Supported
+  [13:13] : 0	Delete Endurance Group Not Supported
+  [12:12] : 0	Variable Capacity Management Not Supported
+  [11:11] : 0	Fixed Capacity Management Not Supported
+  [10:10] : 0	Multi Domain Subsystem Not Supported
+  [9:9] : 0	UUID List Not Supported
+  [8:8] : 0	SQ Associations Not Supported
+  [7:7] : 0	Namespace Granularity Not Supported
+  [6:6] : 0	Traffic Based Keep Alive Not Supported
+  [5:5] : 0	Predictable Latency Mode Not Supported
+  [4:4] : 0x1	Endurance Groups Supported
+  [3:3] : 0	Read Recovery Levels Not Supported
+  [2:2] : 0	NVM Sets Not Supported
+  [1:1] : 0	Non-Operational Power State Permissive Not Supported
+  [0:0] : 0	128-bit Host Identifier Not Supported
+
+rrls      : 0
+cntrltype : 1
+  [7:2] : 0	Reserved
+  [1:0] : 0x1	I/O Controller
+fguid     : 00000000-0000-0000-0000-000000000000
+crdt1     : 0
+crdt2     : 0
+crdt3     : 0
+nvmsr     : 0
+  [1:1] : 0	NVM subsystem Not part of an Enclosure
+  [0:0] : 0	NVM subsystem Not part of a Storage Device
+
+vwci      : 0
+  [7:7] : 0	VPD Write Cycles Remaining field is Not valid.
+  [6:0] : 0	VPD Write Cycles Remaining 
+
+mec       : 0
+  [1:1] : 0	NVM subsystem Not contains a Management Endpoint on a PCIe port
+  [0:0] : 0	NVM subsystem Not contains a Management Endpoint on an SMBus/I2C port
+
+oacs      : 0x17
+  [10:10] : 0	Lockdown Command and Feature Not Supported
+  [9:9] : 0	Get LBA Status Capability Not Supported
+  [8:8] : 0	Doorbell Buffer Config Not Supported
+  [7:7] : 0	Virtualization Management Not Supported
+  [6:6] : 0	NVMe-MI Send and Receive Not Supported
+  [5:5] : 0	Directives Not Supported
+  [4:4] : 0x1	Device Self-test Supported
+  [3:3] : 0	NS Management and Attachment Not Supported
+  [2:2] : 0x1	FW Commit and Download Supported
+  [1:1] : 0x1	Format NVM Supported
+  [0:0] : 0x1	Security Send and Receive Supported
+
+acl       : 7
+aerl      : 3
+frmw      : 0x16
+  [5:5] : 0	Multiple FW or Boot Update Detection Not Supported
+  [4:4] : 0x1	Firmware Activate Without Reset Supported
+  [3:1] : 0x3	Number of Firmware Slots
+  [0:0] : 0	Firmware Slot 1 Read/Write
+
+lpa       : 0xf
+  [6:6] : 0	Telemetry Log Data Area 4 Not Supported
+  [5:5] : 0	LID 0x0, Scope of each command in LID 0x5, 0x12, 0x13 Not Supported
+  [4:4] : 0	Persistent Event log Not Supported
+  [3:3] : 0x1	Telemetry host/controller initiated log page Supported
+  [2:2] : 0x1	Extended data for Get Log Page Supported
+  [1:1] : 0x1	Command Effects Log Page Supported
+  [0:0] : 0x1	SMART/Health Log Page per NS Supported
+
+elpe      : 63
+  [7:0] : 63 (0's based)	Error Log Page Entries (ELPE)
+
+npss      : 4
+  [7:0] : 4 (0's based)	Number of Power States Support (NPSS)
+
+avscc     : 0x1
+  [0:0] : 0x1	Admin Vendor Specific Commands uses NVMe Format
+
+apsta     : 0x1
+  [0:0] : 0x1	Autonomous Power State Transitions Supported
+
+wctemp    : 356
+ [15:0] : 83 °C (356 K)	Warning Composite Temperature Threshold (WCTEMP)
+
+cctemp    : 358
+ [15:0] : 85 °C (358 K)	Critical Composite Temperature Threshold (CCTEMP)
+
+mtfa      : 0
+hmpre     : 16384
+hmmin     : 4096
+tnvmcap   : 512,110,190,592
+[127:0] : 512,110,190,592
+	Total NVM Capacity (TNVMCAP)
+
+unvmcap   : 0
+[127:0] : 0
+	Unallocated NVM Capacity (UNVMCAP)
+
+rpmbs     : 0
+ [31:24]: 0	Access Size
+ [23:16]: 0	Total Size
+  [5:3] : 0	Authentication Method
+  [2:0] : 0	Number of RPMB Units
+
+edstt     : 35
+dsto      : 0
+fwug      : 4
+kas       : 0
+hctma     : 0x1
+  [0:0] : 0x1	Host Controlled Thermal Management Supported
+
+mntmt     : 318
+ [15:0] : 45 °C (318 K)	Minimum Thermal Management Temperature (MNTMT)
+
+mxtmt     : 356
+ [15:0] : 83 °C (356 K)	Maximum Thermal Management Temperature (MXTMT)
+
+sanicap   : 0x60000002
+  [31:30] : 0x1	Media is not additionally modified after sanitize operation completes successfully
+  [29:29] : 0x1	No-Deallocate After Sanitize bit in Sanitize command Not Supported
+    [2:2] : 0	Overwrite Sanitize Operation Not Supported
+    [1:1] : 0x1	Block Erase Sanitize Operation Supported
+    [0:0] : 0	Crypto Erase Sanitize Operation Not Supported
+
+hmminds   : 16
+hmmaxd    : 1024
+nsetidmax : 0
+endgidmax : 1
+anatt     : 0
+anacap    : 0
+  [7:7] : 0	Non-zero group ID Not Supported
+  [6:6] : 0	Group ID does change
+  [4:4] : 0	ANA Change state Not Supported
+  [3:3] : 0	ANA Persistent Loss state Not Supported
+  [2:2] : 0	ANA Inaccessible state Not Supported
+  [1:1] : 0	ANA Non-optimized state Not Supported
+  [0:0] : 0	ANA Optimized state Not Supported
+
+anagrpmax : 0
+nanagrpid : 0
+pels      : 0
+domainid  : 0
+megcap    : 0
+sqes      : 0x66
+  [7:4] : 0x6	Max SQ Entry Size (64)
+  [3:0] : 0x6	Min SQ Entry Size (64)
+
+cqes      : 0x44
+  [7:4] : 0x4	Max CQ Entry Size (16)
+  [3:0] : 0x4	Min CQ Entry Size (16)
+
+maxcmd    : 0
+nn        : 1
+oncs      : 0x57
+  [10:10] : 0	All Fast Copy Not Supported
+  [9:9] : 0	Copy Single Atomicity Not Supported
+  [8:8] : 0	Copy Not Supported
+  [7:7] : 0	Verify Not Supported
+  [6:6] : 0x1	Timestamp Supported
+  [5:5] : 0	Reservations Not Supported
+  [4:4] : 0x1	Save and Select Supported
+  [3:3] : 0	Write Zeroes Not Supported
+  [2:2] : 0x1	Data Set Management Supported
+  [1:1] : 0x1	Write Uncorrectable Supported
+  [0:0] : 0x1	Compare Supported
+
+fuses     : 0
+  [0:0] : 0	Fused Compare and Write Not Supported
+
+fna       : 0
+  [3:3] : 0	Format NVM Broadcast NSID (FFFFFFFFh) Supported
+  [2:2] : 0	Crypto Erase Not Supported as part of Secure Erase
+  [1:1] : 0	Crypto Erase Applies to Single Namespace(s)
+  [0:0] : 0	Format Applies to Single Namespace(s)
+
+vwc       : 0x7
+  [2:1] : 0x3	The Flush command supports NSID set to FFFFFFFFh
+  [0:0] : 0x1	Volatile Write Cache Present
+
+awun      : 1023
+awupf     : 0
+icsvscc   : 1
+  [0:0] : 0x1	NVM Vendor Specific Commands uses NVMe Format
+
+nwpc      : 0
+  [2:2] : 0	Permanent Write Protect Not Supported
+  [1:1] : 0	Write Protect Until Power Supply Not Supported
+  [0:0] : 0	No Write Protect and Write Protect Namespace Not Supported
+
+acwu      : 0
+ocfs      : 0
+  [3:3] : 0	Controller Copy Format 3h Not Supported
+  [2:2] : 0	Controller Copy Format 2h Not Supported
+  [1:1] : 0	Controller Copy Format 1h Not Supported
+  [0:0] : 0	Controller Copy Format 0h Not Supported
+
+sgls      : 0
+ [15:8] : 0	SGL Descriptor Threshold
+ [1:0]  : 0	Scatter-Gather Lists Not Supported
+
+mnan      : 0
+maxdna    : 0
+maxcna    : 0
+oaqd      : 0
+subnqn    : nqn.1994-11.com.samsung:nvme:PM991a:M.2:<serial-redacted>      
+ioccsz    : 0
+iorcsz    : 0
+icdoff    : 0
+fcatt     : 0
+  [0:0] : 0	Dynamic Controller Model
+
+msdbd     : 0
+ofcs      : 0
+  [0:0] : 0	Disconnect command Not Supported
+
+ps      0 : mp:5.36W operational enlat:0 exlat:0 rrt:0 rrl:0
+            rwt:0 rwl:0 idle_power:- active_power:-
+            active_power_workload:-
+ps      1 : mp:4.47W operational enlat:0 exlat:0 rrt:1 rrl:1
+            rwt:1 rwl:1 idle_power:- active_power:-
+            active_power_workload:-
+ps      2 : mp:2.23W operational enlat:0 exlat:500 rrt:2 rrl:2
+            rwt:2 rwl:2 idle_power:- active_power:-
+            active_power_workload:-
+ps      3 : mp:0.0500W non-operational enlat:210 exlat:1200 rrt:3 rrl:3
+            rwt:3 rwl:3 idle_power:- active_power:-
+            active_power_workload:-
+ps      4 : mp:0.0050W non-operational enlat:1000 exlat:9000 rrt:4 rrl:4
+            rwt:4 rwl:4 idle_power:- active_power:-
+            active_power_workload:-
+# exit=0

@@ -1,0 +1,2 @@
+/crawler2-scylla-1 started=2026-11-18T02:08:32.074722811Z restarts=0
+/crawler2-minio-1 started=2026-11-18T02:08:32.080835928Z restarts=0

@@ -1,0 +1,7 @@
+/home/darkdevil/anti_piracy/fingerprinter/benchmarks/p10-index/capacity_e_r1.py:115: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(host="127.0.0.1", port=a.http_port, grpc_port=a.grpc_port, prefer_grpc=True,
+C0_gate_config V0_gate_params {'client_ms_p50_p95_p99': [21.029, 48.144, 53.504], 'server_ms_p50_p95_p99': [19.607, 46.848, 51.414], 'recall_at_100_mean_min': None}
+C0_gate_config V1_no_payload {'client_ms_p50_p95_p99': [1.363, 1.728, 1.926], 'server_ms_p50_p95_p99': [0.631, 0.888, 0.999], 'recall_at_100_mean_min': None}
+C0_gate_config rest paced {'n': 602, 'client_ms_p50_p95_p99': [3.155, 31.914, 39.199], 'server_ms_p50_p95_p99': [1.773, 30.49, 37.854]}
+C0_gate_config paced {'n': 602, 'client_ms_p50_p95_p99': [9.126, 18.181, 30.306]}
+exit=0

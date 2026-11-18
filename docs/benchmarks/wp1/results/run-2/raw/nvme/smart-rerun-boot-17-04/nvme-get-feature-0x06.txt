@@ -1,0 +1,4 @@
+# 2026-11-18T17:09:33+05:30 $ nvme get-feature /dev/nvme0 -f 0x06 -H
+get-feature:0x06 (Volatile Write Cache), Current value:0x00000001
+	Volatile Write Cache Enable (WCE): Enabled
+# exit=0

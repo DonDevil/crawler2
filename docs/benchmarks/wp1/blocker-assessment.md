@@ -114,3 +114,20 @@ H-06 (Redis HA), H-07 (MinIO durability), H-10 (network isolation): **NOT APPLIC
 3. **Cannot be closed on this machine:** **H-03, H-04, H-09** (need physical hosts/topology), **H-08** (needs owner workload/retention model), **FP-05** (needs owner decisions on capacity target, memory limit/design and latency criterion before a rerun can pass).
 
 Recommended next action within WP1: obtain approval to install `fio smartmontools nvme-cli`, capture SMART health and the canonical fio baseline, and update the P2 benchmark row; WP2 is not started.
+
+
+## Run 2 update (2026-11-18) — host baseline completion
+
+Full evidence: `results/run-2/run-2-report.md`. No acceptance gate was weakened.
+
+| Item | Status after Run 2 | Basis |
+|---|---|---|
+| H-01 | PARTIALLY_CLOSED | single host fully inventoried; no topology/other machines (owner) |
+| H-02 | **CLOSED for the stated scope** (local, single-node, RF = 1, this NVMe); owner to confirm | SMART clean; canonical fio ×3; sustained-write cliff characterised (not thermal); P2 10× passed 3×; automated NVMe monitoring. Not closed for RF=3/multi-host/long-duration |
+| H-03, H-04, H-09 | BLOCKED | need physical hosts / topology / 7-day environment |
+| H-05 | PARTIALLY_CLOSED | local GPU compatibility, numerics, offline operation proven; cross-machine validation absent |
+| H-08 | BLOCKED | needs owner workload/retention model; local storage model supplied |
+| FP-05 | OPEN | E-R1 fails at 1×/2×/3× (latency) and 6× (OOM); memory predictable; payload retrieval limits latency; no gate-passing scale; `index.max_points` unchanged |
+| H-06, H-07, H-10 | NOT_TESTED | outside WP1 |
+
+Owner decisions needed: bounded 81–84 °C test; PL1/power-profile A/B; fingerprinter env rebuild; E-R1 measurement method (gRPC vs REST); payload-field product change; workload/retention model; topology.

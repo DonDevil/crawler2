@@ -1,0 +1,5 @@
+# 2026-11-18T08:01:22+05:30 $ nvme get-feature /dev/nvme0 -f 0x07 -H
+get-feature:0x07 (Number of Queues), Current value:0x000b000b
+	Number of IO Completion Queues Allocated (NCQA): 12
+	Number of IO Submission Queues Allocated (NSQA): 12
+# exit=0
