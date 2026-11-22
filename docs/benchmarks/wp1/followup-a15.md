@@ -215,6 +215,34 @@ or payload kept off the hot path) is **not tested** and would be a new decision.
 (250,000) and gate untouched. The steady-state phase at 1× is within ~1.5 % of the gate (10.14–10.17 ms vs 10 ms) but the gate is not met
 and the rebuild phase fails clearly. No broader redesign was done.
 
+### 5.1 FP-05 step 2 (2026-11-23): design investigation and E-R1 re-run — **FP-05 EXIT GATE NOT MET**
+
+**Investigation (A15, Qdrant 1.15.1 digest unchanged, 1.5 GiB / 2 CPUs).** Idle 1× screening (60 s, 2×5 q/s, limit 100, two reps; scratch script, not retained): whole-payload p95 10.0–26 ms (noisy first rep), 9-field payload 9.8–10.0 ms,
+same with `score_threshold` 0.6/0.7: 9.4–9.65 / 9.2–9.5 ms, **no payload 3.9–4.3 ms**; `on_disk_payload=false` ≈ on-disk (no gain) ⇒ the ≈3.5 ms is per-hit CPU work (100 payload reads/deserialisations), not I/O or page cache.
+89.7 of 100 hits are ≥ the 0.6 floor on this workload, so floor pushdown removes few reads. Options and verdict: (A) two-stage id-only search + `retrieve` — adds a round trip and still reads one payload per surviving hit (same ≈100 reads), rejected; (B/C) payload/metadata
+in a separate store or collection — the needed keys (subject, tid, tver, seq, k, spec) are not derivable from the uuid5 point id, so a sidecar map (new service/RAM, ≈6 KB/point budget already tight at 6×) was **not implemented**; (D) payload in RAM — measured, no gain;
+(E) smaller `limit`/oversampling — would change recall, not done; (G) REST vs gRPC — not changed (E-R1 gRPC, production REST; REST/JSON serialisation of 100 payloads is *not* in the E-R1 numbers); (F) CPU reservation during rebuild — **worked for rebuild**.
+**Implemented** (details [p10-matcher §5.2](../../../../fingerprinter/docs/p10-matcher.md)): production `score_threshold=policy.floor`; harness flags `--score-threshold`, `--indexing-threads`.
+
+**Results** (`e-r1-a15-*-thr*.json`; 9-field payload + threshold 0.6; `idx1` = 1 HNSW/optimizer thread; gRPC; gate rule p95 ≤ 10 ms in phases 3 and 5):
+
+| Scale | Original (whole) steady p95 | Reduced payload steady p95 | New: steady p50/**p95**/p99 ms | New: rebuild p50/**p95**/p99 ms | anon peak GiB | Gate |
+|---|---:|---:|---|---|---:|---|
+| 1× thr only | 11.0 | 10.15 | 7.32 / **10.47** / 11.6 | 8.5 / 18.7 / 39.5 | 0.428 | FAIL |
+| 1× thr+idx1 | 11.0 | 10.15 | 7.24 / **10.34** / 10.9 | 8.2 / 12.2 / 15.2 | 0.371 | FAIL |
+| 2× thr+idx1 | 16.9 | 14.6 | 8.4 / **13.1** / 16.5 | 11.1 / 56.2 / 79.5 | 0.620 | FAIL |
+| 3× thr+idx1 | 26.6 | 18.9 | 10.7 / **16.6** / 21.9 | 43.0 / 101.3 / 134.8 | 0.789 | FAIL |
+| 6× thr+idx1 | (aborted, reduced payload) | aborted in rebuild | 95.9 / **129.5** / 142.7 | 261.7 / 388.5 / 482.9 | **1.441** (> 1.35) | FAIL |
+
+6×: **completed** this time (no OOM, no container loss, 0 query errors, exact counts equal, R_req reached; 1,304,692 resident) — the earlier abort at anon 1.431 GiB was not reproduced, but the run fails the anon ≤ 1.35 GiB rule and p95 is 13× the gate (the quantized + index
+working set of two 626k generations exceeds the cgroup's page-cache share; warm p95 already 92 ms). Throughput was the fixed 10 q/s offered load (2×5) in every run; 0 errors in all runs. Repetition: only 1× was repeated (thr 10.47, thr+idx1 10.34;
+earlier reduced-payload reps 10.14/10.17 — the added floor pushdown did **not** improve the steady p95 in the full harness; its difference is within run-to-run noise). 2×/3×/6× single runs. An earlier 3× attempt failed at setup (data directory reused by my wrapper; `collection already exists`) and was discarded and rerun on a fresh directory; a 6× launched with it was killed and rerun.
+Phase 2 "warm" again has 0 post-warm-up samples at 1×–3× (as in all earlier runs).
+
+**What improved:** rebuild-phase p95 at 1× 18.7 → 12.2 ms and p99 39.5 → 15.2 ms by reserving CPU for search (1× steady p95 10.47 → 10.34 ms; at 2× and 3× rebuild p95 is not better than before: 56 and 101 ms); 6× no longer aborts. **What failed:** steady p95 > 10 ms at every scale, rebuild p95 > 10 ms at every scale, 6× memory/latency.
+**Remaining bottleneck:** ≈3.5 ms of fixed per-query CPU for 100 payload reads at 1× (no-payload p95 ≈ 4 ms) plus, from 2× upward, quantized-vector/graph working set growth against a 1.5 GiB cap (latency grows super-linearly, p95 ≈ 130 ms at 6×). Per-hit payload cost cannot be cut without removing payload from Qdrant's hot path
+(a sidecar subject map — **needs an owner decision**: new component/RAM) or lowering `limit` (recall impact), and 6× needs a different memory design (e.g. one generation at a time / disk-resident quantization, lower per-point vector footprint, or a larger memory budget — a capacity-target decision), none of which was within the approved scope.
+
 ## 6. Test, environment and incident notes
 
 * **Fingerprinter environment.** `env/` (Python 3.12.3) was compared with `requirements-p9.lock` (`uv pip freeze` vs lock): all 75 pinned
