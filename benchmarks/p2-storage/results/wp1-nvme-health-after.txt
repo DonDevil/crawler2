@@ -1311,7 +1311,7 @@ NVMe Version:                       1.4
 Number of Namespaces:               1
 Namespace 1 Size/Capacity:          512,110,190,592 [512 GB]
 Namespace 1 Formatted LBA Size:     512
-Namespace 1 IEEE EUI-64:            001b44 8b47b69b80
+Namespace 1 IEEE EUI-64:            <redacted>
 Local Time is:                      Sun Nov 22 23:31:14 2026 IST
 Firmware Updates (0x14):            2 Slots, no Reset required
 Optional Admin Commands (0x0017):   Security Format Frmw_DL Self_Test
