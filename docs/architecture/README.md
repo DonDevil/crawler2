@@ -14,6 +14,13 @@ Current-state architecture, by component. Decisions live in
 | process memory / scratch | caches only | none | total (ADR-006: no authoritative local state) |
 | analytics root (`var/analytics`, P13) | Parquet exports of Scylla, derived graphs/clusters, run records | **derived** (never read by the crawler) | total: re-export from Scylla |
 
+**Deployment and storage policy (ADR-028).** Staged deployment: the system is developed and qualified on one local host and
+grows host by host when measured workload requires it; the multi-host production topology is not yet defined. GPU hosting is
+by role configuration (no permanent GPU host). Storage is tiered: recent operational data and active indexes on SSD/NVMe,
+older snapshots and bulk evidence on HDD/bulk, long-retention evidence on separately retained storage, temporary data under
+explicit retention. Tiering is not yet implemented in code and production capacity is not yet calculated. Status of every
+infrastructure blocker: [benchmarks/wp1/blockers.md](../benchmarks/wp1/blockers.md).
+
 Rule of thumb: *durable knowledge → Scylla, executable state → Redis.*
 "Seen historically" (Scylla) is not "currently scheduled" (Redis).
 

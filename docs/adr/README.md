@@ -29,6 +29,7 @@
 | [025](ADR-025-groupless-intake-and-gap-protocol.md) | Fingerprinter reads `encode.requested` without a group; gaps by stream counts, closed only by replay or explicit `accept-gap` (P9) | Accepted |
 | [026](ADR-026-durable-intents-and-held-publication.md) | One-LWT commit point, durable intents + reconciler, events held until consumers exist (P9) | Accepted |
 | [027](ADR-027-runtime-profiles-fail-closed.md) | Specs pin a runtime profile and precision; encoders outside it refuse (P9) | Accepted |
+| [028](ADR-028-staged-deployment-and-tiered-retention.md) | Staged deployment, flexible GPU hosting and tiered retention | Accepted (topology / capacity open) |
 
 An ADR records one irreversible or expensive-to-reverse choice. Changing an
 accepted ADR requires a new ADR that supersedes it.

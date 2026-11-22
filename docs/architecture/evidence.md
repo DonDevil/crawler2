@@ -76,6 +76,12 @@ with the SHA-256 of the original); originals stay in the protected rows.
 - Match verdict/confidence are matcher claims; P10's matcher has not
   passed M3.
 
+## Storage tier and retention (ADR-028)
+
+Evidence follows the accepted tiered-retention strategy: recent evidence on SSD/NVMe, bulk historical evidence on HDD/bulk
+storage, and evidence that must be kept longer on separately retained storage. This is policy only: there is no tier
+migration job, no retention period is set (ADR-005 is open) and production capacity is unquantified (H-08).
+
 ## Enabling stronger protection later
 
 1. Object lock: create the evidence bucket with object lock + versioning

@@ -243,6 +243,16 @@ sg docker -c "env/bin/python scripts/backup/rehearsal.py"                       
 Running the integration suites as the **restricted Redis user** (ACL) is documented in
 `docs/phases/p14-production-hardening/validation.md` §3.
 
+### WP1 storage qualification (host, bounded, file-based)
+
+```bash
+python3 benchmarks/p2-storage/fio_qualify.py --dir /mnt/data --label <label> --hwmon /sys/class/nvme/nvme0/hwmon3 \
+    --out benchmarks/p2-storage/results/wp1-fio-<label>.json      # needs fio; refuses below a 20 GiB free floor; never a raw device
+python3 benchmarks/p2-storage/capacity_model.py [--inputs inputs.json]  # tiered-retention capacity formulas; UNDEFINED until workload inputs exist
+```
+
+SMART needs root (not read by the tool). fio uses `io_uring` because the Scylla container exhausts `fs.aio-max-nr`.
+
 ## V1 is read-only
 
 `~/anti_piracy/crawler` is the reference implementation and benchmark

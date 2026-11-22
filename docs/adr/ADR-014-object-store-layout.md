@@ -42,4 +42,6 @@ draft proposed `raw/{domain}/{page_id}/{version}.warc.gz`.
   P13/P14) and stays disabled until ADR-005 defines retention.
 - Evidence artifacts go to a separate `crawler2-evidence` bucket with
   object lock/retention, created in P12 (ADR-003).
+- Tier placement of raw/evidence data follows ADR-028 (tiered retention accepted; no tier-migration code exists, no retention
+  period is set — ADR-005 open).
 - Storage stores bytes and metadata only; it never parses content.
