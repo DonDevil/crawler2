@@ -1,7 +1,9 @@
 # WP1 follow-up on the ASUS TUF A15 (2026-11-22): FP-05 payload trial, E-R1 rebenchmark, NVMe/HDD, GPU, capacity
 
-Not a soak and not a replacement for Run 3 ([run-3](results/run-3/final_report.md) = software-suite stability only; it did **not**
+Not a soak and not a replacement for Run 3 ([run-3](../../../../workspace/benchmarks/wp1/results/run-3/final_report.md) = software-suite stability only; it did **not**
 qualify the NVMe, GPU, Qdrant, Scylla or MinIO). Register: [blockers.md](blockers.md). Decisions: [ADR-028](../../adr/ADR-028-staged-deployment-and-tiered-retention.md).
+
+**Evidence location (2026-11-23).** Raw Run 3 / aborted-attempt evidence referenced as `results/…` in this file's history now lives in [`workspace/benchmarks/wp1/results/`](../../../../workspace/benchmarks/wp1/results/); F15 Run 2 evidence (`monitoring_runs/`) in [`workspace/monitoring/runs/`](../../../../workspace/monitoring/runs/). Cross-repository status: [`workspace/PROJECT_STATUS.md`](../../../../workspace/PROJECT_STATUS.md).
 
 **Identity.** Host `Dhanush-Ubuntu` (A15), Ubuntu 24.04.5, kernel 7.0.0-43-generic, Docker 29.x. crawler2 base `b6f8c3b`,
 fingerprinter base `3018d7b` plus the uncommitted/committed changes listed in the final commit. Python 3.12.3, torch 2.13.0+cu130,
@@ -19,7 +21,7 @@ transformers 5.15.1, numpy 2.5.2. Sessions: 2026-11-22 (UTC 09:22 → ~).
 So the A15 has **two physical devices**: one NVMe (three-way split: `/`, `/mnt/data`, swap) and one USB HDD. Docker volumes are on
 `/` (NVMe p7). Project sizes now: Scylla dev volume 561.8 MB, Qdrant dev volume 319.5 MB, Redis 12 MB, MinIO 0.25 MB.
 
-## 2. A15 NVMe — health and fio (H-02: **evidence complete, proposed PASS, owner sign-off pending**)
+## 2. A15 NVMe — health and fio (H-02: **evidence complete; CLOSED — owner accepted, 2026-11-23**)
 
 **Health (read with root via `nvme-cli 2.8` + `smartctl 7.4`, `benchmarks/p2-storage/nvme_health.sh`, read-only; raw:
 `results/wp1-nvme-health-{before,after}.txt`).** "before" = after the first fio session, "after" = after fio run 2 + the latency runs:
@@ -71,15 +73,15 @@ reproduces but at a different point:** run 1 after ≈ 89 GiB (28 s), run 2 afte
 controller thermal throttling; the earlier cliff when the drive was fuller/hotter is consistent with a dynamic write-cache effect, but neither cause
 is proven (no cache-size or firmware-level counter available). F15 comparison: **none possible** — see the F15 section.
 
-**H-02 outcome for the A15: evidence complete; proposed PASS pending owner sign-off.** The register defines no numeric criterion; its acceptance is
+**H-02 outcome for the A15: evidence complete; owner accepted the qualification on 2026-11-23 — H-02 CLOSED** (originally proposed PASS pending sign-off). The register defines no numeric criterion; its acceptance is
 "NVMe in use, affected benchmarks rerun". Done: health clean (above), fio error-free ×2, and the Scylla latency gate rerun (next section) passes.
 The index-capacity rerun (E-R1) does not meet its gate — that is tracked as FP-05, not H-02.
 
 ## 2b. Scylla latency gate on the NVMe (the H-02 "affected benchmark") — A15 vs F15 USB HDD
 
-Harness: the unmodified Run 2 script (`monitoring_runs/Ubuntu-24-04_20261114T110118Z/bench_p2_latency.sh`: `benchmarks/p2-storage/latency.py`, 100 fetch-units/s
+Harness: the unmodified Run 2 script (`workspace/monitoring/runs/Ubuntu-24-04_20261114T110118Z/bench_p2_latency.sh`: `benchmarks/p2-storage/latency.py`, 100 fetch-units/s
 per host ×2 simulated hosts, 4 client processes each, 60 s, keyspace `crawler2_bench_latency`, single-node Scylla RF=1 in the dev stack). A15: 3 runs,
-`results/wp1-latency-a15-r{1,2,3}/`. F15: the 6 runs in `monitoring_runs/Ubuntu-24-04_…/bench_p2*` (**USB HDD boot**). Worst-host p99 in ms:
+`results/wp1-latency-a15-r{1,2,3}/`. F15: the 6 runs in `workspace/monitoring/runs/Ubuntu-24-04_…/bench_p2*` (**USB HDD boot**). Worst-host p99 in ms:
 
 | Operation | target p99 | A15 NVMe r1 / r2 / r3 | F15 USB HDD (6 runs, min – max) |
 |---|---|---|---|
@@ -253,7 +255,7 @@ Phase 2 "warm" again has 0 post-warm-up samples at 1×–3× (as in all earlier 
 * **Redis safety.** The default test Redis in `fingerprinter/tests/` is now `redis://127.0.0.1:16380/15` (disposable container,
   `docker run -d --rm --name fp-test-redis -p 127.0.0.1:16380:6379 redis:7.4.2-alpine`); `tests/conftest.py` and `tests/test_target.py` abort if
   the URL is port 6379 or 16379. Every test in this session used the 16380 container; **system Redis 6379 was not contacted**. Run 3 incident
-  A-10 stays recorded in [run-3 anomalies](results/run-3/anomalies.md) (DB 15 contents/effect unknown).
+  A-10 stays recorded in [run-3 anomalies](../../../../workspace/benchmarks/wp1/results/run-3/anomalies.md) (DB 15 contents/effect unknown).
 * **Not run / not available:** G-3 on L-PAIRS; 168 h soak; Scylla/MinIO workload qualification;
   multi-host tests; HDD internal-SATA measurement (only a USB HDD exists).
 
@@ -273,7 +275,9 @@ Not run: crawler2 live-stack tier (`RUN_INTEGRATION_TESTS=1`), 7-day soak, 6× w
 
 ## 8. Re-check against the F15 Run 2 evidence (supplied 2026-11-22: `monitoring_runs/`)
 
-* **Baseline numbers in [comparison-with-run-2.md](results/run-3/comparison-with-run-2.md) re-verified against `NitKit_…/resource_metrics.csv` (1,909
+*Path note (2026-11-23): now at `workspace/monitoring/runs/` (sibling repository `../../../../workspace/monitoring/runs/`).*
+
+* **Baseline numbers in [comparison-with-run-2.md](../../../../workspace/benchmarks/wp1/results/run-3/comparison-with-run-2.md) re-verified against `NitKit_…/resource_metrics.csv` (1,909
   samples): all match** — CPU mean 5.55 / max 49.6 %, CPU temp mean 61.1 / max 99 °C, RAM used 3,303 / 4,429 MB, available mean 12,422 MB, swap 0, disk
   util 2.6 / 63.4 %, latency mean 4.36 ms (n = 1,860), iowait max 5.2 %, disk write max 57.9, read max 109.6 MB/s.
 * **Previously unknown Run 2 facts:** crawler2 `60f3f95` 1147 passed / 165 skipped (Run 3: `b6f8c3b` 1151 / 165); fingerprinter `904af14` 445 passed, no skips, p10 excluded (Run 3:

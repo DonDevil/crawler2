@@ -78,7 +78,7 @@ affected by the disk.
 ---
 
 **WP1 hardware / infrastructure qualification (A15, 2026-11-22).** Blocker register [wp1/blockers.md](benchmarks/wp1/blockers.md); results
-[wp1/followup-a15.md](benchmarks/wp1/followup-a15.md): A15 NVMe health (SMART PASSED), fio ×2, USB-HDD fio and the P2 Scylla latency gate rerun (16/16 met on NVMe vs 0/16 on the F15 USB HDD) (`benchmarks/p2-storage/`, H-02 proposed PASS, owner sign-off), tiered-retention capacity model skeleton (`benchmarks/p2-storage/capacity_model.py`, H-08 open, no capacity figure), A15 RTX 3050
+[wp1/followup-a15.md](benchmarks/wp1/followup-a15.md): A15 NVMe health (SMART PASSED), fio ×2, USB-HDD fio and the P2 Scylla latency gate rerun (16/16 met on NVMe vs 0/16 on the F15 USB HDD) (`benchmarks/p2-storage/`, H-02 CLOSED by the owner on 2026-11-23), tiered-retention capacity model skeleton (`benchmarks/p2-storage/capacity_model.py`, H-08 open, no capacity figure), A15 RTX 3050
 encoder benchmarks (G-5 9.02× PASS, FP32 equivalence PASS), FP-05 payload trial + E-R1 rebenchmark (gate **not** met, FP-05 open; the old F15 E-R1 baseline was on a USB HDD). Run 3 stays a
 software-suite stability test only.
 
