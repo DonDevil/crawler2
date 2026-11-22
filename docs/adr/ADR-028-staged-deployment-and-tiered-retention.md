@@ -10,8 +10,7 @@ Blocker register: [wp1/blockers.md](../benchmarks/wp1/blockers.md) (H-01, H-05, 
    to one hardware configuration. ADR-006 (host roles by configuration, no authoritative local state) is what makes this work.
    - *Current development topology (single host):* ASUS TUF A15 — Ryzen 7 7435HS (8C/16T), ~15.4 GiB RAM, RTX 3050 Laptop 4 GiB,
      one WD PC SN740 512 GB NVMe (root `p7`, `/mnt/data` `p9`, same physical device), one USB-attached Toshiba MK3276GSX HDD
-     (`/media/dhanush/Media`); all services in Docker on that host. The previously qualified ASUS TUF F15 (i5-11400H, RTX 2050,
-     Samsung MZVLQ512HBLU) is a separate machine with a separate qualification record.
+     (`/media/dhanush/Media`); all services in Docker on that host. The ASUS TUF F15 (i5-11400H, RTX 2050, Samsung NVMe + USB HDD) is a separate machine; its 2026-11-14 evidence is NVMe suite-stability only plus USB-HDD stack benchmarks that failed the latency gate (see wp1/blockers.md, F15 correction).
    - *Future production topology:* **not defined.** It is defined when expansion is needed. Multi-host Scylla RF=3 (H-03),
      physical multi-host operation (H-04), Redis HA (H-06), MinIO durability (H-07) and network isolation (H-10) stay open.
      This ADR does not claim multi-host production readiness.

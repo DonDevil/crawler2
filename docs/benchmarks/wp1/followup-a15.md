@@ -19,14 +19,26 @@ transformers 5.15.1, numpy 2.5.2. Sessions: 2026-11-22 (UTC 09:22 → ~).
 So the A15 has **two physical devices**: one NVMe (three-way split: `/`, `/mnt/data`, swap) and one USB HDD. Docker volumes are on
 `/` (NVMe p7). Project sizes now: Scylla dev volume 561.8 MB, Qdrant dev volume 319.5 MB, Redis 12 MB, MinIO 0.25 MB.
 
-## 2. A15 NVMe — health and fio (H-02: **measured, not qualified**)
+## 2. A15 NVMe — health and fio (H-02: **evidence complete, proposed PASS, owner sign-off pending**)
 
-**SMART/NVMe health: NOT READ.** `smartctl -a /dev/nvme0n1` → `Permission denied` (device is `root:disk`; user is not in `disk`);
-`sudo` requires a password; `nvme-cli` is not installed. Sysfs facts that are readable without root: model/firmware above,
-PCIe link 16 GT/s ×4 (= max), state `live`, composite temperature (hwmon3) 33–43 °C at idle. Kernel journal (`journalctl -k`, boot
-scope): **0** I/O errors, **0** EXT4 errors, **0** NVMe resets before and after the fio run. Run 3's two correctable AER `RxErr` events
-were on `0000:04:00.0` (the NVMe, A-7); this boot's 7 AER lines are on `0000:01:00.0` (the **GPU**), unrelated to the NVMe and unchanged by the fio run.
-Not claimed: SSD failure, SSD health.
+**Health (read with root via `nvme-cli 2.8` + `smartctl 7.4`, `benchmarks/p2-storage/nvme_health.sh`, read-only; raw:
+`results/wp1-nvme-health-{before,after}.txt`).** "before" = after the first fio session, "after" = after fio run 2 + the latency runs:
+
+| Field | before | after |
+|---|---|---|
+| SMART overall-health | PASSED | PASSED |
+| critical_warning / media_errors / num_err_log_entries (log content) | 0 / 0 / 37 lifetime (64 log entries, all empty) | 0 / 0 / 37 (unchanged) |
+| available_spare / percentage_used | 100 % / 1 % | 100 % / 1 % |
+| data units written / read | 11.16 TB / 15.29 TB | 11.66 TB / 15.63 TB |
+| power-on hours / power cycles / **unsafe shutdowns** | 1,206 h / 7,863 / **48** | unchanged |
+| temperature (composite / sensor 1) | 39 °C / 53 °C | 57 °C (just after load) |
+| Warning/Critical temp time, thermal-management T1/T2 time & transitions | 0 | 0 |
+| PCIe AER on `04:00.0` (`aer_dev_*`) | all 0 | all 0 |
+
+Firmware 73113000, link 16 GT/s ×4 (= max). 48 unsafe shutdowns over 1,206 h is a lifetime counter (unchanged during this session) — worth
+watching, not a failure. Run 3's two correctable `RxErr` events (A-7) did not recur and the counters read 0 since this boot. Kernel journal: 0 I/O, 0
+EXT4, 0 NVMe-reset messages before/after both fio runs; the 7 AER lines this boot are on `0000:01:00.0` (the **GPU**), not the NVMe.
+**RAM (dmidecode):** one 16 GB DDR5 DIMM, rated 5600 MT/s, **configured 4800 MT/s**, single channel (resolves Run 3's "speed unknown").
 
 **Tool.** `crawler2/benchmarks/p2-storage/fio_qualify.py` (wp1-fio/1), fio 3.36, `ioengine=io_uring` (libaio cannot initialise: `fs.aio-nr`
 = `fs.aio-max-nr` = 65536, held by the Scylla container — environmental finding), `direct=1`, file-based only (never a device), free space
@@ -50,11 +62,48 @@ not investigated; the 32 GiB sustained read later ran at 4670 MiB/s. (b) **Susta
 (≈ 89 GiB written), then ~0.6 GiB/s (571–722 MiB/s) for the remaining ~11 GiB. During the run, hwmon `temp1` (composite) peaked
 71.9 °C, `temp2` 94.85 °C (rose from 57.9), `temp3` 67.9 °C. The drop coincides with a hot period **but the evidence does not distinguish
 SLC-cache exhaustion from thermal limiting** (no SMART, no throttle counters) — neither is claimed. (c) No fio error (`error=0` on every job).
-Total written by this run ≈ 120 GiB. (d) F15 comparison: the F15 qualification record is **not in this repository** (Run 2 evidence "not
-present", [comparison-with-run-2.md](results/run-3/comparison-with-run-2.md)); nothing is transferred or compared here.
+Total written by this run ≈ 120 GiB. (d) F15 comparison: there is no F15 fio/SMART record to compare with (see the F15 section); nothing is transferred.
 
-**H-02 outcome for the A15: PENDING.** The repository defines no testable H-02 pass criterion and SMART health could not be read; so the
-A15 is neither passed nor failed. The measurements above are reproducible with the script.
+**Second fio run** (`results/wp1-fio-a15-nvme-mnt-data-p9-run2.json`, same parameters, 20 min later, SMART taken around it): steady jobs reproduce
+(rand read 454k IOPS ×3; QD1 read 18.3–18.7k IOPS; QD1 write 68k; seq read again 4830 → ~1480–1510 MiB/s in repeats 2–3). **Sustained-write drop
+reproduces but at a different point:** run 1 after ≈ 89 GiB (28 s), run 2 after ≈ 43 GiB (14 s, then 627–752 MiB/s to the end); sensor 2 peaked
+97.9 °C (run 1: 94.9 °C). **The drive itself reports 0 thermal-management (T1/T2) transitions and 0 warning-temperature time**, which argues against
+controller thermal throttling; the earlier cliff when the drive was fuller/hotter is consistent with a dynamic write-cache effect, but neither cause
+is proven (no cache-size or firmware-level counter available). F15 comparison: **none possible** — see the F15 section.
+
+**H-02 outcome for the A15: evidence complete; proposed PASS pending owner sign-off.** The register defines no numeric criterion; its acceptance is
+"NVMe in use, affected benchmarks rerun". Done: health clean (above), fio error-free ×2, and the Scylla latency gate rerun (next section) passes.
+The index-capacity rerun (E-R1) does not meet its gate — that is tracked as FP-05, not H-02.
+
+## 2b. Scylla latency gate on the NVMe (the H-02 "affected benchmark") — A15 vs F15 USB HDD
+
+Harness: the unmodified Run 2 script (`monitoring_runs/Ubuntu-24-04_20261114T110118Z/bench_p2_latency.sh`: `benchmarks/p2-storage/latency.py`, 100 fetch-units/s
+per host ×2 simulated hosts, 4 client processes each, 60 s, keyspace `crawler2_bench_latency`, single-node Scylla RF=1 in the dev stack). A15: 3 runs,
+`results/wp1-latency-a15-r{1,2,3}/`. F15: the 6 runs in `monitoring_runs/Ubuntu-24-04_…/bench_p2*` (**USB HDD boot**). Worst-host p99 in ms:
+
+| Operation | target p99 | A15 NVMe r1 / r2 / r3 | F15 USB HDD (6 runs, min – max) |
+|---|---|---|---|
+| latest_read | 25 | 8 / 7 / 9 | 913 – 1299 |
+| url_state_read | 25 | 7 / 6 / 7 | 895 – 1347 |
+| observation_get | 25 | 9 / 6 / 7 | 893 – 1349 |
+| representation_lookup | 25 | 5 / 7 / 10 | 958 – 1433 |
+| dedupe_check | 25 | 8 / 5 / 8 | 949 – 1296 |
+| dedupe_mark | 25 | 6 / 5 / 6 | 698 – 1038 |
+| outbox_append | 25 | 6 / 6 / 8 | 774 – 1145 |
+| content_lookup | 50 | 10 / 10 / 12 | 1157 – 1609 |
+| discovered_record | 50 | 10 / 9 / 11 | 791 – 1174 |
+| attempt_record | 50 | 12 / 12 / 13 | 2563 – 3489 |
+| observation_record | 100 | 17 / 16 / 19 | 2711 – 3453 |
+| media_record | 100 | 16 / 13 / 17 | 2371 – 3539 |
+| links_record | 150 | 21 / 19 / 24 | 3304 – 4553 |
+| object_put | 250 | 8 / 9 / 11 | 3527 – 28413 |
+| object_head | 50 | 3 / 4 / 6 | 1151 – 16154 |
+| object_get | 100 | 3 / 6 / 6 | 521 – 11484 |
+
+**A15: 16/16 operations meet their p99 target in 3/3 runs; F15 USB HDD: 0/16 in 6/6 runs.** Caveats: same code lineage but different commits
+(F15 `60f3f95` vs A15 `b6f8c3b`), different CPU/RAM/OS state, and the A15 desktop session was running; the order-of-magnitude gap (p99 ~5–20 ms vs
+0.7–28 s) is consistent with the original diagnosis (storage-bound), but the two machines differ in more than the disk, so the *size* of the gain is
+not attributed to the disk alone. Single-node RF=1 only (H-03 untouched).
 
 ## 3. USB HDD and tier measurements (H-08 evidence)
 
@@ -117,8 +166,7 @@ positive. Remaining: owner acceptance of the A15 as encoder host, G-3, and cross
 **Method.** `fingerprinter/benchmarks/p10-index/capacity_e_r1.py`, unchanged gate and phases; one new optional flag `--payload-fields`
 (default = original behaviour) applied to every query (warm and steady/rebuild query threads). Same Qdrant 1.15.1 digest, container
 `--memory 1536m --memory-swap 1536m --cpus 2` (the gate configuration), fresh data directory per run, gRPC batches of 1,000, 10 queries/s
-concurrency 2 limit 100 rescoring, steady phase 300 s, exact counts at boundaries. **Deviations from the F15 runs:** (1) host is the A15
-(different CPU/NVMe); (2) data directory is a bind mount on `/mnt/data` (ext4 p9) instead of a Docker volume on `/` (28 GiB free); (3)
+concurrency 2 limit 100 rescoring, steady phase 300 s, exact counts at boundaries. **Deviations from the F15 runs:** (1) host is the A15 and the storage is NVMe — **every F15 E-R1 run was on a 5400 rpm USB HDD** (`sda` WDC WD5000LPVT; `e-r1-diag.json` device_info, validation §13.20), so the F15 numbers are an HDD baseline, not an SSD one; (2) data directory is a bind mount on `/mnt/data` (ext4 p9) instead of a Docker volume on `/` (28 GiB free); (3)
 runs used the same venv, run alone except idle crawler2 containers; (4) no SMART/temperature. The protocol is gRPC in the harness, REST
 (`vindex.py`) in production — **not changed; a separate methodology issue** (REST+JSON payload serialisation cost is not measured by E-R1).
 Phase 2 "warm" has 0 samples after the 60 s warm-up (760 queries at ≥1 per ~6 ms finish in < 60 s) — as in the F15 1× run, so the
@@ -145,9 +193,9 @@ afterwards, so whether the kernel OOM-killed it is **unconfirmed** (the oom_kill
 (`anon_peak_le_1_35_gib`, `completed`, `phase3_reached_R_req`, p95 rules all false).
 
 Gate rule `query p95 ≤ 10 ms in phases 3 and 5` — **FAILS in every run, whole and reduced payload.** All other rules pass at 1–3× (no OOM,
-anon peak ≤ 1.35 GiB, exact counts, R_req reached). Compared with the F15 (Run 2 era) baseline at 1× — rebuild p95 5,111.6 ms / steady
-p95 154.3 ms (cgroup-pressured, query timeouts) — the A15 is two orders of magnitude better *with or without* the change, which is a
-**hardware/storage difference, not an effect of FP-05** (F15 and A15 cannot be compared for the payload effect).
+anon peak ≤ 1.35 GiB, exact counts, R_req reached). Compared with the F15 baseline at 1× — rebuild p95 5,111.6 ms / steady p95 154.3 ms — the A15 is two orders of magnitude better *with or without*
+the change. The F15 baseline was measured **on a USB HDD** (the original diagnosis: rescoring reads float32 originals from disk), so the gap is the
+storage/host difference, **not an effect of FP-05**; the like-for-like payload effect is only the paired A15 whole-vs-fields runs below.
 
 **Effect of the change (A15, paired, same host):** steady p95 −8 % at 1× (11.01 → 10.15 ms, repeatable within 0.05 ms between reps),
 −14 % at 2×, −29 % at 3×; steady p50 −8…−7 %; rebuild p95 −14 % at 1× but **unchanged at 2× and 3×** (the rebuild phase is dominated by
@@ -178,7 +226,7 @@ and the rebuild phase fails clearly. No broader redesign was done.
   `docker run -d --rm --name fp-test-redis -p 127.0.0.1:16380:6379 redis:7.4.2-alpine`); `tests/conftest.py` and `tests/test_target.py` abort if
   the URL is port 6379 or 16379. Every test in this session used the 16380 container; **system Redis 6379 was not contacted**. Run 3 incident
   A-10 stays recorded in [run-3 anomalies](results/run-3/anomalies.md) (DB 15 contents/effect unknown).
-* **Not run / not available:** SMART (root); F15 comparison (record absent); G-3 on L-PAIRS; 168 h soak; Scylla/MinIO workload qualification;
+* **Not run / not available:** G-3 on L-PAIRS; 168 h soak; Scylla/MinIO workload qualification;
   multi-host tests; HDD internal-SATA measurement (only a USB HDD exists).
 
 ## 7. Test and check results (this session)
@@ -193,5 +241,19 @@ and the rebuild phase fails clearly. No broader redesign was done.
 | fingerprinter ruff/mypy | **not applicable as a gate**: the fingerprinter has no ruff/mypy configuration and does not use them (mypy strict on the touched files reports 40 pre-existing errors across 12 files; none introduced by the change was analysed individually) |
 | Documentation links | spot-checked manually: ADR-028, ADR index, blockers.md, followup-a15.md, p10-matcher §5.1 |
 
-Not run: crawler2 live-stack tier (`RUN_INTEGRATION_TESTS=1`), 7-day soak, 6× whole-payload E-R1, L-PAIRS G-3, F15-vs-A15 NVMe comparison, SMART.
+Not run: crawler2 live-stack tier (`RUN_INTEGRATION_TESTS=1`), 7-day soak, 6× whole-payload E-R1, L-PAIRS G-3, an F15-vs-A15 NVMe fio/SMART comparison (no F15 fio/SMART exists).
+
+## 8. Re-check against the F15 Run 2 evidence (supplied 2026-11-22: `monitoring_runs/`)
+
+* **Baseline numbers in [comparison-with-run-2.md](results/run-3/comparison-with-run-2.md) re-verified against `NitKit_…/resource_metrics.csv` (1,909
+  samples): all match** — CPU mean 5.55 / max 49.6 %, CPU temp mean 61.1 / max 99 °C, RAM used 3,303 / 4,429 MB, available mean 12,422 MB, swap 0, disk
+  util 2.6 / 63.4 %, latency mean 4.36 ms (n = 1,860), iowait max 5.2 %, disk write max 57.9, read max 109.6 MB/s.
+* **Previously unknown Run 2 facts:** crawler2 `60f3f95` 1147 passed / 165 skipped (Run 3: `b6f8c3b` 1151 / 165); fingerprinter `904af14` 445 passed, no skips, p10 excluded (Run 3:
+  `3018d7b` 553 passed / 118 skipped, p10 excluded — more tests, so the +29 % suite time is partly more tests); both Run 2 and Run 3 had a single crawler2 flaky test class
+  (2/25 vs 2/48 repeat failures).
+* **F15 was not an NVMe-qualified stack host:** its NVMe boot had no Docker access, no stack, no SMART, no fio; its stack benchmarks (P2 latency 0/16, E-R1) ran from a
+  USB-HDD boot. Hence "F15 qualification remains valid" can only mean software-suite stability on the NVMe boot; this is recorded in
+  [blockers.md](blockers.md#correction-what-the-f15-evidence-actually-is-monitoring_runs-2026-11-14).
+* **Conclusions that change:** (1) the E-R1 failure history is HDD-bound, so FP-05's "payload" trial is evaluated on SSD for the first time here (1× nearly meets the gate; 2×/3× do not).
+  (2) H-02's affected benchmarks (Scylla latency gate) are met on the A15 NVMe. (3) The F15 NVMe has never been health- or fio-qualified.
 
