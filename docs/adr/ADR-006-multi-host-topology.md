@@ -28,7 +28,8 @@ profiles, seeds) live in Scylla, never in files a process writes.
 - `roles` (`CRAWLER2_ROLES`): the subset of capabilities a host runs:
   `http, browser, tor, intelligence, media_probe, finalizer, encoder`.
   `encoder` requires `limits.gpu_vram_mb > 0` (GPU hosts only; one
-  GPU-owning encoder process per host). Workers arrive in P3+; P0 fixes the
+  GPU-owning encoder process per host). Which host runs `encoder` is configuration, never code: no host is
+  permanently the GPU host ([ADR-028](ADR-028-staged-deployment-and-tiered-retention.md)). Workers arrive in P3+; P0 fixes the
   configuration surface so adding a role never changes code paths.
 - **Worker identity** = `{host_id}:{role}:{pid}:{instance_id}` where
   `instance_id` is a random 128-bit hex value per process start (pid alone

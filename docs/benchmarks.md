@@ -78,6 +78,11 @@ affected by the disk.
 
 ---
 
+**WP1 hardware / infrastructure qualification (A15, 2026-11-22).** Blocker register [wp1/blockers.md](benchmarks/wp1/blockers.md); results
+[wp1/followup-a15.md](benchmarks/wp1/followup-a15.md): A15 NVMe health (SMART PASSED), fio ×2, USB-HDD fio and the P2 Scylla latency gate rerun (16/16 met on NVMe vs 0/16 on the F15 USB HDD) (`benchmarks/p2-storage/`, H-02 CLOSED by the owner on 2026-11-23), tiered-retention capacity model skeleton (`benchmarks/p2-storage/capacity_model.py`, H-08 open, no capacity figure), A15 RTX 3050
+encoder benchmarks (G-5 9.02× PASS, FP32 equivalence PASS), FP-05 payload trial + E-R1 rebenchmark (gate **not** met, FP-05 open; the old F15 E-R1 baseline was on a USB HDD). Run 3 stays a
+software-suite stability test only.
+
 **Where other benchmark evidence lives.** P10 (vector index, matcher, E-R1 capacity, equivalence) benchmarks are in the
 fingerprinter repository, `benchmarks/p10-index/` with results under `results/` and the summary in
 `docs/phases/p10-vector-index-matcher/validation.md` (not mirrored here; P10 is not passed, see the plan). The 2026-10-22

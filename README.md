@@ -79,3 +79,8 @@ every field is overridable via `CRAWLER2_<FIELD>` / `CRAWLER2_<SECTION>__<FIELD>
 | `benchmarks/p2-storage/` | partition-size (1M pages) and latency benchmarks, results |
 | `benchmarks/p4-fetch/` | V1 per-engine evaluation, exit-gate run (V1 hybrid vs V2 on 691 URLs), counting proxy, results |
 | `benchmarks/p3-frontier/` | frontier throughput, 1M-claim chaos run, starvation, eligible-index, crash/heartbeat benchmarks, results |
+
+## Project workspace
+
+Cross-repository coordination lives in the sibling repository `workspace/` (`../workspace/`, i.e. `~/anti_piracy/workspace`), not here: the master blocker register (`project/blocker-register/TDS-Blocks-gpt.odt`), current blocker status (`PROJECT_STATUS.md`), hardware records, shared benchmark evidence (`benchmarks/`, `monitoring/`), dataset manifests and the multi-machine/synchronisation procedures. Start with `workspace/CLAUDE_WORKSPACE_GUIDE.md`.
+Component-specific code, tests and implementation docs stay in this repository. `control_center/` is a separate future repository and is intentionally not part of the workspace.

@@ -87,6 +87,12 @@ fabricated. The leg needs a positive matcher decision on a media content that cr
 the media registry), then a CALIBRATED technique version: there is no flag, fallback or "owner decision" mechanism that publishes an
 uncalibrated match (fingerprinter `validation.md` §13.22, §13.35). Test design and acceptance points: [P14 validation §10](../phases/p14-production-hardening/validation.md).
 
+## Storage tier and retention (ADR-028)
+
+Evidence follows the accepted tiered-retention strategy: recent evidence on SSD/NVMe, bulk historical evidence on HDD/bulk
+storage, and evidence that must be kept longer on separately retained storage. This is policy only: there is no tier
+migration job, no retention period is set (ADR-005 is open) and production capacity is unquantified (H-08).
+
 ## Enabling stronger protection later
 
 1. Object lock: create the evidence bucket with object lock + versioning

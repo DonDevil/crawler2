@@ -25,6 +25,8 @@ host (ADR-006: no authoritative local state).
 - Buckets by lifecycle, not by host: `crawler2-raw` (raw bodies/snapshots,
   retention policy TBD in P2), `crawler2-evidence` (write-once, object
   lock/retention governed by ADR-005, created in P12).
+- Tiering (ADR-028): buckets are the unit that may sit on different storage tiers (recent on SSD/NVMe, older/bulk on HDD,
+  important evidence separately retained). Not implemented yet: no migration or lifecycle job; capacity is unquantified (H-08).
 - Credentials come only from the environment (`.env`, never committed).
 
 ## Consequences

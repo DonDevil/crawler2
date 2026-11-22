@@ -1,0 +1,69 @@
+{
+ "model": "wp1-capacity/1",
+ "formula": "required_bytes(tier, category) = unit_bytes \u00d7 units_per_day \u00d7 retention_days \u00d7 safety_factor",
+ "safety_factor": null,
+ "inputs_supplied": false,
+ "categories": {
+  "active_operational": {
+   "tier": "SSD/NVMe",
+   "unit": "page revision (Scylla)",
+   "unit_bytes": null,
+   "source": "NOT MEASURED per record: dev Scylla holds 561.8 MB total (docker system df, 2026-11-22), row counts not taken; P2 bench: largest partition 43.4 MB per 1M pages",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "active_qdrant_index": {
+   "tier": "SSD/NVMe",
+   "unit": "point (dinov2-seg/2, 768-d fp32 + payload + HNSW + int8)",
+   "unit_bytes": 6018,
+   "source": "fingerprinter e-r1-diag*.json: 628,502,393 B / 104,443 points (F15 host, Qdrant 1.15.1, one generation; rebuild needs 2 generations resident)",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "recent_snapshots": {
+   "tier": "SSD/NVMe",
+   "unit": "snapshot object (MinIO)",
+   "unit_bytes": null,
+   "source": "NOT MEASURED (dev MinIO 253 kB)",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "historical_snapshots": {
+   "tier": "HDD/bulk",
+   "unit": "snapshot object (MinIO)",
+   "unit_bytes": null,
+   "source": "NOT MEASURED",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "bulk_evidence": {
+   "tier": "HDD/bulk",
+   "unit": "evidence object",
+   "unit_bytes": null,
+   "source": "NOT MEASURED",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "long_retention_evidence": {
+   "tier": "separately retained",
+   "unit": "evidence object",
+   "unit_bytes": null,
+   "source": "NOT MEASURED",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  },
+  "logs_temp": {
+   "tier": "explicit retention policy",
+   "unit": "GiB/day",
+   "unit_bytes": null,
+   "source": "NOT MEASURED",
+   "workload_input": null,
+   "required_bytes": "UNDEFINED"
+  }
+ },
+ "tier_bandwidth_evidence": {
+  "SSD/NVMe /mnt/data (nvme0n1p9)": "results/wp1-fio-a15-nvme-mnt-data-p9.json",
+  "HDD /media/dhanush/Media (sda1, USB, rotational)": "results/wp1-fio-a15-usb-hdd-media.json"
+ },
+ "status": "UNDEFINED until workload (units/day), retention (days) and safety factor are supplied by the owner"
+}
